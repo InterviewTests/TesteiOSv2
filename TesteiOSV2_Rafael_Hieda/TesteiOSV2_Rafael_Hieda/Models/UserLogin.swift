@@ -8,5 +8,16 @@
 
 import UIKit
 
-class UserLogin: NSObject {
+class UserLogin: NSObject
+{
+    var login : String
+    var password : String
+    
+    init(_ login:String, password:String)
+    {
+        self.login = login
+        self.password = password
+    }
+    
+    
 }
