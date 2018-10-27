@@ -14,13 +14,12 @@ class InputTextView: UIView {
     
     @IBOutlet weak var textField: UITextField! {
         didSet {
-            let attributes
-                = [NSAttributedString.Key.foregroundColor: UIColor.grayPlaceholderApp]
             textField.translatesAutoresizingMaskIntoConstraints = false
-            textField.attributedPlaceholder = NSAttributedString(string: "User",
-                                                            attributes: attributes)
         }
     }
+    
+    let attributes
+        = [NSAttributedString.Key.foregroundColor: UIColor.grayPlaceholderApp]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,7 +31,7 @@ class InputTextView: UIView {
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         Bundle.main.loadNibNamed(String(describing: InputTextView.self), owner: self, options: nil)
         
         addSubview(contentView)
@@ -44,6 +43,11 @@ class InputTextView: UIView {
         contentView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         
         backgroundColor = .clear
+    }
+    
+    func setPlaceholder(_ string: String) {
+        textField.attributedPlaceholder = NSAttributedString(string: string,
+                                                             attributes: attributes)
     }
 
 }

@@ -12,9 +12,9 @@ class ExitButtonView: UIView {
 
     @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet weak var logoutButton: UIButton! {
+    @IBOutlet weak var exitButton: UIButton! {
         didSet {
-            logoutButton.translatesAutoresizingMaskIntoConstraints = false
+            exitButton.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     

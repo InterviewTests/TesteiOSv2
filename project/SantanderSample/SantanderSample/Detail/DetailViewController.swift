@@ -20,31 +20,60 @@ protocol DetailDisplayLogic: class
 class DetailViewController: UIViewController, DetailDisplayLogic
 {
     
-    @IBOutlet weak var exitView: ExitButtonView!
+    @IBOutlet weak var exitView: ExitButtonView! {
+        didSet {
+            let button = exitView.exitButton
+            button?.addTarget(self,
+                              action: #selector(exitAction),
+                              for: .touchUpInside)
+        }
+    }
+    
     @IBOutlet weak var nameView: InfoDetailView!
-    @IBOutlet weak var accountTitleView: TitleDetailView!
+    
+    @IBOutlet weak var accountTitleView: TitleDetailView! {
+        didSet {
+            accountTitleView.titleLabel.text = "Conta"
+        }
+    }
     @IBOutlet weak var accountInfoView: InfoDetailView!
-    @IBOutlet weak var balanceTitleView: TitleDetailView!
+    
+    @IBOutlet weak var balanceTitleView: TitleDetailView! {
+        didSet {
+            balanceTitleView.titleLabel.text = "Saldo"
+        }
+    }
     @IBOutlet weak var balnceInfoView: InfoDetailView!
     
-    @IBOutlet weak var entriesTableView: UITableView!
+    @IBOutlet weak var entriesCollectionView: UICollectionView! {
+        didSet {
+            entriesCollectionView.delegate = self
+            entriesCollectionView.dataSource = self
+            let nib = UINib(nibName: cellIdentifier, bundle: nil)
+            entriesCollectionView
+                .register(nib, forCellWithReuseIdentifier: cellIdentifier)
+        }
+    }
     
-  var interactor: DetailBusinessLogic?
-  var router: (NSObjectProtocol & DetailRoutingLogic & DetailDataPassing)?
+    
+    let cellIdentifier = String(describing: DetailCell.self)
+    
+    var interactor: DetailBusinessLogic?
+    var router: (NSObjectProtocol & DetailRoutingLogic & DetailDataPassing)?
 
-  // MARK: Object lifecycle
+    // MARK: Object lifecycle
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
   
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
   
   // MARK: Setup
   
@@ -96,4 +125,26 @@ class DetailViewController: UIViewController, DetailDisplayLogic
   {
     //nameTextField.text = viewModel.name
   }
+    
+    @objc func exitAction() {
+        
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegate {
+    
+}
+
+extension DetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! DetailCell
+        
+        return cell
+    }
+    
+    
 }

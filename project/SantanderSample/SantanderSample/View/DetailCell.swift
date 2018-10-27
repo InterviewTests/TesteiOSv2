@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  DetailCell.swift
 //  SantanderSample
 //
 //  Created by Virgilius Santos on 26/10/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class DetailCell: UICollectionViewCell {
 
     @IBOutlet weak var paymentLabel: UILabel!
     
