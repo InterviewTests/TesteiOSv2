@@ -11,7 +11,6 @@
 import Foundation
 protocol LoginInteractorInput {
     func postLogin(request: LoginScene.PostLogin.Request, completionHandler: @escaping (Bool, String?) -> Void)
-    func selectUser(request: LoginScene.SelectUser.Request)
 }
 
 protocol LoginInteractorOutput {
@@ -19,7 +18,7 @@ protocol LoginInteractorOutput {
 }
 
 protocol LoginDataSource {
-    var selectedUser: UserAccount! { get }
+    var userAccount: UserAccount! {get}
 }
 
 protocol LoginDataDestination {
@@ -30,7 +29,6 @@ class LoginInteractor: LoginInteractorInput, LoginDataSource, LoginDataDestinati
     
     var output: LoginInteractorOutput?
     var userAccount: UserAccount!
-    var selectedUser: UserAccount!
 
     // MARK: Business logic
 
@@ -44,16 +42,11 @@ class LoginInteractor: LoginInteractorInput, LoginDataSource, LoginDataDestinati
                     return
                 }
                 self.userAccount = account
-                self.selectedUser = account
                 self.saveUserInUserDefaults(userAccount: account, userName: request.user)
                 _ = LoginScene.PostLogin.Response(userAccount: account)
                 completionHandler(true, nil)
             }
         }
-    }
-    
-    func selectUser(request: LoginScene.SelectUser.Request) {
-        selectedUser = userAccount
     }
     
     func saveUserInUserDefaults(userAccount: UserAccount, userName:String){

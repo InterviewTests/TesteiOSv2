@@ -15,7 +15,7 @@ protocol LoginRouterInput {
 }
 
 protocol LoginRouterDataSource: class {
-    var selectedUser: UserAccount! { get }
+    var userAccount: UserAccount! { get }
 }
 
 protocol LoginRouterDataDestination: class {
@@ -64,7 +64,7 @@ class LoginRouter: LoginRouterInput {
     {
         // NOTE: Teach the router how to pass data to the next scene
         if let statementViewController = segue.destination as? StatementListViewController {
-            statementViewController.router?.dataDestination.user = dataSource.selectedUser
+            statementViewController.router?.dataDestination.user = dataSource.userAccount
         }
     }
 }
