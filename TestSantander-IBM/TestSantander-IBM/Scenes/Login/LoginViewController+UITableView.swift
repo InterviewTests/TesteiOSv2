@@ -47,28 +47,64 @@ extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension LoginViewController: PerformLoginDelegate{
+    fileprivate func handleError(_ err: String?, request: LoginScene.PostLogin.Request) {
+        //deveria encapsular esse trecho de alertcontroller
+        let alert = UIAlertController(title: "Ops", message: err, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            self.dismiss(animated: false, completion: nil)
+        }
+        
+        let tryAgain = UIAlertAction(title: "Try Again", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            self.dismiss(animated: false, completion: {
+                self.performLogin(request: request)
+            })
+        }
+        
+        alert.addAction(okAction)
+        alert.addAction(tryAgain)
+
+        present(alert, animated: true, completion: nil)
+    }
+    
+    fileprivate func loadingAlert() {
+        //deveria encapsular esse trecho de alertcontroller
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    
     func loginBtnTapped(name: String, passwd: String) {
-//        let request = LoginScene.PostLogin.Request(user: name, password: passwd)
-//        
-//        //deveria encapsular esse metodo
-//        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-//        
-//        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-//        loadingIndicator.hidesWhenStopped = true
-//        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-//        loadingIndicator.startAnimating();
-//        
-//        alert.view.addSubview(loadingIndicator)
-//        present(alert, animated: true, completion: nil)
-//        
-//        output?.postLogin(request: request, completionHandler: { (succeed) in
-//            if succeed {
-//                DispatchQueue.main.async {
-//                    self.dismiss(animated: false, completion: nil)
-//                    self.router?.navigateToUserDetailScene()
-//                }
-//            }
-//        })
+        
+        let request = LoginScene.PostLogin.Request(user: name, password: passwd)
+        
+        loadingAlert()
+        
+        performLogin(request: request)
+    }
+    
+    func performLogin(request: LoginScene.PostLogin.Request){
+        output?.postLogin(request: request, completionHandler: { (succeed, err) in
+            if succeed {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: false, completion: nil)
+                    self.router?.navigateToUserDetailScene()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: false, completion: nil)
+                    self.handleError(err, request: request)
+                }
+            }
+        })
     }
 }
 

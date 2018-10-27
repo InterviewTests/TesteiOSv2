@@ -10,7 +10,7 @@
 
 import Foundation
 protocol LoginInteractorInput {
-    func postLogin(request: LoginScene.PostLogin.Request, completionHandler: @escaping (Bool) -> Void)
+    func postLogin(request: LoginScene.PostLogin.Request, completionHandler: @escaping (Bool, String?) -> Void)
     func selectUser(request: LoginScene.SelectUser.Request)
 }
 
@@ -34,24 +34,24 @@ class LoginInteractor: LoginInteractorInput, LoginDataSource, LoginDataDestinati
 
     // MARK: Business logic
 
-    func postLogin(request: LoginScene.PostLogin.Request, completionHandler: @escaping (Bool) -> Void){
+    func postLogin(request: LoginScene.PostLogin.Request, completionHandler: @escaping (Bool, String?) -> Void){
         HTTPClient.shared.fetchGenericData(urlString: "https://bank-app-test.herokuapp.com/api/login", method: "POST", params: ["user": request.user, "password": request.password]) { (api: ApiResponse?, err) in
             if err != nil {
                 //handleError
-                completionHandler(false)
+                completionHandler(false, err)
                 print("erro")
             } else {
                 guard let account = api?.userAccount else {
                     //handleError
                     print("erro")
-                    completionHandler(false)
+                    completionHandler(false, "No data")
                     return
                 }
                 self.userAccount = account
                 self.selectedUser = account
                 self.saveUserInUserDefaults(userAccount: account, userName: request.user)
                 _ = LoginScene.PostLogin.Response(userAccount: account)
-                completionHandler(true)
+                completionHandler(true, nil)
             }
         }
     }

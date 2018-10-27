@@ -28,6 +28,17 @@
 		26B5A47B2183FCB10044D357 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A47A2183FCB10044D357 /* ErrorModel.swift */; };
 		26B5A47D2183FCC50044D357 /* Statements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A47C2183FCC50044D357 /* Statements.swift */; };
 		26B5A4802183FD040044D357 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A47F2183FD040044D357 /* HTTPClient.swift */; };
+		26B5A485218400EE0044D357 /* AccountDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A483218400EE0044D357 /* AccountDetailsCell.swift */; };
+		26B5A486218400EE0044D357 /* AccountDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B5A484218400EE0044D357 /* AccountDetailsCell.xib */; };
+		26B5A489218409D10044D357 /* StatementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A487218409D10044D357 /* StatementCell.swift */; };
+		26B5A48A218409D10044D357 /* StatementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B5A488218409D10044D357 /* StatementCell.xib */; };
+		26B5A48C21840A950044D357 /* StatementListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A48B21840A950044D357 /* StatementListConfigurator.swift */; };
+		26B5A48E21840AA40044D357 /* StatementListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A48D21840AA40044D357 /* StatementListInteractor.swift */; };
+		26B5A49021840AB50044D357 /* StatementListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A48F21840AB50044D357 /* StatementListRouter.swift */; };
+		26B5A49221840AC10044D357 /* StatementListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A49121840AC10044D357 /* StatementListModels.swift */; };
+		26B5A49421840AD60044D357 /* StatementListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A49321840AD60044D357 /* StatementListPresenter.swift */; };
+		26B5A49621840AE60044D357 /* StatementListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A49521840AE60044D357 /* StatementListViewController.swift */; };
+		26B5A49821840BDA0044D357 /* StatementListViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A49721840BDA0044D357 /* StatementListViewController+UITableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +77,17 @@
 		26B5A47A2183FCB10044D357 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		26B5A47C2183FCC50044D357 /* Statements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statements.swift; sourceTree = "<group>"; };
 		26B5A47F2183FD040044D357 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		26B5A483218400EE0044D357 /* AccountDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsCell.swift; sourceTree = "<group>"; };
+		26B5A484218400EE0044D357 /* AccountDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountDetailsCell.xib; sourceTree = "<group>"; };
+		26B5A487218409D10044D357 /* StatementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCell.swift; sourceTree = "<group>"; };
+		26B5A488218409D10044D357 /* StatementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementCell.xib; sourceTree = "<group>"; };
+		26B5A48B21840A950044D357 /* StatementListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListConfigurator.swift; sourceTree = "<group>"; };
+		26B5A48D21840AA40044D357 /* StatementListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListInteractor.swift; sourceTree = "<group>"; };
+		26B5A48F21840AB50044D357 /* StatementListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListRouter.swift; sourceTree = "<group>"; };
+		26B5A49121840AC10044D357 /* StatementListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListModels.swift; sourceTree = "<group>"; };
+		26B5A49321840AD60044D357 /* StatementListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListPresenter.swift; sourceTree = "<group>"; };
+		26B5A49521840AE60044D357 /* StatementListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListViewController.swift; sourceTree = "<group>"; };
+		26B5A49721840BDA0044D357 /* StatementListViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "StatementListViewController+UITableView.swift"; path = "UI/StatementListViewController+UITableView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +154,7 @@
 		26B5A45B2183F4810044D357 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				26B5A481218400A80044D357 /* StatementList */,
 				26B5A45C2183F48B0044D357 /* Login */,
 			);
 			path = Scenes;
@@ -187,6 +210,32 @@
 				26B5A47F2183FD040044D357 /* HTTPClient.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		26B5A481218400A80044D357 /* StatementList */ = {
+			isa = PBXGroup;
+			children = (
+				26B5A482218400C40044D357 /* UI */,
+				26B5A48B21840A950044D357 /* StatementListConfigurator.swift */,
+				26B5A48D21840AA40044D357 /* StatementListInteractor.swift */,
+				26B5A48F21840AB50044D357 /* StatementListRouter.swift */,
+				26B5A49121840AC10044D357 /* StatementListModels.swift */,
+				26B5A49321840AD60044D357 /* StatementListPresenter.swift */,
+				26B5A49521840AE60044D357 /* StatementListViewController.swift */,
+				26B5A49721840BDA0044D357 /* StatementListViewController+UITableView.swift */,
+			);
+			path = StatementList;
+			sourceTree = "<group>";
+		};
+		26B5A482218400C40044D357 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				26B5A483218400EE0044D357 /* AccountDetailsCell.swift */,
+				26B5A484218400EE0044D357 /* AccountDetailsCell.xib */,
+				26B5A487218409D10044D357 /* StatementCell.swift */,
+				26B5A488218409D10044D357 /* StatementCell.xib */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +322,9 @@
 				26B5A4462183EF040044D357 /* LaunchScreen.storyboard in Resources */,
 				26B5A4432183EF040044D357 /* Assets.xcassets in Resources */,
 				26B5A4412183EF020044D357 /* Main.storyboard in Resources */,
+				26B5A486218400EE0044D357 /* AccountDetailsCell.xib in Resources */,
 				26B5A4612183F4B60044D357 /* LoginCell.xib in Resources */,
+				26B5A48A218409D10044D357 /* StatementCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,12 +351,21 @@
 				26B5A4792183FC9F0044D357 /* ApiResponse.swift in Sources */,
 				26B5A47D2183FCC50044D357 /* Statements.swift in Sources */,
 				26B5A4742183FA970044D357 /* LoginViewController+UITableView.swift in Sources */,
+				26B5A49021840AB50044D357 /* StatementListRouter.swift in Sources */,
 				26B5A4642183F5E30044D357 /* TextField.swift in Sources */,
 				26B5A4802183FD040044D357 /* HTTPClient.swift in Sources */,
+				26B5A485218400EE0044D357 /* AccountDetailsCell.swift in Sources */,
+				26B5A49221840AC10044D357 /* StatementListModels.swift in Sources */,
+				26B5A48E21840AA40044D357 /* StatementListInteractor.swift in Sources */,
+				26B5A48C21840A950044D357 /* StatementListConfigurator.swift in Sources */,
 				26B5A43C2183EF020044D357 /* AppDelegate.swift in Sources */,
+				26B5A489218409D10044D357 /* StatementCell.swift in Sources */,
 				26B5A4772183FC850044D357 /* UserAccount.swift in Sources */,
 				26B5A4682183F9A80044D357 /* LoginViewController.swift in Sources */,
+				26B5A49821840BDA0044D357 /* StatementListViewController+UITableView.swift in Sources */,
+				26B5A49621840AE60044D357 /* StatementListViewController.swift in Sources */,
 				26B5A4722183FA760044D357 /* LoginRouter.swift in Sources */,
+				26B5A49421840AD60044D357 /* StatementListPresenter.swift in Sources */,
 				26B5A4602183F4B60044D357 /* LoginCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -65,8 +65,8 @@ class LoginRouter: LoginRouterInput {
     {
         // NOTE: Teach the router how to pass data to the next scene
         
-//        if let statementViewController = segue.destination as? StatementListViewController {
-//            statementViewController.router?.dataDestination.user = dataSource.selectedUser
-//        }
+        if let statementViewController = segue.destination as? StatementListViewController {
+            statementViewController.router?.dataDestination.user = dataSource.selectedUser
+        }
     }
 }

@@ -15,7 +15,7 @@ protocol LoginViewControllerInput {
 }
 
 protocol LoginViewControllerOutput {
-    func postLogin(request: LoginScene.PostLogin.Request, completionHandler: @escaping (Bool) -> Void)
+    func postLogin(request: LoginScene.PostLogin.Request, completionHandler: @escaping (Bool, String?) -> Void)
     func selectUser(request: LoginScene.SelectUser.Request)
 }
 

@@ -1,5 +1,5 @@
 //
-//  LoginConfigurator.swift
+//  StatementListConfigurator.swift
 //  TestSantander-IBM
 //
 //  Created by Erika Albizzati on 26/10/18.
@@ -12,31 +12,30 @@ import UIKit
 
 // MARK: Connect View, Interactor, and Presenter
 
-extension LoginInteractor: LoginViewControllerOutput, LoginRouterDataSource, LoginRouterDataDestination {
-
+extension StatementListInteractor: StatementListViewControllerOutput, StatementListRouterDataSource, StatementListRouterDataDestination {
 }
 
-extension LoginPresenter: LoginInteractorOutput {
+extension StatementListPresenter: StatementListInteractorOutput {
 }
 
-class LoginConfigurator {
+class StatementListConfigurator {
     // MARK: Object lifecycle
     
-    static let sharedInstance = LoginConfigurator()
+    static let sharedInstance = StatementListConfigurator()
     
     private init() {}
     
     // MARK: Configuration
     
-    func configure(viewController: LoginViewController) {
+    func configure(viewController: StatementListViewController) {
         
-        let presenter = LoginPresenter()
+        let presenter = StatementListPresenter()
         presenter.output = viewController
         
-        let interactor = LoginInteractor()
+        let interactor = StatementListInteractor()
         interactor.output = presenter
         
-        let router = LoginRouter(viewController: viewController, dataSource: interactor, dataDestination: interactor)
+        let router = StatementListRouter(viewController: viewController, dataSource: interactor, dataDestination: interactor)
         
         viewController.output = interactor
         viewController.router = router
