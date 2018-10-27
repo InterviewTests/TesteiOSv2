@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="SantanderSample" customModuleProvider="target">
+            <connections>
+                <outlet property="idView" destination="jF6-Zm-tt9" id="cry-Er-kta"/>
+                <outlet property="loginButtonView" destination="Efz-3F-0Yc" id="Wgp-uD-ioI"/>
+                <outlet property="logoView" destination="vWN-E7-Usf" id="iLz-Tq-TqS"/>
+                <outlet property="passwordView" destination="tzv-Ic-hc2" id="6SH-Yc-blA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4TH-0Y-975">
+                    <rect key="frame" x="17" y="56" width="342" height="296"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWN-E7-Usf" customClass="LogoView" customModule="SantanderSample" customModuleProvider="target">
+                            <rect key="frame" x="108.5" y="0.0" width="125" height="70"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="125" id="vVD-vj-7ig"/>
+                                <constraint firstAttribute="height" constant="70" id="yJP-kE-BAr"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jF6-Zm-tt9" customClass="InputTextView" customModule="SantanderSample" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="175" width="342" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="A02-DB-jdZ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzv-Ic-hc2" customClass="InputTextView" customModule="SantanderSample" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="246" width="342" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="jD8-bs-0Ry"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="tzv-Ic-hc2" secondAttribute="trailing" id="0Pu-ZY-fuE"/>
+                        <constraint firstItem="vWN-E7-Usf" firstAttribute="top" secondItem="4TH-0Y-975" secondAttribute="top" id="98E-tJ-ava"/>
+                        <constraint firstItem="jF6-Zm-tt9" firstAttribute="leading" secondItem="4TH-0Y-975" secondAttribute="leading" id="9VD-Al-zyn"/>
+                        <constraint firstAttribute="bottom" secondItem="tzv-Ic-hc2" secondAttribute="bottom" id="Uwx-6t-kUG"/>
+                        <constraint firstAttribute="height" constant="296" id="cSU-Tf-sUR"/>
+                        <constraint firstItem="tzv-Ic-hc2" firstAttribute="top" secondItem="jF6-Zm-tt9" secondAttribute="bottom" constant="21" id="fKG-Nz-32L"/>
+                        <constraint firstAttribute="trailing" secondItem="jF6-Zm-tt9" secondAttribute="trailing" id="hAt-iF-dim"/>
+                        <constraint firstItem="vWN-E7-Usf" firstAttribute="centerX" secondItem="4TH-0Y-975" secondAttribute="centerX" id="sdG-zp-iTm"/>
+                        <constraint firstItem="tzv-Ic-hc2" firstAttribute="leading" secondItem="4TH-0Y-975" secondAttribute="leading" id="tCc-nz-ocY"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efz-3F-0Yc" customClass="LoginButtonView" customModule="SantanderSample" customModuleProvider="target">
+                    <rect key="frame" x="92.5" y="575" width="190" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="190" id="PGS-Ic-MuK"/>
+                        <constraint firstAttribute="height" constant="50" id="pmI-3j-jTV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="4TH-0Y-975" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="36" id="MlL-4L-dHr"/>
+                <constraint firstItem="4TH-0Y-975" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="17" id="PVk-0G-WSj"/>
+                <constraint firstAttribute="trailing" secondItem="4TH-0Y-975" secondAttribute="trailing" constant="16" id="jj6-fz-lVc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Efz-3F-0Yc" secondAttribute="bottom" constant="42" id="lX3-iS-25W"/>
+                <constraint firstItem="Efz-3F-0Yc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="n5N-u8-Gfa"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
+        </view>
+    </objects>
+</document>

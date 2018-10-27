@@ -19,6 +19,12 @@ protocol LoginDisplayLogic: class
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
+    
+    @IBOutlet weak var logoView: LogoView!
+    @IBOutlet weak var idView: InputTextView!
+    @IBOutlet weak var passwordView: InputTextView!
+    @IBOutlet weak var loginButtonView: LoginButtonView!
+    
   var interactor: LoginBusinessLogic?
   var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
 
@@ -86,4 +92,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   {
     //nameTextField.text = viewModel.name
   }
+    
+    
 }

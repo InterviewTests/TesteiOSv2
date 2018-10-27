@@ -19,6 +19,16 @@ protocol DetailDisplayLogic: class
 
 class DetailViewController: UIViewController, DetailDisplayLogic
 {
+    
+    @IBOutlet weak var exitView: ExitButtonView!
+    @IBOutlet weak var nameView: InfoDetailView!
+    @IBOutlet weak var accountTitleView: TitleDetailView!
+    @IBOutlet weak var accountInfoView: InfoDetailView!
+    @IBOutlet weak var balanceTitleView: TitleDetailView!
+    @IBOutlet weak var balnceInfoView: InfoDetailView!
+    
+    @IBOutlet weak var entriesTableView: UITableView!
+    
   var interactor: DetailBusinessLogic?
   var router: (NSObjectProtocol & DetailRoutingLogic & DetailDataPassing)?
 
