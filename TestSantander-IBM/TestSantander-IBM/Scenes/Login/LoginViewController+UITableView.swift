@@ -29,12 +29,8 @@ extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
             guard let user = userFromUserDefaults?.userName else {
                 return loginCell
             }
-            loginCell.userValid = true
-            loginCell.userTextField.placeholder = nil
+            loginCell.setupDefaultValuesOnDismiss()
             loginCell.userTextField.text = user
-            loginCell.passwordTextField.placeholder = "Password"
-            loginCell.passwordTextField.text = ""
-            
             return loginCell
         }
         return UITableViewCell()
@@ -47,8 +43,7 @@ extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension LoginViewController: PerformLoginDelegate{
-    fileprivate func handleError(_ err: String?, request: LoginScene.PostLogin.Request) {
-        //deveria encapsular esse trecho de alertcontroller
+    func handleError(_ err: String?, request: LoginScene.PostLogin.Request) {
         let alert = UIAlertController(title: "Ops", message: err, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
@@ -69,8 +64,7 @@ extension LoginViewController: PerformLoginDelegate{
         present(alert, animated: true, completion: nil)
     }
     
-    fileprivate func loadingAlert() {
-        //deveria encapsular esse trecho de alertcontroller
+    func loadingAlert() {
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
@@ -83,11 +77,8 @@ extension LoginViewController: PerformLoginDelegate{
     }
     
     func loginBtnTapped(name: String, passwd: String) {
-        
         let request = LoginScene.PostLogin.Request(user: name, password: passwd)
-        
         loadingAlert()
-        
         performLogin(request: request)
     }
     
@@ -95,13 +86,15 @@ extension LoginViewController: PerformLoginDelegate{
         output?.postLogin(request: request, completionHandler: { (succeed, err) in
             if succeed {
                 DispatchQueue.main.async {
-                    self.dismiss(animated: false, completion: nil)
-                    self.router?.navigateToUserDetailScene()
+                    self.dismiss(animated: false, completion: {
+                        self.router?.navigateToUserDetailScene()
+                    })
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.dismiss(animated: false, completion: nil)
-                    self.handleError(err, request: request)
+                    self.dismiss(animated: false, completion: {
+                        self.handleError(err, request: request)
+                    })
                 }
             }
         })

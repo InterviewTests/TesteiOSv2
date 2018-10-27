@@ -64,6 +64,15 @@ class LoginCell: UITableViewCell {
         }
     }
     
+    func setupDefaultValuesOnDismiss(){
+        userValid = true
+        pswdValid = false
+        userTextField.placeholder = nil
+        passwordTextField.placeholder = "Password"
+        passwordTextField.text = ""
+        loginBtn.isEnabled = false
+        loginBtn.alpha = 0.5
+    }
 }
 
 extension LoginCell: UITextFieldDelegate{
