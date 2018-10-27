@@ -13,7 +13,7 @@
 import UIKit
 
 protocol LoginDisplayLogic: class {
-  func display(viewModel: Home.Login.ViewModel)
+  func display(viewModel: Login.ViewModel)
 }
 
 class LoginViewController: UIViewController {
@@ -63,8 +63,8 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginAction() {
-        var request = Home.Login.Request()
-        request.id = idView.textField.text
+        var request = Login.Request()
+        request.user = idView.textField.text
         request.password = passwordView.textField.text
         interactor.auth(request: request)
     }
@@ -85,7 +85,7 @@ extension LoginViewController: LoginDisplayLogic {
     
     // MARK: Routing
     
-    func display(viewModel: Home.Login.ViewModel) {
+    func display(viewModel: Login.ViewModel) {
         if viewModel.error != nil {
             showAlert(withMessage: viewModel.error!)
         } else {

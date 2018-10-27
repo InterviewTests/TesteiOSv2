@@ -66,6 +66,5 @@ extension LoginRouter: LoginRoutingLogic {
             passDataToDetails(source: source, destination: &(dest))
         }
         navigateToDetails(source: viewController!, destination: details)
-        
     }
 }

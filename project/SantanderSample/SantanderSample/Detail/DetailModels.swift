@@ -12,20 +12,31 @@
 
 import UIKit
 
-enum Detail
-{
+enum Detail {
   // MARK: Use cases
   
-  enum Something
-  {
-    struct Request
-    {
+  
+    struct Request {
     }
-    struct Response
-    {
+    
+    struct Response {
+        var statementList = [Statement]()
+        var error: DetailError?
     }
-    struct ViewModel
-    {
+    
+    struct DetailError: Codable {
+        var code: Int
+        var message: String
     }
-  }
+    
+    struct ViewModel {
+    }
+    
+    struct Statement: Codable {
+        var title: String
+        var desc: String
+        var date: String
+        var value: Double
+    }
+  
 }

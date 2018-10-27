@@ -14,33 +14,49 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func auth(request: Home.Login.Request)
+  func auth(request: Login.Request)
 }
 
-protocol LoginDataStore
-{
-  //var name: String { get set }
+protocol LoginDataStore {
+    var user: Login.UserAccount? { get set }
 }
 
 class LoginInteractor: LoginDataStore
 {
   var presenter: LoginPresentationLogic?
   var worker: LoginWorker!
-  //var name: String = ""
+  var user: Login.UserAccount?
   
   
 }
 
 extension LoginInteractor: LoginBusinessLogic {
-    func auth(request: Home.Login.Request) {
-        var response = Home.Login.Response()
-        let validationId = worker.validateId(request.id)
+    func auth(request: Login.Request) {
+        var response = Login.Response()
+        let validationId = worker.validateId(request.user)
         let validationPassword = worker.validatePassword(request.password)
-        response.id = validationId
-        response.password = validationPassword
-        if validationId, validationPassword {
-            // save data
+        
+        if !validationId {
+            response.error = Login.Error(code: 0, message:"Erro de ID")
+            presenter?.present(response: response)
+        } else if !validationPassword {
+            response.error = Login.Error(code: 1, message:"Erro de password")
+            presenter?.present(response: response)
+        } else {
+            worker.login(request) { (result) in
+                switch result{
+                case .success(let response):
+                    if response.success {
+                        self.user = response.userAccount
+                    }
+                    self.presenter?.present(response: response)
+                    break
+                case .error(let error):
+                    response.error
+                        = Login.Error(code: 2, message: error.localizedDescription)
+                    self.presenter?.present(response: response)
+                }
+            }
         }
-        presenter?.present(response: response)
     }
 }

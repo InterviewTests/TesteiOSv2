@@ -10,7 +10,7 @@ import UIKit
 
 protocol DetailDisplayLogic: class
 {
-    func displaySomething(viewModel: Detail.Something.ViewModel)
+    func displaySomething(viewModel: Detail.ViewModel)
 }
 
 class DetailsViewViewController: UIViewController {
@@ -73,7 +73,7 @@ class DetailsViewViewController: UIViewController {
 }
 
 extension DetailsViewViewController: DetailDisplayLogic{
-    func displaySomething(viewModel: Detail.Something.ViewModel) {
+    func displaySomething(viewModel: Detail.ViewModel) {
         
     }
 }

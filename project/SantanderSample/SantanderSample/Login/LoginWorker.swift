@@ -14,6 +14,8 @@ import UIKit
 
 class LoginWorker {
     
+    var serviceManager: ServiceManager!
+    
     let patternCPF
         = "([0-9]{2}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[\\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[-]?[0-9]{2})"
     
@@ -22,6 +24,12 @@ class LoginWorker {
     
     let patternPassword
         = "^(?=.*[A-Z])(?=.*[!@#$&*])(((?=.*[0-9])|(?=.*[\\w]))).{3,}$"
+    
+    func login(_ request: Login.Request, completion: @escaping(Result<Login.Response, Error>)->()) {
+        
+        serviceManager.login(request, completion: completion)
+        
+    }
     
     func validateId(_ string: String?) -> Bool {
         guard let word = string, word.count >= 3 else {

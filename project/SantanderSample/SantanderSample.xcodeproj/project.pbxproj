@@ -44,6 +44,8 @@
 		18572BA321848994008A196B /* KeyboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BA221848994008A196B /* KeyboardUtility.swift */; };
 		18572BB02184B299008A196B /* DetailsViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BAE2184B299008A196B /* DetailsViewViewController.swift */; };
 		18572BB12184B299008A196B /* DetailsViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18572BAF2184B299008A196B /* DetailsViewViewController.xib */; };
+		18572BB62184E791008A196B /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BB52184E791008A196B /* ServiceManager.swift */; };
+		18572BB82184F60B008A196B /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BB72184F60B008A196B /* Codable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		18572BA221848994008A196B /* KeyboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardUtility.swift; sourceTree = "<group>"; };
 		18572BAE2184B299008A196B /* DetailsViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewViewController.swift; sourceTree = "<group>"; };
 		18572BAF2184B299008A196B /* DetailsViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewViewController.xib; sourceTree = "<group>"; };
+		18572BB52184E791008A196B /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		18572BB72184F60B008A196B /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		46066C2E03FD947BBA38B203 /* Pods_SantanderSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SantanderSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6022D23F24B537ADD8DE3832 /* Pods-SantanderSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SantanderSample/Pods-SantanderSample.debug.xcconfig"; sourceTree = "<group>"; };
 		B98CA34523E9FF5D6D7EA1A0 /* Pods-SantanderSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SantanderSample/Pods-SantanderSample.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,10 +135,11 @@
 		18572B322183B7C1008A196B /* SantanderSample */ = {
 			isa = PBXGroup;
 			children = (
-				18572BA121848994008A196B /* Util */,
+				18572BB42184E77A008A196B /* API */,
 				18572B452183B7DD008A196B /* SupportFiles */,
 				18572B522183B97B008A196B /* Login */,
 				18572B5F2183B985008A196B /* Detail */,
+				18572BA121848994008A196B /* Util */,
 				18572B6C2183BAF5008A196B /* Xib */,
 				18572B9221844C75008A196B /* View */,
 				18572B892183E328008A196B /* Extension */,
@@ -201,6 +206,7 @@
 			children = (
 				18572B8A2183E352008A196B /* UIView.swift */,
 				18572B8C2183E3D8008A196B /* UIColor.swift */,
+				18572BB72184F60B008A196B /* Codable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -226,6 +232,14 @@
 				18572BA221848994008A196B /* KeyboardUtility.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		18572BB42184E77A008A196B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				18572BB52184E791008A196B /* ServiceManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		76F735192E077126079D534D /* Pods */ = {
@@ -381,9 +395,11 @@
 				18572BB02184B299008A196B /* DetailsViewViewController.swift in Sources */,
 				18572B8B2183E352008A196B /* UIView.swift in Sources */,
 				18572B682183B9A0008A196B /* DetailRouter.swift in Sources */,
+				18572BB82184F60B008A196B /* Codable.swift in Sources */,
 				18572BA321848994008A196B /* KeyboardUtility.swift in Sources */,
 				18572B9421844CA4008A196B /* ShadowView.swift in Sources */,
 				18572B692183B9A0008A196B /* DetailModels.swift in Sources */,
+				18572BB62184E791008A196B /* ServiceManager.swift in Sources */,
 				18572B6B2183B9A0008A196B /* DetailInteractor.swift in Sources */,
 				18572B842183BCF1008A196B /* ExitButtonView.swift in Sources */,
 				18572B742183BB72008A196B /* LogoView.swift in Sources */,

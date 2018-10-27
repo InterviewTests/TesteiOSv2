@@ -22,13 +22,21 @@ class Assembly {
     static let shared = Assembly()
     private init() {
         container = Container()
+        
+        container.register(ServiceManager.self) { _ in
+            return ServiceManager()
+            }.inObjectScope(.container)
+        
         setupLoginVC()
         setupDetailVC()
     }
     
     func setupLoginVC() {
-        container.register(LoginWorker.self) { _ in
-            return LoginWorker()
+        
+        container.register(LoginWorker.self) { r in
+            let worker = LoginWorker()
+            worker.serviceManager = r.resolve(ServiceManager.self)
+            return worker
         }
         container.register(LoginInteractor.self) { r in
             let interactor = LoginInteractor()

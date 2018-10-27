@@ -12,26 +12,37 @@
 
 import UIKit
 
-enum Home{
+enum Login{
     
-    // MARK: Use cases
-    enum Login {
-        struct Request {
-            var id: String?
-            var password: String?
-        }
-        struct Response {
-            var id: Bool = false
-            var password: Bool = false
-        }
-        struct ViewModel {
-            var error: String?
-        }
+    struct Request: APIRequest {
+        typealias Response = Login.Response
+        
+        var user: String?
+        var password: String?
     }
     
-    enum IdType {
-        case email(String)
-        case cpf(String)
-        case none(String)
+    struct Response: Codable {
+        var userAccount: Login.UserAccount?
+        var error: Login.Error?
+        
+        var success: Bool { return userAccount?.userId != nil}
     }
+    
+    struct Error: Codable {
+        var code: Int?
+        var message: String?
+    }
+    
+    struct UserAccount: Codable {
+        var userId: Int?
+        var name: String?
+        var bankAccount: String?
+        var agency: String?
+        var balance: Double?
+    }
+    
+    struct ViewModel {
+        var error: String?
+    }
+    
 }

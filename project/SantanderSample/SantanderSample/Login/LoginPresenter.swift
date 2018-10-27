@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-    func present(response: Home.Login.Response)
+    func present(response: Login.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
@@ -23,13 +23,13 @@ class LoginPresenter: LoginPresentationLogic
     
     // MARK: Do something
     
-    func present(response: Home.Login.Response) {
-        var viewModel = Home.Login.ViewModel()
-        if !response.id {
-            viewModel.error = "Verifique o ID"
-        } else if !response.password {
-            viewModel.error = "Verifique o password"
+    func present(response: Login.Response) {
+        var viewModel = Login.ViewModel()
+        if let msg = response.error?.message {
+            viewModel.error = msg
         }
-        viewController?.display(viewModel: viewModel)
+        DispatchQueue.main.async {
+            self.viewController?.display(viewModel: viewModel)
+        }
     }
 }

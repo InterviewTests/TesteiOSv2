@@ -14,7 +14,7 @@ import UIKit
 
 protocol DetailBusinessLogic
 {
-  func doSomething(request: Detail.Something.Request)
+  func doSomething(request: Detail.Request)
 }
 
 protocol DetailDataStore
@@ -30,12 +30,12 @@ class DetailInteractor: DetailBusinessLogic, DetailDataStore
   
   // MARK: Do something
   
-  func doSomething(request: Detail.Something.Request)
+  func doSomething(request: Detail.Request)
   {
     worker = DetailWorker()
     worker?.doSomeWork()
     
-    let response = Detail.Something.Response()
+    let response = Detail.Response()
     presenter?.presentSomething(response: response)
   }
 }
