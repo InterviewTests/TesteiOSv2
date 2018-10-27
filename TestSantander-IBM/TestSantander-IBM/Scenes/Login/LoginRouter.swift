@@ -48,7 +48,6 @@ class LoginRouter: LoginRouterInput {
     
     func passDataToNextScene(for segue: UIStoryboardSegue) {
         // NOTE: Teach the router which scenes it can communicate with
-        
         guard let segueIdentifier = segue.identifier else {
             return
         }
@@ -64,7 +63,6 @@ class LoginRouter: LoginRouterInput {
     func passDataToUserDetailScene(for segue: UIStoryboardSegue)
     {
         // NOTE: Teach the router how to pass data to the next scene
-        
         if let statementViewController = segue.destination as? StatementListViewController {
             statementViewController.router?.dataDestination.user = dataSource.selectedUser
         }

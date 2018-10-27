@@ -37,13 +37,9 @@ class LoginInteractor: LoginInteractorInput, LoginDataSource, LoginDataDestinati
     func postLogin(request: LoginScene.PostLogin.Request, completionHandler: @escaping (Bool, String?) -> Void){
         HTTPClient.shared.fetchGenericData(urlString: "https://bank-app-test.herokuapp.com/api/login", method: "POST", params: ["user": request.user, "password": request.password]) { (api: ApiResponse?, err) in
             if err != nil {
-                //handleError
                 completionHandler(false, err)
-                print("erro")
             } else {
                 guard let account = api?.userAccount else {
-                    //handleError
-                    print("erro")
                     completionHandler(false, "No data")
                     return
                 }

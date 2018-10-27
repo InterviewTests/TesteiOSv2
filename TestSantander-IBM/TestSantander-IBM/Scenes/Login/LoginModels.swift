@@ -37,7 +37,6 @@ struct LoginScene {
     }
     
     struct SelectUser {
-        
         struct Request {
         }
     }

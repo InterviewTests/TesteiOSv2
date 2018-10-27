@@ -64,7 +64,6 @@ class LoginViewController: UIViewController, LoginViewControllerInput {
         return UserAccount(userId: id, name: name, bankAccount: bankAccount, agency: agency, balance: balance, userName: userName)
     }
 
-    
     // MARK: Display logic
     
 }

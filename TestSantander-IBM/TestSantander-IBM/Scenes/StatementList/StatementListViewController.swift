@@ -15,7 +15,7 @@ protocol StatementListViewControllerInput {
 }
 
 protocol StatementListViewControllerOutput {
-    func getStatements(request: StatementListScene.GetStatements.Request)
+    func getStatements(request: StatementListScene.GetStatements.Request, completionHandler: @escaping (Bool, String?) -> Void)
 }
 
 class StatementListViewController: UIViewController, StatementListViewControllerInput {
@@ -49,7 +49,7 @@ class StatementListViewController: UIViewController, StatementListViewController
     // MARK: Requests
     func requestGetStatements(){
         var request = StatementListScene.GetStatements.Request()
-        
+
         guard let dataDest = router?.dataDestination else {return}
         if dataDest.user == nil {
             dataDest.user = UserAccount(userId: 1)
@@ -57,8 +57,31 @@ class StatementListViewController: UIViewController, StatementListViewController
         } else {
             request.id = dataDest.user.userId
         }
-        output?.getStatements(request: request)
+        performRequest(request: request)
     }
+    
+    func performRequest(request: StatementListScene.GetStatements.Request){
+        output?.getStatements(request: request, completionHandler: { (succeed, err) in
+            if !succeed {
+                DispatchQueue.main.async {
+                    self.handleError(err, request: request)
+                }
+            }
+        })
+    }
+    
+    func handleError(_ err: String?, request: StatementListScene.GetStatements.Request) {
+        let alert = UIAlertController(title: "Ops", message: err, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let tryAgain = UIAlertAction(title: "Try Again", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            self.performRequest(request: request)
+        }
+        alert.addAction(okAction)
+        alert.addAction(tryAgain)
+        present(alert, animated: true, completion: nil)
+    }
+
 
     
     // MARK: Display logic

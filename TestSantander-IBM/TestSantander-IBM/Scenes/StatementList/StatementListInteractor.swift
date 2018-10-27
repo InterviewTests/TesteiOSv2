@@ -9,7 +9,7 @@
 //  https://github.com/HelmMobile/clean-swift-templates
 
 protocol StatementListInteractorInput {
-    func getStatements(request: StatementListScene.GetStatements.Request)
+    func getStatements(request: StatementListScene.GetStatements.Request, completionHandler: @escaping (Bool, String?) -> Void)
 }
 
 protocol StatementListInteractorOutput {
@@ -32,17 +32,15 @@ class StatementListInteractor: StatementListInteractorInput, StatementListDataSo
 
     // MARK: Business logic
     
-    func getStatements(request: StatementListScene.GetStatements.Request){
+    func getStatements(request: StatementListScene.GetStatements.Request, completionHandler: @escaping (Bool, String?) -> Void){
         
         HTTPClient.shared.fetchGenericData(urlString: "https://bank-app-test.herokuapp.com/api/statements/\(user.userId)", method: "GET", params: nil) { (api: ApiResponse?, err) in
             if err != nil {
-                //handleError
-                print("erro")
+                completionHandler(false, err)
             } else {
                 
                 guard let account = api?.statementList else {
-                    //handleError
-                    print("erro")
+                    completionHandler(false, "No Data")
                     return
                 }
                 for el in account {
@@ -51,6 +49,7 @@ class StatementListInteractor: StatementListInteractorInput, StatementListDataSo
                 
                 let response = StatementListScene.GetStatements.Response(statements: account)
                 self.output?.presentStatements(response: response)
+                completionHandler(true, nil)
             }
         }
     }

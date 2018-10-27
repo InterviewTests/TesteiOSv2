@@ -45,37 +45,14 @@ extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
 extension LoginViewController: PerformLoginDelegate{
     func handleError(_ err: String?, request: LoginScene.PostLogin.Request) {
         let alert = UIAlertController(title: "Ops", message: err, preferredStyle: .alert)
-        
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             self.dismiss(animated: false, completion: nil)
         }
-        
-        let tryAgain = UIAlertAction(title: "Try Again", style: UIAlertAction.Style.default) {
-            UIAlertAction in
-            self.dismiss(animated: false, completion: {
-                self.performLogin(request: request)
-            })
-        }
-        
         alert.addAction(okAction)
-        alert.addAction(tryAgain)
-
         present(alert, animated: true, completion: nil)
     }
-    
-    func loadingAlert() {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating();
-        
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
-    }
-    
     func loginBtnTapped(name: String, passwd: String) {
         let request = LoginScene.PostLogin.Request(user: name, password: passwd)
         loadingAlert()
@@ -100,4 +77,3 @@ extension LoginViewController: PerformLoginDelegate{
         })
     }
 }
-
