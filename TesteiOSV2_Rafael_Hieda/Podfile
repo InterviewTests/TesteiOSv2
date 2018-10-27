@@ -1,0 +1,23 @@
+source 'https://github.com/CocoaPods/Specs.git'
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+use_frameworks!
+
+target 'TesteiOSV2_Rafael_Hieda' do
+  pod 'Alamofire', '~> 4.7'
+  pod 'AlamofireObjectMapper', '~> 5.1'
+
+  # Pods for TesteiOSV2_Rafael_Hieda
+
+  target 'TesteiOSV2_Rafael_HiedaTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'TesteiOSV2_Rafael_HiedaUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
