@@ -16,8 +16,8 @@ class Assembly {
     lazy var loginVC: LoginViewController?
         = container.resolve(LoginViewController.self)
     
-    lazy var detailVC: LoginViewController?
-        = container.resolve(LoginViewController.self)
+    lazy var detailVC: DetailsViewViewController?
+        = container.resolve(DetailsViewViewController.self)
     
     static let shared = Assembly()
     private init() {
@@ -36,9 +36,9 @@ class Assembly {
     }
     
     func setupDetailVC() {
-        container.register(DetailViewController.self) { r in
-            let nibName = String(describing: DetailViewController.self)
-            let controller = DetailViewController.init(nibName: nibName, bundle: nil)
+        container.register(DetailsViewViewController.self) { r in
+            let nibName = String(describing: DetailsViewViewController.self)
+            let controller = DetailsViewViewController.init(nibName: nibName, bundle: nil)
             
             return controller
         }

@@ -118,7 +118,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     }
     
     @objc func loginAction() {
-        
+        let detail = Assembly.shared.detailVC!
+        present(detail, animated: true, completion: nil)
     }
     
     func hideKeyboardWhenTappedAround() {

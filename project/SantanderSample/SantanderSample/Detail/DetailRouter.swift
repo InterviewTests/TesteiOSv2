@@ -24,7 +24,7 @@ protocol DetailDataPassing
 
 class DetailRouter: NSObject, DetailRoutingLogic, DetailDataPassing
 {
-  weak var viewController: DetailViewController?
+  weak var viewController: DetailsViewViewController?
   var dataStore: DetailDataStore?
   
   // MARK: Routing
