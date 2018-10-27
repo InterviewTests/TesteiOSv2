@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogoView" customModule="SantanderSample" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="N6c-4O-acU"/>
+                <outlet property="logoImageView" destination="Bx3-mz-9Ea" id="NWa-I9-2gO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="125" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Bx3-mz-9Ea">
+                    <rect key="frame" x="0.0" y="0.0" width="125" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="125" id="QZ3-DV-5oI"/>
+                        <constraint firstAttribute="height" constant="70" id="vMD-ov-nia"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Bx3-mz-9Ea" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8f3-s7-L3f"/>
+                <constraint firstItem="Bx3-mz-9Ea" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AW9-NY-gEx"/>
+                <constraint firstAttribute="trailing" secondItem="Bx3-mz-9Ea" secondAttribute="trailing" id="Crd-pG-V2s"/>
+                <constraint firstAttribute="bottom" secondItem="Bx3-mz-9Ea" secondAttribute="bottom" id="jFL-Pr-7SK"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="111.2" y="-73.763118440779621"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Logo" width="125" height="70"/>
+    </resources>
+</document>
