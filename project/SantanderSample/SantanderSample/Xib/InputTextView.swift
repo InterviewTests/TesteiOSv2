@@ -14,9 +14,11 @@ class InputTextView: UIView {
     
     @IBOutlet weak var textField: UITextField! {
         didSet {
-            textField.placeholder = "User"
+            let attributes
+                = [NSAttributedString.Key.foregroundColor: UIColor.grayPlaceholderApp]
             textField.translatesAutoresizingMaskIntoConstraints = false
-            textField.borderColor = .grayApp
+            textField.attributedPlaceholder = NSAttributedString(string: "User",
+                                                            attributes: attributes)
         }
     }
     

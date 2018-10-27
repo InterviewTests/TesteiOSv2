@@ -15,7 +15,6 @@ class ExitButtonView: UIView {
     @IBOutlet weak var logoutButton: UIButton! {
         didSet {
             logoutButton.translatesAutoresizingMaskIntoConstraints = false
-            logoutButton.borderColor = .blueApp
         }
     }
     

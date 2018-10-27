@@ -15,7 +15,6 @@ class LoginButtonView: UIView {
     @IBOutlet weak var loginButton: UIButton! {
         didSet {
             loginButton.translatesAutoresizingMaskIntoConstraints = false
-            loginButton.borderColor = .blueApp
         }
     }
     
