@@ -31,6 +31,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         didSet {
             passwordView.setPlaceholder("Password")
             passwordView.textField.delegate = self
+            passwordView.textField.isSecureTextEntry = true
         }
     }
     @IBOutlet weak var loginButtonView: LoginButtonView! {
