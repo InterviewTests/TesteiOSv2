@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Request)
+  func auth(request: Home.Login.Request)
 }
 
 protocol LoginDataStore
@@ -22,20 +22,25 @@ protocol LoginDataStore
   //var name: String { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
+class LoginInteractor: LoginDataStore
 {
   var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
+  var worker: LoginWorker!
   //var name: String = ""
   
-  // MARK: Do something
   
-  func doSomething(request: Login.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
-    
-    let response = Login.Response()
-    presenter?.presentSomething(response: response)
-  }
+}
+
+extension LoginInteractor: LoginBusinessLogic {
+    func auth(request: Home.Login.Request) {
+        var response = Home.Login.Response()
+        let validationId = worker.validateId(request.id)
+        let validationPassword = worker.validatePassword(request.password)
+        response.id = validationId
+        response.password = validationPassword
+        if validationId, validationPassword {
+            // save data
+        }
+        presenter?.present(response: response)
+    }
 }

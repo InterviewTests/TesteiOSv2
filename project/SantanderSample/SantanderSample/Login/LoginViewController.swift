@@ -13,7 +13,7 @@
 import UIKit
 
 protocol LoginDisplayLogic: class {
-  func display(viewModel: Login.ViewModel)
+  func display(viewModel: Home.Login.ViewModel)
 }
 
 class LoginViewController: UIViewController {
@@ -63,10 +63,10 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginAction() {
-        var request = Login.Request()
-        request.name = idView.textField.text
+        var request = Home.Login.Request()
+        request.id = idView.textField.text
         request.password = passwordView.textField.text
-        interactor.doSomething(request: request)
+        interactor.auth(request: request)
     }
     
     private func hideKeyboardWhenTappedAround() {
@@ -85,7 +85,7 @@ extension LoginViewController: LoginDisplayLogic {
     
     // MARK: Routing
     
-    func display(viewModel: Login.ViewModel) {
+    func display(viewModel: Home.Login.ViewModel) {
         if viewModel.error != nil {
             showAlert(withMessage: viewModel.error!)
         } else {

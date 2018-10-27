@@ -12,9 +12,42 @@
 
 import UIKit
 
-class LoginWorker
-{
-  func doSomeWork()
-  {
-  }
+class LoginWorker {
+    
+    let patternCPF
+        = "([0-9]{2}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[\\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[-]?[0-9]{2})"
+    
+    let patternEmail
+        = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+    
+    let patternPassword
+        = "^(?=.*[A-Z])(?=.*[!@#$&*])(((?=.*[0-9])|(?=.*[\\w]))).{3,}$"
+    
+    func validateId(_ string: String?) -> Bool {
+        guard let word = string, word.count >= 3 else {
+            return false
+        }
+        
+        return (match(word, patternCPF) || match(word, patternEmail) )
+    }
+    
+    private func match(_ word: String, _ pattern: String) -> Bool {
+        let mutable = NSMutableString(string: word)
+        let range: NSRange = NSRange(location: 0, length: word.count)
+        do {
+            let regex = try NSRegularExpression(pattern: pattern)
+            regex.replaceMatches(in: mutable, range: range, withTemplate: "")
+        } catch {
+            return false
+        }
+        return String(mutable).isEmpty
+    }
+    
+    func validatePassword(_ string: String?) -> Bool {
+        guard let word = string, word.count >= 3 else {
+            return false
+        }
+        
+        return match(word, patternPassword)
+    }
 }

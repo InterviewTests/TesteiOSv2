@@ -12,17 +12,26 @@
 
 import UIKit
 
-enum Login{
+enum Home{
     
     // MARK: Use cases
+    enum Login {
+        struct Request {
+            var id: String?
+            var password: String?
+        }
+        struct Response {
+            var id: Bool = false
+            var password: Bool = false
+        }
+        struct ViewModel {
+            var error: String?
+        }
+    }
     
-    struct Request {
-        var name: String?
-        var password: String?
-    }
-    struct Response {
-    }
-    struct ViewModel {
-        var error: String?
+    enum IdType {
+        case email(String)
+        case cpf(String)
+        case none(String)
     }
 }
