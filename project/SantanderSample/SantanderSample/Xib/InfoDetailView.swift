@@ -1,5 +1,5 @@
 //
-//  LoginButton.swift
+//  DetailView.swift
 //  SantanderSample
 //
 //  Created by Virgilius Santos on 26/10/18.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class LoginButtonView: UIView {
-    
+class InfoDetailView: UIView {
+
     @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet weak var loginButton: UIButton! {
+    @IBOutlet weak var infoLabel: UILabel! {
         didSet {
-            loginButton.translatesAutoresizingMaskIntoConstraints = false
-            loginButton.borderColor = .blueApp
+            infoLabel.translatesAutoresizingMaskIntoConstraints = false
         }
     }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +30,7 @@ class LoginButtonView: UIView {
     }
     
     func commonInit() {
-        Bundle.main.loadNibNamed(String(describing: LoginButtonView.self), owner: self, options: nil)
+        Bundle.main.loadNibNamed(String(describing: InfoDetailView.self), owner: self, options: nil)
         
         addSubview(contentView)
         
@@ -42,6 +42,5 @@ class LoginButtonView: UIView {
         
         backgroundColor = .clear
     }
-
 
 }

@@ -1,5 +1,5 @@
 //
-//  LoginButton.swift
+//  ExitButton.swift
 //  SantanderSample
 //
 //  Created by Virgilius Santos on 26/10/18.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class LoginButtonView: UIView {
-    
+class ExitButtonView: UIView {
+
     @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet weak var loginButton: UIButton! {
+    @IBOutlet weak var logoutButton: UIButton! {
         didSet {
-            loginButton.translatesAutoresizingMaskIntoConstraints = false
-            loginButton.borderColor = .blueApp
+            logoutButton.translatesAutoresizingMaskIntoConstraints = false
+            logoutButton.borderColor = .blueApp
         }
     }
     
@@ -30,7 +30,7 @@ class LoginButtonView: UIView {
     }
     
     func commonInit() {
-        Bundle.main.loadNibNamed(String(describing: LoginButtonView.self), owner: self, options: nil)
+        Bundle.main.loadNibNamed(String(describing: ExitButtonView.self), owner: self, options: nil)
         
         addSubview(contentView)
         
