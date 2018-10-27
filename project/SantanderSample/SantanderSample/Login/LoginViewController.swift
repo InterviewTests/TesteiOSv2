@@ -12,28 +12,47 @@
 
 import UIKit
 
-protocol LoginDisplayLogic: class
-{
-  func displaySomething(viewModel: Login.Something.ViewModel)
+protocol LoginDisplayLogic: class {
+  func display(viewModel: Login.ViewModel)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
-{
+class LoginViewController: UIViewController {
     
+    var interactor: LoginBusinessLogic!
+    var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)!
+
+
+    // MARK: View lifecycle
+
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        KeyboardManager.shared.enable = true
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        KeyboardManager.shared.enable = false
+    }
+    
+    // MARK: Do something
+
     @IBOutlet weak var logoView: LogoView!
+    
     @IBOutlet weak var idView: InputTextView! {
         didSet {
             idView.setPlaceholder("User")
-            idView.textField.delegate = self
         }
     }
+    
     @IBOutlet weak var passwordView: InputTextView! {
         didSet {
             passwordView.setPlaceholder("Password")
-            passwordView.textField.delegate = self
             passwordView.textField.isSecureTextEntry = true
         }
     }
+    
     @IBOutlet weak var loginButtonView: LoginButtonView! {
         didSet {
             let button = loginButtonView.loginButton
@@ -43,86 +62,14 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         }
     }
     
-    var interactor: LoginBusinessLogic?
-    var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
-
-    // MARK: Object lifecycle
-  
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-
-    required init?(coder aDecoder: NSCoder)
-    {
-        super.init(coder: aDecoder)
-        setup()
-    }
-
-    // MARK: Setup
-
-    private func setup()
-    {
-        let viewController = self
-        let interactor = LoginInteractor()
-        let presenter = LoginPresenter()
-        let router = LoginRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
-    }
-
-    // MARK: Routing
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-                if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-
-    // MARK: View lifecycle
-
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
-        KeyboardManager.shared.enable = true
-        doSomething()
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        KeyboardManager.shared.enable = false
-    }
-    // MARK: Do something
-
-    //@IBOutlet weak var nameTextField: UITextField!
-
-    func doSomething()
-    {
-        let request = Login.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-
-    func displaySomething(viewModel: Login.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
-    }
-    
     @objc func loginAction() {
-        let detail = Assembly.shared.detailVC!
-        present(detail, animated: true, completion: nil)
+        var request = Login.Request()
+        request.name = idView.textField.text
+        request.password = passwordView.textField.text
+        interactor.doSomething(request: request)
     }
     
-    func hideKeyboardWhenTappedAround() {
+    private func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
@@ -134,8 +81,27 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
 }
 
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+extension LoginViewController: LoginDisplayLogic {
+    
+    // MARK: Routing
+    
+    func display(viewModel: Login.ViewModel) {
+        if viewModel.error != nil {
+            showAlert(withMessage: viewModel.error!)
+        } else {
+            router.routeToDetails()
+        }
+    }
+    
+    private func showAlert(withMessage message: String){
+        let alertController = UIAlertController(title: "Alerta", message: message, preferredStyle: .alert)
         
+        let action = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+            print("You've pressed default");
+        }
+        
+        alertController.addAction(action)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }

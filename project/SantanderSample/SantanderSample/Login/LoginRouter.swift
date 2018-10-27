@@ -14,7 +14,7 @@ import UIKit
 
 @objc protocol LoginRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+  func routeToDetails()
 }
 
 protocol LoginDataPassing
@@ -22,7 +22,7 @@ protocol LoginDataPassing
   var dataStore: LoginDataStore? { get }
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
+class LoginRouter: NSObject, LoginDataPassing
 {
   weak var viewController: LoginViewController?
   var dataStore: LoginDataStore?
@@ -46,15 +46,26 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
 
   // MARK: Navigation
   
-  //func navigateToSomewhere(source: LoginViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
+    func navigateToDetails(source: LoginViewController, destination: DetailsViewViewController)
+    {
+        source.present(destination, animated: true, completion: nil)
+    }
+
   // MARK: Passing data
   
-  //func passDataToSomewhere(source: LoginDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    func passDataToDetails(source: LoginDataStore, destination: inout DetailDataStore)
+    {
+//        destination.name = source.name
+    }
+}
+
+extension LoginRouter: LoginRoutingLogic {
+    func routeToDetails() {
+        let details = Assembly.shared.detailVC!
+        if let source = dataStore, var dest = details.router?.dataStore {
+            passDataToDetails(source: source, destination: &(dest))
+        }
+        navigateToDetails(source: viewController!, destination: details)
+        
+    }
 }
