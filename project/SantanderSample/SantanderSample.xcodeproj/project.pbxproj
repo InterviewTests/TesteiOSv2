@@ -38,6 +38,7 @@
 		18572B8D2183E3D8008A196B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572B8C2183E3D8008A196B /* UIColor.swift */; };
 		18572B902183EE66008A196B /* InfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572B8E2183EE66008A196B /* InfoDetailView.swift */; };
 		18572B912183EE66008A196B /* InfoDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18572B8F2183EE66008A196B /* InfoDetailView.xib */; };
+		18572B9421844CA4008A196B /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572B9321844CA4008A196B /* ShadowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		18572B8C2183E3D8008A196B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		18572B8E2183EE66008A196B /* InfoDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDetailView.swift; sourceTree = "<group>"; };
 		18572B8F2183EE66008A196B /* InfoDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoDetailView.xib; sourceTree = "<group>"; };
+		18572B9321844CA4008A196B /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				18572B522183B97B008A196B /* Login */,
 				18572B5F2183B985008A196B /* Detail */,
 				18572B6C2183BAF5008A196B /* Xib */,
+				18572B9221844C75008A196B /* View */,
 				18572B892183E328008A196B /* Extension */,
 			);
 			path = SantanderSample;
@@ -156,19 +159,12 @@
 			isa = PBXGroup;
 			children = (
 				18572B712183BB60008A196B /* LogoView.xib */,
-				18572B732183BB72008A196B /* LogoView.swift */,
 				18572B6D2183BB34008A196B /* InputTextView.xib */,
-				18572B6F2183BB4A008A196B /* InputTextView.swift */,
 				18572B752183BBB3008A196B /* LoginButtonView.xib */,
-				18572B772183BBE3008A196B /* LoginButtonView.swift */,
 				18572B792183BC74008A196B /* TitleDetailView.xib */,
-				18572B7B2183BC8B008A196B /* TitleDetailView.swift */,
 				18572B8F2183EE66008A196B /* InfoDetailView.xib */,
-				18572B8E2183EE66008A196B /* InfoDetailView.swift */,
 				18572B812183BCD8008A196B /* ExitButtonView.xib */,
-				18572B832183BCF1008A196B /* ExitButtonView.swift */,
 				18572B862183BD2C008A196B /* TableViewCell.xib */,
-				18572B852183BD2C008A196B /* TableViewCell.swift */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -180,6 +176,21 @@
 				18572B8C2183E3D8008A196B /* UIColor.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		18572B9221844C75008A196B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18572B732183BB72008A196B /* LogoView.swift */,
+				18572B6F2183BB4A008A196B /* InputTextView.swift */,
+				18572B772183BBE3008A196B /* LoginButtonView.swift */,
+				18572B7B2183BC8B008A196B /* TitleDetailView.swift */,
+				18572B8E2183EE66008A196B /* InfoDetailView.swift */,
+				18572B832183BCF1008A196B /* ExitButtonView.swift */,
+				18572B852183BD2C008A196B /* TableViewCell.swift */,
+				18572B9321844CA4008A196B /* ShadowView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +283,7 @@
 				18572B662183B9A0008A196B /* DetailPresenter.swift in Sources */,
 				18572B8B2183E352008A196B /* UIView.swift in Sources */,
 				18572B682183B9A0008A196B /* DetailRouter.swift in Sources */,
+				18572B9421844CA4008A196B /* ShadowView.swift in Sources */,
 				18572B692183B9A0008A196B /* DetailModels.swift in Sources */,
 				18572B6B2183B9A0008A196B /* DetailInteractor.swift in Sources */,
 				18572B842183BCF1008A196B /* ExitButtonView.swift in Sources */,

@@ -19,6 +19,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjY-qe-L2H" customClass="ShadowView" customModule="SantanderSample" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gtu-As-uDL">
                         <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
                         <subviews>
@@ -60,6 +64,7 @@
                             <constraint firstItem="Pdg-58-Rxg" firstAttribute="leading" secondItem="0wM-t3-b5c" secondAttribute="leading" id="DYP-sx-cUE"/>
                             <constraint firstAttribute="width" constant="342" id="Fbv-tx-lZB"/>
                             <constraint firstAttribute="trailing" secondItem="xZ9-aY-Zoz" secondAttribute="trailing" constant="15" id="Fh7-NW-pxq"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="342" id="Ide-h9-Zuk"/>
                             <constraint firstAttribute="height" constant="79.5" id="R0q-C1-Bp8"/>
                             <constraint firstAttribute="trailing" secondItem="PEP-MK-ZqA" secondAttribute="trailing" constant="20" id="Slc-Lr-Lpa"/>
                             <constraint firstItem="0wM-t3-b5c" firstAttribute="top" secondItem="Gtu-As-uDL" secondAttribute="top" constant="11" id="Zt7-PQ-Q4s"/>
@@ -72,10 +77,22 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Gtu-As-uDL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="8dx-yq-i1w"/>
+                    <constraint firstItem="bjY-qe-L2H" firstAttribute="top" secondItem="Gtu-As-uDL" secondAttribute="top" id="KYQ-QW-BsN"/>
                     <constraint firstItem="Gtu-As-uDL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rcw-98-kI7"/>
+                    <constraint firstItem="bjY-qe-L2H" firstAttribute="bottom" secondItem="Gtu-As-uDL" secondAttribute="bottom" id="g4R-hh-6Tz"/>
+                    <constraint firstItem="bjY-qe-L2H" firstAttribute="trailing" secondItem="Gtu-As-uDL" secondAttribute="trailing" id="iji-pE-TzD"/>
+                    <constraint firstItem="bjY-qe-L2H" firstAttribute="leading" secondItem="Gtu-As-uDL" secondAttribute="leading" id="mGD-zg-CAn"/>
                     <constraint firstAttribute="bottom" secondItem="Gtu-As-uDL" secondAttribute="bottom" id="nav-he-iG8"/>
                     <constraint firstAttribute="trailing" secondItem="Gtu-As-uDL" secondAttribute="trailing" id="z3o-Hv-Xzt"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                        <real key="value" value="3"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                        <color key="value" red="0.85882352941176465" green="0.87450980392156863" blue="0.93333333333333335" alpha="0.30416483274647887" colorSpace="calibratedRGB"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
