@@ -93,9 +93,14 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        KeyboardManager.shared.enable = true
         doSomething()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        KeyboardManager.shared.enable = false
+    }
     // MARK: Do something
 
     //@IBOutlet weak var nameTextField: UITextField!

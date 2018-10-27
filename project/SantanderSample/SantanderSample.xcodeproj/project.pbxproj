@@ -43,6 +43,7 @@
 		18572B9A21844E8A008A196B /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18572B9921844E8A008A196B /* DetailViewController.xib */; };
 		18572B9E21847CEC008A196B /* DetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18572B9C21847CEC008A196B /* DetailCell.xib */; };
 		18572BA021848295008A196B /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572B9F21848295008A196B /* Assembly.swift */; };
+		18572BA321848994008A196B /* KeyboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BA221848994008A196B /* KeyboardUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		18572B9921844E8A008A196B /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		18572B9C21847CEC008A196B /* DetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCell.xib; sourceTree = "<group>"; };
 		18572B9F21848295008A196B /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		18572BA221848994008A196B /* KeyboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardUtility.swift; sourceTree = "<group>"; };
 		46066C2E03FD947BBA38B203 /* Pods_SantanderSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SantanderSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6022D23F24B537ADD8DE3832 /* Pods-SantanderSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SantanderSample/Pods-SantanderSample.debug.xcconfig"; sourceTree = "<group>"; };
 		B98CA34523E9FF5D6D7EA1A0 /* Pods-SantanderSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SantanderSample/Pods-SantanderSample.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		18572B322183B7C1008A196B /* SantanderSample */ = {
 			isa = PBXGroup;
 			children = (
+				18572BA121848994008A196B /* Util */,
 				18572B452183B7DD008A196B /* SupportFiles */,
 				18572B522183B97B008A196B /* Login */,
 				18572B5F2183B985008A196B /* Detail */,
@@ -215,6 +218,14 @@
 				18572B9321844CA4008A196B /* ShadowView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		18572BA121848994008A196B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				18572BA221848994008A196B /* KeyboardUtility.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		76F735192E077126079D534D /* Pods */ = {
@@ -334,12 +345,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SantanderSample/Pods-SantanderSample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +381,7 @@
 				18572B662183B9A0008A196B /* DetailPresenter.swift in Sources */,
 				18572B8B2183E352008A196B /* UIView.swift in Sources */,
 				18572B682183B9A0008A196B /* DetailRouter.swift in Sources */,
+				18572BA321848994008A196B /* KeyboardUtility.swift in Sources */,
 				18572B9421844CA4008A196B /* ShadowView.swift in Sources */,
 				18572B692183B9A0008A196B /* DetailModels.swift in Sources */,
 				18572B6B2183B9A0008A196B /* DetailInteractor.swift in Sources */,

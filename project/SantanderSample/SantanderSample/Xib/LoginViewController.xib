@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4TH-0Y-975">
-                    <rect key="frame" x="17" y="56" width="342" height="296"/>
+                    <rect key="frame" x="16.5" y="56" width="342" height="296"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWN-E7-Usf" customClass="LogoView" customModule="SantanderSample" customModuleProvider="target">
                             <rect key="frame" x="108.5" y="0.0" width="125" height="70"/>
@@ -58,6 +58,7 @@
                         <constraint firstAttribute="bottom" secondItem="tzv-Ic-hc2" secondAttribute="bottom" id="Uwx-6t-kUG"/>
                         <constraint firstAttribute="height" constant="296" id="cSU-Tf-sUR"/>
                         <constraint firstItem="tzv-Ic-hc2" firstAttribute="top" secondItem="jF6-Zm-tt9" secondAttribute="bottom" constant="21" id="fKG-Nz-32L"/>
+                        <constraint firstAttribute="width" constant="342" id="fQ4-LP-wOe"/>
                         <constraint firstAttribute="trailing" secondItem="jF6-Zm-tt9" secondAttribute="trailing" id="hAt-iF-dim"/>
                         <constraint firstItem="vWN-E7-Usf" firstAttribute="centerX" secondItem="4TH-0Y-975" secondAttribute="centerX" id="sdG-zp-iTm"/>
                         <constraint firstItem="tzv-Ic-hc2" firstAttribute="leading" secondItem="4TH-0Y-975" secondAttribute="leading" id="tCc-nz-ocY"/>
@@ -75,9 +76,8 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="4TH-0Y-975" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="36" id="MlL-4L-dHr"/>
-                <constraint firstItem="4TH-0Y-975" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="17" id="PVk-0G-WSj"/>
-                <constraint firstAttribute="trailing" secondItem="4TH-0Y-975" secondAttribute="trailing" constant="16" id="jj6-fz-lVc"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Efz-3F-0Yc" secondAttribute="bottom" constant="42" id="lX3-iS-25W"/>
+                <constraint firstItem="Efz-3F-0Yc" firstAttribute="top" secondItem="4TH-0Y-975" secondAttribute="bottom" constant="223" id="QcB-zh-7oA"/>
+                <constraint firstItem="4TH-0Y-975" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UuH-N0-Plm"/>
                 <constraint firstItem="Efz-3F-0Yc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="n5N-u8-Gfa"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
