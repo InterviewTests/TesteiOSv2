@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -53,7 +54,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p5O-pG-X4h">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="iXJ-kR-ken" id="qq1-75-cCD"/>
@@ -64,9 +65,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="p5O-pG-X4h" firstAttribute="leading" secondItem="wjI-6m-xkj" secondAttribute="leading" id="CZP-HB-KJc"/>
-                            <constraint firstItem="p5O-pG-X4h" firstAttribute="top" secondItem="wjI-6m-xkj" secondAttribute="top" id="Od6-cg-vd5"/>
                             <constraint firstItem="wjI-6m-xkj" firstAttribute="trailing" secondItem="p5O-pG-X4h" secondAttribute="trailing" id="UBn-Lr-wW9"/>
                             <constraint firstItem="wjI-6m-xkj" firstAttribute="bottom" secondItem="p5O-pG-X4h" secondAttribute="bottom" id="wQh-Tm-MRj"/>
+                            <constraint firstItem="p5O-pG-X4h" firstAttribute="top" secondItem="w87-HL-SAS" secondAttribute="top" id="xoC-dL-y60"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wjI-6m-xkj"/>
                     </view>

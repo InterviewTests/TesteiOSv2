@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,27 +12,27 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="accountCell" rowHeight="178" id="KGk-i7-Jjw" customClass="AccountDetailsCell" customModule="TestSantander_IBM" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="377" height="178"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="accountCell" rowHeight="187" id="KGk-i7-Jjw" customClass="AccountDetailsCell" customModule="TestSantander_IBM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="377" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="377" height="177.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="377" height="186.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Conta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoF-hS-3vZ">
-                        <rect key="frame" x="16" y="60" width="345" height="10.5"/>
+                        <rect key="frame" x="16" y="66" width="345" height="9"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" verticalCompressionResistancePriority="751" text="José Alves" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9m-hU-dyP">
-                        <rect key="frame" x="16" y="16" width="345" height="24"/>
+                        <rect key="frame" x="16" y="22" width="345" height="24"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0Z-VG-bYu">
-                        <rect key="frame" x="334" y="75.5" width="27" height="27"/>
+                        <rect key="frame" x="334" y="80" width="27" height="27"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="27" id="4U3-sk-99i"/>
                             <constraint firstAttribute="width" constant="27" id="WcC-1l-lyK"/>
@@ -44,19 +45,19 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Saldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWL-UI-5aj">
-                        <rect key="frame" x="16" y="119" width="345" height="13.5"/>
+                        <rect key="frame" x="16" y="123.5" width="345" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="R$1000,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQV-jl-vAA">
-                        <rect key="frame" x="16" y="140.5" width="345" height="21"/>
+                        <rect key="frame" x="16" y="149.5" width="345" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="1572/1006-6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TK-I7-AXi">
-                        <rect key="frame" x="16" y="78.5" width="311" height="20.5"/>
+                        <rect key="frame" x="16" y="83" width="311" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -66,7 +67,7 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="RQV-jl-vAA" secondAttribute="bottom" constant="16" id="4Ns-2p-qsL"/>
                     <constraint firstAttribute="trailing" secondItem="xoF-hS-3vZ" secondAttribute="trailing" constant="16" id="58p-Rq-TZW"/>
-                    <constraint firstItem="u9m-hU-dyP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="5Dr-6i-DUp"/>
+                    <constraint firstItem="u9m-hU-dyP" firstAttribute="topMargin" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="5Dr-6i-DUp"/>
                     <constraint firstItem="R0Z-VG-bYu" firstAttribute="leading" secondItem="3TK-I7-AXi" secondAttribute="trailing" constant="7" id="5uH-sR-971"/>
                     <constraint firstItem="R0Z-VG-bYu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5xB-mh-QlS"/>
                     <constraint firstAttribute="trailing" secondItem="u9m-hU-dyP" secondAttribute="trailing" constant="16" id="6dg-Iy-fge"/>
@@ -91,7 +92,7 @@
                 <outlet property="balanceLabel" destination="RQV-jl-vAA" id="7Lm-oD-9ZN"/>
                 <outlet property="nameLabel" destination="u9m-hU-dyP" id="XVw-Rh-eJF"/>
             </connections>
-            <point key="canvasLocation" x="-167.19999999999999" y="8.995502248875562"/>
+            <point key="canvasLocation" x="-167.19999999999999" y="13.043478260869566"/>
         </tableViewCell>
     </objects>
     <resources>
