@@ -51,6 +51,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var idView: InputTextView! {
         didSet {
             idView.setPlaceholder("User")
+            idView.textField.delegate = self
+            idView.textField.returnKeyType = .next
         }
     }
     
@@ -58,6 +60,8 @@ class LoginViewController: UIViewController {
         didSet {
             passwordView.setPlaceholder("Password")
             passwordView.textField.isSecureTextEntry = true
+            passwordView.textField.delegate = self
+            passwordView.textField.returnKeyType = .done
         }
     }
     
@@ -74,6 +78,7 @@ class LoginViewController: UIViewController {
         var request = Login.Request()
         request.user = idView.textField.text
         request.password = passwordView.textField.text
+        self.view.lock()
         interactor.auth(request: request)
     }
     
@@ -89,11 +94,23 @@ class LoginViewController: UIViewController {
     
 }
 
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.returnKeyType == .next {
+            passwordView.textField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+}
+
 extension LoginViewController: LoginDisplayLogic {
     
     // MARK: Routing
     
     func display(viewModel: Login.ViewModel) {
+        self.view.unlock()
         if viewModel.error != nil {
             showAlert(withMessage: viewModel.error!)
         } else {

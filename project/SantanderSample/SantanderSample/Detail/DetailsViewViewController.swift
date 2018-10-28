@@ -24,9 +24,9 @@ class DetailsViewViewController: UIViewController {
     
     // MARK: View lifecycle
     
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        detailsView.lock()
         interactor?.getDetails()
     }
     
@@ -70,6 +70,8 @@ class DetailsViewViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var detailsView: UIView!
+    
     @IBOutlet weak var entriesCollectionView: UICollectionView! {
         didSet {
             entriesCollectionView.delegate = self
@@ -95,6 +97,7 @@ extension DetailsViewViewController: DetailDisplayLogic {
     }
     
     func displayDetail(viewModel: Detail.ViewModel) {
+        detailsView.unlock()
         entriesCollectionView.reloadData()
     }
     
