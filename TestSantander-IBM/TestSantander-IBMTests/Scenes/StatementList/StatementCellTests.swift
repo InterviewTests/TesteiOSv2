@@ -31,7 +31,7 @@ class StatementCellTests: XCTestCase {
         
         XCTAssert(cell.titleLabel.text == "Deposito")
         XCTAssert(cell.descriptionLabel.text == "Aluguel")
-        XCTAssert(cell.dateLabel.text == "2017-10-10")
+        XCTAssert(cell.dateLabel.text == "10/10/2017")
         XCTAssert(cell.valueLabel.text == "R$ 1920.00")
     }
 
