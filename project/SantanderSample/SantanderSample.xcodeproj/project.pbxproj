@@ -48,7 +48,9 @@
 		18572BBB21853BBA008A196B /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BBA21853BB9008A196B /* Double.swift */; };
 		18572BD121859DCD008A196B /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BD021859DCD008A196B /* KeychainWrapper.swift */; };
 		18572BD32185B26F008A196B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BD22185B26F008A196B /* DateExtensions.swift */; };
-		18572BDB2185C786008A196B /* SantanderSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BDA2185C786008A196B /* SantanderSampleTests.swift */; };
+		18572BDB2185C786008A196B /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BDA2185C786008A196B /* ServiceManagerTests.swift */; };
+		18572BE32185D41D008A196B /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BE22185D41D008A196B /* KeychainTests.swift */; };
+		18572BE52185D703008A196B /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BE42185D703008A196B /* LoginWorkerTests.swift */; };
 		1CD772821F4866A1A47D88E7 /* Pods_SantanderSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784D67B09F33BCDA6A64F1E /* Pods_SantanderSampleTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,8 +109,10 @@
 		18572BD021859DCD008A196B /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		18572BD22185B26F008A196B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		18572BD82185C786008A196B /* SantanderSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SantanderSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18572BDA2185C786008A196B /* SantanderSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SantanderSampleTests.swift; sourceTree = "<group>"; };
+		18572BDA2185C786008A196B /* ServiceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
 		18572BDC2185C786008A196B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18572BE22185D41D008A196B /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
+		18572BE42185D703008A196B /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
 		46066C2E03FD947BBA38B203 /* Pods_SantanderSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SantanderSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6022D23F24B537ADD8DE3832 /* Pods-SantanderSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SantanderSample/Pods-SantanderSample.debug.xcconfig"; sourceTree = "<group>"; };
 		B1BF53DF74E5403D66EEFC86 /* Pods-SantanderSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderSampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SantanderSampleTests/Pods-SantanderSampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -288,7 +292,9 @@
 		18572BD92185C786008A196B /* SantanderSampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				18572BDA2185C786008A196B /* SantanderSampleTests.swift */,
+				18572BE42185D703008A196B /* LoginWorkerTests.swift */,
+				18572BDA2185C786008A196B /* ServiceManagerTests.swift */,
+				18572BE22185D41D008A196B /* KeychainTests.swift */,
 				18572BDC2185C786008A196B /* Info.plist */,
 			);
 			path = SantanderSampleTests;
@@ -553,7 +559,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18572BDB2185C786008A196B /* SantanderSampleTests.swift in Sources */,
+				18572BE52185D703008A196B /* LoginWorkerTests.swift in Sources */,
+				18572BDB2185C786008A196B /* ServiceManagerTests.swift in Sources */,
+				18572BE32185D41D008A196B /* KeychainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
