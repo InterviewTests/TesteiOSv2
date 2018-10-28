@@ -81,4 +81,9 @@ extension String{
         let pswdTest = NSPredicate(format:"SELF MATCHES %@", regex)
         return pswdTest.evaluate(with: pswd)
     }
+    
+    static func formatCurrencyLabel(value: Float) -> String{
+        let val = String(format: "R$ %.02f", value)
+        return val
+    }
 }

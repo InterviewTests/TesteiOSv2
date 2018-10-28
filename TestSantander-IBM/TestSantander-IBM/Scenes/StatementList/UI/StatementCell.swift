@@ -28,13 +28,12 @@ class StatementCell: UITableViewCell {
         self.descriptionLabel.text = statement.description
         self.dateLabel.text = statement.date
         
-        valueLabel.text = formatLabel(value: statement.value)
-    }
-    
-    func formatLabel(value: Float) -> String{
-        var value = String(format: "R$%.02f", value)
-        //nao mostra o sinal do layout do teste.
-        value = value.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-        return value
+        if statement.value < 0 {
+            valueLabel.textColor = UIColor.red
+        } else {
+            valueLabel.textColor = UIColor.darkGray
+        }
+        
+        valueLabel.text = String.formatCurrencyLabel(value: statement.value)
     }
 }
