@@ -7,7 +7,21 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class AccountBalance: NSObject {
+class AccountBalance: Mappable {
+    
     var statementList : [Registry]?
+    var error : ResponseError?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        statementList <- map["statementList"]
+        error <- map["error"]
+
+    }
+    
+    
 }

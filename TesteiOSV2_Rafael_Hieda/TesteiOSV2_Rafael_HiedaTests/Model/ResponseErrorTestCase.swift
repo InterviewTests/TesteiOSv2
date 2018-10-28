@@ -9,13 +9,13 @@
 import XCTest
 @testable import TesteiOSV2_Rafael_Hieda
 
-class UserResponseTestCase: XCTestCase {
+class ResponseErrorTestCase: XCTestCase {
     
-    var error : LoginError?
+    var error : ResponseError?
     var expected : Bool?
     
     override func setUp() {
-        error = LoginError()
+        
         super.setUp()
     }
     

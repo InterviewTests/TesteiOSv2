@@ -7,16 +7,28 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class UserResponse: NSObject {
+class UserResponse: Mappable {
     
-    var userAccount : UserAccount
-    var error : LoginError
     
-    init(account : UserAccount, error : LoginError)
+    var userAccount : UserAccount?
+    var error : ResponseError?
+    
+    init(account : UserAccount, error : ResponseError)
     {
         self.userAccount = account
         self.error = error
     }
+    
+    required init?(map: Map) {
+
+    }
+    
+    func mapping(map: Map) {
+        userAccount <- map["userAccount"]
+        error <- map["error"]
+    }
+
     
 }

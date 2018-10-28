@@ -7,22 +7,27 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class UserAccount: NSObject {
+class UserAccount: Mappable {
 
-    var userId: Int
-    var name : String
-    var bankAccount : String
-    var agency : String
-    var balance : Decimal
-    
-    init(_ id : Int, name : String, account: String, agency : String, balance : Decimal)
-    {
-        self.userId = id
-        self.name = name
-        self.bankAccount = account
-        self.agency = agency
-        self.balance = balance
+    var userId: Int?
+    var name : String?
+    var bankAccount : String?
+    var agency : String?
+    var balance : Double?
+        
+    required init?(map: Map) {
+
     }
-
+    
+    func mapping(map: Map) {
+        userId <- map["userId"]
+        name <- map["name"]
+        bankAccount <- map["bankAccount"]
+        agency <- map["agency"]
+        balance <- map["balance"]
+    }
+    
+    
 }

@@ -7,19 +7,25 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class Registry: NSObject {
-    var title : String
-    var desc : String
-    var date : String
-    var value : Decimal
+class Registry: Mappable {
     
-    init(_ title : String, _ desc : String, _ date: String, _ value : Decimal)
-    {
-        self.title = title
-        self.desc = desc
-        self.date = date
-        self.value = value
+    var title : String?
+    var description : String?
+    var date : String?
+    var value : Double?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        title <- map["title"]
+        description <- map["desc"]
+        date <- map["date"]
+        value <- map["value"]
+        
     }
     
 }

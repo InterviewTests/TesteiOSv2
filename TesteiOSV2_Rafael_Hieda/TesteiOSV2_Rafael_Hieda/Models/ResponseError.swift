@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import ObjectMapper
 
-public class LoginError: NSObject {
+public class ResponseError: Mappable {
     
     public var code : Int?
     public var message : String?
+    
+    public required init?(map: Map) {
+        
+    }
+    
+    public func mapping(map: Map) {
+        code <- map["code"]
+        message <- map["message"]
+    }
+    
         
     public func Success() -> Bool
     {

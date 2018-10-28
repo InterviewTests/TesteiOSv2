@@ -18,11 +18,13 @@
 		E330F92D2184B0C900CDEA48 /* TesteiOSV2_Rafael_HiedaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F92C2184B0C900CDEA48 /* TesteiOSV2_Rafael_HiedaUITests.swift */; };
 		E330F93F2184B73500CDEA48 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F93E2184B73500CDEA48 /* UserLogin.swift */; };
 		E330F9412184D3D500CDEA48 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F9402184D3D500CDEA48 /* UserAccount.swift */; };
-		E330F9432184D4DA00CDEA48 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F9422184D4DA00CDEA48 /* LoginError.swift */; };
+		E330F9432184D4DA00CDEA48 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F9422184D4DA00CDEA48 /* ResponseError.swift */; };
 		E330F9452184D6B700CDEA48 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F9442184D6B700CDEA48 /* UserResponse.swift */; };
-		E330F94D2184E96000CDEA48 /* UserResponseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F94C2184E96000CDEA48 /* UserResponseTestCase.swift */; };
+		E330F94D2184E96000CDEA48 /* ResponseErrorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F94C2184E96000CDEA48 /* ResponseErrorTestCase.swift */; };
 		E330F94F2184EC5700CDEA48 /* Registry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F94E2184EC5700CDEA48 /* Registry.swift */; };
 		E330F9512184EE9F00CDEA48 /* AccountBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F9502184EE9F00CDEA48 /* AccountBalance.swift */; };
+		E330F9542184FA1E00CDEA48 /* BankAPIWorkerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F9532184FA1E00CDEA48 /* BankAPIWorkerTestCase.swift */; };
+		E3D0778D21862AFB001206FF /* UserLoginTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D0778C21862AFB001206FF /* UserLoginTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,11 +68,13 @@
 		E330F92E2184B0C900CDEA48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E330F93E2184B73500CDEA48 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		E330F9402184D3D500CDEA48 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
-		E330F9422184D4DA00CDEA48 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		E330F9422184D4DA00CDEA48 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		E330F9442184D6B700CDEA48 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
-		E330F94C2184E96000CDEA48 /* UserResponseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponseTestCase.swift; sourceTree = "<group>"; };
+		E330F94C2184E96000CDEA48 /* ResponseErrorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseErrorTestCase.swift; sourceTree = "<group>"; };
 		E330F94E2184EC5700CDEA48 /* Registry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registry.swift; sourceTree = "<group>"; };
 		E330F9502184EE9F00CDEA48 /* AccountBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBalance.swift; sourceTree = "<group>"; };
+		E330F9532184FA1E00CDEA48 /* BankAPIWorkerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAPIWorkerTestCase.swift; sourceTree = "<group>"; };
+		E3D0778C21862AFB001206FF /* UserLoginTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 		E330F9202184B0C900CDEA48 /* TesteiOSV2_Rafael_HiedaTests */ = {
 			isa = PBXGroup;
 			children = (
+				E330F9522184F9B400CDEA48 /* Workers */,
 				E330F9462184D72900CDEA48 /* Model */,
 				E330F9232184B0C900CDEA48 /* Info.plist */,
 			);
@@ -176,7 +181,7 @@
 			children = (
 				E330F93E2184B73500CDEA48 /* UserLogin.swift */,
 				E330F9402184D3D500CDEA48 /* UserAccount.swift */,
-				E330F9422184D4DA00CDEA48 /* LoginError.swift */,
+				E330F9422184D4DA00CDEA48 /* ResponseError.swift */,
 				E330F9442184D6B700CDEA48 /* UserResponse.swift */,
 				E330F94E2184EC5700CDEA48 /* Registry.swift */,
 				E330F9502184EE9F00CDEA48 /* AccountBalance.swift */,
@@ -208,9 +213,18 @@
 		E330F9462184D72900CDEA48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E330F94C2184E96000CDEA48 /* UserResponseTestCase.swift */,
+				E330F94C2184E96000CDEA48 /* ResponseErrorTestCase.swift */,
+				E3D0778C21862AFB001206FF /* UserLoginTestCase.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E330F9522184F9B400CDEA48 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				E330F9532184FA1E00CDEA48 /* BankAPIWorkerTestCase.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 		FCB61D2E08A4DA12515E0DBD /* Frameworks */ = {
@@ -442,7 +456,7 @@
 				E330F9512184EE9F00CDEA48 /* AccountBalance.swift in Sources */,
 				E330F90A2184B0C800CDEA48 /* AppDelegate.swift in Sources */,
 				E330F94F2184EC5700CDEA48 /* Registry.swift in Sources */,
-				E330F9432184D4DA00CDEA48 /* LoginError.swift in Sources */,
+				E330F9432184D4DA00CDEA48 /* ResponseError.swift in Sources */,
 				E330F93F2184B73500CDEA48 /* UserLogin.swift in Sources */,
 				E330F9452184D6B700CDEA48 /* UserResponse.swift in Sources */,
 			);
@@ -452,7 +466,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E330F94D2184E96000CDEA48 /* UserResponseTestCase.swift in Sources */,
+				E3D0778D21862AFB001206FF /* UserLoginTestCase.swift in Sources */,
+				E330F94D2184E96000CDEA48 /* ResponseErrorTestCase.swift in Sources */,
+				E330F9542184FA1E00CDEA48 /* BankAPIWorkerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
