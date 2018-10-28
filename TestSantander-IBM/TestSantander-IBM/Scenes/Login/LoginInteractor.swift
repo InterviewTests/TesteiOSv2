@@ -48,9 +48,15 @@ class LoginInteractor: LoginInteractorInput, LoginDataSource, LoginDataDestinati
                 completionHandler(false, err)
             } else {
                 guard let account = api?.userAccount else {
-                    completionHandler(false, "No data")
+                    completionHandler(false, api?.error?.message)
                     return
                 }
+                
+                guard let userIdNil = api?.userAccount?.userId else {
+                    completionHandler(false, api?.error?.message)
+                    return
+                }
+                
                 self.userAccount = account
                 UserDefaults.saveUserInUserDefaults(userAccount: account, userName: request.user)
                 _ = LoginScene.PostLogin.Response(userAccount: account)

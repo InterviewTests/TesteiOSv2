@@ -10,7 +10,7 @@ import Foundation
 
 struct UserAccount: Decodable {
     
-    let userId: Int
+    let userId: Int?
     let name: String?
     let bankAccount: String?
     let agency: String?
@@ -26,7 +26,7 @@ struct UserAccount: Decodable {
         case userName
     }
     
-    init(userId: Int, name: String? = nil, bankAccount: String? = nil, agency: String? = nil, balance: Float? = nil, userName: String? = nil) {
+    init(userId: Int?, name: String? = nil, bankAccount: String? = nil, agency: String? = nil, balance: Float? = nil, userName: String? = nil) {
         self.userId = userId
         self.name = name
         self.bankAccount = bankAccount

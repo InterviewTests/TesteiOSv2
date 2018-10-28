@@ -39,6 +39,12 @@ class NetworkLayerTests: XCTestCase {
                 XCTFail("Error loading from local json file")
             }
 
+            if let data = try self.loadJsonMockData(name: "loginError", type: "json"),
+                let api: ApiResponse = try NetworkManager.parseJsonDataToClass(data) {
+                self.testApiReturnForLoginWithError(api)
+            } else {
+                XCTFail("Error loading from local json file")
+            }
             if let data = try self.loadJsonMockData(name: "statements", type: "json"),
                 let api: ApiResponse = try NetworkManager.parseJsonDataToClass(data) {
                 self.testApiReturnForStatements(api)
@@ -70,6 +76,19 @@ class NetworkLayerTests: XCTestCase {
         }
     }
     
+    func testApiReturnForLoginWithError(_ api: ApiResponse?){
+        XCTAssertNil(api?.userAccount!.userId)
+        XCTAssertNil(api?.userAccount!.agency)
+        XCTAssertNil(api?.userAccount!.balance)
+        XCTAssertNil(api?.userAccount!.bankAccount)
+        XCTAssertNil(api?.userAccount!.name)
+        XCTAssertNil(api?.userAccount!.userName)
+
+        let err = ErrorModel(code: 53, message: "Usuário ou senha incorreta")
+        XCTAssertEqual(api?.error!.code, err.code)
+        XCTAssertEqual(api?.error!.message, err.message)
+    }
+
     func testApiReturnForLogin(_ api: ApiResponse?){
         XCTAssertEqual(api?.userAccount?.userId, 1)
         XCTAssertEqual(api?.userAccount?.name, "Jose da Silva Teste")

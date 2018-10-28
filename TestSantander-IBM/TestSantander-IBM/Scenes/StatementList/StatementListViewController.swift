@@ -55,7 +55,9 @@ class StatementListViewController: UIViewController, StatementListViewController
             dataDest.user = UserAccount(userId: 1)
             request.id = 1
         } else {
-            request.id = dataDest.user.userId
+            if let userId = dataDest.user.userId{
+                request.id = userId
+            }
         }
         performRequest(request: request)
     }
