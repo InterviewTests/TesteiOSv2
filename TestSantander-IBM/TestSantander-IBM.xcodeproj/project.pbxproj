@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		261293DD2184FFEE004F7512 /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261293DC2184FFEE004F7512 /* HTTPClientTests.swift */; };
-		261293E121850057004F7512 /* TextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261293E021850057004F7512 /* TextFieldTests.swift */; };
 		261293E321854A81004F7512 /* AccountDetailsCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261293E221854A81004F7512 /* AccountDetailsCellTests.swift */; };
 		261293E721855B29004F7512 /* StatementListViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261293E621855B29004F7512 /* StatementListViewController+UITableView.swift */; };
 		261293E821855BE6004F7512 /* StatementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A487218409D10044D357 /* StatementCell.swift */; };
@@ -60,6 +58,9 @@
 		26B5A4A1218491A60044D357 /* ErrorModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A4A0218491A60044D357 /* ErrorModelTests.swift */; };
 		26B5A4A3218491E10044D357 /* StatetementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A4A2218491E10044D357 /* StatetementsTests.swift */; };
 		26B5A4A7218492450044D357 /* StringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A4A6218492450044D357 /* StringUtilsTests.swift */; };
+		26CB83A62185B3CE00F41A76 /* NetworkLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB83A52185B3CE00F41A76 /* NetworkLayerTests.swift */; };
+		26CB83A82185B3F000F41A76 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 26CB83A72185B3F000F41A76 /* login.json */; };
+		26CB83AC2185B43D00F41A76 /* statements.json in Resources */ = {isa = PBXBuildFile; fileRef = 26CB83AB2185B43D00F41A76 /* statements.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +74,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		261293DC2184FFEE004F7512 /* HTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
-		261293E021850057004F7512 /* TextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTests.swift; sourceTree = "<group>"; };
 		261293E221854A81004F7512 /* AccountDetailsCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsCellTests.swift; sourceTree = "<group>"; };
 		261293E621855B29004F7512 /* StatementListViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StatementListViewController+UITableView.swift"; sourceTree = "<group>"; };
 		261293EA21855DCA004F7512 /* StatementCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCellTests.swift; sourceTree = "<group>"; };
@@ -130,6 +129,9 @@
 		26B5A4A0218491A60044D357 /* ErrorModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModelTests.swift; sourceTree = "<group>"; };
 		26B5A4A2218491E10044D357 /* StatetementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatetementsTests.swift; sourceTree = "<group>"; };
 		26B5A4A6218492450044D357 /* StringUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtilsTests.swift; sourceTree = "<group>"; };
+		26CB83A52185B3CE00F41A76 /* NetworkLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerTests.swift; sourceTree = "<group>"; };
+		26CB83A72185B3F000F41A76 /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
+		26CB83AB2185B43D00F41A76 /* statements.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = statements.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +155,9 @@
 		261293DA2184FD95004F7512 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				261293DC2184FFEE004F7512 /* HTTPClientTests.swift */,
+				26CB83A52185B3CE00F41A76 /* NetworkLayerTests.swift */,
+				26CB83A72185B3F000F41A76 /* login.json */,
+				26CB83AB2185B43D00F41A76 /* statements.json */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -342,7 +346,6 @@
 		26B5A4A4218492270044D357 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				261293E021850057004F7512 /* TextFieldTests.swift */,
 				26B5A4A6218492450044D357 /* StringUtilsTests.swift */,
 				26650CA221857029002B4969 /* UserDefaultsUtilsTests.swift */,
 			);
@@ -443,6 +446,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26CB83A82185B3F000F41A76 /* login.json in Resources */,
+				26CB83AC2185B43D00F41A76 /* statements.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,11 +504,10 @@
 				26B5A4A3218491E10044D357 /* StatetementsTests.swift in Sources */,
 				26B5A4A7218492450044D357 /* StringUtilsTests.swift in Sources */,
 				261293EB21855DCA004F7512 /* StatementCellTests.swift in Sources */,
-				261293E121850057004F7512 /* TextFieldTests.swift in Sources */,
-				261293DD2184FFEE004F7512 /* HTTPClientTests.swift in Sources */,
 				26650CA321857029002B4969 /* UserDefaultsUtilsTests.swift in Sources */,
 				26650C9F2185688B002B4969 /* LoginCellTests.swift in Sources */,
 				26B5A49F2184914A0044D357 /* ApiResponseTests.swift in Sources */,
+				26CB83A62185B3CE00F41A76 /* NetworkLayerTests.swift in Sources */,
 				261293E321854A81004F7512 /* AccountDetailsCellTests.swift in Sources */,
 				26B5A4A1218491A60044D357 /* ErrorModelTests.swift in Sources */,
 				26B5A4512183EF040044D357 /* TestSantander_IBMTests.swift in Sources */,

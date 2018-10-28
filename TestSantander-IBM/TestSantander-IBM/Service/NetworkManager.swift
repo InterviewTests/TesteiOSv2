@@ -27,7 +27,7 @@ struct NetworkManager {
     static let environment: NetworkEnvironment = .production
     let router = Router<SantanderApi>()
     
-    func fetchGenericData<T: Decodable>(req: LoginScene.PostLogin.Request, completion: @escaping (T?, String?) -> ()){
+    func fetchAccountData<T: Decodable>(req: LoginScene.PostLogin.Request, completion: @escaping (T?, String?) -> ()){
         router.request(.userAccount(user: req.user, password: req.password)) { (data, response, error) in
             if error != nil {
                 completion(nil, "Please check your network connection.")
@@ -43,11 +43,9 @@ struct NetworkManager {
                     }
                     do {
                         print(responseData)
-                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
-                        print(jsonData)
-                        let apiResponse = try JSONDecoder().decode(T.self, from: responseData)
+                        let apiResponse: T? = try NetworkManager.parseJsonDataToClass(responseData)
                         completion(apiResponse,nil)
-                    }catch {
+                    } catch {
                         print(error)
                         completion(nil, NetworkResponse.unableToDecode.rawValue)
                     }
@@ -74,9 +72,7 @@ struct NetworkManager {
                     }
                     do {
                         print(responseData)
-                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
-                        print(jsonData)
-                        let apiResponse = try JSONDecoder().decode(T.self, from: responseData)
+                        let apiResponse: T? = try NetworkManager.parseJsonDataToClass(responseData)
                         completion(apiResponse,nil)
                     }catch {
                         print(error)
@@ -88,7 +84,10 @@ struct NetworkManager {
             }
         }
     }
-
+    
+    static func parseJsonDataToClass<T: Decodable>(_ data: Data) throws -> T? {
+        return try JSONDecoder().decode(T.self, from: data)
+    }
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String>{
         switch response.statusCode {
@@ -99,7 +98,6 @@ struct NetworkManager {
         default: return .failure(NetworkResponse.failed.rawValue)
         }
     }
-
 }
 
 

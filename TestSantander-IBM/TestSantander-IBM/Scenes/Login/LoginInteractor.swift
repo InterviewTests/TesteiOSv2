@@ -43,7 +43,7 @@ class LoginInteractor: LoginInteractorInput, LoginDataSource, LoginDataDestinati
 
     func postLogin(request: LoginScene.PostLogin.Request, completionHandler: @escaping (Bool, String?) -> Void){
         
-        networkManager.fetchGenericData(req: request) { (api: ApiResponse?, err) in            
+        networkManager.fetchAccountData(req: request) { (api: ApiResponse?, err) in            
             if err != nil {
                 completionHandler(false, err)
             } else {
