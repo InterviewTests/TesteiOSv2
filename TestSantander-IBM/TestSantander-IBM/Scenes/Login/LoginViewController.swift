@@ -48,21 +48,12 @@ class LoginViewController: UIViewController, LoginViewControllerInput {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        userFromUserDefaults = retrieveData()
+        userFromUserDefaults = UserDefaults.retrieveData()
         tableView.reloadData()
     }
 
     // MARK: Requests
-    func retrieveData() -> UserAccount{
-        let id = UserDefaults.standard.integer(forKey: "userId")
-        let name = UserDefaults.standard.string(forKey: "name")
-        let agency = UserDefaults.standard.string(forKey: "agency")
-        let bankAccount = UserDefaults.standard.string(forKey: "bankAccount")
-        let balance = UserDefaults.standard.float(forKey: "balance")
-        let userName = UserDefaults.standard.string(forKey: "userName")
-        return UserAccount(userId: id, name: name, bankAccount: bankAccount, agency: agency, balance: balance, userName: userName)
-    }
-
+    
     // MARK: Display logic
     
 }

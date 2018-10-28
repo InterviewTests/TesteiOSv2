@@ -50,18 +50,29 @@ class LoginCell: UITableViewCell {
         passwordTextField.delegate = self
     }
     
-    @IBAction func loginTapped(_ sender: Any) {
+    @IBAction func loginTapped() {
         guard let user = userTextField.text , let password = passwordTextField.text else {
             return
         }
-        
-        if (String.isValidEmail(email: user) || String.isValidCPF(cpf: user)) &&
-            String.isValidPassword(pswd: password) {
+        let areValidFields = verifyIfValidFields()
+        if areValidFields {
             delegate?.loginBtnTapped(name: user, passwd: password)
         } else {
             userTextField.layer.borderColor = UIColor.red.cgColor
             passwordTextField.layer.borderColor = UIColor.red.cgColor
         }
+    }
+    
+    func verifyIfValidFields() -> Bool {
+        guard let user = userTextField.text , let password = passwordTextField.text else {
+            return false
+        }
+
+        if (String.isValidEmail(email: user) || String.isValidCPF(cpf: user)) &&
+            String.isValidPassword(pswd: password) {
+            return true
+        }
+        return false
     }
     
     func setupDefaultValuesOnDismiss(){

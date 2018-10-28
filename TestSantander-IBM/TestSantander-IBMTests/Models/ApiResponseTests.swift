@@ -15,12 +15,11 @@ class ApiResponseTests: XCTestCase {
         let statements = Statements(title: "Teste", desc: "teste", date: "2018-20-10", value: 1000.45)
         
         let apiResponse = ApiResponse(userAccount: user, statementList: [statements], error: nil)
-        
-        XCTAssertEqual(user.userId, 10)
-        XCTAssertEqual(statements.title, "Teste")
-        XCTAssertEqual(statements.desc, "teste")
-        XCTAssertEqual(statements.date, "2018-20-10")
-        XCTAssertEqual(statements.value, 1000.45)
-    }
 
+        XCTAssertEqual(apiResponse.userAccount?.userId, 10)
+        XCTAssertEqual(apiResponse.statementList?[0].title, "Teste")
+        XCTAssertEqual(apiResponse.statementList?[0].desc, "teste")
+        XCTAssertEqual(apiResponse.statementList?[0].date, "2018-20-10")
+        XCTAssertEqual(apiResponse.statementList?[0].value, 1000.45)
+    }
 }

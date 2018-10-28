@@ -42,20 +42,10 @@ class LoginInteractor: LoginInteractorInput, LoginDataSource, LoginDataDestinati
                     return
                 }
                 self.userAccount = account
-                self.saveUserInUserDefaults(userAccount: account, userName: request.user)
+                UserDefaults.saveUserInUserDefaults(userAccount: account, userName: request.user)
                 _ = LoginScene.PostLogin.Response(userAccount: account)
                 completionHandler(true, nil)
             }
         }
     }
-    
-    func saveUserInUserDefaults(userAccount: UserAccount, userName:String){
-        UserDefaults.standard.set(userAccount.userId, forKey: "userId")
-        UserDefaults.standard.set(userAccount.agency, forKey: "agency")
-        UserDefaults.standard.set(userAccount.balance, forKey: "balance")
-        UserDefaults.standard.set(userAccount.bankAccount, forKey: "bankAccount")
-        UserDefaults.standard.set(userAccount.name, forKey: "name")
-        UserDefaults.standard.set(userName, forKey: "userName")
-    }
-
 }
