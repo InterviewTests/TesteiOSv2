@@ -32,6 +32,7 @@ class LoginWorker {
                 completion(.error(error))
             case .success(let response):
                 if response.success {
+                    self.saveLogin(request)
                     completion(.success(response))
                 } else {
                     completion(.error(APIError.loginFail))
@@ -40,12 +41,34 @@ class LoginWorker {
         }
     }
     
+    func saveLogin(_ request: Login.Request) {
+        let user = request.user
+        let password = request.password
+        let _ = KeychainManager.save(user!, type: .user)
+        let _ = KeychainManager.save(password!, type: .password)
+    }
+    
+    func getLastLogin() -> Login.LoginSave {
+        var response = Login.LoginSave()
+        response.user = KeychainManager.get(type: .user)
+        response.password = KeychainManager.get(type: .password)
+        return response
+    }
+    
     func validateId(_ string: String?) -> Bool {
         guard let word = string, word.count >= 3 else {
             return false
         }
         
         return (match(word, patternCPF) || match(word, patternEmail) )
+    }
+    
+    func validatePassword(_ string: String?) -> Bool {
+        guard let word = string, word.count >= 3 else {
+            return false
+        }
+        
+        return match(word, patternPassword)
     }
     
     private func match(_ word: String, _ pattern: String) -> Bool {
@@ -58,13 +81,5 @@ class LoginWorker {
             return false
         }
         return String(mutable).isEmpty
-    }
-    
-    func validatePassword(_ string: String?) -> Bool {
-        guard let word = string, word.count >= 3 else {
-            return false
-        }
-        
-        return match(word, patternPassword)
     }
 }

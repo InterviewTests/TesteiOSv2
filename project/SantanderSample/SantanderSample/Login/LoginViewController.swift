@@ -13,7 +13,7 @@
 import UIKit
 
 protocol LoginDisplayLogic: class {
-  func display(viewModel: Login.ViewModel)
+    func display(viewModel: Login.ViewModel)
 }
 
 class LoginViewController: UIViewController {
@@ -30,6 +30,14 @@ class LoginViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         KeyboardManager.shared.enable = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        idView.textField.text
+            = interactor.lastLogin.user ?? ""
+        passwordView.textField.text
+            = interactor.lastLogin.password ?? ""
+    }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -43,15 +51,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var idView: InputTextView! {
         didSet {
             idView.setPlaceholder("User")
-            idView.textField.text = "33333749866"
         }
     }
     
     @IBOutlet weak var passwordView: InputTextView! {
         didSet {
             passwordView.setPlaceholder("Password")
-//            passwordView.textField.isSecureTextEntry = true
-            passwordView.textField.text = "@Was1"
+            passwordView.textField.isSecureTextEntry = true
         }
     }
     

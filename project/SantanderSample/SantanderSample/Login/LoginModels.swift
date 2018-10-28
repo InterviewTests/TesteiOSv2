@@ -21,6 +21,11 @@ enum Login{
         var password: String?
     }
     
+    struct LoginSave {
+        var user: String?
+        var password: String?
+    }
+    
     struct Response: Codable {
         var userAccount: Login.UserAccount?
         var error: Login.Error?

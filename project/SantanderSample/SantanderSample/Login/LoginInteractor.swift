@@ -14,22 +14,25 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func auth(request: Login.Request)
+    func auth(request: Login.Request)
 }
 
 protocol LoginDataStore {
     var user: Login.UserAccount? { get set }
+    var lastLogin: Login.LoginSave {get}
 }
 
-class LoginInteractor: LoginDataStore
-{
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker!
-  var user: Login.UserAccount?
-  
+class LoginInteractor: LoginDataStore {
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker!
+    var user: Login.UserAccount?
+    var lastLogin: Login.LoginSave {
+        return worker.getLastLogin()
+    }
 }
 
 extension LoginInteractor: LoginBusinessLogic {
+    
     func auth(request: Login.Request) {
         var response = Login.Response()
         let validationId = worker.validateId(request.user)
