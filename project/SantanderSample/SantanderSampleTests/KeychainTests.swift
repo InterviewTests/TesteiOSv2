@@ -31,5 +31,10 @@ class KeychainTests: QuickSpec {
             expect(KeychainManager.remove(type: .user)).to(beTrue())
             expect(KeychainManager.get(type: .user)).to(beNil())
         }
+        
+        afterSuite {
+            let _ = KeychainManager.remove(type: .user)
+            let _ = KeychainManager.remove(type: .password)
+        }
     }
 }

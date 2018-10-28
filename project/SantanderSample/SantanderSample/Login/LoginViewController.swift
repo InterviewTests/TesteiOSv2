@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
             idView.setPlaceholder("User")
             idView.textField.delegate = self
             idView.textField.returnKeyType = .next
+            idView.textField.keyboardType = .numberPad
         }
     }
     

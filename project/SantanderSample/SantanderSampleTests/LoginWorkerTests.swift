@@ -25,6 +25,8 @@ class LogingWorkerTests: QuickSpec {
                 rq.serviceManager = r.resolve(ServiceManager.self)
                 return rq
             }
+            let _ = KeychainManager.remove(type: .user)
+            let _ = KeychainManager.remove(type: .password)
         }
         it("validacao de senha") {
             let lw = container.resolve(LoginWorker.self)!
@@ -71,6 +73,11 @@ class LogingWorkerTests: QuickSpec {
                     done()
                 })
             }
+        }
+        
+        afterSuite {
+            let _ = KeychainManager.remove(type: .user)
+            let _ = KeychainManager.remove(type: .password)
         }
     }
 }
