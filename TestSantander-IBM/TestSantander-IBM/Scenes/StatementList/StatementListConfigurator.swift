@@ -32,7 +32,7 @@ class StatementListConfigurator {
         let presenter = StatementListPresenter()
         presenter.output = viewController
         
-        let interactor = StatementListInteractor()
+        let interactor = StatementListInteractor(networkManager: NetworkManager())
         interactor.output = presenter
         
         let router = StatementListRouter(viewController: viewController, dataSource: interactor, dataDestination: interactor)

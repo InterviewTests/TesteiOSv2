@@ -33,7 +33,7 @@ class LoginConfigurator {
         let presenter = LoginPresenter()
         presenter.output = viewController
         
-        let interactor = LoginInteractor()
+        let interactor = LoginInteractor(networkManager: NetworkManager())
         interactor.output = presenter
         
         let router = LoginRouter(viewController: viewController, dataSource: interactor, dataDestination: interactor)
