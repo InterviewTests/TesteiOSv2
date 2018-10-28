@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DetailCell" customModule="SantanderSample" customModuleProvider="target">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DetailCell" customModule="SantanderSample" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="342" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -22,10 +22,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHi-gj-gpU">
                         <rect key="frame" x="0.0" y="0.0" width="342" height="80"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hl-cf-wSl" customClass="ShadowView" customModule="SantanderSample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="342" height="80"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdH-H5-obq">
                                 <rect key="frame" x="0.0" y="0.0" width="342" height="80"/>
                                 <subviews>
@@ -79,13 +75,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3hl-cf-wSl" firstAttribute="trailing" secondItem="cdH-H5-obq" secondAttribute="trailing" id="1hj-Dg-ved"/>
                             <constraint firstItem="cdH-H5-obq" firstAttribute="leading" secondItem="KHi-gj-gpU" secondAttribute="leading" id="Kxt-bh-Zme"/>
                             <constraint firstAttribute="bottom" secondItem="cdH-H5-obq" secondAttribute="bottom" id="Lp8-AG-UZd"/>
-                            <constraint firstItem="3hl-cf-wSl" firstAttribute="top" secondItem="cdH-H5-obq" secondAttribute="top" id="M1b-OK-6G2"/>
-                            <constraint firstItem="3hl-cf-wSl" firstAttribute="bottom" secondItem="cdH-H5-obq" secondAttribute="bottom" id="PyE-an-h8B"/>
                             <constraint firstAttribute="trailing" secondItem="cdH-H5-obq" secondAttribute="trailing" id="QWm-dT-kY5"/>
-                            <constraint firstItem="3hl-cf-wSl" firstAttribute="leading" secondItem="cdH-H5-obq" secondAttribute="leading" id="kko-eY-d23"/>
                             <constraint firstItem="cdH-H5-obq" firstAttribute="top" secondItem="KHi-gj-gpU" secondAttribute="top" id="ypP-9C-fJc"/>
                         </constraints>
                     </view>
@@ -98,6 +90,23 @@
                 <constraint firstAttribute="trailing" secondItem="KHi-gj-gpU" secondAttribute="trailing" id="b85-sI-i79"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="1"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" red="0.85882352939999995" green="0.87450980392156863" blue="0.8901960784313725" alpha="0.3041648327" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="3"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="dateLabel" destination="13c-qr-wSC" id="kf0-he-BgA"/>
+                <outlet property="infoLabel" destination="lT2-Fa-AdB" id="pgD-Tm-61p"/>
+                <outlet property="paymentLabel" destination="WiO-FA-INx" id="S06-rE-UJa"/>
+                <outlet property="priceLabel" destination="nMW-Qv-cen" id="ZSa-kY-Kn1"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>

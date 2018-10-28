@@ -18,6 +18,7 @@ protocol DetailBusinessLogic{
 
 protocol DetailDataStore{
     var user: Login.UserAccount? { get set }
+    var detail: [Detail.Statement] {get}
 }
 
 class DetailInteractor: DetailBusinessLogic, DetailDataStore

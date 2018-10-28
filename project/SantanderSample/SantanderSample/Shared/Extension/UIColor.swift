@@ -10,6 +10,9 @@ import UIKit
 
 
 extension UIColor {
+    static var shadowApp: UIColor {
+        return UIColor(red: 217/255, green: 226/255, blue: 232/255, alpha: 0.5)
+    }
     static var grayApp: UIColor {
         return UIColor(red: 220/255, green: 226/255, blue: 238/255, alpha: 1.0)
     }

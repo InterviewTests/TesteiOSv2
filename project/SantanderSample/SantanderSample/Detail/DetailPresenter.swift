@@ -28,6 +28,7 @@ class DetailPresenter: DetailPresentationLogic
     {
         var viewModel = Detail.ViewModel()
         viewModel.name = response.name
+        
         if let ac = response.agency, let ag = response.bankAccount {
            
             let mStr = NSMutableString(string: ac)
@@ -36,13 +37,8 @@ class DetailPresenter: DetailPresentationLogic
             viewModel.account = "\(ag) / \(mStr)"
         }
         
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .currency
-        if let bal = response.balance,
-            let str = formatter.string(from: NSNumber(value: bal*1000)) {
-            viewModel.balance = str
-        }
+        viewModel.balance = response.balance?.currency
+        
         
         DispatchQueue.main.async {
             self.viewController?.displayUserInfo(viewModel: viewModel)
@@ -52,12 +48,9 @@ class DetailPresenter: DetailPresentationLogic
     
     func present(response: Detail.Response)
     {
-//        let viewModel = Detail.ViewModel()
-//        if response.success {
-//            viewController?.displaySomething(viewModel: viewModel)
-//        } else {
-//            viewController?.displaySomething(viewModel: viewModel)
-//        }
-        
+        let viewModel = Detail.ViewModel()
+        DispatchQueue.main.async {
+            self.viewController?.displayDetail(viewModel: viewModel)
+        }
     }
 }

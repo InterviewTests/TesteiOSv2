@@ -11,7 +11,7 @@ import UIKit
 protocol DetailDisplayLogic: class
 {
     func displayUserInfo(viewModel: Detail.ViewModel)
-    func displayDeatil(viewModel: Detail.ViewModel)
+    func displayDetail(viewModel: Detail.ViewModel)
 }
 
 class DetailsViewViewController: UIViewController {
@@ -93,7 +93,8 @@ extension DetailsViewViewController: DetailDisplayLogic {
         balnceInfoView.infoLabel.text = viewModel.balance
     }
     
-    func displayDeatil(viewModel: Detail.ViewModel) {
+    func displayDetail(viewModel: Detail.ViewModel) {
+        entriesCollectionView.reloadData()
     }
     
 }
@@ -105,12 +106,15 @@ extension DetailsViewViewController: UICollectionViewDelegate {
 
 extension DetailsViewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return interactor.detail.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! DetailCell
-        
+        cell.dateLabel.text = interactor.detail[indexPath.row].date
+        cell.infoLabel.text = interactor.detail[indexPath.row].desc
+        cell.paymentLabel.text = interactor.detail[indexPath.row].title
+        cell.priceLabel.text = interactor.detail[indexPath.row].value.currency
         return cell
     }
 }
