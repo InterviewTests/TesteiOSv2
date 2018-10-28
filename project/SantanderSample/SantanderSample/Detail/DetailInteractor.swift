@@ -14,6 +14,7 @@ import UIKit
 
 protocol DetailBusinessLogic{
     func getDetails()
+    func logout()
 }
 
 protocol DetailDataStore{
@@ -30,6 +31,11 @@ class DetailInteractor: DetailBusinessLogic, DetailDataStore
     var detail: [Detail.Statement] = []
     
     // MARK: Do something
+    
+    func logout() {
+        user = nil
+        detail = []
+    }
     
     func getDetails() {
         

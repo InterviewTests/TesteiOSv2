@@ -81,7 +81,8 @@ class DetailsViewViewController: UIViewController {
     }
     
     @objc func exitAction() {
-        
+        interactor.logout()
+        router.routeToLogin()
     }
 
 }

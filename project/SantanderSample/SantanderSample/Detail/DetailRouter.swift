@@ -14,47 +14,33 @@ import UIKit
 
 @objc protocol DetailRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToLogin()
 }
 
 protocol DetailDataPassing
 {
-  var dataStore: DetailDataStore? { get }
+    var dataStore: DetailDataStore? { get }
 }
 
-class DetailRouter: NSObject, DetailRoutingLogic, DetailDataPassing
+class DetailRouter: NSObject, DetailDataPassing
 {
-  weak var viewController: DetailsViewViewController?
-  var dataStore: DetailDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+    
+    weak var viewController: DetailsViewViewController?
+    var dataStore: DetailDataStore?
+    
+    // MARK: Navigation
+    
+    func dismiss(){
+      viewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    
+}
 
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: DetailViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: DetailDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+extension DetailRouter: DetailRoutingLogic{
+    func routeToLogin() {
+        dismiss()
+    }
+    
+    
 }
