@@ -18,7 +18,7 @@ protocol LoginDisplayLogic: class {
 
 class LoginViewController: UIViewController {
     
-    var interactor: LoginBusinessLogic!
+    var interactor: (LoginBusinessLogic & LoginDataStore)!
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)!
 
 
@@ -43,13 +43,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var idView: InputTextView! {
         didSet {
             idView.setPlaceholder("User")
+            idView.textField.text = "33333749866"
         }
     }
     
     @IBOutlet weak var passwordView: InputTextView! {
         didSet {
             passwordView.setPlaceholder("Password")
-            passwordView.textField.isSecureTextEntry = true
+//            passwordView.textField.isSecureTextEntry = true
+            passwordView.textField.text = "@Was1"
         }
     }
     

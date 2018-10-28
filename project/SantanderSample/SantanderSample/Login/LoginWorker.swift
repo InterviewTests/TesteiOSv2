@@ -26,9 +26,18 @@ class LoginWorker {
         = "^(?=.*[A-Z])(?=.*[!@#$&*])(((?=.*[0-9])|(?=.*[\\w]))).{3,}$"
     
     func login(_ request: Login.Request, completion: @escaping(Result<Login.Response, Error>)->()) {
-        
-        serviceManager.login(request, completion: completion)
-        
+        serviceManager.login(request) { result in
+            switch result {
+            case .error(let error):
+                completion(.error(error))
+            case .success(let response):
+                if response.success {
+                    completion(.success(response))
+                } else {
+                    completion(.error(APIError.loginFail))
+                }
+            }
+        }
     }
     
     func validateId(_ string: String?) -> Bool {

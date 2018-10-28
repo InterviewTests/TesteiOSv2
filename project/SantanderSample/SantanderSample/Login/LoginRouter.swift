@@ -25,24 +25,8 @@ protocol LoginDataPassing
 class LoginRouter: NSObject, LoginDataPassing
 {
   weak var viewController: LoginViewController?
+    
   var dataStore: LoginDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
 
   // MARK: Navigation
   
@@ -55,11 +39,14 @@ class LoginRouter: NSObject, LoginDataPassing
   
     func passDataToDetails(source: LoginDataStore, destination: inout DetailDataStore)
     {
-//        destination.name = source.name
+        destination.user = source.user
     }
 }
 
 extension LoginRouter: LoginRoutingLogic {
+    
+    // MARK: Routing
+
     func routeToDetails() {
         let details = Assembly.shared.detailVC!
         if let source = dataStore, var dest = details.router?.dataStore {

@@ -46,8 +46,10 @@ class Assembly {
         container.register(LoginPresenter.self) { _ in
             return LoginPresenter()
         }
-        container.register(LoginRouter.self) { _ in
-            return LoginRouter()
+        container.register(LoginRouter.self) { r in
+            let router = LoginRouter()
+            router.dataStore = r.resolve(LoginInteractor.self)
+            return router
         }
         container.register(LoginViewController.self) { r in
             let nibName = String(describing: LoginViewController.self)
@@ -67,8 +69,10 @@ class Assembly {
     }
     
     func setupDetailVC() {
-        container.register(DetailWorker.self) { _ in
-            return DetailWorker()
+        container.register(DetailWorker.self) { r in
+            let worker = DetailWorker()
+            worker.serviceManager = r.resolve(ServiceManager.self)
+            return worker
         }
         container.register(DetailInteractor.self) { r in
             let interactor = DetailInteractor()
@@ -78,8 +82,10 @@ class Assembly {
         container.register(DetailPresenter.self) { _ in
             return DetailPresenter()
         }
-        container.register(DetailRouter.self) { _ in
-            return DetailRouter()
+        container.register(DetailRouter.self) { r in
+            let router = DetailRouter()
+            router.dataStore = r.resolve(DetailInteractor.self)
+            return router
         }
         container.register(DetailsViewViewController.self) { r in
             let nibName = String(describing: DetailsViewViewController.self)

@@ -27,7 +27,6 @@ class LoginInteractor: LoginDataStore
   var worker: LoginWorker!
   var user: Login.UserAccount?
   
-  
 }
 
 extension LoginInteractor: LoginBusinessLogic {

@@ -14,7 +14,7 @@ import UIKit
 
 enum Login{
     
-    struct Request: APIRequest {
+    struct Request: APIRequestLogin {
         typealias Response = Login.Response
         
         var user: String?

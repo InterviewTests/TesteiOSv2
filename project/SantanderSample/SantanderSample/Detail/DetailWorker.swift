@@ -12,9 +12,22 @@
 
 import UIKit
 
-class DetailWorker
-{
-  func doSomeWork()
-  {
-  }
+class DetailWorker {
+    
+    var serviceManager: ServiceManager!
+    
+    func getDetails(request: Detail.Request, completion:@escaping(Result<Detail.Response,Error>)->()) {
+        serviceManager.get(request) { result in
+            switch result {
+            case .error(let error):
+                completion(.error(error))
+            case .success(let response):
+                if response.success {
+                    completion(.success(response))
+                } else {
+                    completion(.error(APIError.loginFail))
+                }
+            }
+        }
+    }
 }

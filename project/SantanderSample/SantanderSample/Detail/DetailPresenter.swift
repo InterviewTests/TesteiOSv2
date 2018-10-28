@@ -14,18 +14,50 @@ import UIKit
 
 protocol DetailPresentationLogic
 {
-  func presentSomething(response: Detail.Response)
+    func present(response: Detail.Response)
+    func presentUserInfo(response: Detail.Response)
 }
 
 class DetailPresenter: DetailPresentationLogic
 {
-  weak var viewController: DetailDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Detail.Response)
-  {
-    let viewModel = Detail.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: DetailDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentUserInfo(response: Detail.Response)
+    {
+        var viewModel = Detail.ViewModel()
+        viewModel.name = response.name
+        if let ac = response.agency, let ag = response.bankAccount {
+           
+            let mStr = NSMutableString(string: ac)
+            mStr.insert("-", at: ac.count-1)
+            mStr.insert(".", at: 2)
+            viewModel.account = "\(ag) / \(mStr)"
+        }
+        
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        if let bal = response.balance,
+            let str = formatter.string(from: NSNumber(value: bal*1000)) {
+            viewModel.balance = str
+        }
+        
+        DispatchQueue.main.async {
+            self.viewController?.displayUserInfo(viewModel: viewModel)
+        }
+        
+    }
+    
+    func present(response: Detail.Response)
+    {
+//        let viewModel = Detail.ViewModel()
+//        if response.success {
+//            viewController?.displaySomething(viewModel: viewModel)
+//        } else {
+//            viewController?.displaySomething(viewModel: viewModel)
+//        }
+        
+    }
 }

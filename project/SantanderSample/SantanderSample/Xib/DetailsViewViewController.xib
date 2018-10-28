@@ -46,11 +46,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcq-tb-uHS" customClass="TitleDetailView" customModule="SantanderSample" customModuleProvider="target">
-                            <rect key="frame" x="18" y="77" width="47" height="13"/>
+                            <rect key="frame" x="18" y="77" width="339" height="13"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="13" id="JD8-bY-PBM"/>
-                                <constraint firstAttribute="width" constant="47" id="Rkb-Ys-sZf"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BjV-QI-jhJ" customClass="InfoDetailView" customModule="SantanderSample" customModuleProvider="target">
@@ -61,11 +60,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzU-cC-phD" customClass="TitleDetailView" customModule="SantanderSample" customModuleProvider="target">
-                            <rect key="frame" x="18" y="146" width="47" height="13"/>
+                            <rect key="frame" x="18" y="146" width="339" height="13"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="13" id="guz-3Z-UdE"/>
-                                <constraint firstAttribute="width" constant="47" id="pd6-x6-xG2"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWm-V0-D7b" customClass="InfoDetailView" customModule="SantanderSample" customModuleProvider="target">
@@ -78,6 +76,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.23137254900000001" green="0.28627450980000002" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="Pcq-tb-uHS" firstAttribute="width" secondItem="BjV-QI-jhJ" secondAttribute="width" id="3iV-vH-pg9"/>
                         <constraint firstItem="Pcq-tb-uHS" firstAttribute="top" secondItem="x7R-JD-lEk" secondAttribute="bottom" constant="28" id="CeN-Jd-yeu"/>
                         <constraint firstItem="Rpl-bK-Zis" firstAttribute="top" secondItem="1Dp-Hf-Wmw" secondAttribute="top" constant="20" id="Dcg-Ki-9cl"/>
                         <constraint firstAttribute="trailing" secondItem="Rpl-bK-Zis" secondAttribute="trailing" constant="13" id="Dn5-Pf-MrA"/>
@@ -90,6 +89,7 @@
                         <constraint firstItem="BzU-cC-phD" firstAttribute="top" secondItem="BjV-QI-jhJ" secondAttribute="bottom" constant="21" id="eoS-Ld-Te6"/>
                         <constraint firstAttribute="height" constant="231" id="fw6-jz-g8C"/>
                         <constraint firstItem="BjV-QI-jhJ" firstAttribute="leading" secondItem="Pcq-tb-uHS" secondAttribute="leading" id="p06-AG-lUz"/>
+                        <constraint firstItem="BzU-cC-phD" firstAttribute="width" secondItem="rWm-V0-D7b" secondAttribute="width" id="u0P-CB-BoG"/>
                         <constraint firstItem="rWm-V0-D7b" firstAttribute="top" secondItem="BzU-cC-phD" secondAttribute="bottom" constant="6" id="uQg-LP-cY8"/>
                         <constraint firstItem="BjV-QI-jhJ" firstAttribute="top" secondItem="Pcq-tb-uHS" secondAttribute="bottom" constant="6" id="wwL-W9-yzg"/>
                         <constraint firstItem="Pcq-tb-uHS" firstAttribute="leading" secondItem="x7R-JD-lEk" secondAttribute="leading" id="ypa-3x-8XL"/>

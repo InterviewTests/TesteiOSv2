@@ -16,20 +16,33 @@ enum Detail {
   // MARK: Use cases
   
   
-    struct Request {
+    struct Request: APIRequestDetail {
+        typealias Response = Detail.Response
+        
+        var userId: Int?
     }
     
-    struct Response {
+    struct Response: Codable {
+        
+        var name: String?
+        var bankAccount: String?
+        var agency: String?
+        var balance: Double?
+        
         var statementList = [Statement]()
         var error: DetailError?
+        var success: Bool { return error?.code == nil}
     }
     
     struct DetailError: Codable {
-        var code: Int
-        var message: String
+        var code: Int?
+        var message: String?
     }
     
     struct ViewModel {
+        var name: String?
+        var account: String?
+        var balance: String?
     }
     
     struct Statement: Codable {

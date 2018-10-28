@@ -12,30 +12,56 @@
 
 import UIKit
 
-protocol DetailBusinessLogic
-{
-  func doSomething(request: Detail.Request)
+protocol DetailBusinessLogic{
+    func getDetails()
 }
 
-protocol DetailDataStore
-{
-  //var name: String { get set }
+protocol DetailDataStore{
+    var user: Login.UserAccount? { get set }
 }
 
 class DetailInteractor: DetailBusinessLogic, DetailDataStore
 {
-  var presenter: DetailPresentationLogic?
-  var worker: DetailWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Detail.Request)
-  {
-    worker = DetailWorker()
-    worker?.doSomeWork()
+    var presenter: DetailPresentationLogic?
+    var worker: DetailWorker?
     
-    let response = Detail.Response()
-    presenter?.presentSomething(response: response)
-  }
+    var user: Login.UserAccount?
+    var detail: [Detail.Statement] = []
+    
+    // MARK: Do something
+    
+    func getDetails() {
+        
+        var response = Detail.Response()
+        
+        response.name = self.user?.name
+        response.bankAccount = self.user?.bankAccount
+        response.agency = self.user?.agency
+        response.balance = self.user?.balance
+        
+        self.presenter?.presentUserInfo(response: response)
+        
+        
+        var request = Detail.Request()
+        request.userId = user?.userId
+        
+        worker?.getDetails(request: request, completion: { (result) in
+            switch result {
+            case .success(let resp):
+                
+                response.statementList = resp.statementList
+                
+                self.detail = resp.statementList
+                self.presenter?.present(response: response)
+                break
+            case .error(let error):
+                response.error = Detail.DetailError()
+                response.error?.code = 0
+                response.error?.message = error.localizedDescription
+                self.presenter?.present(response: response)
+                break
+            }
+        })
+        
+    }
 }

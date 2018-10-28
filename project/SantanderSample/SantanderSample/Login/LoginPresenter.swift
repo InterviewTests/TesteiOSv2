@@ -25,7 +25,7 @@ class LoginPresenter: LoginPresentationLogic
     
     func present(response: Login.Response) {
         var viewModel = Login.ViewModel()
-        if let msg = response.error?.message {
+        if !response.success, let msg = response.error?.message {
             viewModel.error = msg
         }
         DispatchQueue.main.async {

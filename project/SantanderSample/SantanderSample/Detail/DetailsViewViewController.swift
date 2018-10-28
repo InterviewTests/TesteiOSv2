@@ -10,15 +10,16 @@ import UIKit
 
 protocol DetailDisplayLogic: class
 {
-    func displaySomething(viewModel: Detail.ViewModel)
+    func displayUserInfo(viewModel: Detail.ViewModel)
+    func displayDeatil(viewModel: Detail.ViewModel)
 }
 
 class DetailsViewViewController: UIViewController {
 
     let cellIdentifier = String(describing: DetailCell.self)
     
-    var interactor: DetailBusinessLogic?
-    var router: (NSObjectProtocol & DetailRoutingLogic & DetailDataPassing)?
+    var interactor: (DetailBusinessLogic & DetailDataStore)!
+    var router: (NSObjectProtocol & DetailRoutingLogic & DetailDataPassing)!
     
     
     // MARK: View lifecycle
@@ -26,7 +27,7 @@ class DetailsViewViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        print("-----  load ----")
+        interactor?.getDetails()
     }
     
     // MARK: Do something
@@ -40,21 +41,34 @@ class DetailsViewViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var nameView: InfoDetailView!
+    @IBOutlet weak var nameView: InfoDetailView! {
+        didSet{
+            nameView.infoLabel.text = ""
+        }
+    }
     
     @IBOutlet weak var accountTitleView: TitleDetailView! {
         didSet {
             accountTitleView.titleLabel.text = "Conta"
         }
     }
-    @IBOutlet weak var accountInfoView: InfoDetailView!
+    @IBOutlet weak var accountInfoView: InfoDetailView! {
+        didSet{
+            accountInfoView.infoLabel.text = ""
+        }
+    }
     
     @IBOutlet weak var balanceTitleView: TitleDetailView! {
         didSet {
             balanceTitleView.titleLabel.text = "Saldo"
         }
     }
-    @IBOutlet weak var balnceInfoView: InfoDetailView!
+    
+    @IBOutlet weak var balnceInfoView: InfoDetailView!{
+        didSet{
+            balnceInfoView.infoLabel.text = ""
+        }
+    }
     
     @IBOutlet weak var entriesCollectionView: UICollectionView! {
         didSet {
@@ -72,10 +86,16 @@ class DetailsViewViewController: UIViewController {
 
 }
 
-extension DetailsViewViewController: DetailDisplayLogic{
-    func displaySomething(viewModel: Detail.ViewModel) {
-        
+extension DetailsViewViewController: DetailDisplayLogic {
+    func displayUserInfo(viewModel: Detail.ViewModel) {
+        nameView.infoLabel.text = viewModel.name
+        accountInfoView.infoLabel.text = viewModel.account
+        balnceInfoView.infoLabel.text = viewModel.balance
     }
+    
+    func displayDeatil(viewModel: Detail.ViewModel) {
+    }
+    
 }
 
 
@@ -93,6 +113,4 @@ extension DetailsViewViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-    
 }

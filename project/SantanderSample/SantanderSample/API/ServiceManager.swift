@@ -8,17 +8,22 @@
 
 import Foundation
 
-protocol APIRequest: Encodable {
+protocol APIRequestLogin: Encodable {
     associatedtype Response: Decodable
     var user: String? {get}
     var password: String? {get}
+}
+
+protocol APIRequestDetail: Encodable {
+    associatedtype Response: Decodable
+    var userId: Int? {get}
 }
 
 protocol APIResponse: Decodable {
 }
 
 enum APIError: Error {
-    case missingInfo
+    case missingInfo, loginFail
 }
 
 enum Result<S,F> {
@@ -27,7 +32,7 @@ enum Result<S,F> {
 }
 
 protocol APIClient {
-    func send<T: APIRequest>(
+    func send<T: APIRequestLogin>(
         _ request: T,
         completion: @escaping (Result<T, Error>)->()
     )
@@ -38,7 +43,10 @@ class ServiceManager {
     private let loginUrl
         = URL(string: "https://bank-app-test.herokuapp.com/api/login/")!
     
-    public func login<T: APIRequest>(
+    private let detailUrl
+        = URL(string: "https://bank-app-test.herokuapp.com/api/statements/")!
+    
+    public func login<T: APIRequestLogin>(
         _ request: T, completion: @escaping (Result<T.Response, Error>)->()) {
         
         let headers = [
@@ -66,14 +74,43 @@ class ServiceManager {
                 completion(.error(error!))
                 return
             }
-            if let resp = response {
-                print(resp)
-            }
+//            if let resp = response {
+//                print(resp)
+//            }
             do {
                 let object = try T.Response.decoder(data: data)
                 completion(.success(object))
             } catch {
                 completion(.error(error))   
+            }
+        }
+        
+        task.resume()
+        
+    }
+    
+    public func get<T: APIRequestDetail>(
+        _ request: T, completion: @escaping (Result<T.Response, Error>)->()) {
+        
+        let session = URLSession.shared
+        
+        let id = request.userId != nil ? "\(request.userId!)" : ""
+        let url = detailUrl.appendingPathComponent(id)
+        
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.error(error!))
+                return
+            }
+//            if let resp = response {
+//                print(resp)
+//            }
+            do {
+                let object = try T.Response.decoder(data: data)
+                completion(.success(object))
+            } catch {
+                completion(.error(error))
             }
         }
         
