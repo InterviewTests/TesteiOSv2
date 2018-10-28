@@ -34,4 +34,9 @@ class StringUtilsTests: XCTestCase {
         let str = String.formatCurrencyLabel(value: 3452.98)
         XCTAssert(str == "R$ 3452.98")
     }
+    
+    func test_dateFromCustomString(){
+        let str = String.dateFromCustomString(customString: "2018-12-10")
+        XCTAssert(str == "10/12/2018")
+    }
 }

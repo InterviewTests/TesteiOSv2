@@ -26,7 +26,7 @@ class StatementCell: UITableViewCell {
     func set(statement: StatementListScene.GetStatements.ViewModel.Statements) {
         self.titleLabel.text = statement.title
         self.descriptionLabel.text = statement.description
-        self.dateLabel.text = statement.date
+        self.dateLabel.text = String.dateFromCustomString(customString: statement.date)
         
         if statement.value < 0 {
             valueLabel.textColor = UIColor.red

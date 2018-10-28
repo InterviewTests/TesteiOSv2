@@ -89,4 +89,14 @@ extension String{
         let val = String(format: "R$ %.02f", value)
         return val
     }
+    
+    static func dateFromCustomString(customString: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: customString) // replace Date String
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let now = dateFormatter.string(from: date!)
+        
+        return now
+    }
 }
