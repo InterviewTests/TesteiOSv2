@@ -77,6 +77,9 @@ extension String{
     }
     
     static func isValidPassword(pswd: String) -> Bool {
+        //pelo menos 1 maiuscula
+        //pelo menos 1 alfanumerico
+        //pelo menos 1 caractere especial
         let regex = "^(?=.*?[A-Z])(?=.*?[a-z[0-9]])(?=.*?[#?!@$%^&*-.])[[A-Za-z[0-9]]#?!@$%^&*-.]{0,}$"
         let pswdTest = NSPredicate(format:"SELF MATCHES %@", regex)
         return pswdTest.evaluate(with: pswd)
