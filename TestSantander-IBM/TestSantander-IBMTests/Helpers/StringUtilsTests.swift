@@ -29,4 +29,9 @@ class StringUtilsTests: XCTestCase {
         let success = String.isValidCPF(cpf: cpf)
         XCTAssertTrue(success)
     }
+    
+    func test_FormatCurrencyLabel(){
+        let str = String.formatCurrencyLabel(value: 3452.98)
+        XCTAssert(str == "R$ 3452.98")
+    }
 }
