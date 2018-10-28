@@ -30,10 +30,20 @@ class LoginInteractor: LoginInteractorInput, LoginDataSource, LoginDataDestinati
     var output: LoginInteractorOutput?
     var userAccount: UserAccount!
 
+    var networkManager: NetworkManager!
+
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: Business logic
 
     func postLogin(request: LoginScene.PostLogin.Request, completionHandler: @escaping (Bool, String?) -> Void){
-        HTTPClient.shared.fetchGenericData(urlString: "https://bank-app-test.herokuapp.com/api/login", method: "POST", params: ["user": request.user, "password": request.password]) { (api: ApiResponse?, err) in
+        
+        networkManager.fetchGenericData(req: request) { (api: ApiResponse?, err) in            
             if err != nil {
                 completionHandler(false, err)
             } else {

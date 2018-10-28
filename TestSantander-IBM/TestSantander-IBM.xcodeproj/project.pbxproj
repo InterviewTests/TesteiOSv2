@@ -14,6 +14,18 @@
 		261293E821855BE6004F7512 /* StatementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A487218409D10044D357 /* StatementCell.swift */; };
 		261293E921855BFB004F7512 /* StatementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B5A488218409D10044D357 /* StatementCell.xib */; };
 		261293EB21855DCA004F7512 /* StatementCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261293EA21855DCA004F7512 /* StatementCellTests.swift */; };
+		26650C9F2185688B002B4969 /* LoginCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650C9E2185688B002B4969 /* LoginCellTests.swift */; };
+		26650CA121856F3C002B4969 /* UserDefaultsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CA021856F3C002B4969 /* UserDefaultsUtils.swift */; };
+		26650CA321857029002B4969 /* UserDefaultsUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CA221857029002B4969 /* UserDefaultsUtilsTests.swift */; };
+		26650CAA21857FDD002B4969 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CA921857FDD002B4969 /* HTTPMethod.swift */; };
+		26650CAC21858055002B4969 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CAB21858055002B4969 /* HTTPTask.swift */; };
+		26650CAE218580F7002B4969 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CAD218580F7002B4969 /* ParameterEncoding.swift */; };
+		26650CB2218581A7002B4969 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CB1218581A7002B4969 /* URLParameterEncoder.swift */; };
+		26650CB421858354002B4969 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CB321858354002B4969 /* JSONParameterEncoder.swift */; };
+		26650CB82185847F002B4969 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CB72185847F002B4969 /* Router.swift */; };
+		26650CBA2185895C002B4969 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CB92185895C002B4969 /* EndPointType.swift */; };
+		26650CBC21858A19002B4969 /* SantanderEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CBB21858A19002B4969 /* SantanderEndPoint.swift */; };
+		26650CBE21858A9E002B4969 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26650CBD21858A9E002B4969 /* NetworkManager.swift */; };
 		26B5A43C2183EF020044D357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A43B2183EF020044D357 /* AppDelegate.swift */; };
 		26B5A4412183EF020044D357 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B5A43F2183EF020044D357 /* Main.storyboard */; };
 		26B5A4432183EF040044D357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B5A4422183EF040044D357 /* Assets.xcassets */; };
@@ -34,7 +46,6 @@
 		26B5A4792183FC9F0044D357 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A4782183FC9F0044D357 /* ApiResponse.swift */; };
 		26B5A47B2183FCB10044D357 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A47A2183FCB10044D357 /* ErrorModel.swift */; };
 		26B5A47D2183FCC50044D357 /* Statements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A47C2183FCC50044D357 /* Statements.swift */; };
-		26B5A4802183FD040044D357 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A47F2183FD040044D357 /* HTTPClient.swift */; };
 		26B5A485218400EE0044D357 /* AccountDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A483218400EE0044D357 /* AccountDetailsCell.swift */; };
 		26B5A486218400EE0044D357 /* AccountDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B5A484218400EE0044D357 /* AccountDetailsCell.xib */; };
 		26B5A48C21840A950044D357 /* StatementListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A48B21840A950044D357 /* StatementListConfigurator.swift */; };
@@ -67,6 +78,18 @@
 		261293E221854A81004F7512 /* AccountDetailsCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsCellTests.swift; sourceTree = "<group>"; };
 		261293E621855B29004F7512 /* StatementListViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StatementListViewController+UITableView.swift"; sourceTree = "<group>"; };
 		261293EA21855DCA004F7512 /* StatementCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCellTests.swift; sourceTree = "<group>"; };
+		26650C9E2185688B002B4969 /* LoginCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCellTests.swift; sourceTree = "<group>"; };
+		26650CA021856F3C002B4969 /* UserDefaultsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtils.swift; sourceTree = "<group>"; };
+		26650CA221857029002B4969 /* UserDefaultsUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtilsTests.swift; sourceTree = "<group>"; };
+		26650CA921857FDD002B4969 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		26650CAB21858055002B4969 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		26650CAD218580F7002B4969 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		26650CB1218581A7002B4969 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		26650CB321858354002B4969 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		26650CB72185847F002B4969 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		26650CB92185895C002B4969 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		26650CBB21858A19002B4969 /* SantanderEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SantanderEndPoint.swift; sourceTree = "<group>"; };
+		26650CBD21858A9E002B4969 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		26B5A4382183EF020044D357 /* TestSantander-IBM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestSantander-IBM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B5A43B2183EF020044D357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26B5A4402183EF020044D357 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,7 +114,6 @@
 		26B5A4782183FC9F0044D357 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		26B5A47A2183FCB10044D357 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		26B5A47C2183FCC50044D357 /* Statements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statements.swift; sourceTree = "<group>"; };
-		26B5A47F2183FD040044D357 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		26B5A483218400EE0044D357 /* AccountDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsCell.swift; sourceTree = "<group>"; };
 		26B5A484218400EE0044D357 /* AccountDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountDetailsCell.xib; sourceTree = "<group>"; };
 		26B5A487218409D10044D357 /* StatementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCell.swift; sourceTree = "<group>"; };
@@ -265,7 +287,15 @@
 		26B5A47E2183FCF20044D357 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				26B5A47F2183FD040044D357 /* HTTPClient.swift */,
+				26650CA921857FDD002B4969 /* HTTPMethod.swift */,
+				26650CAB21858055002B4969 /* HTTPTask.swift */,
+				26650CAD218580F7002B4969 /* ParameterEncoding.swift */,
+				26650CB1218581A7002B4969 /* URLParameterEncoder.swift */,
+				26650CB321858354002B4969 /* JSONParameterEncoder.swift */,
+				26650CB72185847F002B4969 /* Router.swift */,
+				26650CB92185895C002B4969 /* EndPointType.swift */,
+				26650CBB21858A19002B4969 /* SantanderEndPoint.swift */,
+				26650CBD21858A9E002B4969 /* NetworkManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -420,27 +450,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26650CBE21858A9E002B4969 /* NetworkManager.swift in Sources */,
 				261293E821855BE6004F7512 /* StatementCell.swift in Sources */,
 				26B5A47B2183FCB10044D357 /* ErrorModel.swift in Sources */,
 				26B5A46A2183FA070044D357 /* LoginConfigurator.swift in Sources */,
 				26B5A46E2183FA4A0044D357 /* LoginModels.swift in Sources */,
 				26B5A4662183F7780044D357 /* StringUtils.swift in Sources */,
 				26B5A4702183FA5F0044D357 /* LoginPresenter.swift in Sources */,
+				26650CB2218581A7002B4969 /* URLParameterEncoder.swift in Sources */,
 				26B5A46C2183FA2F0044D357 /* LoginInteractor.swift in Sources */,
 				26B5A4792183FC9F0044D357 /* ApiResponse.swift in Sources */,
 				26B5A47D2183FCC50044D357 /* Statements.swift in Sources */,
 				26B5A4742183FA970044D357 /* LoginViewController+UITableView.swift in Sources */,
 				26B5A49021840AB50044D357 /* StatementListRouter.swift in Sources */,
+				26650CAE218580F7002B4969 /* ParameterEncoding.swift in Sources */,
 				26B5A4642183F5E30044D357 /* TextField.swift in Sources */,
-				26B5A4802183FD040044D357 /* HTTPClient.swift in Sources */,
+				26650CB82185847F002B4969 /* Router.swift in Sources */,
+				26650CBC21858A19002B4969 /* SantanderEndPoint.swift in Sources */,
 				261293E721855B29004F7512 /* StatementListViewController+UITableView.swift in Sources */,
 				26B5A485218400EE0044D357 /* AccountDetailsCell.swift in Sources */,
+				26650CBA2185895C002B4969 /* EndPointType.swift in Sources */,
+				26650CAA21857FDD002B4969 /* HTTPMethod.swift in Sources */,
 				26B5A49221840AC10044D357 /* StatementListModels.swift in Sources */,
 				26B5A48E21840AA40044D357 /* StatementListInteractor.swift in Sources */,
 				26B5A48C21840A950044D357 /* StatementListConfigurator.swift in Sources */,
 				26B5A43C2183EF020044D357 /* AppDelegate.swift in Sources */,
 				26B5A4772183FC850044D357 /* UserAccount.swift in Sources */,
 				26B5A4682183F9A80044D357 /* LoginViewController.swift in Sources */,
+				26650CB421858354002B4969 /* JSONParameterEncoder.swift in Sources */,
+				26650CAC21858055002B4969 /* HTTPTask.swift in Sources */,
 				26B5A49A218421360044D357 /* UIViewController.swift in Sources */,
 				26B5A49621840AE60044D357 /* StatementListViewController.swift in Sources */,
 				26B5A4722183FA760044D357 /* LoginRouter.swift in Sources */,
