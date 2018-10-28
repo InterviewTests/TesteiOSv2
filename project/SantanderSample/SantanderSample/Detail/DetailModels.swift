@@ -45,6 +45,13 @@ enum Detail {
         var balance: String?
     }
     
+    struct StatementViewModel {
+        var title: String?
+        var desc: String?
+        var date: String?
+        var value: String?
+    }
+    
     struct Statement: Codable {
         var title: String
         var desc: String

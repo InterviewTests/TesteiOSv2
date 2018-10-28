@@ -12,6 +12,7 @@ protocol DetailDisplayLogic: class
 {
     func displayUserInfo(viewModel: Detail.ViewModel)
     func displayDetail(viewModel: Detail.ViewModel)
+    var interactor: (DetailBusinessLogic & DetailDataStore)! { get set }
 }
 
 class DetailsViewViewController: UIViewController {
@@ -118,7 +119,7 @@ extension DetailsViewViewController: UICollectionViewDataSource {
         cell.dateLabel.text = interactor.detail[indexPath.row].date
         cell.infoLabel.text = interactor.detail[indexPath.row].desc
         cell.paymentLabel.text = interactor.detail[indexPath.row].title
-        cell.priceLabel.text = interactor.detail[indexPath.row].value.currency
+        cell.priceLabel.text = interactor.detail[indexPath.row].value
         return cell
     }
 }

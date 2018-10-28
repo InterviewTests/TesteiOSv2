@@ -19,7 +19,7 @@ protocol DetailBusinessLogic{
 
 protocol DetailDataStore{
     var user: Login.UserAccount? { get set }
-    var detail: [Detail.Statement] {get}
+    var detail: [Detail.StatementViewModel] { get set }
 }
 
 class DetailInteractor: DetailBusinessLogic, DetailDataStore
@@ -28,7 +28,7 @@ class DetailInteractor: DetailBusinessLogic, DetailDataStore
     var worker: DetailWorker?
     
     var user: Login.UserAccount?
-    var detail: [Detail.Statement] = []
+    var detail: [Detail.StatementViewModel] = []
     
     // MARK: Do something
     
@@ -57,8 +57,6 @@ class DetailInteractor: DetailBusinessLogic, DetailDataStore
             case .success(let resp):
                 
                 response.statementList = resp.statementList
-                
-                self.detail = resp.statementList
                 self.presenter?.present(response: response)
                 break
             case .error(let error):

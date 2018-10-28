@@ -48,6 +48,20 @@ class DetailPresenter: DetailPresentationLogic
     
     func present(response: Detail.Response)
     {
+        let sts
+            = response.statementList.map {
+                (st) -> Detail.StatementViewModel in
+                var stVM = Detail.StatementViewModel()
+                stVM.desc = st.desc
+                stVM.title = st.title
+                stVM.value = st.value.currency
+                
+                let date = st.date.toDate(format: .apiDate)
+                stVM.date = date.toString(format: .displayDate)
+                
+                return stVM
+        }
+        viewController?.interactor.detail = sts
         let viewModel = Detail.ViewModel()
         DispatchQueue.main.async {
             self.viewController?.displayDetail(viewModel: viewModel)
