@@ -48,9 +48,22 @@
 		18572BBB21853BBA008A196B /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BBA21853BB9008A196B /* Double.swift */; };
 		18572BD121859DCD008A196B /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BD021859DCD008A196B /* KeychainWrapper.swift */; };
 		18572BD32185B26F008A196B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BD22185B26F008A196B /* DateExtensions.swift */; };
+		18572BDB2185C786008A196B /* SantanderSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18572BDA2185C786008A196B /* SantanderSampleTests.swift */; };
+		1CD772821F4866A1A47D88E7 /* Pods_SantanderSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784D67B09F33BCDA6A64F1E /* Pods_SantanderSampleTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		18572BDD2185C786008A196B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18572B282183B7C1008A196B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18572B2F2183B7C1008A196B;
+			remoteInfo = SantanderSample;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		132BC6C4AE6030185D637C7E /* Pods-SantanderSampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderSampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SantanderSampleTests/Pods-SantanderSampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		18572B302183B7C1008A196B /* SantanderSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SantanderSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18572B332183B7C1008A196B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18572B3A2183B7C2008A196B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,9 +106,14 @@
 		18572BBA21853BB9008A196B /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		18572BD021859DCD008A196B /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		18572BD22185B26F008A196B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		18572BD82185C786008A196B /* SantanderSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SantanderSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18572BDA2185C786008A196B /* SantanderSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SantanderSampleTests.swift; sourceTree = "<group>"; };
+		18572BDC2185C786008A196B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46066C2E03FD947BBA38B203 /* Pods_SantanderSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SantanderSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6022D23F24B537ADD8DE3832 /* Pods-SantanderSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SantanderSample/Pods-SantanderSample.debug.xcconfig"; sourceTree = "<group>"; };
+		B1BF53DF74E5403D66EEFC86 /* Pods-SantanderSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderSampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SantanderSampleTests/Pods-SantanderSampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		B98CA34523E9FF5D6D7EA1A0 /* Pods-SantanderSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SantanderSample/Pods-SantanderSample.release.xcconfig"; sourceTree = "<group>"; };
+		D784D67B09F33BCDA6A64F1E /* Pods_SantanderSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SantanderSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +125,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18572BD52185C786008A196B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CD772821F4866A1A47D88E7 /* Pods_SantanderSampleTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -114,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				46066C2E03FD947BBA38B203 /* Pods_SantanderSample.framework */,
+				D784D67B09F33BCDA6A64F1E /* Pods_SantanderSampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				18572B322183B7C1008A196B /* SantanderSample */,
+				18572BD92185C786008A196B /* SantanderSampleTests */,
 				18572B312183B7C1008A196B /* Products */,
 				76F735192E077126079D534D /* Pods */,
 				14B854DFEB755AE7B24BFCC8 /* Frameworks */,
@@ -132,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				18572B302183B7C1008A196B /* SantanderSample.app */,
+				18572BD82185C786008A196B /* SantanderSampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -256,11 +285,22 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		18572BD92185C786008A196B /* SantanderSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				18572BDA2185C786008A196B /* SantanderSampleTests.swift */,
+				18572BDC2185C786008A196B /* Info.plist */,
+			);
+			path = SantanderSampleTests;
+			sourceTree = "<group>";
+		};
 		76F735192E077126079D534D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				6022D23F24B537ADD8DE3832 /* Pods-SantanderSample.debug.xcconfig */,
 				B98CA34523E9FF5D6D7EA1A0 /* Pods-SantanderSample.release.xcconfig */,
+				132BC6C4AE6030185D637C7E /* Pods-SantanderSampleTests.debug.xcconfig */,
+				B1BF53DF74E5403D66EEFC86 /* Pods-SantanderSampleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -287,6 +327,26 @@
 			productReference = 18572B302183B7C1008A196B /* SantanderSample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		18572BD72185C786008A196B /* SantanderSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18572BE12185C786008A196B /* Build configuration list for PBXNativeTarget "SantanderSampleTests" */;
+			buildPhases = (
+				D7FE7CDAD8DD7E4AFDBCDE41 /* [CP] Check Pods Manifest.lock */,
+				18572BD42185C786008A196B /* Sources */,
+				18572BD52185C786008A196B /* Frameworks */,
+				18572BD62185C786008A196B /* Resources */,
+				F9968371459CC4719893A5AE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18572BDE2185C786008A196B /* PBXTargetDependency */,
+			);
+			name = SantanderSampleTests;
+			productName = SantanderSampleTests;
+			productReference = 18572BD82185C786008A196B /* SantanderSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -299,6 +359,10 @@
 				TargetAttributes = {
 					18572B2F2183B7C1008A196B = {
 						CreatedOnToolsVersion = 10.0;
+					};
+					18572BD72185C786008A196B = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 18572B2F2183B7C1008A196B;
 					};
 				};
 			};
@@ -316,6 +380,7 @@
 			projectRoot = "";
 			targets = (
 				18572B2F2183B7C1008A196B /* SantanderSample */,
+				18572BD72185C786008A196B /* SantanderSampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -336,6 +401,13 @@
 				18572B762183BBB3008A196B /* LoginButtonView.xib in Resources */,
 				18572B6E2183BB34008A196B /* InputTextView.xib in Resources */,
 				18572B912183EE66008A196B /* InfoDetailView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18572BD62185C786008A196B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +462,54 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SantanderSample/Pods-SantanderSample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D7FE7CDAD8DD7E4AFDBCDE41 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SantanderSampleTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9968371459CC4719893A5AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SantanderSampleTests/Pods-SantanderSampleTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SantanderSampleTests/Pods-SantanderSampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -429,7 +549,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18572BD42185C786008A196B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18572BDB2185C786008A196B /* SantanderSampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18572BDE2185C786008A196B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18572B2F2183B7C1008A196B /* SantanderSample */;
+			targetProxy = 18572BDD2185C786008A196B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		18572B3C2183B7C2008A196B /* LaunchScreen.storyboard */ = {
@@ -599,6 +735,48 @@
 			};
 			name = Release;
 		};
+		18572BDF2185C786008A196B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 132BC6C4AE6030185D637C7E /* Pods-SantanderSampleTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KR99UBUHUT;
+				INFOPLIST_FILE = SantanderSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.organization.SantanderSampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SantanderSample.app/SantanderSample";
+			};
+			name = Debug;
+		};
+		18572BE02185C786008A196B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1BF53DF74E5403D66EEFC86 /* Pods-SantanderSampleTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KR99UBUHUT;
+				INFOPLIST_FILE = SantanderSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.organization.SantanderSampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SantanderSample.app/SantanderSample";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -616,6 +794,15 @@
 			buildConfigurations = (
 				18572B432183B7C2008A196B /* Debug */,
 				18572B442183B7C2008A196B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18572BE12185C786008A196B /* Build configuration list for PBXNativeTarget "SantanderSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18572BDF2185C786008A196B /* Debug */,
+				18572BE02185C786008A196B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
