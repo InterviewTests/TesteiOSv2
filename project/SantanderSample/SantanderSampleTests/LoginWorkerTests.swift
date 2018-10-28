@@ -48,6 +48,7 @@ class LogingWorkerTests: QuickSpec {
             expect(lw.validateId("admin@admin.com.ki")).to(beTrue())
             expect(lw.validateId("7777uuuuu")).notTo(beTrue())
             expect(lw.validateId("awewe@l")).notTo(beTrue())
+            expect(lw.validateId("373333333339")).notTo(beTrue())
             expect(lw.validateId("@lrrttrert")).notTo(beTrue())
             expect(lw.validateId("")).notTo(beTrue())
             expect(lw.validateId(nil)).notTo(beTrue())
