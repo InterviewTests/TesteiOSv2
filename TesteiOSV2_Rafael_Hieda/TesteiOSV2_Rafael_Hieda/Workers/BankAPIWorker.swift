@@ -13,8 +13,8 @@ import AlamofireObjectMapper
 protocol BankWorkerDataProtocol
 {
     var baseUrl : String {get set}
-    func login(_ userLogin : UserLogin) -> UserResponse
-    func getAccountBalance(_ userResponse : UserResponse) -> AccountBalance
+    func login(_ userLogin : UserLogin) -> UserResponse?
+    func getAccountBalance(_ userResponse : UserResponse) -> AccountBalance?
 }
 
 class BankAPIWorker: BankWorkerDataProtocol {
