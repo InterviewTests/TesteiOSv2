@@ -34,7 +34,7 @@ class AccountBalanceViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,6 +45,8 @@ class AccountBalanceViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Recentes"
     }
+    
+    
     
 
     /*
