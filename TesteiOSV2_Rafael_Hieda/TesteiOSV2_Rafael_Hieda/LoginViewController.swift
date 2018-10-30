@@ -15,6 +15,8 @@ import UIKit
 protocol LoginDisplayLogic: class
 {
   func displaySomething(viewModel: Login.Something.ViewModel)
+  func storeUserResponseCredentials(viewModel: UserAccount)
+  
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -65,14 +67,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   }
   
   // MARK: View lifecycle
-    
-  @IBOutlet weak var usernameTextField: UITextField!
-
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-    
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        doSomething()
   }
   
   // MARK: Do something
@@ -89,4 +86,43 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   {
     //nameTextField.text = viewModel.name
   }
+    
+    //MARK : ViewController Events and Outlets
+    @IBOutlet weak var usernameTextField: UITextField!
+    
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    //Metodo de login
+    @IBAction func accountSignIn(_ sender: Any) {
+        
+        if usernameTextField.text != nil
+        {
+            if passwordTextField.text != nil{
+                let login = UserLogin(usernameTextField.text!, password: passwordTextField.text!)
+                if login.hasValidPassword()
+                {
+                    interactor?.login(login)
+                }
+                else {
+                    showAlert()
+                }
+            }
+        }
+    }
+    
+    func storeUserResponseCredentials(viewModel: UserAccount) {
+        
+        userAccount = viewModel
+        
+    }
+    
+    var userAccount : UserAccount?
+    
+    func showAlert()
+    {
+        let alert = UIAlertController(title: "Alerta", message: "Senha Incorreta!", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }

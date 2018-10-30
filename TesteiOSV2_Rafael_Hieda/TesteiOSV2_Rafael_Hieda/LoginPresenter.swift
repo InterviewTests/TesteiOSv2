@@ -15,6 +15,7 @@ import UIKit
 protocol LoginPresentationLogic
 {
   func presentSomething(response: Login.Something.Response)
+    func presentUserData(_ response : UserResponse)
 }
 
 class LoginPresenter: LoginPresentationLogic
@@ -28,4 +29,12 @@ class LoginPresenter: LoginPresentationLogic
     let viewModel = Login.Something.ViewModel()
     viewController?.displaySomething(viewModel: viewModel)
   }
+    
+    func presentUserData(_ response : UserResponse)
+    {
+        if let userAccount = response.userAccount
+        {
+            viewController?.storeUserResponseCredentials(viewModel: userAccount)
+        }
+    }
 }

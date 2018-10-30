@@ -10,6 +10,12 @@
 		428EED0B1BA835E8648EEAAB /* Pods_TesteiOSV2_Rafael_HiedaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AD012E677689BBBF07FFA08 /* Pods_TesteiOSV2_Rafael_HiedaUITests.framework */; };
 		6836474E6D100AABABDE3BF5 /* Pods_TesteiOSV2_Rafael_HiedaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BF7992077FAFB37DB6FEB0 /* Pods_TesteiOSV2_Rafael_HiedaTests.framework */; };
 		CB3DF4B6F8B318CA0B2F85AE /* Pods_TesteiOSV2_Rafael_Hieda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502A6B6DA1B1C62A8822490F /* Pods_TesteiOSV2_Rafael_Hieda.framework */; };
+		E32FD3CA2187D58500C04054 /* UserAccountBalancePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FD3C42187D58500C04054 /* UserAccountBalancePresenter.swift */; };
+		E32FD3CB2187D58500C04054 /* UserAccountBalanceWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FD3C52187D58500C04054 /* UserAccountBalanceWorker.swift */; };
+		E32FD3CC2187D58500C04054 /* UserAccountBalanceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FD3C62187D58500C04054 /* UserAccountBalanceRouter.swift */; };
+		E32FD3CD2187D58500C04054 /* UserAccountBalanceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FD3C72187D58500C04054 /* UserAccountBalanceModels.swift */; };
+		E32FD3CE2187D58500C04054 /* UserAccountBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FD3C82187D58500C04054 /* UserAccountBalanceViewController.swift */; };
+		E32FD3CF2187D58500C04054 /* UserAccountBalanceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FD3C92187D58500C04054 /* UserAccountBalanceInteractor.swift */; };
 		E330F90A2184B0C800CDEA48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330F9092184B0C800CDEA48 /* AppDelegate.swift */; };
 		E330F90F2184B0C800CDEA48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E330F90D2184B0C800CDEA48 /* Main.storyboard */; };
 		E330F9122184B0C800CDEA48 /* TesteiOSV2_Rafael_Hieda.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E330F9102184B0C800CDEA48 /* TesteiOSV2_Rafael_Hieda.xcdatamodeld */; };
@@ -33,7 +39,6 @@
 		E3D077B921865325001206FF /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D077B321865325001206FF /* LoginModels.swift */; };
 		E3D077BA21865325001206FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D077B421865325001206FF /* LoginViewController.swift */; };
 		E3D077BB21865325001206FF /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D077B521865325001206FF /* LoginInteractor.swift */; };
-		E3D077C12186B38D001206FF /* AccountBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D077C02186B38D001206FF /* AccountBalanceViewController.swift */; };
 		E3D077C32186B708001206FF /* RegistryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D077C22186B708001206FF /* RegistryCell.xib */; };
 		E3D077C52186BF50001206FF /* RegistryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D077C42186BF50001206FF /* RegistryTableViewCell.swift */; };
 		E3D077C92186CF29001206FF /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D077C82186CF29001206FF /* CustomView.swift */; };
@@ -66,6 +71,12 @@
 		BA2436C37D206D4D75BC817E /* Pods-TesteiOSV2_Rafael_HiedaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSV2_Rafael_HiedaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSV2_Rafael_HiedaUITests/Pods-TesteiOSV2_Rafael_HiedaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BF702B1BF33A16B416D38F48 /* Pods-TesteiOSV2_Rafael_HiedaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSV2_Rafael_HiedaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSV2_Rafael_HiedaTests/Pods-TesteiOSV2_Rafael_HiedaTests.release.xcconfig"; sourceTree = "<group>"; };
 		C2BF7992077FAFB37DB6FEB0 /* Pods_TesteiOSV2_Rafael_HiedaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSV2_Rafael_HiedaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E32FD3C42187D58500C04054 /* UserAccountBalancePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountBalancePresenter.swift; sourceTree = "<group>"; };
+		E32FD3C52187D58500C04054 /* UserAccountBalanceWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountBalanceWorker.swift; sourceTree = "<group>"; };
+		E32FD3C62187D58500C04054 /* UserAccountBalanceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountBalanceRouter.swift; sourceTree = "<group>"; };
+		E32FD3C72187D58500C04054 /* UserAccountBalanceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountBalanceModels.swift; sourceTree = "<group>"; };
+		E32FD3C82187D58500C04054 /* UserAccountBalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountBalanceViewController.swift; sourceTree = "<group>"; };
+		E32FD3C92187D58500C04054 /* UserAccountBalanceInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountBalanceInteractor.swift; sourceTree = "<group>"; };
 		E330F9062184B0C800CDEA48 /* TesteiOSV2_Rafael_Hieda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSV2_Rafael_Hieda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E330F9092184B0C800CDEA48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E330F90E2184B0C800CDEA48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,7 +108,6 @@
 		E3D077B521865325001206FF /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginInteractor.swift; path = TesteiOSV2_Rafael_Hieda/LoginInteractor.swift; sourceTree = SOURCE_ROOT; };
 		E3D077BE21866FD0001206FF /* logout 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout 2.png"; sourceTree = "<group>"; };
 		E3D077BF21866FD1001206FF /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
-		E3D077C02186B38D001206FF /* AccountBalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBalanceViewController.swift; sourceTree = "<group>"; };
 		E3D077C22186B708001206FF /* RegistryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistryCell.xib; sourceTree = "<group>"; };
 		E3D077C42186BF50001206FF /* RegistryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryTableViewCell.swift; sourceTree = "<group>"; };
 		E3D077C82186CF29001206FF /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
@@ -238,7 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D077912186430A001206FF /* Login */,
-				E3D0779021864304001206FF /* Balance */,
+				E3D0779021864304001206FF /* UserAccountBalance */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -260,23 +270,28 @@
 			path = Workers;
 			sourceTree = "<group>";
 		};
-		E3D0779021864304001206FF /* Balance */ = {
+		E3D0779021864304001206FF /* UserAccountBalance */ = {
 			isa = PBXGroup;
 			children = (
-				E3D077C02186B38D001206FF /* AccountBalanceViewController.swift */,
 				E3D077C62186BF57001206FF /* Cell */,
+				E32FD3C42187D58500C04054 /* UserAccountBalancePresenter.swift */,
+				E32FD3C52187D58500C04054 /* UserAccountBalanceWorker.swift */,
+				E32FD3C62187D58500C04054 /* UserAccountBalanceRouter.swift */,
+				E32FD3C72187D58500C04054 /* UserAccountBalanceModels.swift */,
+				E32FD3C82187D58500C04054 /* UserAccountBalanceViewController.swift */,
+				E32FD3C92187D58500C04054 /* UserAccountBalanceInteractor.swift */,
 			);
-			path = Balance;
+			path = UserAccountBalance;
 			sourceTree = "<group>";
 		};
 		E3D077912186430A001206FF /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				E3D077B021865324001206FF /* LoginPresenter.swift */,
 				E3D077B121865324001206FF /* LoginWorker.swift */,
 				E3D077B221865324001206FF /* LoginRouter.swift */,
 				E3D077B321865325001206FF /* LoginModels.swift */,
 				E3D077B421865325001206FF /* LoginViewController.swift */,
+				E3D077B021865324001206FF /* LoginPresenter.swift */,
 				E3D077B521865325001206FF /* LoginInteractor.swift */,
 			);
 			name = Login;
@@ -532,13 +547,18 @@
 				E3D077BA21865325001206FF /* LoginViewController.swift in Sources */,
 				E3D077BB21865325001206FF /* LoginInteractor.swift in Sources */,
 				E330F9512184EE9F00CDEA48 /* AccountBalance.swift in Sources */,
+				E32FD3CD2187D58500C04054 /* UserAccountBalanceModels.swift in Sources */,
 				E3D077C92186CF29001206FF /* CustomView.swift in Sources */,
 				E3D077B621865325001206FF /* LoginPresenter.swift in Sources */,
 				E330F90A2184B0C800CDEA48 /* AppDelegate.swift in Sources */,
+				E32FD3CA2187D58500C04054 /* UserAccountBalancePresenter.swift in Sources */,
 				E330F94F2184EC5700CDEA48 /* Registry.swift in Sources */,
 				E330F9432184D4DA00CDEA48 /* ResponseError.swift in Sources */,
+				E32FD3CE2187D58500C04054 /* UserAccountBalanceViewController.swift in Sources */,
+				E32FD3CC2187D58500C04054 /* UserAccountBalanceRouter.swift in Sources */,
+				E32FD3CB2187D58500C04054 /* UserAccountBalanceWorker.swift in Sources */,
 				E3D0778F218632C3001206FF /* BankAPIWorker.swift in Sources */,
-				E3D077C12186B38D001206FF /* AccountBalanceViewController.swift in Sources */,
+				E32FD3CF2187D58500C04054 /* UserAccountBalanceInteractor.swift in Sources */,
 				E3D077B921865325001206FF /* LoginModels.swift in Sources */,
 				E330F93F2184B73500CDEA48 /* UserLogin.swift in Sources */,
 				E330F9452184D6B700CDEA48 /* UserResponse.swift in Sources */,

@@ -1,3 +1,11 @@
+
+# Desafio Santander
+    Para executar o projeto, abra o arquivo TesteiOSV2_Rafael_Hieda.xcworkspace
+    
+    Pode ser que para verificar os testes unitários, seja necessário modificar o deployment target para iOS 11.4, apesar de o deployment target ser 9.0.
+    
+    Foi escolhido o XCTest por ser uma ferramenta própria, que está integrada com o xcode e possui documentação acessível facilmente.
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 

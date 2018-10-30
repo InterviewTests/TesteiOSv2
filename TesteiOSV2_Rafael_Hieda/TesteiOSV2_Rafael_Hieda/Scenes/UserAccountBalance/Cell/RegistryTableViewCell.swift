@@ -11,6 +11,10 @@ import UIKit
 class RegistryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellInternalView: UIView!
+    @IBOutlet weak var dataTextField: UILabel!
+    @IBOutlet weak var pagamentoTextField: UILabel!
+    @IBOutlet weak var descricaoTextField: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

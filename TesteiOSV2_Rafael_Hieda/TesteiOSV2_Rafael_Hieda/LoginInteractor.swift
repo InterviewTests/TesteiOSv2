@@ -15,6 +15,7 @@ import UIKit
 protocol LoginBusinessLogic
 {
   func doSomething(request: Login.Something.Request)
+    func login(_ user : UserLogin)
 }
 
 protocol LoginDataStore
@@ -25,17 +26,36 @@ protocol LoginDataStore
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
   var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
+  var worker: BankAPIWorker?
   //var name: String = ""
   
   // MARK: Do something
   
   func doSomething(request: Login.Something.Request)
   {
-    worker = LoginWorker()
-    worker?.doSomeWork()
+    worker = BankAPIWorker()
+    
     
     let response = Login.Something.Response()
     presenter?.presentSomething(response: response)
   }
+    
+    func login(_ user: UserLogin) {
+        var ur : UserResponse?
+        worker?.login(user, completionHandler: { (response) in
+            //self.presenter?.presentData(response)
+            ur = response
+            
+            if ur?.error?.Success() == true
+            {
+                print(ur?.userAccount?.name)
+                if let userResponse = ur
+                {
+                    self.presenter?.presentUserData(userResponse)
+                }
+            }
+
+        })
+
+    }
 }

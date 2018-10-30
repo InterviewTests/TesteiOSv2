@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="TesteiOSV2_Rafael_Hieda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="TesteiOSV2_Rafael_Hieda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +42,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQg-VV-ewL">
                                 <rect key="frame" x="87" y="572" width="202" height="62"/>
@@ -53,11 +53,12 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <size key="titleShadowOffset" width="0.0" height="100"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lTh-fL-Aae" kind="show" id="EAZ-kX-EiN"/>
+                                    <action selector="accountSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dt0-tB-Eaf"/>
+                                    <segue destination="lTh-fL-Aae" kind="show" identifier="ShowUserAccountBalance" id="N9e-uD-HwX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -86,6 +87,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="passwordTextField" destination="Pfg-dp-RZ4" id="U2A-Av-8AI"/>
                         <outlet property="usernameTextField" destination="qad-oZ-BfK" id="QAs-Qc-dxn"/>
                     </connections>
                 </viewController>
@@ -93,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="31.934032983508249"/>
         </scene>
-        <!--Account Balance View Controller-->
+        <!--User Account Balance View Controller-->
         <scene sceneID="20X-OE-ZeO">
             <objects>
-                <viewController id="lTh-fL-Aae" customClass="AccountBalanceViewController" customModule="TesteiOSV2_Rafael_Hieda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserAccountBalanceViewController" id="lTh-fL-Aae" customClass="UserAccountBalanceViewController" customModule="TesteiOSV2_Rafael_Hieda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uli-mA-nvH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,7 +230,10 @@
                         <viewLayoutGuide key="safeArea" id="5rY-sn-t3E"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="lb6-0T-smP" id="cJl-xg-h16"/>
+                        <outlet property="SaldoTextField" destination="y0i-go-rfv" id="0VA-rp-0F8"/>
+                        <outlet property="contaTextField" destination="sNV-Tx-0XI" id="cCM-sx-hbX"/>
+                        <outlet property="nameTextField" destination="xQ3-Be-qab" id="ynK-w0-aCc"/>
+                        <outlet property="tableView" destination="lb6-0T-smP" id="S4P-JF-9sX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MeB-rD-Tqx" userLabel="First Responder" sceneMemberID="firstResponder"/>

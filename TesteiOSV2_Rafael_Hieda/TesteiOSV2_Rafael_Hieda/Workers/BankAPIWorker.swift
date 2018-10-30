@@ -13,8 +13,8 @@ import AlamofireObjectMapper
 protocol BankWorkerDataProtocol
 {
     var baseUrl : String {get set}
-    func login(_ userLogin : UserLogin) -> UserResponse?
-    func getAccountBalance(_ userResponse : UserResponse) -> AccountBalance?
+    func login(_ userLogin : UserLogin, completionHandler : @escaping (UserResponse) -> Void)
+    func getAccountBalance(_ userResponse : UserResponse, completionHandler : @escaping(AccountBalance) -> Void) -> Void
 }
 
 class BankAPIWorker: BankWorkerDataProtocol {
@@ -27,23 +27,30 @@ class BankAPIWorker: BankWorkerDataProtocol {
         self.baseUrl = "https://bank-app-test.herokuapp.com/api/"
     }
     
-    func login(_ userLogin: UserLogin) -> UserResponse? {
+    func login(_ userLogin: UserLogin, completionHandler : @escaping (UserResponse) -> Void ) -> Void {
         
         let url: String = baseUrl.description + "login"
         
         let parameters : Parameters = ["user" : userLogin.login, "password" : userLogin.password]
         
         var userResponse: UserResponse?
-        
-        Alamofire.request(url, method: .post, parameters: parameters).responseObject { (response: DataResponse<UserResponse>) in
-            userResponse = response.result.value
-        }
-        
-        return userResponse
 
+        Alamofire.request(url, method: .post, parameters: parameters).validate().responseObject { (response: DataResponse<UserResponse>) in
+
+            switch response.result
+            {
+                case .success:
+                    userResponse = response.result.value
+                    completionHandler(userResponse!)
+                
+                case .failure(_): break
+
+            }
+ 
+        }
     }
     
-    func getAccountBalance(_ userResponse: UserResponse) -> AccountBalance?
+    func getAccountBalance(_ userResponse: UserResponse, completionHandler: @escaping(AccountBalance) -> Void) -> Void
     {
         var balanceAccount : AccountBalance?
         
@@ -57,8 +64,6 @@ class BankAPIWorker: BankWorkerDataProtocol {
                     balanceAccount = dataResponse.result.value
             }
         }
-        
-        return balanceAccount
     }
     
     
