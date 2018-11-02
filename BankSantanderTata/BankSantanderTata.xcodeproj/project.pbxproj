@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		112122EA218CC7B1001A9A29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112122E9218CC7B1001A9A29 /* AppDelegate.swift */; };
+		112122F1218CC7B2001A9A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 112122F0218CC7B2001A9A29 /* Assets.xcassets */; };
+		112122F4218CC7B2001A9A29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112122F2218CC7B2001A9A29 /* LaunchScreen.storyboard */; };
+		11212316218CC8A3001A9A29 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1121230D218CC8A3001A9A29 /* Login.storyboard */; };
+		11212317218CC8A3001A9A29 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121230E218CC8A3001A9A29 /* LoginPresenter.swift */; };
+		11212318218CC8A3001A9A29 /* LoginLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121230F218CC8A3001A9A29 /* LoginLocalDataManager.swift */; };
+		11212319218CC8A3001A9A29 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212310218CC8A3001A9A29 /* LoginRouter.swift */; };
+		1121231A218CC8A3001A9A29 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212311218CC8A3001A9A29 /* LoginViewController.swift */; };
+		1121231B218CC8A3001A9A29 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212312218CC8A3001A9A29 /* LoginProtocols.swift */; };
+		1121231C218CC8A3001A9A29 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212313218CC8A3001A9A29 /* LoginRepository.swift */; };
+		1121231D218CC8A3001A9A29 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212314218CC8A3001A9A29 /* LoginInteractor.swift */; };
+		1121231E218CC8A3001A9A29 /* LoginRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212315218CC8A3001A9A29 /* LoginRemoteDataManager.swift */; };
+		11212329218CCECB001A9A29 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212328218CCECB001A9A29 /* Storyboarded.swift */; };
+		1121232C218CCF68001A9A29 /* UIStoryboard+Instantiate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121232B218CCF68001A9A29 /* UIStoryboard+Instantiate.swift */; };
+		1121232E218CD1F2001A9A29 /* UIWindow+SetRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121232D218CD1F2001A9A29 /* UIWindow+SetRoot.swift */; };
+		11212339218CD59C001A9A29 /* Currency.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11212330218CD59C001A9A29 /* Currency.storyboard */; };
+		1121233A218CD59C001A9A29 /* CurrencyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212331218CD59C001A9A29 /* CurrencyPresenter.swift */; };
+		1121233B218CD59C001A9A29 /* CurrencyLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212332218CD59C001A9A29 /* CurrencyLocalDataManager.swift */; };
+		1121233C218CD59C001A9A29 /* CurrencyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212333218CD59C001A9A29 /* CurrencyRouter.swift */; };
+		1121233D218CD59C001A9A29 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212334218CD59C001A9A29 /* CurrencyViewController.swift */; };
+		1121233E218CD59C001A9A29 /* CurrencyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212335218CD59C001A9A29 /* CurrencyProtocols.swift */; };
+		1121233F218CD59C001A9A29 /* CurrencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212336218CD59C001A9A29 /* CurrencyRepository.swift */; };
+		11212340218CD59C001A9A29 /* CurrencyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212337218CD59C001A9A29 /* CurrencyInteractor.swift */; };
+		11212341218CD59C001A9A29 /* CurrencyRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212338218CD59C001A9A29 /* CurrencyRemoteDataManager.swift */; };
+		1121234C218CDBF2001A9A29 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121234A218CDBF2001A9A29 /* CurrencyTableViewCell.swift */; };
+		1121234D218CDBF2001A9A29 /* CurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1121234B218CDBF2001A9A29 /* CurrencyTableViewCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		112122E6218CC7B1001A9A29 /* BankSantanderTata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankSantanderTata.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		112122E9218CC7B1001A9A29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		112122F0218CC7B2001A9A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		112122F3218CC7B2001A9A29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		112122F5218CC7B2001A9A29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1121230D218CC8A3001A9A29 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		1121230E218CC8A3001A9A29 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		1121230F218CC8A3001A9A29 /* LoginLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLocalDataManager.swift; sourceTree = "<group>"; };
+		11212310218CC8A3001A9A29 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		11212311218CC8A3001A9A29 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		11212312218CC8A3001A9A29 /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
+		11212313218CC8A3001A9A29 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		11212314218CC8A3001A9A29 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		11212315218CC8A3001A9A29 /* LoginRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRemoteDataManager.swift; sourceTree = "<group>"; };
+		11212328218CCECB001A9A29 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		1121232B218CCF68001A9A29 /* UIStoryboard+Instantiate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Instantiate.swift"; sourceTree = "<group>"; };
+		1121232D218CD1F2001A9A29 /* UIWindow+SetRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+SetRoot.swift"; sourceTree = "<group>"; };
+		11212330218CD59C001A9A29 /* Currency.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Currency.storyboard; sourceTree = "<group>"; };
+		11212331218CD59C001A9A29 /* CurrencyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPresenter.swift; sourceTree = "<group>"; };
+		11212332218CD59C001A9A29 /* CurrencyLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLocalDataManager.swift; sourceTree = "<group>"; };
+		11212333218CD59C001A9A29 /* CurrencyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRouter.swift; sourceTree = "<group>"; };
+		11212334218CD59C001A9A29 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
+		11212335218CD59C001A9A29 /* CurrencyProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyProtocols.swift; sourceTree = "<group>"; };
+		11212336218CD59C001A9A29 /* CurrencyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRepository.swift; sourceTree = "<group>"; };
+		11212337218CD59C001A9A29 /* CurrencyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInteractor.swift; sourceTree = "<group>"; };
+		11212338218CD59C001A9A29 /* CurrencyRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRemoteDataManager.swift; sourceTree = "<group>"; };
+		1121234A218CDBF2001A9A29 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		1121234B218CDBF2001A9A29 /* CurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyTableViewCell.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		112122E3218CC7B0001A9A29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		112122DD218CC7B0001A9A29 = {
+			isa = PBXGroup;
+			children = (
+				112122E8218CC7B1001A9A29 /* BankSantanderTata */,
+				112122E7218CC7B1001A9A29 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		112122E7218CC7B1001A9A29 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				112122E6218CC7B1001A9A29 /* BankSantanderTata.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		112122E8218CC7B1001A9A29 /* BankSantanderTata */ = {
+			isa = PBXGroup;
+			children = (
+				11212326218CC945001A9A29 /* Login */,
+				1121232F218CD575001A9A29 /* Currency */,
+				1121232A218CCF4F001A9A29 /* UIKit */,
+				11212327218CCEA5001A9A29 /* Utils */,
+				112122E9218CC7B1001A9A29 /* AppDelegate.swift */,
+				112122F0218CC7B2001A9A29 /* Assets.xcassets */,
+				112122F2218CC7B2001A9A29 /* LaunchScreen.storyboard */,
+				112122F5218CC7B2001A9A29 /* Info.plist */,
+			);
+			path = BankSantanderTata;
+			sourceTree = "<group>";
+		};
+		1121231F218CC8DE001A9A29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1121230D218CC8A3001A9A29 /* Login.storyboard */,
+				11212311218CC8A3001A9A29 /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		11212320218CC8EC001A9A29 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1121230E218CC8A3001A9A29 /* LoginPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		11212321218CC903001A9A29 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				11212310218CC8A3001A9A29 /* LoginRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		11212322218CC90C001A9A29 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				11212312218CC8A3001A9A29 /* LoginProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		11212323218CC915001A9A29 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				11212313218CC8A3001A9A29 /* LoginRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		11212324218CC927001A9A29 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				11212315218CC8A3001A9A29 /* LoginRemoteDataManager.swift */,
+				1121230F218CC8A3001A9A29 /* LoginLocalDataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		11212325218CC933001A9A29 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				11212314218CC8A3001A9A29 /* LoginInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		11212326218CC945001A9A29 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1121231F218CC8DE001A9A29 /* View */,
+				11212320218CC8EC001A9A29 /* Presenter */,
+				11212321218CC903001A9A29 /* Router */,
+				11212322218CC90C001A9A29 /* Protocols */,
+				11212323218CC915001A9A29 /* Repository */,
+				11212324218CC927001A9A29 /* DataManager */,
+				11212325218CC933001A9A29 /* Interactor */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		11212327218CCEA5001A9A29 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				11212328218CCECB001A9A29 /* Storyboarded.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		1121232A218CCF4F001A9A29 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				1121232B218CCF68001A9A29 /* UIStoryboard+Instantiate.swift */,
+				1121232D218CD1F2001A9A29 /* UIWindow+SetRoot.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		1121232F218CD575001A9A29 /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				11212342218CD604001A9A29 /* View */,
+				11212343218CD60D001A9A29 /* Presenter */,
+				11212344218CD620001A9A29 /* Router */,
+				11212345218CD630001A9A29 /* Protocols */,
+				11212346218CD645001A9A29 /* Repository */,
+				11212347218CD653001A9A29 /* Interactor */,
+				11212348218CD663001A9A29 /* DataManager */,
+			);
+			path = Currency;
+			sourceTree = "<group>";
+		};
+		11212342218CD604001A9A29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				11212349218CDBCF001A9A29 /* Cells */,
+				11212330218CD59C001A9A29 /* Currency.storyboard */,
+				11212334218CD59C001A9A29 /* CurrencyViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		11212343218CD60D001A9A29 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				11212331218CD59C001A9A29 /* CurrencyPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		11212344218CD620001A9A29 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				11212333218CD59C001A9A29 /* CurrencyRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		11212345218CD630001A9A29 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				11212335218CD59C001A9A29 /* CurrencyProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		11212346218CD645001A9A29 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				11212336218CD59C001A9A29 /* CurrencyRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		11212347218CD653001A9A29 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				11212337218CD59C001A9A29 /* CurrencyInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		11212348218CD663001A9A29 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				11212332218CD59C001A9A29 /* CurrencyLocalDataManager.swift */,
+				11212338218CD59C001A9A29 /* CurrencyRemoteDataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		11212349218CDBCF001A9A29 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1121234A218CDBF2001A9A29 /* CurrencyTableViewCell.swift */,
+				1121234B218CDBF2001A9A29 /* CurrencyTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		112122E5218CC7B0001A9A29 /* BankSantanderTata */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 112122F8218CC7B2001A9A29 /* Build configuration list for PBXNativeTarget "BankSantanderTata" */;
+			buildPhases = (
+				112122E2218CC7B0001A9A29 /* Sources */,
+				112122E3218CC7B0001A9A29 /* Frameworks */,
+				112122E4218CC7B0001A9A29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BankSantanderTata;
+			productName = BankSantanderTata;
+			productReference = 112122E6218CC7B1001A9A29 /* BankSantanderTata.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		112122DE218CC7B0001A9A29 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Wagner Rodrigues";
+				TargetAttributes = {
+					112122E5218CC7B0001A9A29 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = 112122E1218CC7B0001A9A29 /* Build configuration list for PBXProject "BankSantanderTata" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 112122DD218CC7B0001A9A29;
+			productRefGroup = 112122E7218CC7B1001A9A29 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				112122E5218CC7B0001A9A29 /* BankSantanderTata */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		112122E4218CC7B0001A9A29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11212316218CC8A3001A9A29 /* Login.storyboard in Resources */,
+				112122F4218CC7B2001A9A29 /* LaunchScreen.storyboard in Resources */,
+				1121234D218CDBF2001A9A29 /* CurrencyTableViewCell.xib in Resources */,
+				11212339218CD59C001A9A29 /* Currency.storyboard in Resources */,
+				112122F1218CC7B2001A9A29 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		112122E2218CC7B0001A9A29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1121231A218CC8A3001A9A29 /* LoginViewController.swift in Sources */,
+				1121231E218CC8A3001A9A29 /* LoginRemoteDataManager.swift in Sources */,
+				1121231C218CC8A3001A9A29 /* LoginRepository.swift in Sources */,
+				1121233A218CD59C001A9A29 /* CurrencyPresenter.swift in Sources */,
+				1121233F218CD59C001A9A29 /* CurrencyRepository.swift in Sources */,
+				1121231B218CC8A3001A9A29 /* LoginProtocols.swift in Sources */,
+				11212317218CC8A3001A9A29 /* LoginPresenter.swift in Sources */,
+				112122EA218CC7B1001A9A29 /* AppDelegate.swift in Sources */,
+				11212329218CCECB001A9A29 /* Storyboarded.swift in Sources */,
+				1121232E218CD1F2001A9A29 /* UIWindow+SetRoot.swift in Sources */,
+				1121233E218CD59C001A9A29 /* CurrencyProtocols.swift in Sources */,
+				1121233D218CD59C001A9A29 /* CurrencyViewController.swift in Sources */,
+				11212340218CD59C001A9A29 /* CurrencyInteractor.swift in Sources */,
+				11212319218CC8A3001A9A29 /* LoginRouter.swift in Sources */,
+				1121233C218CD59C001A9A29 /* CurrencyRouter.swift in Sources */,
+				1121234C218CDBF2001A9A29 /* CurrencyTableViewCell.swift in Sources */,
+				11212318218CC8A3001A9A29 /* LoginLocalDataManager.swift in Sources */,
+				1121231D218CC8A3001A9A29 /* LoginInteractor.swift in Sources */,
+				1121232C218CCF68001A9A29 /* UIStoryboard+Instantiate.swift in Sources */,
+				11212341218CD59C001A9A29 /* CurrencyRemoteDataManager.swift in Sources */,
+				1121233B218CD59C001A9A29 /* CurrencyLocalDataManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		112122F2218CC7B2001A9A29 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				112122F3218CC7B2001A9A29 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		112122F6218CC7B2001A9A29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		112122F7218CC7B2001A9A29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		112122F9218CC7B2001A9A29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CDQJNFLQYC;
+				INFOPLIST_FILE = BankSantanderTata/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "teste-santander-tata.BankSantanderTata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		112122FA218CC7B2001A9A29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CDQJNFLQYC;
+				INFOPLIST_FILE = BankSantanderTata/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "teste-santander-tata.BankSantanderTata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		112122E1218CC7B0001A9A29 /* Build configuration list for PBXProject "BankSantanderTata" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				112122F6218CC7B2001A9A29 /* Debug */,
+				112122F7218CC7B2001A9A29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		112122F8218CC7B2001A9A29 /* Build configuration list for PBXNativeTarget "BankSantanderTata" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				112122F9218CC7B2001A9A29 /* Debug */,
+				112122FA218CC7B2001A9A29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 112122DE218CC7B0001A9A29 /* Project object */;
+}

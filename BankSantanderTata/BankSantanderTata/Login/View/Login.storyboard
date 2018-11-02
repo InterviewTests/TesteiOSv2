@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NPC-8E-Zjd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="zwh-tQ-o3y">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="NPC-8E-Zjd" customClass="LoginViewController" customModule="BankSantanderTata" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QGW-aA-myz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="kUB-kv-zjR">
+                                <rect key="frame" x="124" y="76" width="125" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="cea-no-AHQ"/>
+                                    <constraint firstAttribute="height" constant="70" id="hje-tR-B3R"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qrR-kd-PeP">
+                                <rect key="frame" x="17" y="322" width="342" height="50"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X94-Pg-vCd">
+                                <rect key="frame" x="17" y="251" width="342" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="P6z-4c-OQP"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zn-Nv-1cO">
+                                <rect key="frame" x="87" y="572" width="202" height="62"/>
+                                <color key="backgroundColor" red="0.23065221309661865" green="0.28756541013717651" blue="0.93463343381881714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="202" id="Om3-ft-YSD"/>
+                                    <constraint firstAttribute="height" constant="62" id="jUr-ni-NVv"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickedLogin:" destination="NPC-8E-Zjd" eventType="touchUpInside" id="ShT-OI-A4b"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qrR-kd-PeP" firstAttribute="width" secondItem="X94-Pg-vCd" secondAttribute="width" id="0uQ-dA-9kh"/>
+                            <constraint firstItem="kUB-kv-zjR" firstAttribute="top" secondItem="aXq-9p-Cmq" secondAttribute="top" constant="56" id="FLm-pd-AXu"/>
+                            <constraint firstItem="X94-Pg-vCd" firstAttribute="leading" secondItem="aXq-9p-Cmq" secondAttribute="leading" constant="17" id="Juz-vX-TJJ"/>
+                            <constraint firstItem="qrR-kd-PeP" firstAttribute="leading" secondItem="X94-Pg-vCd" secondAttribute="leading" id="NO8-pE-GKH"/>
+                            <constraint firstItem="aXq-9p-Cmq" firstAttribute="trailing" secondItem="X94-Pg-vCd" secondAttribute="trailing" constant="16" id="OXl-Zp-IcU"/>
+                            <constraint firstItem="qrR-kd-PeP" firstAttribute="centerX" secondItem="X94-Pg-vCd" secondAttribute="centerX" id="S5p-eb-769"/>
+                            <constraint firstItem="qrR-kd-PeP" firstAttribute="trailing" secondItem="X94-Pg-vCd" secondAttribute="trailing" id="SKR-m4-zFB"/>
+                            <constraint firstItem="X94-Pg-vCd" firstAttribute="top" secondItem="kUB-kv-zjR" secondAttribute="bottom" constant="105" id="SpD-D1-fLn"/>
+                            <constraint firstItem="qrR-kd-PeP" firstAttribute="height" secondItem="X94-Pg-vCd" secondAttribute="height" id="Tc2-R5-kKI"/>
+                            <constraint firstItem="aXq-9p-Cmq" firstAttribute="trailing" secondItem="kUB-kv-zjR" secondAttribute="trailing" constant="126" id="ZFc-rZ-Qi4"/>
+                            <constraint firstItem="0zn-Nv-1cO" firstAttribute="leading" secondItem="aXq-9p-Cmq" secondAttribute="leading" constant="87" id="njX-eV-9f8"/>
+                            <constraint firstItem="kUB-kv-zjR" firstAttribute="leading" secondItem="aXq-9p-Cmq" secondAttribute="leading" constant="124" id="rZe-m2-WLv"/>
+                            <constraint firstItem="aXq-9p-Cmq" firstAttribute="bottom" secondItem="0zn-Nv-1cO" secondAttribute="bottom" constant="33" id="wra-mK-w63"/>
+                            <constraint firstItem="qrR-kd-PeP" firstAttribute="top" secondItem="X94-Pg-vCd" secondAttribute="bottom" constant="21" id="yEu-FI-1nS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aXq-9p-Cmq"/>
+                    </view>
+                    <connections>
+                        <outlet property="textFieldPassword" destination="qrR-kd-PeP" id="kDO-4C-XND"/>
+                        <outlet property="textFieldUser" destination="X94-Pg-vCd" id="JEZ-oX-VaB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lYJ-Dz-mK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="55" y="143"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Logo" width="125" height="70"/>
+    </resources>
+</document>
