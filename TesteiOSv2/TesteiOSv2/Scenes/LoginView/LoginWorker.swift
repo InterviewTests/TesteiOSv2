@@ -22,6 +22,7 @@ class LoginWorker
     let parameters = ["user": user, "password": password]
 //    let parameters = ["user": "test_user", "password": "Test@1"]
     var userInfo = UserInfo()
+    print("LoginWorker: doLoginRequest - user:\(user) pass:\(password)")
     Alamofire.request("https://bank-app-test.herokuapp.com/api/login", method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
         .validate(statusCode: 200..<300)
         .validate(contentType: ["application/json"])

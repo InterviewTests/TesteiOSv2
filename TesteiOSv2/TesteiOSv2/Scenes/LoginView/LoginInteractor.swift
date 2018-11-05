@@ -33,14 +33,20 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
 
   // MARK: Do login
   
-  func doLogin(request: Login.LoginFormFields.Request) 
-  {
-    worker = LoginWorker()
-    worker.doLoginRequest(user: request.user, password: request.password) { (success, userInfo) in
-        self.isLoggedIn = success
-        let response = Login.LoginFormFields.Response(success: success, info: userInfo!)
-        self.userInfo = userInfo!
+    func doLogin(request: Login.LoginFormFields.Request)
+    {
+        worker = LoginWorker()
+        print("doLogin: user:\(request.user) pwd:\(request.password)")
+        worker.doLoginRequest(user: request.user, password: request.password) { (success, userInfo) in
+            self.isLoggedIn = success
+            let response = Login.LoginFormFields.Response(success: success, info: userInfo!)
+            self.userInfo = userInfo!
+            self.presenter?.presentLogin(response: response)
+        }
+    }
+    
+    func getLogin(request: Login.LoginFormFields.Request) {
+        let response = Login.LoginFormFields.Response(success: true, info: self.userInfo)
         self.presenter?.presentLogin(response: response)
     }
-  }
 }

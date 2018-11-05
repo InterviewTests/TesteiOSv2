@@ -25,8 +25,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UIGestureRecogni
   
     var tapGesture = UITapGestureRecognizer()
 
-    @IBOutlet var viewContainer: UIView!
-
   // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -159,6 +157,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UIGestureRecogni
 
         UserLoginTextField.borderStyle = UITextBorderStyle.roundedRect
         PasswordTestField.borderStyle = UITextBorderStyle.roundedRect
+        PasswordTestField.clearsOnBeginEditing = false
+
         messageLabel.text = ""
         
         if let retrievedUser = KeychainWrapper.standard.string(forKey: "userStringKey"), !retrievedUser.isEmpty {
@@ -204,24 +204,26 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UIGestureRecogni
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        textField.resignFirstResponder()
-        view.endEditing(true)
+
+        print("textFieldShouldReturn")
         view.removeGestureRecognizer(tapGesture)
+        view.endEditing(true)
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.placeholder = ""
+        print("textFieldDidBeginEditing")
         view.addGestureRecognizer(tapGesture)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        print("textFieldDidEndEditing")
         self.view.endEditing(true)
         view.addGestureRecognizer(tapGesture)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString stringDigitada: String) -> Bool {
+        print("shouldChangeCharactersIn")
         return true
     }
 }

@@ -100,7 +100,6 @@ class HomeViewController: UIViewController, HomeDisplayLogic
         let request = Home.GetUserInfo.Request()
         interactor?.getUserInfo(request: request)
     }
-
     
     @IBOutlet weak var registersTableView: UITableView!
     

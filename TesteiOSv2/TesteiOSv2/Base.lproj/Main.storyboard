@@ -32,7 +32,7 @@
                                                     <constraint firstAttribute="width" constant="125" id="yE7-oi-0Rq"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mqm-ch-kAH">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Mqm-ch-kAH">
                                                 <rect key="frame" x="16" y="178" width="343" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="B9k-Tx-Bh0"/>
@@ -47,8 +47,11 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="dms-BP-EjW"/>
+                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hHj-Z9-nQd">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hHj-Z9-nQd">
                                                 <rect key="frame" x="16" y="268" width="343" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="J5k-fj-vAE"/>
@@ -63,11 +66,14 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Ogg-wy-oZt"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome, Username !" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyb-d0-rDM">
-                                                <rect key="frame" x="75" y="392" width="225" height="69"/>
+                                                <rect key="frame" x="103.5" y="392" width="168" height="69"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="225" id="Dyj-ci-ikj"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="225" id="6gc-fd-46H"/>
                                                     <constraint firstAttribute="height" constant="69" id="vjv-X5-dmO"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -155,7 +161,6 @@
                         <outlet property="PasswordTestField" destination="hHj-Z9-nQd" id="I1h-XH-bng"/>
                         <outlet property="UserLoginTextField" destination="Mqm-ch-kAH" id="dX8-us-wBa"/>
                         <outlet property="messageLabel" destination="fyb-d0-rDM" id="VDz-IF-72b"/>
-                        <outlet property="viewContainer" destination="xy4-bL-gzK" id="izA-DU-dJT"/>
                         <segue destination="8NF-en-lCh" kind="show" identifier="showUserData" id="v6s-Ar-ipC"/>
                     </connections>
                 </viewController>
@@ -175,9 +180,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeU-fE-ql5">
-                                        <rect key="frame" x="311" y="28" width="50" height="48"/>
+                                        <rect key="frame" x="290" y="28" width="71" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="i8P-J1-HAm"/>
+                                            <constraint firstAttribute="width" constant="71" id="i8P-J1-HAm"/>
                                         </constraints>
                                         <state key="normal" image="Logout"/>
                                         <connections>
@@ -233,7 +238,7 @@
                                     <constraint firstItem="rqG-dp-KS6" firstAttribute="top" secondItem="gRr-wJ-Rie" secondAttribute="bottom" constant="24" id="6W2-rI-cys"/>
                                     <constraint firstItem="6hr-pz-5hz" firstAttribute="leading" secondItem="JmC-qm-JQP" secondAttribute="leading" id="B07-DJ-FaS"/>
                                     <constraint firstItem="JmC-qm-JQP" firstAttribute="leading" secondItem="0x9-Eb-605" secondAttribute="leading" constant="28" id="EXe-RQ-xX8"/>
-                                    <constraint firstItem="yeU-fE-ql5" firstAttribute="leading" secondItem="6hr-pz-5hz" secondAttribute="trailing" constant="8" symbolic="YES" id="GIi-wg-y30"/>
+                                    <constraint firstItem="yeU-fE-ql5" firstAttribute="leading" secondItem="6hr-pz-5hz" secondAttribute="trailing" constant="-13" id="GIi-wg-y30"/>
                                     <constraint firstItem="jsS-qf-dn5" firstAttribute="top" secondItem="gRr-wJ-Rie" secondAttribute="bottom" constant="4" id="H2I-aT-sl2"/>
                                     <constraint firstItem="JmC-qm-JQP" firstAttribute="leading" secondItem="gRr-wJ-Rie" secondAttribute="leading" id="NZz-T8-Chu"/>
                                     <constraint firstItem="jsS-qf-dn5" firstAttribute="leading" secondItem="rqG-dp-KS6" secondAttribute="leading" id="OG2-U0-eeQ"/>
@@ -252,10 +257,10 @@
                                     <constraint firstAttribute="height" constant="225" id="oml-Jx-7lR"/>
                                     <constraint firstItem="gRr-wJ-Rie" firstAttribute="top" secondItem="yeU-fE-ql5" secondAttribute="bottom" constant="27" id="pLC-IC-9xf"/>
                                     <constraint firstAttribute="trailing" secondItem="yeU-fE-ql5" secondAttribute="trailing" constant="14" id="rUg-4b-h4a"/>
-                                    <constraint firstItem="yeU-fE-ql5" firstAttribute="leading" secondItem="6hr-pz-5hz" secondAttribute="trailing" constant="8" id="rx1-AB-HlF"/>
+                                    <constraint firstItem="yeU-fE-ql5" firstAttribute="leading" secondItem="6hr-pz-5hz" secondAttribute="trailing" constant="-13" id="rx1-AB-HlF"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t94-yj-lAz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t94-yj-lAz">
                                 <rect key="frame" x="0.0" y="280" width="375" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -424,6 +429,6 @@
     </scenes>
     <resources>
         <image name="Logo" width="112" height="64"/>
-        <image name="Logout" width="27" height="27"/>
+        <image name="Logout" width="64" height="39"/>
     </resources>
 </document>

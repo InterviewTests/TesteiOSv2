@@ -2,7 +2,7 @@
 //  TesteiOSv2Tests.swift
 //  TesteiOSv2Tests
 //
-//  Created by Alexandre Gabassi on 27/10/18.
+//  Created by Alexandre Gabassi on 04/11/18.
 //  Copyright © 2018 Alexandre Gabassi. All rights reserved.
 //
 
@@ -10,6 +10,10 @@ import XCTest
 @testable import TesteiOSv2
 
 class TesteiOSv2Tests: XCTestCase {
+    
+    var navigationController: UINavigationController!
+    var loginViewController: LoginViewController!
+
     
     override func setUp() {
         super.setUp()
@@ -31,6 +35,10 @@ class TesteiOSv2Tests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testEmptyUserAndPassword() {
+        
     }
     
 }
