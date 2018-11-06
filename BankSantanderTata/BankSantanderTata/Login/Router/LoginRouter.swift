@@ -39,8 +39,8 @@ final class LoginRouter: LoginRouterProtocol, Storyboarded {
         return storyboard.instantiateViewController()
     }
     
-    func presentCurrencyScreen() {
-        let currencyView = CurrencyRouter.assembleModule()
+    func presentCurrencyScreen(manager: UserAccount) {
+        let currencyView = CurrencyRouter.assembleModule(manager)
         let navigationController = UINavigationController(rootViewController: currencyView)
         viewController.present(navigationController, animated: true, completion: nil)
     }

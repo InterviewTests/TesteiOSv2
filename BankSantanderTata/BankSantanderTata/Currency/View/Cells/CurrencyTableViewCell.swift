@@ -9,7 +9,14 @@
 import UIKit
 
 class CurrencyTableViewCell: UITableViewCell {
-
+    
+    
+    @IBOutlet private weak var labelTitle: UILabel!
+    @IBOutlet private weak var labelDesc: UILabel!
+    @IBOutlet private weak var labelDate: UILabel!
+    @IBOutlet private weak var labelValue: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +26,10 @@ class CurrencyTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setup(statement: Statement){
+        labelTitle.text = statement.title
     }
     
 }

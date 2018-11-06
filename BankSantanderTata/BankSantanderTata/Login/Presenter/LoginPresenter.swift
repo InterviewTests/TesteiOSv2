@@ -15,8 +15,23 @@ final class LoginPresenter: LoginPresenterProtocol {
     var interactor: LoginInteractorProtocol!
     
     func buttonLoginPressed(userName: String?, password: String?) {
-        //TODO: implementar validacao
-        self.router.presentCurrencyScreen()
+        let paranRsquest = ["user" : "test_user",
+                            "password" : "Test@444444"]
+        
+        ApiService.sharedInstance.login(paranRsquest) { response in
+            switch response.result{
+            case .success:
+                let data = response.result.value as! [String: Any]
+                let user: UserAccount = UserAccount(JSON: data["userAccount"] as! [String: Any])!
+                
+                self.router.presentCurrencyScreen(manager: user)
+                break
+            case .failure(let error):
+                debugPrint(error)
+                break
+            }
+        }
+        
     }
     
 }

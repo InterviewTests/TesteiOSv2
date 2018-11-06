@@ -53,7 +53,7 @@ protocol LoginRouterProtocol: class {
     
     var viewController: UIViewController! { get set }
     
-    func presentCurrencyScreen()
+    func presentCurrencyScreen(manager: UserAccount)
     
 }
 

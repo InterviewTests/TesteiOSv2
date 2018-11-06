@@ -32,7 +32,10 @@
 		11212340218CD59C001A9A29 /* CurrencyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212337218CD59C001A9A29 /* CurrencyInteractor.swift */; };
 		11212341218CD59C001A9A29 /* CurrencyRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11212338218CD59C001A9A29 /* CurrencyRemoteDataManager.swift */; };
 		1121234C218CDBF2001A9A29 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121234A218CDBF2001A9A29 /* CurrencyTableViewCell.swift */; };
-		1121234D218CDBF2001A9A29 /* CurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1121234B218CDBF2001A9A29 /* CurrencyTableViewCell.xib */; };
+		11F7292C21910578004DB112 /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7292B21910578004DB112 /* ServiceAPI.swift */; };
+		11F7292F21910B6A004DB112 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7292E21910B6A004DB112 /* UserAccount.swift */; };
+		11F7293121910DE4004DB112 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7293021910DE4004DB112 /* Statement.swift */; };
+		27566957C6EAF39680B5688E /* Pods_BankSantanderTata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4E49EE4732056B785310B1 /* Pods_BankSantanderTata.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +66,12 @@
 		11212337218CD59C001A9A29 /* CurrencyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInteractor.swift; sourceTree = "<group>"; };
 		11212338218CD59C001A9A29 /* CurrencyRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRemoteDataManager.swift; sourceTree = "<group>"; };
 		1121234A218CDBF2001A9A29 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
-		1121234B218CDBF2001A9A29 /* CurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyTableViewCell.xib; sourceTree = "<group>"; };
+		11F7292B21910578004DB112 /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
+		11F7292E21910B6A004DB112 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		11F7293021910DE4004DB112 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
+		9F4E49EE4732056B785310B1 /* Pods_BankSantanderTata.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankSantanderTata.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2A86EC1CC4A136398341FD3 /* Pods-BankSantanderTata.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankSantanderTata.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankSantanderTata/Pods-BankSantanderTata.debug.xcconfig"; sourceTree = "<group>"; };
+		F201B3F1650B3D3E64BF7927 /* Pods-BankSantanderTata.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankSantanderTata.release.xcconfig"; path = "Pods/Target Support Files/Pods-BankSantanderTata/Pods-BankSantanderTata.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27566957C6EAF39680B5688E /* Pods_BankSantanderTata.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +91,8 @@
 			children = (
 				112122E8218CC7B1001A9A29 /* BankSantanderTata */,
 				112122E7218CC7B1001A9A29 /* Products */,
+				E4E81D5FED17E5E0E4F17EC1 /* Pods */,
+				B590BD638581A7FE96A2D8D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +107,8 @@
 		112122E8218CC7B1001A9A29 /* BankSantanderTata */ = {
 			isa = PBXGroup;
 			children = (
+				11F7292D21910B4F004DB112 /* Model */,
+				11F7292A219102A6004DB112 /* Request */,
 				11212326218CC945001A9A29 /* Login */,
 				1121232F218CD575001A9A29 /* Currency */,
 				1121232A218CCF4F001A9A29 /* UIKit */,
@@ -274,9 +287,42 @@
 			isa = PBXGroup;
 			children = (
 				1121234A218CDBF2001A9A29 /* CurrencyTableViewCell.swift */,
-				1121234B218CDBF2001A9A29 /* CurrencyTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		11F7292A219102A6004DB112 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				11F7292B21910578004DB112 /* ServiceAPI.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		11F7292D21910B4F004DB112 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11F7292E21910B6A004DB112 /* UserAccount.swift */,
+				11F7293021910DE4004DB112 /* Statement.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B590BD638581A7FE96A2D8D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F4E49EE4732056B785310B1 /* Pods_BankSantanderTata.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4E81D5FED17E5E0E4F17EC1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A2A86EC1CC4A136398341FD3 /* Pods-BankSantanderTata.debug.xcconfig */,
+				F201B3F1650B3D3E64BF7927 /* Pods-BankSantanderTata.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,9 +332,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 112122F8218CC7B2001A9A29 /* Build configuration list for PBXNativeTarget "BankSantanderTata" */;
 			buildPhases = (
+				3F18256267694DB1159952B3 /* [CP] Check Pods Manifest.lock */,
 				112122E2218CC7B0001A9A29 /* Sources */,
 				112122E3218CC7B0001A9A29 /* Frameworks */,
 				112122E4218CC7B0001A9A29 /* Resources */,
+				F5965F905AF3DD6F085E3C9C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -339,13 +387,53 @@
 			files = (
 				11212316218CC8A3001A9A29 /* Login.storyboard in Resources */,
 				112122F4218CC7B2001A9A29 /* LaunchScreen.storyboard in Resources */,
-				1121234D218CDBF2001A9A29 /* CurrencyTableViewCell.xib in Resources */,
 				11212339218CD59C001A9A29 /* Currency.storyboard in Resources */,
 				112122F1218CC7B2001A9A29 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F18256267694DB1159952B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BankSantanderTata-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5965F905AF3DD6F085E3C9C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BankSantanderTata/Pods-BankSantanderTata-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BankSantanderTata/Pods-BankSantanderTata-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		112122E2218CC7B0001A9A29 /* Sources */ = {
@@ -358,6 +446,8 @@
 				1121233A218CD59C001A9A29 /* CurrencyPresenter.swift in Sources */,
 				1121233F218CD59C001A9A29 /* CurrencyRepository.swift in Sources */,
 				1121231B218CC8A3001A9A29 /* LoginProtocols.swift in Sources */,
+				11F7292C21910578004DB112 /* ServiceAPI.swift in Sources */,
+				11F7292F21910B6A004DB112 /* UserAccount.swift in Sources */,
 				11212317218CC8A3001A9A29 /* LoginPresenter.swift in Sources */,
 				112122EA218CC7B1001A9A29 /* AppDelegate.swift in Sources */,
 				11212329218CCECB001A9A29 /* Storyboarded.swift in Sources */,
@@ -365,6 +455,7 @@
 				1121233E218CD59C001A9A29 /* CurrencyProtocols.swift in Sources */,
 				1121233D218CD59C001A9A29 /* CurrencyViewController.swift in Sources */,
 				11212340218CD59C001A9A29 /* CurrencyInteractor.swift in Sources */,
+				11F7293121910DE4004DB112 /* Statement.swift in Sources */,
 				11212319218CC8A3001A9A29 /* LoginRouter.swift in Sources */,
 				1121233C218CD59C001A9A29 /* CurrencyRouter.swift in Sources */,
 				1121234C218CDBF2001A9A29 /* CurrencyTableViewCell.swift in Sources */,
@@ -508,6 +599,7 @@
 		};
 		112122F9218CC7B2001A9A29 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2A86EC1CC4A136398341FD3 /* Pods-BankSantanderTata.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -527,6 +619,7 @@
 		};
 		112122FA218CC7B2001A9A29 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F201B3F1650B3D3E64BF7927 /* Pods-BankSantanderTata.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

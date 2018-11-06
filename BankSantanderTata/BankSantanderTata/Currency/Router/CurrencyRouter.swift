@@ -14,7 +14,7 @@ final class CurrencyRouter: CurrencyRouterProtocol, Storyboarded {
     
     weak var viewController: UIViewController!
     
-    static func assembleModule() -> UIViewController {
+    static func assembleModule(_ manager: UserAccount) -> UIViewController {
         let view = CurrencyViewController()
         let presenter = CurrencyPresenter()
         let router = CurrencyRouter()
@@ -31,6 +31,7 @@ final class CurrencyRouter: CurrencyRouterProtocol, Storyboarded {
         presenter.interactor = interactor
         presenter.router = router
 
+        view.data = manager
         return view
     }
     
