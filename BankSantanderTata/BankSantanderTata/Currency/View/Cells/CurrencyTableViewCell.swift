@@ -30,6 +30,9 @@ class CurrencyTableViewCell: UITableViewCell {
     
     func setup(statement: Statement){
         labelTitle.text = statement.title
+        labelDesc.text = statement.desc
+        labelDate.text = statement.date
+        labelValue.text = "R$ \(String(statement.value))"
     }
     
 }

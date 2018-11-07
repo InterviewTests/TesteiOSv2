@@ -35,6 +35,10 @@
 		11F7292C21910578004DB112 /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7292B21910578004DB112 /* ServiceAPI.swift */; };
 		11F7292F21910B6A004DB112 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7292E21910B6A004DB112 /* UserAccount.swift */; };
 		11F7293121910DE4004DB112 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7293021910DE4004DB112 /* Statement.swift */; };
+		11F7293921939903004DB112 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7293821939903004DB112 /* Date+Format.swift */; };
+		11F7293C21939AAD004DB112 /* CustomIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7293B21939AAD004DB112 /* CustomIdentifier.swift */; };
+		11F7293E21939AD4004DB112 /* StringIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7293D21939AD4004DB112 /* StringIdentifier.swift */; };
+		11F7294021939B2D004DB112 /* String+LocalizedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7293F21939B2D004DB112 /* String+LocalizedKey.swift */; };
 		27566957C6EAF39680B5688E /* Pods_BankSantanderTata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4E49EE4732056B785310B1 /* Pods_BankSantanderTata.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +73,11 @@
 		11F7292B21910578004DB112 /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
 		11F7292E21910B6A004DB112 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		11F7293021910DE4004DB112 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
+		11F7293821939903004DB112 /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
+		11F7293B21939AAD004DB112 /* CustomIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIdentifier.swift; sourceTree = "<group>"; };
+		11F7293D21939AD4004DB112 /* StringIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringIdentifier.swift; sourceTree = "<group>"; };
+		11F7293F21939B2D004DB112 /* String+LocalizedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LocalizedKey.swift"; sourceTree = "<group>"; };
+		11F7294221939C2E004DB112 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		9F4E49EE4732056B785310B1 /* Pods_BankSantanderTata.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankSantanderTata.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A86EC1CC4A136398341FD3 /* Pods-BankSantanderTata.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankSantanderTata.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankSantanderTata/Pods-BankSantanderTata.debug.xcconfig"; sourceTree = "<group>"; };
 		F201B3F1650B3D3E64BF7927 /* Pods-BankSantanderTata.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankSantanderTata.release.xcconfig"; path = "Pods/Target Support Files/Pods-BankSantanderTata/Pods-BankSantanderTata.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,13 +116,15 @@
 		112122E8218CC7B1001A9A29 /* BankSantanderTata */ = {
 			isa = PBXGroup;
 			children = (
+				11F7294121939BC2004DB112 /* SupportingFiles */,
+				11F7293A21939A63004DB112 /* Identifiers */,
+				11F72937219398CF004DB112 /* Foundation */,
 				11F7292D21910B4F004DB112 /* Model */,
 				11F7292A219102A6004DB112 /* Request */,
 				11212326218CC945001A9A29 /* Login */,
 				1121232F218CD575001A9A29 /* Currency */,
 				1121232A218CCF4F001A9A29 /* UIKit */,
 				11212327218CCEA5001A9A29 /* Utils */,
-				112122E9218CC7B1001A9A29 /* AppDelegate.swift */,
 				112122F0218CC7B2001A9A29 /* Assets.xcassets */,
 				112122F2218CC7B2001A9A29 /* LaunchScreen.storyboard */,
 				112122F5218CC7B2001A9A29 /* Info.plist */,
@@ -308,6 +319,33 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		11F72937219398CF004DB112 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				11F7293821939903004DB112 /* Date+Format.swift */,
+				11F7293F21939B2D004DB112 /* String+LocalizedKey.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		11F7293A21939A63004DB112 /* Identifiers */ = {
+			isa = PBXGroup;
+			children = (
+				11F7293B21939AAD004DB112 /* CustomIdentifier.swift */,
+				11F7293D21939AD4004DB112 /* StringIdentifier.swift */,
+			);
+			path = Identifiers;
+			sourceTree = "<group>";
+		};
+		11F7294121939BC2004DB112 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				112122E9218CC7B1001A9A29 /* AppDelegate.swift */,
+				11F7294221939C2E004DB112 /* Localizable.strings */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		B590BD638581A7FE96A2D8D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,10 +487,12 @@
 				11F7292C21910578004DB112 /* ServiceAPI.swift in Sources */,
 				11F7292F21910B6A004DB112 /* UserAccount.swift in Sources */,
 				11212317218CC8A3001A9A29 /* LoginPresenter.swift in Sources */,
+				11F7293E21939AD4004DB112 /* StringIdentifier.swift in Sources */,
 				112122EA218CC7B1001A9A29 /* AppDelegate.swift in Sources */,
 				11212329218CCECB001A9A29 /* Storyboarded.swift in Sources */,
 				1121232E218CD1F2001A9A29 /* UIWindow+SetRoot.swift in Sources */,
 				1121233E218CD59C001A9A29 /* CurrencyProtocols.swift in Sources */,
+				11F7294021939B2D004DB112 /* String+LocalizedKey.swift in Sources */,
 				1121233D218CD59C001A9A29 /* CurrencyViewController.swift in Sources */,
 				11212340218CD59C001A9A29 /* CurrencyInteractor.swift in Sources */,
 				11F7293121910DE4004DB112 /* Statement.swift in Sources */,
@@ -461,9 +501,11 @@
 				1121234C218CDBF2001A9A29 /* CurrencyTableViewCell.swift in Sources */,
 				11212318218CC8A3001A9A29 /* LoginLocalDataManager.swift in Sources */,
 				1121231D218CC8A3001A9A29 /* LoginInteractor.swift in Sources */,
+				11F7293921939903004DB112 /* Date+Format.swift in Sources */,
 				1121232C218CCF68001A9A29 /* UIStoryboard+Instantiate.swift in Sources */,
 				11212341218CD59C001A9A29 /* CurrencyRemoteDataManager.swift in Sources */,
 				1121233B218CD59C001A9A29 /* CurrencyLocalDataManager.swift in Sources */,
+				11F7293C21939AAD004DB112 /* CustomIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

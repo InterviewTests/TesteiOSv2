@@ -42,6 +42,9 @@ final class CurrencyViewController: UIViewController {
     
     private func setupLabels() {
         labelName.text = data.name
+        labelBalanceAccount.text = data.bankAccount
+        labelAgency.text = data.agency
+        labelBalance.text = "R$ \(String(data.balance))"
         
     }
     

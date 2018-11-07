@@ -12,7 +12,7 @@ class Statement: Mappable {
     
     var title: String = ""
     var desc: String = ""
-    var date: Date?
+    var date: String = ""
     var value: Double = 0
     
     init() {
