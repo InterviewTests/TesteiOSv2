@@ -10,6 +10,6 @@ import Foundation
 
 extension Double {
     func toBrazilianCurrency() -> String {
-        return "R$ " + "\(self)"
+        return String(format: "R$%.02f", self)
     }
 }

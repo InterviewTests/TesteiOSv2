@@ -59,16 +59,35 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         verifyExistingLoginInfo()
+        addHideKeyboardOnTouch()
+        setupViews()
     }
     
-    // MARK: Do something
+    func setupViews() {
+        loginButton.layer.addShadow(with: #colorLiteral(red: 0.1929112971, green: 0.2140724957, blue: 0.8213475347, alpha: 1), alpha: 0.3, xOffset: 0, yOffset: 3, blur: 6, spread: 0)
+        
+        passwordTextField.delegate = self
+        userNameTextField.delegate = self
+        
+        passwordTextField.setLeftPaddingPoints(13)
+        userNameTextField.setLeftPaddingPoints(13)
+    }
+    
+    // MARK: Perform login
     
     @IBAction func loginButtonTapped(_ sender: Any) {
+        performLogin()
+    }
+    
+    func performLogin() {
+        view.lock()
         let userName = userNameTextField.text
         let password = passwordTextField.text
         let request = Login.Login.Request.init(userName: userName, password: password)
         interactor?.perfomLogin(request: request)
     }
+    
+    // MARK: Get exisinting login information
     
     func verifyExistingLoginInfo() {
         let request = Login.ExistingInfo.Request()
@@ -81,11 +100,24 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     }
     
     func displayLoginErrorMessage(viewModel: Login.Login.ViewModelFailedLogin) {
-        present(message: viewModel.message)
+        DispatchQueue.main.async {
+            self.view.unlock()
+            self.present(message: viewModel.message)
+        }
     }
     
     // MARK: Routing
     func displaySuccessfullLogin(viewModel: Login.Login.ViewModelSuccessfullLogin) {
-        router?.routeToUserDetails()
+        DispatchQueue.main.async {
+            self.view.unlock()
+            self.router?.routeToUserDetails()
+        }
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }

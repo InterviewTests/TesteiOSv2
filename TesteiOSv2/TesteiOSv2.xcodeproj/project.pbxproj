@@ -16,6 +16,9 @@
 		1506B19E2197053F00D947D5 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B19D2197053F00D947D5 /* UITableView.swift */; };
 		1506B1A02197056200D947D5 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B19F2197056200D947D5 /* ReusableView.swift */; };
 		1506B1A22197196500D947D5 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B1A12197196500D947D5 /* Double.swift */; };
+		1506B1A521972C2B00D947D5 /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B1A421972C2B00D947D5 /* CALayer.swift */; };
+		1506B1A721972F4F00D947D5 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B1A621972F4F00D947D5 /* UIView.swift */; };
+		1506B1A92197308C00D947D5 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B1A82197308C00D947D5 /* UITextField.swift */; };
 		1513E1802196351E00B08E14 /* Statement+DecodableAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513E17F2196351E00B08E14 /* Statement+DecodableAPI.swift */; };
 		1513E18321963F7C00B08E14 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513E18221963F7C00B08E14 /* URLRequest.swift */; };
 		154AB271219622BB0083D58A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154AB270219622BB0083D58A /* AppDelegate.swift */; };
@@ -81,6 +84,9 @@
 		1506B19D2197053F00D947D5 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		1506B19F2197056200D947D5 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		1506B1A12197196500D947D5 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		1506B1A421972C2B00D947D5 /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
+		1506B1A621972F4F00D947D5 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		1506B1A82197308C00D947D5 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		1513E17F2196351E00B08E14 /* Statement+DecodableAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statement+DecodableAPI.swift"; sourceTree = "<group>"; };
 		1513E18221963F7C00B08E14 /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 		154AB26D219622BB0083D58A /* TesteiOSv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +174,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1506B1A32197298900D947D5 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1506B194219697C600D947D5 /* CustomError.swift */,
+				1506B19F2197056200D947D5 /* ReusableView.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		1513E18121963F6C00B08E14 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +200,9 @@
 				1506B1962196EFD300D947D5 /* String.swift */,
 				1506B19D2197053F00D947D5 /* UITableView.swift */,
 				1506B1A12197196500D947D5 /* Double.swift */,
+				1506B1A421972C2B00D947D5 /* CALayer.swift */,
+				1506B1A621972F4F00D947D5 /* UIView.swift */,
+				1506B1A82197308C00D947D5 /* UITextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -222,8 +240,7 @@
 				154AB2A2219629020083D58A /* Model */,
 				1513E18421963F8D00B08E14 /* Extensions */,
 				15A85FBE2196448F0025529A /* Scenes */,
-				1506B194219697C600D947D5 /* CustomError.swift */,
-				1506B19F2197056200D947D5 /* ReusableView.swift */,
+				1506B1A32197298900D947D5 /* SupportingFiles */,
 			);
 			path = TesteiOSv2;
 			sourceTree = "<group>";
@@ -582,12 +599,14 @@
 				154AB2A1219625950083D58A /* User.swift in Sources */,
 				1506B1972196EFD300D947D5 /* String.swift in Sources */,
 				15A85FBC2196446D0025529A /* LoginInteractor.swift in Sources */,
+				1506B1A721972F4F00D947D5 /* UIView.swift in Sources */,
 				154AB29F219624C20083D58A /* APIService.swift in Sources */,
 				15A85FEF21965D3F0025529A /* LoginViewController.swift in Sources */,
 				15A85FB72196446D0025529A /* LoginPresenter.swift in Sources */,
 				1506B1A22197196500D947D5 /* Double.swift in Sources */,
 				1506B1A02197056200D947D5 /* ReusableView.swift in Sources */,
 				1506B19A2197036100D947D5 /* StatementTableViewCell.swift in Sources */,
+				1506B1A92197308C00D947D5 /* UITextField.swift in Sources */,
 				15A85FB82196446D0025529A /* LoginWorker.swift in Sources */,
 				1506B195219697C600D947D5 /* CustomError.swift in Sources */,
 				15A860092196719A0025529A /* LocalStorageService.swift in Sources */,
@@ -603,6 +622,7 @@
 				1513E18321963F7C00B08E14 /* URLRequest.swift in Sources */,
 				15A85FF321965D590025529A /* StatementListViewController.swift in Sources */,
 				15A85FD5219644C70025529A /* StatementListModels.swift in Sources */,
+				1506B1A521972C2B00D947D5 /* CALayer.swift in Sources */,
 				15A85FD4219644C70025529A /* StatementListRouter.swift in Sources */,
 				15A85FD3219644C70025529A /* StatementListWorker.swift in Sources */,
 			);
