@@ -14,4 +14,4 @@
 - [x] Uso do git
 
 ## Uso de dependências
-Nesse projeto utilizei apenas uma dependência: (SwiftKeychainWrapper)[https://github.com/jrendel/SwiftKeychainWrapper] pois facilitou muito a utilização do Keychain para guardar as informações de login do usuário de forma segura.
+Nesse projeto utilizei apenas uma dependência: [SwiftKeychainWrapper](https://github.com/jrendel/SwiftKeychainWrappe) pois facilitou muito a utilização do Keychain para guardar as informações de login do usuário de forma segura.
