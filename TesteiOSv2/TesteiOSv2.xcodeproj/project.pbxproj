@@ -32,6 +32,14 @@
 		15A85FF021965D3F0025529A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A85FEE21965D3F0025529A /* LoginViewController.xib */; };
 		15A85FF321965D590025529A /* StatementListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A85FF121965D590025529A /* StatementListViewController.swift */; };
 		15A85FF421965D590025529A /* StatementListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A85FF221965D590025529A /* StatementListViewController.xib */; };
+		15A85FF921965E1C0025529A /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A85FF521965E1C0025529A /* LoginViewControllerTests.swift */; };
+		15A85FFA21965E1C0025529A /* LoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A85FF621965E1C0025529A /* LoginInteractorTests.swift */; };
+		15A85FFB21965E1C0025529A /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A85FF721965E1C0025529A /* LoginWorkerTests.swift */; };
+		15A85FFC21965E1C0025529A /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A85FF821965E1C0025529A /* LoginPresenterTests.swift */; };
+		15A8600321965E3C0025529A /* StatementListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A85FFF21965E3C0025529A /* StatementListViewControllerTests.swift */; };
+		15A8600421965E3C0025529A /* StatementListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8600021965E3C0025529A /* StatementListInteractorTests.swift */; };
+		15A8600521965E3C0025529A /* StatementListWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8600121965E3C0025529A /* StatementListWorkerTests.swift */; };
+		15A8600621965E3C0025529A /* StatementListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8600221965E3C0025529A /* StatementListPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +91,14 @@
 		15A85FEE21965D3F0025529A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		15A85FF121965D590025529A /* StatementListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListViewController.swift; sourceTree = "<group>"; };
 		15A85FF221965D590025529A /* StatementListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementListViewController.xib; sourceTree = "<group>"; };
+		15A85FF521965E1C0025529A /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		15A85FF621965E1C0025529A /* LoginInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorTests.swift; sourceTree = "<group>"; };
+		15A85FF721965E1C0025529A /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
+		15A85FF821965E1C0025529A /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
+		15A85FFF21965E3C0025529A /* StatementListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListViewControllerTests.swift; sourceTree = "<group>"; };
+		15A8600021965E3C0025529A /* StatementListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListInteractorTests.swift; sourceTree = "<group>"; };
+		15A8600121965E3C0025529A /* StatementListWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListWorkerTests.swift; sourceTree = "<group>"; };
+		15A8600221965E3C0025529A /* StatementListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +182,7 @@
 			children = (
 				154AB285219622BD0083D58A /* TesteiOSv2Tests.swift */,
 				154AB287219622BD0083D58A /* Info.plist */,
+				15A85FFE21965E280025529A /* Scenes */,
 			);
 			path = TesteiOSv2Tests;
 			sourceTree = "<group>";
@@ -223,6 +240,37 @@
 				15A85FD1219644C70025529A /* StatementListInteractor.swift */,
 				15A85FF121965D590025529A /* StatementListViewController.swift */,
 				15A85FF221965D590025529A /* StatementListViewController.xib */,
+			);
+			path = StatementList;
+			sourceTree = "<group>";
+		};
+		15A85FFD21965E200025529A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				15A85FF521965E1C0025529A /* LoginViewControllerTests.swift */,
+				15A85FF621965E1C0025529A /* LoginInteractorTests.swift */,
+				15A85FF721965E1C0025529A /* LoginWorkerTests.swift */,
+				15A85FF821965E1C0025529A /* LoginPresenterTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		15A85FFE21965E280025529A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				15A85FFD21965E200025529A /* Login */,
+				15A8600721965E400025529A /* StatementList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		15A8600721965E400025529A /* StatementList */ = {
+			isa = PBXGroup;
+			children = (
+				15A85FFF21965E3C0025529A /* StatementListViewControllerTests.swift */,
+				15A8600021965E3C0025529A /* StatementListInteractorTests.swift */,
+				15A8600121965E3C0025529A /* StatementListWorkerTests.swift */,
+				15A8600221965E3C0025529A /* StatementListPresenterTests.swift */,
 			);
 			path = StatementList;
 			sourceTree = "<group>";
@@ -385,7 +433,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15A8600621965E3C0025529A /* StatementListPresenterTests.swift in Sources */,
+				15A85FF921965E1C0025529A /* LoginViewControllerTests.swift in Sources */,
+				15A8600421965E3C0025529A /* StatementListInteractorTests.swift in Sources */,
+				15A85FFA21965E1C0025529A /* LoginInteractorTests.swift in Sources */,
+				15A8600321965E3C0025529A /* StatementListViewControllerTests.swift in Sources */,
 				154AB286219622BD0083D58A /* TesteiOSv2Tests.swift in Sources */,
+				15A85FFB21965E1C0025529A /* LoginWorkerTests.swift in Sources */,
+				15A85FFC21965E1C0025529A /* LoginPresenterTests.swift in Sources */,
+				15A8600521965E3C0025529A /* StatementListWorkerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
