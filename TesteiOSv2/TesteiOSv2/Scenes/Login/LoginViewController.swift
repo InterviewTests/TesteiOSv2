@@ -12,13 +12,13 @@
 
 import UIKit
 
-protocol LoginDisplayLogic: class
-{
+protocol LoginDisplayLogic: class {
     func displayExistingLoginInfo(viewModel: Login.ExistingInfo.ViewModel)
+    func displayLoginErrorMessage(viewModel: Login.Login.ViewModel)
+    func displaySuccessfullLogin(viewModel: Login.Login.ViewModel)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
-{
+class LoginViewController: UIViewController, LoginDisplayLogic {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
@@ -94,4 +94,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         userNameTextField.text = viewModel.userName
         passwordTextField.text = viewModel.password
     }
+    
+    func displayLoginErrorMessage(viewModel: Login.Login.ViewModel) {}
+    
+    func displaySuccessfullLogin(viewModel: Login.Login.ViewModel) { }
 }

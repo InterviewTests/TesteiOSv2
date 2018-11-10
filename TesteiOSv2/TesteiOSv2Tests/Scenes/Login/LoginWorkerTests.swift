@@ -13,31 +13,29 @@
 @testable import TesteiOSv2
 import XCTest
 
-class LoginWorkerTests: XCTestCase
-{
-  // MARK: Subject under test
-  
-  var sut: LoginWorker!
-    var localStorageManager: MockLocalStorageManager!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupLoginWorker()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-    
-  // MARK: Test setup
-  
-  func setupLoginWorker()
-  {
-    localStorageManager = MockLocalStorageManager()
-    sut = LoginWorker(localStorageManager)
-  }
+class LoginWorkerTests: XCTestCase {
+    // MARK: Subject under test
+
+    var sut: LoginWorker!
+    var localStorageService: MockLocalStorageService!
+    var apiService: MockAPIService!
+
+    // MARK: Test lifecycle
+
+    override func setUp() {
+        super.setUp()
+        setupLoginWorker()
+    }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    // MARK: Test setup
+
+    func setupLoginWorker() {
+        localStorageService = MockLocalStorageService()
+        apiService = MockAPIService()
+        sut = LoginWorker(localStorageService, apiService)
+    }
 }

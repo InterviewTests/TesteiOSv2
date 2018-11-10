@@ -12,24 +12,24 @@
 
 import UIKit
 
-protocol LoginPresentationLogic
-{
-  func presentExistentLoginInfo(response: Login.ExistingInfo.Response)
+protocol LoginPresentationLogic {
+    func presentExistentLoginInfo(response: Login.ExistingInfo.Response)
+    func presentLoginErrorMessage(response: Login.Login.Response)
+    func presentLoginSuccesfull(response: Login.Login.Response)
 }
 
-class LoginPresenter: LoginPresentationLogic
-{
-  weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentExistentLoginInfo(response: Login.ExistingInfo.Response)
-  {
-    if let userName = response.userName,
-        let password = response.password {
-        
-        let viewModel = Login.ExistingInfo.ViewModel(userName: userName, password: password)
-        viewController?.displayExistingLoginInfo(viewModel: viewModel)
+class LoginPresenter: LoginPresentationLogic {
+    weak var viewController: LoginDisplayLogic?
+
+    func presentExistentLoginInfo(response: Login.ExistingInfo.Response) {
+        if let userName = response.userName,
+            let password = response.password {
+            
+            let viewModel = Login.ExistingInfo.ViewModel(userName: userName, password: password)
+            viewController?.displayExistingLoginInfo(viewModel: viewModel)
+        }
     }
-  }
+    
+    func presentLoginErrorMessage(response: Login.Login.Response) {}
+    func presentLoginSuccesfull(response: Login.Login.Response) {}
 }

@@ -13,13 +13,19 @@
 import UIKit
 
 class LoginWorker {
-    private let localStorageService: LocalStorageManagerProtocol
+    private let localStorageService: LocalStorageServiceProtocol
+    private let apiService: APIServiceProtocol
     
-    init(_ localStorageService: LocalStorageManagerProtocol) {
+    init(_ localStorageService: LocalStorageServiceProtocol, _ apiService: APIServiceProtocol) {
         self.localStorageService = localStorageService
+        self.apiService = apiService
     }
     
     func fetchExistingLoginInfo() -> (userName: String?, password: String?) {
         return localStorageService.loadLoginInfo()
+    }
+    
+    func performLogin(userName: String, password: String, completion: @escaping(Result<User>) -> Void) {
+        apiService.performLogin(withUserName: userName, password: password, completion: completion)
     }
 }

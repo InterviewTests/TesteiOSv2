@@ -1,5 +1,5 @@
 //
-//  LocalStorageManager.swift
+//  LocalStorageService.swift
 //  TesteiOSv2
 //
 //  Created by Bruno on 09/11/18.
@@ -9,12 +9,12 @@
 import Foundation
 import SwiftKeychainWrapper
 
-protocol LocalStorageManagerProtocol {
+protocol LocalStorageServiceProtocol {
     func loadLoginInfo() -> (userName: String?, password: String?)
     func setLoginInfo(userName: String, password: String)
 }
 
-class LocalStorageManager: LocalStorageManagerProtocol {
+class LocalStorageService: LocalStorageServiceProtocol {
     private let userKey = "userKey"
     private let passwordKey = "passwordKey"
     
@@ -33,7 +33,7 @@ class LocalStorageManager: LocalStorageManagerProtocol {
     }
 }
 
-class MockLocalStorageManager: LocalStorageManagerProtocol {
+class MockLocalStorageService: LocalStorageServiceProtocol {
     
     func loadLoginInfo() -> (userName: String?, password: String?) {
         return ("name", "password")

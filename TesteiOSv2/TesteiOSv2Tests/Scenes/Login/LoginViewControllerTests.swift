@@ -51,28 +51,27 @@ class LoginViewControllerTests: XCTestCase
   
   // MARK: Test doubles
   
-  class LoginBusinessLogicSpy: LoginBusinessLogic
-  {
+class LoginBusinessLogicSpy: LoginBusinessLogic {
     var verifyExistingLoginInfoCalled = false
-    
-    func verifyExistingLoginInfo(request: Login.ExistingInfo.Request)
-    {
-      verifyExistingLoginInfoCalled = true
+
+    func verifyExistingLoginInfo(request: Login.ExistingInfo.Request) {
+        verifyExistingLoginInfoCalled = true
     }
-  }
-  
-  // MARK: Tests
-  
-  func testShouldVerifyExistingLoginInfoWhenViewIsLoaded()
-  {
-    // Given
-    let spy = LoginBusinessLogicSpy()
-    sut.interactor = spy
     
-    // When
-    loadView()
-    
-    // Then
-    XCTAssertTrue(spy.verifyExistingLoginInfoCalled, "viewDidLoad() should ask the interactor to verify if there is existing loggin info")
-  }
+    func perfomLogin(request: Login.Login.Request) {}
+}
+  
+    // MARK: Tests
+  
+    func testShouldVerifyExistingLoginInfoWhenViewIsLoaded() {
+        // Given
+        let spy = LoginBusinessLogicSpy()
+        sut.interactor = spy
+
+        // When
+        loadView()
+
+        // Then
+        XCTAssertTrue(spy.verifyExistingLoginInfoCalled, "viewDidLoad() should ask the interactor to verify if there is existing loggin info")
+    }
 }

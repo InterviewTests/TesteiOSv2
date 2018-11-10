@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1504ED5C219632B9007ACC17 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1504ED5B219632B9007ACC17 /* Statement.swift */; };
+		1506B19321968ED600D947D5 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B19221968ED600D947D5 /* UIViewController.swift */; };
+		1506B195219697C600D947D5 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B194219697C600D947D5 /* CustomError.swift */; };
 		1513E1802196351E00B08E14 /* Statement+DecodableAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513E17F2196351E00B08E14 /* Statement+DecodableAPI.swift */; };
 		1513E18321963F7C00B08E14 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513E18221963F7C00B08E14 /* URLRequest.swift */; };
 		154AB271219622BB0083D58A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154AB270219622BB0083D58A /* AppDelegate.swift */; };
@@ -15,7 +17,7 @@
 		154AB27B219622BD0083D58A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154AB279219622BD0083D58A /* LaunchScreen.storyboard */; };
 		154AB286219622BD0083D58A /* TesteiOSv2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154AB285219622BD0083D58A /* TesteiOSv2Tests.swift */; };
 		154AB291219622BD0083D58A /* TesteiOSv2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154AB290219622BD0083D58A /* TesteiOSv2UITests.swift */; };
-		154AB29F219624C20083D58A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154AB29E219624C20083D58A /* APIManager.swift */; };
+		154AB29F219624C20083D58A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154AB29E219624C20083D58A /* APIService.swift */; };
 		154AB2A1219625950083D58A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154AB2A0219625950083D58A /* User.swift */; };
 		154AB2A4219629140083D58A /* User+DecodableAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154AB2A3219629140083D58A /* User+DecodableAPI.swift */; };
 		15A85FB72196446D0025529A /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A85FB12196446D0025529A /* LoginPresenter.swift */; };
@@ -40,7 +42,7 @@
 		15A8600421965E3C0025529A /* StatementListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8600021965E3C0025529A /* StatementListInteractorTests.swift */; };
 		15A8600521965E3C0025529A /* StatementListWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8600121965E3C0025529A /* StatementListWorkerTests.swift */; };
 		15A8600621965E3C0025529A /* StatementListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8600221965E3C0025529A /* StatementListPresenterTests.swift */; };
-		15A860092196719A0025529A /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A860082196719A0025529A /* LocalStorageManager.swift */; };
+		15A860092196719A0025529A /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A860082196719A0025529A /* LocalStorageService.swift */; };
 		5EC06498A934E5423B714B5E /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDD8142C220F367E7D4FF44 /* Pods_TesteiOSv2.framework */; };
 		CA06FE7F5167B467313945E7 /* Pods_TesteiOSv2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BACA85ED3E6AFB8BD4462C /* Pods_TesteiOSv2Tests.framework */; };
 		DD986BC1AE7B247D9CDF3494 /* Pods_TesteiOSv2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B398B4479F02F59BC85F513A /* Pods_TesteiOSv2UITests.framework */; };
@@ -65,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		1504ED5B219632B9007ACC17 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
+		1506B19221968ED600D947D5 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		1506B194219697C600D947D5 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		1513E17F2196351E00B08E14 /* Statement+DecodableAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statement+DecodableAPI.swift"; sourceTree = "<group>"; };
 		1513E18221963F7C00B08E14 /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 		154AB26D219622BB0083D58A /* TesteiOSv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +82,7 @@
 		154AB28C219622BD0083D58A /* TesteiOSv2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TesteiOSv2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		154AB290219622BD0083D58A /* TesteiOSv2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteiOSv2UITests.swift; sourceTree = "<group>"; };
 		154AB292219622BD0083D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		154AB29E219624C20083D58A /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		154AB29E219624C20083D58A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		154AB2A0219625950083D58A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		154AB2A3219629140083D58A /* User+DecodableAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+DecodableAPI.swift"; sourceTree = "<group>"; };
 		15A85FB12196446D0025529A /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -103,7 +107,7 @@
 		15A8600021965E3C0025529A /* StatementListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListInteractorTests.swift; sourceTree = "<group>"; };
 		15A8600121965E3C0025529A /* StatementListWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListWorkerTests.swift; sourceTree = "<group>"; };
 		15A8600221965E3C0025529A /* StatementListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListPresenterTests.swift; sourceTree = "<group>"; };
-		15A860082196719A0025529A /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
+		15A860082196719A0025529A /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
 		3CDD8142C220F367E7D4FF44 /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4127832728A1B8D93713DE0B /* Pods-TesteiOSv2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		57BACA85ED3E6AFB8BD4462C /* Pods_TesteiOSv2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,8 +150,8 @@
 		1513E18121963F6C00B08E14 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				154AB29E219624C20083D58A /* APIManager.swift */,
-				15A860082196719A0025529A /* LocalStorageManager.swift */,
+				154AB29E219624C20083D58A /* APIService.swift */,
+				15A860082196719A0025529A /* LocalStorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				1513E18221963F7C00B08E14 /* URLRequest.swift */,
+				1506B19221968ED600D947D5 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				154AB2A2219629020083D58A /* Model */,
 				1513E18421963F8D00B08E14 /* Extensions */,
 				15A85FBE2196448F0025529A /* Scenes */,
+				1506B194219697C600D947D5 /* CustomError.swift */,
 			);
 			path = TesteiOSv2;
 			sourceTree = "<group>";
@@ -548,17 +554,19 @@
 				1513E1802196351E00B08E14 /* Statement+DecodableAPI.swift in Sources */,
 				154AB2A1219625950083D58A /* User.swift in Sources */,
 				15A85FBC2196446D0025529A /* LoginInteractor.swift in Sources */,
-				154AB29F219624C20083D58A /* APIManager.swift in Sources */,
+				154AB29F219624C20083D58A /* APIService.swift in Sources */,
 				15A85FEF21965D3F0025529A /* LoginViewController.swift in Sources */,
 				15A85FB72196446D0025529A /* LoginPresenter.swift in Sources */,
 				15A85FB82196446D0025529A /* LoginWorker.swift in Sources */,
-				15A860092196719A0025529A /* LocalStorageManager.swift in Sources */,
+				1506B195219697C600D947D5 /* CustomError.swift in Sources */,
+				15A860092196719A0025529A /* LocalStorageService.swift in Sources */,
 				1504ED5C219632B9007ACC17 /* Statement.swift in Sources */,
 				154AB271219622BB0083D58A /* AppDelegate.swift in Sources */,
 				15A85FB92196446D0025529A /* LoginRouter.swift in Sources */,
 				15A85FBA2196446D0025529A /* LoginModels.swift in Sources */,
 				154AB2A4219629140083D58A /* User+DecodableAPI.swift in Sources */,
 				15A85FD7219644C70025529A /* StatementListInteractor.swift in Sources */,
+				1506B19321968ED600D947D5 /* UIViewController.swift in Sources */,
 				15A85FD2219644C70025529A /* StatementListPresenter.swift in Sources */,
 				1513E18321963F7C00B08E14 /* URLRequest.swift in Sources */,
 				15A85FF321965D590025529A /* StatementListViewController.swift in Sources */,

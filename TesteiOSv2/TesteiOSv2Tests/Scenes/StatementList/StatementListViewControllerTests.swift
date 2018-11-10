@@ -63,30 +63,4 @@ class StatementListViewControllerTests: XCTestCase
   }
   
   // MARK: Tests
-  
-  func testShouldDoSomethingWhenViewIsLoaded()
-  {
-    // Given
-    let spy = StatementListBusinessLogicSpy()
-    sut.interactor = spy
-    
-    // When
-    loadView()
-    
-    // Then
-    XCTAssertTrue(spy.doSomethingCalled, "viewDidLoad() should ask the interactor to do something")
-  }
-  
-  func testDisplaySomething()
-  {
-    // Given
-    let viewModel = StatementList.Something.ViewModel()
-    
-    // When
-    loadView()
-    sut.displaySomething(viewModel: viewModel)
-    
-    // Then
-    //XCTAssertEqual(sut.nameTextField.text, "", "displaySomething(viewModel:) should update the name text field")
-  }
 }

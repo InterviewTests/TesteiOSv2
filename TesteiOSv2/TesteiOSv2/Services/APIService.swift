@@ -8,9 +8,21 @@
 
 import Foundation
 
-protocol APIManagerProtocol {
+protocol APIServiceProtocol {
     func fetchStatements(of user: User, completion: @escaping(Result<[Statement]>) -> Void)
     func performLogin(withUserName userName: String, password: String, completion: @escaping(Result<User>) -> Void)
+}
+
+class MockAPIService: APIServiceProtocol {
+    func fetchStatements(of user: User, completion: @escaping (Result<[Statement]>) -> Void) {
+        let statement = Statement.init(title: "Test", desc: "test", date: "test", value: 200)
+        completion(.success([statement]))
+    }
+    
+    func performLogin(withUserName userName: String, password: String, completion: @escaping (Result<User>) -> Void) {
+        let user = User.init(userId: 1, name: "test", bankAccount: "test", agency: "test", balance: 200)
+        completion(.success(user))
+    }
 }
 
 private let basePath: String = "https://bank-app-test.herokuapp.com/api"
@@ -22,7 +34,7 @@ struct APIKeys {
     static let password = "password"
 }
 
-final class APIManager: APIManagerProtocol {
+final class APIService: APIServiceProtocol {
     private let session: URLSession
     
     init(_ session: URLSession = URLSession.shared) {

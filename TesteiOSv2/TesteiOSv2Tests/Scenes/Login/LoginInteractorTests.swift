@@ -41,25 +41,45 @@ class LoginInteractorTests: XCTestCase
   
   // MARK: Test doubles
   
-  class LoginPresentationLogicSpy: LoginPresentationLogic
-  {
-    var presentExistentLoginInfoCalled = false
-    
-    func presentExistentLoginInfo(response: Login.ExistingInfo.Response)
-    {
-      presentExistentLoginInfoCalled = true
-    }
-  }
+    class LoginPresentationLogicSpy: LoginPresentationLogic {
+        var presentExistentLoginInfoCalled = false
+        var presentLoginErrorMessageCalled = false
+        var presentLoginSuccesfullCalled = false
 
-   class LoginWorkerSpy: LoginWorker
-   {
-    var fetchExistingLoginInfoCalled = false
-    
-    override func fetchExistingLoginInfo() -> (userName: String?, password: String?) {
-        fetchExistingLoginInfoCalled = true
-        return ("test_user", "Test1@")
+        func presentExistentLoginInfo(response: Login.ExistingInfo.Response) {
+            presentExistentLoginInfoCalled = true
+        }
+
+        func presentLoginErrorMessage(response: Login.Login.Response) {
+            presentLoginErrorMessageCalled = true
+        }
+
+        func presentLoginSuccesfull(response: Login.Login.Response) {
+            presentLoginSuccesfullCalled = true
+        }
     }
-   }
+
+    class LoginWorkerSpy: LoginWorker {
+        var fetchExistingLoginInfoCalled = false
+        var performLoginCalled = false
+        
+        var shouldFailLoginRequest = false
+
+        override func fetchExistingLoginInfo() -> (userName: String?, password: String?) {
+            fetchExistingLoginInfoCalled = true
+            return ("test_user", "Test1@")
+        }
+        
+        override func performLogin(userName: String, password: String, completion: @escaping (Result<User>) -> Void) {
+            performLoginCalled = true
+            if shouldFailLoginRequest {
+                completion(.failure(CustomError.internetConnection))
+            } else {
+                let user = User(userId: 1, name: "test", bankAccount: "234", agency: "234", balance: 300)
+                completion(.success(user))
+            }
+        }
+    }
   
   // MARK: Tests
   
@@ -68,7 +88,7 @@ class LoginInteractorTests: XCTestCase
     // Given
     let spy = LoginPresentationLogicSpy()
     sut.presenter = spy
-    let workerSpy = LoginWorkerSpy(MockLocalStorageManager())
+    let workerSpy = LoginWorkerSpy(MockLocalStorageService(), MockAPIService())
     sut.worker = workerSpy
     
     let request = Login.ExistingInfo.Request()
@@ -80,4 +100,75 @@ class LoginInteractorTests: XCTestCase
     XCTAssertTrue(workerSpy.fetchExistingLoginInfoCalled, "verifyExistingLoginInfo should ask worker to fetch existing login info")
     XCTAssertTrue(spy.presentExistentLoginInfoCalled, "presentExistentLoginInfo should be called to present the results of the existing login info request")
   }
+    
+    func testEmptyNameForLogin() {
+        // Given
+        let spy = LoginPresentationLogicSpy()
+        sut.presenter = spy
+        
+        let request = Login.Login.Request(userName: nil, password: "sadfsa")
+        
+        // When
+        sut.perfomLogin(request: request)
+        XCTAssertTrue(spy.presentLoginErrorMessageCalled, "When trying to login with an invalid user name, a request to worker should not be performed and an error message should be displayed.")
+    }
+    
+    func testEmptyPasswordForLogin() {
+        // Given
+        let spy = LoginPresentationLogicSpy()
+        sut.presenter = spy
+        
+        let request = Login.Login.Request(userName: "asdfasd", password: nil)
+        
+        // When
+        sut.perfomLogin(request: request)
+        XCTAssertTrue(spy.presentLoginErrorMessageCalled, "When trying to login with an invalid password, a request to worker should not be performed and an error message should be displayed.")
+    }
+    
+    // Password must contain:
+    // - Captalized letter
+    // - Special character
+    // - Number
+    func testPasswordNotMatchingRequirements() {
+        // Given
+        let spy = LoginPresentationLogicSpy()
+        sut.presenter = spy
+        
+        let request = Login.Login.Request(userName: "asdfasd", password: "asdfasdf")
+        
+        // When
+        sut.perfomLogin(request: request)
+        XCTAssertTrue(spy.presentLoginErrorMessageCalled, "When trying to login with an invalid password, a request to worker should not be performed and an error message should be displayed.")
+    }
+    
+    func testSuccessfullLogin() {
+        // Given
+        let spy = LoginPresentationLogicSpy()
+        let workerSpy = LoginWorkerSpy(MockLocalStorageService(), MockAPIService())
+        sut.presenter = spy
+        sut.worker = workerSpy
+        
+        let request = Login.Login.Request(userName: "test_user", password: "Test@1")
+        
+        // When
+        sut.perfomLogin(request: request)
+        XCTAssertTrue(workerSpy.performLoginCalled, "When trying to login with valid user name and password, the worker should receive a request")
+        XCTAssertTrue(spy.presentLoginErrorMessageCalled, "When trying to login with valid username password, a request to the api may still fail, in this case the presentation logic error method should be called")
+    }
+    
+    func testFailedLogin() {
+        // Given
+        let spy = LoginPresentationLogicSpy()
+        let workerSpy = LoginWorkerSpy(MockLocalStorageService(), MockAPIService())
+        workerSpy.shouldFailLoginRequest = true
+        sut.presenter = spy
+        sut.worker = workerSpy
+        
+        let request = Login.Login.Request(userName: "test_user", password: "Test@1")
+        
+        // When
+        sut.perfomLogin(request: request)
+        XCTAssertTrue(workerSpy.performLoginCalled, "When trying to login with valid user name and password, the worker should receive a request")
+        XCTAssertTrue(spy.presentLoginSuccesfullCalled, "When trying to login with valid user name and password, the presentation logic should receive a call to its successfull method.")
+    }
 }

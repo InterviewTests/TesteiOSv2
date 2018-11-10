@@ -13,71 +13,87 @@
 @testable import TesteiOSv2
 import XCTest
 
-class LoginPresenterTests: XCTestCase
-{
-  // MARK: Subject under test
-  
-  var sut: LoginPresenter!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupLoginPresenter()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupLoginPresenter()
-  {
-    sut = LoginPresenter()
-  }
-  
-  // MARK: Test doubles
-  
-  class LoginDisplayLogicSpy: LoginDisplayLogic
-  {
-    var displayExistingLoginInfoCalled = false
-    
-    func displayExistingLoginInfo(viewModel: Login.ExistingInfo.ViewModel)
-    {
-      displayExistingLoginInfoCalled = true
+class LoginPresenterTests: XCTestCase {
+    // MARK: Subject under test
+
+    var sut: LoginPresenter!
+
+    // MARK: Test lifecycle
+
+    override func setUp() {
+        super.setUp()
+        setupLoginPresenter()
     }
-  }
-  
-  // MARK: Tests
-  
-  func testPresentExistentLoginInfo()
-  {
-    // Given
-    let spy = LoginDisplayLogicSpy()
-    sut.viewController = spy
-    let response = Login.ExistingInfo.Response(userName: "userName", password: "password")
-    
-    // When
-    sut.presentExistentLoginInfo(response: response)
-    
-    // Then
-    XCTAssertTrue(spy.displayExistingLoginInfoCalled, "presentExistentLoginInfo(response:) should ask the view controller to display the the existent login info in the text fields")
-  }
-    
-    func testNoExistentLoginInfo()
-    {
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    // MARK: Test setup
+
+    func setupLoginPresenter() {
+        sut = LoginPresenter()
+    }
+
+    // MARK: Test doubles
+
+    class LoginDisplayLogicSpy: LoginDisplayLogic {
+        var displayExistingLoginInfoCalled = false
+        var displayLoginErrorMessageCalled = false
+        var displaySuccessfullLoginCalled = false
+        
+        func displayLoginErrorMessage(viewModel: Login.Login.ViewModel) {
+            displayLoginErrorMessageCalled = true
+        }
+
+        func displayExistingLoginInfo(viewModel: Login.ExistingInfo.ViewModel) {
+          displayExistingLoginInfoCalled = true
+        }
+        
+        func displaySuccessfullLogin(viewModel: Login.Login.ViewModel) {
+            displaySuccessfullLoginCalled = true
+        }
+    }
+
+    // MARK: Tests
+
+    func testPresentExistentLoginInfo() {
         // Given
         let spy = LoginDisplayLogicSpy()
         sut.viewController = spy
-        let response = Login.ExistingInfo.Response(userName: nil, password: nil)
-        
+        let response = Login.ExistingInfo.Response(userName: "userName", password: "password")
+
         // When
         sut.presentExistentLoginInfo(response: response)
+
+        // Then
+        XCTAssertTrue(spy.displayExistingLoginInfoCalled, "presentExistentLoginInfo(response:) should ask the view controller to display the the existent login info in the text fields")
+    }
+
+    func testNoExistentLoginInfo() {
+        // Given
+        let spy = LoginDisplayLogicSpy()
+        sut.viewController = spy
+        let response = Login.Login.Response(isError: true, message: "Fail", user: nil)
+        
+        // When
+        sut.presentLoginErrorMessage(response: response)
         
         // Then
-        XCTAssertFalse(spy.displayExistingLoginInfoCalled, "nothing should happen if there is no existing login info")
+        XCTAssertFalse(spy.displayLoginErrorMessageCalled, "An error message should be displayed to the user informing there was an error with the request")
+    }
+    
+    func testSuccessfullLogin() {
+        // Given
+        let spy = LoginDisplayLogicSpy()
+        sut.viewController = spy
+        let user = User(userId: 1, name: "Test", bankAccount: "234", agency: "234", balance: 299)
+        let response = Login.Login.Response(isError: false, message: nil, user: user)
+        
+        // When
+        sut.presentLoginSuccesfull(response: response)
+        
+        // Then
+        XCTAssertTrue(spy.displaySuccessfullLoginCalled, "presentLoginSuccesfull(response:) should ask the view controller to display call the detail view controller")
     }
 }

@@ -12,32 +12,38 @@
 
 import UIKit
 
-protocol LoginBusinessLogic
-{
-  func verifyExistingLoginInfo(request: Login.ExistingInfo.Request)
+protocol LoginBusinessLogic {
+    func verifyExistingLoginInfo(request: Login.ExistingInfo.Request)
+    func perfomLogin(request: Login.Login.Request)
 }
 
-protocol LoginDataStore
-{
+protocol LoginDataStore {
   //var name: String { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker
-  //var name: String = ""
+class LoginInteractor: LoginBusinessLogic, LoginDataStore {
+    
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker
+    //var name: String = ""
   
     init() {
-        self.worker = LoginWorker(LocalStorageManager())
+        let localStorageService = LocalStorageService()
+        let apiService = APIService()
+        self.worker = LoginWorker(localStorageService, apiService)
     }
     
-  // MARK: Do something
+    // MARK: Verify Existing Login info
   
-  func verifyExistingLoginInfo(request: Login.ExistingInfo.Request)
-  {
-    let (userName, password) = worker.fetchExistingLoginInfo()
-    let response = Login.ExistingInfo.Response(userName: userName, password: password)
-    self.presenter?.presentExistentLoginInfo(response: response)
-  }
+    func verifyExistingLoginInfo(request: Login.ExistingInfo.Request) {
+        let (userName, password) = worker.fetchExistingLoginInfo()
+        let response = Login.ExistingInfo.Response(userName: userName, password: password)
+        self.presenter?.presentExistentLoginInfo(response: response)
+    }
+    
+    // MARK: Perform login
+    
+    func perfomLogin(request: Login.Login.Request) {
+        
+    }
 }
