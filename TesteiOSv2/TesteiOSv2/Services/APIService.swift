@@ -44,10 +44,16 @@ final class APIService: APIServiceProtocol {
     func fetchStatements(of user: User, completion: @escaping(Result<[Statement]>) -> Void) {
         let path = statementsPath + "\(user.userId)"
         
-        guard let url = URL(string: path) else { return }
+        guard let url = URL(string: path) else {
+            completion(.failure(CustomError.internetConnection))
+            return
+        }
         
         let task = session.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
+            guard let data = data else {
+                completion(.failure(CustomError.internetConnection))
+                return
+            }
             
             do {
                 let statements = try JSONDecoder().decode(StatementContainer.self, from: data).statementList
@@ -66,10 +72,16 @@ final class APIService: APIServiceProtocol {
             APIKeys.password: password
         ]
         
-        guard let request = buildPostRequest(withPath: loginPath, parameters: params) else { return }
+        guard let request = buildPostRequest(withPath: loginPath, parameters: params) else {
+            completion(.failure(CustomError.internetConnection))
+            return
+        }
         
         let task = session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return }
+            guard let data = data else {
+                completion(.failure(CustomError.internetConnection))
+                return
+            }
             do {
                 let user = try JSONDecoder().decode(User.self, from: data)
                 completion(.success(user))
