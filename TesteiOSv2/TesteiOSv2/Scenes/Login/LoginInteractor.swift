@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+  func verifyExistingLoginInfo(request: Login.ExistingInfo.Request)
 }
 
 protocol LoginDataStore
@@ -25,17 +25,20 @@ protocol LoginDataStore
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
   var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
+  var worker: LoginWorker
   //var name: String = ""
   
+    
+    init() {
+        self.worker = LoginWorker(MockLocalStorageManager())
+    }
+    
   // MARK: Do something
   
-  func doSomething(request: Login.Something.Request)
+  func verifyExistingLoginInfo(request: Login.ExistingInfo.Request)
   {
-    worker = LoginWorker()
-    worker?.doSomeWork()
-    
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
+    let (userName, password) = worker.fetchExistingLoginInfo()
+    let response = Login.ExistingInfo.Response(userName: userName, password: password)
+    self.presenter?.presentExistentLoginInfo(response: response)
   }
 }

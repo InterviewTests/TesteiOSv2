@@ -43,27 +43,41 @@ class LoginInteractorTests: XCTestCase
   
   class LoginPresentationLogicSpy: LoginPresentationLogic
   {
-    var presentSomethingCalled = false
+    var presentExistentLoginInfoCalled = false
     
-    func presentSomething(response: Login.Something.Response)
+    func presentExistentLoginInfo(response: Login.ExistingInfo.Response)
     {
-      presentSomethingCalled = true
+      presentExistentLoginInfoCalled = true
     }
   }
+
+   class LoginWorkerSpy: LoginWorker
+   {
+    var fetchExistingLoginInfoCalled = false
+    
+    override func fetchExistingLoginInfo() -> (userName: String?, password: String?) {
+        fetchExistingLoginInfoCalled = true
+        return ("test_user", "Test1@")
+    }
+   }
   
   // MARK: Tests
   
-  func testDoSomething()
+  func testVerifyLoginInfoShouldAskLoginWorkerToFetchLoginInfo()
   {
     // Given
     let spy = LoginPresentationLogicSpy()
     sut.presenter = spy
-    let request = Login.Something.Request()
+    let workerSpy = LoginWorkerSpy(MockLocalStorageManager())
+    sut.worker = workerSpy
+    
+    let request = Login.ExistingInfo.Request()
     
     // When
-    sut.doSomething(request: request)
+    sut.verifyExistingLoginInfo(request: request)
     
     // Then
-    XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
+    XCTAssertTrue(workerSpy.fetchExistingLoginInfoCalled, "verifyExistingLoginInfo should ask worker to fetch existing login info")
+    XCTAssertTrue(spy.presentExistentLoginInfoCalled, "presentExistentLoginInfo should be called to present the results of the existing login info request")
   }
 }

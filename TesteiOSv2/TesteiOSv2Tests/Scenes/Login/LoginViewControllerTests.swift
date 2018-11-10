@@ -39,14 +39,13 @@ class LoginViewControllerTests: XCTestCase
   
   func setupLoginViewController()
   {
-    let bundle = Bundle.main
-    let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-    sut = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+    sut = LoginViewController()
   }
   
   func loadView()
   {
-    window.addSubview(sut.view)
+    window.rootViewController = sut
+    window.makeKeyAndVisible()
     RunLoop.current.run(until: Date())
   }
   
@@ -54,17 +53,17 @@ class LoginViewControllerTests: XCTestCase
   
   class LoginBusinessLogicSpy: LoginBusinessLogic
   {
-    var doSomethingCalled = false
+    var verifyExistingLoginInfoCalled = false
     
-    func doSomething(request: Login.Something.Request)
+    func verifyExistingLoginInfo(request: Login.ExistingInfo.Request)
     {
-      doSomethingCalled = true
+      verifyExistingLoginInfoCalled = true
     }
   }
   
   // MARK: Tests
   
-  func testShouldDoSomethingWhenViewIsLoaded()
+  func testShouldVerifyExistingLoginInfoWhenViewIsLoaded()
   {
     // Given
     let spy = LoginBusinessLogicSpy()
@@ -74,19 +73,6 @@ class LoginViewControllerTests: XCTestCase
     loadView()
     
     // Then
-    XCTAssertTrue(spy.doSomethingCalled, "viewDidLoad() should ask the interactor to do something")
-  }
-  
-  func testDisplaySomething()
-  {
-    // Given
-    let viewModel = Login.Something.ViewModel()
-    
-    // When
-    loadView()
-    sut.displaySomething(viewModel: viewModel)
-    
-    // Then
-    //XCTAssertEqual(sut.nameTextField.text, "", "displaySomething(viewModel:) should update the name text field")
+    XCTAssertTrue(spy.verifyExistingLoginInfoCalled, "viewDidLoad() should ask the interactor to verify if there is existing loggin info")
   }
 }

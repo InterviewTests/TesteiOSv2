@@ -43,27 +43,41 @@ class LoginPresenterTests: XCTestCase
   
   class LoginDisplayLogicSpy: LoginDisplayLogic
   {
-    var displaySomethingCalled = false
+    var displayExistingLoginInfoCalled = false
     
-    func displaySomething(viewModel: Login.Something.ViewModel)
+    func displayExistingLoginInfo(viewModel: Login.ExistingInfo.ViewModel)
     {
-      displaySomethingCalled = true
+      displayExistingLoginInfoCalled = true
     }
   }
   
   // MARK: Tests
   
-  func testPresentSomething()
+  func testPresentExistentLoginInfo()
   {
     // Given
     let spy = LoginDisplayLogicSpy()
     sut.viewController = spy
-    let response = Login.Something.Response()
+    let response = Login.ExistingInfo.Response(userName: "userName", password: "password")
     
     // When
-    sut.presentSomething(response: response)
+    sut.presentExistentLoginInfo(response: response)
     
     // Then
-    XCTAssertTrue(spy.displaySomethingCalled, "presentSomething(response:) should ask the view controller to display the result")
+    XCTAssertTrue(spy.displayExistingLoginInfoCalled, "presentExistentLoginInfo(response:) should ask the view controller to display the the existent login info in the text fields")
   }
+    
+    func testNoExistentLoginInfo()
+    {
+        // Given
+        let spy = LoginDisplayLogicSpy()
+        sut.viewController = spy
+        let response = Login.ExistingInfo.Response(userName: nil, password: nil)
+        
+        // When
+        sut.presentExistentLoginInfo(response: response)
+        
+        // Then
+        XCTAssertFalse(spy.displayExistingLoginInfoCalled, "nothing should happen if there is no existing login info")
+    }
 }

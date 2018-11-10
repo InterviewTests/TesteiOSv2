@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-  func presentSomething(response: Login.Something.Response)
+  func presentExistentLoginInfo(response: Login.ExistingInfo.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
@@ -23,9 +23,13 @@ class LoginPresenter: LoginPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: Login.Something.Response)
+  func presentExistentLoginInfo(response: Login.ExistingInfo.Response)
   {
-    let viewModel = Login.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+    if let userName = response.userName,
+        let password = response.password {
+        
+        let viewModel = Login.ExistingInfo.ViewModel(userName: userName, password: password)
+        viewController?.displayExistingLoginInfo(viewModel: viewModel)
+    }
   }
 }

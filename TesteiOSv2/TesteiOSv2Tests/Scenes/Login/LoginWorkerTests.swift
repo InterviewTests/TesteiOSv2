@@ -18,6 +18,7 @@ class LoginWorkerTests: XCTestCase
   // MARK: Subject under test
   
   var sut: LoginWorker!
+    var localStorageManager: MockLocalStorageManager!
   
   // MARK: Test lifecycle
   
@@ -31,24 +32,12 @@ class LoginWorkerTests: XCTestCase
   {
     super.tearDown()
   }
-  
+    
   // MARK: Test setup
   
   func setupLoginWorker()
   {
-    sut = LoginWorker()
-  }
-  
-  // MARK: Test doubles
-  
-  // MARK: Tests
-  
-  func testSomething()
-  {
-    // Given
-    
-    // When
-    
-    // Then
+    localStorageManager = MockLocalStorageManager()
+    sut = LoginWorker(localStorageManager)
   }
 }

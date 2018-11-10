@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    func displaySomething(viewModel: Login.Something.ViewModel)
+    func displayExistingLoginInfo(viewModel: Login.ExistingInfo.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        doSomething()
+        verifyExistingLoginInfo()
     }
     
     // MARK: Do something
@@ -83,13 +83,13 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     @IBAction func loginButtonTapped(_ sender: Any) {
     }
     
-    func doSomething()
+    func verifyExistingLoginInfo()
     {
-        let request = Login.Something.Request()
-        interactor?.doSomething(request: request)
+        let request = Login.ExistingInfo.Request()
+        interactor?.verifyExistingLoginInfo(request: request)
     }
     
-    func displaySomething(viewModel: Login.Something.ViewModel)
+    func displayExistingLoginInfo(viewModel: Login.ExistingInfo.ViewModel)
     {
         //nameTextField.text = viewModel.name
     }

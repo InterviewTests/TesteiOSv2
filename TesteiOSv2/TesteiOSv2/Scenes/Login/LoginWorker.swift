@@ -12,9 +12,14 @@
 
 import UIKit
 
-class LoginWorker
-{
-  func doSomeWork()
-  {
-  }
+class LoginWorker {
+    private let localStorageService: LocalStorageManagerProtocol
+    
+    init(_ localStorageService: LocalStorageManagerProtocol) {
+        self.localStorageService = localStorageService
+    }
+    
+    func fetchExistingLoginInfo() -> (userName: String?, password: String?) {
+        return localStorageService.loadLoginInfo()
+    }
 }
