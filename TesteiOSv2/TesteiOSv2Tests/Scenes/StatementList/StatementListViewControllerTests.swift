@@ -37,29 +37,55 @@ class StatementListViewControllerTests: XCTestCase
   
   // MARK: Test setup
   
-  func setupStatementListViewController()
-  {
-    sut = StatementListViewController()
-  }
-  
-  func loadView()
-  {
-    window.rootViewController = sut
-    window.makeKeyAndVisible()
-    RunLoop.current.run(until: Date())
-  }
-  
-  // MARK: Test doubles
-  
-  class StatementListBusinessLogicSpy: StatementListBusinessLogic
-  {
-    var doSomethingCalled = false
-    
-    func doSomething(request: StatementList.Something.Request)
-    {
-      doSomethingCalled = true
+    func setupStatementListViewController() {
+        sut = StatementListViewController()
     }
-  }
   
-  // MARK: Tests
+    func loadView() {
+        window.rootViewController = sut
+        window.makeKeyAndVisible()
+        RunLoop.current.run(until: Date())
+    }
+  
+    // MARK: Test doubles
+  
+    class StatementListBusinessLogicSpy: StatementListBusinessLogic, StatementListDataStore {
+        var user: User!
+        
+        var fetchStatementsCalled = false
+        var fetchUserInfoCalled = false
+
+        func fetchUserStatements(request: StatementList.Fetch.Request) {
+            fetchStatementsCalled = true
+        }
+        
+        func fetchUserInfo(request: StatementList.UserDetail.Request) {
+            fetchUserInfoCalled = true
+        }
+    }
+  
+    // MARK: Tests
+    func testRequestUserInfoWhenViewIsLoaded() {
+        // Given
+        let spy = StatementListBusinessLogicSpy()
+        sut.interactor = spy
+        
+        // When
+        loadView()
+        
+        // Then
+        XCTAssertTrue(spy.fetchUserInfoCalled, "viewDidLoad() should ask the interactor to get the user info")
+    }
+    
+    func testRequestStatementsWhenViewIsLoaded() {
+        // Given
+        let spy = StatementListBusinessLogicSpy()
+        sut.interactor = spy
+        
+        // When
+        loadView()
+        
+        // Then
+        XCTAssertTrue(spy.fetchStatementsCalled, "viewDidLoad() should ask the interactor to get the user statements")
+    }
 }

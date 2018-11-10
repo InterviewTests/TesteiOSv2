@@ -12,20 +12,26 @@
 
 import UIKit
 
-protocol StatementListPresentationLogic
-{
-  func presentSomething(response: StatementList.Something.Response)
+protocol StatementListPresentationLogic {
+    func presentUserInfo(response: StatementList.UserDetail.ViewModel)
+    func presentStatements(response: StatementList.Fetch.ViewModel)
+    func presentError(response: StatementList.Fetch.ErrorViewModel)
 }
 
-class StatementListPresenter: StatementListPresentationLogic
-{
-  weak var viewController: StatementListDisplayLogic?
+class StatementListPresenter: StatementListPresentationLogic {
+    weak var viewController: StatementListDisplayLogic?
   
-  // MARK: Do something
+    // MARK: Present user info
   
-  func presentSomething(response: StatementList.Something.Response)
-  {
-    let viewModel = StatementList.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    func presentUserInfo(response: StatementList.UserDetail.ViewModel) {
+        
+    }
+    
+    func presentStatements(response: StatementList.Fetch.ViewModel) {
+        
+    }
+    
+    func presentError(response: StatementList.Fetch.ErrorViewModel) {
+        
+    }
 }

@@ -13,57 +13,82 @@
 @testable import TesteiOSv2
 import XCTest
 
-class StatementListPresenterTests: XCTestCase
-{
-  // MARK: Subject under test
-  
-  var sut: StatementListPresenter!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
+class StatementListPresenterTests: XCTestCase{
+    // MARK: Subject under test
+
+    var sut: StatementListPresenter!
+
+    // MARK: Test lifecycle
+
+    override func setUp() {
     super.setUp()
-    setupStatementListPresenter()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupStatementListPresenter()
-  {
-    sut = StatementListPresenter()
-  }
-  
-  // MARK: Test doubles
-  
-  class StatementListDisplayLogicSpy: StatementListDisplayLogic
-  {
-    var displaySomethingCalled = false
-    
-    func displaySomething(viewModel: StatementList.Something.ViewModel)
-    {
-      displaySomethingCalled = true
+        setupStatementListPresenter()
     }
-  }
-  
-  // MARK: Tests
-  
-  func testPresentSomething()
-  {
-    // Given
-    let spy = StatementListDisplayLogicSpy()
-    sut.viewController = spy
-    let response = StatementList.Something.Response()
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    // MARK: Test setup
+
+    func setupStatementListPresenter() {
+        sut = StatementListPresenter()
+    }
+
+    // MARK: Test doubles
+
+    class StatementListDisplayLogicSpy: StatementListDisplayLogic {
+        var displayUserInfoCalled = false
+        var displayStatementsCalled = false
+        var displayErrorCalled = false
+        
+        func displayUserInfo(viewModel: StatementList.UserDetail.ViewModel) {
+            displayUserInfoCalled = true
+        }
+        
+        func displayStatements(viewModel: StatementList.Fetch.ViewModel) {
+            displayStatementsCalled = true
+        }
+        
+        func displayError(viewModel: StatementList.Fetch.ErrorViewModel) {
+            displayErrorCalled = true
+        }
+    }
+
+    // MARK: Tests
+    func testPresentUserInfo() {
+        // Given
+        let spy = StatementListDisplayLogicSpy()
+        sut.viewController = spy
+        
+        // When
+        sut.presentUserInfo(response: StatementList.UserDetail.ViewModel(name: "Test", account: "test", balance: "test"))
+        
+        // Then
+        XCTAssertTrue(spy.displayUserInfoCalled, "presentUserInfo(response: ) should ask the viewcontroller to display the user info")
+    }
     
-    // When
-    sut.presentSomething(response: response)
+    func testPresentStatements() {
+        // Given
+        let spy = StatementListDisplayLogicSpy()
+        sut.viewController = spy
+        
+        // When
+        sut.presentStatements(response: StatementList.Fetch.ViewModel(statements: []))
+        
+        // Then
+        XCTAssertTrue(spy.displayStatementsCalled, "presentStatements(response: ) should ask the viewcontroller to display the user statements")
+    }
     
-    // Then
-    XCTAssertTrue(spy.displaySomethingCalled, "presentSomething(response:) should ask the view controller to display the result")
-  }
+    func testPresentError() {
+        // Given
+        let spy = StatementListDisplayLogicSpy()
+        sut.viewController = spy
+        
+        // When
+        sut.presentError(response: StatementList.Fetch.ErrorViewModel(message: "Unexpected error"))
+        
+        // Then
+        XCTAssertTrue(spy.displayStatementsCalled, "presentError(response: ) should ask the viewcontroller to display an error message related to the fetch of statements")
+    }
 }

@@ -12,30 +12,27 @@
 
 import UIKit
 
-protocol StatementListBusinessLogic
-{
-  func doSomething(request: StatementList.Something.Request)
+protocol StatementListBusinessLogic {
+    func fetchUserInfo(request: StatementList.UserDetail.Request)
+    func fetchUserStatements(request: StatementList.Fetch.Request)
 }
 
 protocol StatementListDataStore
 {
-    var userId: Int! { get set }
+    var user: User! { get set }
 }
 
 class StatementListInteractor: StatementListBusinessLogic, StatementListDataStore
 {
   var presenter: StatementListPresentationLogic?
   var worker: StatementListWorker?
-  var userId: Int!
+  var user: User!
   
-  // MARK: Do something
-  
-  func doSomething(request: StatementList.Something.Request)
-  {
-    worker = StatementListWorker()
-    worker?.doSomeWork()
+    // MARK: Fetch user info
+    func fetchUserInfo(request: StatementList.UserDetail.Request) {
+        
+    }
     
-    let response = StatementList.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Fetch user statements
+    func fetchUserStatements(request: StatementList.Fetch.Request) {}
 }

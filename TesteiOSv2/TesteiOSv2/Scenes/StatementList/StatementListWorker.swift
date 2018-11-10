@@ -12,9 +12,14 @@
 
 import UIKit
 
-class StatementListWorker
-{
-  func doSomeWork()
-  {
-  }
+class StatementListWorker {
+    private let apiService: APIServiceProtocol
+    
+    init(_ apiService: APIServiceProtocol = APIService()) {
+        self.apiService = apiService
+    }
+    
+    func fetchStatements(of user: User, completion: @escaping(Result<[Statement]>) -> Void) {
+        apiService.fetchStatements(of: user, completion: completion)
+    }
 }

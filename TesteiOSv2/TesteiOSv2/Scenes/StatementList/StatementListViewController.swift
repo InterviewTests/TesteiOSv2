@@ -12,13 +12,13 @@
 
 import UIKit
 
-protocol StatementListDisplayLogic: class
-{
-    func displaySomething(viewModel: StatementList.Something.ViewModel)
+protocol StatementListDisplayLogic: class {
+    func displayUserInfo(viewModel: StatementList.UserDetail.ViewModel)
+    func displayStatements(viewModel: StatementList.Fetch.ViewModel)
+    func displayError(viewModel: StatementList.Fetch.ErrorViewModel)
 }
 
-class StatementListViewController: UIViewController, StatementListDisplayLogic
-{
+class StatementListViewController: UIViewController, StatementListDisplayLogic {
     var interactor: StatementListBusinessLogic?
     var router: (NSObjectProtocol & StatementListRoutingLogic & StatementListDataPassing)?
     
@@ -73,26 +73,38 @@ class StatementListViewController: UIViewController, StatementListDisplayLogic
     {
         super.viewDidLoad()
         setupViewController()
-        doSomething()
+        fetchUserInfo()
+        fetchUserStatements()
     }
     
     func setupViewController() {
         tableView.register(type: StatementTableViewCell.self)
     }
     
-    // MARK: Do something
-    
     @IBAction func leaveButtonTapped(_ sender: Any) {
     }
     
-    func doSomething()
-    {
-        let request = StatementList.Something.Request()
-        interactor?.doSomething(request: request)
+    // MARK: Fetch user info
+    
+    func fetchUserInfo() {
+        interactor?.fetchUserInfo(request: StatementList.UserDetail.Request())
     }
     
-    func displaySomething(viewModel: StatementList.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
+    // MARK: Fetch user statements
+    
+    func fetchUserStatements() {
+        interactor?.fetchUserStatements(request: StatementList.Fetch.Request())
+    }
+    
+    func displayUserInfo(viewModel: StatementList.UserDetail.ViewModel) {
+        
+    }
+    
+    func displayStatements(viewModel: StatementList.Fetch.ViewModel) {
+        
+    }
+    
+    func displayError(viewModel: StatementList.Fetch.ErrorViewModel) {
+        
     }
 }

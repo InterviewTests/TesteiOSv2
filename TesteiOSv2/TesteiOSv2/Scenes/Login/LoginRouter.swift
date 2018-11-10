@@ -32,7 +32,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
         guard let destRouter = statementListVC.router,
             var destinationDS = destRouter.dataStore,
             let dataStore = dataStore,
-            dataStore.userId != nil else {
+            dataStore.user != nil else {
                 return
         }
         
@@ -44,6 +44,6 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
   
     // MARK: Passing data
     func passDataToStatementList(source: LoginDataStore, destination: inout StatementListDataStore) {
-        destination.userId = source.userId
+        destination.user = source.user
     }
 }

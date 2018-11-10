@@ -18,14 +18,14 @@ protocol LoginBusinessLogic {
 }
 
 protocol LoginDataStore {
-    var userId: Int? { get set }
+    var user: User? { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker
-    var userId: Int?
+    var user: User?
   
     init() {
         let localStorageService = LocalStorageService()
@@ -71,7 +71,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         worker.performLogin(userName: userName, password: password) { [unowned self] result in
             switch result {
             case let .success(user):
-                self.userId = user.userId
+                self.user = user
                 self.worker.saveUserInfoLocally(userName: userName, password: password)
                 let response = Login.Login.Response(isError: false, message: nil, user: user)
                 self.presenter?.presentLoginSuccesfull(response: response)

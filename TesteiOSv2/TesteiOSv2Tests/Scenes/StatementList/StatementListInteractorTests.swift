@@ -13,57 +13,104 @@
 @testable import TesteiOSv2
 import XCTest
 
-class StatementListInteractorTests: XCTestCase
-{
-  // MARK: Subject under test
-  
-  var sut: StatementListInteractor!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
+class StatementListInteractorTests: XCTestCase {
+    // MARK: Subject under test
+
+    var sut: StatementListInteractor!
+
+    // MARK: Test lifecycle
+
+    override func setUp() {
     super.setUp()
-    setupStatementListInteractor()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupStatementListInteractor()
-  {
-    sut = StatementListInteractor()
-  }
-  
-  // MARK: Test doubles
-  
-  class StatementListPresentationLogicSpy: StatementListPresentationLogic
-  {
-    var presentSomethingCalled = false
-    
-    func presentSomething(response: StatementList.Something.Response)
-    {
-      presentSomethingCalled = true
+        setupStatementListInteractor()
     }
-  }
-  
-  // MARK: Tests
-  
-  func testDoSomething()
-  {
-    // Given
-    let spy = StatementListPresentationLogicSpy()
-    sut.presenter = spy
-    let request = StatementList.Something.Request()
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    // MARK: Test setup
+
+    func setupStatementListInteractor() {
+        sut = StatementListInteractor()
+    }
+
+    // MARK: Test doubles
+
+    class StatementListPresentationLogicSpy: StatementListPresentationLogic {
+        var presentUserInfoCalled = false
+        var presentStatementsCalled = false
+        var presentErrorCalled = false
+        
+        func presentUserInfo(response: StatementList.UserDetail.ViewModel) {
+            presentUserInfoCalled = true
+        }
+        
+        func presentStatements(response: StatementList.Fetch.ViewModel) {
+            presentStatementsCalled = true
+        }
+        
+        func presentError(response: StatementList.Fetch.ErrorViewModel) {
+            presentErrorCalled = true
+        }
+    }
     
-    // When
-    sut.doSomething(request: request)
+    class StatementListWorkerSpy: StatementListWorker {
+        var fetchStatementsCalled = false
+        var shouldFailRequet = false
+        
+        override func fetchStatements(of user: User, completion: @escaping(Result<[Statement]>) -> Void) {
+            fetchStatementsCalled = true
+            if shouldFailRequet {
+                completion(.failure(CustomError.internetConnection))
+            } else {
+                let statement = Statement(title: "test", desc: "description", date: "12/12/12", value: 20)
+                completion(.success([statement]))
+            }
+        }
+    }
+
+    // MARK: Tests
+    func testFetchUserInfo() {
+        // Given
+        let presenterSpy = StatementListPresentationLogicSpy()
+        sut.presenter = presenterSpy
+        
+        // When
+        sut.fetchUserInfo(request: StatementList.UserDetail.Request())
+        
+        // Then
+        XCTAssertTrue(presenterSpy.presentUserInfoCalled, "fetchUserInfo(request: ) should call the presenter with the given info")
+    }
     
-    // Then
-    XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
-  }
+    func testFetchStatements() {
+        // Given
+        let presenterSpy = StatementListPresentationLogicSpy()
+        sut.presenter = presenterSpy
+        let workerSpy = StatementListWorkerSpy()
+        sut.worker = workerSpy
+        
+        // When
+        sut.fetchUserStatements(request: StatementList.Fetch.Request())
+        
+        // Then
+        XCTAssertTrue(workerSpy.fetchStatementsCalled, "fetchUserStatements(request: ) should call the worker to perform the request")
+        XCTAssertTrue(presenterSpy.presentStatementsCalled, "fetchUserStatements(request: ) should call the presenter to display the received info from the worker")
+    }
+    
+    func testFailFetchStatements() {
+        // Given
+        let presenterSpy = StatementListPresentationLogicSpy()
+        sut.presenter = presenterSpy
+        let workerSpy = StatementListWorkerSpy()
+        workerSpy.shouldFailRequet = true
+        sut.worker = workerSpy
+        
+        // When
+        sut.fetchUserStatements(request: StatementList.Fetch.Request())
+        
+        // Then
+        XCTAssertTrue(workerSpy.fetchStatementsCalled, "fetchUserStatements(request: ) should call the worker to perform the request")
+        XCTAssertTrue(presenterSpy.presentErrorCalled, "fetchUserStatements(request: ) should call the presenter to display an error message when the worker fail to retrieve the requested information")
+    }
 }
