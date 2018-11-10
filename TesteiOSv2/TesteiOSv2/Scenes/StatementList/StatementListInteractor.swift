@@ -17,22 +17,33 @@ protocol StatementListBusinessLogic {
     func fetchUserStatements(request: StatementList.Fetch.Request)
 }
 
-protocol StatementListDataStore
-{
+protocol StatementListDataStore {
     var user: User! { get set }
 }
 
-class StatementListInteractor: StatementListBusinessLogic, StatementListDataStore
-{
+class StatementListInteractor: StatementListBusinessLogic, StatementListDataStore {
   var presenter: StatementListPresentationLogic?
-  var worker: StatementListWorker?
+  var worker: StatementListWorker? = StatementListWorker()
   var user: User!
-  
+    
     // MARK: Fetch user info
     func fetchUserInfo(request: StatementList.UserDetail.Request) {
-        
+        let response = StatementList.UserDetail.Response(user: user)
+        presenter?.presentUserInfo(response: response)
     }
     
     // MARK: Fetch user statements
-    func fetchUserStatements(request: StatementList.Fetch.Request) {}
+    func fetchUserStatements(request: StatementList.Fetch.Request) {
+        worker?.fetchStatements(of: user, completion: { [weak self] result in
+            guard let strongSelf = self else { return }
+            
+            switch result {
+            case let .success(statements):
+                let response = StatementList.Fetch.Response(statements: statements, isError: false, error: nil)
+                strongSelf.presenter?.presentStatements(response: response)
+            case let .failure(error):
+                strongSelf.presenter?.presentError(response: StatementList.Fetch.Response(statements: [], isError: true, error: error))
+            }
+        })
+    }
 }

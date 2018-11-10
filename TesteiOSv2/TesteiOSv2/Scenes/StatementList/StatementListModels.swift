@@ -19,6 +19,8 @@ enum StatementList {
         struct Request {}
         struct Response {
             var statements: [Statement]
+            var isError: Bool
+            var error: Error?
         }
         struct ViewModel {
             struct StatementInfo {

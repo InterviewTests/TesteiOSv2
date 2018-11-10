@@ -33,27 +33,11 @@ class StatementListInteractorTests: XCTestCase {
 
     func setupStatementListInteractor() {
         sut = StatementListInteractor()
+        let user = User(userId: 1, name: "", bankAccount: "", agency: "", balance: 2)
+        sut.user = user
     }
 
     // MARK: Test doubles
-
-    class StatementListPresentationLogicSpy: StatementListPresentationLogic {
-        var presentUserInfoCalled = false
-        var presentStatementsCalled = false
-        var presentErrorCalled = false
-        
-        func presentUserInfo(response: StatementList.UserDetail.ViewModel) {
-            presentUserInfoCalled = true
-        }
-        
-        func presentStatements(response: StatementList.Fetch.ViewModel) {
-            presentStatementsCalled = true
-        }
-        
-        func presentError(response: StatementList.Fetch.ErrorViewModel) {
-            presentErrorCalled = true
-        }
-    }
     
     class StatementListWorkerSpy: StatementListWorker {
         var fetchStatementsCalled = false
@@ -67,6 +51,24 @@ class StatementListInteractorTests: XCTestCase {
                 let statement = Statement(title: "test", desc: "description", date: "12/12/12", value: 20)
                 completion(.success([statement]))
             }
+        }
+    }
+    
+    class StatementListPresentationLogicSpy: StatementListPresentationLogic {
+        var presentUserInfoCalled = false
+        var presentStatementsCalled = false
+        var presentErrorCalled = false
+        
+        func presentUserInfo(response: StatementList.UserDetail.Response) {
+            presentUserInfoCalled = true
+        }
+        
+        func presentStatements(response: StatementList.Fetch.Response) {
+            presentStatementsCalled = true
+        }
+        
+        func presentError(response: StatementList.Fetch.Response) {
+            presentErrorCalled = true
         }
     }
 

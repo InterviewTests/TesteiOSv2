@@ -18,4 +18,11 @@ class StatementTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    func setup(with statementInfo: StatementList.Fetch.ViewModel.StatementInfo) {
+        titleLabel.text = statementInfo.title
+        descriptionLabel.text = statementInfo.detail
+        dateLabel.text = statementInfo.date
+        valueLabel.text = statementInfo.value
+    }
 }

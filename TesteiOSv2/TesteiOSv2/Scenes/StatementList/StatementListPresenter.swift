@@ -13,9 +13,9 @@
 import UIKit
 
 protocol StatementListPresentationLogic {
-    func presentUserInfo(response: StatementList.UserDetail.ViewModel)
-    func presentStatements(response: StatementList.Fetch.ViewModel)
-    func presentError(response: StatementList.Fetch.ErrorViewModel)
+    func presentUserInfo(response: StatementList.UserDetail.Response)
+    func presentStatements(response: StatementList.Fetch.Response)
+    func presentError(response: StatementList.Fetch.Response)
 }
 
 class StatementListPresenter: StatementListPresentationLogic {
@@ -23,15 +23,30 @@ class StatementListPresenter: StatementListPresentationLogic {
   
     // MARK: Present user info
   
-    func presentUserInfo(response: StatementList.UserDetail.ViewModel) {
-        
+    func presentUserInfo(response: StatementList.UserDetail.Response) {
+        let account = response.user.agency + " / " + response.user.bankAccount
+        let viewModel = StatementList.UserDetail.ViewModel(name: response.user.name, account: account, balance: response.user.balance.toBrazilianCurrency())
+        viewController?.displayUserInfo(viewModel: viewModel)
     }
     
-    func presentStatements(response: StatementList.Fetch.ViewModel) {
-        
+    // MARK: Present statements
+    
+    func presentStatements(response: StatementList.Fetch.Response) {
+        let statements = response.statements.map {
+            StatementList.Fetch.ViewModel.StatementInfo.init(title: $0.title,
+                                                             detail: $0.desc,
+                                                             date: $0.date,
+                                                             value: $0.value.toBrazilianCurrency())
+        }
+        let viewModel = StatementList.Fetch.ViewModel.init(statements: statements)
+        viewController?.displayStatements(viewModel: viewModel)
     }
     
-    func presentError(response: StatementList.Fetch.ErrorViewModel) {
-        
+    // MARK: Present error message
+    
+    func presentError(response: StatementList.Fetch.Response) {
+        let viewModel = StatementList.Fetch.ErrorViewModel(message: response.error?.localizedDescription
+            ?? "An unexpected error occured")
+        viewController?.displayError(viewModel: viewModel)
     }
 }

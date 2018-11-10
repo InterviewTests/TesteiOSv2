@@ -24,25 +24,27 @@ class StatementListViewController: UIViewController, StatementListDisplayLogic {
     
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var accountLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
+    
+    var statements: [StatementList.Fetch.ViewModel.StatementInfo] = []
     
     // MARK: Object lifecycle
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
     
     // MARK: Setup
     
-    private func setup()
-    {
+    private func setup() {
         let viewController = self
         let interactor = StatementListInteractor()
         let presenter = StatementListPresenter()
@@ -55,33 +57,28 @@ class StatementListViewController: UIViewController, StatementListDisplayLogic {
         router.dataStore = interactor
     }
     
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
     // MARK: View lifecycle
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewController()
+        setupTableView()
         fetchUserInfo()
         fetchUserStatements()
     }
     
-    func setupViewController() {
+    func setupTableView() {
         tableView.register(type: StatementTableViewCell.self)
+        tableView.dataSource = self
     }
     
+    // MARK: Routing
+    
     @IBAction func leaveButtonTapped(_ sender: Any) {
+        leave()
+    }
+    
+    func leave() {
+        
     }
     
     // MARK: Fetch user info
@@ -96,15 +93,39 @@ class StatementListViewController: UIViewController, StatementListDisplayLogic {
         interactor?.fetchUserStatements(request: StatementList.Fetch.Request())
     }
     
+    // MARK: Display user info
+    
     func displayUserInfo(viewModel: StatementList.UserDetail.ViewModel) {
-        
+        nameLabel.text = viewModel.name
+        accountLabel.text = viewModel.account
+        balanceLabel.text = viewModel.balance
     }
+    
+    // MARK: Display statements
     
     func displayStatements(viewModel: StatementList.Fetch.ViewModel) {
-        
+        DispatchQueue.main.async {
+            self.statements = viewModel.statements
+            self.tableView.reloadData()
+        }
     }
     
+    // MARK: Display error
+    
     func displayError(viewModel: StatementList.Fetch.ErrorViewModel) {
-        
+        present(message: viewModel.message)
+    }
+}
+
+// MARK: Table View
+
+extension StatementListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statements.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: StatementTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.setup(with: statements[indexPath.row])
+        return cell
     }
 }

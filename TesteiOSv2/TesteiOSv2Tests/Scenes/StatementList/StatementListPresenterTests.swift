@@ -62,7 +62,8 @@ class StatementListPresenterTests: XCTestCase{
         sut.viewController = spy
         
         // When
-        sut.presentUserInfo(response: StatementList.UserDetail.ViewModel(name: "Test", account: "test", balance: "test"))
+        let user = User(userId: 1, name: "", bankAccount: "", agency: "", balance: 33)
+        sut.presentUserInfo(response: StatementList.UserDetail.Response(user: user))
         
         // Then
         XCTAssertTrue(spy.displayUserInfoCalled, "presentUserInfo(response: ) should ask the viewcontroller to display the user info")
@@ -74,7 +75,7 @@ class StatementListPresenterTests: XCTestCase{
         sut.viewController = spy
         
         // When
-        sut.presentStatements(response: StatementList.Fetch.ViewModel(statements: []))
+        sut.presentStatements(response: StatementList.Fetch.Response(statements: [], isError: false, error: nil))
         
         // Then
         XCTAssertTrue(spy.displayStatementsCalled, "presentStatements(response: ) should ask the viewcontroller to display the user statements")
@@ -86,9 +87,9 @@ class StatementListPresenterTests: XCTestCase{
         sut.viewController = spy
         
         // When
-        sut.presentError(response: StatementList.Fetch.ErrorViewModel(message: "Unexpected error"))
+        sut.presentError(response: StatementList.Fetch.Response(statements: [], isError: true, error: CustomError.internetConnection))
         
         // Then
-        XCTAssertTrue(spy.displayStatementsCalled, "presentError(response: ) should ask the viewcontroller to display an error message related to the fetch of statements")
+        XCTAssertTrue(spy.displayErrorCalled, "presentError(response: ) should ask the viewcontroller to display an error message related to the fetch of statements")
     }
 }

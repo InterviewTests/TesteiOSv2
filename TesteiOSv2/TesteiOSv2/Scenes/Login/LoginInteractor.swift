@@ -68,16 +68,18 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             return
         }
 
-        worker.performLogin(userName: userName, password: password) { [unowned self] result in
+        worker.performLogin(userName: userName, password: password) { [weak self] result in
+            guard let strongSelf = self else { return }
+            
             switch result {
             case let .success(user):
-                self.user = user
-                self.worker.saveUserInfoLocally(userName: userName, password: password)
+                strongSelf.user = user
+                strongSelf.worker.saveUserInfoLocally(userName: userName, password: password)
                 let response = Login.Login.Response(isError: false, message: nil, user: user)
-                self.presenter?.presentLoginSuccesfull(response: response)
+                strongSelf.presenter?.presentLoginSuccesfull(response: response)
             case let .failure(error):
                 let response = Login.Login.Response(isError: true, message: error.localizedDescription, user: nil)
-                self.presenter?.presentLoginErrorMessage(response: response)
+                strongSelf.presenter?.presentLoginErrorMessage(response: response)
             }
         }
     }
