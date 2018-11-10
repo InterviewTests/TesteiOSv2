@@ -12,9 +12,8 @@
 
 import UIKit
 
-@objc protocol StatementListRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol StatementListRoutingLogic {
+    func leave()
 }
 
 protocol StatementListDataPassing
@@ -22,39 +21,13 @@ protocol StatementListDataPassing
   var dataStore: StatementListDataStore? { get }
 }
 
-class StatementListRouter: NSObject, StatementListRoutingLogic, StatementListDataPassing
-{
-  weak var viewController: StatementListViewController?
-  var dataStore: StatementListDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+class StatementListRouter: NSObject, StatementListRoutingLogic, StatementListDataPassing {
+    weak var viewController: StatementListViewController?
+    var dataStore: StatementListDataStore?
 
-  // MARK: Navigation
+    // MARK: Routing
   
-  //func navigateToSomewhere(source: StatementListViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: StatementListDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    func leave() {
+        viewController?.dismiss(animated: true, completion: nil)
+    }
 }

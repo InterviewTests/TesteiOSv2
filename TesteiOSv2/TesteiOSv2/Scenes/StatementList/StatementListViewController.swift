@@ -78,7 +78,7 @@ class StatementListViewController: UIViewController, StatementListDisplayLogic {
     }
     
     func leave() {
-        
+        router?.leave()
     }
     
     // MARK: Fetch user info
