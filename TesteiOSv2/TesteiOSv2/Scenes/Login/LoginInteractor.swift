@@ -56,11 +56,13 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             return
         }
         
-//        let pattern = "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])$"
-//        let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-//        let range = NSRange(location: 0, length: lhs.utf16.count)
-//        regex?.matches(in: password, options: [], range: range)
-        
+        let regex = "^.*(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!#$%&?\"]).*"
+        guard NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: password) else {
+            let response = Login.Login.Response(isError: true, message: "Password should contain a capital letter, number and special character.", user: nil)
+            presenter?.presentLoginErrorMessage(response: response)
+            return
+        }
+
         worker.performLogin(userName: userName, password: password) { [unowned self] result in
             switch result {
             case let .success(user):
