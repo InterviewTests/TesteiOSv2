@@ -14,8 +14,8 @@ import UIKit
 
 protocol LoginDisplayLogic: class {
     func displayExistingLoginInfo(viewModel: Login.ExistingInfo.ViewModel)
-    func displayLoginErrorMessage(viewModel: Login.Login.ViewModel)
-    func displaySuccessfullLogin(viewModel: Login.Login.ViewModel)
+    func displayLoginErrorMessage(viewModel: Login.Login.ViewModelFailedLogin)
+    func displaySuccessfullLogin(viewModel: Login.Login.ViewModelSuccessfullLogin)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -99,11 +99,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         passwordTextField.text = viewModel.password
     }
     
-    func displayLoginErrorMessage(viewModel: Login.Login.ViewModel) {
-        present(message: viewModel.message ?? "Ops, something unexpected happened")
+    func displayLoginErrorMessage(viewModel: Login.Login.ViewModelFailedLogin) {
+        present(message: viewModel.message)
     }
     
-    func displaySuccessfullLogin(viewModel: Login.Login.ViewModel) {
-        present(message: "The user id is: \(viewModel.userId ?? 0)")
+    func displaySuccessfullLogin(viewModel: Login.Login.ViewModelSuccessfullLogin) {
+        present(message: "The user id is: \(viewModel.userId)")
     }
 }

@@ -27,9 +27,12 @@ enum Login {
             var user: User?
         }
         
-        struct ViewModel {
-            var message: String?
-            var userId: Int?
+        struct ViewModelFailedLogin {
+            var message: String
+        }
+        
+        struct ViewModelSuccessfullLogin {
+            var userId: Int
         }
     }
 

@@ -42,7 +42,7 @@ class LoginPresenterTests: XCTestCase {
         var displayLoginErrorMessageCalled = false
         var displaySuccessfullLoginCalled = false
         
-        func displayLoginErrorMessage(viewModel: Login.Login.ViewModel) {
+        func displayLoginErrorMessage(viewModel: Login.Login.ViewModelFailedLogin) {
             displayLoginErrorMessageCalled = true
         }
 
@@ -50,7 +50,7 @@ class LoginPresenterTests: XCTestCase {
           displayExistingLoginInfoCalled = true
         }
         
-        func displaySuccessfullLogin(viewModel: Login.Login.ViewModel) {
+        func displaySuccessfullLogin(viewModel: Login.Login.ViewModelSuccessfullLogin) {
             displaySuccessfullLoginCalled = true
         }
     }

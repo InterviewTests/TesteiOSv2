@@ -31,11 +31,18 @@ class LoginPresenter: LoginPresentationLogic {
     }
     
     func presentLoginErrorMessage(response: Login.Login.Response) {
-        let viewModel = Login.Login.ViewModel(message: response.message, userId: nil)
+        let viewModel = Login.Login.ViewModelFailedLogin(message: response.message ?? "Something unexpected happened")
         viewController?.displayLoginErrorMessage(viewModel: viewModel)
     }
+    
     func presentLoginSuccesfull(response: Login.Login.Response) {
-        let viewModel = Login.Login.ViewModel(message: nil, userId: response.user?.userId)
+        guard let user = response.user else {
+            let viewModel = Login.Login.ViewModelFailedLogin(message: response.message ?? "Something unexpected happened")
+            viewController?.displayLoginErrorMessage(viewModel: viewModel)
+            return
+        }
+        
+        let viewModel = Login.Login.ViewModelSuccessfullLogin(userId: user.userId)
         viewController?.displaySuccessfullLogin(viewModel: viewModel)
     }
 }
