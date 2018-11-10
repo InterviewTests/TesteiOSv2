@@ -28,9 +28,17 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var user: User?
   
     init() {
-        let localStorageService = LocalStorageService()
-        let apiService = APIService()
-        self.worker = LoginWorker(localStorageService, apiService)
+        #if XCTESTUI
+            // Test only code version code
+            let localStorageService = MockLocalStorageService()
+            let apiService = MockAPIService()
+            self.worker = LoginWorker(localStorageService, apiService)
+        #else
+            // App only code
+            let localStorageService = LocalStorageService()
+            let apiService = APIService()
+            self.worker = LoginWorker(localStorageService, apiService)
+        #endif
     }
     
     // MARK: Verify Existing Login info

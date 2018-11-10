@@ -22,9 +22,16 @@ protocol StatementListDataStore {
 }
 
 class StatementListInteractor: StatementListBusinessLogic, StatementListDataStore {
-  var presenter: StatementListPresentationLogic?
-  var worker: StatementListWorker? = StatementListWorker()
-  var user: User!
+    var presenter: StatementListPresentationLogic?
+    var worker: StatementListWorker? = StatementListWorker()
+    var user: User!
+    
+    init() {
+        #if XCTESTUI
+        // Test only code version code
+        self.worker = StatementListWorker(MockAPIService())
+        #endif
+    }
     
     // MARK: Fetch user info
     func fetchUserInfo(request: StatementList.UserDetail.Request) {

@@ -25,8 +25,10 @@ class StatementListPresenter: StatementListPresentationLogic {
   
     func presentUserInfo(response: StatementList.UserDetail.Response) {
         var agency: String = response.user.agency
-        agency.insert("-", at: agency.index(agency.startIndex, offsetBy: 8))
-        agency.insert(".", at: agency.index(agency.startIndex, offsetBy: 2))
+        if agency.count >= 8 {
+            agency.insert("-", at: agency.index(agency.startIndex, offsetBy: 8))
+            agency.insert(".", at: agency.index(agency.startIndex, offsetBy: 2))
+        }
         
         let account = response.user.bankAccount + " / " + agency
         let balance = response.user.balance.toCurrency() ?? "R$\(response.user.balance)"

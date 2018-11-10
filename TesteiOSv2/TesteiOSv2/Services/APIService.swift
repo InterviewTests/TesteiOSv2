@@ -20,7 +20,7 @@ class MockAPIService: APIServiceProtocol {
     }
     
     func performLogin(withUserName userName: String, password: String, completion: @escaping (Result<User>) -> Void) {
-        let user = User.init(userId: 1, name: "test", bankAccount: "test", agency: "test", balance: 200)
+        let user = User.init(userId: 1, name: "test", bankAccount: "test", agency: "testagencytest", balance: 200)
         completion(.success(user))
     }
 }
