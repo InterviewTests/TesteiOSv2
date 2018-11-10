@@ -73,6 +73,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         userNameTextField.setLeftPaddingPoints(13)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     // MARK: Perform login
     
     @IBAction func loginButtonTapped(_ sender: Any) {

@@ -9,7 +9,10 @@
 import Foundation
 
 extension Double {
-    func toBrazilianCurrency() -> String {
-        return String(format: "R$%.02f", self)
+    func toCurrency() -> String? {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.init(identifier: "pt_BR")
+        formatter.numberStyle = .currency
+        return formatter.string(from: self as NSNumber)
     }
 }

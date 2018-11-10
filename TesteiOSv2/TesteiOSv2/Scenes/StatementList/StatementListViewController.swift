@@ -69,6 +69,11 @@ class StatementListViewController: UIViewController, StatementListDisplayLogic {
     func setupTableView() {
         tableView.register(type: StatementTableViewCell.self)
         tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     // MARK: Routing
@@ -127,5 +132,22 @@ extension StatementListViewController: UITableViewDataSource {
         let cell: StatementTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         cell.setup(with: statements[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Recentes"
+        }
+        return nil
+    }
+}
+
+extension StatementListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.backgroundView?.backgroundColor = #colorLiteral(red: 0.9959705472, green: 0.9961406589, blue: 0.9959598184, alpha: 1)
+            header.textLabel?.font = UIFont(name: "Helvetica Neue", size: 17)!
+            header.textLabel?.textColor = #colorLiteral(red: 0.2806568742, green: 0.328211844, blue: 0.3988876939, alpha: 1)
+        }
     }
 }

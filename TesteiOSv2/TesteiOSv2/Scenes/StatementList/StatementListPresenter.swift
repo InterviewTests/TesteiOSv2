@@ -24,8 +24,13 @@ class StatementListPresenter: StatementListPresentationLogic {
     // MARK: Present user info
   
     func presentUserInfo(response: StatementList.UserDetail.Response) {
-        let account = response.user.agency + " / " + response.user.bankAccount
-        let viewModel = StatementList.UserDetail.ViewModel(name: response.user.name, account: account, balance: response.user.balance.toBrazilianCurrency())
+        var agency: String = response.user.agency
+        agency.insert("-", at: agency.index(agency.startIndex, offsetBy: 8))
+        agency.insert(".", at: agency.index(agency.startIndex, offsetBy: 2))
+        
+        let account = response.user.bankAccount + " / " + agency
+        let balance = response.user.balance.toCurrency() ?? "R$\(response.user.balance)"
+        let viewModel = StatementList.UserDetail.ViewModel(name: response.user.name, account: account, balance: balance)
         viewController?.displayUserInfo(viewModel: viewModel)
     }
     
@@ -35,8 +40,8 @@ class StatementListPresenter: StatementListPresentationLogic {
         let statements = response.statements.map {
             StatementList.Fetch.ViewModel.StatementInfo.init(title: $0.title,
                                                              detail: $0.desc,
-                                                             date: $0.date,
-                                                             value: $0.value.toBrazilianCurrency())
+                                                             date: $0.date.replacingOccurrences(of: "-", with: "/"),
+                                                             value: $0.value.toCurrency() ?? "R$\($0.value)")
         }
         let viewModel = StatementList.Fetch.ViewModel.init(statements: statements)
         viewController?.displayStatements(viewModel: viewModel)

@@ -14,9 +14,12 @@ class StatementTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var shadowView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        shadowView.layer.addShadow(with: #colorLiteral(red: 0.8498296142, green: 0.8859475255, blue: 0.9151117206, alpha: 1), alpha: 0.5, xOffset: 0, yOffset: 5, blur: 12, spread: 0)
     }
     
     func setup(with statementInfo: StatementList.Fetch.ViewModel.StatementInfo) {
