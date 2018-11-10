@@ -56,8 +56,13 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             return
         }
         
-        let regex = "^.*(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!#$%&?\"]).*"
-        guard NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: password) else {
+        guard (userName.isValidEmail() || userName.withoutCPFCharacters.isValidCPF()) else {
+            let response = Login.Login.Response(isError: true, message: "The user name must be an email or valid cpf", user: nil)
+            presenter?.presentLoginErrorMessage(response: response)
+            return
+        }
+        
+        guard password.isValidPassword() else {
             let response = Login.Login.Response(isError: true, message: "Password should contain a capital letter, number and special character.", user: nil)
             presenter?.presentLoginErrorMessage(response: response)
             return

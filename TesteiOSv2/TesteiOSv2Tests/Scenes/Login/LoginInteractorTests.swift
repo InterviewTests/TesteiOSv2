@@ -67,7 +67,7 @@ class LoginInteractorTests: XCTestCase
 
         override func fetchExistingLoginInfo() -> (userName: String?, password: String?) {
             fetchExistingLoginInfoCalled = true
-            return ("test_user", "Test1@")
+            return ("brunoscheltzke@email.com", "Test1@")
         }
         
         override func performLogin(userName: String, password: String, completion: @escaping (Result<User>) -> Void) {
@@ -134,7 +134,22 @@ class LoginInteractorTests: XCTestCase
         let spy = LoginPresentationLogicSpy()
         sut.presenter = spy
         
-        let request = Login.Login.Request(userName: "asdfasd", password: "asdfasdf")
+        let request = Login.Login.Request(userName: "brunoscheltzke@email.com", password: "asdfasdf")
+        
+        // When
+        sut.perfomLogin(request: request)
+        XCTAssertTrue(spy.presentLoginErrorMessageCalled, "When trying to login with an invalid password, a request to worker should not be performed and an error message should be displayed.")
+    }
+    
+    // UserName must be:
+    // - email (eg.: test@email.com)
+    // - CPF (8 numbers)
+    func testUserNameNotMatchingRequirements() {
+        // Given
+        let spy = LoginPresentationLogicSpy()
+        sut.presenter = spy
+        
+        let request = Login.Login.Request(userName: "asdfasd", password: "Test@1")
         
         // When
         sut.perfomLogin(request: request)
@@ -148,7 +163,7 @@ class LoginInteractorTests: XCTestCase
         sut.presenter = spy
         sut.worker = workerSpy
         
-        let request = Login.Login.Request(userName: "test_user", password: "Test@1")
+        let request = Login.Login.Request(userName: "brunoscheltzke@email.com", password: "Test@1")
         
         // When
         sut.perfomLogin(request: request)
@@ -164,7 +179,7 @@ class LoginInteractorTests: XCTestCase
         sut.presenter = spy
         sut.worker = workerSpy
         
-        let request = Login.Login.Request(userName: "test_user", password: "Test@1")
+        let request = Login.Login.Request(userName: "brunoscheltzke@email.com", password: "Test@1")
         
         // When
         sut.perfomLogin(request: request)
