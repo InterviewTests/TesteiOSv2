@@ -91,6 +91,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     func displayExistingLoginInfo(viewModel: Login.ExistingInfo.ViewModel)
     {
-        //nameTextField.text = viewModel.name
+        userNameTextField.text = viewModel.userName
+        passwordTextField.text = viewModel.password
     }
 }

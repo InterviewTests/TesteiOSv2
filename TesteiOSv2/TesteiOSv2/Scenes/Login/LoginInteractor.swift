@@ -28,9 +28,8 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
   var worker: LoginWorker
   //var name: String = ""
   
-    
     init() {
-        self.worker = LoginWorker(MockLocalStorageManager())
+        self.worker = LoginWorker(LocalStorageManager())
     }
     
   // MARK: Do something
