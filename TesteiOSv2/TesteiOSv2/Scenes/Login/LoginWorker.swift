@@ -25,6 +25,10 @@ class LoginWorker {
         return localStorageService.loadLoginInfo()
     }
     
+    func saveUserInfoLocally(userName: String, password: String) {
+        localStorageService.setLoginInfo(userName: userName, password: password)
+    }
+    
     func performLogin(userName: String, password: String, completion: @escaping(Result<User>) -> Void) {
         apiService.performLogin(withUserName: userName, password: password, completion: completion)
     }

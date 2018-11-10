@@ -30,6 +30,12 @@ class LoginPresenter: LoginPresentationLogic {
         }
     }
     
-    func presentLoginErrorMessage(response: Login.Login.Response) {}
-    func presentLoginSuccesfull(response: Login.Login.Response) {}
+    func presentLoginErrorMessage(response: Login.Login.Response) {
+        let viewModel = Login.Login.ViewModel(message: response.message, userId: nil)
+        viewController?.displayLoginErrorMessage(viewModel: viewModel)
+    }
+    func presentLoginSuccesfull(response: Login.Login.Response) {
+        let viewModel = Login.Login.ViewModel(message: nil, userId: response.user?.userId)
+        viewController?.displaySuccessfullLogin(viewModel: viewModel)
+    }
 }

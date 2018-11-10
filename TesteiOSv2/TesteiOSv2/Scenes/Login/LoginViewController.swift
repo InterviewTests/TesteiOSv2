@@ -81,6 +81,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     // MARK: Do something
     
     @IBAction func loginButtonTapped(_ sender: Any) {
+        let userName = userNameTextField.text
+        let password = passwordTextField.text
+        let request = Login.Login.Request.init(userName: userName, password: password)
+        interactor?.perfomLogin(request: request)
     }
     
     func verifyExistingLoginInfo()
@@ -95,7 +99,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         passwordTextField.text = viewModel.password
     }
     
-    func displayLoginErrorMessage(viewModel: Login.Login.ViewModel) {}
+    func displayLoginErrorMessage(viewModel: Login.Login.ViewModel) {
+        present(message: viewModel.message ?? "Ops, something unexpected happened")
+    }
     
-    func displaySuccessfullLogin(viewModel: Login.Login.ViewModel) { }
+    func displaySuccessfullLogin(viewModel: Login.Login.ViewModel) {
+        present(message: "The user id is: \(viewModel.userId ?? 0)")
+    }
 }

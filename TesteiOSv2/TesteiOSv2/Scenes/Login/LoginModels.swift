@@ -29,6 +29,7 @@ enum Login {
         
         struct ViewModel {
             var message: String?
+            var userId: Int?
         }
     }
 

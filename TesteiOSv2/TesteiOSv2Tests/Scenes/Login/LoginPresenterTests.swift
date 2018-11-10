@@ -69,19 +69,6 @@ class LoginPresenterTests: XCTestCase {
         // Then
         XCTAssertTrue(spy.displayExistingLoginInfoCalled, "presentExistentLoginInfo(response:) should ask the view controller to display the the existent login info in the text fields")
     }
-
-    func testNoExistentLoginInfo() {
-        // Given
-        let spy = LoginDisplayLogicSpy()
-        sut.viewController = spy
-        let response = Login.Login.Response(isError: true, message: "Fail", user: nil)
-        
-        // When
-        sut.presentLoginErrorMessage(response: response)
-        
-        // Then
-        XCTAssertFalse(spy.displayLoginErrorMessageCalled, "An error message should be displayed to the user informing there was an error with the request")
-    }
     
     func testSuccessfullLogin() {
         // Given

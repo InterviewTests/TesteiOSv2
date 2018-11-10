@@ -39,14 +39,13 @@ class StatementListViewControllerTests: XCTestCase
   
   func setupStatementListViewController()
   {
-    let bundle = Bundle.main
-    let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-    sut = storyboard.instantiateViewController(withIdentifier: "StatementListViewController") as! StatementListViewController
+    sut = StatementListViewController()
   }
   
   func loadView()
   {
-    window.addSubview(sut.view)
+    window.rootViewController = sut
+    window.makeKeyAndVisible()
     RunLoop.current.run(until: Date())
   }
   

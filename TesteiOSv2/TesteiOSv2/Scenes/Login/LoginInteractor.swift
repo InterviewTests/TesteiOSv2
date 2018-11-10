@@ -44,6 +44,33 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     // MARK: Perform login
     
     func perfomLogin(request: Login.Login.Request) {
+        guard let userName = request.userName, !userName.isEmpty else {
+            let response = Login.Login.Response(isError: true, message: "Please, insert a user name", user: nil)
+            presenter?.presentLoginErrorMessage(response: response)
+            return
+        }
         
+        guard let password = request.password, !password.isEmpty else {
+            let response = Login.Login.Response(isError: true, message: "Please, insert a password", user: nil)
+            presenter?.presentLoginErrorMessage(response: response)
+            return
+        }
+        
+//        let pattern = "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])$"
+//        let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+//        let range = NSRange(location: 0, length: lhs.utf16.count)
+//        regex?.matches(in: password, options: [], range: range)
+        
+        worker.performLogin(userName: userName, password: password) { [unowned self] result in
+            switch result {
+            case let .success(user):
+                self.worker.saveUserInfoLocally(userName: userName, password: password)
+                let response = Login.Login.Response(isError: false, message: nil, user: user)
+                self.presenter?.presentLoginSuccesfull(response: response)
+            case let .failure(error):
+                let response = Login.Login.Response(isError: true, message: error.localizedDescription, user: nil)
+                self.presenter?.presentLoginErrorMessage(response: response)
+            }
+        }
     }
 }

@@ -153,7 +153,7 @@ class LoginInteractorTests: XCTestCase
         // When
         sut.perfomLogin(request: request)
         XCTAssertTrue(workerSpy.performLoginCalled, "When trying to login with valid user name and password, the worker should receive a request")
-        XCTAssertTrue(spy.presentLoginErrorMessageCalled, "When trying to login with valid username password, a request to the api may still fail, in this case the presentation logic error method should be called")
+        XCTAssertTrue(spy.presentLoginSuccesfullCalled, "When trying to login with valid username password, a request to the api may still fail, in this case the presentation logic error method should be called")
     }
     
     func testFailedLogin() {
@@ -169,6 +169,6 @@ class LoginInteractorTests: XCTestCase
         // When
         sut.perfomLogin(request: request)
         XCTAssertTrue(workerSpy.performLoginCalled, "When trying to login with valid user name and password, the worker should receive a request")
-        XCTAssertTrue(spy.presentLoginSuccesfullCalled, "When trying to login with valid user name and password, the presentation logic should receive a call to its successfull method.")
+        XCTAssertTrue(spy.presentLoginErrorMessageCalled, "When trying to login with valid user name and password, the presentation logic should receive a call to its successfull method.")
     }
 }
