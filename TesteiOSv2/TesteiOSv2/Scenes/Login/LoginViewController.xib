@@ -23,21 +23,37 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bMC-O5-Hea">
-                    <rect key="frame" x="17" y="231" width="342" height="50"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eVS-2n-z8r">
+                    <rect key="frame" x="17" y="233" width="342" height="121"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bMC-O5-Hea">
+                            <rect key="frame" x="0.0" y="0.0" width="342" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="zI9-Uw-LCG"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" textContentType="username"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j9n-Mf-XFk">
+                            <rect key="frame" x="0.0" y="71" width="342" height="50"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="zI9-Uw-LCG"/>
+                        <constraint firstItem="bMC-O5-Hea" firstAttribute="top" secondItem="eVS-2n-z8r" secondAttribute="top" id="71I-cw-Jgt"/>
+                        <constraint firstAttribute="trailing" secondItem="bMC-O5-Hea" secondAttribute="trailing" id="8jn-yd-6Ci"/>
+                        <constraint firstAttribute="bottom" secondItem="j9n-Mf-XFk" secondAttribute="bottom" id="EPK-G1-hLy"/>
+                        <constraint firstItem="j9n-Mf-XFk" firstAttribute="height" secondItem="bMC-O5-Hea" secondAttribute="height" id="M3f-OR-FKX"/>
+                        <constraint firstItem="j9n-Mf-XFk" firstAttribute="top" secondItem="bMC-O5-Hea" secondAttribute="bottom" constant="21" id="V0B-cu-3nI"/>
+                        <constraint firstItem="bMC-O5-Hea" firstAttribute="leading" secondItem="eVS-2n-z8r" secondAttribute="leading" id="byg-gD-gOU"/>
+                        <constraint firstItem="j9n-Mf-XFk" firstAttribute="leading" secondItem="bMC-O5-Hea" secondAttribute="leading" id="skm-Mh-dZi"/>
+                        <constraint firstItem="j9n-Mf-XFk" firstAttribute="trailing" secondItem="bMC-O5-Hea" secondAttribute="trailing" id="uSJ-Ju-mPd"/>
                     </constraints>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" textContentType="username"/>
-                </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j9n-Mf-XFk">
-                    <rect key="frame" x="17" y="302" width="342" height="50"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                </textField>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkE-ag-xfX">
                     <rect key="frame" x="92.5" y="575" width="190" height="50"/>
                     <color key="backgroundColor" red="0.2306426465511322" green="0.28613513708114624" blue="0.93262887001037598" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,18 +83,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="bMC-O5-Hea" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="17" id="9ue-NS-MqI"/>
-                <constraint firstItem="j9n-Mf-XFk" firstAttribute="leading" secondItem="bMC-O5-Hea" secondAttribute="leading" id="Cxs-nB-Lab"/>
+                <constraint firstAttribute="trailing" secondItem="eVS-2n-z8r" secondAttribute="trailing" constant="16" id="AIN-4D-Kyv"/>
                 <constraint firstItem="FkE-ag-xfX" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.5055" id="EXt-wk-Y8x"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FkE-ag-xfX" secondAttribute="bottom" constant="42" id="FCH-bc-6Gj"/>
                 <constraint firstItem="FkE-ag-xfX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FaI-wO-ZeC"/>
-                <constraint firstItem="j9n-Mf-XFk" firstAttribute="top" secondItem="bMC-O5-Hea" secondAttribute="bottom" constant="21" id="Hvc-Hj-tMz"/>
-                <constraint firstItem="j9n-Mf-XFk" firstAttribute="height" secondItem="bMC-O5-Hea" secondAttribute="height" id="M29-m0-4IC"/>
-                <constraint firstItem="j9n-Mf-XFk" firstAttribute="trailing" secondItem="bMC-O5-Hea" secondAttribute="trailing" id="MQY-6e-689"/>
+                <constraint firstItem="eVS-2n-z8r" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.88" id="FiM-HQ-8gm"/>
                 <constraint firstItem="Sl7-xe-bga" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UGk-tm-1Gq"/>
+                <constraint firstItem="eVS-2n-z8r" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="17" id="hJX-lZ-hdm"/>
                 <constraint firstItem="Sl7-xe-bga" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="36" id="p02-J3-Dcu"/>
-                <constraint firstItem="bMC-O5-Hea" firstAttribute="top" secondItem="Sl7-xe-bga" secondAttribute="bottom" constant="105" id="pdg-pf-7X6"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bMC-O5-Hea" secondAttribute="trailing" constant="16" id="yu0-AR-cMl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
