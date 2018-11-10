@@ -27,7 +27,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -104,6 +103,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     }
     
     func displaySuccessfullLogin(viewModel: Login.Login.ViewModelSuccessfullLogin) {
-        present(message: "The user id is: \(viewModel.userId)")
+        router?.routeToUserDetails()
     }
 }

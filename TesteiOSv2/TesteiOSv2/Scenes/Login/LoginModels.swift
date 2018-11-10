@@ -31,9 +31,7 @@ enum Login {
             var message: String
         }
         
-        struct ViewModelSuccessfullLogin {
-            var userId: Int
-        }
+        struct ViewModelSuccessfullLogin {}
     }
 
     enum ExistingInfo {

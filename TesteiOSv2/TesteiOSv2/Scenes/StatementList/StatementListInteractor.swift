@@ -19,14 +19,14 @@ protocol StatementListBusinessLogic
 
 protocol StatementListDataStore
 {
-  //var name: String { get set }
+    var userId: Int! { get set }
 }
 
 class StatementListInteractor: StatementListBusinessLogic, StatementListDataStore
 {
   var presenter: StatementListPresentationLogic?
   var worker: StatementListWorker?
-  //var name: String = ""
+  var userId: Int!
   
   // MARK: Do something
   

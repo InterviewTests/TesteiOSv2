@@ -36,13 +36,13 @@ class LoginPresenter: LoginPresentationLogic {
     }
     
     func presentLoginSuccesfull(response: Login.Login.Response) {
-        guard let user = response.user else {
+        guard response.user != nil else {
             let viewModel = Login.Login.ViewModelFailedLogin(message: response.message ?? "Something unexpected happened")
             viewController?.displayLoginErrorMessage(viewModel: viewModel)
             return
         }
         
-        let viewModel = Login.Login.ViewModelSuccessfullLogin(userId: user.userId)
+        let viewModel = Login.Login.ViewModelSuccessfullLogin()
         viewController?.displaySuccessfullLogin(viewModel: viewModel)
     }
 }

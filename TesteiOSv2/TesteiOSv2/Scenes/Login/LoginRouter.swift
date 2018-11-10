@@ -12,49 +12,38 @@
 
 import UIKit
 
-@objc protocol LoginRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol LoginRoutingLogic {
+    func routeToUserDetails()
 }
 
-protocol LoginDataPassing
-{
-  var dataStore: LoginDataStore? { get }
+protocol LoginDataPassing {
+    var dataStore: LoginDataStore? { get }
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
-{
-  weak var viewController: LoginViewController?
-  var dataStore: LoginDataStore?
+class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
+    weak var viewController: LoginViewController?
+    var dataStore: LoginDataStore?
   
-  // MARK: Routing
+    // MARK: Routing
   
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
-  // MARK: Navigation
+    func routeToUserDetails() {
+        let statementListVC = StatementListViewController()
+        
+        guard let destRouter = statementListVC.router,
+            var destinationDS = destRouter.dataStore,
+            let dataStore = dataStore,
+            dataStore.userId != nil else {
+                return
+        }
+        
+        passDataToStatementList(source: dataStore, destination: &destinationDS)
+        DispatchQueue.main.async {
+            self.viewController?.present(statementListVC, animated: true, completion: nil)
+        }
+    }
   
-  //func navigateToSomewhere(source: LoginViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: LoginDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    // MARK: Passing data
+    func passDataToStatementList(source: LoginDataStore, destination: inout StatementListDataStore) {
+        destination.userId = source.userId
+    }
 }

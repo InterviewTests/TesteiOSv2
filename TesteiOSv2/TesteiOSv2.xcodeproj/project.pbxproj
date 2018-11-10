@@ -11,6 +11,10 @@
 		1506B19321968ED600D947D5 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B19221968ED600D947D5 /* UIViewController.swift */; };
 		1506B195219697C600D947D5 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B194219697C600D947D5 /* CustomError.swift */; };
 		1506B1972196EFD300D947D5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B1962196EFD300D947D5 /* String.swift */; };
+		1506B19A2197036100D947D5 /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B1982197036100D947D5 /* StatementTableViewCell.swift */; };
+		1506B19B2197036100D947D5 /* StatementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1506B1992197036100D947D5 /* StatementTableViewCell.xib */; };
+		1506B19E2197053F00D947D5 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B19D2197053F00D947D5 /* UITableView.swift */; };
+		1506B1A02197056200D947D5 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1506B19F2197056200D947D5 /* ReusableView.swift */; };
 		1513E1802196351E00B08E14 /* Statement+DecodableAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513E17F2196351E00B08E14 /* Statement+DecodableAPI.swift */; };
 		1513E18321963F7C00B08E14 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513E18221963F7C00B08E14 /* URLRequest.swift */; };
 		154AB271219622BB0083D58A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154AB270219622BB0083D58A /* AppDelegate.swift */; };
@@ -71,6 +75,10 @@
 		1506B19221968ED600D947D5 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		1506B194219697C600D947D5 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		1506B1962196EFD300D947D5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		1506B1982197036100D947D5 /* StatementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
+		1506B1992197036100D947D5 /* StatementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementTableViewCell.xib; sourceTree = "<group>"; };
+		1506B19D2197053F00D947D5 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		1506B19F2197056200D947D5 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		1513E17F2196351E00B08E14 /* Statement+DecodableAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statement+DecodableAPI.swift"; sourceTree = "<group>"; };
 		1513E18221963F7C00B08E14 /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 		154AB26D219622BB0083D58A /* TesteiOSv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1506B19C2197046600D947D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1506B1982197036100D947D5 /* StatementTableViewCell.swift */,
+				1506B1992197036100D947D5 /* StatementTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1513E18121963F6C00B08E14 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +181,7 @@
 				1513E18221963F7C00B08E14 /* URLRequest.swift */,
 				1506B19221968ED600D947D5 /* UIViewController.swift */,
 				1506B1962196EFD300D947D5 /* String.swift */,
+				1506B19D2197053F00D947D5 /* UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -202,6 +220,7 @@
 				1513E18421963F8D00B08E14 /* Extensions */,
 				15A85FBE2196448F0025529A /* Scenes */,
 				1506B194219697C600D947D5 /* CustomError.swift */,
+				1506B19F2197056200D947D5 /* ReusableView.swift */,
 			);
 			path = TesteiOSv2;
 			sourceTree = "<group>";
@@ -269,6 +288,7 @@
 				15A85FD1219644C70025529A /* StatementListInteractor.swift */,
 				15A85FF121965D590025529A /* StatementListViewController.swift */,
 				15A85FF221965D590025529A /* StatementListViewController.xib */,
+				1506B19C2197046600D947D5 /* View */,
 			);
 			path = StatementList;
 			sourceTree = "<group>";
@@ -437,6 +457,7 @@
 			files = (
 				15A85FF421965D590025529A /* StatementListViewController.xib in Resources */,
 				154AB27B219622BD0083D58A /* LaunchScreen.storyboard in Resources */,
+				1506B19B2197036100D947D5 /* StatementTableViewCell.xib in Resources */,
 				154AB278219622BD0083D58A /* Assets.xcassets in Resources */,
 				15A85FF021965D3F0025529A /* LoginViewController.xib in Resources */,
 			);
@@ -561,10 +582,13 @@
 				154AB29F219624C20083D58A /* APIService.swift in Sources */,
 				15A85FEF21965D3F0025529A /* LoginViewController.swift in Sources */,
 				15A85FB72196446D0025529A /* LoginPresenter.swift in Sources */,
+				1506B1A02197056200D947D5 /* ReusableView.swift in Sources */,
+				1506B19A2197036100D947D5 /* StatementTableViewCell.swift in Sources */,
 				15A85FB82196446D0025529A /* LoginWorker.swift in Sources */,
 				1506B195219697C600D947D5 /* CustomError.swift in Sources */,
 				15A860092196719A0025529A /* LocalStorageService.swift in Sources */,
 				1504ED5C219632B9007ACC17 /* Statement.swift in Sources */,
+				1506B19E2197053F00D947D5 /* UITableView.swift in Sources */,
 				154AB271219622BB0083D58A /* AppDelegate.swift in Sources */,
 				15A85FB92196446D0025529A /* LoginRouter.swift in Sources */,
 				15A85FBA2196446D0025529A /* LoginModels.swift in Sources */,

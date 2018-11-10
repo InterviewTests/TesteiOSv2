@@ -22,6 +22,9 @@ class StatementListViewController: UIViewController, StatementListDisplayLogic
     var interactor: StatementListBusinessLogic?
     var router: (NSObjectProtocol & StatementListRoutingLogic & StatementListDataPassing)?
     
+    // MARK: Outlets
+    @IBOutlet weak var tableView: UITableView!
+    
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -69,12 +72,18 @@ class StatementListViewController: UIViewController, StatementListDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        setupViewController()
         doSomething()
+    }
+    
+    func setupViewController() {
+        tableView.register(type: StatementTableViewCell.self)
     }
     
     // MARK: Do something
     
-    //@IBOutlet weak var nameTextField: UITextField!
+    @IBAction func leaveButtonTapped(_ sender: Any) {
+    }
     
     func doSomething()
     {
