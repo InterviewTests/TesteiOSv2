@@ -10,8 +10,8 @@ import Foundation
 
 final class CurrencyRepository: CurrencyRepositoryProtocol {
     
-    fileprivate let localDataManager: CurrencyLocalDataManagerProtocol
-    fileprivate let remoteDataManager: CurrencyRemoteDataManagerProtocol
+    private let localDataManager: CurrencyLocalDataManagerProtocol
+    private let remoteDataManager: CurrencyRemoteDataManagerProtocol
     
     init(localDataManager: CurrencyLocalDataManagerProtocol,
          remoteDataManager: CurrencyRemoteDataManagerProtocol) {

@@ -12,6 +12,9 @@ import Foundation
 enum StringIdentifier: String, CustomIdentifier {
 
     case commonsDateFormat
+    case alertTitle
+    case buttonLabelOK
+    case serviceErrorUserCredentialsWrong
 
 }
 

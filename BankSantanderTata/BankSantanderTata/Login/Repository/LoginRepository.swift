@@ -10,8 +10,8 @@ import Foundation
 
 final class LoginRepository: LoginRepositoryProtocol {
     
-    fileprivate let localDataManager: LoginLocalDataManagerProtocol
-    fileprivate let remoteDataManager: LoginRemoteDataManagerProtocol
+    private let localDataManager: LoginLocalDataManagerProtocol
+    private let remoteDataManager: LoginRemoteDataManagerProtocol
     
     init(localDataManager: LoginLocalDataManagerProtocol,
          remoteDataManager: LoginRemoteDataManagerProtocol) {

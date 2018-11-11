@@ -45,6 +45,7 @@ protocol LoginViewProtocol: class {
     var presenter: LoginPresenterProtocol! { get set }
     
     func clearFields()
+    func showAlert(message: String)
     
 }
 

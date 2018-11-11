@@ -54,10 +54,21 @@
                                     <action selector="didClickedLogin:" destination="NPC-8E-Zjd" eventType="touchUpInside" id="ShT-OI-A4b"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uid-HX-2d3">
+                                <rect key="frame" x="17" y="380" width="341" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="APP-QU-Mk9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="1" green="0.1028063508" blue="0.11113118299999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qrR-kd-PeP" firstAttribute="width" secondItem="X94-Pg-vCd" secondAttribute="width" id="0uQ-dA-9kh"/>
+                            <constraint firstItem="Uid-HX-2d3" firstAttribute="top" secondItem="qrR-kd-PeP" secondAttribute="bottom" constant="8" id="CDq-KB-sG2"/>
+                            <constraint firstItem="aXq-9p-Cmq" firstAttribute="trailing" secondItem="Uid-HX-2d3" secondAttribute="trailing" constant="17" id="Dpy-Do-mFE"/>
                             <constraint firstItem="kUB-kv-zjR" firstAttribute="top" secondItem="aXq-9p-Cmq" secondAttribute="top" constant="56" id="FLm-pd-AXu"/>
                             <constraint firstItem="X94-Pg-vCd" firstAttribute="leading" secondItem="aXq-9p-Cmq" secondAttribute="leading" constant="17" id="Juz-vX-TJJ"/>
                             <constraint firstItem="qrR-kd-PeP" firstAttribute="leading" secondItem="X94-Pg-vCd" secondAttribute="leading" id="NO8-pE-GKH"/>
@@ -69,12 +80,15 @@
                             <constraint firstItem="aXq-9p-Cmq" firstAttribute="trailing" secondItem="kUB-kv-zjR" secondAttribute="trailing" constant="126" id="ZFc-rZ-Qi4"/>
                             <constraint firstItem="0zn-Nv-1cO" firstAttribute="leading" secondItem="aXq-9p-Cmq" secondAttribute="leading" constant="87" id="njX-eV-9f8"/>
                             <constraint firstItem="kUB-kv-zjR" firstAttribute="leading" secondItem="aXq-9p-Cmq" secondAttribute="leading" constant="124" id="rZe-m2-WLv"/>
+                            <constraint firstItem="Uid-HX-2d3" firstAttribute="leading" secondItem="aXq-9p-Cmq" secondAttribute="leading" constant="17" id="t1G-rH-tT3"/>
                             <constraint firstItem="aXq-9p-Cmq" firstAttribute="bottom" secondItem="0zn-Nv-1cO" secondAttribute="bottom" constant="33" id="wra-mK-w63"/>
                             <constraint firstItem="qrR-kd-PeP" firstAttribute="top" secondItem="X94-Pg-vCd" secondAttribute="bottom" constant="21" id="yEu-FI-1nS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aXq-9p-Cmq"/>
                     </view>
                     <connections>
+                        <outlet property="buttonLogin" destination="0zn-Nv-1cO" id="JwK-KB-iF8"/>
+                        <outlet property="labelValidateMessage" destination="Uid-HX-2d3" id="4S3-9R-bFX"/>
                         <outlet property="textFieldPassword" destination="qrR-kd-PeP" id="kDO-4C-XND"/>
                         <outlet property="textFieldUser" destination="X94-Pg-vCd" id="JEZ-oX-VaB"/>
                     </connections>

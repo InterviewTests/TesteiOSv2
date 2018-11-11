@@ -10,7 +10,7 @@ import Foundation
 
 final class LoginInteractor: LoginInteractorProtocol {
     
-    fileprivate let repository: LoginRepositoryProtocol
+    private let repository: LoginRepositoryProtocol
     
     init(repository: LoginRepositoryProtocol) {
         self.repository = repository

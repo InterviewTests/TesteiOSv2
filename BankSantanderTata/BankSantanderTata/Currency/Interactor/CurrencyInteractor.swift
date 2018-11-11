@@ -10,7 +10,7 @@ import Foundation
 
 final class CurrencyInteractor: CurrencyInteractorProtocol {
     
-    fileprivate let repository: CurrencyRepositoryProtocol
+    private let repository: CurrencyRepositoryProtocol
     
     init(repository: CurrencyRepositoryProtocol) {
         self.repository = repository

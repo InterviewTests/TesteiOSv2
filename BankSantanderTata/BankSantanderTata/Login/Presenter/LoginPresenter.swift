@@ -26,8 +26,8 @@ final class LoginPresenter: LoginPresenterProtocol {
                 
                 self.router.presentCurrencyScreen(manager: user)
                 break
-            case .failure(let error):
-                debugPrint(error)
+            case .failure:
+                self.view.showAlert(message: StringIdentifier.serviceErrorUserCredentialsWrong.getString())
                 break
             }
         }

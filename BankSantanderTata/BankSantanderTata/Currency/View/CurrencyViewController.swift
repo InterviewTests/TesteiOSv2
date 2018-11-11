@@ -26,20 +26,12 @@ final class CurrencyViewController: UIViewController {
     // MARK: - Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAccessibilityIdentifiers()
         setupLabels()
-        applyStyle()
         navigationController?.setNavigationBarHidden(true, animated: true)
         getData()
     }
     
-    
-    
     // MARK: - Setup Methods
-    private func setupAccessibilityIdentifiers() {
-        
-    }
-    
     private func setupLabels() {
         labelName.text = data.name
         labelBalanceAccount.text = data.bankAccount
@@ -48,16 +40,12 @@ final class CurrencyViewController: UIViewController {
         
     }
     
-    private func applyStyle() {
-        
-    }
-    
+    // MARK: - IBActions
     @IBAction func logout(_ sender: Any) {
         presenter.logout()
     }
     
     func getData(){
-        
         ApiService.sharedInstance.statement() { response in
             switch response.result{
             case .success:
@@ -73,8 +61,6 @@ final class CurrencyViewController: UIViewController {
             }
         }
     }
-    
-    
 }
 
 // MARK: - CurrencyViewProtocol
@@ -95,6 +81,4 @@ extension CurrencyViewController: UITableViewDelegate, UITableViewDataSource{
 
         return cell
     }
-    
-    
 }
