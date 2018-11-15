@@ -1,6 +1,6 @@
 //
 //  LoginInteractor.swift
-//  TesteiOSv2
+//  CleanCodeLogin
 //
 //  Created by Voll Transportes on 15/11/18.
 //  Copyright (c) 2018 Roney Sampaio. All rights reserved.
@@ -14,28 +14,62 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+    func login(request: Login.Request)
+    func checkForSavedLogin() -> String
 }
 
 protocol LoginDataStore
 {
-  //var name: String { get set }
+    var loginData: Login.AccountModel? { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
+class LoginInteractor: LoginBusinessLogic, LoginDataStore, ServicesProtocol
 {
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    var loginData: Login.AccountModel?
+    var presenter: LoginPresentationLogic?
+    var userID: String?
+    let worker: LoginWorker = LoginWorker()
+    
+    
+    
+    // MARK: Login
+    func checkForSavedLogin() -> String {
+        return worker.getUserID() ?? String()
+    }
+    
+    func login(request: Login.Request)
+    {
+        userID = request.userID ?? String()
+        let password = request.password ?? String()
+        
+        
+        ServicesWorker(services: self).callLogin(userID: self.userID ?? String(), password: password)
+        
+        //        if authenticationWorker.login(userID: userID, password: password) {
+        //            authenticationWorker.saveUserID(request.userID)
+        //            let response = Login.Login.Response(success: true)
+        //            presenter?.presentLogin(response: response)
+        //        } else {
+        //            let response = Login.Login.Response(success: false)
+        //            presenter?.presentLogin(response: response)
+        //        }
+    }
+    
+    
+    func returnRequest(data: [String: Any]) {
+        let responsePostLogin = Login.Response(response: data)
+        if responsePostLogin.success {
+            self.loginData = Login.AccountModel(userAccountData: responsePostLogin.userAccount)
+            presenter?.presentLogin(accountModel: self.loginData!)
+            worker.saveUserID(self.userID)
+        } else {
+            returnError(errorMsg: responsePostLogin.errorMsg ?? "defaultConnectionError".localized)
+        }
+    }
+    
+    
+    func returnError(errorMsg: String) {
+        presenter?.showAlert(alertBodyMessage: errorMsg)
+    }
 }

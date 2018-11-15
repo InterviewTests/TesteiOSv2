@@ -55,6 +55,9 @@
 		7D1ADFEF219DE0310016ACFC /* DefaultAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1ADFE2219DE0300016ACFC /* DefaultAlert.swift */; };
 		7D1ADFF0219DE0310016ACFC /* DefaultAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1ADFE2219DE0300016ACFC /* DefaultAlert.swift */; };
 		7D1ADFF1219DE0310016ACFC /* DefaultAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1ADFE2219DE0300016ACFC /* DefaultAlert.swift */; };
+		7D1ADFF4219DE4500016ACFC /* ServicesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1ADFF3219DE4500016ACFC /* ServicesWorker.swift */; };
+		7D1ADFF5219DE4500016ACFC /* ServicesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1ADFF3219DE4500016ACFC /* ServicesWorker.swift */; };
+		7D1ADFF6219DE4500016ACFC /* ServicesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1ADFF3219DE4500016ACFC /* ServicesWorker.swift */; };
 		A44C419B10CB02F8286DADA8 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ABCD124E7E2C6814CDE3BB /* Pods_TesteiOSv2.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +110,7 @@
 		7D1ADFE0219DE02F0016ACFC /* ExtensionsDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsDate.swift; sourceTree = "<group>"; };
 		7D1ADFE1219DE0300016ACFC /* ExtensionsString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsString.swift; sourceTree = "<group>"; };
 		7D1ADFE2219DE0300016ACFC /* DefaultAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAlert.swift; sourceTree = "<group>"; };
+		7D1ADFF3219DE4500016ACFC /* ServicesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesWorker.swift; sourceTree = "<group>"; };
 		94ABCD124E7E2C6814CDE3BB /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,6 +174,7 @@
 		7D1ADF82219DD4C00016ACFC /* TesteiOSv2 */ = {
 			isa = PBXGroup;
 			children = (
+				7D1ADFF2219DE43A0016ACFC /* Services */,
 				7D1ADFD8219DDF270016ACFC /* Helper */,
 				7D1ADFDD219DE0100016ACFC /* Util */,
 				7D1ADFB1219DD7260016ACFC /* Scenes */,
@@ -205,11 +210,11 @@
 			children = (
 				7D1ADF87219DD4C00016ACFC /* Login.storyboard */,
 				7D1ADFB6219DD7460016ACFC /* LoginViewController.swift */,
+				7D1ADFB7219DD7460016ACFC /* LoginInteractor.swift */,
 				7D1ADFB2219DD7450016ACFC /* LoginPresenter.swift */,
 				7D1ADFB3219DD7450016ACFC /* LoginWorker.swift */,
 				7D1ADFB4219DD7450016ACFC /* LoginRouter.swift */,
 				7D1ADFB5219DD7460016ACFC /* LoginModels.swift */,
-				7D1ADFB7219DD7460016ACFC /* LoginInteractor.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -233,6 +238,14 @@
 				7D1ADFDE219DE02F0016ACFC /* ExtensionsView.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		7D1ADFF2219DE43A0016ACFC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7D1ADFF3219DE4500016ACFC /* ServicesWorker.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		F25C53CBFA083B4C627636C2 /* Frameworks */ = {
@@ -430,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D1ADFE6219DE0310016ACFC /* ExtensionDouble.swift in Sources */,
+				7D1ADFF4219DE4500016ACFC /* ServicesWorker.swift in Sources */,
 				7D1ADFEC219DE0310016ACFC /* ExtensionsString.swift in Sources */,
 				7D1ADFC4219DD7460016ACFC /* LoginViewController.swift in Sources */,
 				7D1ADFB8219DD7460016ACFC /* LoginPresenter.swift in Sources */,
@@ -451,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D1ADFF0219DE0310016ACFC /* DefaultAlert.swift in Sources */,
+				7D1ADFF5219DE4500016ACFC /* ServicesWorker.swift in Sources */,
 				7D1ADFED219DE0310016ACFC /* ExtensionsString.swift in Sources */,
 				7D1ADFDB219DDF3A0016ACFC /* Global.swift in Sources */,
 				7D1ADFE4219DE0310016ACFC /* ExtensionsView.swift in Sources */,
@@ -471,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D1ADFF1219DE0310016ACFC /* DefaultAlert.swift in Sources */,
+				7D1ADFF6219DE4500016ACFC /* ServicesWorker.swift in Sources */,
 				7D1ADFEE219DE0310016ACFC /* ExtensionsString.swift in Sources */,
 				7D1ADFDC219DDF3A0016ACFC /* Global.swift in Sources */,
 				7D1ADFE5219DE0310016ACFC /* ExtensionsView.swift in Sources */,
