@@ -13,13 +13,13 @@
         <!--Login View Controller-->
         <scene sceneID="WgU-Wm-DK6">
             <objects>
-                <viewController id="Nzc-65-X10" customClass="LoginViewController" customModule="CleanCodeLogin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Nzc-65-X10" customClass="LoginViewController" customModule="TesteiOSv2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kzk-4X-cy8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qJ8-iS-LZs">
-                                <rect key="frame" x="20" y="40" width="335" height="130"/>
+                                <rect key="frame" x="20" y="40" width="335" height="80"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter user ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9wI-EM-tE7">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -33,21 +33,36 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djr-dF-I8g">
-                                        <rect key="frame" x="0.0" y="100" width="335" height="30"/>
-                                        <state key="normal" title="Login"/>
-                                        <connections>
-                                            <action selector="loginButtonTapped:" destination="Nzc-65-X10" eventType="touchUpInside" id="6Dt-jQ-BXS"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djr-dF-I8g">
+                                <rect key="frame" x="87.5" y="577" width="200" height="60"/>
+                                <color key="backgroundColor" red="0.23137254901960785" green="0.28235294117647058" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="RRO-0G-afl"/>
+                                    <constraint firstAttribute="width" constant="200" id="yI3-7s-Vir"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title=" ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="Nzc-65-X10" eventType="touchUpInside" id="6Dt-jQ-BXS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="cf8-Mu-zS6" firstAttribute="bottom" secondItem="djr-dF-I8g" secondAttribute="bottom" constant="30" id="En8-n0-1EU"/>
                             <constraint firstItem="qJ8-iS-LZs" firstAttribute="top" secondItem="cf8-Mu-zS6" secondAttribute="top" constant="20" id="KeV-cf-ba9"/>
                             <constraint firstItem="qJ8-iS-LZs" firstAttribute="leading" secondItem="cf8-Mu-zS6" secondAttribute="leading" constant="20" id="Lap-86-Hka"/>
                             <constraint firstItem="cf8-Mu-zS6" firstAttribute="trailing" secondItem="qJ8-iS-LZs" secondAttribute="trailing" constant="20" id="d6s-oz-4uC"/>
+                            <constraint firstItem="djr-dF-I8g" firstAttribute="centerX" secondItem="qJ8-iS-LZs" secondAttribute="centerX" id="gBi-E5-Pw1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cf8-Mu-zS6"/>
                     </view>
