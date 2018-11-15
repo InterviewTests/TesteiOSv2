@@ -1,9 +1,9 @@
 //
-//  AuthenticationWorker.swift
-//  Simple
+//  ServicesWorker.swift
+//  TesteiOSv2
 //
-//  Created by Raymond Law on 6/25/18.
-//  Copyright © 2018 Clean Swift LLC. All rights reserved.
+//  Created by Macintosh on 15/11/18.
+//  Copyright © 2018 Roney Sampaio. All rights reserved.
 //
 
 import Foundation

@@ -1,8 +1,8 @@
 //
-//  StringExtensions.swift
-//  CleanCodeLogin
+//  ExtensionString.swift
+//  TesteiOSv2
 //
-//  Created by Voll Transportes on 09/11/18.
+//  Created by Macintosh on 15/11/18.
 //  Copyright © 2018 Roney Sampaio. All rights reserved.
 //
 

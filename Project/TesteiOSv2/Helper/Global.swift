@@ -1,10 +1,11 @@
 //
 //  Global.swift
-//  CleanCodeLogin
+//  TesteiOSv2
 //
-//  Created by Voll Transportes on 13/11/18.
+//  Created by Macintosh on 15/11/18.
 //  Copyright © 2018 Roney Sampaio. All rights reserved.
 //
+
 
 import UIKit
 

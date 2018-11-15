@@ -1,9 +1,9 @@
 //
-//  UtilDate.swift
-//  Passageiro
+//  ExtensionDouble.swift
+//  TesteiOSv2
 //
-//  Created by Voll on 15/02/2018.
-//  Copyright © 2018 Jigs. All rights reserved.
+//  Created by Macintosh on 15/11/18.
+//  Copyright © 2018 Roney Sampaio. All rights reserved.
 //
 
 import Foundation

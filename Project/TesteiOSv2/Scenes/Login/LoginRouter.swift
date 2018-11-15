@@ -14,7 +14,7 @@ import UIKit
 
 @objc protocol LoginRoutingLogic
 {
-    func routeToDisplayAccount(segue: UIStoryboardSegue?)
+    func routeToAccountDetails(segue: UIStoryboardSegue?)
 }
 
 protocol LoginDataPassing
@@ -27,33 +27,34 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
     weak var viewController: LoginViewController?
     var dataStore: LoginDataStore?
     
-    // MARK: Routing
     
-    func routeToDisplayAccount(segue: UIStoryboardSegue?)
+    // MARK: Routing
+    func routeToAccountDetails(segue: UIStoryboardSegue?)
     {
-        /*if let segue = segue {
-            let destinationVC = segue.destination as! DisplayAccountViewController
+        if let segue = segue {
+            let destinationVC = segue.destination as! AccountDetailsViewController
             var destinationDS = destinationVC.router!.dataStore!
-            passDataToDisplayAccountViewController(source: dataStore!, destination: &destinationDS)
+            passDataToAccountDetailsViewController(source: dataStore!, destination: &destinationDS)
         } else {
             let storyboard = UIStoryboard(name: Global.Constants.accountDetailsStoryboardID, bundle: nil)
-            let destinationVC = storyboard.instantiateViewController(withIdentifier: Global.Constants.accountDetailsStoryboardID) as! DisplayAccountViewController
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: Global.Constants.accountDetailsStoryboardID) as! AccountDetailsViewController
             var destinationDS = destinationVC.router!.dataStore!
-            passDataToDisplayAccountViewController(source: dataStore!, destination: &destinationDS)
-            navigateToDisplayAccountViewController(source: viewController!, destination: destinationVC)
-        }*/
+            passDataToAccountDetailsViewController(source: dataStore!, destination: &destinationDS)
+            navigateToAccountDetailsViewController(source: viewController!, destination: destinationVC)
+        }
     }
     
-    // MARK: Navigation
     
-    /*func navigateToDisplayAccountViewController(source: LoginViewController, destination: DisplayAccountViewController)
+    // MARK: Navigation
+    func navigateToAccountDetailsViewController(source: LoginViewController, destination: AccountDetailsViewController)
     {
         source.show(destination, sender: nil)
     }
     
+    
     // MARK: Passing data
-    func passDataToDisplayAccountViewController(source: LoginDataStore, destination: inout DisplayAccountDataStore)
+    func passDataToAccountDetailsViewController(source: LoginDataStore, destination: inout AccountDetailsDataStore)
     {
         destination.accountData = source.loginData
-    }*/
+    }
 }

@@ -1,9 +1,9 @@
 //
-//  DefaultAlert.swift
-//  Passageiro
+//  ExtensionAlertController.swift
+//  TesteiOSv2
 //
-//  Created by Voll on 09/02/2018.
-//  Copyright © 2018 Jigs. All rights reserved.
+//  Created by Macintosh on 15/11/18.
+//  Copyright © 2018 Roney Sampaio. All rights reserved.
 //
 
 import UIKit

@@ -93,6 +93,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     func displayLogin(accountModel: Login.AccountModel)
     {
-        router?.routeToDisplayAccount(segue: nil)
+        router?.routeToAccountDetails(segue: nil)
     }
 }
