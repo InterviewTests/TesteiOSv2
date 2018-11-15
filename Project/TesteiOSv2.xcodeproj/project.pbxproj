@@ -37,6 +37,9 @@
 		7D1ADFD2219DDC960016ACFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D1ADFD6219DDC960016ACFC /* Localizable.strings */; };
 		7D1ADFD3219DDC960016ACFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D1ADFD6219DDC960016ACFC /* Localizable.strings */; };
 		7D1ADFD4219DDC960016ACFC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D1ADFD6219DDC960016ACFC /* Localizable.strings */; };
+		7D1ADFDA219DDF3A0016ACFC /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1ADFD9219DDF3A0016ACFC /* Global.swift */; };
+		7D1ADFDB219DDF3A0016ACFC /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1ADFD9219DDF3A0016ACFC /* Global.swift */; };
+		7D1ADFDC219DDF3A0016ACFC /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1ADFD9219DDF3A0016ACFC /* Global.swift */; };
 		A44C419B10CB02F8286DADA8 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ABCD124E7E2C6814CDE3BB /* Pods_TesteiOSv2.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +86,7 @@
 		7D1ADFCD219DDB180016ACFC /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7D1ADFD5219DDC960016ACFC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7D1ADFD7219DDC980016ACFC /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		7D1ADFD9219DDF3A0016ACFC /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		94ABCD124E7E2C6814CDE3BB /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,13 +150,13 @@
 		7D1ADF82219DD4C00016ACFC /* TesteiOSv2 */ = {
 			isa = PBXGroup;
 			children = (
+				7D1ADFD8219DDF270016ACFC /* Helper */,
 				7D1ADFB1219DD7260016ACFC /* Scenes */,
 				7D1ADF83219DD4C00016ACFC /* AppDelegate.swift */,
 				7D1ADF85219DD4C00016ACFC /* ViewController.swift */,
 				7D1ADF8A219DD4C10016ACFC /* Assets.xcassets */,
 				7D1ADF8C219DD4C10016ACFC /* LaunchScreen.storyboard */,
 				7D1ADF8F219DD4C10016ACFC /* Info.plist */,
-				7D1ADFD6219DDC960016ACFC /* Localizable.strings */,
 			);
 			path = TesteiOSv2;
 			sourceTree = "<group>";
@@ -187,6 +191,15 @@
 				7D1ADFB7219DD7460016ACFC /* LoginInteractor.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		7D1ADFD8219DDF270016ACFC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7D1ADFD9219DDF3A0016ACFC /* Global.swift */,
+				7D1ADFD6219DDC960016ACFC /* Localizable.strings */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		F25C53CBFA083B4C627636C2 /* Frameworks */ = {
@@ -391,6 +404,7 @@
 				7D1ADFC1219DD7460016ACFC /* LoginModels.swift in Sources */,
 				7D1ADFBE219DD7460016ACFC /* LoginRouter.swift in Sources */,
 				7D1ADFBB219DD7460016ACFC /* LoginWorker.swift in Sources */,
+				7D1ADFDA219DDF3A0016ACFC /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D1ADFDB219DDF3A0016ACFC /* Global.swift in Sources */,
 				7D1ADFC5219DD7460016ACFC /* LoginViewController.swift in Sources */,
 				7D1ADFB9219DD7460016ACFC /* LoginPresenter.swift in Sources */,
 				7D1ADFC8219DD7460016ACFC /* LoginInteractor.swift in Sources */,
@@ -412,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D1ADFDC219DDF3A0016ACFC /* Global.swift in Sources */,
 				7D1ADFC6219DD7460016ACFC /* LoginViewController.swift in Sources */,
 				7D1ADFBA219DD7460016ACFC /* LoginPresenter.swift in Sources */,
 				7D1ADFC9219DD7460016ACFC /* LoginInteractor.swift in Sources */,
