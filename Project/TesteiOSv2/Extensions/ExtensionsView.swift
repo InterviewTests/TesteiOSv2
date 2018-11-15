@@ -69,6 +69,16 @@ extension UIView {
         }
     }
     
+    
+    @IBInspectable var borderAlpha: CGFloat {
+        get {
+            return (self.layer.borderColor?.alpha)!
+        }
+        set {
+            self.layer.borderColor? = UIColor(cgColor:self.layer.borderColor!).withAlphaComponent(newValue).cgColor
+        }
+    }
+    
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return self.layer.cornerRadius
