@@ -77,6 +77,18 @@ class AccountDetailsViewController: UIViewController, UITableViewDelegate, UITab
         getAccountData()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    
     @IBOutlet weak var headerUserName: UILabel!
     @IBOutlet weak var headerAccountInfo: UILabel!
     @IBOutlet weak var headerAccountBalance: UILabel!
