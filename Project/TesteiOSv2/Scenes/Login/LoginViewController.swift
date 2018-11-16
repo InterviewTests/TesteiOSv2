@@ -22,13 +22,14 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
-    // MARK: Object lifecycle
     
+    // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
+    
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -36,8 +37,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         setup()
     }
     
-    // MARK: Setup
     
+    // MARK: Setup
     private func setup()
     {
         let viewController = self
@@ -52,8 +53,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         router.dataStore = interactor
     }
     
-    // MARK: Routing
     
+    
+    // MARK: Routing
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let scene = segue.identifier {
@@ -64,17 +66,18 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         }
     }
     
-    // MARK: View lifecycle
     
+    
+    // MARK: View lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        doLogin()//roney temp
         userIDTextField.text = interactor?.checkForSavedLogin()
     }
     
-    // MARK: Login
     
+    
+    // MARK: Login
     @IBOutlet weak var userIDTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -83,16 +86,20 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     }
     
     
-    func doLogin()
-    {
+    
+    // MARK: Send login to Iteractor
+    func doLogin() {
         let userID = userIDTextField.text
         let password = passwordTextField.text
         let request = Login.Request(userID: userID, password: password)
+        
         interactor?.login(request: request)
     }
     
-    func displayLogin(accountModel: Login.AccountModel)
-    {
+    
+    
+    // MARK: Route To Account Details
+    func displayLogin(accountModel: Login.AccountModel) {
         router?.routeToAccountDetails(segue: nil)
     }
 }

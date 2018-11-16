@@ -17,10 +17,12 @@ import UIKit
     func routeToAccountDetails(segue: UIStoryboardSegue?)
 }
 
+
 protocol LoginDataPassing
 {
     var dataStore: LoginDataStore? { get }
 }
+
 
 class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
 {

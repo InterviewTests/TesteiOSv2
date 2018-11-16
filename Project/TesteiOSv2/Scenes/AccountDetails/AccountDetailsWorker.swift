@@ -14,7 +14,4 @@ import UIKit
 
 class AccountDetailsWorker
 {
-    func doSomeWork()
-    {
-    }
 }

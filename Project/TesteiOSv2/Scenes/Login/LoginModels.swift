@@ -17,6 +17,7 @@ enum Login
 {
     
     
+    // MARK: Request
     struct Request
     {
         var userID: String?
@@ -25,6 +26,7 @@ enum Login
     
     
     
+    // MARK: Response
     struct Response
     {
         var userAccount: [String: Any]?
@@ -45,6 +47,7 @@ enum Login
     
     
     
+    // MARK: Account Model
     struct AccountModel
     {
         

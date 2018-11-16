@@ -18,10 +18,12 @@ protocol LoginBusinessLogic
     func checkForSavedLogin() -> String
 }
 
+
 protocol LoginDataStore
 {
     var loginData: Login.AccountModel? { get set }
 }
+
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore, ServicesProtocol
 {
@@ -33,30 +35,29 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore, ServicesProtocol
     
     
     
-    // MARK: Login
+    // MARK: User saved login
     func checkForSavedLogin() -> String {
         return worker.getUserID() ?? String()
     }
     
+    
+    // MARK: Login Request
     func login(request: Login.Request)
     {
-        userID = request.userID ?? String()
+        self.userID = request.userID ?? String()
         let password = request.password ?? String()
         
-        
-        ServicesWorker(services: self).callLogin(userID: self.userID ?? String(), password: password)
-        
-        //        if authenticationWorker.login(userID: userID, password: password) {
-        //            authenticationWorker.saveUserID(request.userID)
-        //            let response = Login.Login.Response(success: true)
-        //            presenter?.presentLogin(response: response)
-        //        } else {
-        //            let response = Login.Login.Response(success: false)
-        //            presenter?.presentLogin(response: response)
-        //        }
+        if !self.userID!.isValidCPF && !self.userID!.isValidEmail {
+            presenter?.showAlert(alertBodyMessage: "invalidUser".localized)
+        } else if !password.isValidPassword {
+            presenter?.showAlert(alertBodyMessage: "invalidPassword".localized)
+        } else {
+            ServicesWorker(services: self).callLogin(userID: self.userID ?? String(), password: password)
+        }
     }
     
     
+    // MARK: Request Response
     func returnRequest(data: [String: Any]) {
         let responsePostLogin = Login.Response(response: data)
         if responsePostLogin.success {

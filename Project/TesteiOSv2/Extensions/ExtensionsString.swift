@@ -17,6 +17,7 @@ extension String {
     }
     
     
+    
     func toDate(withFormat format: String = "yyyy-MM-dd") -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
@@ -25,6 +26,7 @@ extension String {
         }
         return date
     }
+    
     
     
     var isValidCPF: Bool {
@@ -69,7 +71,7 @@ extension String {
     
     var isValidPassword: Bool {
         let capitalLetter = "(?=.*[A-Z])"
-        let specialCase = "(?=.*[A-Za-z\\dd$@$!%*?&#,.;:*^(){}])"
+        let specialCase = "(?=.*[$@$!%*?&#,.;:*^(){}])"
         let aphaNumeric = "(?=.*[a-zA-Z0-9].*[a-zA-Z0-9])" //para esse caso específico será dobrado pois um caracter já será o maiúsculo
         
         //let allowedCharacters = "[A-Za-z\\dd$@$!%*?&#]"
@@ -79,6 +81,7 @@ extension String {
         let passwordRegex = "^\(capitalLetter)\(specialCase)\(aphaNumeric).{3,}$" //somente 3 caracteres são exigidos na descrição do teste
         return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: self)
     }
+    
     
     
     func applyPatternOnNumbers(pattern: String, replacmentCharacter: Character) -> String {

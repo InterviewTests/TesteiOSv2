@@ -22,6 +22,7 @@ extension UIView {
         }
     }
     
+    
     @IBInspectable var shadowHeight: CGFloat {
         get {
             return self.layer.shadowOffset.height
@@ -51,6 +52,8 @@ extension UIView {
         }
     }
     
+    
+    
     @IBInspectable var borderWidth: CGFloat {
         get {
             return self.layer.borderWidth
@@ -59,6 +62,8 @@ extension UIView {
             self.layer.borderWidth = newValue
         }
     }
+    
+    
     
     @IBInspectable var borderColor: UIColor {
         get {
@@ -70,6 +75,7 @@ extension UIView {
     }
     
     
+    
     @IBInspectable var borderAlpha: CGFloat {
         get {
             return (self.layer.borderColor?.alpha)!
@@ -78,6 +84,8 @@ extension UIView {
             self.layer.borderColor? = UIColor(cgColor:self.layer.borderColor!).withAlphaComponent(newValue).cgColor
         }
     }
+    
+    
     
     @IBInspectable var cornerRadius: CGFloat {
         get {

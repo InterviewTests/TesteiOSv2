@@ -14,12 +14,8 @@ import UIKit
 
 enum AccountDetails
 {
-    // MARK: Use cases
     
-    
-    struct Request
-    {
-    }
+    // MARK: Response
     struct Response
     {
         var statementList: [Dictionary<String, Any>]?
@@ -39,7 +35,7 @@ enum AccountDetails
     }
     
     
-    
+    // MARK: Statement Items
     struct StatementItem
     {
         

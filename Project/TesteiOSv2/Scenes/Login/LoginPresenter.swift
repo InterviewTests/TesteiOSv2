@@ -20,7 +20,9 @@ protocol LoginPresentationLogic
 
 class LoginPresenter: LoginPresentationLogic
 {
+    
     weak var viewController: LoginDisplayLogic?
+    
     
     
     // MARK: Display Login
@@ -28,6 +30,7 @@ class LoginPresenter: LoginPresentationLogic
     {
         viewController?.displayLogin(accountModel: accountModel)
     }
+    
     
     
     // MARK: Display Alert

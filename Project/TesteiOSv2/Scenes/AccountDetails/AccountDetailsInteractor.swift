@@ -29,18 +29,16 @@ class AccountDetailsInteractor: AccountDetailsBusinessLogic, AccountDetailsDataS
     var accountData: Login.AccountModel?
     
     
-    // MARK: Request Statements
     
+    // MARK: Request Statements
     func fetchStatements()
     {
         ServicesWorker(services: self).fetchStatements(userID: accountData?.userID ?? Int())
-        
-        //let response = AccountDetails.Something.Response()
-        //presenter?.presentSomething(response: response)
-        
     }
     
     
+    
+    //MARK: Request Response
     func returnRequest(data: [String: Any]) {
         let statementData = AccountDetails.Response(response: data)
         if statementData.success {
@@ -50,6 +48,7 @@ class AccountDetailsInteractor: AccountDetailsBusinessLogic, AccountDetailsDataS
             returnError(errorMsg: statementData.errorMsg ?? "defaultConnectionError".localized)
         }
     }
+    
     
     func returnError(errorMsg: String) {
         presenter?.showAlert(alertBodyMessage: errorMsg)

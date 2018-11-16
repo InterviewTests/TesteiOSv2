@@ -46,6 +46,7 @@ class AccountDetailsPresenter: AccountDetailsPresentationLogic
     }
     
     
+    
     // MARK: Present Statement List
     func presentFetchedStatementItems(statementList: [Dictionary<String, Any>]) {
         

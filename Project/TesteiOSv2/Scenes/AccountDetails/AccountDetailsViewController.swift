@@ -23,13 +23,15 @@ class AccountDetailsViewController: UIViewController, UITableViewDelegate, UITab
     var interactor: AccountDetailsBusinessLogic?
     var router: (NSObjectProtocol & AccountDetailsRoutingLogic & AccountDetailsDataPassing)?
     
-    // MARK: Object lifecycle
     
+    
+    // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
+    
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -37,8 +39,8 @@ class AccountDetailsViewController: UIViewController, UITableViewDelegate, UITab
         setup()
     }
     
-    // MARK: Setup
     
+    // MARK: Setup
     private func setup()
     {
         let viewController = self
@@ -53,8 +55,8 @@ class AccountDetailsViewController: UIViewController, UITableViewDelegate, UITab
         router.dataStore = interactor
     }
     
-    // MARK: Routing
     
+    // MARK: Routing
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let scene = segue.identifier {
@@ -65,23 +67,28 @@ class AccountDetailsViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    // MARK: View lifecycle
     
+    // MARK: View lifecycle
     var items: [AccountDetails.StatementItem] = []
+    let cellIdentifier = "statement_item"
+    
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         statementsTableView.delegate = self
-        //statementsTableView.dataSource = items as? UITableViewDataSource
         getAccountData()
     }
     
     
+    
+    //MARK: Status bar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNeedsStatusBarAppearanceUpdate()
     }
+    
     
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -95,10 +102,8 @@ class AccountDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var statementsTableView: UITableView!
     
-    // MARK: Do something
     
-    //@IBOutlet weak var nameTextField: UITextField!
-    
+    // MARK: Get Statement
     func getAccountData()
     {
         interactor?.fetchStatements()
@@ -126,9 +131,8 @@ class AccountDetailsViewController: UIViewController, UITableViewDelegate, UITab
         return self.items.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cellIdentifier = "statement_item"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? StatementItemTableViewCell  else {
             fatalError("The dequeued cell is not an instance of StatementItemTableViewCell.")
