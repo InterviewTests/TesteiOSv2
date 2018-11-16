@@ -34,10 +34,9 @@
 		7D1AE017219E07380016ACFC /* AccountDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1AE007219E07380016ACFC /* AccountDetailsInteractor.swift */; };
 		7D1AE020219E09140016ACFC /* StatementItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1AE01F219E09140016ACFC /* StatementItemTableViewCell.swift */; };
 		7D1AE023219E3F210016ACFC /* AccountDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D1AE027219E3F210016ACFC /* AccountDetails.storyboard */; };
-		7D1AE02C219E4E930016ACFC /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ABCD124E7E2C6814CDE3BB /* Pods_TesteiOSv2.framework */; };
-		7D1AE02D219E4E940016ACFC /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ABCD124E7E2C6814CDE3BB /* Pods_TesteiOSv2.framework */; };
 		7DB668DE219E570F003D18F7 /* LoginTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB668DD219E570F003D18F7 /* LoginTest.swift */; };
 		A44C419B10CB02F8286DADA8 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ABCD124E7E2C6814CDE3BB /* Pods_TesteiOSv2.framework */; };
+		D18EF995DD399FAD04E41D32 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ABCD124E7E2C6814CDE3BB /* Pods_TesteiOSv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A44C419B10CB02F8286DADA8 /* Pods_TesteiOSv2.framework in Frameworks */,
+				D18EF995DD399FAD04E41D32 /* Pods_TesteiOSv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +115,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D1AE02C219E4E930016ACFC /* Pods_TesteiOSv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +122,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D1AE02D219E4E940016ACFC /* Pods_TesteiOSv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,12 +408,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TesteiOSv2/Pods-TesteiOSv2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

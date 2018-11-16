@@ -11,22 +11,24 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 
 class LoginWorker
 {
     
     
-    // MARK: Save user id on defaults
+    // MARK: Save user id on KeychainWrapper
     func saveUserID(_ userID: String?)
     {
-        UserDefaults.standard.set(userID, forKey: Global.UserDefaults.userID.rawValue)
+        KeychainWrapper.standard.set(userID!, forKey: Global.UserDefaults.userID.rawValue)
     }
     
     
-    // MARK: Get user id from defaults
+    // MARK: Get user id from KeychainWrapper
     func getUserID() -> String?
     {
-        return UserDefaults.standard.string(forKey: Global.UserDefaults.userID.rawValue)
+        return KeychainWrapper.standard.string(forKey: Global.UserDefaults.userID.rawValue)
+        
     }
 }
