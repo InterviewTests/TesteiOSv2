@@ -17,6 +17,7 @@ class Global: NSObject {
     }
     
     
+    // MARK: API Calls
     enum RestAPI : String {
         case baseURL = "https://bank-app-test.herokuapp.com/api/"
         case requestLogin = "login/"
@@ -24,9 +25,12 @@ class Global: NSObject {
     }
     
     
+    // MARK: Params utilizados na API
     enum RestParams {
         
         enum LoginRequest : String {
+            case kUser = "user"
+            case kPassword = "password"
             case kUserAccount = "userAccount"
             case kAgency = "agency"
             case kBalance = "balance"
@@ -49,6 +53,7 @@ class Global: NSObject {
         }
         
     }
+    
     
     enum UserDefaults : String {
         case userID = "userID"
