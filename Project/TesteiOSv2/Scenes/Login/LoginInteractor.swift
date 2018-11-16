@@ -59,7 +59,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore, ServicesProtocol
     
     // MARK: Request Response
     func returnRequest(data: [String: Any]) {
+        
         let responsePostLogin = Login.Response(response: data)
+        
         if responsePostLogin.success {
             self.loginData = Login.AccountModel(userAccountData: responsePostLogin.userAccount)
             presenter?.presentLogin(accountModel: self.loginData!)
