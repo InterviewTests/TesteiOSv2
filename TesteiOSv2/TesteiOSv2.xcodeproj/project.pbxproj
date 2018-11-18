@@ -17,6 +17,8 @@
 		2F15A99521A0C03C009452F7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F15A99421A0C03C009452F7 /* LoginViewController.swift */; };
 		2F606AE421A1F3C5002256EF /* UIView+IBInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F606AE321A1F3C5002256EF /* UIView+IBInspector.swift */; };
 		2F606AE821A1F56E002256EF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F606AE721A1F56E002256EF /* CustomTextField.swift */; };
+		2F606AED21A1FBE6002256EF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F606AEC21A1FBE6002256EF /* BaseViewController.swift */; };
+		2F606AF021A2022D002256EF /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F606AEF21A2022D002256EF /* NotificationExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		2F15A99421A0C03C009452F7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2F606AE321A1F3C5002256EF /* UIView+IBInspector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspector.swift"; sourceTree = "<group>"; };
 		2F606AE721A1F56E002256EF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		2F606AEC21A1FBE6002256EF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2F606AEF21A2022D002256EF /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,7 @@
 		2F606AE221A1F39B002256EF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2F606AEE21A20210002256EF /* Notification */,
 				2F606AE521A1F3CC002256EF /* View */,
 			);
 			path = Extension;
@@ -250,8 +255,17 @@
 		2F606AEB21A1FAAB002256EF /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				2F606AEC21A1FBE6002256EF /* BaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		2F606AEE21A20210002256EF /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				2F606AEF21A2022D002256EF /* NotificationExtension.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,6 +400,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F606AF021A2022D002256EF /* NotificationExtension.swift in Sources */,
+				2F606AED21A1FBE6002256EF /* BaseViewController.swift in Sources */,
 				2F606AE821A1F56E002256EF /* CustomTextField.swift in Sources */,
 				2F15A99521A0C03C009452F7 /* LoginViewController.swift in Sources */,
 				2F15A95C21A0AF50009452F7 /* AppDelegate.swift in Sources */,

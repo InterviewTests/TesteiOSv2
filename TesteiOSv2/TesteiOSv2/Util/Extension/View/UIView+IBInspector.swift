@@ -1,9 +1,9 @@
 //
 //  UIView+IBInspector.swift
-//  cs-ios
+//  TesteiOSv2
 //
-//  Created by Felipe perius on 17/01/17.
-//  Copyright © 2017 Altran-AIS. All rights reserved.
+//  Created by Felipe perius on 18/11/2018.
+//  Copyright © 2018 Felipe Perius. All rights reserved.
 //
 
 import UIKit
