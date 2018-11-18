@@ -14,6 +14,9 @@
 		2F15A97C21A0AF54009452F7 /* TesteiOSv2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F15A97B21A0AF54009452F7 /* TesteiOSv2UITests.swift */; };
 		2F15A98F21A0B99D009452F7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F15A98E21A0B99D009452F7 /* Login.storyboard */; };
 		2F15A99121A0B9AF009452F7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F15A99021A0B9AF009452F7 /* Home.storyboard */; };
+		2F15A99521A0C03C009452F7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F15A99421A0C03C009452F7 /* LoginViewController.swift */; };
+		2F606AE421A1F3C5002256EF /* UIView+IBInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F606AE321A1F3C5002256EF /* UIView+IBInspector.swift */; };
+		2F606AE821A1F56E002256EF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F606AE721A1F56E002256EF /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		2F15A97D21A0AF54009452F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F15A98E21A0B99D009452F7 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		2F15A99021A0B9AF009452F7 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		2F15A99421A0C03C009452F7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2F606AE321A1F3C5002256EF /* UIView+IBInspector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspector.swift"; sourceTree = "<group>"; };
+		2F606AE721A1F56E002256EF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,14 +103,14 @@
 		2F15A95A21A0AF50009452F7 /* TesteiOSv2 */ = {
 			isa = PBXGroup;
 			children = (
-				2F15A98D21A0B948009452F7 /* Storyboard */,
+				2F606AE121A1F2CB002256EF /* UI */,
+				2F606AE021A1F2BD002256EF /* Util */,
+				2F606ADF21A1F1FA002256EF /* Resources */,
 				2F15A98921A0B667009452F7 /* Models */,
 				2F15A98C21A0B688009452F7 /* Scenes */,
 				2F15A98B21A0B67A009452F7 /* Workers */,
 				2F15A98A21A0B672009452F7 /* Service */,
 				2F15A95B21A0AF50009452F7 /* AppDelegate.swift */,
-				2F15A96221A0AF53009452F7 /* Assets.xcassets */,
-				2F15A96421A0AF53009452F7 /* LaunchScreen.storyboard */,
 				2F15A96721A0AF53009452F7 /* Info.plist */,
 			);
 			path = TesteiOSv2;
@@ -152,6 +158,7 @@
 		2F15A98C21A0B688009452F7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				2F606AEB21A1FAAB002256EF /* Base */,
 				2F15A99321A0BDD3009452F7 /* Home */,
 				2F15A99221A0BDCC009452F7 /* Login */,
 			);
@@ -161,6 +168,7 @@
 		2F15A98D21A0B948009452F7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				2F15A96421A0AF53009452F7 /* LaunchScreen.storyboard */,
 				2F15A98E21A0B99D009452F7 /* Login.storyboard */,
 				2F15A99021A0B9AF009452F7 /* Home.storyboard */,
 			);
@@ -170,6 +178,7 @@
 		2F15A99221A0BDCC009452F7 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				2F15A99421A0C03C009452F7 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -179,6 +188,70 @@
 			children = (
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		2F606ADF21A1F1FA002256EF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2F15A96221A0AF53009452F7 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2F606AE021A1F2BD002256EF /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2F606AE221A1F39B002256EF /* Extension */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		2F606AE121A1F2CB002256EF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2F606AE621A1F3D6002256EF /* Component */,
+				2F15A98D21A0B948009452F7 /* Storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		2F606AE221A1F39B002256EF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2F606AE521A1F3CC002256EF /* View */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2F606AE521A1F3CC002256EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F606AE321A1F3C5002256EF /* UIView+IBInspector.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F606AE621A1F3D6002256EF /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				2F606AEA21A1F587002256EF /* TextField */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		2F606AEA21A1F587002256EF /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				2F606AE721A1F56E002256EF /* CustomTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		2F606AEB21A1FAAB002256EF /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,7 +386,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F606AE821A1F56E002256EF /* CustomTextField.swift in Sources */,
+				2F15A99521A0C03C009452F7 /* LoginViewController.swift in Sources */,
 				2F15A95C21A0AF50009452F7 /* AppDelegate.swift in Sources */,
+				2F606AE421A1F3C5002256EF /* UIView+IBInspector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
