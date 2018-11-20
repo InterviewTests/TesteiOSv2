@@ -23,6 +23,9 @@
 		2F88800F21A4865F0040641F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88800E21A4865F0040641F /* HomeViewController.swift */; };
 		2F88801321A486FB0040641F /* SegueName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88801221A486FB0040641F /* SegueName.swift */; };
 		2F88801621A498320040641F /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88801521A498320040641F /* AlertUtils.swift */; };
+		2F88801821A49E6A0040641F /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88801721A49E6A0040641F /* HomePresenter.swift */; };
+		2F88801A21A49F130040641F /* StatementList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88801921A49F130040641F /* StatementList.swift */; };
+		2F88801C21A49F890040641F /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88801B21A49F890040641F /* Statement.swift */; };
 		2FE651B021A46B8600D009F5 /* unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE651AE21A46B8600D009F5 /* unwrap.swift */; };
 		2FE651B121A46B8600D009F5 /* HasDisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE651AF21A46B8600D009F5 /* HasDisposeBag.swift */; };
 		2FE651B521A46CD000D009F5 /* Error+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE651B421A46CCF00D009F5 /* Error+Util.swift */; };
@@ -84,6 +87,9 @@
 		2F88800E21A4865F0040641F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2F88801221A486FB0040641F /* SegueName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueName.swift; sourceTree = "<group>"; };
 		2F88801521A498320040641F /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
+		2F88801721A49E6A0040641F /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		2F88801921A49F130040641F /* StatementList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementList.swift; sourceTree = "<group>"; };
+		2F88801B21A49F890040641F /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
 		2FE651AE21A46B8600D009F5 /* unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = unwrap.swift; sourceTree = "<group>"; };
 		2FE651AF21A46B8600D009F5 /* HasDisposeBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasDisposeBag.swift; sourceTree = "<group>"; };
 		2FE651B421A46CCF00D009F5 /* Error+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Util.swift"; sourceTree = "<group>"; };
@@ -212,6 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				2FFA466D21A241BB00E0973B /* User.swift */,
+				2F88801921A49F130040641F /* StatementList.swift */,
+				2F88801B21A49F890040641F /* Statement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				2F88800E21A4865F0040641F /* HomeViewController.swift */,
+				2F88801721A49E6A0040641F /* HomePresenter.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -677,6 +686,7 @@
 			files = (
 				2FFA465C21A21F8D00E0973B /* UIViewExtension.swift in Sources */,
 				2FE651B121A46B8600D009F5 /* HasDisposeBag.swift in Sources */,
+				2F88801C21A49F890040641F /* Statement.swift in Sources */,
 				2FFA465221A2116000E0973B /* URLBaseManager.swift in Sources */,
 				2FFA466621A233E000E0973B /* LoginPresenter.swift in Sources */,
 				2FFA465821A212F100E0973B /* Routes.swift in Sources */,
@@ -686,6 +696,7 @@
 				2F88801621A498320040641F /* AlertUtils.swift in Sources */,
 				2FFA466A21A2355B00E0973B /* LoginRouter.swift in Sources */,
 				2FFA466221A2263D00E0973B /* Validator+String.swift in Sources */,
+				2F88801A21A49F130040641F /* StatementList.swift in Sources */,
 				2FFA466421A226F600E0973B /* String+Extension.swift in Sources */,
 				2F88800F21A4865F0040641F /* HomeViewController.swift in Sources */,
 				2FFA466821A2354600E0973B /* LoginInteractor.swift in Sources */,
@@ -699,6 +710,7 @@
 				2F15A99521A0C03C009452F7 /* LoginViewController.swift in Sources */,
 				2FFA467421A24DF500E0973B /* UserService.swift in Sources */,
 				2F15A95C21A0AF50009452F7 /* AppDelegate.swift in Sources */,
+				2F88801821A49E6A0040641F /* HomePresenter.swift in Sources */,
 				2FFA467121A2491800E0973B /* LoginWorker.swift in Sources */,
 				2F606AE421A1F3C5002256EF /* UIView+IBInspector.swift in Sources */,
 			);
