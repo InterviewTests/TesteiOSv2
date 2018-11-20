@@ -64,6 +64,9 @@
                                             <constraint firstAttribute="height" constant="27" id="qJq-cb-cAP"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="ic_logout"/>
+                                        <connections>
+                                            <action selector="logout:" destination="YEr-gH-YST" eventType="touchUpInside" id="dty-mr-o4j"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23921568627450979" green="0.31372549019607843" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
@@ -89,7 +92,7 @@
                                     <constraint firstAttribute="trailing" secondItem="HOE-fR-axB" secondAttribute="trailing" constant="13" id="yOQ-NY-xb7"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PRl-qo-ng3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PRl-qo-ng3">
                                 <rect key="frame" x="0.0" y="229" width="375" height="438"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -111,6 +114,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pAC-in-9M8"/>
                     </view>
+                    <connections>
+                        <outlet property="balanceLabel" destination="urR-zu-xXQ" id="xsQ-ct-2vC"/>
+                        <outlet property="cpfLabel" destination="rkV-pk-HOy" id="eO1-FH-EYd"/>
+                        <outlet property="tableView" destination="PRl-qo-ng3" id="AGq-gc-MOl"/>
+                        <outlet property="userNameLabel" destination="V5T-JY-XJh" id="G7e-mT-ORZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfV-eR-0Dy" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="StatmentTableViewCell" customModule="TesteiOSv2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECz-Ck-YDP">
+                        <rect key="frame" x="16" y="10" width="343" height="80"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/12/12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2R-Uz-88p">
+                                <rect key="frame" x="191" y="8" width="135" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="YWo-uc-mxg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.6588235294" green="0.70588235290000001" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta de Luz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e3-lp-rn6">
+                                <rect key="frame" x="8" y="44" width="184" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.28235294117647058" green="0.32941176470588235" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 1.000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmj-q0-rXp">
+                                <rect key="frame" x="200" y="44" width="142" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="142" id="gOL-RH-YJ2"/>
+                                    <constraint firstAttribute="height" constant="21" id="xdS-uB-SjV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.28235294119999998" green="0.3294117647" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJL-9l-wyU">
+                                <rect key="frame" x="8" y="5" width="142" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="W2H-Xc-nhz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.6588235294117647" green="0.70588235294117641" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iJL-9l-wyU" firstAttribute="leading" secondItem="ECz-Ck-YDP" secondAttribute="leading" constant="8" id="Fun-X5-Tjy"/>
+                            <constraint firstItem="Wmj-q0-rXp" firstAttribute="top" secondItem="s2R-Uz-88p" secondAttribute="bottom" constant="15" id="H2K-Zb-byh"/>
+                            <constraint firstItem="s2R-Uz-88p" firstAttribute="leading" secondItem="iJL-9l-wyU" secondAttribute="trailing" constant="41" id="Kso-Ue-lV1"/>
+                            <constraint firstItem="Wmj-q0-rXp" firstAttribute="top" secondItem="5e3-lp-rn6" secondAttribute="top" id="Kyd-Uu-QvZ"/>
+                            <constraint firstAttribute="bottom" secondItem="Wmj-q0-rXp" secondAttribute="bottom" constant="15" id="RVZ-bY-a0Q"/>
+                            <constraint firstAttribute="trailing" secondItem="s2R-Uz-88p" secondAttribute="trailing" constant="17" id="SiC-L2-zn6"/>
+                            <constraint firstItem="Wmj-q0-rXp" firstAttribute="leading" secondItem="5e3-lp-rn6" secondAttribute="trailing" constant="8" id="WHn-Kg-7hC"/>
+                            <constraint firstItem="Wmj-q0-rXp" firstAttribute="bottom" secondItem="5e3-lp-rn6" secondAttribute="bottom" id="ch5-ar-HbJ"/>
+                            <constraint firstAttribute="height" constant="80" id="dga-VF-7mw"/>
+                            <constraint firstItem="s2R-Uz-88p" firstAttribute="top" secondItem="iJL-9l-wyU" secondAttribute="top" constant="3" id="f2J-GO-PBk"/>
+                            <constraint firstItem="s2R-Uz-88p" firstAttribute="top" secondItem="ECz-Ck-YDP" secondAttribute="topMargin" id="r6d-a3-vLO"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderViewColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.40000000000000002"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Wmj-q0-rXp" secondAttribute="trailing" constant="17" id="2o1-ir-HaG"/>
+                    <constraint firstItem="5e3-lp-rn6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="DCJ-ZF-1WA"/>
+                    <constraint firstAttribute="trailing" secondItem="ECz-Ck-YDP" secondAttribute="trailing" constant="16" id="Xoe-t3-gTN"/>
+                    <constraint firstItem="ECz-Ck-YDP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="pe5-cE-ucT"/>
+                    <constraint firstItem="ECz-Ck-YDP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yLV-vW-a3i"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="s2R-Uz-88p" id="PKk-3h-ZZq"/>
+                <outlet property="invoiceNameLabel" destination="5e3-lp-rn6" id="yI4-76-Qap"/>
+                <outlet property="roundedView" destination="ECz-Ck-YDP" id="L6E-US-p8F"/>
+                <outlet property="titlePaymentLabel" destination="iJL-9l-wyU" id="NCD-ML-FcC"/>
+                <outlet property="valueLabel" destination="Wmj-q0-rXp" id="dOT-Kn-X7U"/>
+            </connections>
+            <point key="canvasLocation" x="132.1875" y="147.5"/>
+        </tableViewCell>
+    </objects>
+</document>
