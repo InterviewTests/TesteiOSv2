@@ -68,7 +68,7 @@ class LoginViewController: BaseViewController {
 
 extension LoginViewController: LoginPresenterOutput {
     func displayLoginErrorMessage(viewModel: Login.ViewModelFailedLogin) {
-        
+        AlertUtils.showAlertError(title:viewModel.message, viewController:self)
     }
     
     func displaySuccessfullLogin(viewModel: Login.ViewModelSuccessfullLogin) {

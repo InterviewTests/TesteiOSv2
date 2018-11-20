@@ -36,7 +36,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             return
         }
         
-        if  password.isPasswordValid(){
+        if password.isPasswordValid(){
             self.displayResponseError(message:"Password should contain a capital letter, number and special character.")
             return
         }

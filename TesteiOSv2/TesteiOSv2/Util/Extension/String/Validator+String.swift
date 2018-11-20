@@ -22,7 +22,7 @@ extension String {
           return !isEmpty && range(of: "[A-Z]", options: .regularExpression) == nil
     }
 
-	public var dontHaveSpecialCharacter: Bool {
+	public var isSpecialCharacter: Bool {
 		return !isEmpty && range(of: "[!@#$%&*()_+=0987654321/?´~;{}*ºª§\\|,®†¥©¬√≈<>≤≥…™£¢∞§¶•≠:«÷€‹›‡°·±₱„★‚¡¿`♪Π∞×§←↑↓→‰℅½⅓¼⅛⅔⅜¾⁴⅝⅞∅ⁿ“”»✓π∆¹²³※¤⁇⁈（）［］｛｝❨❩❲❳❴❵❛❜❝❞〈〉《》〔〕【】〘〙「」『』︵︶︷︸︹︹︻︼︽︾︿﹀﹁﹂↚↛↜↝↞↟↠↡↢↣↤↥↦↧↨↫↬↭↮↯↰↱↲↳↴↵↶↷↸↹↺↻↼↽↾↿⇀⇁⇂⇃⇄⇅⇆⇇⇈⇉⇊⇋⇌⇍⇎⇏⇐⇑⇒⇓⇔⇕⇖⇗⇘⇙⇚⇛⇜⇝⇞⇟⇠⇡⇢⇣≡≦≮≧≯⊕⊗∀∂∃∀∇∈∉∋∌∝∟∠∧∨∥∩∪∫∬∮∴∵∶∷⊂⊃⊄⊅⊆⊇∪∩ΓΞ①②③④⑤⑥⑦⑧⑨⑩⑴⑵⑶⑷⑸⑹⑺⑻⑼⑽ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ●○■□☆◆◇▲△▷▼▽◁◐◑♀♂♤♡♧♢❖✓✕✗✘✙✚✛✜✝✞✟✠✡✢✣✤✥✦✧✩✪✫✬✭✮✯✰✱✲✵✶✷✸✹✺✻✼✽✾✿❀❁❂❃❅❆❈❉❊❋❍❏❐❑❒◈◉◊○◢◣◤◥❢❣❥❦❧§^\\[\\]\"]", options: .regularExpression) == nil
 	}
     
@@ -65,10 +65,10 @@ extension String {
     func isPasswordValid() ->Bool{
         let pass = self
         
-        if pass.dontHaveSpecialCharacter && pass.isCapitalLetter && pass.isAlphanumericNotEspecial {
-            return true
-        } else {
+        if pass.isSpecialCharacter == false  && pass.isCapitalLetter == false  && pass.isAlphanumeric == false  {
             return false
+        } else {
+            return true
         }
     }
     
