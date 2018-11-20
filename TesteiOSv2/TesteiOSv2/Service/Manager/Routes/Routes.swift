@@ -15,7 +15,7 @@ class Routes: NSObject {
     }
     
     // MARK: - Statements
-    static func getStatements(page: String) -> URL {
-        return  URLBaseManager.baseURL.appendingPathComponent("/statements/\(page)")
+    static func getStatements(id: String) -> URL {
+        return  URLBaseManager.baseURL.appendingPathComponent("/statements/\(id)")
     }
 }
