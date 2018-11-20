@@ -60,6 +60,9 @@
                                         <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginAction:" destination="LIM-jc-XeG" eventType="touchUpInside" id="57J-E3-yap"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nwD-Yd-WQb" customClass="CustomTextField" customModule="TesteiOSv2" customModuleProvider="target">
                                 <rect key="frame" x="25" y="203" width="270" height="50"/>
@@ -99,6 +102,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CWf-oa-6St"/>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="2dO-vT-2xm" id="2ld-KJ-4qB"/>
+                        <outlet property="passwordTextField" destination="dkp-EF-m2U" id="EVd-Aj-DuD"/>
+                        <outlet property="usernameTextField" destination="nwD-Yd-WQb" id="iEU-OY-YcK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fJ-Q1-tRx" sceneMemberID="firstResponder"/>
             </objects>
