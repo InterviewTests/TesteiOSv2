@@ -49,7 +49,7 @@ class LoginViewController: BaseViewController {
         viewController.router = router
         interactor.presenter = presenter
         router.loginViewController = viewController
-        presenter.viewController = viewController as? LoginPresenterOutput
+        presenter.viewController = viewController
     }
     
     

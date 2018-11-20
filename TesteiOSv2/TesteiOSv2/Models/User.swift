@@ -7,30 +7,24 @@
 //
 
 import UIKit
-
-struct User: Decodable {
-    let userId: Int?
-    let name: String?
-    let bankAccount: String?
-    let agency: String?
-    let balance: Float?
-    let userName: String?
+import  ObjectMapper
+class User: Mappable {
+    var userId: Int?
+    var name : String?
+    var bankAccount : String?
+    var agency : String?
+    var balance : Double?
     
-    enum CodingKeys: String, CodingKey {
-        case userId
-        case name
-        case bankAccount
-        case agency
-        case balance
-        case userName
+    required init?(map: Map) {
+        
     }
     
-    init(userId: Int?, name: String? = nil, bankAccount: String? = nil, agency: String? = nil, balance: Float? = nil, userName: String? = nil) {
-        self.userId = userId
-        self.name = name
-        self.bankAccount = bankAccount
-        self.agency = agency
-        self.balance = balance
-        self.userName = userName
+    func mapping(map: Map) {
+        userId <- map["userId"]
+        name <- map["name"]
+        bankAccount <- map["bankAccount"]
+        agency <- map["agency"]
+        balance <- map["balance"]
     }
+    
 }

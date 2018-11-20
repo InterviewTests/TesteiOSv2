@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import Alamofire
+import ObjectMapper
 
 class UserService: NSObject {
     class func authLogin(user: String,pass:String) ->  RxSwift.Observable<User> {
@@ -31,20 +32,18 @@ class UserService: NSObject {
                         observer.onError(NSError(domain: "br.com.testeiOS", code: 40, userInfo: ["error": errorMsg]))
                     } else {
                         
-                        if let data = response.data {
-                            do {
-                                //here dataResponse received from a network request
-                                let decoder = JSONDecoder()
-                                let userModel = try decoder.decode(User.self, from:data) //Decode JSON Response Data
-                                observer.onNext(userModel)
+                        if let dic = response.value as? [String: Any] {
+                                if let dicUserAccount = dic["userAccount"] as? [String: Any] {
+                                    if let user = Mapper<User>().map(JSON: dicUserAccount) {
+                                       observer.onNext(user)
+                                    } else {
+                                        observer.onError(NSError(domain: "br.com.testeiOS", code:500, userInfo: ["message": "Erro a carregar informações do usuario."]))
+                                    }
+                                }
                                 observer.onCompleted()
-                            } catch let parsingError {
-                                print("Error", parsingError)
-                                observer.onError(NSError(domain: "br.com.testeiOS", code:40, userInfo: ["message":parsingError]))
-                                observer.onCompleted()
-                            }
+                            
                         } else {
-                            observer.onError(NSError(domain: "br.com.testeiOS", code:500, userInfo: ["message": "Erro a carrega informações do usuario."]))
+                            observer.onError(NSError(domain: "br.com.testeiOS", code:500, userInfo: ["message": "Erro a carregar informações do usuario."]))
                              observer.onCompleted()
                         }
                     }
