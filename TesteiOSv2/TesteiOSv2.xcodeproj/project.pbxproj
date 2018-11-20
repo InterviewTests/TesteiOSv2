@@ -20,9 +20,10 @@
 		2F606AE821A1F56E002256EF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F606AE721A1F56E002256EF /* CustomTextField.swift */; };
 		2F606AED21A1FBE6002256EF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F606AEC21A1FBE6002256EF /* BaseViewController.swift */; };
 		2F606AF021A2022D002256EF /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F606AEF21A2022D002256EF /* NotificationExtension.swift */; };
+		2F88800F21A4865F0040641F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88800E21A4865F0040641F /* HomeViewController.swift */; };
+		2F88801321A486FB0040641F /* SegueName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88801221A486FB0040641F /* SegueName.swift */; };
 		2FE651B021A46B8600D009F5 /* unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE651AE21A46B8600D009F5 /* unwrap.swift */; };
 		2FE651B121A46B8600D009F5 /* HasDisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE651AF21A46B8600D009F5 /* HasDisposeBag.swift */; };
-		2FE651B321A46BA800D009F5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE651B221A46BA800D009F5 /* UserModel.swift */; };
 		2FE651B521A46CD000D009F5 /* Error+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE651B421A46CCF00D009F5 /* Error+Util.swift */; };
 		2FFA465221A2116000E0973B /* URLBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA465121A2116000E0973B /* URLBaseManager.swift */; };
 		2FFA465821A212F100E0973B /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA465721A212F100E0973B /* Routes.swift */; };
@@ -79,9 +80,10 @@
 		2F606AE721A1F56E002256EF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2F606AEC21A1FBE6002256EF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2F606AEF21A2022D002256EF /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		2F88800E21A4865F0040641F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2F88801221A486FB0040641F /* SegueName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueName.swift; sourceTree = "<group>"; };
 		2FE651AE21A46B8600D009F5 /* unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = unwrap.swift; sourceTree = "<group>"; };
 		2FE651AF21A46B8600D009F5 /* HasDisposeBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasDisposeBag.swift; sourceTree = "<group>"; };
-		2FE651B221A46BA800D009F5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		2FE651B421A46CCF00D009F5 /* Error+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Util.swift"; sourceTree = "<group>"; };
 		2FFA465121A2116000E0973B /* URLBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLBaseManager.swift; sourceTree = "<group>"; };
 		2FFA465721A212F100E0973B /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
@@ -208,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				2FFA466D21A241BB00E0973B /* User.swift */,
-				2FE651B221A46BA800D009F5 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -266,6 +267,7 @@
 		2F15A99321A0BDD3009452F7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2F88800E21A4865F0040641F /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -281,6 +283,7 @@
 		2F606AE021A1F2BD002256EF /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				2F88801121A486DB0040641F /* Segues */,
 				2F606AE221A1F39B002256EF /* Extension */,
 			);
 			path = Util;
@@ -298,7 +301,7 @@
 		2F606AE221A1F39B002256EF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				2FE651B421A46CCF00D009F5 /* Error+Util.swift */,
+				2F88801021A486C80040641F /* Error */,
 				2FE651AD21A46B7B00D009F5 /* Rx */,
 				2FFA466021A2261C00E0973B /* String */,
 				2F606AEE21A20210002256EF /* Notification */,
@@ -346,6 +349,22 @@
 				2F606AEF21A2022D002256EF /* NotificationExtension.swift */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		2F88801021A486C80040641F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				2FE651B421A46CCF00D009F5 /* Error+Util.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		2F88801121A486DB0040641F /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				2F88801221A486FB0040641F /* SegueName.swift */,
+			);
+			path = Segues;
 			sourceTree = "<group>";
 		};
 		2FE651AD21A46B7B00D009F5 /* Rx */ = {
@@ -651,14 +670,15 @@
 				2F606AF021A2022D002256EF /* NotificationExtension.swift in Sources */,
 				2F606AED21A1FBE6002256EF /* BaseViewController.swift in Sources */,
 				2FE651B021A46B8600D009F5 /* unwrap.swift in Sources */,
-				2FE651B321A46BA800D009F5 /* UserModel.swift in Sources */,
 				2FFA466A21A2355B00E0973B /* LoginRouter.swift in Sources */,
 				2FFA466221A2263D00E0973B /* Validator+String.swift in Sources */,
 				2FFA466421A226F600E0973B /* String+Extension.swift in Sources */,
+				2F88800F21A4865F0040641F /* HomeViewController.swift in Sources */,
 				2FFA466821A2354600E0973B /* LoginInteractor.swift in Sources */,
 				2F606AE821A1F56E002256EF /* CustomTextField.swift in Sources */,
 				2FE651B521A46CD000D009F5 /* Error+Util.swift in Sources */,
 				2FFA466C21A23D7C00E0973B /* LoginModels.swift in Sources */,
+				2F88801321A486FB0040641F /* SegueName.swift in Sources */,
 				2FFA465F21A220DE00E0973B /* UserSession.swift in Sources */,
 				2FFA465A21A217C800E0973B /* ServiceManager.swift in Sources */,
 				2FFA466E21A241BB00E0973B /* User.swift in Sources */,
