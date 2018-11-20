@@ -1,9 +1,9 @@
 //
 //  Validator+String.swift
-//  cs-ios
+//  TesteiOSv2
 //
-//  Created by Felipe perius on 21/02/17.
-//  Copyright © 2017 Altran-AIS. All rights reserved.
+//  Created by Felipe perius on 18/11/2018.
+//  Copyright © 2018 Felipe Perius. All rights reserved.
 //
 
 import Foundation

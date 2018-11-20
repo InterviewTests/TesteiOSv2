@@ -1,9 +1,9 @@
 //
 //  unwrap.swift
-//  toroguru
+//  TesteiOSv2
 //
-//  Created by Andre Rodrigues on 05/05/18.
-//  Copyright © 2018 br.com.toroguru. All rights reserved.
+//  Created by Felipe perius on 18/11/2018.
+//  Copyright © 2018 Felipe Perius. All rights reserved.
 //
 
 import RxSwift

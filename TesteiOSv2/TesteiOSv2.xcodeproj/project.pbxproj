@@ -22,6 +22,7 @@
 		2F606AF021A2022D002256EF /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F606AEF21A2022D002256EF /* NotificationExtension.swift */; };
 		2F88800F21A4865F0040641F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88800E21A4865F0040641F /* HomeViewController.swift */; };
 		2F88801321A486FB0040641F /* SegueName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88801221A486FB0040641F /* SegueName.swift */; };
+		2F88801621A498320040641F /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88801521A498320040641F /* AlertUtils.swift */; };
 		2FE651B021A46B8600D009F5 /* unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE651AE21A46B8600D009F5 /* unwrap.swift */; };
 		2FE651B121A46B8600D009F5 /* HasDisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE651AF21A46B8600D009F5 /* HasDisposeBag.swift */; };
 		2FE651B521A46CD000D009F5 /* Error+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE651B421A46CCF00D009F5 /* Error+Util.swift */; };
@@ -82,6 +83,7 @@
 		2F606AEF21A2022D002256EF /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		2F88800E21A4865F0040641F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2F88801221A486FB0040641F /* SegueName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueName.swift; sourceTree = "<group>"; };
+		2F88801521A498320040641F /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
 		2FE651AE21A46B8600D009F5 /* unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = unwrap.swift; sourceTree = "<group>"; };
 		2FE651AF21A46B8600D009F5 /* HasDisposeBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasDisposeBag.swift; sourceTree = "<group>"; };
 		2FE651B421A46CCF00D009F5 /* Error+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Util.swift"; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 		2F606AE221A1F39B002256EF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2F88801421A498270040641F /* Alert */,
 				2F88801021A486C80040641F /* Error */,
 				2FE651AD21A46B7B00D009F5 /* Rx */,
 				2FFA466021A2261C00E0973B /* String */,
@@ -365,6 +368,14 @@
 				2F88801221A486FB0040641F /* SegueName.swift */,
 			);
 			path = Segues;
+			sourceTree = "<group>";
+		};
+		2F88801421A498270040641F /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				2F88801521A498320040641F /* AlertUtils.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		2FE651AD21A46B7B00D009F5 /* Rx */ = {
@@ -672,6 +683,7 @@
 				2F606AF021A2022D002256EF /* NotificationExtension.swift in Sources */,
 				2F606AED21A1FBE6002256EF /* BaseViewController.swift in Sources */,
 				2FE651B021A46B8600D009F5 /* unwrap.swift in Sources */,
+				2F88801621A498320040641F /* AlertUtils.swift in Sources */,
 				2FFA466A21A2355B00E0973B /* LoginRouter.swift in Sources */,
 				2FFA466221A2263D00E0973B /* Validator+String.swift in Sources */,
 				2FFA466421A226F600E0973B /* String+Extension.swift in Sources */,

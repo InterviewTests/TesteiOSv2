@@ -1,9 +1,9 @@
 //
 //  Error+Util.swift
-//  BBInovacao
+//  TesteiOSv2
 //
-//  Created by Antonio Silva on 31/07/17.
-//  Copyright © 2017 AIS. All rights reserved.
+//  Created by Felipe perius on 18/11/2018.
+//  Copyright © 2018 Felipe Perius. All rights reserved.
 //
 
 import UIKit
