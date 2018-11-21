@@ -1,3 +1,40 @@
+# **DESAFIO Satander IBM - FElipe Perius**
+
+Objetivo do projeto é testar os conhecimentos do canditado sobre a estrutura Clean e consumo assíncrono de APIs, testes e habilidades para construção de aplicativos para plataforma iOS .
+
+## Começando
+Estas instruções irão levá-lo a uma cópia do projeto em funcionamento em sua máquina local para fins de desenvolvimento e teste.
+
+### Pré-requisitos
+O que você precisa para construir, executar e testar o aplicativo:
+Xcode 9.0 ou posterior. 
+O Deployment target está configurando pra suporta iOS 9.0 ou posterior.
+Clone o repositório em sua máquina local:
+```
+git clone https://github.com/feliperius/teste_IN3_iOS.git
+```
+Em seguida, abra o projeto no Xcode:
+open TesteiOSv2.xcodeproj Agora você está pronto para começar.
+
+
+### Uso de dependências
+
+Nesse projeto utilizei 4 dependecias:
+* Utilizei o  [Alamofire](https://github.com/Alamofire/Alamofire) para facilitar as requisições com API .
+* [KeychainSwift](https://github.com/evgenyneu/keychain-swift) para salva com segurança os dados do usuario.
+
+* [RxSwift](https://github.com/ReactiveX/RxSwift) para fazer o parse dos models do JSON e comecei usando codable mas resolvi usar ObjectMapper mesmo.
+
+* [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper) para fazer as requisições na camada de serviço com programção reativa.
+
+### # Observações gerais
+
+O projeto possui testes unitarios e teste de UI . Foi feita a internacionalização para Português e inglês mas só na mensagens de erro pois objetivo é demonstrar conhecimento. Foi utilizado progamação reativa também no projeto com RxSwift. 
+
+
+### Autor 
+- **Felipe Augusto Pimentel Perius**
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
