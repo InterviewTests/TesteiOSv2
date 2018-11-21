@@ -1,4 +1,4 @@
-# **DESAFIO Satander IBM - FElipe Perius**
+# **DESAFIO Satander IBM - Felipe Perius**
 
 Objetivo do projeto é testar os conhecimentos do canditado sobre a estrutura Clean e consumo assíncrono de APIs, testes unitarios e habilidades para construção de aplicativos para plataforma iOS .
 
@@ -9,13 +9,10 @@ Estas instruções irão levá-lo a uma cópia do projeto em funcionamento em su
 O que você precisa para construir, executar e testar o aplicativo:
 Xcode 9.0 ou posterior. 
 O Deployment target está configurando pra suporta iOS 9.0 ou posterior.
-Clone o repositório em sua máquina local:
-```
-git clone https://github.com/feliperius/TesteiOSv2.git
 
-```
+Faça o clone do repositório em sua máquina local.
 
-Será necessario a instalação das dependências com o comando:
+ Depois será necessario a instalação das dependências com o comando:
 ```bash
 $ pod install
 ```
