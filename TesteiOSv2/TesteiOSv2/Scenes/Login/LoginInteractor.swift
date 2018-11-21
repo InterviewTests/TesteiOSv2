@@ -22,22 +22,22 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     func perfomLogin(request: Login.Request) {
         guard let userName = request.userName, !userName.isEmpty else {
-            self.displayResponseError(message:"Please, insert a user name")
+            self.displayResponseError(message:NSLocalizedString("login.error.name", comment: ""))
             return
         }
         
         guard let password = request.password, !password.isEmpty else {
-            self.displayResponseError(message:"Please, insert a password")
+            self.displayResponseError(message:NSLocalizedString("login.error.password", comment:""))
             return
         }
         
         guard (userName.isValidEmail || userName.isValidCPF) else {
-            self.displayResponseError(message:"The user name must be an email or valid cpf")
+            self.displayResponseError(message:NSLocalizedString("login.error.emailOrcpf", comment: ""))
             return
         }
         
         if password.isPasswordValid(){
-            self.displayResponseError(message:"Password should contain a capital letter, number and special character.")
+            self.displayResponseError(message:NSLocalizedString("login.error.passwordInvalid", comment: ""))
             return
         }
         self.requestLogin(user:userName, pass: password)
