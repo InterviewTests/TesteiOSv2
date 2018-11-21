@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIViewController {
+    @available(iOS 10.0, *)
     func showLoadActivity(activityStyle: UIActivityIndicatorView.Style = .whiteLarge, blurStyle: UIBlurEffect.Style = .regular) {
         
         DispatchQueue.main.async {

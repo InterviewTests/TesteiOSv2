@@ -78,16 +78,16 @@ class LoginViewController: BaseViewController {
 
 extension LoginViewController: LoginPresenterOutput {
     func loadingView() {
-        self.showLoadActivity()
+        self.view.loadAnimation()
     }
     
     func displayLoginErrorMessage(viewModel: Login.ViewModelFailedLogin) {
-        self.hideLoadActivity()
+         self.view.unload()
         AlertUtils.showAlertError(title:viewModel.message, viewController:self)
     }
     
     func displaySuccessfullLogin(viewModel: Login.ViewModelSuccessfullLogin) {
-        self.hideLoadActivity()
+        self.view.unload()
         self.router?.goToHomeScreen()
     }
 }

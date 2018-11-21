@@ -20,6 +20,18 @@ class User: Mappable {
         
     }
     
+    //MARK: - Inits
+    init(userId:Int,name: String,
+         bankAccount: String,
+         balance: Double,
+         agency:String) {
+        self.userId = userId
+        self.name = name
+        self.bankAccount = bankAccount
+        self.balance = balance
+        self.agency = agency
+    }
+    
     func mapping(map: Map) {
         userId <- map["userId"]
         name <- map["name"]

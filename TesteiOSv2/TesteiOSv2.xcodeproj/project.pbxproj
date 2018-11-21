@@ -65,6 +65,8 @@
 		2FFE7B2321A4F3B2006F45F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B2221A4F3B2006F45F7 /* UIViewController+Extension.swift */; };
 		2FFE7B2621A4F902006F45F7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B2521A4F902006F45F7 /* DateExtension.swift */; };
 		2FFE7B2821A4FB02006F45F7 /* TransformersUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B2721A4FB02006F45F7 /* TransformersUtil.swift */; };
+		2FFE7B2B21A51740006F45F7 /* LoginTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B2A21A51740006F45F7 /* LoginTestCase.swift */; };
+		2FFE7B3021A51AC4006F45F7 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B2F21A51AC4006F45F7 /* LoginPresenterTests.swift */; };
 		5267C318B00ABE60CF184AF1 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381816296C9EB80A259A9B2A /* Pods_TesteiOSv2.framework */; };
 		EC605A94F61D687304A5F5C3 /* Pods_TesteiOSv2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE8E1EA0FD65C80BD5544ED /* Pods_TesteiOSv2UITests.framework */; };
 /* End PBXBuildFile section */
@@ -151,6 +153,8 @@
 		2FFE7B2221A4F3B2006F45F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		2FFE7B2521A4F902006F45F7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		2FFE7B2721A4FB02006F45F7 /* TransformersUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformersUtil.swift; sourceTree = "<group>"; };
+		2FFE7B2A21A51740006F45F7 /* LoginTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTestCase.swift; sourceTree = "<group>"; };
+		2FFE7B2F21A51AC4006F45F7 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
 		381816296C9EB80A259A9B2A /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9164F0F00931C8713B90DB /* Pods-TesteiOSv2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2UITests/Pods-TesteiOSv2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B8A9653D4C8336DC6B0E42A /* Pods-TesteiOSv2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +247,8 @@
 		2F15A96F21A0AF54009452F7 /* TesteiOSv2Tests */ = {
 			isa = PBXGroup;
 			children = (
+				2FFE7B2D21A519FB006F45F7 /* Scenes */,
+				2FFE7B2921A516FD006F45F7 /* ValidationLogin */,
 				2F15A97021A0AF54009452F7 /* TesteiOSv2Tests.swift */,
 				2F15A97221A0AF54009452F7 /* Info.plist */,
 			);
@@ -577,6 +583,30 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		2FFE7B2921A516FD006F45F7 /* ValidationLogin */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE7B2A21A51740006F45F7 /* LoginTestCase.swift */,
+			);
+			path = ValidationLogin;
+			sourceTree = "<group>";
+		};
+		2FFE7B2D21A519FB006F45F7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE7B2E21A51A30006F45F7 /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2FFE7B2E21A51A30006F45F7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE7B2F21A51AC4006F45F7 /* LoginPresenterTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		C36E6F4C7AA683B31816E6C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -865,6 +895,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F15A97121A0AF54009452F7 /* TesteiOSv2Tests.swift in Sources */,
+				2FFE7B3021A51AC4006F45F7 /* LoginPresenterTests.swift in Sources */,
+				2FFE7B2B21A51740006F45F7 /* LoginTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
