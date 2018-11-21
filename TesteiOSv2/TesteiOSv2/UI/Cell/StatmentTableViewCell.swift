@@ -25,7 +25,21 @@ class StatmentTableViewCell: UITableViewCell {
         // Initialization code
         self.roundedView.dropShadow()
     }
-
+    
+    func setupCell(statement:Statement) {
+        titlePaymentLabel.text = statement.title
+        invoiceNameLabel.text = statement.description
+        if let date = statement.date {
+            dateLabel.text = date
+        }
+        if let value = statement.value {
+            if let currency = value.toCurrency(){
+                valueLabel.text = "\(currency)"
+            }
+        }
+       
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

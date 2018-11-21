@@ -13,9 +13,9 @@ enum HomeModel {
     struct Request {
     }
     struct Response {
-        var statements: [Statement]
+        var statements: [Statement]?
         var isError: Bool
-        var error: Error?
+        var messageError: String?
     }
     struct StatementViewModel {
         let title: String

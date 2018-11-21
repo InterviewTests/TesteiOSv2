@@ -8,6 +8,17 @@
 
 import UIKit
 
-class HomePresenter: NSObject {
+protocol StatementListPresentationLogic {
+    func presentStatements(response:HomeModel.Response)
+}
 
+class HomePresenter: StatementListPresentationLogic {
+    weak var viewController: StatementOutput?
+    
+    func presentStatements(response: HomeModel.Response) {
+        viewController?.displayStatements(viewModel:response)
+    }
+    
+  
+    
 }

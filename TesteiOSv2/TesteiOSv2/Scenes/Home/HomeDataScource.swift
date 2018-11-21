@@ -10,7 +10,7 @@ import UIKit
 
 class HomeDataScource: NSObject {
     
-    var StatmentViewModel: [HomeModel.StatementViewModel] = [] {
+    var statments: [Statement] = [] {
         didSet {
             tableView?.reloadData()
         }
@@ -29,7 +29,7 @@ class HomeDataScource: NSObject {
         guard let cell = tableView.dequeueReusableCellWithDefaultIdentifier(StatmentTableViewCell.self) else {
             return UITableViewCell()
         }
-        
+        cell.setupCell(statement:statments[indexPath.row])
         return cell
     }
 
@@ -43,7 +43,7 @@ extension HomeDataScource:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return statments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,6 +63,7 @@ extension HomeDataScource:UITableViewDataSource {
         guard let header = tableView.dequeueReusableCell(withIdentifier: HeaderSectionTableViewCell.identifier) else {
             return UITableViewCell()
         }
+        
         return header
     }
 

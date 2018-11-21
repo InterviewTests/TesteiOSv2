@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol StatementOutput: class {
+    func displayStatements(viewModel: HomeModel.Response)
+}
 class HomeViewController: UIViewController {
     // MARK: IBOutlet
     @IBOutlet weak var userNameLabel: UILabel!
@@ -15,6 +18,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     private let dataSource = HomeDataScource()
+    var interactor: StatementListBusinessLogic?
+    var router:HomeRouter?
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -32,17 +37,24 @@ class HomeViewController: UIViewController {
     // MARK: Setup
     private func setup()
     {
-       // let viewController = self
-       // let interactor = HomeInteractor()
-        //let presenter = HomePresenter()
-        //let router = HomeRouter()
+        let viewController = self
+        let interactor = HomeInteractor()
+        let presenter = HomePresenter()
+        let router = HomeRouter()
+        viewController.router = router
+        router.homeViewController = viewController
+        presenter.viewController = viewController
+        interactor.presenter = presenter
+        viewController.interactor = interactor as? StatementListBusinessLogic
     }
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.getStatements()
     }
     
     private func configTableView() {
@@ -52,10 +64,22 @@ class HomeViewController: UIViewController {
         dataSource.registerNibs(in: tableView)
     }
     
-    
-    @IBAction func logout(_ sender: Any) {
-    
+    func getStatements() {
+        interactor?.fetchStatements(userId:"1")
     }
     
+    
+    @IBAction func logout(_ sender: Any) {
+        self.router?.goToLogin()
+    }
+    
+}
+
+extension HomeViewController:StatementOutput{
+    func displayStatements(viewModel: HomeModel.Response) {
+        if let statements = viewModel.statements {
+            self.dataSource.statments = statements
+        }
+    }
 }
 

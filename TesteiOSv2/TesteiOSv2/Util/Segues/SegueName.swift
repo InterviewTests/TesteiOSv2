@@ -13,4 +13,7 @@ public enum SegueName: String {
     
     //Login
     case goHome = "goToHomeViewControler"
+    
+    //Home
+    case goLogin = "goToLoginViewController"
 }

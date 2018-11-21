@@ -59,6 +59,9 @@
 		2FFE7B1121A4C51B006F45F7 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B1021A4C51B006F45F7 /* UITableViewCellExtension.swift */; };
 		2FFE7B1421A4C8E8006F45F7 /* HeaderSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B1221A4C8E8006F45F7 /* HeaderSectionTableViewCell.swift */; };
 		2FFE7B1521A4C8E8006F45F7 /* HeaderSectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE7B1321A4C8E8006F45F7 /* HeaderSectionTableViewCell.xib */; };
+		2FFE7B1921A4D7A3006F45F7 /* StatementWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B1821A4D7A3006F45F7 /* StatementWorker.swift */; };
+		2FFE7B1C21A4D7E9006F45F7 /* StatementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B1B21A4D7E9006F45F7 /* StatementService.swift */; };
+		2FFE7B2021A4E978006F45F7 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B1F21A4E978006F45F7 /* Double.swift */; };
 		5267C318B00ABE60CF184AF1 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381816296C9EB80A259A9B2A /* Pods_TesteiOSv2.framework */; };
 		EC605A94F61D687304A5F5C3 /* Pods_TesteiOSv2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE8E1EA0FD65C80BD5544ED /* Pods_TesteiOSv2UITests.framework */; };
 /* End PBXBuildFile section */
@@ -139,6 +142,9 @@
 		2FFE7B1021A4C51B006F45F7 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		2FFE7B1221A4C8E8006F45F7 /* HeaderSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionTableViewCell.swift; sourceTree = "<group>"; };
 		2FFE7B1321A4C8E8006F45F7 /* HeaderSectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderSectionTableViewCell.xib; sourceTree = "<group>"; };
+		2FFE7B1821A4D7A3006F45F7 /* StatementWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementWorker.swift; sourceTree = "<group>"; };
+		2FFE7B1B21A4D7E9006F45F7 /* StatementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementService.swift; sourceTree = "<group>"; };
+		2FFE7B1F21A4E978006F45F7 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		381816296C9EB80A259A9B2A /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9164F0F00931C8713B90DB /* Pods-TesteiOSv2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2UITests/Pods-TesteiOSv2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B8A9653D4C8336DC6B0E42A /* Pods-TesteiOSv2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +265,7 @@
 		2F15A98A21A0B672009452F7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				2FFE7B1A21A4D7D1006F45F7 /* StatementService */,
 				2FFA467221A2495800E0973B /* UserService */,
 				2FFA465D21A220CA00E0973B /* Session */,
 				2FFA465621A212D800E0973B /* Manager */,
@@ -269,6 +276,7 @@
 		2F15A98B21A0B67A009452F7 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				2FFE7B1721A4D785006F45F7 /* Home */,
 				2FFA466F21A2490600E0973B /* Login */,
 			);
 			path = Workers;
@@ -349,6 +357,7 @@
 		2F606AE221A1F39B002256EF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2FFE7B1E21A4E958006F45F7 /* Double */,
 				2FFE7AF921A4AD69006F45F7 /* UITableViewCell */,
 				2F88801421A498270040641F /* Alert */,
 				2F88801021A486C80040641F /* Error */,
@@ -517,6 +526,30 @@
 				2FFE7AFF21A4AD7C006F45F7 /* UITableViewCell+Defaults.swift */,
 			);
 			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		2FFE7B1721A4D785006F45F7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE7B1821A4D7A3006F45F7 /* StatementWorker.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2FFE7B1A21A4D7D1006F45F7 /* StatementService */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE7B1B21A4D7E9006F45F7 /* StatementService.swift */,
+			);
+			path = StatementService;
+			sourceTree = "<group>";
+		};
+		2FFE7B1E21A4E958006F45F7 /* Double */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE7B1F21A4E978006F45F7 /* Double.swift */,
+			);
+			path = Double;
 			sourceTree = "<group>";
 		};
 		C36E6F4C7AA683B31816E6C4 /* Frameworks */ = {
@@ -776,6 +809,7 @@
 				2F88801321A486FB0040641F /* SegueName.swift in Sources */,
 				2FFA465F21A220DE00E0973B /* UserSession.swift in Sources */,
 				2FFE7B0721A4AD7C006F45F7 /* AutosizableView.swift in Sources */,
+				2FFE7B1921A4D7A3006F45F7 /* StatementWorker.swift in Sources */,
 				2FFE7B0F21A4B94F006F45F7 /* HomeModels.swift in Sources */,
 				2FFA465A21A217C800E0973B /* ServiceManager.swift in Sources */,
 				2FFA466E21A241BB00E0973B /* User.swift in Sources */,
@@ -783,9 +817,11 @@
 				2FFA467421A24DF500E0973B /* UserService.swift in Sources */,
 				2FFE7B0D21A4B4D4006F45F7 /* HomeRouter.swift in Sources */,
 				2FFE7B0921A4B4A6006F45F7 /* HomeDataScource.swift in Sources */,
+				2FFE7B2021A4E978006F45F7 /* Double.swift in Sources */,
 				2FFE7AF721A4A970006F45F7 /* StatmentTableViewCell.swift in Sources */,
 				2FFE7B0621A4AD7C006F45F7 /* UITableViewCell+Defaults.swift in Sources */,
 				2F15A95C21A0AF50009452F7 /* AppDelegate.swift in Sources */,
+				2FFE7B1C21A4D7E9006F45F7 /* StatementService.swift in Sources */,
 				2FFE7B0B21A4B4C2006F45F7 /* HomeInteractor.swift in Sources */,
 				2F88801821A49E6A0040641F /* HomePresenter.swift in Sources */,
 				2FFA467121A2491800E0973B /* LoginWorker.swift in Sources */,

@@ -9,5 +9,8 @@
 import UIKit
 
 class HomeRouter: NSObject {
-
+    weak var homeViewController: HomeViewController!
+    func goToLogin(){
+        homeViewController.performSegue(withIdentifier:SegueName.goLogin.rawValue, sender:nil)
+    }
 }
