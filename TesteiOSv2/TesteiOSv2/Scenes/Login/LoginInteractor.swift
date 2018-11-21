@@ -52,6 +52,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     
     func requestLogin(user:String,pass:String) {
+        UserSession.current.savePass(password:pass)
+        UserSession.current.saveUsername(username:user)
+        presenter?.loadView()
         LoginWorker.authLogin(user: user, pass: pass) { (user,msgErro) in
             if let messsage = msgErro {
                 self.displayResponseError(message:messsage)
@@ -59,6 +62,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
                 if let user = user {
                     let response = Login.Response(isError: false, message:nil, user: user)
                     self.presenter?.presentLoginSuccesfull(response:response)
+                    UserSession.current.saveUser(user:user)
                 }
             }
         }

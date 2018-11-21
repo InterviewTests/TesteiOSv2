@@ -22,7 +22,7 @@ class Statement: Mappable {
     func mapping(map: Map) {
         title <- map["title"]
         description <- map["desc"]
-        date <- map["date"]
+        date <- (map["date"])
         value <- map["value"]
     }
 }

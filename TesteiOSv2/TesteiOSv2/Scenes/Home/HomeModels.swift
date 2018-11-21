@@ -23,7 +23,9 @@ enum HomeModel {
         let date: String
         let value: String
     }
- 
+    struct ResponseUser {
+        let user: User
+    }
     struct UserViewModel {
         let name: String
         let account: String

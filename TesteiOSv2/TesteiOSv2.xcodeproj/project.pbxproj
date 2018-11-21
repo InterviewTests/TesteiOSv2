@@ -62,6 +62,9 @@
 		2FFE7B1921A4D7A3006F45F7 /* StatementWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B1821A4D7A3006F45F7 /* StatementWorker.swift */; };
 		2FFE7B1C21A4D7E9006F45F7 /* StatementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B1B21A4D7E9006F45F7 /* StatementService.swift */; };
 		2FFE7B2021A4E978006F45F7 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B1F21A4E978006F45F7 /* Double.swift */; };
+		2FFE7B2321A4F3B2006F45F7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B2221A4F3B2006F45F7 /* UIViewController+Extension.swift */; };
+		2FFE7B2621A4F902006F45F7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B2521A4F902006F45F7 /* DateExtension.swift */; };
+		2FFE7B2821A4FB02006F45F7 /* TransformersUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE7B2721A4FB02006F45F7 /* TransformersUtil.swift */; };
 		5267C318B00ABE60CF184AF1 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381816296C9EB80A259A9B2A /* Pods_TesteiOSv2.framework */; };
 		EC605A94F61D687304A5F5C3 /* Pods_TesteiOSv2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE8E1EA0FD65C80BD5544ED /* Pods_TesteiOSv2UITests.framework */; };
 /* End PBXBuildFile section */
@@ -145,6 +148,9 @@
 		2FFE7B1821A4D7A3006F45F7 /* StatementWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementWorker.swift; sourceTree = "<group>"; };
 		2FFE7B1B21A4D7E9006F45F7 /* StatementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementService.swift; sourceTree = "<group>"; };
 		2FFE7B1F21A4E978006F45F7 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		2FFE7B2221A4F3B2006F45F7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		2FFE7B2521A4F902006F45F7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		2FFE7B2721A4FB02006F45F7 /* TransformersUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformersUtil.swift; sourceTree = "<group>"; };
 		381816296C9EB80A259A9B2A /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9164F0F00931C8713B90DB /* Pods-TesteiOSv2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2UITests/Pods-TesteiOSv2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B8A9653D4C8336DC6B0E42A /* Pods-TesteiOSv2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -357,6 +363,8 @@
 		2F606AE221A1F39B002256EF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2FFE7B2421A4F8F4006F45F7 /* Date */,
+				2FFE7B2121A4F2A0006F45F7 /* UIViewController */,
 				2FFE7B1E21A4E958006F45F7 /* Double */,
 				2FFE7AF921A4AD69006F45F7 /* UITableViewCell */,
 				2F88801421A498270040641F /* Alert */,
@@ -550,6 +558,23 @@
 				2FFE7B1F21A4E978006F45F7 /* Double.swift */,
 			);
 			path = Double;
+			sourceTree = "<group>";
+		};
+		2FFE7B2121A4F2A0006F45F7 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE7B2221A4F3B2006F45F7 /* UIViewController+Extension.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		2FFE7B2421A4F8F4006F45F7 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE7B2721A4FB02006F45F7 /* TransformersUtil.swift */,
+				2FFE7B2521A4F902006F45F7 /* DateExtension.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 		C36E6F4C7AA683B31816E6C4 /* Frameworks */ = {
@@ -802,6 +827,7 @@
 				2FFE7B0221A4AD7C006F45F7 /* NSObject+ClassName.swift in Sources */,
 				2FFA466421A226F600E0973B /* String+Extension.swift in Sources */,
 				2F88800F21A4865F0040641F /* HomeViewController.swift in Sources */,
+				2FFE7B2621A4F902006F45F7 /* DateExtension.swift in Sources */,
 				2FFA466821A2354600E0973B /* LoginInteractor.swift in Sources */,
 				2F606AE821A1F56E002256EF /* CustomTextField.swift in Sources */,
 				2FE651B521A46CD000D009F5 /* Error+Util.swift in Sources */,
@@ -813,6 +839,7 @@
 				2FFE7B0F21A4B94F006F45F7 /* HomeModels.swift in Sources */,
 				2FFA465A21A217C800E0973B /* ServiceManager.swift in Sources */,
 				2FFA466E21A241BB00E0973B /* User.swift in Sources */,
+				2FFE7B2321A4F3B2006F45F7 /* UIViewController+Extension.swift in Sources */,
 				2F15A99521A0C03C009452F7 /* LoginViewController.swift in Sources */,
 				2FFA467421A24DF500E0973B /* UserService.swift in Sources */,
 				2FFE7B0D21A4B4D4006F45F7 /* HomeRouter.swift in Sources */,
@@ -825,6 +852,7 @@
 				2FFE7B0B21A4B4C2006F45F7 /* HomeInteractor.swift in Sources */,
 				2F88801821A49E6A0040641F /* HomePresenter.swift in Sources */,
 				2FFA467121A2491800E0973B /* LoginWorker.swift in Sources */,
+				2FFE7B2821A4FB02006F45F7 /* TransformersUtil.swift in Sources */,
 				2F606AE421A1F3C5002256EF /* UIView+IBInspector.swift in Sources */,
 				2FFE7B1121A4C51B006F45F7 /* UITableViewCellExtension.swift in Sources */,
 				2FFE7B0321A4AD7C006F45F7 /* AutoheightableView.swift in Sources */,

@@ -14,6 +14,7 @@ class User: Mappable {
     var bankAccount : String?
     var agency : String?
     var balance : Double?
+    var username:String?
     
     required init?(map: Map) {
         

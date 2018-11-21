@@ -9,6 +9,8 @@
 import UIKit
 protocol StatementListBusinessLogic {
     func fetchStatements(userId:String)
+    func fetchUser(user:String,pass:String)
+    func loadUser()
 }
 
 class HomeInteractor: StatementListBusinessLogic {
@@ -23,6 +25,22 @@ class HomeInteractor: StatementListBusinessLogic {
                 let response = HomeModel.Response.init(statements:statements, isError:false, messageError:nil)
                 self.presenter?.presentStatements(response:response)
             }
+        }
+    }
+   
+    func fetchUser(user:String,pass:String) {
+        LoginWorker.authLogin(user: user, pass: pass) { (user,msgErro) in
+                if let user = user {
+                    let response = HomeModel.ResponseUser.init(user:user)
+                    self.presenter?.presentViewModelUser(response:response)
+                }
+        }
+    }
+    
+    func loadUser(){
+        if let user = UserSession.current.getUser(){
+            let response = HomeModel.ResponseUser.init(user:user)
+            self.presenter?.presentViewModelUser(response:response)
         }
     }
 }

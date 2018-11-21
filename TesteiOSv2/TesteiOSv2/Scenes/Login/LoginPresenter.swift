@@ -11,11 +11,15 @@ import UIKit
 protocol LoginPresentationLogic {
     func presentLoginErrorMessage(response: Login.Response)
     func presentLoginSuccesfull(response: Login.Response)
+    func loadView()
 }
 
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginPresenterOutput?
     
+    func loadView() {
+        viewController?.loadingView()
+    }
 
     func presentLoginErrorMessage(response: Login.Response) {
         let viewModel = Login.ViewModelFailedLogin(message: response.message ?? "Error")

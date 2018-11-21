@@ -12,6 +12,7 @@ import UIKit
 protocol LoginPresenterOutput: class {
     func displayLoginErrorMessage(viewModel: Login.ViewModelFailedLogin)
     func displaySuccessfullLogin(viewModel: Login.ViewModelSuccessfullLogin)
+    func loadingView()
 }
 
 class LoginViewController: BaseViewController {
@@ -56,6 +57,7 @@ class LoginViewController: BaseViewController {
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadDataUser()
     }
     
     @IBAction func loginAction(_ sender: Any) {
@@ -64,14 +66,28 @@ class LoginViewController: BaseViewController {
         let request = Login.Request(userName: user, password: password)
         interactor?.perfomLogin(request:request)
     }
+    
+    func loadDataUser() {
+        if let username = UserSession.current.getUsername(),let pass = UserSession.current.getPass() {
+            usernameTextField.text = username
+            passwordTextField.text = pass
+        }
+    }
+    
 }
 
 extension LoginViewController: LoginPresenterOutput {
+    func loadingView() {
+        self.showLoadActivity()
+    }
+    
     func displayLoginErrorMessage(viewModel: Login.ViewModelFailedLogin) {
+        self.hideLoadActivity()
         AlertUtils.showAlertError(title:viewModel.message, viewController:self)
     }
     
     func displaySuccessfullLogin(viewModel: Login.ViewModelSuccessfullLogin) {
+        self.hideLoadActivity()
         self.router?.goToHomeScreen()
     }
 }

@@ -10,11 +10,12 @@ import UIKit
 
 protocol StatementOutput: class {
     func displayStatements(viewModel: HomeModel.Response)
+    func displayUserViewModel(viewModel: HomeModel.UserViewModel)
 }
 class HomeViewController: UIViewController {
     // MARK: IBOutlet
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var cpfLabel: UILabel!
+    @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     private let dataSource = HomeDataScource()
@@ -51,9 +52,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.getUser()
         self.getStatements()
     }
     
@@ -62,6 +65,10 @@ class HomeViewController: UIViewController {
         tableView.delegate = dataSource
         dataSource.tableView = tableView
         dataSource.registerNibs(in: tableView)
+    }
+    
+    func getUser(){
+        interactor?.loadUser()
     }
     
     func getStatements() {
@@ -76,6 +83,12 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController:StatementOutput{
+    func displayUserViewModel(viewModel: HomeModel.UserViewModel) {
+        userNameLabel.text = viewModel.name
+        accountLabel.text = viewModel.account
+        balanceLabel.text = viewModel.balance
+    }
+    
     func displayStatements(viewModel: HomeModel.Response) {
         if let statements = viewModel.statements {
             self.dataSource.statments = statements
