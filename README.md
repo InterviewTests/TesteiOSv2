@@ -1,6 +1,6 @@
 # **DESAFIO Satander IBM - FElipe Perius**
 
-Objetivo do projeto é testar os conhecimentos do canditado sobre a estrutura Clean e consumo assíncrono de APIs, testes e habilidades para construção de aplicativos para plataforma iOS .
+Objetivo do projeto é testar os conhecimentos do canditado sobre a estrutura Clean e consumo assíncrono de APIs, testes unitarios e habilidades para construção de aplicativos para plataforma iOS .
 
 ## Começando
 Estas instruções irão levá-lo a uma cópia do projeto em funcionamento em sua máquina local para fins de desenvolvimento e teste.
@@ -11,15 +11,21 @@ Xcode 9.0 ou posterior.
 O Deployment target está configurando pra suporta iOS 9.0 ou posterior.
 Clone o repositório em sua máquina local:
 ```
-git clone https://github.com/feliperius/teste_IN3_iOS.git
+git clone https://github.com/feliperius/TesteiOSv2.git
+
 ```
+
+Será necessario a instalação das dependências com o comando:
+```bash
+$ pod install
+```
+
 Em seguida, abra o projeto no Xcode:
-open TesteiOSv2.xcodeproj Agora você está pronto para começar.
+open TesteiOSv2.xcworkspace Agora você está pronto para começar.
 
+### Uso de dependências 
 
-### Uso de dependências
-
-Nesse projeto utilizei 4 dependecias:
+Nesse projeto utilizei 4 dependecias utilizando cocoaPods:
 * Utilizei o  [Alamofire](https://github.com/Alamofire/Alamofire) para facilitar as requisições com API .
 * [KeychainSwift](https://github.com/evgenyneu/keychain-swift) para salva com segurança os dados do usuario.
 
@@ -29,8 +35,7 @@ Nesse projeto utilizei 4 dependecias:
 
 ### # Observações gerais
 
-O projeto possui testes unitarios e teste de UI . Foi feita a internacionalização para Português e inglês mas só na mensagens de erro pois objetivo é demonstrar conhecimento. Foi utilizado progamação reativa também no projeto com RxSwift. 
-
+O projeto possui testes unitários e teste de UI . Foi feita a internacionalização para Português e inglês mas só na mensagens de erro pois objetivo é demonstrar conhecimento. Foi utilizado progamação reativa também no projeto com RxSwift. 
 
 ### Autor 
 - **Felipe Augusto Pimentel Perius**
