@@ -9,26 +9,95 @@
 import XCTest
 
 class TesteiOSv2UITests: XCTestCase {
-
+    private let enterButton = "enterLogin"
+    //LOGIN DATA
+    private let defaultEmailForLogin = "user.test@mail.com"
+    private let defaultPasswordForLogin = "P@123"
+    private let textfieldDoneButtonString = "textfieldDoneButton"
+    let app = XCUIApplication()
+    
     override func setUp() {
+        super.setUp()
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
-
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
+        
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.launch()
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testApp() {
+        fluxLogin()
+    }
+   
+    func launchWithReset() {
+        let app = XCUIApplication()
+        app.launchArguments = ["--Reset"]
+        app.launch()
+    }
+    
+    func fluxLogin(){
+        invalidEmailLogin()
+        launchWithReset()
+        invalidPassLogin()
+        launchWithReset()
+        login()
+    }
+    
+
+    
+    func login() {
+        let btnEnter = app.buttons["enterLogin"]
+        let emailTextField = app.textFields["simpleTextfield"]
+        emailTextField.tap()
+        emailTextField.typeText(defaultEmailForLogin)
+      
+    
+        let passwordTxt = app.secureTextFields["simpleTextfield"]
+        passwordTxt.tap()
+        passwordTxt.typeText(defaultPasswordForLogin)
+        btnEnter.tap()
+    }
+    
+    func invalidEmailLogin() {
+        
+        let btnEnter = app.buttons["enterLogin"]
+       
+        let emailTextField = app.textFields["simpleTextfield"]
+        app.clearTextOnElement(emailTextField)
+        emailTextField.tap()
+        emailTextField.typeText("emailinvalido")
+        
+        
+        let passwordTxt = app.secureTextFields["simpleTextfield"]
+        passwordTxt.tap()
+        passwordTxt.typeText(defaultPasswordForLogin)
+        btnEnter.tap()
+    }
+    
+    func invalidPassLogin() {
+        let btnEnter = app.buttons["enterLogin"]
+      
+        let emailTextField = app.textFields["simpleTextfield"]
+        app.clearTextOnElement(emailTextField)
+        emailTextField.tap()
+        emailTextField.typeText("email@valido.com")
+        //app.buttons["return"].tap()
+        
+        
+        let passwordTxt = app.secureTextFields["simpleTextfield"]
+        passwordTxt.tap()
+        passwordTxt.typeText("123")
+        btnEnter.tap()
     }
 
 }

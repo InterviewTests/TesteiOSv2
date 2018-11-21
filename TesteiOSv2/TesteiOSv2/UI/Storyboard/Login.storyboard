@@ -48,6 +48,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dO-vT-2xm">
                                 <rect key="frame" x="87" y="439" width="146" height="62"/>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.31372549020000001" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="enterLogin" label="enterLogin"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="23R-Wo-q8q"/>
                                 </constraints>
@@ -66,6 +67,7 @@
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nwD-Yd-WQb" customClass="CustomTextField" customModule="TesteiOSv2" customModuleProvider="target">
                                 <rect key="frame" x="25" y="203" width="270" height="50"/>
+                                <accessibility key="accessibilityConfiguration" identifier="simpleTextfield" label="simpleTextfield"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="dWS-NX-PMg"/>
                                 </constraints>
@@ -75,12 +77,13 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkp-EF-m2U" customClass="CustomTextField" customModule="TesteiOSv2" customModuleProvider="target">
                                 <rect key="frame" x="25" y="282" width="270" height="50"/>
+                                <accessibility key="accessibilityConfiguration" identifier="simpleTextfield" label="simpleTextfield"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2rw-wh-pIE"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
