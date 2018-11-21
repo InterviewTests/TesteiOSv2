@@ -30,7 +30,7 @@ class StatmentTableViewCell: UITableViewCell {
         titlePaymentLabel.text = statement.title
         invoiceNameLabel.text = statement.description
         if let date = statement.date {
-            dateLabel.text = date.ISOString
+            dateLabel.text = date
         }
         if let value = statement.value {
             if let currency = value.toCurrency(){
