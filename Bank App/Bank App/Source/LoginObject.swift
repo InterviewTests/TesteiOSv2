@@ -1,27 +1,28 @@
 //
-//  UserLoginModel.swift
+//  ShowLogin.swift
 //  Bank App
 //
-//  Created by Chrystian (Pessoal) on 24/11/2018.
+//  Created by Chrystian on 24/11/18.
 //  Copyright © 2018 Salgado's Productions. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-enum UserLogin {
+enum LoginObject {
     
-    enum FetchUser {
+    enum FetchLogin {
         
-        struct Resquest {
+        struct Request {
             // ...
         }
         
         struct Response {
-            // ...
+            
+            var user: User?
         }
         
         struct ViewModel {
-            
+         
             struct DisplayUser {
                 var userId: Int
                 var name: String
@@ -29,7 +30,7 @@ enum UserLogin {
                 var agency: String
                 var balance: Int
             }
-            var displayUser: DisplayUser
+            var user: DisplayUser?
         }
     }
 }

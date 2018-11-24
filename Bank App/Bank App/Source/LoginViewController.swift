@@ -9,16 +9,38 @@
 import UIKit
 
 protocol LoginControllerDisplayLogic: class {
-//    func
+    
+    func displayIntroForUser(userModel: LoginObject.FetchLogin.ViewModel?)
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, LoginControllerDisplayLogic {
     
-    var interactor: LoginInteractor?
+    // declara as variaveis que ficam acoplada aos protocolos.
+    var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol)?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    private func setup() {
+        let viewController = self
+        let interactor = LoginInteractor()
+        let presenter = LoginPresenter()
+//        let router = ShowOrderRouter()
+        
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+//        router.viewController = viewController
+//        router.dataStore = interactor
     }
     
     func fetchUser() {
@@ -30,8 +52,19 @@ class LoginViewController: UIViewController {
         fetchUser()
     }
     
-    func displayFetchedUser(viewModel: UserLogin.FetchUser.ViewModel.DisplayUser) {
-        // ... perform segue to intro cotroller, pass de usar for another screen
+    func displayIntroForUser(userModel: LoginObject.FetchLogin.ViewModel?) {
+        // ... perform segue to intro cotroller, pass de usar for another screen.
+        
+        if let userModel = userModel {
+            performSegue(withIdentifier: "________________", sender: userModel.user)
+        }
+        else {
+            showErrorForLogin(error: .loginError)
+        }
+    }
+    
+    func showErrorForLogin(error: ErrorType) {
+        // ... perform error in view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

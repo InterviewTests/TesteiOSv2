@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B840A44421A9BCBE00E0A22D /* LoginObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B840A44321A9BCBE00E0A22D /* LoginObject.swift */; };
+		B840A44721A9C54F00E0A22D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B840A44621A9C54F00E0A22D /* User.swift */; };
+		B840A44A21A9CA2B00E0A22D /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B840A44921A9CA2B00E0A22D /* ErrorType.swift */; };
+		B840A44C21A9FEB900E0A22D /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B840A44B21A9FEB900E0A22D /* LoginRouter.swift */; };
+		B840A44F21AA009B00E0A22D /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B840A44E21AA009B00E0A22D /* IntroViewController.swift */; };
+		B840A45121AA01CC00E0A22D /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B840A45021AA01CC00E0A22D /* Intro.storyboard */; };
+		B840A45321AA06DB00E0A22D /* IntroInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B840A45221AA06DB00E0A22D /* IntroInteractor.swift */; };
+		B840A45521AA0BA100E0A22D /* IntroPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B840A45421AA0BA100E0A22D /* IntroPresenter.swift */; };
+		B85C9D9921A9ACD0003C3FD0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C9D9821A9ACD0003C3FD0 /* LoginPresenter.swift */; };
 		B86E3F4E21A62B0800A9B84F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E3F4D21A62B0800A9B84F /* AppDelegate.swift */; };
 		B86E3F5021A62B0800A9B84F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E3F4F21A62B0800A9B84F /* LoginViewController.swift */; };
 		B86E3F5321A62B0800A9B84F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86E3F5121A62B0800A9B84F /* Main.storyboard */; };
@@ -17,6 +26,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B840A44321A9BCBE00E0A22D /* LoginObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginObject.swift; sourceTree = "<group>"; };
+		B840A44621A9C54F00E0A22D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B840A44921A9CA2B00E0A22D /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
+		B840A44B21A9FEB900E0A22D /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		B840A44E21AA009B00E0A22D /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		B840A45021AA01CC00E0A22D /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
+		B840A45221AA06DB00E0A22D /* IntroInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroInteractor.swift; sourceTree = "<group>"; };
+		B840A45421AA0BA100E0A22D /* IntroPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPresenter.swift; sourceTree = "<group>"; };
+		B85C9D9821A9ACD0003C3FD0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		B86E3F4A21A62B0700A9B84F /* Bank App.dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bank App.dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86E3F4D21A62B0800A9B84F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B86E3F4F21A62B0800A9B84F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +57,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B840A44521A9C54500E0A22D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B840A44621A9C54F00E0A22D /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B840A44821A9CA1F00E0A22D /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				B840A44921A9CA2B00E0A22D /* ErrorType.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
+		B840A44D21AA008D00E0A22D /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				B840A44E21AA009B00E0A22D /* IntroViewController.swift */,
+				B840A45221AA06DB00E0A22D /* IntroInteractor.swift */,
+				B840A45421AA0BA100E0A22D /* IntroPresenter.swift */,
+			);
+			name = Intro;
+			sourceTree = "<group>";
+		};
 		B86E3F4121A62B0700A9B84F = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +112,9 @@
 		B86E3F6221A6332C00A9B84F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B840A44D21AA008D00E0A22D /* Intro */,
+				B840A44821A9CA1F00E0A22D /* Enums */,
+				B840A44521A9C54500E0A22D /* Models */,
 				B8F644DD21A973A1000707CD /* Login */,
 			);
 			path = Source;
@@ -96,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				B86E3F5121A62B0800A9B84F /* Main.storyboard */,
+				B840A45021AA01CC00E0A22D /* Intro.storyboard */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -106,6 +154,9 @@
 				B86E3F4F21A62B0800A9B84F /* LoginViewController.swift */,
 				B8F644DE21A974D1000707CD /* LoginInteractor.swift */,
 				B8F644E021A97646000707CD /* UserLoginModels.swift */,
+				B85C9D9821A9ACD0003C3FD0 /* LoginPresenter.swift */,
+				B840A44321A9BCBE00E0A22D /* LoginObject.swift */,
+				B840A44B21A9FEB900E0A22D /* LoginRouter.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -171,6 +222,7 @@
 				B86E3F5B21A62B0F00A9B84F /* LaunchScreen.storyboard in Resources */,
 				B86E3F5821A62B0F00A9B84F /* Assets.xcassets in Resources */,
 				B86E3F5321A62B0800A9B84F /* Main.storyboard in Resources */,
+				B840A45121AA01CC00E0A22D /* Intro.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,9 +234,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8F644E121A97646000707CD /* UserLoginModels.swift in Sources */,
+				B840A45321AA06DB00E0A22D /* IntroInteractor.swift in Sources */,
 				B86E3F5021A62B0800A9B84F /* LoginViewController.swift in Sources */,
+				B840A45521AA0BA100E0A22D /* IntroPresenter.swift in Sources */,
 				B86E3F4E21A62B0800A9B84F /* AppDelegate.swift in Sources */,
 				B8F644DF21A974D1000707CD /* LoginInteractor.swift in Sources */,
+				B840A44421A9BCBE00E0A22D /* LoginObject.swift in Sources */,
+				B840A44F21AA009B00E0A22D /* IntroViewController.swift in Sources */,
+				B840A44C21A9FEB900E0A22D /* LoginRouter.swift in Sources */,
+				B85C9D9921A9ACD0003C3FD0 /* LoginPresenter.swift in Sources */,
+				B840A44A21A9CA2B00E0A22D /* ErrorType.swift in Sources */,
+				B840A44721A9C54F00E0A22D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

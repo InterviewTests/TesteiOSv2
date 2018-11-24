@@ -12,20 +12,20 @@ import Foundation
  - Protocolo que implementa as regras de negócio externa pelo Interactor
  - A ViewController pede ao Interactor uma interação a um meio externo.
  */
-protocol LoginBusinessLogin {
+protocol LoginBusinessLogic {
     func fetchUser(request: UserLogin.FetchUser.Resquest)
 }
 
-protocol UserDataStore {
-    var user: UserLogin? { get }
+protocol UserData {
+    var user: User? { get }
 }
 
-class LoginInteractor: LoginBusinessLogin {
+class LoginInteractor: LoginBusinessLogic, UserData {
     
-    var presenter: String?
+    var presenter: LoginPresentationLogic?
     var userWorker: String?
     
-    var user: UserLogin?
+    var user: User?
     
     /**
      - Try login request.
