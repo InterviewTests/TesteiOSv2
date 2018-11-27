@@ -14,12 +14,17 @@ protocol LoginPresenterProtocol {
     
     func logonSuccess(account:Account)
     func logonFailure(message:String)
+    func passLastLogon(_ loginInfo : UserLoginInfo?)
 }
 
 class LoginPresenter: NSObject, LoginPresenterProtocol {
     
     
     var controller: LoginResponseStatus?
+    
+    func passLastLogon(_ loginInfo : UserLoginInfo?) {
+        self.controller?.receiveLastLogon(loginInfo)
+    }
     
     func logonSuccess(account: Account) {
         controller?.logoSuccess(account: account)

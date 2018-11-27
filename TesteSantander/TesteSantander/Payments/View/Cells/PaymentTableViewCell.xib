@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="83" id="KGk-i7-Jjw" customClass="PaymentTableViewCell" customModule="TesteSantander" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="103.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HhR-he-qSN">
+                        <rect key="frame" x="12" y="12" width="296" height="79.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFn-vN-0Tb">
+                                <rect key="frame" x="10" y="10" width="83" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.6588235294117647" green="0.70588235294117641" blue="0.76862745098039209" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/12/2014" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPb-RO-2cC">
+                                <rect key="frame" x="218" y="10" width="62" height="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.6588235294" green="0.70588235290000001" blue="0.76862745099999996" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$1.000,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGs-7K-5b6">
+                                <rect key="frame" x="177" y="45.5" width="103" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.28235294117647058" green="0.32941176470588235" blue="0.396078431372549" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta de Luz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhN-hf-OPZ">
+                                <rect key="frame" x="10" y="50.5" width="96" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.28235294117647058" green="0.32941176470588235" blue="0.396078431372549" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VhN-hf-OPZ" firstAttribute="leading" secondItem="HhR-he-qSN" secondAttribute="leading" constant="10" id="49v-0v-u7Z"/>
+                            <constraint firstAttribute="bottom" secondItem="VhN-hf-OPZ" secondAttribute="bottom" constant="10" id="GbP-Cf-Ary"/>
+                            <constraint firstAttribute="trailing" secondItem="QGs-7K-5b6" secondAttribute="trailing" constant="16" id="Uvp-br-2ji"/>
+                            <constraint firstItem="WPb-RO-2cC" firstAttribute="top" secondItem="HhR-he-qSN" secondAttribute="top" constant="10" id="bnw-yc-WU0"/>
+                            <constraint firstItem="HFn-vN-0Tb" firstAttribute="top" secondItem="HhR-he-qSN" secondAttribute="top" constant="10" id="e4J-Cs-gHX"/>
+                            <constraint firstAttribute="bottom" secondItem="QGs-7K-5b6" secondAttribute="bottom" constant="10" id="ftC-k3-UbP"/>
+                            <constraint firstItem="HFn-vN-0Tb" firstAttribute="leading" secondItem="HhR-he-qSN" secondAttribute="leading" constant="10" id="rer-1z-xMc"/>
+                            <constraint firstAttribute="trailing" secondItem="WPb-RO-2cC" secondAttribute="trailing" constant="16" id="wSm-L3-KF6"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="HhR-he-qSN" secondAttribute="trailing" constant="12" id="1Qf-1q-p6W"/>
+                    <constraint firstItem="HhR-he-qSN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="BgB-dT-Q92"/>
+                    <constraint firstItem="HhR-he-qSN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="kkk-iY-7Sl"/>
+                    <constraint firstAttribute="bottom" secondItem="HhR-he-qSN" secondAttribute="bottom" constant="12" id="yLf-pb-zZr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblPrice" destination="QGs-7K-5b6" id="whq-t1-NGr"/>
+                <outlet property="lblTransaction" destination="VhN-hf-OPZ" id="RTI-Ce-FbJ"/>
+                <outlet property="lblTransactionDate" destination="WPb-RO-2cC" id="scA-SJ-WgP"/>
+                <outlet property="lblTransactionTitle" destination="HFn-vN-0Tb" id="uXu-0Q-DfZ"/>
+                <outlet property="viewTransaction" destination="HhR-he-qSN" id="Mb2-ne-0IZ"/>
+            </connections>
+            <point key="canvasLocation" x="52.799999999999997" y="112.89355322338831"/>
+        </tableViewCell>
+    </objects>
+</document>

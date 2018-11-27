@@ -12,6 +12,7 @@ protocol DoLoginInteractor {
     var worker : LoginWorkerProtocol? {get set}
     var presenter : LoginPresenterProtocol? {get set}
     func doLogin(_ userLogin:UserLoginInfo)
+    func fetchLastLogon()
     
 }
 
@@ -32,6 +33,8 @@ class LoginInteractor: NSObject, DoLoginInteractor {
                 self.presenter?.logonFailure(message: error.localizedDescription)
             })
             
+        } else {
+            self.presenter?.logonFailure(message: GeneralError.invalidPassword.localizedDescription)
         }
     }
     
@@ -41,6 +44,11 @@ class LoginInteractor: NSObject, DoLoginInteractor {
         let isHasUpperCase = password.isContainsUpperCase()
         return isHasSpecial && isHasUpperCase
         
+    }
+    
+    func fetchLastLogon() {
+        let userLoginInfo = self.worker?.fetchLastLogon()
+        self.presenter?.passLastLogon(userLoginInfo)
     }
 }
 
