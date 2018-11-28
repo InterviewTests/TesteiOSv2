@@ -29,7 +29,7 @@ class PaymentTableHeader: UIView {
         nibView.didTapLogout = tapLogout
         nibView.lblName.text = userAccount.name
         nibView.lblBalance.text = "R$ \(userAccount.balance)"
-        nibView.lblAccountNumber.text = userAccount.bankAccount
+        nibView.lblAccountNumber.text = userAccount.agencyConta
         return nibView
     }
     

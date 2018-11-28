@@ -34,4 +34,13 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
         controller?.logonFailure(message: message)
     }
     
+//    func formatAgencyConta(account:Account) {
+//        var numberCount = account.bankAccount
+//        numberCount.insert(".", at: numberCount.index(numberCount.startIndex, offsetBy: 2))
+//        if numberCount.count >= 9 {
+//            numberCount.insert("-", at: numberCount.index(numberCount.startIndex, offsetBy: 9))
+//        }
+//        account.agencyConta = "\(account.agency / numberCount)"
+//    }
+    
 }

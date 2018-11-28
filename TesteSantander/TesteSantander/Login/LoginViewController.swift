@@ -31,7 +31,6 @@ class LoginViewController: UIViewController, LoginResponseStatus {
         self.btnLogin.layer.cornerRadius = 5
         self.lblMessageError.isHidden = true
         self.txfLogin.autoChangeFormat = true
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(_ animated: Bool) {

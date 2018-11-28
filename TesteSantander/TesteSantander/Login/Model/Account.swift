@@ -15,6 +15,14 @@ struct Account : Decodable {
     var bankAccount : String
     var name : String
     var userId : Int
+    var agencyConta : String {
+        var numberCount = agency
+        numberCount.insert(".", at: numberCount.index(numberCount.startIndex, offsetBy: 2))
+        if numberCount.count >= 9 {
+            numberCount.insert("-", at: numberCount.index(numberCount.startIndex, offsetBy: 9))
+        }
+        return "\(bankAccount) / \(numberCount)"
+    }
 }
 
 struct ResponseAccount : Decodable {

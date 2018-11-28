@@ -26,7 +26,7 @@ class PaymentWorker: NSObject, PaymentWorkerProtocol {
                 case .success:
                     let decoder = JSONDecoder()
                     let parseResponse: Result<ResponseTransactions> = decoder.decodeResponse(from: response)
-                    if let value = parseResponse.value {
+                    if var value = parseResponse.value {
                         success(value)
                         return
                     }

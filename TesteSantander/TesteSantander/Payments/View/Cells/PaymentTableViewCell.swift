@@ -30,8 +30,7 @@ class PaymentTableViewCell: UITableViewCell {
     func setTransaction(_ transaction:Transaction) {
         self.lblTransaction.text = transaction.desc
         self.lblTransactionTitle.text = transaction.title
-        self.lblPrice.text = String(format: "R$ %.2f", transaction.value) //"R$ \(transaction.value)"
-        
+        self.lblPrice.text = String(format: "R$ %.2f", transaction.value).replacingOccurrences(of: ".", with: ",")
         self.lblTransactionDate.text = transaction.date
     }
 
