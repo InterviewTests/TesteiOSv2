@@ -28,7 +28,7 @@ class PaymentTableHeader: UIView {
         let nibView = nib.instantiate(withOwner: self, options: nil).first as! PaymentTableHeader
         nibView.didTapLogout = tapLogout
         nibView.lblName.text = userAccount.name
-        nibView.lblBalance.text = "R$ \(userAccount.balance)"
+        nibView.lblBalance.text = String(format: "R$ %.2f", userAccount.balance).replacingOccurrences(of: ".", with: ",")
         nibView.lblAccountNumber.text = userAccount.agencyConta
         return nibView
     }
