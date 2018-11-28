@@ -9,16 +9,7 @@
 import UIKit
 import Alamofire
 
-struct ResponseTransactions : Decodable {
-    var statementList : [Transaction]
-}
 
-struct Transaction : Decodable {
-    var title : String
-    var desc : String
-    var date : String
-    var value : Float
-}
 
 protocol PaymentWorkerProtocol {
     func fetchTransactionList(userID:Int, success:@escaping (ResponseTransactions) -> Void, failure:@escaping (Error) -> Void)

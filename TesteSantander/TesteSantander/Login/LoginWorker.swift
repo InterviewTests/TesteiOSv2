@@ -8,28 +8,13 @@
 
 import UIKit
 import Alamofire
-import Security
 import SwiftKeychainWrapper
-
-typealias SucessoLogin = (Data) -> Void
-
-struct Account : Decodable {
-    
-    var agency : String
-    var balance : Float
-    var bankAccount : String
-    var name : String
-    var userId : Int
-}
-
-struct ResponseAccount : Decodable {
-    var userAccount : Account
-}
 
 enum GeneralError : Error {
     case serviceConnection
     case emptyFields
     case invalidPassword
+    case invalidUsername
     var localizedDescription: String {
         switch self {
         case .serviceConnection:
@@ -38,6 +23,9 @@ enum GeneralError : Error {
             return "Preencha os campos login e password antes de fazer o logon"
         case .invalidPassword:
             return "Password deve contar pelo menos um caracter especial e um caracter em maiusculo"
+        case .invalidUsername:
+            return "CPF ou e-mail invalido"
+        
         }
     }
     
@@ -103,17 +91,13 @@ extension JSONDecoder {
         }
         
         guard let responseData = response.data else {
-            print("didn't get any data from API")
             return .failure(response.error!)
-            //            return .failure(BackendError.parsing(reason:
-            //                "Did not get data in response"))
         }
         
         do {
             let item = try decode(T.self, from: responseData)
             return .success(item)
         } catch {
-            print("error trying to decode response")
             print(error)
             return .failure(error)
         }

@@ -25,7 +25,4 @@ class PaymentsPresenter: NSObject, PaymentsPresenterProtocol {
     func transactionFailure(_ message:String) {
         self.controller?.paymentsResponseFailure(message)
     }
-
-    
-    
 }

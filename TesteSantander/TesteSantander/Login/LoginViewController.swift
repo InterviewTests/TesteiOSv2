@@ -15,24 +15,22 @@ protocol LoginResponseStatus {
     func receiveLastLogon(_ logonInfo:UserLoginInfo?)
 }
 
-class LoginViewController: UIViewController, LoginResponseStatus, UITextFieldDelegate {
+class LoginViewController: UIViewController, LoginResponseStatus {
     
-    @IBOutlet weak var txfLogin: UITextField!
-    @IBOutlet weak var txfPassword : UITextField!
+    @IBOutlet weak var txfLogin: CPFMailTextField!
+    @IBOutlet weak var txfPassword : CPFMailTextField!
     @IBOutlet weak var btnLogin : UIButton!
     @IBOutlet weak var lblMessageError: UILabel!
     
     var interactor : DoLoginInteractor?
     var router : LoginRouterProtocol?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupScene()
         self.btnLogin.layer.cornerRadius = 5
         self.lblMessageError.isHidden = true
-        self.txfPassword.delegate = self
-        self.txfLogin.delegate = self
+        self.txfLogin.autoChangeFormat = true
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -80,6 +78,9 @@ class LoginViewController: UIViewController, LoginResponseStatus, UITextFieldDel
         if let password = logonInfo?.password, let username = logonInfo?.user {
             passwordText = password
             usernameText = username
+            if username.isNumberCharacter() {
+                self.txfLogin.formatting = .cpf
+            }
         }
         self.txfLogin.text = usernameText
         self.txfPassword.text = passwordText
@@ -97,15 +98,6 @@ class LoginViewController: UIViewController, LoginResponseStatus, UITextFieldDel
         }
         self.showMessageError(GeneralError.emptyFields.localizedDescription)
     }
-    
-    // TextFieldProtocol
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
-    }
-    
-    
 
 }
 
