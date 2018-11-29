@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "br.com.caiodev.testeiosv2"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+ext {
+
+    //Androidx AppCompat
+    appCompat = '1.0.2'
+
+    //Androidx ConstraintLayout
+    constraintLayout = '2.0.0-alpha2'
+
+    //Timber
+    timber = '4.7.1'
+
+    //Material design
+    materialDesign = '1.1.0-alpha01'
+
+    //Gson
+    gson = '2.8.5'
+
+    //Retrofit
+    retrofit = '2.4.0'
+    retrofitConverterGson = '2.4.0'
+
+    //Lifecycle Architecture component
+    androidLifecycle = '2.0.0'
+
+    //okHttpLoggingInterceptor
+    loggingInterceptor = '3.9.1'
+
+    //Test dependency versions
+    junit = '4.12'
+    testRunner = '1.1.0-beta02'
+    espresso = '3.1.0-beta02'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$appCompat"
+
+    //Layout and view section
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
+    implementation "com.google.android.material:material:$materialDesign"
+
+    //Logging section
+    implementation "com.jakewharton.timber:timber:$timber"
+
+    //Lifecycle section
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$androidLifecycle"
+    implementation "androidx.lifecycle:lifecycle-extensions:$androidLifecycle"
+
+    //Test section
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test:runner:$testRunner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+}
