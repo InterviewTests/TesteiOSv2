@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "br.com.caiodev.testeiosv2"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -20,42 +21,43 @@ android {
     }
 }
 
-ext {
+dependencies {
 
     //Androidx AppCompat
-    appCompat = '1.0.2'
+    def appCompat = '1.0.2'
 
     //Androidx ConstraintLayout
-    constraintLayout = '2.0.0-alpha2'
+    def constraintLayout = '2.0.0-alpha2'
 
     //Timber
-    timber = '4.7.1'
+    def timber = '4.7.1'
 
     //Material design
-    materialDesign = '1.1.0-alpha01'
+    def materialDesign = '1.1.0-alpha01'
+
+    //Room
+    def room = "2.1.0-alpha02"
 
     //Gson
-    gson = '2.8.5'
+    def gson = '2.8.5'
 
     //Retrofit
-    retrofit = '2.4.0'
-    retrofitConverterGson = '2.4.0'
+    def retrofit = '2.4.0'
+    def retrofitConverterGson = '2.4.0'
 
     //Lifecycle Architecture component
-    androidLifecycle = '2.0.0'
+    def androidLifecycle = '2.0.0'
 
     //okHttpLoggingInterceptor
-    loggingInterceptor = '3.9.1'
+    def loggingInterceptor = '3.9.1'
 
     //Test dependency versions
-    junit = '4.12'
-    testRunner = '1.1.0-beta02'
-    espresso = '3.1.0-beta02'
-}
+    def junit = '4.12'
+    def testRunner = '1.1.0-beta02'
+    def espresso = '3.1.0-beta02'
 
-dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appCompat"
 
     //Layout and view section
@@ -65,9 +67,17 @@ dependencies {
     //Logging section
     implementation "com.jakewharton.timber:timber:$timber"
 
+    //Room
+    implementation "androidx.room:room-runtime:$room"
+    annotationProcessor "androidx.room:room-compiler:$room"
+
     //Lifecycle section
     implementation "androidx.lifecycle:lifecycle-viewmodel:$androidLifecycle"
     implementation "androidx.lifecycle:lifecycle-extensions:$androidLifecycle"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitConverterGson"
 
     //Test section
     testImplementation "junit:junit:$junit"
