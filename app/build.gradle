@@ -11,7 +11,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -45,6 +45,9 @@ dependencies {
     def retrofit = '2.4.0'
     def retrofitConverterGson = '2.4.0'
 
+    //Coroutines adapter
+    def coroutinesAdapter = '0.9.2'
+
     //Lifecycle Architecture component
     def androidLifecycle = '2.0.0'
 
@@ -65,10 +68,13 @@ dependencies {
     implementation "com.google.android.material:material:$materialDesign"
 
     //Logging section
+    implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptor"
     implementation "com.jakewharton.timber:timber:$timber"
 
     //Room
     implementation "androidx.room:room-runtime:$room"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     annotationProcessor "androidx.room:room-compiler:$room"
 
     //Lifecycle section
@@ -77,6 +83,7 @@ dependencies {
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutinesAdapter"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitConverterGson"
 
     //Test section

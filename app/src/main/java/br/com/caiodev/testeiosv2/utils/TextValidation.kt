@@ -82,7 +82,7 @@ object TextValidation {
     }
 
     fun validatePassword(password: String): Boolean {
-        return Pattern.compile("((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{6,24})")
+        return Pattern.compile("((?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{6,24})")
             .matcher(password).matches()
     }
 }

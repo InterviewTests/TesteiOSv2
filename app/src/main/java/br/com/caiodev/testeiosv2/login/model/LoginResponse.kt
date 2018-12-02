@@ -1,4 +1,4 @@
-package br.com.caiodev.testeiosv2.model
+package br.com.caiodev.testeiosv2.login.model
 
 class LoginResponse {
 

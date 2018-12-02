@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    style="@style/margin_16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_16dp"
+    card_view:cardElevation="8dp"
+    card_view:cardCornerRadius="8dp"
+    android:background="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/padding_8dp">
+
+        <TextView
+            android:id="@+id/transactionTypeHeaderTextView"
+            style="@style/margin_16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Pagamento"
+            android:textColor="@color/gray_500"
+            android:textSize="@dimen/text_size_18"
+            app:layout_constraintEnd_toStartOf="@+id/transactionDateTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/paymentTypeTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:text="Conta de luz"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_20"
+            app:layout_constraintEnd_toStartOf="@+id/ownerAccountBalanceTextView"
+            app:layout_constraintStart_toStartOf="@+id/transactionTypeHeaderTextView"
+            app:layout_constraintTop_toBottomOf="@+id/transactionTypeHeaderTextView" />
+
+        <TextView
+            android:id="@+id/transactionDateTextView"
+            style="@style/margin_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12/12/2018"
+            android:textColor="@color/gray_500"
+            app:layout_constraintBottom_toBottomOf="@+id/transactionTypeHeaderTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/transactionTypeHeaderTextView" />
+
+        <TextView
+            android:id="@+id/ownerAccountBalanceTextView"
+            style="@style/margin_8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_extralight"
+            android:text="R$1.000,00"
+            android:textSize="@dimen/text_size_26"
+            app:layout_constraintBottom_toBottomOf="@+id/paymentTypeTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/paymentTypeTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".statements.view.UserAccountDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/margin_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/accountOwnerNameTextView"
+            style="@style/margin_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:fontFamily="@font/notosans_regular"
+            android:text="TESTE"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_32"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/logoutImageView"
+            style="@style/margin_16dp"
+            android:layout_width="@dimen/view_40dp"
+            android:layout_height="@dimen/view_40dp"
+            android:layout_marginTop="@dimen/margin_4dp"
+            android:src="@drawable/ic_logout"
+            app:layout_constraintBottom_toBottomOf="@+id/accountOwnerNameTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/accountOwnerNameTextView"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/accountHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:fontFamily="@font/notosans_regular"
+            android:text="Conta"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_16"
+            app:layout_constraintStart_toStartOf="@+id/accountOwnerNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/accountOwnerNameTextView" />
+
+        <TextView
+            android:id="@+id/accountNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:text="2050 / 01.111222-4"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_32"
+            app:layout_constraintStart_toStartOf="@+id/accountHeader"
+            app:layout_constraintTop_toBottomOf="@+id/accountHeader" />
+
+        <TextView
+            android:id="@+id/balanceHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:fontFamily="@font/notosans_regular"
+            android:text="Saldo"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_16"
+            app:layout_constraintStart_toStartOf="@+id/accountNumber"
+            app:layout_constraintTop_toBottomOf="@+id/accountNumber" />
+
+        <TextView
+            android:id="@+id/accountBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_regular"
+            android:text="R$1.000,00"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_32"
+            app:layout_constraintStart_toStartOf="@+id/balanceHeader"
+            app:layout_constraintTop_toBottomOf="@+id/balanceHeader" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/margin_16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:text="Recentes"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/accountOwnerStatementsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
