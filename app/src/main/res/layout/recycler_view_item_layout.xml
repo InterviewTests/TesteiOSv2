@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
     style="@style/margin_16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin_16dp"
-    card_view:cardElevation="8dp"
-    card_view:cardCornerRadius="8dp"
-    android:background="@android:color/white">
+    android:layout_marginTop="@dimen/recycler_item_view_layout_margin_top"
+    android:background="@android:color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="@dimen/padding_8dp"
         android:paddingBottom="@dimen/padding_8dp">
 
         <TextView
@@ -20,10 +20,8 @@
             style="@style/margin_16dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Pagamento"
             android:textColor="@color/gray_500"
             android:textSize="@dimen/text_size_18"
             app:layout_constraintEnd_toStartOf="@+id/transactionDateTextView"
@@ -34,8 +32,7 @@
             android:id="@+id/paymentTypeTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_16dp"
-            android:text="Conta de luz"
+            android:layout_marginTop="@dimen/payment_type_text_view_margin_top"
             android:textColor="@android:color/black"
             android:textSize="@dimen/text_size_20"
             app:layout_constraintEnd_toStartOf="@+id/ownerAccountBalanceTextView"
@@ -47,8 +44,8 @@
             style="@style/margin_16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12/12/2018"
             android:textColor="@color/gray_500"
+            android:textSize="@dimen/transaction_date_text_view_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/transactionTypeHeaderTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/transactionTypeHeaderTextView" />
@@ -59,7 +56,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/muli_extralight"
-            android:text="R$1.000,00"
             android:textSize="@dimen/text_size_26"
             app:layout_constraintBottom_toBottomOf="@+id/paymentTypeTextView"
             app:layout_constraintEnd_toEndOf="parent"

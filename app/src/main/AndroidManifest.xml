@@ -14,14 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name="br.com.caiodev.testeiosv2.login.view.LoginActivity">
+        <activity
+            android:name="br.com.caiodev.testeiosv2.login.view.LoginActivity"
+            android:screenOrientation="portrait"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".statements.view.UserAccountDetailActivity" />
+        <activity
+            android:name=".statements.view.UserAccountDetailActivity"
+            android:screenOrientation="portrait"
+            android:noHistory="true" />
     </application>
 
 </manifest>

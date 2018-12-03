@@ -21,10 +21,6 @@ class StatementViewHolder(itemView: View) :
                 itemView.ownerAccountBalanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.red))
             }
 
-            model.value == 0.0 -> {
-                itemView.ownerAccountBalanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.yellow))
-            }
-
             model.value > 0 -> {
                 itemView.ownerAccountBalanceTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.green))
             }

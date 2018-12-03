@@ -22,6 +22,7 @@
         android:id="@+id/userLoginEditText"
         style="@style/user_login_edit_texts"
         android:layout_width="0dp"
+        android:imeOptions="actionNext"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_96dp"
         android:hint="@string/user_login"
@@ -37,6 +38,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/user_password"
+        android:imeOptions="actionDone"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,5 +62,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/loginProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userPasswordEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,6 @@ class StatementViewModel : ViewModel() {
                 request.isCompleted -> {
                     statementList = response.statementList
                     state.postValue(onStatementRetrievalSuccess)
-                    Timber.i("Transaction date: %s", statementList.first().date)
                 }
 
                 request.isCompletedExceptionally -> {

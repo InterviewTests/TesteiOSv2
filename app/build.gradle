@@ -54,6 +54,9 @@ dependencies {
     //okHttpLoggingInterceptor
     def loggingInterceptor = '3.9.1'
 
+    //Hawk
+    def hawk = '2.0.1'
+
     //Test dependency versions
     def junit = '4.12'
     def testRunner = '1.1.0-beta02'
@@ -85,6 +88,9 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutinesAdapter"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitConverterGson"
+
+    //Hawk
+    implementation "com.orhanobut:hawk:$hawk"
 
     //Test section
     testImplementation "junit:junit:$junit"
