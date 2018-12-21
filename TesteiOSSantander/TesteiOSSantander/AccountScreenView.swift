@@ -29,6 +29,9 @@ class AccountScreenView: UIViewController {
         self.labelAccount.text = Labels.shared.conta
         self.labelBalance.text = Labels.shared.saldo
         self.recent.text = Labels.shared.Recente
+        self.account.text = "\(dataUser.userAccount.agency)/\(dataUser.userAccount.bankAccount)"
+        self.Balance.text = "R$\(dataUser.userAccount.balance)"
+        self.name.text = dataUser.userAccount.name
     }
     func downloadInformations(){
         NetworkManager.shared.request_Statements {

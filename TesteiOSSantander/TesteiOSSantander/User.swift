@@ -12,14 +12,14 @@ import UIKit
 
 struct User: Decodable {
     
-    let userAccount: [userAccount]!
+    let userAccount: userAccount!
     let error: erro
 }
 struct userAccount: Decodable{
     let userId: Int
     let name: String
-    let bankAccount: Int
-    let agency: CLong
+    let bankAccount: String
+    let agency: String
     let balance: Double
 }
 
