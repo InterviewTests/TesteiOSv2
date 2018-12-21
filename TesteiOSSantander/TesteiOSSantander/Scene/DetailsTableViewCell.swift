@@ -15,6 +15,7 @@ class DetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var value: UILabel!
+    @IBOutlet weak var viewShadow: UIView!
     
     var data: statementList!{
         didSet{
@@ -30,6 +31,8 @@ class DetailsTableViewCell: UITableViewCell {
         self.desc.text  = data.desc
         self.date.text  = data.date
         self.value.text = String(data.value)
+        self.viewShadow.applyShadow()
+        self.viewShadow.roundBorder()
     }
 
 }

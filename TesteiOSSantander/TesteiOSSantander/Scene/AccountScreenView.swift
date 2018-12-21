@@ -41,7 +41,10 @@ class AccountScreenView: UIViewController {
         
     }
    
-
+    @IBAction func logout(_ sender: Any) {
+        
+    }
+    
 }
 
 extension AccountScreenView: UITableViewDelegate, UITableViewDataSource {

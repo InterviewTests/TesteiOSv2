@@ -16,12 +16,16 @@ var dataUser: User!
 class NetworkManager{
     
     static let shared = NetworkManager()
+    var parameters: [String: String] = [:]
+    func formtLogin(user: String, password: String){
+         self.parameters = [
+            "user": user,
+            "password": password
+        ]
+    }
     
     func request_User(_ completionHanlder: @escaping ()-> Void){
-        let parameters = [
-            "user": "test_user",
-            "password": "Test@1"
-        ]
+       
         Alamofire.request("https://bank-app-test.herokuapp.com/api/login", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: [:]).responseJSON { (response) in
             let data = response.data!
             do {

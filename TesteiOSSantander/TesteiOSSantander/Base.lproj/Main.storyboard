@@ -24,6 +24,7 @@
                                     <constraint firstAttribute="height" constant="62" id="5Li-v0-AP5"/>
                                     <constraint firstAttribute="width" constant="202" id="Zbs-My-XZw"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -77,6 +78,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="E2h-E1-lII"/>
                     <connections>
+                        <outlet property="loginLabel" destination="aJ7-zZ-D5q" id="Rbn-fy-TbM"/>
                         <outlet property="passwordTextFild" destination="sCi-m5-A83" id="6jE-PG-hMt"/>
                         <outlet property="userTextField" destination="SlP-hn-X7T" id="lXI-zA-6UP"/>
                     </connections>
@@ -123,6 +125,9 @@
                                             <constraint firstAttribute="height" constant="27" id="qQC-k8-L5Q"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="logout 2"/>
+                                        <connections>
+                                            <action selector="logout:" destination="eig-Oc-rXz" eventType="touchUpInside" id="4fV-Ej-NTi"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTg-nr-ZoB">
                                         <rect key="frame" x="18" y="112" width="239" height="35"/>
@@ -246,6 +251,7 @@
                                             <outlet property="desc" destination="7o7-mK-vvt" id="393-yI-UkH"/>
                                             <outlet property="title" destination="HWO-Hg-m6w" id="P41-el-lpn"/>
                                             <outlet property="value" destination="Z6V-Yh-z56" id="hZq-93-KbO"/>
+                                            <outlet property="viewShadow" destination="mkS-SY-qPo" id="cjz-OO-J58"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

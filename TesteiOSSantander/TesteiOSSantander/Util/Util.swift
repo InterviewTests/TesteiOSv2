@@ -20,8 +20,10 @@ class Util{
     }
     
     func letraMaiuscula(Password: String)-> Bool{
-       
-        return true
+        let capitalLetterRegEx  = ".*[A-Z]+.*"
+        let text = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        let result = text.evaluate(with: Password)
+        return result
     }
     func caracterEspecial(Password: String)-> Bool{
         let character = ["!","@","#","$","%","&","*"]
@@ -50,4 +52,5 @@ class Util{
         return false
     }
  
+    
 }

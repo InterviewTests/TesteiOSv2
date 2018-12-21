@@ -11,6 +11,7 @@ import UIKit
 
 class Labels {
     static let shared = Labels()
+    let login = "Login"
     let conta = "Conta"
     let saldo = "Saldo"
     let Recente = "Recentes"
