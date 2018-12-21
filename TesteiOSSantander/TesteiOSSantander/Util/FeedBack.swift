@@ -13,7 +13,7 @@ class FeedBack{
     static let shared = FeedBack()
     
     func feedbackError()->UIAlertController{
-        let alert = UIAlertController(title: "Alerta", message: "Senha Invalida", preferredStyle:  UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Alerta", message: "Usuário ou Senha Invalida", preferredStyle:  UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "OK", style:  UIAlertAction.Style.default){
             UIAlertAction in

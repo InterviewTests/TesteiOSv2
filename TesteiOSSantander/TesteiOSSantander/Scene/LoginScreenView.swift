@@ -26,7 +26,9 @@ class LoginScreenView: UIViewController {
         }
     }
     @IBAction func verifyUser(_ sender: Any) {
-        if Util.getFunctions.maskOfCPF(user: userTextField.text!){
+        if Util.getFunctions.checkIfCPF(user: userTextField.text!){
+            userTextField.text = Util.getFunctions.maskOfCPF(user: userTextField.text!)
+           
         }
         if Util.getFunctions.isValidUser(user: userTextField.text!){
             userisValid = true
@@ -55,13 +57,8 @@ class LoginScreenView: UIViewController {
         self.loginLabel.roundBorder()
         self.loginLabel.setTitle(Labels.shared.login, for: .normal)
         self.loginLabel.applyShadow()
-        self.userTextField.applyShadow()
-        self.userTextField.roundBorder()
-        self.passwordTextFild.applyShadow()
-        self.passwordTextFild.roundBorder()
+        self.userTextField.borderStyle = .roundedRect
+        self.passwordTextFild.borderStyle = .roundedRect
     }
-   
 
-    
-    
 }

@@ -66,7 +66,7 @@ class Util{
         return emailValidate.evaluate(with: email)
     }
     var numberCPF = 0
-    func maskOfCPF(user:String)->Bool{
+    func checkIfCPF(user:String)->Bool{
         let number = ["1","2","3","4","5","6","7","8","9","0"]
         let srtCharacterArray = user.map{ String($0)}
         for str in number{
@@ -81,6 +81,21 @@ class Util{
             
         }
         return false
+    
+    }
+    
+    func maskOfCPF(user: String)->String{
+        if user.count == 3{
+            return "\(user)."
+        }
+        if user.count == 7{
+             return "\(user)."
+        }
+        if user.count == 11{
+            return "\(user)-"
+        }
+        
+        return user
     }
     
 }
