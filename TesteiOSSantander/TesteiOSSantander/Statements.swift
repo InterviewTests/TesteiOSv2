@@ -7,29 +7,16 @@
 //
 
 import Foundation
-struct State: Decodable {
-    
-    let cells: [Cell]!
+import UIKit
+import Alamofire
+struct Statements: Decodable {
+    let statementList: [statementList]!
+    let error: erro
 }
-struct Cell: Decodable {
-    let id: Int?
-    let type: Int?
-    let message: String?
-    let typefield: MetadataType?
-    let hidden: Bool?
-    let topSpacing: CGFloat?
-    let show: Int?
-    let required: Bool?
-    
-    private enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case type = "type"
-        case message = "message"
-        case typefield = "typefield"
-        case hidden = "hidden"
-        case topSpacing = "topSpacing"
-        case show = "show"
-        case required = "required"
-        
-    }
+struct statementList: Decodable {
+    let title:String
+    let desc:String
+    let date: String
+    let value: Double
 }
+
