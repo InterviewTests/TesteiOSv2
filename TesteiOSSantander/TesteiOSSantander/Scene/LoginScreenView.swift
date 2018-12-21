@@ -10,26 +10,32 @@ import Foundation
 import UIKit
 
 class LoginScreenView: UIViewController {
-    var ultil = Util()
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextFild: UITextField!
     @IBOutlet weak var loginLabel: UIButton!
     var passwordisValid = false
+    var userisValid     = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
     }
     
     @IBAction func verifyPassword(_ sender: Any) {
-        if ultil.verifyPassword(Password: passwordTextFild.text!){
+        if Util.getFunctions.verifyPassword(Password: passwordTextFild.text!){
             passwordisValid = true
-            
+        }
+    }
+    @IBAction func verifyUser(_ sender: Any) {
+        if Util.getFunctions.maskOfCPF(user: userTextField.text!){
+        }
+        if Util.getFunctions.isValidUser(user: userTextField.text!){
+            userisValid = true
+            print(Util.getFunctions.isValidUser(user: userTextField.text!))
         }
     }
     
     @IBAction func login(_ sender: Any) {
-        
-        if passwordisValid{
+        if passwordisValid && userisValid{
             NetworkManager.shared.formtLogin(user: userTextField.text!, password: passwordTextFild.text!)
             NetworkManager.shared.request_User {
                   self.navergar()
@@ -38,6 +44,7 @@ class LoginScreenView: UIViewController {
             self.present(FeedBack.shared.feedbackError(), animated: true, completion: nil)
         }
     }
+    
     
     func navergar() {
         let escolha = self.storyboard?.instantiateViewController(withIdentifier: "accountDetails") as! AccountScreenView
