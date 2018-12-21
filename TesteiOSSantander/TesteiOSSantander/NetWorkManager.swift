@@ -33,13 +33,18 @@ class NetworkManager{
     }
     
     func request_User(_ completionHanlder: @escaping ()-> Void){
-        Alamofire.request("https://bank-app-test.herokuapp.com/api/statements/1").responseJSON { (response) in
+       // let params : Parameters = ["grant_type":"password","username":"mail","password":"pass"]
+        let parameters = [
+            "user": "test_user",
+            "password": "Test@1"
+        ]
+        Alamofire.request("https://bank-app-test.herokuapp.com/api/login", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: [:]).responseJSON { (response) in response
             let data = response.data!
-            
             do {
                 
                 let r = try JSONDecoder().decode(User.self, from: data)
                 dataUser = r
+                print("Mostrar", r)
                 completionHanlder()
                 
             }catch let error{
@@ -47,5 +52,6 @@ class NetworkManager{
                 return
             }
         }
+       
     }
 }

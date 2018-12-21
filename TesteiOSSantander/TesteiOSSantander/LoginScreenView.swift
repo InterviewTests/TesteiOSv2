@@ -25,7 +25,12 @@ class LoginScreenView: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-       
+        if passwordisValid{
+            NetworkManager.shared.request_User {
+                print("Dados", dataUser)
+                print("Ir para outra tela")
+            }
+        }
     }
     
     

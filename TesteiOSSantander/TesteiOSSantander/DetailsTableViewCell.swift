@@ -18,19 +18,18 @@ class DetailsTableViewCell: UITableViewCell {
     
     var data: statementList!{
         didSet{
-            fillDate()
+            fillData()
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    func fillDate(){
+    func fillData(){
         self.title.text = data.title
-        self.desc.text  = data.title
+        self.desc.text  = data.desc
         self.date.text  = data.date
-        self.value.text = data.date
+        self.value.text = String(data.value)
     }
 
 }

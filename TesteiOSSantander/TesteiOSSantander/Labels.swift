@@ -13,5 +13,5 @@ class Labels {
     static let shared = Labels()
     let conta = "Conta"
     let saldo = "Saldo"
-    let Recente = "Recente"
+    let Recente = "Recentes"
 }

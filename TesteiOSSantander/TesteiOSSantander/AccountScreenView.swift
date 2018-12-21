@@ -10,8 +10,6 @@ import UIKit
 
 class AccountScreenView: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var loadingAnimation: UIActivityIndicatorView!
     var reload: Bool = false
     
     @IBOutlet weak var name: UILabel!
@@ -19,6 +17,8 @@ class AccountScreenView: UIViewController {
     @IBOutlet weak var labelAccount: UILabel!
     @IBOutlet weak var Balance: UILabel!
     @IBOutlet weak var labelBalance: UILabel!
+    @IBOutlet weak var recent: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
@@ -26,25 +26,18 @@ class AccountScreenView: UIViewController {
        
     }
     func initialSetup(){
-        self.loadingAnimation.startAnimating()
         self.labelAccount.text = Labels.shared.conta
         self.labelBalance.text = Labels.shared.saldo
-        //NetworkManager.shared.request_User {
-//            self.name.text = dataUser.userAccount[0].name
-//            self.account.text = String(dataUser.userAccount[0].bankAccount)
-//            self.Balance.text = String(dataUser.userAccount[0].balance)
-            
-        //}
+        self.recent.text = Labels.shared.Recente
     }
     func downloadInformations(){
         NetworkManager.shared.request_Statements {
-            self.loadingView.removeFromSuperview()
-            self.loadingAnimation.stopAnimating()
-            self.reloadDataFromModel()
             self.reload = true
+            self.reloadDataFromModel()
         }
         
     }
+   
 
 }
 
@@ -58,6 +51,7 @@ extension AccountScreenView: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -65,7 +59,6 @@ extension AccountScreenView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if reload{
             return dataStatements.statementList.count
-
         }else{
             return 0
         }
