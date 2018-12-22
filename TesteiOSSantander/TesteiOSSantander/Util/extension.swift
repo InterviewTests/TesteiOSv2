@@ -23,3 +23,9 @@ extension UIView{
     
     
 }
+extension String{
+    
+    func removeChacter()->String{
+        return self.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "-", with: "")
+    }
+}

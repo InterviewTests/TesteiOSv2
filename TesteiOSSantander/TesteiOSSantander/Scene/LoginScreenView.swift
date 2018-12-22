@@ -15,6 +15,7 @@ class LoginScreenView: UIViewController {
     @IBOutlet weak var loginLabel: UIButton!
     var passwordisValid = false
     var userisValid     = false
+    var userData: [LocalUser]!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
@@ -27,27 +28,21 @@ class LoginScreenView: UIViewController {
         
     }
     @IBAction func verifyPassword(_ sender: Any) {
-        if Util.getFunctions.verifyPassword(Password: passwordTextFild.text!){
-            passwordisValid = true
-        }
+        
     }
     @IBAction func verifyUser(_ sender: Any) {
         if Util.getFunctions.checkIfCPF(user: userTextField.text!){
             userTextField.text = Util.getFunctions.maskOfCPF(user: userTextField.text!)
            
         }
-        if Util.getFunctions.isValidUser(user: userTextField.text!){
-            userisValid = true
-    
-        }
+       
     }
     
     @IBAction func login(_ sender: Any) {
-        if passwordisValid && userisValid{
+        if validateLoginData(){
             NetworkManager.shared.formtLogin(user: userTextField.text!, password: passwordTextFild.text!)
             NetworkManager.shared.request_User {
-                DAKeychain.shared.save(self.passwordTextFild.text!, forKey: self.userTextField.text!)
-                print("Mostrar",DAKeychain.shared.load(withKey: self.userTextField.text!))
+                  self.saveData()
                   self.navergar()
             }
         }else{
@@ -55,14 +50,19 @@ class LoginScreenView: UIViewController {
         }
     }
     
-    
+    func validateLoginData()->Bool{
+        if Util.getFunctions.verifyPassword(Password: passwordTextFild.text!) &&  Util.getFunctions.isValidUser(user: userTextField.text!){
+            return true
+        }
+        return false
+    }
     func navergar() {
         let escolha = self.storyboard?.instantiateViewController(withIdentifier: "accountDetails") as! AccountScreenView
         self.navigationController?.pushViewController(escolha, animated: true)
     }
     
     func initialSetup(){
-        
+        self.userData = UserStore.singgleton.getUser()
         self.passwordTextFild.text = ""
         self.userTextField.text = ""
         self.loginLabel.roundBorder()
@@ -70,6 +70,23 @@ class LoginScreenView: UIViewController {
         self.loginLabel.applyShadow()
         self.userTextField.borderStyle = .roundedRect
         self.passwordTextFild.borderStyle = .roundedRect
+        self.loadUser()
+    }
+    
+    func saveData(){
+        var user = self.userTextField.text
+        if Util.getFunctions.checkIfCPF(user: userTextField.text!){
+            user = self.userTextField.text!.removeChacter()
+        }
+        UserStore.singgleton.deleteAllData()
+        DAKeychain.shared.save(self.passwordTextFild.text!, forKey: user!)
+        UserStore.singgleton.salvar(user: user!)
+    }
+    func loadUser(){
+        if userData != []{
+             self.userTextField.text = userData[0].username!
+             self.passwordTextFild.text = DAKeychain.shared.load(withKey: userData[0].username!)
+        }
     }
     
    
