@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		06BC651521CA813D00220000 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BC651421CA813D00220000 /* AppDelegate.swift */; };
 		06BC651A21CA813D00220000 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06BC651821CA813D00220000 /* Main.storyboard */; };
-		06BC651D21CA813D00220000 /* TesteiOSSantander.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 06BC651B21CA813D00220000 /* TesteiOSSantander.xcdatamodeld */; };
 		06BC651F21CA813E00220000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06BC651E21CA813E00220000 /* Assets.xcassets */; };
 		06BC652221CA813E00220000 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06BC652021CA813E00220000 /* LaunchScreen.storyboard */; };
 		06BC652D21CA813F00220000 /* TesteiOSSantanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BC652C21CA813F00220000 /* TesteiOSSantanderTests.swift */; };
@@ -28,6 +27,7 @@
 		E05705F721CC02F000DE8693 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E05705F621CC02F000DE8693 /* Alamofire.framework */; };
 		E0D1E38F21CD3C7700B006C1 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1E38E21CD3C7700B006C1 /* extension.swift */; };
 		E0D1E39121CD513F00B006C1 /* FeedBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1E39021CD513F00B006C1 /* FeedBack.swift */; };
+		E0D1E3D621CDACEE00B006C1 /* DAKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1E3D521CDACEE00B006C1 /* DAKeychain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,6 @@
 		06BC651121CA813D00220000 /* TesteiOSSantander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSSantander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BC651421CA813D00220000 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06BC651921CA813D00220000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		06BC651C21CA813D00220000 /* TesteiOSSantander.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TesteiOSSantander.xcdatamodel; sourceTree = "<group>"; };
 		06BC651E21CA813E00220000 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06BC652121CA813E00220000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06BC652321CA813E00220000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +81,7 @@
 		E05705F621CC02F000DE8693 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D1E38E21CD3C7700B006C1 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		E0D1E39021CD513F00B006C1 /* FeedBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBack.swift; sourceTree = "<group>"; };
+		E0D1E3D521CDACEE00B006C1 /* DAKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAKeychain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,6 @@
 				06BC651E21CA813E00220000 /* Assets.xcassets */,
 				06BC652021CA813E00220000 /* LaunchScreen.storyboard */,
 				06BC652321CA813E00220000 /* Info.plist */,
-				06BC651B21CA813D00220000 /* TesteiOSSantander.xcdatamodeld */,
 			);
 			path = TesteiOSSantander;
 			sourceTree = "<group>";
@@ -217,6 +216,7 @@
 		E0D1E38D21CD3C1900B006C1 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E0D1E3D521CDACEE00B006C1 /* DAKeychain.swift */,
 				06BC656421CA882000220000 /* Util.swift */,
 				E0D1E39021CD513F00B006C1 /* FeedBack.swift */,
 				E0D1E38E21CD3C7700B006C1 /* extension.swift */,
@@ -456,11 +456,11 @@
 				06BC656521CA882000220000 /* Util.swift in Sources */,
 				E05705EB21CB3DFA00DE8693 /* NetWorkManager.swift in Sources */,
 				06BC651521CA813D00220000 /* AppDelegate.swift in Sources */,
+				E0D1E3D621CDACEE00B006C1 /* DAKeychain.swift in Sources */,
 				E05705EF21CB3E1A00DE8693 /* DetailsTableViewCell.swift in Sources */,
 				E0D1E39121CD513F00B006C1 /* FeedBack.swift in Sources */,
 				E05705F321CB3E3E00DE8693 /* Statements.swift in Sources */,
 				E0D1E38F21CD3C7700B006C1 /* extension.swift in Sources */,
-				06BC651D21CA813D00220000 /* TesteiOSSantander.xcdatamodeld in Sources */,
 				E05705F121CB3E2B00DE8693 /* User.swift in Sources */,
 				E05705ED21CB3E0D00DE8693 /* AccountScreenView.swift in Sources */,
 			);
@@ -639,14 +639,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T2J34MA7Q7;
+				DEVELOPMENT_TEAM = 626FRPWPF5;
 				INFOPLIST_FILE = TesteiOSSantander/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nawebe.TesteiOSSantander;
+				PRODUCT_BUNDLE_IDENTIFIER = gerson.TesteiOSSantander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -659,14 +659,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T2J34MA7Q7;
+				DEVELOPMENT_TEAM = 626FRPWPF5;
 				INFOPLIST_FILE = TesteiOSSantander/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nawebe.TesteiOSSantander;
+				PRODUCT_BUNDLE_IDENTIFIER = gerson.TesteiOSSantander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -686,7 +686,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nawebe.TesteiOSSantanderTests;
+				PRODUCT_BUNDLE_IDENTIFIER = gerson.TesteiOSSantander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -707,7 +707,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nawebe.TesteiOSSantanderTests;
+				PRODUCT_BUNDLE_IDENTIFIER = gerson.TesteiOSSantander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -795,19 +795,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		06BC651B21CA813D00220000 /* TesteiOSSantander.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				06BC651C21CA813D00220000 /* TesteiOSSantander.xcdatamodel */,
-			);
-			currentVersion = 06BC651C21CA813D00220000 /* TesteiOSSantander.xcdatamodel */;
-			path = TesteiOSSantander.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 06BC650921CA813D00220000 /* Project object */;
 }

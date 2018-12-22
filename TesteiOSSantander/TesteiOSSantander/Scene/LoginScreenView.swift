@@ -18,8 +18,14 @@ class LoginScreenView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
+        self.userTextField.delegate = self
+        self.passwordTextFild.delegate = self
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+            self.initialSetup()
+        
+    }
     @IBAction func verifyPassword(_ sender: Any) {
         if Util.getFunctions.verifyPassword(Password: passwordTextFild.text!){
             passwordisValid = true
@@ -32,7 +38,7 @@ class LoginScreenView: UIViewController {
         }
         if Util.getFunctions.isValidUser(user: userTextField.text!){
             userisValid = true
-            print(Util.getFunctions.isValidUser(user: userTextField.text!))
+    
         }
     }
     
@@ -40,6 +46,8 @@ class LoginScreenView: UIViewController {
         if passwordisValid && userisValid{
             NetworkManager.shared.formtLogin(user: userTextField.text!, password: passwordTextFild.text!)
             NetworkManager.shared.request_User {
+                DAKeychain.shared.save(self.passwordTextFild.text!, forKey: self.userTextField.text!)
+                print("Mostrar",DAKeychain.shared.load(withKey: self.userTextField.text!))
                   self.navergar()
             }
         }else{
@@ -54,11 +62,24 @@ class LoginScreenView: UIViewController {
     }
     
     func initialSetup(){
+        
+        self.passwordTextFild.text = ""
+        self.userTextField.text = ""
         self.loginLabel.roundBorder()
         self.loginLabel.setTitle(Labels.shared.login, for: .normal)
         self.loginLabel.applyShadow()
         self.userTextField.borderStyle = .roundedRect
         self.passwordTextFild.borderStyle = .roundedRect
     }
+    
+   
+}
 
+extension LoginScreenView: UITextFieldDelegate{
+     func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.userTextField.resignFirstResponder()
+        self.passwordTextFild.resignFirstResponder()
+        self.view.endEditing(true)
+    }
+    
 }

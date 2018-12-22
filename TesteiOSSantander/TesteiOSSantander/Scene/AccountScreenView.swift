@@ -42,7 +42,12 @@ class AccountScreenView: UIViewController {
     }
    
     @IBAction func logout(_ sender: Any) {
-        
+        self.clearData()
+        self.navigationController?.popViewController(animated: true)
+    }
+    func clearData(){
+        dataStatements = nil
+        dataUser = nil
     }
     
 }
