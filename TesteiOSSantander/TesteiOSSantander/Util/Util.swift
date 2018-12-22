@@ -84,19 +84,6 @@ class Util{
     
     }
     
-    func maskOfCPF(user: String)->String{
-        if user.count == 3{
-            return "\(user)."
-        }
-        if user.count == 7{
-             return "\(user)."
-        }
-        if user.count == 11{
-            return "\(user)-"
-        }
-        
-        return user
-    }
     
 }
 

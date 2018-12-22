@@ -27,16 +27,6 @@ class LoginScreenView: UIViewController {
             self.initialSetup()
         
     }
-    @IBAction func verifyPassword(_ sender: Any) {
-        
-    }
-    @IBAction func verifyUser(_ sender: Any) {
-        if Util.getFunctions.checkIfCPF(user: userTextField.text!){
-            userTextField.text = Util.getFunctions.maskOfCPF(user: userTextField.text!)
-           
-        }
-       
-    }
     
     @IBAction func login(_ sender: Any) {
         if validateLoginData(){
@@ -88,7 +78,6 @@ class LoginScreenView: UIViewController {
              self.passwordTextFild.text = DAKeychain.shared.load(withKey: userData[0].username!)
         }
     }
-    
    
 }
 
