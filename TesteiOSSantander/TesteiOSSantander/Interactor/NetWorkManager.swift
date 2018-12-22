@@ -25,8 +25,8 @@ class NetworkManager{
     }
     
     func request_User(_ completionHanlder: @escaping ()-> Void){
-       
-        Alamofire.request("https://bank-app-test.herokuapp.com/api/login", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: [:]).responseJSON { (response) in
+       let endpoint = "\(Config.shared.endPointURL)/api/login"
+        Alamofire.request(endpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: [:]).responseJSON { (response) in
             let data = response.data!
             do {
                 
@@ -44,7 +44,8 @@ class NetworkManager{
     
     
     func request_Statements(_ completionHanlder: @escaping ()-> Void){
-        Alamofire.request("https://bank-app-test.herokuapp.com/api/statements/\(dataUser.userAccount.userId)").responseJSON { (response) in
+        let endpoint = "\(Config.shared.endPointURL)/api/statements/\(dataUser.userAccount.userId)"
+        Alamofire.request(endpoint).responseJSON { (response) in
             let data = response.data!
             do {
           
