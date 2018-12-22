@@ -146,7 +146,6 @@
 			children = (
 				06BC651421CA813D00220000 /* AppDelegate.swift */,
 				E0D1E38D21CD3C1900B006C1 /* Util */,
-				06BC651821CA813D00220000 /* Main.storyboard */,
 				E0FD18EA21CE87AF00A3A545 /* Interactor */,
 				E0D1E38C21CD3BDE00B006C1 /* Model */,
 				E0D1E38B21CD3BA300B006C1 /* Scene */,
@@ -204,9 +203,9 @@
 		E0D1E38B21CD3BA300B006C1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				06BC656021CA83D300220000 /* LoginScreenView.swift */,
-				E05705EC21CB3E0D00DE8693 /* AccountScreenView.swift */,
-				E05705EE21CB3E1A00DE8693 /* DetailsTableViewCell.swift */,
+				06BC651821CA813D00220000 /* Main.storyboard */,
+				E0FD18EB21CE8EBA00A3A545 /* LoginScreen */,
+				E0FD18EC21CE8ECA00A3A545 /* AccountScreen */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -240,6 +239,23 @@
 				E05705EA21CB3DFA00DE8693 /* NetWorkManager.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		E0FD18EB21CE8EBA00A3A545 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				06BC656021CA83D300220000 /* LoginScreenView.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		E0FD18EC21CE8ECA00A3A545 /* AccountScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E05705EE21CB3E1A00DE8693 /* DetailsTableViewCell.swift */,
+				E05705EC21CB3E0D00DE8693 /* AccountScreenView.swift */,
+			);
+			path = AccountScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
