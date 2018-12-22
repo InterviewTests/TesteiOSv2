@@ -30,6 +30,7 @@
 		E0D1E3D621CDACEE00B006C1 /* DAKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1E3D521CDACEE00B006C1 /* DAKeychain.swift */; };
 		E0D1E3D821CDBDA400B006C1 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1E3D721CDBDA400B006C1 /* UserStore.swift */; };
 		E0D1E3DB21CDBDBC00B006C1 /* TesteiOSSantander.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0D1E3D921CDBDBB00B006C1 /* TesteiOSSantander.xcdatamodeld */; };
+		E0D1E3E621CDFDF400B006C1 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1E3E521CDFDF400B006C1 /* CoreDataHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		E0D1E3D521CDACEE00B006C1 /* DAKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAKeychain.swift; sourceTree = "<group>"; };
 		E0D1E3D721CDBDA400B006C1 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		E0D1E3DA21CDBDBB00B006C1 /* TesteiOSSantander.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TesteiOSSantander.xcdatamodel; sourceTree = "<group>"; };
+		E0D1E3E521CDFDF400B006C1 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				06BC651421CA813D00220000 /* AppDelegate.swift */,
 				E0D1E38D21CD3C1900B006C1 /* Util */,
 				06BC651821CA813D00220000 /* Main.storyboard */,
+				E0FD18EA21CE87AF00A3A545 /* Interactor */,
 				E0D1E38C21CD3BDE00B006C1 /* Model */,
 				E0D1E38B21CD3BA300B006C1 /* Scene */,
 				06BC651E21CA813E00220000 /* Assets.xcassets */,
@@ -211,10 +214,9 @@
 		E0D1E38C21CD3BDE00B006C1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E0D1E3D721CDBDA400B006C1 /* UserStore.swift */,
+				E0D1E3E521CDFDF400B006C1 /* CoreDataHelper.swift */,
 				E05705F021CB3E2A00DE8693 /* User.swift */,
 				E05705F221CB3E3E00DE8693 /* Statements.swift */,
-				E05705EA21CB3DFA00DE8693 /* NetWorkManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,6 +231,15 @@
 				06BC656621CA949100220000 /* Labels.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		E0FD18EA21CE87AF00A3A545 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E0D1E3D721CDBDA400B006C1 /* UserStore.swift */,
+				E05705EA21CB3DFA00DE8693 /* NetWorkManager.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,14 +383,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TesteiOSSantander/Pods-TesteiOSSantander-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/DAKeychain/DAKeychain.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DAKeychain.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -459,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0D1E3E621CDFDF400B006C1 /* CoreDataHelper.swift in Sources */,
 				06BC656721CA949100220000 /* Labels.swift in Sources */,
 				06BC656121CA83D300220000 /* LoginScreenView.swift in Sources */,
 				E0D1E3DB21CDBDBC00B006C1 /* TesteiOSSantander.xcdatamodeld in Sources */,
@@ -578,7 +588,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -633,7 +643,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -691,7 +701,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TesteiOSSantanderTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -713,7 +723,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TesteiOSSantanderTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -734,7 +744,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TesteiOSSantanderUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -755,7 +765,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TesteiOSSantanderUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

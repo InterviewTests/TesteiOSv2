@@ -49,6 +49,7 @@ class LoginScreenView: UIViewController {
     func navergar() {
         let escolha = self.storyboard?.instantiateViewController(withIdentifier: "accountDetails") as! AccountScreenView
         self.navigationController?.pushViewController(escolha, animated: true)
+        
     }
     
     func initialSetup(){
