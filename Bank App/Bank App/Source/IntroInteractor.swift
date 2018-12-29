@@ -8,14 +8,26 @@
 
 import Foundation
 
-protocol UserHistoryData {
+/*
+ - Trata das ações de interação fora do app, servidor, cor data entre outros.
+ */
+
+protocol IntroInteractorLogic {
     
-    var user: User? { get set }
+    func loginUser(user: UserLogin)
 }
 
-class IntroInteractor: UserHistoryData {
+
+class IntroInteractor: IntroInteractorLogic, UserAccountData {
+    var userAccount: UserAccountable?
     
-    var presenter: IntroPresenterLogic?
-    var user: User?
+    var presenter: IntroPresentationLogic?
     
+    func loginUser(user: UserLogin) {
+        
+        BankWorker().userLogin(user) { (account) in
+            self.userAccount = account
+            self.presenter?.showHistoryController()
+        }
+    }
 }

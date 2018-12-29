@@ -8,17 +8,16 @@
 
 import Foundation
 
-protocol IntroPresenterLogic {
+protocol IntroPresentationLogic {
     
-    func showHistoryData()
+    func showHistoryController()
 }
 
-class IntroPresenter: IntroPresenterLogic {
+class IntroPresenter: IntroPresentationLogic {
     
-    weak var viewController: IntroControllerDisplayLogic?
+    weak var viewController: IntroDisplayLogic?
     
-    func showHistoryData() {
-        
-        // ...
+    func showHistoryController() {
+        viewController?.presentDetailController()
     }
 }

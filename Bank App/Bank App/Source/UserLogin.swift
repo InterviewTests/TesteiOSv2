@@ -8,11 +8,8 @@
 
 import Foundation
 
-struct User: Decodable {
+struct UserLogin {
     
-    var userId: Int
-    var name: String
-    var bankAccount: String
-    var agency: String
-    var balance: Int
+    var userLogin: String?
+    var userPassword: String?
 }
