@@ -21,6 +21,8 @@
 		B8425BA721D79B61009DD707 /* UserAccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8425BA621D79B61009DD707 /* UserAccountData.swift */; };
 		B8425BA921D79F79009DD707 /* UserAccountable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8425BA821D79F79009DD707 /* UserAccountable.swift */; };
 		B8425BAC21D7A0A1009DD707 /* BankWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8425BAB21D7A0A1009DD707 /* BankWorker.swift */; };
+		B8425BAF21D7B211009DD707 /* BankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8425BAE21D7B211009DD707 /* BankAPI.swift */; };
+		B8425BB121D7B238009DD707 /* BankAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8425BB021D7B238009DD707 /* BankAPIProtocol.swift */; };
 		B86E3F4E21A62B0800A9B84F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E3F4D21A62B0800A9B84F /* AppDelegate.swift */; };
 		B86E3F5821A62B0F00A9B84F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86E3F5721A62B0F00A9B84F /* Assets.xcassets */; };
 		B86E3F5B21A62B0F00A9B84F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86E3F5921A62B0F00A9B84F /* LaunchScreen.storyboard */; };
@@ -43,6 +45,8 @@
 		B8425BA621D79B61009DD707 /* UserAccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountData.swift; sourceTree = "<group>"; };
 		B8425BA821D79F79009DD707 /* UserAccountable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountable.swift; sourceTree = "<group>"; };
 		B8425BAB21D7A0A1009DD707 /* BankWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankWorker.swift; sourceTree = "<group>"; };
+		B8425BAE21D7B211009DD707 /* BankAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAPI.swift; sourceTree = "<group>"; };
+		B8425BB021D7B238009DD707 /* BankAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAPIProtocol.swift; sourceTree = "<group>"; };
 		B86E3F4A21A62B0700A9B84F /* Bank App.dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bank App.dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86E3F4D21A62B0800A9B84F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B86E3F5721A62B0F00A9B84F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +128,15 @@
 			name = Worker;
 			sourceTree = "<group>";
 		};
+		B8425BAD21D7B201009DD707 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B8425BAE21D7B211009DD707 /* BankAPI.swift */,
+				B8425BB021D7B238009DD707 /* BankAPIProtocol.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		B86E3F4121A62B0700A9B84F = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +166,7 @@
 		B86E3F6221A6332C00A9B84F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B8425BAD21D7B201009DD707 /* Services */,
 				B8425BAA21D7A088009DD707 /* Worker */,
 				B8425BA521D79B3C009DD707 /* Protocols */,
 				B8425B9A21D10878009DD707 /* BankHistory */,
@@ -258,6 +272,7 @@
 			files = (
 				B8425B9C21D10895009DD707 /* BankHistoryController.swift in Sources */,
 				B840A45321AA06DB00E0A22D /* IntroInteractor.swift in Sources */,
+				B8425BB121D7B238009DD707 /* BankAPIProtocol.swift in Sources */,
 				B8425BA221D51FB3009DD707 /* BankHistoryRouter.swift in Sources */,
 				B8425B9E21D10A39009DD707 /* BankHistoryInteractor.swift in Sources */,
 				B8425BA721D79B61009DD707 /* UserAccountData.swift in Sources */,
@@ -270,6 +285,7 @@
 				B8425BA421D798E2009DD707 /* UserAccount.swift in Sources */,
 				B840A44A21A9CA2B00E0A22D /* ErrorType.swift in Sources */,
 				B8425BA921D79F79009DD707 /* UserAccountable.swift in Sources */,
+				B8425BAF21D7B211009DD707 /* BankAPI.swift in Sources */,
 				B840A44721A9C54F00E0A22D /* UserLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
