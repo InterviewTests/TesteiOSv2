@@ -25,9 +25,14 @@ class IntroInteractor: IntroInteractorLogic, UserAccountData {
     
     func loginUser(user: UserLogin) {
         
-        BankWorker().userLogin(user) { (account) in
-            self.userAccount = account
-            self.presenter?.showHistoryController()
+        BankWorker().userLogin(user) { (userResponse) in
+            if let bankError = userResponse?.error {
+                self.presenter?.showError(error: bankError)
+            }
+            else if let userAccount = userResponse?.userAccount {
+                self.userAccount = userAccount
+                self.presenter?.showHistoryController()
+            }
         }
     }
 }

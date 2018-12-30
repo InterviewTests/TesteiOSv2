@@ -10,9 +10,17 @@ import Foundation
 
 struct UserAccount: UserAccountable, Decodable {
     
-    var userId: Int?
+    var userId: String?
     var name: String?
     var bankAccount: String?
     var agency: String?
-    var balance: Int?
+    var balance: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case userId = "user_id"
+        case name = "name"
+        case bankAccount = "bank_account"
+        case agency = "agency"
+        case balance = "balance"
+    }
 }

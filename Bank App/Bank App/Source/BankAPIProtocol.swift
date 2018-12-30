@@ -10,5 +10,5 @@ import Foundation
 
 protocol BankAPIProtocol {
     
-    func loginUser(login: UserLogin, completionHandler: @escaping (UserAccount) -> Void)
+    func loginUser(login: UserLogin, completionHandler: @escaping (UserResponse?) -> Void)
 }

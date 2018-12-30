@@ -13,7 +13,7 @@ import UIKit
 protocol IntroDisplayLogic: class {
     
     func displayData()
-    
+    func showError(with message: String)
     func presentDetailController()
 }
 
@@ -56,14 +56,18 @@ class IntroController: UIViewController, IntroDisplayLogic {
         // ...
     }
     
+    func showError(with message: String) {
+        
+    }
+    
     func presentDetailController() {
         router?.routeToBankHistory(segue: nil)
     }
     
     private func getDataFromDisplay() -> UserLogin? {
         var userLogin = UserLogin()
-        userLogin.userLogin = userTf.text
-        userLogin.userPassword = passwordTf.text
+        userLogin.user = userTf.text
+        userLogin.password = passwordTf.text
         
         return userLogin
     }

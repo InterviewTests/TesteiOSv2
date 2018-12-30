@@ -11,6 +11,8 @@ import Foundation
 protocol IntroPresentationLogic {
     
     func showHistoryController()
+    
+    func showError(error: BankError)
 }
 
 class IntroPresenter: IntroPresentationLogic {
@@ -19,5 +21,13 @@ class IntroPresenter: IntroPresentationLogic {
     
     func showHistoryController() {
         viewController?.presentDetailController()
+    }
+    
+    func showError(error: BankError) {
+        buildAlert(title: "ERROR", message: error.message)
+    }
+    
+    private func buildAlert(title: String, message: String) {
+        print(message)
     }
 }

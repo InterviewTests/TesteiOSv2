@@ -10,11 +10,14 @@ import Foundation
 
 class BankWorker {
     
-    func userLogin(_ user: UserLogin, completionHandler: @escaping (UserAccount) -> Void) {
-        do {
-//            completionHandler(<#UserAccount#>)
-        } catch {
-            print("Some error")
-        }
+    var bankStore: BankAPIProtocol
+    
+    init() {
+        self.bankStore = BankAPI()
+    }
+    
+    // Request for login.
+    func userLogin(_ userLogin: UserLogin, completionHandler: @escaping (UserResponse?) -> Void) {
+        bankStore.loginUser(login: userLogin, completionHandler: completionHandler)
     }
 }

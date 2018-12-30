@@ -9,9 +9,9 @@
 import Foundation
 
 protocol UserAccountable {
-    var userId: Int? { get set }
+    var userId: String? { get set }
     var name: String? { get set }
     var bankAccount: String? { get set }
     var agency: String? { get set }
-    var balance: Int? { get set }
+    var balance: String? { get set }
 }
