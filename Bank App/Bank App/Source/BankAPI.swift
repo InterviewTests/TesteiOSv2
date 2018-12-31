@@ -25,13 +25,12 @@ class BankAPI: BankAPIProtocol {
     
     func loginUser(login: UserLogin, completionHandler: @escaping (UserResponse?) -> Void) {
         
-        // prepare params
-        prepareParams(value: login.user, key: UserLogin.CodingKeys.user)
-        prepareParams(value: login.password, key: UserLogin.CodingKeys.password)
+        let encoder = JSONEncoder()
+        let jsonData = try? encoder.encode(login)
         
         // try request
         urlPath = "/api/login"
-        urlRequest(type: .post, params: parameters) { (responseData) in
+        urlRequest(type: .post, params: jsonData) { (responseData) in
             if let jsonData = responseData {
                 do {
                     let response = try JSONDecoder().decode(UserResponse.self, from: jsonData)
@@ -57,7 +56,7 @@ class BankAPI: BankAPIProtocol {
 
 extension BankAPI {
     
-    func urlRequest(type: RequestType, params: [[String: String]]?, completionHandler: @escaping (Data?) -> Void) {
+    func urlRequest(type: RequestType, params: Data?, completionHandler: @escaping (Data?) -> Void) {
         
         var urlComponents = URLComponents()
         urlComponents.scheme = urlScheme
@@ -68,11 +67,12 @@ extension BankAPI {
             var request = URLRequest(url: url)
             request.httpMethod = type.rawValue
             
+            var headers = request.allHTTPHeaderFields ?? [:]
+            headers["Content-Type"] = "application/json"
+            request.allHTTPHeaderFields = headers
+            
             if let _params = params {
-                request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-                if let httpBody = try? JSONSerialization.data(withJSONObject: _params, options: []) {
-                    request.httpBody = httpBody
-                }
+                request.httpBody = _params
             }
             
             print(request)
@@ -95,13 +95,6 @@ extension BankAPI {
         else {
             fatalError("Could not create URL from components")
         }
-    }
-    
-    func prepareParams(value: Any?, key: CodingKey) {
-        guard let value = value else { return }
-        if "\(value)" == "" { return }
-        let param = [key.stringValue : "\(value)"]
-        self.parameters?.append(param)
     }
     
     func catchNetworkError(_ data: Data?) {
