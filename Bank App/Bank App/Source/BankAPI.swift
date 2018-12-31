@@ -10,6 +10,13 @@ import Foundation
 
 class BankAPI: BankAPIProtocol {
     
+    /**
+     * Documentation for this class:
+     * https://hackernoon.com/everything-about-codable-in-swift-4-97d0e18a2999
+     * https://www.raywenderlich.com/567-urlsession-tutorial-getting-started
+     * https://medium.com/@sdrzn/networking-and-persistence-with-json-in-swift-4-c400ecab402d
+     */
+    
     private var urlHost = "bank-app-test.herokuapp.com"
     private var urlScheme = "https"
     private var urlPath = ""
