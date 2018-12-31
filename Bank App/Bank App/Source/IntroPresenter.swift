@@ -24,7 +24,9 @@ class IntroPresenter: IntroPresentationLogic {
     }
     
     func showError(error: BankError) {
-        buildAlert(title: "ERROR", message: error.message)
+        if let errorMessage = error.message {
+            buildAlert(title: "ERROR", message: errorMessage)
+        }
     }
     
     private func buildAlert(title: String, message: String) {

@@ -10,17 +10,34 @@ import Foundation
 
 struct UserAccount: UserAccountable, Decodable {
     
-    var userId: String?
+    var userId: Int?
     var name: String?
     var bankAccount: String?
     var agency: String?
     var balance: String?
     
     enum CodingKeys: String, CodingKey {
-        case userId = "user_id"
+        case userId = "userId"
         case name = "name"
-        case bankAccount = "bank_account"
+        case bankAccount = "bankAccount"
         case agency = "agency"
         case balance = "balance"
+    }
+}
+
+extension UserAccount {
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        userId = try values.decodeIfPresent(Int.self, forKey: .userId)
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+        bankAccount = try values.decodeIfPresent(String.self, forKey: .bankAccount)
+        agency = try values.decodeIfPresent(String.self, forKey: .agency)
+        balance = try values.decodeIfPresent(Float.self, forKey: .balance)?.toString()
+    }
+}
+
+extension Float {
+    func toString() -> String {
+        return String(self)
     }
 }

@@ -9,6 +9,6 @@
 import Foundation
 
 struct BankError: Decodable {
-    let message: String
-    let code: Int
+    let message: String?
+    let code: Int?
 }

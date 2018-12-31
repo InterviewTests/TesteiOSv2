@@ -34,7 +34,7 @@ class BankAPI: BankAPIProtocol {
             if let jsonData = responseData {
                 do {
                     let response = try JSONDecoder().decode(UserResponse.self, from: jsonData)
-                    if let bankError = response.error {
+                    if let bankError = response.error, bankError.code != nil {
                         completionHandler(response)
                         print(bankError)
                     }
