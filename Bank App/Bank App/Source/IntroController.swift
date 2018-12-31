@@ -13,7 +13,7 @@ import UIKit
 protocol IntroDisplayLogic: class {
     
     func displayData()
-    func showError(with message: String)
+    func showError(_ alertController: UIAlertController)
     func presentDetailController()
 }
 
@@ -56,8 +56,8 @@ class IntroController: UIViewController, IntroDisplayLogic {
         // ...
     }
     
-    func showError(with message: String) {
-        
+    func showError(_ alertController: UIAlertController) {
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func presentDetailController() {
