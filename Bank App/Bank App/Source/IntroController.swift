@@ -29,11 +29,13 @@ class IntroController: UIViewController, IntroDisplayLogic {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
+        tryAutoLogin()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+        tryAutoLogin()
     }
     
     
@@ -54,6 +56,10 @@ class IntroController: UIViewController, IntroDisplayLogic {
     /// Recive some object to display in view controller.
     func displayData() {
         // ...
+    }
+    
+    private func tryAutoLogin() {
+        interactor?.tryAutoLogin()
     }
     
     func showError(_ alertController: UIAlertController) {

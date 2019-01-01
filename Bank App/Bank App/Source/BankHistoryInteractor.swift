@@ -10,11 +10,15 @@ import Foundation
 
 protocol BankHistoryInteractionLogic {
     
-    // ...
+    func clearAutoLogin()
 }
 
 class BankHistoryInteractor: BankHistoryInteractionLogic, UserAccountData {
     
     var userAccount: UserAccountable?
     var presenter: BankHistoryPresentationLogic?
+    
+    func clearAutoLogin() {
+        KeychainWorker().deleteUser()
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  Localizable.swift
+//  Localizable + IBInspectable.swift
 //  Bank App
 //
 //  Created by Chrystian (Pessoal) on 01/01/2019.

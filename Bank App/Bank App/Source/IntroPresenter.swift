@@ -12,7 +12,6 @@ import UIKit
 protocol IntroPresentationLogic {
     
     func showHistoryController()
-    
     func showError(error: BankError)
 }
 

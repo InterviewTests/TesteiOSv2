@@ -53,6 +53,7 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     
     @IBAction func actionLogOut(_ sender: Any) {
         performSegue(withIdentifier: "unwindToIntroController", sender: nil)
+        interactor?.clearAutoLogin()
     }
 }
 

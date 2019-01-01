@@ -15,24 +15,37 @@ import Foundation
 protocol IntroInteractorLogic {
     
     func loginUser(user: UserLogin)
+    func tryAutoLogin()
 }
 
 
 class IntroInteractor: IntroInteractorLogic, UserAccountData {
     var userAccount: UserAccountable?
-    
     var presenter: IntroPresentationLogic?
     
     func loginUser(user: UserLogin) {
         
         BankWorker().userLogin(user) { (userResponse) in
             if let bankError = userResponse?.error, bankError.code != nil {
+                
+                KeychainWorker().deleteUser()
                 self.presenter?.showError(error: bankError)
             }
             else if let userAccount = userResponse?.userAccount {
                 self.userAccount = userAccount
+                
+                KeychainWorker().saveUserLogin(login: user)
                 self.presenter?.showHistoryController()
             }
+        }
+    }
+    
+    /// Try Auto login
+    func tryAutoLogin() {
+        
+        let user = KeychainWorker().getUserLogin()
+        if user.user != nil {
+            loginUser(user: user)
         }
     }
 }
