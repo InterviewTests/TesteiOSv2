@@ -78,6 +78,10 @@ class IntroController: UIViewController, IntroDisplayLogic {
         interactor?.loginUser(user: userData)
     }
     
+    @IBAction func unwindToIntroController(segue: UIStoryboardSegue) {
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let scene = segue.identifier else { return }
         
