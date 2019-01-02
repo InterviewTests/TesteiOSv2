@@ -13,7 +13,7 @@ struct Statement: Decodable {
     let title: String
     let description: String
     let date: String
-    let value: String
+    let value: Double
     
     enum CodingKeys: String, CodingKey {
         case title

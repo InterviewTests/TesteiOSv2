@@ -23,7 +23,7 @@ class BankHistoryTableViewCell: UITableViewCell {
         lblPaymentTitle.text = statement.title
         lbPaymentDescription.text = statement.description
         lbPaymentDate.text = statement.date
-        lbPaymentValue.text = statement.value
+        lbPaymentValue.text = "\(statement.value)"
     }
     
     override func prepareForReuse() {
