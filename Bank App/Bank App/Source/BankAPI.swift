@@ -17,9 +17,9 @@ class BankAPI: BankAPIProtocol {
      * https://medium.com/@sdrzn/networking-and-persistence-with-json-in-swift-4-c400ecab402d
      */
     
-    private var urlHost = "bank-app-test.herokuapp.com"
-    private var urlScheme = "https"
-    private var urlPath = ""
+    var urlHost = "bank-app-test.herokuapp.com"
+    var urlScheme = "https"
+    var urlPath = ""
     
     var parameters: [[String: String]]? = []
     
@@ -52,60 +52,31 @@ class BankAPI: BankAPIProtocol {
             }
         }
     }
-}
-
-extension BankAPI {
     
-    func urlRequest(type: RequestType, params: Data?, completionHandler: @escaping (Data?) -> Void) {
+    func statementList(completionHandler: @escaping (StatementResponse?) -> Void) {
         
-        var urlComponents = URLComponents()
-        urlComponents.scheme = urlScheme
-        urlComponents.host = urlHost
-        urlComponents.path = urlPath
-        
-        if let url = urlComponents.url {
-            var request = URLRequest(url: url)
-            request.httpMethod = type.rawValue
-            
-            var headers = request.allHTTPHeaderFields ?? [:]
-            headers["Content-Type"] = "application/json"
-            request.allHTTPHeaderFields = headers
-            
-            if let _params = params {
-                request.httpBody = _params
-            }
-            
-            print(request)
-            
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: request) { (data, urlResponse, taskError) in
-                DispatchQueue.main.async {
-                    
-                    if let _error = taskError {
-                        print(_error)
-                        completionHandler(nil)
-                        
-                    } else if let jsonData = data {
-                        completionHandler(jsonData)
+        // try request
+        urlPath = "/api/statements/0"
+        urlRequest(type: .get, params: nil) { (responseData) in
+            if let jsonData = responseData {
+                do {
+                    let response = try JSONDecoder().decode(StatementResponse.self, from: jsonData)
+                    if let bankError = response.error, bankError.code != nil {
+                        completionHandler(response)
+                        print(bankError)
                     }
+                    else if let _ = response.statementList {
+                        completionHandler(response)
+                    }
+                } catch {
+                    self.catchNetworkError(responseData)
+                    completionHandler(nil)
                 }
             }
-            task.resume()
-        }
-        else {
-            fatalError("Could not create URL from components")
+            else {
+                self.catchNetworkError(responseData)
+                completionHandler(nil)
+            }
         }
     }
-    
-    func catchNetworkError(_ data: Data?) {
-        guard let data = data else { return }
-        let error = try? JSONSerialization.jsonObject(with: data, options: [])
-        print(error)
-    }
-}
-
-enum RequestType: String {
-    case get = "GET"
-    case post = "POST"
-    case put = "PUT"
 }

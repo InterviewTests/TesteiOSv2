@@ -34,6 +34,9 @@
 		B86E3F5B21A62B0F00A9B84F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86E3F5921A62B0F00A9B84F /* LaunchScreen.storyboard */; };
 		B8BCD4D021DC04AB0004F1D2 /* KeychainWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCD4CF21DC04AB0004F1D2 /* KeychainWorker.swift */; };
 		B8BCD4D221DC071D0004F1D2 /* KeychainWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCD4D121DC071D0004F1D2 /* KeychainWorkerProtocol.swift */; };
+		B8EFA78321DD75B100994062 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EFA78221DD75B100994062 /* Statement.swift */; };
+		B8EFA78521DD763000994062 /* StatementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EFA78421DD763000994062 /* StatementResponse.swift */; };
+		B8EFA78721DD78BF00994062 /* BankAPINetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EFA78621DD78BF00994062 /* BankAPINetwork.swift */; };
 		B8F644E621AB068C000707CD /* BankHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F644E821AB068C000707CD /* BankHistory.storyboard */; };
 		B8F644F121AB06DC000707CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F644EF21AB06DC000707CD /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -68,6 +71,9 @@
 		B86E3F5C21A62B0F00A9B84F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8BCD4CF21DC04AB0004F1D2 /* KeychainWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWorker.swift; sourceTree = "<group>"; };
 		B8BCD4D121DC071D0004F1D2 /* KeychainWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWorkerProtocol.swift; sourceTree = "<group>"; };
+		B8EFA78221DD75B100994062 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
+		B8EFA78421DD763000994062 /* StatementResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementResponse.swift; sourceTree = "<group>"; };
+		B8EFA78621DD78BF00994062 /* BankAPINetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAPINetwork.swift; sourceTree = "<group>"; };
 		B8F644E321AB05F6000707CD /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		B8F644E721AB068C000707CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BankHistory.storyboard; sourceTree = "<group>"; };
 		B8F644EA21AB0691000707CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BankHistory.strings; sourceTree = "<group>"; };
@@ -115,6 +121,8 @@
 				B8425BA321D798E2009DD707 /* UserAccount.swift */,
 				B8425BB421D97574009DD707 /* UserResponse.swift */,
 				B8425BB621D975C6009DD707 /* BankError.swift */,
+				B8EFA78221DD75B100994062 /* Statement.swift */,
+				B8EFA78421DD763000994062 /* StatementResponse.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -175,6 +183,7 @@
 			children = (
 				B8425BAE21D7B211009DD707 /* BankAPI.swift */,
 				B8425BB021D7B238009DD707 /* BankAPIProtocol.swift */,
+				B8EFA78621DD78BF00994062 /* BankAPINetwork.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -369,12 +378,14 @@
 			files = (
 				B8425B9C21D10895009DD707 /* BankHistoryController.swift in Sources */,
 				B8BCD4D021DC04AB0004F1D2 /* KeychainWorker.swift in Sources */,
+				B8EFA78521DD763000994062 /* StatementResponse.swift in Sources */,
 				B826FB7021DBEF1D007DBC21 /* Localizable + IBInspectable.swift in Sources */,
 				B840A45321AA06DB00E0A22D /* IntroInteractor.swift in Sources */,
 				B8425BB121D7B238009DD707 /* BankAPIProtocol.swift in Sources */,
 				B8425BA221D51FB3009DD707 /* BankHistoryRouter.swift in Sources */,
 				B8425B9E21D10A39009DD707 /* BankHistoryInteractor.swift in Sources */,
 				B8425BA721D79B61009DD707 /* UserAccountData.swift in Sources */,
+				B8EFA78721DD78BF00994062 /* BankAPINetwork.swift in Sources */,
 				B840A45521AA0BA100E0A22D /* IntroPresenter.swift in Sources */,
 				B86E3F4E21A62B0800A9B84F /* AppDelegate.swift in Sources */,
 				B8425B9921D10248009DD707 /* IntroRouter.swift in Sources */,
@@ -382,6 +393,7 @@
 				B8BCD4D221DC071D0004F1D2 /* KeychainWorkerProtocol.swift in Sources */,
 				B840A44F21AA009B00E0A22D /* IntroController.swift in Sources */,
 				B8425BA021D10B45009DD707 /* BankHistoryPresentationLogic.swift in Sources */,
+				B8EFA78321DD75B100994062 /* Statement.swift in Sources */,
 				B8425BB521D97574009DD707 /* UserResponse.swift in Sources */,
 				B8425BA421D798E2009DD707 /* UserAccount.swift in Sources */,
 				B840A44A21A9CA2B00E0A22D /* ErrorType.swift in Sources */,

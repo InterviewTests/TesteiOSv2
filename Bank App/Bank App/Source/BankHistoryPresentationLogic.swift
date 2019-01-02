@@ -6,14 +6,36 @@
 //  Copyright © 2018 Salgado's Productions. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol BankHistoryPresentationLogic {
     
-    // add some method.
+    func displayStatements(_ statements: [Statement])
+    func showError(error: BankError)
 }
 
 class BankHistoryPresenter: BankHistoryPresentationLogic {
     
     weak var viewController: BankHistoryDisplayLogic?
+    
+    func displayStatements(_ statements: [Statement]) {
+        viewController?.displayData(statements)
+    }
+    
+    func showError(error: BankError) {
+        if let errorMessage = error.message {
+            buildAlert(title: "Erro", menssage: errorMessage)
+        }
+    }
+    
+    private func buildAlert(title: String, menssage: String) {
+        let alertBox = UIAlertController(title: title, message: menssage, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            alertBox.dismiss(animated: true, completion: {
+                self.viewController?.requestElements()
+            })
+        }
+        alertBox.addAction(action)
+        viewController?.showError(alertBox)
+    }
 }

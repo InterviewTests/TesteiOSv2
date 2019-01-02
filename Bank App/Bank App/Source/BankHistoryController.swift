@@ -11,13 +11,17 @@ import UIKit
 
 protocol BankHistoryDisplayLogic: class {
     
-    func displayData()
+    func requestElements()
+    func displayData(_ statementList: [Statement])
+    func showError(_ alertController: UIAlertController)
 }
 
 class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     
     var interactor: BankHistoryInteractionLogic?
     var router: (NSObjectProtocol & BankHistoryRouterLogic & BankHistoryDataPassing)?
+    
+    private var statementList: [Statement] = []
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -31,6 +35,7 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        requestElements()
     }
     
     private func setup() {
@@ -47,8 +52,17 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
         router.dataStore = interactor
     }
     
-    func displayData() {
-        // ...
+    func displayData(_ statementList: [Statement]) {
+        self.statementList = statementList
+        self.tableView.reloadData()
+    }
+    
+    func requestElements() {
+        interactor?.getStatementList()
+    }
+    
+    func showError(_ alertController: UIAlertController) {
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func actionLogOut(_ sender: Any) {
@@ -60,15 +74,16 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
 extension BankHistoryController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return statementList.count > 0 ? 1 : 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return statementList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell") as! BankHistoryTableViewCell
+        cell.display(statementList[indexPath.row])
         return cell
     }
 }

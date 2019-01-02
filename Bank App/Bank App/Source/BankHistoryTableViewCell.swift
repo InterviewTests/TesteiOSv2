@@ -10,11 +10,23 @@ import UIKit
 
 class BankHistoryTableViewCell: UITableViewCell {
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    @IBOutlet weak var lblPaymentTitle: UILabel!
+    @IBOutlet weak var lbPaymentDescription: UILabel!
+    @IBOutlet weak var lbPaymentDate: UILabel!
+    @IBOutlet weak var lbPaymentValue: UILabel!
+    
+    func display(_ statement: Statement) {
+        configureElements(statement)
     }
     
-    func display() {
-        
+    private func configureElements(_ statement: Statement) {
+        lblPaymentTitle.text = statement.title
+        lbPaymentDescription.text = statement.description
+        lbPaymentDate.text = statement.date
+        lbPaymentValue.text = statement.value
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
 }
