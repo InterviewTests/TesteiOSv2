@@ -32,6 +32,8 @@
 		B86E3F4E21A62B0800A9B84F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E3F4D21A62B0800A9B84F /* AppDelegate.swift */; };
 		B86E3F5821A62B0F00A9B84F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86E3F5721A62B0F00A9B84F /* Assets.xcassets */; };
 		B86E3F5B21A62B0F00A9B84F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86E3F5921A62B0F00A9B84F /* LaunchScreen.storyboard */; };
+		B89D1F4E21DEEA8A00F1CD9C /* String+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D1F4D21DEEA8A00F1CD9C /* String+HexColor.swift */; };
+		B89D1F5021DEEB1900F1CD9C /* UIViewController+StatusBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D1F4F21DEEB1900F1CD9C /* UIViewController+StatusBarColor.swift */; };
 		B8BCD4D021DC04AB0004F1D2 /* KeychainWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCD4CF21DC04AB0004F1D2 /* KeychainWorker.swift */; };
 		B8BCD4D221DC071D0004F1D2 /* KeychainWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCD4D121DC071D0004F1D2 /* KeychainWorkerProtocol.swift */; };
 		B8EFA78321DD75B100994062 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EFA78221DD75B100994062 /* Statement.swift */; };
@@ -69,6 +71,8 @@
 		B86E3F5721A62B0F00A9B84F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B86E3F5A21A62B0F00A9B84F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B86E3F5C21A62B0F00A9B84F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B89D1F4D21DEEA8A00F1CD9C /* String+HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HexColor.swift"; sourceTree = "<group>"; };
+		B89D1F4F21DEEB1900F1CD9C /* UIViewController+StatusBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StatusBarColor.swift"; sourceTree = "<group>"; };
 		B8BCD4CF21DC04AB0004F1D2 /* KeychainWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWorker.swift; sourceTree = "<group>"; };
 		B8BCD4D121DC071D0004F1D2 /* KeychainWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWorkerProtocol.swift; sourceTree = "<group>"; };
 		B8EFA78221DD75B100994062 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 		B86E3F6221A6332C00A9B84F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B89D1F4C21DEEA7600F1CD9C /* Extensions */,
 				B8425BAD21D7B201009DD707 /* Services */,
 				B8425BAA21D7A088009DD707 /* Worker */,
 				B8425BA521D79B3C009DD707 /* Protocols */,
@@ -249,6 +254,15 @@
 				B826FB7121DBEF68007DBC21 /* Localizable.strings */,
 			);
 			name = OtherSources;
+			sourceTree = "<group>";
+		};
+		B89D1F4C21DEEA7600F1CD9C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B89D1F4D21DEEA8A00F1CD9C /* String+HexColor.swift */,
+				B89D1F4F21DEEB1900F1CD9C /* UIViewController+StatusBarColor.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,8 +394,10 @@
 				B8BCD4D021DC04AB0004F1D2 /* KeychainWorker.swift in Sources */,
 				B8EFA78521DD763000994062 /* StatementResponse.swift in Sources */,
 				B826FB7021DBEF1D007DBC21 /* Localizable + IBInspectable.swift in Sources */,
+				B89D1F5021DEEB1900F1CD9C /* UIViewController+StatusBarColor.swift in Sources */,
 				B840A45321AA06DB00E0A22D /* IntroInteractor.swift in Sources */,
 				B8425BB121D7B238009DD707 /* BankAPIProtocol.swift in Sources */,
+				B89D1F4E21DEEA8A00F1CD9C /* String+HexColor.swift in Sources */,
 				B8425BA221D51FB3009DD707 /* BankHistoryRouter.swift in Sources */,
 				B8425B9E21D10A39009DD707 /* BankHistoryInteractor.swift in Sources */,
 				B8425BA721D79B61009DD707 /* UserAccountData.swift in Sources */,

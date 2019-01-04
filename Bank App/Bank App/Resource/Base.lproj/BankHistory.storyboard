@@ -14,12 +14,29 @@
             <objects>
                 <tableViewController storyboardIdentifier="BankHistoryController" id="d3K-Qf-vtg" customClass="BankHistoryController" customModule="Bank_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ueZ-ex-LwK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="tCQ-rg-QgW">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ar6-iK-lrT">
+                                    <rect key="frame" x="16" y="16" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.23137254900000001" green="0.28627450980000002" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="Ar6-iK-lrT" firstAttribute="top" secondItem="tCQ-rg-QgW" secondAttribute="top" constant="16" id="43I-8G-CVf"/>
+                                <constraint firstItem="Ar6-iK-lrT" firstAttribute="leading" secondItem="tCQ-rg-QgW" secondAttribute="leading" constant="16" id="xLE-eL-qj0"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" rowHeight="112" id="hCC-zk-x7c" customClass="BankHistoryTableViewCell" customModule="Bank_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="112"/>
+                                <rect key="frame" x="0.0" y="216" width="375" height="112"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hCC-zk-x7c" id="dZp-K2-LWX">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
@@ -131,10 +148,9 @@
         <!--Navigation Controller-->
         <scene sceneID="N9c-LF-Dom">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="So7-7E-cCe" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="So7-7E-cCe" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="DtL-3p-u3w">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.23137254901960785" green="0.28627450980392155" blue="0.93333333333333335" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.23137254900000001" green="0.28627450980000002" blue="0.93333333330000001" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
