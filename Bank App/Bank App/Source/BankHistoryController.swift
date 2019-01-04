@@ -58,7 +58,8 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     }
     
     func requestElements() {
-        interactor?.getStatementList()
+        guard let userAccount = router?.dataStore?.userAccount else { return }
+        interactor?.getStatementList(by: userAccount)
     }
     
     func showError(_ alertController: UIAlertController) {

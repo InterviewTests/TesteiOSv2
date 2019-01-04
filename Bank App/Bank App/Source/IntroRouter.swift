@@ -37,11 +37,7 @@ class IntroRouter: NSObject, IntroRouterLogic {
     }
     
     private func passDataToBankHistory(source: UserAccountData, destination: inout UserAccountData) {
-        destination.userAccount?.userId = source.userAccount?.userId
-        destination.userAccount?.name = source.userAccount?.name
-        destination.userAccount?.bankAccount = source.userAccount?.bankAccount
-        destination.userAccount?.agency = source.userAccount?.agency
-        destination.userAccount?.balance = source.userAccount?.balance
+        destination.userAccount = source.userAccount
     }
     
     private func navigateBankHistory(source: IntroController, destination: UINavigationController) {

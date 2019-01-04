@@ -11,5 +11,5 @@ import Foundation
 protocol BankAPIProtocol {
     
     func loginUser(login: UserLogin, completionHandler: @escaping (UserResponse?) -> Void)
-    func statementList(completionHandler: @escaping (StatementResponse?) -> Void)
+    func statementList(by userId: Int, completionHandler: @escaping (StatementResponse?) -> Void) 
 }

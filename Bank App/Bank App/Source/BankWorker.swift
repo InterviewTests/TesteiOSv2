@@ -21,7 +21,7 @@ class BankWorker {
         bankStore.loginUser(login: userLogin, completionHandler: completionHandler)
     }
     
-    func statementList(completionHandler: @escaping (StatementResponse?) -> Void) {
-        bankStore.statementList(completionHandler: completionHandler)
+    func statementList(by userId: Int, completionHandler: @escaping (StatementResponse?) -> Void) {
+        bankStore.statementList(by: userId, completionHandler: completionHandler)
     }
 }

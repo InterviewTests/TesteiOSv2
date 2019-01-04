@@ -10,7 +10,7 @@ import Foundation
 
 protocol BankHistoryInteractionLogic {
     
-    func getStatementList()
+    func getStatementList(by userId: UserAccountable)
     func clearAutoLogin()
 }
 
@@ -19,8 +19,10 @@ class BankHistoryInteractor: BankHistoryInteractionLogic, UserAccountData {
     var userAccount: UserAccountable?
     var presenter: BankHistoryPresentationLogic?
     
-    func getStatementList() {
-        BankWorker().statementList { (statementResponse) in
+    func getStatementList(by user: UserAccountable) {
+        guard let userId = user.userId else { return }
+        
+        BankWorker().statementList(by: userId) { (statementResponse) in
             if let bankError = statementResponse?.error, bankError.code != nil {
                 self.presenter?.showError(error: bankError)
             }

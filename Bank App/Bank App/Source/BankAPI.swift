@@ -53,10 +53,10 @@ class BankAPI: BankAPIProtocol {
         }
     }
     
-    func statementList(completionHandler: @escaping (StatementResponse?) -> Void) {
+    func statementList(by userId: Int, completionHandler: @escaping (StatementResponse?) -> Void) {
         
         // try request
-        urlPath = "/api/statements/0"
+        urlPath = "/api/statements/\(userId)"
         urlRequest(type: .get, params: nil) { (responseData) in
             if let jsonData = responseData {
                 do {

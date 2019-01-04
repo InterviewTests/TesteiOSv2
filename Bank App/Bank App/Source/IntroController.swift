@@ -47,8 +47,11 @@ class IntroController: UIViewController, IntroDisplayLogic {
         
         viewController.interactor = interactor
         viewController.router = router
+        
         interactor.presenter = presenter
+        
         presenter.viewController = viewController
+        
         router.viewController = viewController
         router.dataStore = interactor
     }

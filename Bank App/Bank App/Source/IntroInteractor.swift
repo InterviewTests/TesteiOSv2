@@ -18,7 +18,6 @@ protocol IntroInteractorLogic {
     func tryAutoLogin()
 }
 
-
 class IntroInteractor: IntroInteractorLogic, UserAccountData {
     var userAccount: UserAccountable?
     var presenter: IntroPresentationLogic?

@@ -10,7 +10,7 @@ import Foundation
 
 extension BankAPI {
     
-    func urlRequest(type: RequestType, params: Data?, completionHandler: @escaping (Data?) -> Void) {
+    func urlRequest(type: RequestType, params: Any?, completionHandler: @escaping (Data?) -> Void) {
         
         var urlComponents = URLComponents()
         urlComponents.scheme = urlScheme
@@ -25,8 +25,10 @@ extension BankAPI {
             headers["Content-Type"] = "application/json"
             request.allHTTPHeaderFields = headers
             
-            if let _params = params {
-                request.httpBody = _params
+            if let _params = params, type == .post {
+                request.httpBody = _params as? Data
+            } else if let _params = params, type == .get {
+                urlComponents.queryItems = _params as? [URLQueryItem]
             }
             
             print(request)
