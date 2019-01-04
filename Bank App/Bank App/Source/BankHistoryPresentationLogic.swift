@@ -12,6 +12,7 @@ protocol BankHistoryPresentationLogic {
     
     func displayStatements(_ statements: [Statement])
     func showError(error: BankError)
+    func configureStatusBar()
 }
 
 class BankHistoryPresenter: BankHistoryPresentationLogic {
@@ -37,5 +38,10 @@ class BankHistoryPresenter: BankHistoryPresentationLogic {
         }
         alertBox.addAction(action)
         viewController?.showError(alertBox)
+    }
+    
+    func configureStatusBar() {
+        let hexColor = "#3B49EE".hexColor()
+        viewController?.setupStatusBar(statusBarStyle: .lightContent, backgroudColor: hexColor)
     }
 }

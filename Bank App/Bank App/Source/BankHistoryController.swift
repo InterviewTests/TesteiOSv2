@@ -14,6 +14,7 @@ protocol BankHistoryDisplayLogic: class {
     func requestElements()
     func displayData(_ statementList: [Statement])
     func showError(_ alertController: UIAlertController)
+    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor)
 }
 
 class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
@@ -31,6 +32,11 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.configureStatusBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +70,10 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     
     func showError(_ alertController: UIAlertController) {
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor) {
+        self.setStatusBarStyle(statusBarStyle, backgroundColor: backgroudColor)
     }
     
     @IBAction func actionLogOut(_ sender: Any) {

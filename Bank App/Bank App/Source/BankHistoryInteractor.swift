@@ -12,6 +12,7 @@ protocol BankHistoryInteractionLogic {
     
     func getStatementList(by userId: UserAccountable)
     func clearAutoLogin()
+    func configureStatusBar()
 }
 
 class BankHistoryInteractor: BankHistoryInteractionLogic, UserAccountData {
@@ -34,5 +35,9 @@ class BankHistoryInteractor: BankHistoryInteractionLogic, UserAccountData {
     
     func clearAutoLogin() {
         KeychainWorker().deleteUser()
+    }
+    
+    func configureStatusBar() {
+        presenter?.configureStatusBar()
     }
 }
