@@ -18,25 +18,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="tCQ-rg-QgW" userLabel="Header View">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ar6-iK-lrT">
-                                    <rect key="frame" x="16" y="16" width="42" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome da pessoa" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ar6-iK-lrT">
+                                    <rect key="frame" x="18" y="20" width="339" height="29.666666666666671"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                     <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="aFR-qU-zGK" userLabel="SK Conta">
+                                    <rect key="frame" x="18" y="77.666666666666671" width="339" height="50.666666666666671"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpt-Rg-hte">
+                                            <rect key="frame" x="0.0" y="0.0" width="339" height="14"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="CONTA"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2050 / 01.111222-4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwF-0s-f0n">
+                                            <rect key="frame" x="0.0" y="21" width="339" height="29.666666666666671"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
+                                            <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="6DC-jX-anX" userLabel="SK Ammount">
+                                    <rect key="frame" x="18" y="149.33333333333334" width="339" height="50.666666666666657"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7v6-Q5-tSn">
+                                            <rect key="frame" x="0.0" y="0.0" width="339" height="14"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="SALDO"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 1.000,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJs-Jo-bZn">
+                                            <rect key="frame" x="0.0" y="21" width="339" height="29.666666666666671"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
+                                            <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" red="0.23137254900000001" green="0.28627450980000002" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="Ar6-iK-lrT" firstAttribute="top" secondItem="tCQ-rg-QgW" secondAttribute="top" constant="16" id="43I-8G-CVf"/>
-                                <constraint firstItem="Ar6-iK-lrT" firstAttribute="leading" secondItem="tCQ-rg-QgW" secondAttribute="leading" constant="16" id="xLE-eL-qj0"/>
+                                <constraint firstAttribute="trailing" secondItem="Ar6-iK-lrT" secondAttribute="trailing" constant="18" id="2VT-4g-iMs"/>
+                                <constraint firstItem="6DC-jX-anX" firstAttribute="leading" secondItem="tCQ-rg-QgW" secondAttribute="leading" constant="18" id="2dS-a9-3VL"/>
+                                <constraint firstItem="Ar6-iK-lrT" firstAttribute="top" secondItem="tCQ-rg-QgW" secondAttribute="top" constant="20" id="43I-8G-CVf"/>
+                                <constraint firstAttribute="trailing" secondItem="aFR-qU-zGK" secondAttribute="trailing" constant="18" id="Oqc-AZ-0HH"/>
+                                <constraint firstItem="6DC-jX-anX" firstAttribute="top" secondItem="aFR-qU-zGK" secondAttribute="bottom" constant="21" id="Riv-Xv-aqb"/>
+                                <constraint firstItem="aFR-qU-zGK" firstAttribute="leading" secondItem="tCQ-rg-QgW" secondAttribute="leading" constant="18" id="bNO-f9-vR0"/>
+                                <constraint firstAttribute="trailing" secondItem="6DC-jX-anX" secondAttribute="trailing" constant="18" id="dYf-72-3Gc"/>
+                                <constraint firstAttribute="bottom" secondItem="6DC-jX-anX" secondAttribute="bottom" constant="16" id="n8a-Yt-NQN"/>
+                                <constraint firstItem="aFR-qU-zGK" firstAttribute="top" secondItem="Ar6-iK-lrT" secondAttribute="bottom" constant="28" id="or0-rh-uxC"/>
+                                <constraint firstItem="Ar6-iK-lrT" firstAttribute="leading" secondItem="tCQ-rg-QgW" secondAttribute="leading" constant="18" id="xLE-eL-qj0"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" rowHeight="112" id="hCC-zk-x7c" customClass="BankHistoryTableViewCell" customModule="Bank_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="216" width="375" height="112"/>
+                                <rect key="frame" x="0.0" y="244" width="375" height="112"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hCC-zk-x7c" id="dZp-K2-LWX">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
