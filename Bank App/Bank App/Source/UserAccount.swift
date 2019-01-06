@@ -31,13 +31,26 @@ extension UserAccount {
         userId = try values.decodeIfPresent(Int.self, forKey: .userId)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         bankAccount = try values.decodeIfPresent(String.self, forKey: .bankAccount)
-        agency = try values.decodeIfPresent(String.self, forKey: .agency)
-        balance = try values.decodeIfPresent(Float.self, forKey: .balance)?.toString()
+        agency = try values.decodeIfPresent(String.self, forKey: .agency)?.toBankAgency()
+        balance = try values.decodeIfPresent(Double.self, forKey: .balance)?.toStringValue()
     }
 }
 
-extension Float {
+extension Double {
     func toString() -> String {
         return String(self)
+    }
+    
+    func toStringValue() -> String {
+        return String(format: "%.2f", self)
+    }
+}
+
+extension String {
+    func toBankAgency() -> String {
+        var string = self
+        string.insert("-", at: string.index(before: string.endIndex))
+        string.insert(".", at: string.index(after: string.index(after: string.startIndex)))
+        return string
     }
 }

@@ -22,8 +22,15 @@ class BankHistoryTableViewCell: UITableViewCell {
     private func configureElements(_ statement: Statement) {
         lblPaymentTitle.text = statement.title
         lbPaymentDescription.text = statement.description
-        lbPaymentDate.text = statement.date
+        lbPaymentDate.text = formatDate(statement.date)
         lbPaymentValue.text = "\(statement.value)"
+    }
+    
+    private func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        return dateFormatter.string(from: date)
     }
     
     override func prepareForReuse() {

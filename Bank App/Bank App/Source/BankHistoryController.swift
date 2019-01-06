@@ -34,6 +34,10 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
         setup()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         interactor?.configureStatusBar()
@@ -61,6 +65,10 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     func displayData(_ statementList: [Statement]) {
         self.statementList = statementList
         self.tableView.reloadData()
+        
+        guard let userAccountData = router?.dataStore else { return }
+        guard let headerView = tableView.tableHeaderView as? BankHistoryHeaderView else { return }
+        headerView.configure(userAccountData)
     }
     
     func requestElements() {

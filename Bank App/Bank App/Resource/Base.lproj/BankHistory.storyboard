@@ -17,12 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="tCQ-rg-QgW" userLabel="Header View">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="tCQ-rg-QgW" userLabel="Header View" customClass="BankHistoryHeaderView" customModule="Bank_App" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome da pessoa" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ar6-iK-lrT">
-                                    <rect key="frame" x="18" y="20" width="339" height="29.666666666666671"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=".." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ar6-iK-lrT">
+                                    <rect key="frame" x="18" y="20" width="277" height="29.666666666666671"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                     <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="CONTA"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2050 / 01.111222-4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwF-0s-f0n">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwF-0s-f0n">
                                             <rect key="frame" x="0.0" y="21" width="339" height="29.666666666666671"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                             <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,7 +59,7 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="SALDO"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 1.000,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJs-Jo-bZn">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJs-Jo-bZn">
                                             <rect key="frame" x="0.0" y="21" width="339" height="29.666666666666671"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                             <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -67,20 +67,38 @@
                                         </label>
                                     </subviews>
                                 </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12w-wF-AuG">
+                                    <rect key="frame" x="313" y="20" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="PPt-fa-3NS"/>
+                                        <constraint firstAttribute="height" constant="44" id="VRt-Et-Fs0"/>
+                                    </constraints>
+                                    <state key="normal" image="Exit"/>
+                                    <connections>
+                                        <action selector="actionLogOut:" destination="d3K-Qf-vtg" eventType="touchUpInside" id="9Hu-ps-ZZl"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.23137254900000001" green="0.28627450980000002" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="Ar6-iK-lrT" secondAttribute="trailing" constant="18" id="2VT-4g-iMs"/>
                                 <constraint firstItem="6DC-jX-anX" firstAttribute="leading" secondItem="tCQ-rg-QgW" secondAttribute="leading" constant="18" id="2dS-a9-3VL"/>
                                 <constraint firstItem="Ar6-iK-lrT" firstAttribute="top" secondItem="tCQ-rg-QgW" secondAttribute="top" constant="20" id="43I-8G-CVf"/>
                                 <constraint firstAttribute="trailing" secondItem="aFR-qU-zGK" secondAttribute="trailing" constant="18" id="Oqc-AZ-0HH"/>
                                 <constraint firstItem="6DC-jX-anX" firstAttribute="top" secondItem="aFR-qU-zGK" secondAttribute="bottom" constant="21" id="Riv-Xv-aqb"/>
+                                <constraint firstAttribute="trailing" secondItem="12w-wF-AuG" secondAttribute="trailing" constant="18" id="TgK-9L-YLe"/>
+                                <constraint firstItem="12w-wF-AuG" firstAttribute="top" secondItem="tCQ-rg-QgW" secondAttribute="top" constant="20" id="YyP-t6-DMW"/>
                                 <constraint firstItem="aFR-qU-zGK" firstAttribute="leading" secondItem="tCQ-rg-QgW" secondAttribute="leading" constant="18" id="bNO-f9-vR0"/>
                                 <constraint firstAttribute="trailing" secondItem="6DC-jX-anX" secondAttribute="trailing" constant="18" id="dYf-72-3Gc"/>
+                                <constraint firstItem="12w-wF-AuG" firstAttribute="leading" secondItem="Ar6-iK-lrT" secondAttribute="trailing" constant="18" id="gxV-PH-pid"/>
                                 <constraint firstAttribute="bottom" secondItem="6DC-jX-anX" secondAttribute="bottom" constant="16" id="n8a-Yt-NQN"/>
                                 <constraint firstItem="aFR-qU-zGK" firstAttribute="top" secondItem="Ar6-iK-lrT" secondAttribute="bottom" constant="28" id="or0-rh-uxC"/>
                                 <constraint firstItem="Ar6-iK-lrT" firstAttribute="leading" secondItem="tCQ-rg-QgW" secondAttribute="leading" constant="18" id="xLE-eL-qj0"/>
                             </constraints>
+                            <connections>
+                                <outlet property="lbUserAccountNumber" destination="dwF-0s-f0n" id="h3G-Z0-acW"/>
+                                <outlet property="lbUserBalance" destination="mJs-Jo-bZn" id="0wb-Jz-bmr"/>
+                                <outlet property="lbUserName" destination="Ar6-iK-lrT" id="guC-4q-dCT"/>
+                            </connections>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" rowHeight="112" id="hCC-zk-x7c" customClass="BankHistoryTableViewCell" customModule="Bank_App" customModuleProvider="target">
@@ -172,18 +190,7 @@
                             <outlet property="delegate" destination="d3K-Qf-vtg" id="fnb-4x-1t3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="HIq-n2-11Q">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="gka-Jr-kZm">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OhI-pd-nSU">
-                                <rect key="frame" x="334" y="9.6666666666666643" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Exit"/>
-                                <connections>
-                                    <action selector="actionLogOut:" destination="d3K-Qf-vtg" eventType="touchUpInside" id="pCw-dk-XVh"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="HIq-n2-11Q"/>
                     <connections>
                         <segue destination="C7P-D6-2O0" kind="unwind" identifier="unwindToIntroController" unwindAction="unwindToIntroControllerWithSegue:" id="OkO-50-KnN"/>
                     </connections>
