@@ -13,6 +13,7 @@ protocol IntroPresentationLogic {
     
     func showHistoryController()
     func showError(error: BankError)
+    func showLoading()
 }
 
 class IntroPresenter: IntroPresentationLogic {
@@ -21,12 +22,18 @@ class IntroPresenter: IntroPresentationLogic {
     
     func showHistoryController() {
         viewController?.presentDetailController()
+        viewController?.configureLoginAnimationCompletion()
     }
     
     func showError(error: BankError) {
         if let errorMessage = error.message {
             buildAlert(title: "Erro", menssage: errorMessage)
         }
+        viewController?.configureLoginAnimationCompletion()
+    }
+    
+    func showLoading() {
+        viewController?.configureLoginAnimationLoading()
     }
     
     private func buildAlert(title: String, menssage: String) {
@@ -36,5 +43,27 @@ class IntroPresenter: IntroPresentationLogic {
         }
         alertBox.addAction(action)
         viewController?.showError(alertBox)
+    }
+}
+
+class LoadingView {
+    
+    var spinningView: UIActivityIndicatorView?
+    
+    init() {
+        self.spinningView = UIActivityIndicatorView(style: .gray)
+    }
+    
+    func show(in view: UIView) {
+        if let _spinningView = spinningView {
+            spinningView?.center = view.center
+            spinningView?.startAnimating()
+            view.addSubview(spinningView!)
+        }
+    }
+    
+    func dismiss() {
+        spinningView?.stopAnimating()
+        spinningView = nil
     }
 }

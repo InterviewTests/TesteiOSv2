@@ -23,6 +23,7 @@ class IntroInteractor: IntroInteractorLogic, UserAccountData {
     var presenter: IntroPresentationLogic?
     
     func loginUser(user: UserLogin) {
+        self.presenter?.showLoading()
         
         BankWorker().userLogin(user) { (userResponse) in
             if let bankError = userResponse?.error, bankError.code != nil {

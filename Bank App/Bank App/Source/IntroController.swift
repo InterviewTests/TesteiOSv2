@@ -15,15 +15,22 @@ protocol IntroDisplayLogic: class {
     func displayData()
     func showError(_ alertController: UIAlertController)
     func presentDetailController()
+    func configureLoginAnimationLoading()
+    func configureLoginAnimationCompletion()
 }
 
 class IntroController: UIViewController, IntroDisplayLogic {
     
     @IBOutlet weak var userTf: UITextField!
+    @IBOutlet weak var stackViewFields: UIStackView!
     @IBOutlet weak var passwordTf: UITextField!
+    @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var containerFields: UIView!
     
     var interactor: IntroInteractorLogic?
     var router: (NSObjectProtocol & IntroRouterLogic)?
+    
+    var loadingView: LoadingView?
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -81,6 +88,21 @@ class IntroController: UIViewController, IntroDisplayLogic {
         return userLogin
     }
     
+    func configureLoginAnimationLoading() {
+        self.loadingView = LoadingView()
+        loadingView?.show(in: self.view)
+        
+        stackViewFields.alpha = 0
+        btnLogin.isUserInteractionEnabled = false
+    }
+    
+    func configureLoginAnimationCompletion() {
+        self.loadingView?.dismiss()
+        
+        stackViewFields.alpha = 1
+        btnLogin.isUserInteractionEnabled = true
+    }
+    
     // Mark: Actions
     @IBAction func actionLogin(_ sender: Any) {
         guard let userData = getDataFromDisplay() else { return }
@@ -88,7 +110,6 @@ class IntroController: UIViewController, IntroDisplayLogic {
     }
     
     @IBAction func unwindToIntroController(segue: UIStoryboardSegue) {
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -36,7 +36,7 @@ extension Statement: Decodable {
 extension String {
     func toDate() -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let date = dateFormatter.date(from: self)
         return date
