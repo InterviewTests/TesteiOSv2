@@ -53,7 +53,16 @@ class LoginVC: UIViewController {
             self.present(alert, animated: true)
         }else{
             print(user, pass)
-             }
+            
+            AuthService.instance.loginUser(user: user, pass: pass, completion: { (success) in
+                if success {
+                    print("logged in user!", AuthService.instance.userName)
+                    
+                //Proxima tela
+                }
+            })
+            
+        }//else
         
         
     }//loginpressed

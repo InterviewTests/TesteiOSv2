@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8005C1DE21E5819600066212 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8005C1DD21E5819600066212 /* Constants.swift */; };
+		8005C1E021E5820D00066212 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8005C1DF21E5820D00066212 /* AuthService.swift */; };
 		80370B6421E568AA00C32DC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80370B6321E568AA00C32DC9 /* AppDelegate.swift */; };
 		80370B6621E568AA00C32DC9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80370B6521E568AA00C32DC9 /* LoginVC.swift */; };
 		80370B6921E568AA00C32DC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80370B6721E568AA00C32DC9 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 /* Begin PBXFileReference section */
 		1C7DB94078DED02318F23B6A /* Pods_Santander.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Santander.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79043AA0F2F5BBAB8AF3DF48 /* Pods-Santander.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Santander.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Santander/Pods-Santander.debug.xcconfig"; sourceTree = "<group>"; };
+		8005C1DD21E5819600066212 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8005C1DF21E5820D00066212 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		80370B6021E568AA00C32DC9 /* Santander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Santander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80370B6321E568AA00C32DC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80370B6521E568AA00C32DC9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -105,8 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				80370B9321E56B9100C32DC9 /* Utilities */,
-				80370B9221E56B6300C32DC9 /* Service */,
-				80370B9121E56B5700C32DC9 /* Model */,
+				80370B9221E56B6300C32DC9 /* Services */,
+				80370B9121E56B5700C32DC9 /* Controller */,
 				80370B6321E568AA00C32DC9 /* AppDelegate.swift */,
 				80370B6721E568AA00C32DC9 /* Main.storyboard */,
 				80370B6A21E568AB00C32DC9 /* Assets.xcassets */,
@@ -134,24 +138,26 @@
 			path = SantanderUITests;
 			sourceTree = "<group>";
 		};
-		80370B9121E56B5700C32DC9 /* Model */ = {
+		80370B9121E56B5700C32DC9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				80370B6521E568AA00C32DC9 /* LoginVC.swift */,
 			);
-			path = Model;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		80370B9221E56B6300C32DC9 /* Service */ = {
+		80370B9221E56B6300C32DC9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8005C1DF21E5820D00066212 /* AuthService.swift */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		80370B9321E56B9100C32DC9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				8005C1DD21E5819600066212 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -357,6 +363,8 @@
 			files = (
 				80370B6621E568AA00C32DC9 /* LoginVC.swift in Sources */,
 				80370B6421E568AA00C32DC9 /* AppDelegate.swift in Sources */,
+				8005C1DE21E5819600066212 /* Constants.swift in Sources */,
+				8005C1E021E5820D00066212 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
