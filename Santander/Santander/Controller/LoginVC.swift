@@ -58,7 +58,7 @@ class LoginVC: UIViewController {
                 if success {
                     print("logged in user!", AuthService.instance.userName)
                     
-                //Proxima tela
+                self.performSegue(withIdentifier: TO_CURRENCY, sender: nil)
                 }
             })
             
