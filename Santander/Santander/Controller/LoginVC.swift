@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+
 
 class LoginVC: UIViewController {
 
@@ -18,32 +18,22 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let parameters = [
-            "user": "test_user",
-            "password": "Test@1"
-        ]
-        
-        AF.request("https://bank-app-test.herokuapp.com/api/login", method: .post, parameters: parameters, encoding:  URLEncoding.httpBody).responseJSON { (response:DataResponse<Any>) in
-            
-            switch(response.result) {
-            case.success(let data):
-                print("success",data)
-            case.failure(let error):
-                print("Not Success",error)
-            }
-            
-        }
 
     }//DidLoad
+    
 
     @IBAction func loginPressed(_ sender: Any) {
         guard let user = usernameTxt.text, usernameTxt.text?.characters.count != 0  else {
-            print("Please enter your email")
+            let alert = UIAlertController(title: "Preencha o campo User", message: "Preencha o campo com email ou CPF", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
             return
         }
         
         guard let pass = passwordTxt.text, passwordTxt.text?.characters.count != 0  else {
-            print("Please enter your password")
+            let alert = UIAlertController(title: "Preencha o campo Password", message: "A senha deve ser preenchida", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
             return
         }
         

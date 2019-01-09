@@ -26,3 +26,8 @@ let USER_AGENCY = "userAgency"
 let USER_BALANCE = "userBalance"
 let USER_BANKACCOUNT = "userBankAccount"
 let USER_ID = "userId"
+
+//Headers
+let BEARER_HEADER = [
+    "Content-Type": "application/x-www-form-urlencoded"
+]
