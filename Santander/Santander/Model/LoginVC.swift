@@ -18,8 +18,6 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print("Carregou")
-        
         let parameters = [
             "user": "test_user",
             "password": "Test@1"
@@ -36,10 +34,36 @@ class LoginVC: UIViewController {
             
         }
 
-    }
+    }//DidLoad
 
     @IBAction func loginPressed(_ sender: Any) {
-        print("Abriu")
+        guard let user = usernameTxt.text, usernameTxt.text?.characters.count != 0  else {
+            print("Please enter your email")
+            return
+        }
+        
+        guard let pass = passwordTxt.text, passwordTxt.text?.characters.count != 0  else {
+            print("Please enter your password")
+            return
+        }
+        
+        if isValidPassword(passID: pass) == false {
+            let alert = UIAlertController(title: "Verificar campo password", message: "A senha deve possuir letra maiuscula, um caracter especial e um caracter alfanumérico", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }else{
+            print(user, pass)
+             }
+        
+        
+    }//loginpressed
+    
+    func isValidPassword(passID:String) -> Bool {
+        print(passID)
+        let passRegEx = "(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&*])(?=.*[a-z]).{1,}"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passRegEx)
+        print(passwordTest.evaluate(with: passID))
+        return passwordTest.evaluate(with: passID)
     }
     
 }
