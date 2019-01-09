@@ -9,10 +9,18 @@
 import Foundation
 
 struct Statement : Decodable {
-    public private(set) var statementTitle: String?
-    public private(set) var statementDesc: String?
-    public private(set) var statementDate: String?
-    public private(set) var value: String?
+    
+    var title: String?
+    var desc : String?
+    var date: String?
+    var value: String?
+    
+    init(title: String?, desc: String?, date: String?, value: String?) {
+        self.title = title
+        self.desc = desc
+        self.date = date
+        self.value = value
+    }
 }
 
 

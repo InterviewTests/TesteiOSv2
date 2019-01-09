@@ -27,6 +27,12 @@ let USER_BALANCE = "userBalance"
 let USER_BANKACCOUNT = "userBankAccount"
 let USER_ID = "userId"
 
+let TITLE = "title"
+let DESC = "desc"
+let DATE = "date"
+let VALUE = "value"
+
+
 //Headers
 let BEARER_HEADER = [
     "Content-Type": "application/x-www-form-urlencoded"

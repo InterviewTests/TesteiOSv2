@@ -10,8 +10,12 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class CurrencyVC: UIViewController {
-
+class CurrencyVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    @IBOutlet weak var tblJson: UITableView!
+    
+    
     @IBOutlet weak var nameUserLbl: UILabel!
     @IBOutlet weak var userAccountLbl: UILabel!
     @IBOutlet weak var userBalance: UILabel!
@@ -34,10 +38,16 @@ class CurrencyVC: UIViewController {
                 guard let data = response.data else { return }
 
                 let swiftyJsonVar = JSON(response.result.value!)
-                print(swiftyJsonVar)
+                //print(swiftyJsonVar)
+                
                 if let resData = swiftyJsonVar["statementList"].arrayObject {
+                    print(resData)
                     self.arrRes = resData as! [[String:AnyObject]]
                     print(self.arrRes)
+                }
+                if self.arrRes.count > 0 {
+                    print("entrou")
+                    self.tblJson.reloadData()
                 }
                 
                 
@@ -47,7 +57,21 @@ class CurrencyVC: UIViewController {
             }
         
         }
+    }// View Did Load
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "jsonCell")!
+        var dict = arrRes[(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = dict["title"] as? String
+        cell.detailTextLabel?.text = dict["desc"] as? String
+        return cell
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrRes.count
+    }
+   
     
 
     @IBAction func btnLogoutPressed(_ sender: Any) {
