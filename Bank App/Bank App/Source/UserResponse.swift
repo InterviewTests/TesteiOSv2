@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserResponse: Decodable {
+struct UserResponse {
     
     let userAccount: UserAccount?
     let error: BankError?
@@ -19,7 +19,7 @@ struct UserResponse: Decodable {
     }
 }
 
-extension UserResponse {
+extension UserResponse: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         userAccount = try values.decodeIfPresent(UserAccount.self, forKey: .userAccount)
