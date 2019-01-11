@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -35,6 +36,13 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         
         let request = Login.LoginUser.Request(loginFormFields: Login.LoginFormFields(user: user, password: password))
         self.interactor?.loginUser(request: request)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.loginButton.layer.cornerRadius = 8
+        self.loginButton.layer.masksToBounds = true
     }
     
     func sendToStatements(viewModel: Login.LoginUser.ViewModel) {
