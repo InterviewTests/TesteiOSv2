@@ -23,6 +23,11 @@
 		2D07998921E8489000638AC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07998821E8489000638AC1 /* User.swift */; };
 		2D07998C21E8494400638AC1 /* UsersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07998B21E8494400638AC1 /* UsersWorker.swift */; };
 		2D07998F21E84BF100638AC1 /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07998E21E84BF100638AC1 /* UsersAPI.swift */; };
+		2D07999121E85FC300638AC1 /* StatementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07999021E85FC300638AC1 /* StatementsViewController.swift */; };
+		2D07999321E8606700638AC1 /* StatementsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07999221E8606700638AC1 /* StatementsRouter.swift */; };
+		2D07999521E8607400638AC1 /* StatementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07999421E8607400638AC1 /* StatementsPresenter.swift */; };
+		2D07999721E8608100638AC1 /* StatementsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07999621E8608100638AC1 /* StatementsModels.swift */; };
+		2D07999921E8609300638AC1 /* StatementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07999821E8609300638AC1 /* StatementsInteractor.swift */; };
 		7189E21D2CA50DE56AA74286 /* Pods_TesteiOSv2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9A4980849717B475354422 /* Pods_TesteiOSv2Tests.framework */; };
 		98E8C364FED8D4CE9A9FB92C /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CBE123DB89F329B2A7DD122 /* Pods_TesteiOSv2.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +64,11 @@
 		2D07998821E8489000638AC1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2D07998B21E8494400638AC1 /* UsersWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersWorker.swift; sourceTree = "<group>"; };
 		2D07998E21E84BF100638AC1 /* UsersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAPI.swift; sourceTree = "<group>"; };
+		2D07999021E85FC300638AC1 /* StatementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsViewController.swift; sourceTree = "<group>"; };
+		2D07999221E8606700638AC1 /* StatementsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsRouter.swift; sourceTree = "<group>"; };
+		2D07999421E8607400638AC1 /* StatementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsPresenter.swift; sourceTree = "<group>"; };
+		2D07999621E8608100638AC1 /* StatementsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsModels.swift; sourceTree = "<group>"; };
+		2D07999821E8609300638AC1 /* StatementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractor.swift; sourceTree = "<group>"; };
 		3CBE123DB89F329B2A7DD122 /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66AF7D728254CBEF71529865 /* Pods-TesteiOSv2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2/Pods-TesteiOSv2.release.xcconfig"; sourceTree = "<group>"; };
 		BA4231B3C31F8767BEC14B01 /* Pods-TesteiOSv2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +168,11 @@
 			isa = PBXGroup;
 			children = (
 				2D07997621E8229100638AC1 /* Statements.storyboard */,
+				2D07999821E8609300638AC1 /* StatementsInteractor.swift */,
+				2D07999621E8608100638AC1 /* StatementsModels.swift */,
+				2D07999421E8607400638AC1 /* StatementsPresenter.swift */,
+				2D07999221E8606700638AC1 /* StatementsRouter.swift */,
+				2D07999021E85FC300638AC1 /* StatementsViewController.swift */,
 			);
 			path = Statements;
 			sourceTree = "<group>";
@@ -385,6 +400,7 @@
 			files = (
 				2D07998021E834D600638AC1 /* LoginInteractor.swift in Sources */,
 				2D07997E21E8326E00638AC1 /* LoginViewController.swift in Sources */,
+				2D07999321E8606700638AC1 /* StatementsRouter.swift in Sources */,
 				2D07998621E8461500638AC1 /* LoginModels.swift in Sources */,
 				2D07998421E840FD00638AC1 /* LoginRouter.swift in Sources */,
 				2D07998C21E8494400638AC1 /* UsersWorker.swift in Sources */,
@@ -392,7 +408,11 @@
 				2D07995C21E81EB500638AC1 /* TesteiOSv2.xcdatamodeld in Sources */,
 				2D07998F21E84BF100638AC1 /* UsersAPI.swift in Sources */,
 				2D07995421E81EB500638AC1 /* AppDelegate.swift in Sources */,
+				2D07999521E8607400638AC1 /* StatementsPresenter.swift in Sources */,
+				2D07999121E85FC300638AC1 /* StatementsViewController.swift in Sources */,
 				2D07998221E8357300638AC1 /* LoginPresenter.swift in Sources */,
+				2D07999721E8608100638AC1 /* StatementsModels.swift in Sources */,
+				2D07999921E8609300638AC1 /* StatementsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,16 +16,15 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol)?
     
-    
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    required init?(coder aDecoder: NSCoder){
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setup()
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?){
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.setup()
     }
@@ -40,7 +39,12 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     func sendToStatements(viewModel: Login.LoginUser.ViewModel) {
         let storyboard = UIStoryboard(name: "Statements", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "StatementsID")
+        let controller = storyboard.instantiateViewController(withIdentifier: "StatementsID") as! StatementsViewController
+        
+        if let user = viewModel.user {
+            controller.setUser(user: user)
+        }
+        
         self.present(controller, animated: true, completion: nil)
     }
     

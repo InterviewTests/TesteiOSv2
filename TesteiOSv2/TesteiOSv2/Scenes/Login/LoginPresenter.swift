@@ -15,8 +15,7 @@ protocol LoginPresentationLogic {
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     
-    func presentUser(response: Login.LoginUser.Response)
-    {
+    func presentUser(response: Login.LoginUser.Response) {
         let viewModel = Login.LoginUser.ViewModel(user: response.user)
         viewController?.sendToStatements(viewModel: viewModel)
     }
