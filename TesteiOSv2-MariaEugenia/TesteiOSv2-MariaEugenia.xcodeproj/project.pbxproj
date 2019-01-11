@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22A4613239DE5E1A07379AD8 /* Pods_TesteiOSv2_MariaEugeniaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4ADF80F7CF1438C43C3A22 /* Pods_TesteiOSv2_MariaEugeniaUITests.framework */; };
+		57AE8FDD56642D0AB2297FDF /* Pods_TesteiOSv2_MariaEugenia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59326E6BAB8309EF488CAA82 /* Pods_TesteiOSv2_MariaEugenia.framework */; };
+		6C6A24CB3DC16F707EAFF7B5 /* Pods_TesteiOSv2_MariaEugeniaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C15EF9878FFDAE4A4020B55 /* Pods_TesteiOSv2_MariaEugeniaTests.framework */; };
 		F4605BF321E82181008C9F90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4605BF221E82181008C9F90 /* AppDelegate.swift */; };
 		F4605BF521E82181008C9F90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4605BF421E82181008C9F90 /* ViewController.swift */; };
 		F4605BF821E82181008C9F90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4605BF621E82181008C9F90 /* Main.storyboard */; };
@@ -14,6 +17,11 @@
 		F4605BFD21E82182008C9F90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4605BFB21E82182008C9F90 /* LaunchScreen.storyboard */; };
 		F4605C0821E82182008C9F90 /* TesteiOSv2_MariaEugeniaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4605C0721E82182008C9F90 /* TesteiOSv2_MariaEugeniaTests.swift */; };
 		F4605C1321E82182008C9F90 /* TesteiOSv2_MariaEugeniaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4605C1221E82182008C9F90 /* TesteiOSv2_MariaEugeniaUITests.swift */; };
+		F4605C2221E82B02008C9F90 /* TesteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4605C2121E82B02008C9F90 /* TesteAPI.swift */; };
+		F4605C2521E82CD3008C9F90 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4605C2421E82CD3008C9F90 /* Config.swift */; };
+		F4605C2721E83081008C9F90 /* TesteAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4605C2621E83081008C9F90 /* TesteAPIManager.swift */; };
+		F4605C2C21E839F7008C9F90 /* UserAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4605C2B21E839F7008C9F90 /* UserAccountModel.swift */; };
+		F4605C2E21E8410D008C9F90 /* StatementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4605C2D21E8410D008C9F90 /* StatementModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +42,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01DA34DC16B684B8620233A7 /* Pods-TesteiOSv2-MariaEugeniaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2-MariaEugeniaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2-MariaEugeniaTests/Pods-TesteiOSv2-MariaEugeniaTests.release.xcconfig"; sourceTree = "<group>"; };
+		17B688EF5D8D23B17BBA7922 /* Pods-TesteiOSv2-MariaEugenia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2-MariaEugenia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2-MariaEugenia/Pods-TesteiOSv2-MariaEugenia.debug.xcconfig"; sourceTree = "<group>"; };
+		2C15EF9878FFDAE4A4020B55 /* Pods_TesteiOSv2_MariaEugeniaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2_MariaEugeniaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		569B4E09CB990409B846DCBF /* Pods-TesteiOSv2-MariaEugeniaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2-MariaEugeniaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2-MariaEugeniaUITests/Pods-TesteiOSv2-MariaEugeniaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		59326E6BAB8309EF488CAA82 /* Pods_TesteiOSv2_MariaEugenia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2_MariaEugenia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E4ADF80F7CF1438C43C3A22 /* Pods_TesteiOSv2_MariaEugeniaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2_MariaEugeniaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFB04E1BBF5DEF05B8FB0BDA /* Pods-TesteiOSv2-MariaEugenia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2-MariaEugenia.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2-MariaEugenia/Pods-TesteiOSv2-MariaEugenia.release.xcconfig"; sourceTree = "<group>"; };
+		CC77B1FB1675522B9E6A6CF2 /* Pods-TesteiOSv2-MariaEugeniaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2-MariaEugeniaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2-MariaEugeniaUITests/Pods-TesteiOSv2-MariaEugeniaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CC79D7C2216B3BB020B419EF /* Pods-TesteiOSv2-MariaEugeniaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2-MariaEugeniaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2-MariaEugeniaTests/Pods-TesteiOSv2-MariaEugeniaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F4605BEF21E82181008C9F90 /* TesteiOSv2-MariaEugenia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TesteiOSv2-MariaEugenia.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4605BF221E82181008C9F90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4605BF421E82181008C9F90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +64,11 @@
 		F4605C0E21E82182008C9F90 /* TesteiOSv2-MariaEugeniaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TesteiOSv2-MariaEugeniaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4605C1221E82182008C9F90 /* TesteiOSv2_MariaEugeniaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteiOSv2_MariaEugeniaUITests.swift; sourceTree = "<group>"; };
 		F4605C1421E82182008C9F90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4605C2121E82B02008C9F90 /* TesteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteAPI.swift; sourceTree = "<group>"; };
+		F4605C2421E82CD3008C9F90 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		F4605C2621E83081008C9F90 /* TesteAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteAPIManager.swift; sourceTree = "<group>"; };
+		F4605C2B21E839F7008C9F90 /* UserAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountModel.swift; sourceTree = "<group>"; };
+		F4605C2D21E8410D008C9F90 /* StatementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57AE8FDD56642D0AB2297FDF /* Pods_TesteiOSv2_MariaEugenia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C6A24CB3DC16F707EAFF7B5 /* Pods_TesteiOSv2_MariaEugeniaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +92,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22A4613239DE5E1A07379AD8 /* Pods_TesteiOSv2_MariaEugeniaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		559B29E405995C074092F936 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59326E6BAB8309EF488CAA82 /* Pods_TesteiOSv2_MariaEugenia.framework */,
+				2C15EF9878FFDAE4A4020B55 /* Pods_TesteiOSv2_MariaEugeniaTests.framework */,
+				7E4ADF80F7CF1438C43C3A22 /* Pods_TesteiOSv2_MariaEugeniaUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F8A53C79663357A7954B80C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				17B688EF5D8D23B17BBA7922 /* Pods-TesteiOSv2-MariaEugenia.debug.xcconfig */,
+				AFB04E1BBF5DEF05B8FB0BDA /* Pods-TesteiOSv2-MariaEugenia.release.xcconfig */,
+				CC79D7C2216B3BB020B419EF /* Pods-TesteiOSv2-MariaEugeniaTests.debug.xcconfig */,
+				01DA34DC16B684B8620233A7 /* Pods-TesteiOSv2-MariaEugeniaTests.release.xcconfig */,
+				569B4E09CB990409B846DCBF /* Pods-TesteiOSv2-MariaEugeniaUITests.debug.xcconfig */,
+				CC77B1FB1675522B9E6A6CF2 /* Pods-TesteiOSv2-MariaEugeniaUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F4605BE621E82181008C9F90 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +129,8 @@
 				F4605C0621E82182008C9F90 /* TesteiOSv2-MariaEugeniaTests */,
 				F4605C1121E82182008C9F90 /* TesteiOSv2-MariaEugeniaUITests */,
 				F4605BF021E82181008C9F90 /* Products */,
+				6F8A53C79663357A7954B80C /* Pods */,
+				559B29E405995C074092F936 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +147,9 @@
 		F4605BF121E82181008C9F90 /* TesteiOSv2-MariaEugenia */ = {
 			isa = PBXGroup;
 			children = (
+				F4605C2321E82C9A008C9F90 /* Resources */,
+				F4605C2021E82886008C9F90 /* Network */,
+				F4605C2821E83220008C9F90 /* Model */,
 				F4605BF221E82181008C9F90 /* AppDelegate.swift */,
 				F4605BF421E82181008C9F90 /* ViewController.swift */,
 				F4605BF621E82181008C9F90 /* Main.storyboard */,
@@ -125,6 +178,32 @@
 			path = "TesteiOSv2-MariaEugeniaUITests";
 			sourceTree = "<group>";
 		};
+		F4605C2021E82886008C9F90 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F4605C2121E82B02008C9F90 /* TesteAPI.swift */,
+				F4605C2621E83081008C9F90 /* TesteAPIManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F4605C2321E82C9A008C9F90 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F4605C2421E82CD3008C9F90 /* Config.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F4605C2821E83220008C9F90 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4605C2B21E839F7008C9F90 /* UserAccountModel.swift */,
+				F4605C2D21E8410D008C9F90 /* StatementModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4605C1721E82182008C9F90 /* Build configuration list for PBXNativeTarget "TesteiOSv2-MariaEugenia" */;
 			buildPhases = (
+				A2DBB34B72E1582E37EC633E /* [CP] Check Pods Manifest.lock */,
 				F4605BEB21E82181008C9F90 /* Sources */,
 				F4605BEC21E82181008C9F90 /* Frameworks */,
 				F4605BED21E82181008C9F90 /* Resources */,
+				F6E72EAA8971CC11F19B822F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +230,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4605C1A21E82182008C9F90 /* Build configuration list for PBXNativeTarget "TesteiOSv2-MariaEugeniaTests" */;
 			buildPhases = (
+				F511919EEA8EE6F969D20C06 /* [CP] Check Pods Manifest.lock */,
 				F4605BFF21E82182008C9F90 /* Sources */,
 				F4605C0021E82182008C9F90 /* Frameworks */,
 				F4605C0121E82182008C9F90 /* Resources */,
@@ -167,6 +249,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4605C1D21E82182008C9F90 /* Build configuration list for PBXNativeTarget "TesteiOSv2-MariaEugeniaUITests" */;
 			buildPhases = (
+				C7BA72ED4CFB9ECE7FA46673 /* [CP] Check Pods Manifest.lock */,
 				F4605C0A21E82182008C9F90 /* Sources */,
 				F4605C0B21E82182008C9F90 /* Frameworks */,
 				F4605C0C21E82182008C9F90 /* Resources */,
@@ -251,13 +334,115 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A2DBB34B72E1582E37EC633E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TesteiOSv2-MariaEugenia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7BA72ED4CFB9ECE7FA46673 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TesteiOSv2-MariaEugeniaUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F511919EEA8EE6F969D20C06 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TesteiOSv2-MariaEugeniaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6E72EAA8971CC11F19B822F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TesteiOSv2-MariaEugenia/Pods-TesteiOSv2-MariaEugenia-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TesteiOSv2-MariaEugenia/Pods-TesteiOSv2-MariaEugenia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F4605BEB21E82181008C9F90 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4605C2C21E839F7008C9F90 /* UserAccountModel.swift in Sources */,
 				F4605BF521E82181008C9F90 /* ViewController.swift in Sources */,
+				F4605C2521E82CD3008C9F90 /* Config.swift in Sources */,
+				F4605C2221E82B02008C9F90 /* TesteAPI.swift in Sources */,
+				F4605C2721E83081008C9F90 /* TesteAPIManager.swift in Sources */,
 				F4605BF321E82181008C9F90 /* AppDelegate.swift in Sources */,
+				F4605C2E21E8410D008C9F90 /* StatementModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,17 +615,20 @@
 		};
 		F4605C1821E82182008C9F90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17B688EF5D8D23B17BBA7922 /* Pods-TesteiOSv2-MariaEugenia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L2479GFA4C;
 				INFOPLIST_FILE = "TesteiOSv2-MariaEugenia/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mariateixeira.TesteiOSv2-MariaEugenia";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SERVER_URL = "https://bank-app-test.herokuapp.com/api/";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -448,17 +636,20 @@
 		};
 		F4605C1921E82182008C9F90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFB04E1BBF5DEF05B8FB0BDA /* Pods-TesteiOSv2-MariaEugenia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L2479GFA4C;
 				INFOPLIST_FILE = "TesteiOSv2-MariaEugenia/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mariateixeira.TesteiOSv2-MariaEugenia";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SERVER_URL = "https://bank-app-test.herokuapp.com/api/";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -466,6 +657,7 @@
 		};
 		F4605C1B21E82182008C9F90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC79D7C2216B3BB020B419EF /* Pods-TesteiOSv2-MariaEugeniaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -486,6 +678,7 @@
 		};
 		F4605C1C21E82182008C9F90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01DA34DC16B684B8620233A7 /* Pods-TesteiOSv2-MariaEugeniaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -506,6 +699,7 @@
 		};
 		F4605C1E21E82182008C9F90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 569B4E09CB990409B846DCBF /* Pods-TesteiOSv2-MariaEugeniaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -525,6 +719,7 @@
 		};
 		F4605C1F21E82182008C9F90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC77B1FB1675522B9E6A6CF2 /* Pods-TesteiOSv2-MariaEugeniaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

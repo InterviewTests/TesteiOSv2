@@ -1,0 +1,22 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'TesteiOSv2-MariaEugenia' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for TesteiOSv2-MariaEugenia
+  pod 'Moya'
+  pod 'IQKeyboardManagerSwift'
+
+  target 'TesteiOSv2-MariaEugeniaTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'TesteiOSv2-MariaEugeniaUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
