@@ -14,7 +14,7 @@
 		2D07996121E81EB600638AC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D07995F21E81EB600638AC1 /* LaunchScreen.storyboard */; };
 		2D07996C21E81EB600638AC1 /* TesteiOSv2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07996B21E81EB600638AC1 /* TesteiOSv2Tests.swift */; };
 		2D07997721E8229100638AC1 /* Statements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D07997621E8229100638AC1 /* Statements.storyboard */; };
-		2D07997921E825F000638AC1 /* EspenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D07997821E825F000638AC1 /* EspenseTableViewCell.xib */; };
+		2D07997921E825F000638AC1 /* StatementTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D07997821E825F000638AC1 /* StatementTableCell.xib */; };
 		2D07997E21E8326E00638AC1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07997D21E8326E00638AC1 /* LoginViewController.swift */; };
 		2D07998021E834D600638AC1 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07997F21E834D600638AC1 /* LoginInteractor.swift */; };
 		2D07998221E8357300638AC1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07998121E8357300638AC1 /* LoginPresenter.swift */; };
@@ -28,6 +28,10 @@
 		2D07999521E8607400638AC1 /* StatementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07999421E8607400638AC1 /* StatementsPresenter.swift */; };
 		2D07999721E8608100638AC1 /* StatementsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07999621E8608100638AC1 /* StatementsModels.swift */; };
 		2D07999921E8609300638AC1 /* StatementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07999821E8609300638AC1 /* StatementsInteractor.swift */; };
+		2DCD67AB21E86FA300E7E2E9 /* StatementsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD67AA21E86FA300E7E2E9 /* StatementsWorker.swift */; };
+		2DCD67AD21E8704B00E7E2E9 /* StatementsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD67AC21E8704B00E7E2E9 /* StatementsAPI.swift */; };
+		2DCD67AF21E8707F00E7E2E9 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD67AE21E8707F00E7E2E9 /* Statement.swift */; };
+		2DCD67B121E879DD00E7E2E9 /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD67B021E879DD00E7E2E9 /* StatementTableViewCell.swift */; };
 		7189E21D2CA50DE56AA74286 /* Pods_TesteiOSv2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9A4980849717B475354422 /* Pods_TesteiOSv2Tests.framework */; };
 		98E8C364FED8D4CE9A9FB92C /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CBE123DB89F329B2A7DD122 /* Pods_TesteiOSv2.framework */; };
 /* End PBXBuildFile section */
@@ -55,7 +59,7 @@
 		2D07996B21E81EB600638AC1 /* TesteiOSv2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteiOSv2Tests.swift; sourceTree = "<group>"; };
 		2D07996D21E81EB700638AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D07997621E8229100638AC1 /* Statements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statements.storyboard; sourceTree = "<group>"; };
-		2D07997821E825F000638AC1 /* EspenseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EspenseTableViewCell.xib; sourceTree = "<group>"; };
+		2D07997821E825F000638AC1 /* StatementTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementTableCell.xib; sourceTree = "<group>"; };
 		2D07997D21E8326E00638AC1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2D07997F21E834D600638AC1 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		2D07998121E8357300638AC1 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -69,6 +73,10 @@
 		2D07999421E8607400638AC1 /* StatementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsPresenter.swift; sourceTree = "<group>"; };
 		2D07999621E8608100638AC1 /* StatementsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsModels.swift; sourceTree = "<group>"; };
 		2D07999821E8609300638AC1 /* StatementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractor.swift; sourceTree = "<group>"; };
+		2DCD67AA21E86FA300E7E2E9 /* StatementsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsWorker.swift; sourceTree = "<group>"; };
+		2DCD67AC21E8704B00E7E2E9 /* StatementsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsAPI.swift; sourceTree = "<group>"; };
+		2DCD67AE21E8707F00E7E2E9 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
+		2DCD67B021E879DD00E7E2E9 /* StatementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
 		3CBE123DB89F329B2A7DD122 /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66AF7D728254CBEF71529865 /* Pods-TesteiOSv2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2/Pods-TesteiOSv2.release.xcconfig"; sourceTree = "<group>"; };
 		BA4231B3C31F8767BEC14B01 /* Pods-TesteiOSv2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,7 +131,6 @@
 				2D07998D21E84BBA00638AC1 /* Services */,
 				2D07997A21E831BF00638AC1 /* Scenes */,
 				2D07998A21E8492500638AC1 /* Workers */,
-				2D07997821E825F000638AC1 /* EspenseTableViewCell.xib */,
 				2D07995321E81EB500638AC1 /* AppDelegate.swift */,
 				2D07995D21E81EB600638AC1 /* Assets.xcassets */,
 				2D07995F21E81EB600638AC1 /* LaunchScreen.storyboard */,
@@ -173,6 +180,8 @@
 				2D07999421E8607400638AC1 /* StatementsPresenter.swift */,
 				2D07999221E8606700638AC1 /* StatementsRouter.swift */,
 				2D07999021E85FC300638AC1 /* StatementsViewController.swift */,
+				2D07997821E825F000638AC1 /* StatementTableCell.xib */,
+				2DCD67B021E879DD00E7E2E9 /* StatementTableViewCell.swift */,
 			);
 			path = Statements;
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				2D07998821E8489000638AC1 /* User.swift */,
+				2DCD67AE21E8707F00E7E2E9 /* Statement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +198,7 @@
 		2D07998A21E8492500638AC1 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				2DCD67AA21E86FA300E7E2E9 /* StatementsWorker.swift */,
 				2D07998B21E8494400638AC1 /* UsersWorker.swift */,
 			);
 			path = Workers;
@@ -197,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				2D07998E21E84BF100638AC1 /* UsersAPI.swift */,
+				2DCD67AC21E8704B00E7E2E9 /* StatementsAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -309,7 +321,7 @@
 				2D07997721E8229100638AC1 /* Statements.storyboard in Resources */,
 				2D07995E21E81EB600638AC1 /* Assets.xcassets in Resources */,
 				2D07995921E81EB500638AC1 /* Login.storyboard in Resources */,
-				2D07997921E825F000638AC1 /* EspenseTableViewCell.xib in Resources */,
+				2D07997921E825F000638AC1 /* StatementTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,13 +411,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D07998021E834D600638AC1 /* LoginInteractor.swift in Sources */,
+				2DCD67B121E879DD00E7E2E9 /* StatementTableViewCell.swift in Sources */,
+				2DCD67AF21E8707F00E7E2E9 /* Statement.swift in Sources */,
 				2D07997E21E8326E00638AC1 /* LoginViewController.swift in Sources */,
 				2D07999321E8606700638AC1 /* StatementsRouter.swift in Sources */,
+				2DCD67AB21E86FA300E7E2E9 /* StatementsWorker.swift in Sources */,
 				2D07998621E8461500638AC1 /* LoginModels.swift in Sources */,
 				2D07998421E840FD00638AC1 /* LoginRouter.swift in Sources */,
 				2D07998C21E8494400638AC1 /* UsersWorker.swift in Sources */,
 				2D07998921E8489000638AC1 /* User.swift in Sources */,
 				2D07995C21E81EB500638AC1 /* TesteiOSv2.xcdatamodeld in Sources */,
+				2DCD67AD21E8704B00E7E2E9 /* StatementsAPI.swift in Sources */,
 				2D07998F21E84BF100638AC1 /* UsersAPI.swift in Sources */,
 				2D07995421E81EB500638AC1 /* AppDelegate.swift in Sources */,
 				2D07999521E8607400638AC1 /* StatementsPresenter.swift in Sources */,

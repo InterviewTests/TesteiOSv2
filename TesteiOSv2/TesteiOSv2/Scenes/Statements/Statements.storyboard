@@ -107,12 +107,13 @@
                                 <color key="textColor" red="0.28235294117647058" green="0.32941176470588235" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F9w-Tf-wsx">
-                                <rect key="frame" x="16" y="282" width="343" height="385"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="80" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F9w-Tf-wsx">
+                                <rect key="frame" x="16" y="266" width="343" height="401"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="P9C-FV-57V" firstAttribute="trailing" secondItem="Fma-bF-YVf" secondAttribute="trailing" id="3tM-C8-KOs"/>
                             <constraint firstItem="F9w-Tf-wsx" firstAttribute="leading" secondItem="P9C-FV-57V" secondAttribute="leading" constant="16" id="640-rk-Gt7"/>
@@ -121,7 +122,7 @@
                             <constraint firstItem="P9C-FV-57V" firstAttribute="bottom" secondItem="F9w-Tf-wsx" secondAttribute="bottom" id="Lq0-bH-zHX"/>
                             <constraint firstItem="I6P-Rh-vwa" firstAttribute="top" secondItem="Fma-bF-YVf" secondAttribute="bottom" constant="16" id="TUr-av-mNm"/>
                             <constraint firstItem="Fma-bF-YVf" firstAttribute="leading" secondItem="P9C-FV-57V" secondAttribute="leading" id="UpD-1P-ffb"/>
-                            <constraint firstItem="F9w-Tf-wsx" firstAttribute="top" secondItem="I6P-Rh-vwa" secondAttribute="bottom" constant="16" id="Znq-Sp-wAw"/>
+                            <constraint firstItem="F9w-Tf-wsx" firstAttribute="top" secondItem="I6P-Rh-vwa" secondAttribute="bottom" id="Znq-Sp-wAw"/>
                             <constraint firstItem="P9C-FV-57V" firstAttribute="trailing" secondItem="F9w-Tf-wsx" secondAttribute="trailing" constant="16" id="u1P-vo-5G4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P9C-FV-57V"/>
@@ -129,6 +130,7 @@
                     <connections>
                         <outlet property="accountLabel" destination="Gik-V6-sVP" id="RaX-lt-pJa"/>
                         <outlet property="balanceLabel" destination="cvT-XU-N7W" id="I57-AS-JcN"/>
+                        <outlet property="statementsTableView" destination="F9w-Tf-wsx" id="eIu-U3-bbG"/>
                         <outlet property="userLabel" destination="I94-CU-Kxy" id="DJs-LN-WTI"/>
                     </connections>
                 </viewController>

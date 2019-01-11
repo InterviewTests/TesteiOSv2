@@ -9,9 +9,17 @@
 import UIKit
 
 protocol StatementsBusinessLogic {
-    
+    func getStatements(request: Statements.GetStatements.Request)
 }
 
 class StatementsInteractor: StatementsBusinessLogic {
     var presenter: StatementsPresentationLogic?
+    var statementsWorker = StatementsWorker(statementsStore: StatementsAPI())
+    
+    func getStatements(request: Statements.GetStatements.Request) {
+        self.statementsWorker.getStatements() {(statements: [Statement]?) in
+            let response = Statements.GetStatements.Response(statements: statements)
+            self.presenter?.showStatements(response: response)
+        }
+    }
 }

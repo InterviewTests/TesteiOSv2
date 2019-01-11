@@ -9,9 +9,14 @@
 import UIKit
 
 protocol StatementsPresentationLogic {
-    
+    func showStatements(response: Statements.GetStatements.Response)
 }
 
 class StatementsPresenter: StatementsPresentationLogic {
     weak var viewController: StatementsDisplayLogic?
+    
+    func showStatements(response: Statements.GetStatements.Response) {
+        let viewModel = Statements.GetStatements.ViewModel(statements: response.statements)
+        viewController?.showStatements(viewModel: viewModel)
+    }
 }

@@ -14,18 +14,16 @@ enum Login {
         var password: String
     }
     
-    enum LoginUser
-    {
-        struct Request
-        {
+    enum LoginUser {
+        struct Request {
             var loginFormFields: LoginFormFields
         }
-        struct Response
-        {
+        
+        struct Response {
             var user: User?
         }
-        struct ViewModel
-        {
+        
+        struct ViewModel {
             var user: User?
         }
     }

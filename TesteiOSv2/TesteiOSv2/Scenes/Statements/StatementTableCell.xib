@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Hem-tg-QXN">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Hem-tg-QXN" customClass="StatementTableViewCell" customModule="TesteiOSv2" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hem-tg-QXN" id="K4i-DV-171">
@@ -57,6 +57,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="yWQ-BK-L2m" firstAttribute="leading" secondItem="YcF-9h-tat" secondAttribute="trailing" constant="8" id="8tg-qt-M01"/>
                     <constraint firstItem="Owm-B5-tIC" firstAttribute="leading" secondItem="uAT-h6-Al7" secondAttribute="trailing" constant="8" id="AJ4-cA-Zlk"/>
@@ -70,6 +71,12 @@
                     <constraint firstItem="Owm-B5-tIC" firstAttribute="trailing" secondItem="K4i-DV-171" secondAttribute="trailingMargin" id="zVO-dS-R4U"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="dateLabel" destination="Owm-B5-tIC" id="AD6-rt-Kpv"/>
+                <outlet property="descLabel" destination="YcF-9h-tat" id="Vgx-Vv-Qbu"/>
+                <outlet property="titleLabel" destination="uAT-h6-Al7" id="io4-6A-gFV"/>
+                <outlet property="valueLabel" destination="yWQ-BK-L2m" id="dIF-Te-scH"/>
+            </connections>
             <point key="canvasLocation" x="26" y="99"/>
         </tableViewCell>
     </objects>

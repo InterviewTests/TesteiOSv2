@@ -8,9 +8,24 @@
 
 import UIKit
 
-enum Statement {
-    struct StatementFormFields {
-        var user: String
-        var password: String
+enum Statements {
+    struct StatementsFormFields {
+        var title: String
+        var desc: String
+        var date: String
+        var value: Float
+    }
+    
+    enum GetStatements {
+        struct Request {
+        }
+        
+        struct Response {
+            var statements: [Statement]?
+        }
+        
+        struct ViewModel {
+            var statements: [Statement]?
+        }
     }
 }
