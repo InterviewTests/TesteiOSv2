@@ -9,8 +9,8 @@
 import UIKit
 
 struct StatementModel: Decodable {
-    let statementList: [StatementList]
-    let error: ErrorModel
+    let statementList: [StatementList]?
+    let error: ErrorModel?
 }
 
 struct StatementList: Decodable {
