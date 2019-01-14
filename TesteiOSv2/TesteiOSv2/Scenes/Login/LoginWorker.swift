@@ -13,8 +13,10 @@
 import UIKit
 
 protocol LoginStoreProtocol {
-  func save(username: String)
-  func save(password: String)
+  func deleteUsername()
+  func deletePassword()
+  func set(username: String)
+  func set(password: String)
   func getUsername() -> String?
   func getPassword() -> String?
 }
@@ -33,8 +35,8 @@ class LoginWorker {
   }
   
   func login(request: Login.Request, completion: @escaping (Result<User, LoginError>) -> ()) {
-    dataStore.save(username: request.username)
-    dataStore.save(password: request.password)
+    dataStore.set(username: request.username)
+    dataStore.set(password: request.password)
     networkManager.login(request: request) { result in
       completion(result)
     }

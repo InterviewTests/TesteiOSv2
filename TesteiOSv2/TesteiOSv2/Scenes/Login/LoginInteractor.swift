@@ -57,7 +57,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     }
   }
   
-  private func checkLoginRules(userName: String, password: String) -> LoginError? {
+  func checkLoginRules(userName: String, password: String) -> LoginError? {
     if !userName.isValidCPF && !userName.isValidEmail {
       return LoginError.invalidUsername
     }

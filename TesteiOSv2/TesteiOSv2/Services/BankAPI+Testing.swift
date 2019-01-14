@@ -9,8 +9,6 @@
 import Foundation
 import Moya
 
-@testable import TesteiOSv2
-
 extension BankAPI {
   var sampleData: Data {
     switch self {
@@ -21,8 +19,8 @@ extension BankAPI {
     }
   }
   
-  func stubbedResponse(_ filename: String) -> Data! {
-    let path = Bundle.main.path(forResource: filename, ofType: "json")
+  func stubbedResponse(_ filename: String, bundle: Bundle = .main) -> Data! {
+    let path = bundle.path(forResource: filename, ofType: "json")
     return (try? Data(contentsOf: URL(fileURLWithPath: path!)))
   }
 }

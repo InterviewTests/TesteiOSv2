@@ -16,12 +16,22 @@ class LoginKeychainStore: LoginStoreProtocol {
     static let password: String = "\(keychainPrefix).password"
   }
   
-  func save(username: String) {
+  func deleteUsername() {
+    let keychain = KeychainSwift(keyPrefix: Key.keychainPrefix)
+    keychain.delete(Key.username)
+  }
+  
+  func deletePassword() {
+    let keychain = KeychainSwift(keyPrefix: Key.keychainPrefix)
+    keychain.delete(Key.password)
+  }
+  
+  func set(username: String) {
     let keychain = KeychainSwift(keyPrefix: Key.keychainPrefix)
     keychain.set(username, forKey: Key.username)
   }
   
-  func save(password: String) {
+  func set(password: String) {
     let keychain = KeychainSwift(keyPrefix: Key.keychainPrefix)
     keychain.set(password, forKey: Key.password)
   }
