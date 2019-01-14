@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+extension Date {
+  static func stringFormatter(from: String = "yyyy-MM-dd", to: String = "dd/MM/yyyy", value: String) -> String? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = from
+    let date = dateFormatter.date(from: value)
+    dateFormatter.dateFormat = to
+    return dateFormatter.string(from: date!)
+  }
+}

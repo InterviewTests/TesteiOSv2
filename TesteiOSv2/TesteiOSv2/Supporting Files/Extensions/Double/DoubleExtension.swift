@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+extension Double {
+  static func toCurrency(value: Double) -> String? {
+    let formatter = NumberFormatter()
+    formatter.locale = Locale.init(identifier: "pt_BR")
+    formatter.numberStyle = .currency
+    return formatter.string(from: value as NSNumber)
+  }
+}
