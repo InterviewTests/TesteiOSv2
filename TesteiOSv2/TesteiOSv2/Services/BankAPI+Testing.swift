@@ -9,6 +9,8 @@
 import Foundation
 import Moya
 
+@testable import TesteiOSv2
+
 extension BankAPI {
   var sampleData: Data {
     switch self {
