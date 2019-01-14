@@ -19,7 +19,7 @@ enum APIEnvironment {
 protocol Networkable {
   var provider: MoyaProvider<BankAPI> { get }
   func login(request: Login.Request, completion: @escaping (Result<User, LoginError>) -> ())
-  
+  func fetchStatements(request: Statements.Data.Request, completion: @escaping (Result<[Statement], LoginError>) -> ())
 }
 
 struct NetworkManager: Networkable {
@@ -47,5 +47,28 @@ struct NetworkManager: Networkable {
           completion(result)
         }
       }
+  }
+  
+  func fetchStatements(request: Statements.Data.Request, completion: @escaping (Result<[Statement], LoginError>) -> ()) {
+    provider.request(.statements(userId: request.userId)) { result in
+      switch result {
+      case .success(let response):
+        do {
+          let statemetsData = try JSONDecoder().decode(StatementList.self, from: response.data)
+          let result = Result<[Statement], LoginError>.success(statemetsData.statements!)
+          completion(result)
+        } catch let error {
+          fatalError("data could not be decoded: \(error)")
+        }
+      case .failure:
+        let result: Result<[Statement], LoginError>
+        if Connectivity.isConnectedToInternet() {
+          result = Result<[Statement], LoginError>.failure(LoginError.networkFailure)
+        } else {
+          result = Result<[Statement], LoginError>.failure(LoginError.noInternetConnection)
+        }
+        completion(result)
+      }
+    }
   }
 }

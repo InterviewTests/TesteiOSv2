@@ -11,7 +11,7 @@ import Moya
 
 enum BankAPI {
   case login(username: String, password: String)
-  case statements(userId: String)
+  case statements(userId: Int)
 }
 
 extension BankAPI: TargetType {
