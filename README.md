@@ -1,3 +1,31 @@
+This is a demo application where you can:
+* Insert an email or a cpf and a password to login.
+* After login has completed you will see some account informations.
+* You can refresh the statements data.
+* You can logout too.
+	
+In the first screen it will show the last valid user, if it exists.
+	
+Obs.:
+* CPF must have 11 numbers 
+* password must have 1 uppercase, 1 alphanumeric and 1 especial character
+	
+	
+Although simple, it is being used:
+* Clean Swift architecture (VIP)
+* API RESTful 
+* Unit Tests
+* Keychain for secure information persistence
+
+Carthage:
+* Moya, set up an API Manager in no time, clean code and best practices, focus on your applications core features instead     of networking, easy to stub network responses for unit tests.
+* Quick and Nimble, it's more simple and readable to do Unit Tests.
+* KeychainSwift, for persistance of safe data.
+  
+Before you can run the project you must execute the following command:
+  
+  `carthage update --platform iOS`
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
