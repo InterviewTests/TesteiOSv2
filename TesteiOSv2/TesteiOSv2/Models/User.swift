@@ -36,7 +36,24 @@ extension User: Decodable {
   }
 }
 
-struct Error: Decodable {}
+struct Error: Swift.Error {
+  let code: Int?
+  let message: String?
+}
+
+extension Error: Decodable {
+  enum ErrorCondingKeys: String, CodingKey {
+    case code
+    case message
+  }
+  
+  init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: ErrorCondingKeys.self)
+    
+    code = try container.decode(Int.self, forKey: .code)
+    message = try container.decode(String.self, forKey: .message)
+  }
+}
 
 struct UserAccount {
   let user: User?
@@ -52,10 +69,14 @@ extension UserAccount: Decodable {
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: UserAccountCodingKeys.self)
     
-    user  = try container.decode(User.self, forKey: .user)
-    error = try container.decode(Error.self, forKey: .error)
+    if container.contains(.user) {
+      user  = try container.decode(User.self, forKey: .user)
+      error = nil
+    } else {
+      user = nil
+      error = try container.decode(Error.self, forKey: .error)
+    }
   }
-  
 }
 
 

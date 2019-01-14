@@ -18,7 +18,7 @@ protocol LoginDisplayLogic: class {
   func displayFilledLoginTextFields(viewModel: Login.TextFieldsData.ViewModel)
 }
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
   var interactor: LoginBusinessLogic?
   var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
   
@@ -74,21 +74,22 @@ class LoginViewController: UIViewController {
     self.setupView()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    checkTextFields()
+  }
+  
   // MARK: Login
   
   @IBAction func login(_ sender: UIButton) {
     let request = Login.Request(username: usernameTextField.text!, password: passwordTextField.text!)
     interactor?.login(request: request)
     sender.setTitle("", for: .normal)
+    sender.isUserInteractionEnabled = false
     activityIndicator.startAnimating()
   }
   
-  func setupTextFields() {
-    interactor?.getLoginTextFieldsData(request: Login.TextFieldsData.Request())
-    checkTextFields()
-  }
-  
-  func checkTextFields() {
+  private func checkTextFields() {
     if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
       enableLoginButton(false)
     } else {
@@ -96,17 +97,17 @@ class LoginViewController: UIViewController {
     }
   }
   
-  func setupView() {
+  private func setupView() {
     view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-    setupTextFields()
+    interactor?.getLoginTextFieldsData(request: Login.TextFieldsData.Request())
   }
   
-  @objc func dismissKeyboard() {
+  @objc private func dismissKeyboard() {
     view.endEditing(true)
     checkTextFields()
   }
   
-  func enableLoginButton(_ isEnabled: Bool = false) {
+  private func enableLoginButton(_ isEnabled: Bool = false) {
     let alpha: CGFloat = isEnabled ? 1 : 0.4
     loginButton.setTitle("Login", for: .normal)
     loginButton.setTitleColor(UIColor.white.withAlphaComponent(alpha), for: .normal)
@@ -117,6 +118,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginDisplayLogic {
   func displayLoginSucceeded(viewModel: Login.ViewModel) {
     router?.routeToStatements()
+    activityIndicator.stopAnimating()
   }
   
   func displayLoginErrorMessage(viewModel: Login.ViewModel) {
