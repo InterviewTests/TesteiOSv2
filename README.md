@@ -8,7 +8,7 @@ In the first screen it will show the last valid user, if it exists.
 	
 Obs.:
 * CPF must have 11 numbers 
-* password must have 1 uppercase, 1 alphanumeric and 1 especial character
+* Password must have 1 uppercase, 1 alphanumeric and 1 especial character
 	
 	
 Although simple, it is being used:
