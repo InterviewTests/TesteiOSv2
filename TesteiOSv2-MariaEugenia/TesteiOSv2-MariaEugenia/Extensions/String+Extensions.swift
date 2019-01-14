@@ -15,4 +15,14 @@ extension String {
         let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: self)
     }
+    
+    func convertDate() -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+        if let showDate = inputFormatter.date(from: self) {
+            inputFormatter.dateFormat = "dd/MM/yyyy"
+            return inputFormatter.string(from: showDate)
+        } else { return self }
+    }
+
 }

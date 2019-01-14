@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
         if validateUserAndPassword() {
             if let user = userTextField.text, let password = passwordTextField.text {
                 TesteAPIManager.shared.login(withLogin: user, andPassword: password, failure: { (error) in
-                    self.presentMessage(error ?? "Something went wront. Try again")
+                    self.presentMessage(error ?? "Tivemos um problema, tente novamente.")
                 }) { (userResult) in
                     if let errorMessage = userResult?.error?.message {
                         self.presentMessage(errorMessage)
@@ -37,12 +37,12 @@ class LoginViewController: UIViewController {
     func validateUserAndPassword() -> Bool {
         
         if userTextField.text?.isEmpty ?? true {
-            self.presentMessage("Please enter a user")
+            self.presentMessage("Por favor, insira um usuário")
             return false
         } else {
             if passwordTextField.text?.isValidPassord() ?? false { return true }
             else {
-                self.presentMessage("The password must contain at least one uppercase letter, one special character and one number")
+                self.presentMessage("A senha deve ter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico")
                 return false
             }
         }

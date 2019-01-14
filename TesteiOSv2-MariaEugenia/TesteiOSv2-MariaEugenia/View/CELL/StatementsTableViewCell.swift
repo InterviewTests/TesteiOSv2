@@ -19,7 +19,7 @@ class StatementsTableViewCell: UITableViewCell {
         
         titleLabel.text = statement.title
         descriptionLabel.text = statement.desc
-        dateLabel.text = statement.date
-        valueLabel.text = "\(statement.value ?? 0)"
+        dateLabel.text = statement.date?.convertDate()
+        valueLabel.text = "\(statement.value?.formatCurrency() ?? "-")"
     }
 }
