@@ -104,7 +104,9 @@ final class LoginViewController: UIViewController {
   
   @objc private func dismissKeyboard() {
     view.endEditing(true)
-    checkTextFields()
+    if loginButton.isUserInteractionEnabled {
+      checkTextFields()
+    }
   }
   
   private func enableLoginButton(_ isEnabled: Bool = false) {
@@ -122,7 +124,7 @@ extension LoginViewController: LoginDisplayLogic {
   }
   
   func displayLoginErrorMessage(viewModel: Login.ViewModel) {
-    enableLoginButton(true)
+    checkTextFields()
     activityIndicator.stopAnimating()
     let error = viewModel.error!
     alert(message: error.description.message, title: error.description.title)
@@ -131,7 +133,6 @@ extension LoginViewController: LoginDisplayLogic {
   func displayFilledLoginTextFields(viewModel: Login.TextFieldsData.ViewModel) {
     usernameTextField.text = viewModel.username
     passwordTextField.text = viewModel.password
-    checkTextFields()
   }
 }
 
@@ -141,7 +142,7 @@ extension LoginViewController: UITextFieldDelegate {
       passwordTextField.becomeFirstResponder()
     } else {
       passwordTextField.resignFirstResponder()
-      enableLoginButton(true)
+      checkTextFields()
     }
     return true
   }
