@@ -13,6 +13,10 @@
 		03B284FD21ED5A4900B8DCEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03B284FC21ED5A4900B8DCEE /* Assets.xcassets */; };
 		03B2850021ED5A4900B8DCEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03B284FE21ED5A4900B8DCEE /* LaunchScreen.storyboard */; };
 		03B2850B21ED5A4900B8DCEE /* TesteiOSv2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2850A21ED5A4900B8DCEE /* TesteiOSv2Tests.swift */; };
+		03B2851D21ED6B3F00B8DCEE /* APISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2851C21ED6B3F00B8DCEE /* APISettings.swift */; };
+		03B2851F21ED6BDA00B8DCEE /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2851E21ED6BDA00B8DCEE /* AppConstants.swift */; };
+		03B2852121EE2D4F00B8DCEE /* UserAccont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852021EE2D4F00B8DCEE /* UserAccont.swift */; };
+		03B2852321EE2DC300B8DCEE /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852221EE2DC300B8DCEE /* UserLogin.swift */; };
 		7E6279E53C9ED46F29C48BB1 /* Pods_TesteiOSv2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD1163A6AD933F1EF20339F5 /* Pods_TesteiOSv2Tests.framework */; };
 		893D9F3E187A57CD58F452F0 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526FB2D85887199548EA1B75 /* Pods_TesteiOSv2.framework */; };
 /* End PBXBuildFile section */
@@ -38,6 +42,10 @@
 		03B2850621ED5A4900B8DCEE /* TesteiOSv2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TesteiOSv2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03B2850A21ED5A4900B8DCEE /* TesteiOSv2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteiOSv2Tests.swift; sourceTree = "<group>"; };
 		03B2850C21ED5A4900B8DCEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03B2851C21ED6B3F00B8DCEE /* APISettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISettings.swift; sourceTree = "<group>"; };
+		03B2851E21ED6BDA00B8DCEE /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		03B2852021EE2D4F00B8DCEE /* UserAccont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccont.swift; sourceTree = "<group>"; };
+		03B2852221EE2DC300B8DCEE /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		07A53BCBC301AA25E4CA2896 /* Pods-TesteiOSv2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		526FB2D85887199548EA1B75 /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		639DB3C09B80052F715F600E /* Pods-TesteiOSv2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,10 +97,10 @@
 		03B284F421ED5A4600B8DCEE /* TesteiOSv2 */ = {
 			isa = PBXGroup;
 			children = (
+				03B2851521ED5E7A00B8DCEE /* Scenes */,
 				03B2851921ED5EEC00B8DCEE /* Workers */,
 				03B2851821ED5EE100B8DCEE /* Models */,
 				03B2851721ED5EC500B8DCEE /* Constants */,
-				03B2851521ED5E7A00B8DCEE /* Scenes */,
 				03B2851621ED5E9200B8DCEE /* Extensions */,
 				03B284F721ED5A4600B8DCEE /* ViewController.swift */,
 				03B284F521ED5A4600B8DCEE /* AppDelegate.swift */,
@@ -131,6 +139,7 @@
 		03B2851721ED5EC500B8DCEE /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				03B2851E21ED6BDA00B8DCEE /* AppConstants.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -138,6 +147,8 @@
 		03B2851821ED5EE100B8DCEE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				03B2852021EE2D4F00B8DCEE /* UserAccont.swift */,
+				03B2852221EE2DC300B8DCEE /* UserLogin.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -145,6 +156,7 @@
 		03B2851921ED5EEC00B8DCEE /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				03B2851B21ED6AFE00B8DCEE /* TesteiOSv2API */,
 			);
 			name = Workers;
 			sourceTree = "<group>";
@@ -154,6 +166,14 @@
 			children = (
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		03B2851B21ED6AFE00B8DCEE /* TesteiOSv2API */ = {
+			isa = PBXGroup;
+			children = (
+				03B2851C21ED6B3F00B8DCEE /* APISettings.swift */,
+			);
+			name = TesteiOSv2API;
 			sourceTree = "<group>";
 		};
 		3A129FAD5ED2516099211A32 /* Pods */ = {
@@ -353,6 +373,10 @@
 			files = (
 				03B284F821ED5A4600B8DCEE /* ViewController.swift in Sources */,
 				03B284F621ED5A4600B8DCEE /* AppDelegate.swift in Sources */,
+				03B2852321EE2DC300B8DCEE /* UserLogin.swift in Sources */,
+				03B2852121EE2D4F00B8DCEE /* UserAccont.swift in Sources */,
+				03B2851D21ED6B3F00B8DCEE /* APISettings.swift in Sources */,
+				03B2851F21ED6BDA00B8DCEE /* AppConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
