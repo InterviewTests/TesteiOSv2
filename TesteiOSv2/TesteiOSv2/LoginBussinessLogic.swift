@@ -10,6 +10,6 @@ import Foundation
 
 
 protocol LoginBussinessLogic{
-    func validLogin(user: String, password: String) -> Bool
+    func validLogin(user: String, password: String) -> LoginValidationErrorEnum
     func login(user: String, password: String)
 }

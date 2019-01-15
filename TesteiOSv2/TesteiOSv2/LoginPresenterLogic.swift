@@ -10,4 +10,5 @@ import Foundation
 
 protocol LogicPresenterLogic {
     func presentLoginResults(user: UserAccount)
+    func presentLoginError(with loginErrorEnum: LoginValidationErrorEnum)
 }
