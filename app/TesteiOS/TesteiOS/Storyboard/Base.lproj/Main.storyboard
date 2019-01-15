@@ -34,6 +34,7 @@
                     </view>
                     <connections>
                         <outlet property="loginView" destination="c0V-AT-jzO" id="rH3-7V-VKS"/>
+                        <segue destination="vFv-xQ-7u5" kind="show" identifier="confirmLogin" id="QBk-lD-Htg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -48,6 +49,7 @@
                     </connections>
                 </textField>
             </objects>
+            <point key="canvasLocation" x="31" y="26"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="H9N-Tb-pjw">
@@ -57,80 +59,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZp-mV-QfZ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jose da Silva Teste" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73u-Sc-VwV">
-                                        <rect key="frame" x="18" y="30" width="215" height="39"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2050 / 01.111222-4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVc-ag-nky">
-                                        <rect key="frame" x="18" y="116" width="300" height="29"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7p-8p-pL8">
-                                        <rect key="frame" x="335" y="30" width="27" height="37"/>
-                                        <state key="normal" image="logout 2"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-LY-v0M">
-                                        <rect key="frame" x="18" y="97" width="47" height="13"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2N6-ar-3k3">
-                                        <rect key="frame" x="18" y="166" width="47" height="13"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$1.000,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-KT-MqI">
-                                        <rect key="frame" x="18" y="186" width="184" height="29"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.23137254901960785" green="0.28627450980392155" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Qia-KT-MqI" secondAttribute="bottom" constant="17" id="0nF-hE-dqQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="fVc-ag-nky" secondAttribute="bottom" constant="87" id="2yS-4P-DxC"/>
-                                    <constraint firstAttribute="bottom" secondItem="73u-Sc-VwV" secondAttribute="bottom" constant="163" id="635-Ef-2QX"/>
-                                    <constraint firstItem="73u-Sc-VwV" firstAttribute="top" secondItem="CZp-mV-QfZ" secondAttribute="top" constant="30" id="6XL-QD-8eT"/>
-                                    <constraint firstItem="fVc-ag-nky" firstAttribute="leading" secondItem="CZp-mV-QfZ" secondAttribute="leading" constant="18" id="CHb-kA-jEx"/>
-                                    <constraint firstAttribute="trailing" secondItem="fVc-ag-nky" secondAttribute="trailing" constant="57" id="E0H-GU-CG5"/>
-                                    <constraint firstItem="fVc-ag-nky" firstAttribute="top" secondItem="yuK-LY-v0M" secondAttribute="bottom" constant="6" id="Fhp-LK-TsB"/>
-                                    <constraint firstItem="Qia-KT-MqI" firstAttribute="top" secondItem="2N6-ar-3k3" secondAttribute="bottom" constant="7" id="Jfg-M8-KcO"/>
-                                    <constraint firstAttribute="trailing" secondItem="yuK-LY-v0M" secondAttribute="trailing" constant="310" id="Nsp-10-DSJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="2N6-ar-3k3" secondAttribute="bottom" constant="53" id="Rzd-Um-2AU"/>
-                                    <constraint firstAttribute="trailing" secondItem="j7p-8p-pL8" secondAttribute="trailing" constant="13" id="Scj-1U-RM4"/>
-                                    <constraint firstItem="yuK-LY-v0M" firstAttribute="top" secondItem="73u-Sc-VwV" secondAttribute="bottom" constant="28" id="TLs-Oz-LJ6"/>
-                                    <constraint firstItem="2N6-ar-3k3" firstAttribute="top" secondItem="fVc-ag-nky" secondAttribute="bottom" constant="21" id="Thj-za-9Ds"/>
-                                    <constraint firstItem="73u-Sc-VwV" firstAttribute="leading" secondItem="CZp-mV-QfZ" secondAttribute="leading" constant="18" id="WiV-OT-8sY"/>
-                                    <constraint firstAttribute="trailing" secondItem="2N6-ar-3k3" secondAttribute="trailing" constant="310" id="dZv-DV-toq"/>
-                                    <constraint firstAttribute="bottom" secondItem="j7p-8p-pL8" secondAttribute="bottom" constant="165" id="fBc-pO-vWY"/>
-                                    <constraint firstItem="Qia-KT-MqI" firstAttribute="leading" secondItem="CZp-mV-QfZ" secondAttribute="leading" constant="18" id="fEz-S8-kC5"/>
-                                    <constraint firstAttribute="trailing" secondItem="Qia-KT-MqI" secondAttribute="trailing" constant="173" id="fc7-dl-Bbh"/>
-                                    <constraint firstItem="2N6-ar-3k3" firstAttribute="leading" secondItem="CZp-mV-QfZ" secondAttribute="leading" constant="18" id="gUy-de-qrN"/>
-                                    <constraint firstItem="yuK-LY-v0M" firstAttribute="leading" secondItem="CZp-mV-QfZ" secondAttribute="leading" constant="18" id="iJ3-bB-9j2"/>
-                                    <constraint firstAttribute="height" constant="232" id="kLy-u7-79c"/>
-                                    <constraint firstItem="j7p-8p-pL8" firstAttribute="leading" secondItem="73u-Sc-VwV" secondAttribute="trailing" constant="102" id="kZz-8y-ngN"/>
-                                    <constraint firstAttribute="bottom" secondItem="yuK-LY-v0M" secondAttribute="bottom" constant="122" id="p64-BJ-TBR"/>
-                                    <constraint firstItem="j7p-8p-pL8" firstAttribute="top" secondItem="CZp-mV-QfZ" secondAttribute="top" constant="30" id="qAa-hr-6mw"/>
-                                    <constraint firstAttribute="width" constant="375" id="qjs-9h-N7D"/>
-                                    <constraint firstAttribute="trailing" secondItem="73u-Sc-VwV" secondAttribute="trailing" constant="142" id="uCl-qb-rSV"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eiu-qL-dsD" customClass="UserView" customModule="TesteiOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="CZp-mV-QfZ" firstAttribute="top" secondItem="TFt-r8-fe5" secondAttribute="top" id="GmW-ff-cPz"/>
-                            <constraint firstItem="CZp-mV-QfZ" firstAttribute="trailing" secondItem="GT4-GP-4vs" secondAttribute="trailing" id="p3e-LF-rkA"/>
-                            <constraint firstItem="CZp-mV-QfZ" firstAttribute="leading" secondItem="GT4-GP-4vs" secondAttribute="leading" id="vOB-8Z-t0L"/>
+                            <constraint firstItem="Eiu-qL-dsD" firstAttribute="top" secondItem="GT4-GP-4vs" secondAttribute="top" id="PCm-LX-wg6"/>
+                            <constraint firstItem="GT4-GP-4vs" firstAttribute="trailing" secondItem="Eiu-qL-dsD" secondAttribute="trailing" id="WAk-qM-6RO"/>
+                            <constraint firstItem="GT4-GP-4vs" firstAttribute="bottom" secondItem="Eiu-qL-dsD" secondAttribute="bottom" id="pm9-gT-mry"/>
+                            <constraint firstItem="Eiu-qL-dsD" firstAttribute="leading" secondItem="GT4-GP-4vs" secondAttribute="leading" id="whK-eh-C8N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GT4-GP-4vs"/>
                     </view>
@@ -140,7 +79,4 @@
             <point key="canvasLocation" x="1215" y="26"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="logout 2" width="27" height="27"/>
-    </resources>
 </document>

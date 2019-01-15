@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableViewCell" rowHeight="148" id="KGk-i7-Jjw" customClass="UserTableViewCell" customModule="TesteiOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="148"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="147.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxf-6m-VL9">
+                        <rect key="frame" x="16" y="34" width="288" height="80"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagamento" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfP-cP-HaI">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="d7s-4Z-byd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.6588235294117647" green="0.70588235294117641" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/12/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfK-7R-QWq">
+                                <rect key="frame" x="168" y="0.0" width="120" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="yWv-xR-sHK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.6588235294" green="0.70588235290000001" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta de Luz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="A9z-AO-6rB">
+                                <rect key="frame" x="0.0" y="61" width="120" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="07U-cF-9B3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.28235294117647058" green="0.32941176470588235" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 1000,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIG-pf-Wp4">
+                                <rect key="frame" x="108" y="56" width="180" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="75g-D8-MQ7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.28235294119999998" green="0.3294117647" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="1ap-8f-HGK"/>
+                            <constraint firstItem="hfK-7R-QWq" firstAttribute="centerY" secondItem="gfP-cP-HaI" secondAttribute="centerY" id="Bju-d6-BH7"/>
+                            <constraint firstAttribute="trailing" secondItem="hfK-7R-QWq" secondAttribute="trailing" id="F3J-dt-84p"/>
+                            <constraint firstItem="gfP-cP-HaI" firstAttribute="leading" secondItem="mxf-6m-VL9" secondAttribute="leading" id="OMG-IS-KGW"/>
+                            <constraint firstAttribute="bottom" secondItem="zIG-pf-Wp4" secondAttribute="bottom" id="X2s-8a-KND"/>
+                            <constraint firstItem="gfP-cP-HaI" firstAttribute="top" secondItem="mxf-6m-VL9" secondAttribute="top" id="dmJ-xf-8CK"/>
+                            <constraint firstAttribute="bottom" secondItem="A9z-AO-6rB" secondAttribute="bottom" id="eRa-cK-TOk"/>
+                            <constraint firstItem="hfK-7R-QWq" firstAttribute="top" secondItem="mxf-6m-VL9" secondAttribute="top" id="gmr-Fw-zbZ"/>
+                            <constraint firstItem="gfP-cP-HaI" firstAttribute="leading" secondItem="mxf-6m-VL9" secondAttribute="leading" id="jYF-CB-Ma4"/>
+                            <constraint firstItem="A9z-AO-6rB" firstAttribute="leading" secondItem="mxf-6m-VL9" secondAttribute="leading" id="pRS-8r-bhl"/>
+                            <constraint firstAttribute="trailing" secondItem="zIG-pf-Wp4" secondAttribute="trailing" id="tTs-V9-vhf"/>
+                            <constraint firstItem="gfP-cP-HaI" firstAttribute="top" secondItem="mxf-6m-VL9" secondAttribute="top" id="yXr-d3-bNs"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="mxf-6m-VL9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="D59-IV-mkM"/>
+                    <constraint firstAttribute="trailing" secondItem="mxf-6m-VL9" secondAttribute="trailing" constant="16" id="RBm-wj-ReH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mxf-6m-VL9" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="tFA-hI-o8k"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellView" destination="mxf-6m-VL9" id="ijP-of-bqH"/>
+                <outlet property="statementDateLabel" destination="hfK-7R-QWq" id="FJ7-Su-6Oa"/>
+                <outlet property="statementNameLabel" destination="A9z-AO-6rB" id="RUV-rY-5x7"/>
+                <outlet property="statementTypeLabel" destination="gfP-cP-HaI" id="Qns-aB-ctm"/>
+                <outlet property="statementValueLabel" destination="zIG-pf-Wp4" id="Ecu-rn-vQZ"/>
+            </connections>
+            <point key="canvasLocation" x="132.80000000000001" y="107.94602698650675"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginViewDelegate: NSObjectProtocol {
     func login(user: String, password: String)
+    func error()
 }
 
 class LoginView: UIView {
@@ -92,6 +93,7 @@ extension LoginView: UITextFieldDelegate {
             self.checkPasswordEntry(user: user, password: password)
             return
         } else {
+            delegate?.error()
             return
         }
     }
@@ -104,6 +106,7 @@ extension LoginView: UITextFieldDelegate {
                 self.delegate?.login(user: user, password: password)
             return
         } else {
+            delegate?.error()
             return
         }
     }

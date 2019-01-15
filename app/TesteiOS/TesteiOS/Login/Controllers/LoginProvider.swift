@@ -12,6 +12,7 @@ import Alamofire
 protocol LoginProviderDelegate: NSObjectProtocol {
     func success(user: UserAccount)
     func failure(error: UserError)
+    func connectionError()
 }
 
 class LoginProvider {
@@ -44,13 +45,12 @@ extension LoginProvider {
             
             if user.error.code != nil {
                 delegate?.failure(error: user.error)
-                return
             } else {
                 delegate?.success(user: user.userAccount)
             }
 
-        } catch let error as NSError {
-            print(error)
+        } catch {
+            delegate?.connectionError()
         }
     }
 }

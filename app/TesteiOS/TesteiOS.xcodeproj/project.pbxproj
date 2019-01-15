@@ -17,6 +17,11 @@
 		3898E53421ED625200409562 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3898E53321ED625200409562 /* LoginView.xib */; };
 		3898E53621ED789800409562 /* LoginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3898E53521ED789800409562 /* LoginProvider.swift */; };
 		3898E53921ED7D4900409562 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3898E53821ED7D4900409562 /* UserModel.swift */; };
+		3898E53B21ED910200409562 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3898E53A21ED910200409562 /* User.swift */; };
+		3898E53E21ED946900409562 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3898E53C21ED946900409562 /* UserTableViewCell.swift */; };
+		3898E53F21ED946900409562 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3898E53D21ED946900409562 /* UserTableViewCell.xib */; };
+		3898E54121ED9A4400409562 /* UserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3898E54021ED9A4400409562 /* UserProvider.swift */; };
+		3898E54321ED9BA500409562 /* StatementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3898E54221ED9BA500409562 /* StatementsModel.swift */; };
 		633683C921E0D3700069B0FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633683C821E0D3700069B0FE /* AppDelegate.swift */; };
 		633683CE21E0D3700069B0FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633683CC21E0D3700069B0FE /* Main.storyboard */; };
 		633683D021E0D3700069B0FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633683CF21E0D3700069B0FE /* Assets.xcassets */; };
@@ -43,6 +48,11 @@
 		3898E53321ED625200409562 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		3898E53521ED789800409562 /* LoginProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProvider.swift; sourceTree = "<group>"; };
 		3898E53821ED7D4900409562 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		3898E53A21ED910200409562 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3898E53C21ED946900409562 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		3898E53D21ED946900409562 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		3898E54021ED9A4400409562 /* UserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProvider.swift; sourceTree = "<group>"; };
+		3898E54221ED9BA500409562 /* StatementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsModel.swift; sourceTree = "<group>"; };
 		4592BCFF033BD69DA6DF8EE5 /* Pods-TesteiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOS/Pods-TesteiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		527735CD57999F10D5A8936C /* Pods-TesteiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSTests/Pods-TesteiOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		633683C521E0D3700069B0FE /* TesteiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				3898E52E21ED61E500409562 /* UserView.xib */,
+				3898E53D21ED946900409562 /* UserTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -138,6 +149,9 @@
 			children = (
 				3898E52A21ED61B400409562 /* UserViewController.swift */,
 				3898E52C21ED61D000409562 /* UserView.swift */,
+				3898E53A21ED910200409562 /* User.swift */,
+				3898E53C21ED946900409562 /* UserTableViewCell.swift */,
+				3898E54021ED9A4400409562 /* UserProvider.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -154,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				3898E53821ED7D4900409562 /* UserModel.swift */,
+				3898E54221ED9BA500409562 /* StatementsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -301,6 +316,7 @@
 				633683D021E0D3700069B0FE /* Assets.xcassets in Resources */,
 				633683CE21E0D3700069B0FE /* Main.storyboard in Resources */,
 				3898E53421ED625200409562 /* LoginView.xib in Resources */,
+				3898E53F21ED946900409562 /* UserTableViewCell.xib in Resources */,
 				3898E52F21ED61E500409562 /* UserView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,12 +405,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3898E52921ED618B00409562 /* LoginViewController.swift in Sources */,
+				3898E53E21ED946900409562 /* UserTableViewCell.swift in Sources */,
 				3898E53921ED7D4900409562 /* UserModel.swift in Sources */,
 				3898E52B21ED61B400409562 /* UserViewController.swift in Sources */,
+				3898E54321ED9BA500409562 /* StatementsModel.swift in Sources */,
 				633683C921E0D3700069B0FE /* AppDelegate.swift in Sources */,
+				3898E53B21ED910200409562 /* User.swift in Sources */,
 				3898E53221ED622700409562 /* LoginView.swift in Sources */,
 				3898E53621ED789800409562 /* LoginProvider.swift in Sources */,
 				3898E52D21ED61D000409562 /* UserView.swift in Sources */,
+				3898E54121ED9A4400409562 /* UserProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
