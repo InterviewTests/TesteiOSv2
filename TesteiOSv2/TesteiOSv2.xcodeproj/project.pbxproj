@@ -20,6 +20,8 @@
 		03B2852621EE2F5A00B8DCEE /* UserLoginTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852521EE2F5A00B8DCEE /* UserLoginTarget.swift */; };
 		03B2852921EE3E6A00B8DCEE /* UserLoginGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852821EE3E6A00B8DCEE /* UserLoginGateway.swift */; };
 		03B2852B21EE3FB000B8DCEE /* UserLoginAlamofireGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852A21EE3FB000B8DCEE /* UserLoginAlamofireGateway.swift */; };
+		03B2852E21EE4AB200B8DCEE /* LoginKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852D21EE4AB200B8DCEE /* LoginKeychain.swift */; };
+		03B2853021EE4BCA00B8DCEE /* KeyChainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852F21EE4BCA00B8DCEE /* KeyChainConstants.swift */; };
 		7E6279E53C9ED46F29C48BB1 /* Pods_TesteiOSv2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD1163A6AD933F1EF20339F5 /* Pods_TesteiOSv2Tests.framework */; };
 		893D9F3E187A57CD58F452F0 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526FB2D85887199548EA1B75 /* Pods_TesteiOSv2.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +54,8 @@
 		03B2852521EE2F5A00B8DCEE /* UserLoginTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginTarget.swift; sourceTree = "<group>"; };
 		03B2852821EE3E6A00B8DCEE /* UserLoginGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginGateway.swift; sourceTree = "<group>"; };
 		03B2852A21EE3FB000B8DCEE /* UserLoginAlamofireGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginAlamofireGateway.swift; sourceTree = "<group>"; };
+		03B2852D21EE4AB200B8DCEE /* LoginKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginKeychain.swift; sourceTree = "<group>"; };
+		03B2852F21EE4BCA00B8DCEE /* KeyChainConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainConstants.swift; sourceTree = "<group>"; };
 		07A53BCBC301AA25E4CA2896 /* Pods-TesteiOSv2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		526FB2D85887199548EA1B75 /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		639DB3C09B80052F715F600E /* Pods-TesteiOSv2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				03B2851E21ED6BDA00B8DCEE /* AppConstants.swift */,
+				03B2852F21EE4BCA00B8DCEE /* KeyChainConstants.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 		03B2851921ED5EEC00B8DCEE /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				03B2852C21EE4A3F00B8DCEE /* Keychain */,
 				03B2852721EE3E4C00B8DCEE /* Network */,
 				03B2851B21ED6AFE00B8DCEE /* TesteiOSv2API */,
 			);
@@ -199,6 +205,14 @@
 				03B2852A21EE3FB000B8DCEE /* UserLoginAlamofireGateway.swift */,
 			);
 			name = Network;
+			sourceTree = "<group>";
+		};
+		03B2852C21EE4A3F00B8DCEE /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				03B2852D21EE4AB200B8DCEE /* LoginKeychain.swift */,
+			);
+			name = Keychain;
 			sourceTree = "<group>";
 		};
 		3A129FAD5ED2516099211A32 /* Pods */ = {
@@ -397,7 +411,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				03B284F821ED5A4600B8DCEE /* ViewController.swift in Sources */,
+				03B2852E21EE4AB200B8DCEE /* LoginKeychain.swift in Sources */,
 				03B284F621ED5A4600B8DCEE /* AppDelegate.swift in Sources */,
+				03B2853021EE4BCA00B8DCEE /* KeyChainConstants.swift in Sources */,
 				03B2852321EE2DC300B8DCEE /* UserLogin.swift in Sources */,
 				03B2852921EE3E6A00B8DCEE /* UserLoginGateway.swift in Sources */,
 				03B2852121EE2D4F00B8DCEE /* UserAccount.swift in Sources */,
