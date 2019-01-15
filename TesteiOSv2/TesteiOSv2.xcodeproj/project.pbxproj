@@ -15,8 +15,11 @@
 		03B2850B21ED5A4900B8DCEE /* TesteiOSv2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2850A21ED5A4900B8DCEE /* TesteiOSv2Tests.swift */; };
 		03B2851D21ED6B3F00B8DCEE /* APISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2851C21ED6B3F00B8DCEE /* APISettings.swift */; };
 		03B2851F21ED6BDA00B8DCEE /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2851E21ED6BDA00B8DCEE /* AppConstants.swift */; };
-		03B2852121EE2D4F00B8DCEE /* UserAccont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852021EE2D4F00B8DCEE /* UserAccont.swift */; };
+		03B2852121EE2D4F00B8DCEE /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852021EE2D4F00B8DCEE /* UserAccount.swift */; };
 		03B2852321EE2DC300B8DCEE /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852221EE2DC300B8DCEE /* UserLogin.swift */; };
+		03B2852621EE2F5A00B8DCEE /* UserLoginTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852521EE2F5A00B8DCEE /* UserLoginTarget.swift */; };
+		03B2852921EE3E6A00B8DCEE /* UserLoginGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852821EE3E6A00B8DCEE /* UserLoginGateway.swift */; };
+		03B2852B21EE3FB000B8DCEE /* UserLoginAlamofireGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2852A21EE3FB000B8DCEE /* UserLoginAlamofireGateway.swift */; };
 		7E6279E53C9ED46F29C48BB1 /* Pods_TesteiOSv2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD1163A6AD933F1EF20339F5 /* Pods_TesteiOSv2Tests.framework */; };
 		893D9F3E187A57CD58F452F0 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526FB2D85887199548EA1B75 /* Pods_TesteiOSv2.framework */; };
 /* End PBXBuildFile section */
@@ -44,8 +47,11 @@
 		03B2850C21ED5A4900B8DCEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03B2851C21ED6B3F00B8DCEE /* APISettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISettings.swift; sourceTree = "<group>"; };
 		03B2851E21ED6BDA00B8DCEE /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		03B2852021EE2D4F00B8DCEE /* UserAccont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccont.swift; sourceTree = "<group>"; };
+		03B2852021EE2D4F00B8DCEE /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		03B2852221EE2DC300B8DCEE /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
+		03B2852521EE2F5A00B8DCEE /* UserLoginTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginTarget.swift; sourceTree = "<group>"; };
+		03B2852821EE3E6A00B8DCEE /* UserLoginGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginGateway.swift; sourceTree = "<group>"; };
+		03B2852A21EE3FB000B8DCEE /* UserLoginAlamofireGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginAlamofireGateway.swift; sourceTree = "<group>"; };
 		07A53BCBC301AA25E4CA2896 /* Pods-TesteiOSv2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		526FB2D85887199548EA1B75 /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		639DB3C09B80052F715F600E /* Pods-TesteiOSv2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,7 +153,7 @@
 		03B2851821ED5EE100B8DCEE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				03B2852021EE2D4F00B8DCEE /* UserAccont.swift */,
+				03B2852021EE2D4F00B8DCEE /* UserAccount.swift */,
 				03B2852221EE2DC300B8DCEE /* UserLogin.swift */,
 			);
 			name = Models;
@@ -156,6 +162,7 @@
 		03B2851921ED5EEC00B8DCEE /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				03B2852721EE3E4C00B8DCEE /* Network */,
 				03B2851B21ED6AFE00B8DCEE /* TesteiOSv2API */,
 			);
 			name = Workers;
@@ -171,9 +178,27 @@
 		03B2851B21ED6AFE00B8DCEE /* TesteiOSv2API */ = {
 			isa = PBXGroup;
 			children = (
+				03B2852421EE2F1800B8DCEE /* Models */,
 				03B2851C21ED6B3F00B8DCEE /* APISettings.swift */,
 			);
 			name = TesteiOSv2API;
+			sourceTree = "<group>";
+		};
+		03B2852421EE2F1800B8DCEE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				03B2852521EE2F5A00B8DCEE /* UserLoginTarget.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		03B2852721EE3E4C00B8DCEE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				03B2852821EE3E6A00B8DCEE /* UserLoginGateway.swift */,
+				03B2852A21EE3FB000B8DCEE /* UserLoginAlamofireGateway.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 		3A129FAD5ED2516099211A32 /* Pods */ = {
@@ -374,9 +399,12 @@
 				03B284F821ED5A4600B8DCEE /* ViewController.swift in Sources */,
 				03B284F621ED5A4600B8DCEE /* AppDelegate.swift in Sources */,
 				03B2852321EE2DC300B8DCEE /* UserLogin.swift in Sources */,
-				03B2852121EE2D4F00B8DCEE /* UserAccont.swift in Sources */,
+				03B2852921EE3E6A00B8DCEE /* UserLoginGateway.swift in Sources */,
+				03B2852121EE2D4F00B8DCEE /* UserAccount.swift in Sources */,
 				03B2851D21ED6B3F00B8DCEE /* APISettings.swift in Sources */,
+				03B2852B21EE3FB000B8DCEE /* UserLoginAlamofireGateway.swift in Sources */,
 				03B2851F21ED6BDA00B8DCEE /* AppConstants.swift in Sources */,
+				03B2852621EE2F5A00B8DCEE /* UserLoginTarget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

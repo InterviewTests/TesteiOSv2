@@ -1,5 +1,5 @@
 //
-//  UserLogin.swift
+//  UserLoginGateway.swift
 //  TesteiOSv2
 //
 //  Created by Felipe Rodrigues Silva on 15/01/19.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct UserLogin : Decodable{
-    let userAccount : UserAccount
+protocol UserLoginGateway{
+    func authLogin(user: String, password: String, completion: @escaping (UserAccount) -> ())
 }
