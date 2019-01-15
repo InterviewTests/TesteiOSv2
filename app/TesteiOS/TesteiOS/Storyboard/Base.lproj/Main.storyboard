@@ -18,61 +18,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t2K-me-I4R">
-                                <rect key="frame" x="17" y="251" width="342" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="JzY-hy-RGi"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wth-5r-c5j">
-                                <rect key="frame" x="17" y="322" width="342" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Nub-U7-fQz"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="bnb-7j-2hJ">
-                                <rect key="frame" x="126" y="76" width="125" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="6Ua-L8-JFC"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Q6-YU-0bf">
-                                <rect key="frame" x="87" y="572" width="202" height="62"/>
-                                <color key="backgroundColor" red="0.23137254901960785" green="0.28235294117647058" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="Pzb-Lp-bhR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0V-AT-jzO" customClass="LoginView" customModule="TesteiOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="t2K-me-I4R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="4Xd-rf-vAT"/>
-                            <constraint firstItem="bnb-7j-2hJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="51R-Ee-cGH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Q6-YU-0bf" secondAttribute="bottom" constant="33" id="BTv-Dp-8Yd"/>
-                            <constraint firstItem="bnb-7j-2hJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="126" id="Cb8-6U-kyq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wth-5r-c5j" secondAttribute="trailing" constant="16" id="Kkd-fq-4K9"/>
-                            <constraint firstItem="wth-5r-c5j" firstAttribute="top" secondItem="t2K-me-I4R" secondAttribute="bottom" constant="21" id="O6x-J0-Ug4"/>
-                            <constraint firstItem="t2K-me-I4R" firstAttribute="top" secondItem="bnb-7j-2hJ" secondAttribute="bottom" constant="105" id="OCQ-xm-qM1"/>
-                            <constraint firstItem="2Q6-YU-0bf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="WTC-OH-yeS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bnb-7j-2hJ" secondAttribute="trailing" constant="124" id="akw-nA-gAR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Q6-YU-0bf" secondAttribute="trailing" constant="86" id="esO-sQ-MbT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t2K-me-I4R" secondAttribute="trailing" constant="16" id="lra-JI-zoF"/>
-                            <constraint firstItem="wth-5r-c5j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="qXB-5l-3l5"/>
+                            <constraint firstItem="c0V-AT-jzO" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="0Co-Bo-tbM"/>
+                            <constraint firstItem="c0V-AT-jzO" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="V8I-pG-lLS"/>
+                            <constraint firstItem="c0V-AT-jzO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ydq-pR-GGM"/>
+                            <constraint firstItem="c0V-AT-jzO" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="o5p-DO-PX5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="loginView" destination="c0V-AT-jzO" id="rH3-7V-VKS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="EZi-0D-Ggp">
+                    <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="e74-oA-5VB"/>
+                    </connections>
+                </textField>
             </objects>
         </scene>
         <!--User View Controller-->
@@ -167,7 +141,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="125" height="70"/>
         <image name="logout 2" width="27" height="27"/>
     </resources>
 </document>
