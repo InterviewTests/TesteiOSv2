@@ -17,6 +17,7 @@ protocol IntroDisplayLogic: class {
     func presentDetailController()
     func configureLoginAnimationLoading()
     func configureLoginAnimationCompletion()
+    func configureInvalidPassword()
 }
 
 class IntroController: UIViewController, IntroDisplayLogic {
@@ -54,11 +55,8 @@ class IntroController: UIViewController, IntroDisplayLogic {
         
         viewController.interactor = interactor
         viewController.router = router
-        
         interactor.presenter = presenter
-        
         presenter.viewController = viewController
-        
         router.viewController = viewController
         router.dataStore = interactor
     }
@@ -101,6 +99,11 @@ class IntroController: UIViewController, IntroDisplayLogic {
         
         stackViewFields.alpha = 1
         btnLogin.isUserInteractionEnabled = true
+    }
+    
+    func configureInvalidPassword() {
+        self.passwordTf.shakeError()
+        self.passwordTf.placeholder = NSLocalizedString("SENHA_INVALIDA", comment: "")
     }
     
     // Mark: Actions

@@ -11,7 +11,6 @@ import Foundation
 /*
  - Trata das ações de interação fora do app, servidor, cor data entre outros.
  */
-
 protocol IntroInteractorLogic {
     
     func loginUser(user: UserLogin)
@@ -19,11 +18,32 @@ protocol IntroInteractorLogic {
 }
 
 class IntroInteractor: IntroInteractorLogic, UserAccountData {
+    
     var userAccount: UserAccountable?
     var presenter: IntroPresentationLogic?
     
     func loginUser(user: UserLogin) {
+        
         self.presenter?.showLoading()
+        
+        if validUserPassword(user) {
+            self.tryLogin(user: user)
+        }
+        else {
+            self.presenter?.catchPasswordInvalid()
+        }
+    }
+    
+    /// Try Auto login
+    func tryAutoLogin() {
+        
+        let user = KeychainWorker().getUserLogin()
+        if user.user != nil {
+            loginUser(user: user)
+        }
+    }
+    
+    private func tryLogin(user: UserLogin) {
         
         BankWorker().userLogin(user) { (userResponse) in
             if let bankError = userResponse?.error, bankError.code != nil {
@@ -40,12 +60,10 @@ class IntroInteractor: IntroInteractorLogic, UserAccountData {
         }
     }
     
-    /// Try Auto login
-    func tryAutoLogin() {
+    /// Asks for user validation.
+    private func validUserPassword(_ user: UserLogin) -> Bool {
         
-        let user = KeychainWorker().getUserLogin()
-        if user.user != nil {
-            loginUser(user: user)
-        }
+        guard let password = user.password else { return false }
+        return password.isValidPassword()
     }
 }

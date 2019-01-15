@@ -11,4 +11,9 @@ import Foundation
 struct BankError: Decodable {
     let message: String?
     let code: Int?
+    
+    init(message: String, errorCode: Int) {
+        self.message = message
+        self.code = errorCode
+    }
 }

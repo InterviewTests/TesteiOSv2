@@ -14,6 +14,7 @@ protocol IntroPresentationLogic {
     func showHistoryController()
     func showError(error: BankError)
     func showLoading()
+    func catchPasswordInvalid()
 }
 
 class IntroPresenter: IntroPresentationLogic {
@@ -21,11 +22,13 @@ class IntroPresenter: IntroPresentationLogic {
     weak var viewController: IntroDisplayLogic?
     
     func showHistoryController() {
+        
         viewController?.presentDetailController()
         viewController?.configureLoginAnimationCompletion()
     }
     
     func showError(error: BankError) {
+        
         if let errorMessage = error.message {
             buildAlert(title: "Erro", menssage: errorMessage)
         }
@@ -33,15 +36,24 @@ class IntroPresenter: IntroPresentationLogic {
     }
     
     func showLoading() {
+        
         viewController?.configureLoginAnimationLoading()
     }
     
+    func catchPasswordInvalid() {
+        
+        buildAlert(title: "Erro", menssage: NSLocalizedString("SENHA_INVALIDA_ERROR_MESSAGE", comment: ""))
+        viewController?.configureInvalidPassword()
+    }
+    
     private func buildAlert(title: String, menssage: String) {
+
         let alertBox = UIAlertController(title: title, message: menssage, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
             alertBox.dismiss(animated: true, completion: nil)
         }
         alertBox.addAction(action)
+        
         viewController?.showError(alertBox)
     }
 }
@@ -55,7 +67,8 @@ class LoadingView {
     }
     
     func show(in view: UIView) {
-        if let _spinningView = spinningView {
+        
+        if let _ = spinningView {
             spinningView?.center = view.center
             spinningView?.startAnimating()
             view.addSubview(spinningView!)
@@ -63,6 +76,7 @@ class LoadingView {
     }
     
     func dismiss() {
+        
         spinningView?.stopAnimating()
         spinningView = nil
     }
