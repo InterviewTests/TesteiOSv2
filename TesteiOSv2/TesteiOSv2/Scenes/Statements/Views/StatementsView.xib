@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StatementsView" customModule="TesteiOSv2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="José da Silva Teste" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fz5-OY-KSF">
+                    <rect key="frame" x="18" y="40" width="304" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-2" translatesAutoresizingMaskIntoConstraints="NO" id="bua-SC-yRK">
+                    <rect key="frame" x="332" y="41.5" width="27" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="27" id="BlZ-6V-Tqu"/>
+                        <constraint firstAttribute="width" constant="27" id="sMd-3Z-f20"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9u-8g-RXM">
+                    <rect key="frame" x="18" y="97" width="32.5" height="14"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2050 / 01.111222-4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0U-yR-PAx">
+                    <rect key="frame" x="18" y="116" width="301" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgA-yz-bnd">
+                    <rect key="frame" x="18" y="166" width="32" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 1.000,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0Z-c4-Ba8">
+                    <rect key="frame" x="18" y="186" width="182" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.23137254901960785" green="0.28627450980392155" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bua-SC-yRK" secondAttribute="trailing" constant="16" id="05q-lX-kBB"/>
+                <constraint firstItem="y0Z-c4-Ba8" firstAttribute="top" secondItem="XgA-yz-bnd" secondAttribute="bottom" constant="5.5" id="2sG-vr-YPy"/>
+                <constraint firstItem="y0Z-c4-Ba8" firstAttribute="leading" secondItem="fz5-OY-KSF" secondAttribute="leading" id="4Dn-jD-b2f"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="y0Z-c4-Ba8" secondAttribute="trailing" constant="175" id="8qu-4k-R5b"/>
+                <constraint firstItem="XgA-yz-bnd" firstAttribute="top" secondItem="p0U-yR-PAx" secondAttribute="bottom" constant="20" id="Bs5-ut-OIt"/>
+                <constraint firstItem="XgA-yz-bnd" firstAttribute="leading" secondItem="fz5-OY-KSF" secondAttribute="leading" id="EgL-L9-hsb"/>
+                <constraint firstItem="fz5-OY-KSF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="18" id="JAw-00-ce6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="p0U-yR-PAx" secondAttribute="trailing" constant="56" id="LrL-4w-JGu"/>
+                <constraint firstItem="G9u-8g-RXM" firstAttribute="top" secondItem="fz5-OY-KSF" secondAttribute="bottom" constant="27" id="R7j-yP-eXt"/>
+                <constraint firstItem="p0U-yR-PAx" firstAttribute="leading" secondItem="fz5-OY-KSF" secondAttribute="leading" id="ROb-6n-NiX"/>
+                <constraint firstItem="bua-SC-yRK" firstAttribute="centerY" secondItem="fz5-OY-KSF" secondAttribute="centerY" priority="99" id="eRU-vx-kbb"/>
+                <constraint firstItem="p0U-yR-PAx" firstAttribute="top" secondItem="G9u-8g-RXM" secondAttribute="bottom" constant="5" id="gbd-P5-gnX"/>
+                <constraint firstItem="G9u-8g-RXM" firstAttribute="leading" secondItem="fz5-OY-KSF" secondAttribute="leading" id="gfY-qw-k2t"/>
+                <constraint firstItem="bua-SC-yRK" firstAttribute="leading" secondItem="fz5-OY-KSF" secondAttribute="trailing" constant="10" id="tS6-9u-zGh"/>
+                <constraint firstItem="fz5-OY-KSF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="y3X-bu-foz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="balanceLabel" destination="y0Z-c4-Ba8" id="dle-fZ-My6"/>
+                <outlet property="countAndAgency" destination="p0U-yR-PAx" id="P7C-cg-Q29"/>
+                <outlet property="nameLabel" destination="fz5-OY-KSF" id="b2Z-ju-D9l"/>
+            </connections>
+            <point key="canvasLocation" x="138.40000000000001" y="-34.182908545727138"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo-2" width="27" height="27"/>
+    </resources>
+</document>
