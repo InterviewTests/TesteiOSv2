@@ -42,7 +42,8 @@ class IntroPresenter: IntroPresentationLogic {
     
     func catchPasswordInvalid() {
         
-        buildAlert(title: "Erro", menssage: NSLocalizedString("SENHA_INVALIDA_ERROR_MESSAGE", comment: ""))
+        buildAlert(title: NSLocalizedString("SENHA_INVALIDA", comment: ""), menssage: NSLocalizedString("SENHA_INVALIDA_ERROR_MESSAGE", comment: ""))
+        viewController?.configureLoginAnimationCompletion()
         viewController?.configureInvalidPassword()
     }
     

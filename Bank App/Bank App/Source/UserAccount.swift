@@ -42,7 +42,21 @@ extension Double {
     }
     
     func toStringValue() -> String {
-        return String(format: "%.2f", self)
+        let currencyFormat: String = "R$"
+        var stringFormated: String = currencyFormat
+        let stringValue = String(format: "%.2f", self)
+        
+        if stringValue.contains("-") {
+            for letter in stringValue {
+                if letter != "-" {
+                    stringFormated.append(letter)
+                }
+            }
+            return "-\(stringFormated)"
+        }
+        else {
+            return "\(currencyFormat)\(stringValue)"
+        }
     }
 }
 
