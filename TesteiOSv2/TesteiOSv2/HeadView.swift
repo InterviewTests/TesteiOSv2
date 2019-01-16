@@ -85,9 +85,6 @@ class HeadView : UIView{
        print("logout")
     }
     
-//    func updateData(with: ){
-//        
-//    }
 }
 extension HeadView: ViewCode{
     func buildViewHierarchy() {

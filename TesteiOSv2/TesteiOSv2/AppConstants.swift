@@ -6,7 +6,7 @@
 //  Copyright © 2019 Felipe Rodrigues Silva. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 let API_BASE_URL_STRING : String = "https://bank-app-test.herokuapp.com/api"
 let API_URL_LOGIN : String = "/login"
@@ -18,6 +18,9 @@ let LOGIN_ERROR_TITTLE_PASSWORD : String = "Senha Incorreta"
 let LOGIN_ERROR_USERNAME : String = "CPF ou email inválidos."
 let LOGIN_ERROR_PASSWORD : String = "A senha deve conter um caracter alfanumérico, um maiúculo e um especial."
 
+let ACCOUNT_TABLEVIEW_HEADER_HEIGHT : CGFloat = 40
+let UPCOMING_STATEMENTTABLE_CELL : String = "AccountStatementModel"
+let ACCOUNT_TABLEVIEW_HEADER_TITTLE : String = "Recentes"
 let MONETARY_AMOUNT : String = "R$"
 let LOGOUT_IMAGE_NAME : String = "logout"
 

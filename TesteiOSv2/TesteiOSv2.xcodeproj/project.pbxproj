@@ -55,6 +55,10 @@
 		03B2857E21EF7CB400B8DCEE /* AccountDetailDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2857D21EF7CB400B8DCEE /* AccountDetailDataStore.swift */; };
 		03B2858021EF80E500B8DCEE /* AccountDetailHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2857F21EF80E500B8DCEE /* AccountDetailHeaderModel.swift */; };
 		03B2858221EF877E00B8DCEE /* AccountDetailViewControllerProceed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2858121EF877E00B8DCEE /* AccountDetailViewControllerProceed.swift */; };
+		03B2858421EFA73900B8DCEE /* AccountStatementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2858321EFA73900B8DCEE /* AccountStatementModel.swift */; };
+		03B2858621EFA8C100B8DCEE /* StringToDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2858521EFA8C100B8DCEE /* StringToDate+Extensions.swift */; };
+		03B2858821EFC4DA00B8DCEE /* MonetaryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2858721EFC4DA00B8DCEE /* MonetaryString.swift */; };
+		03B2858A21EFCEBE00B8DCEE /* AccountTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2858921EFCEBE00B8DCEE /* AccountTableViewHeader.swift */; };
 		7E6279E53C9ED46F29C48BB1 /* Pods_TesteiOSv2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD1163A6AD933F1EF20339F5 /* Pods_TesteiOSv2Tests.framework */; };
 		893D9F3E187A57CD58F452F0 /* Pods_TesteiOSv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526FB2D85887199548EA1B75 /* Pods_TesteiOSv2.framework */; };
 /* End PBXBuildFile section */
@@ -122,6 +126,10 @@
 		03B2857D21EF7CB400B8DCEE /* AccountDetailDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailDataStore.swift; sourceTree = "<group>"; };
 		03B2857F21EF80E500B8DCEE /* AccountDetailHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailHeaderModel.swift; sourceTree = "<group>"; };
 		03B2858121EF877E00B8DCEE /* AccountDetailViewControllerProceed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewControllerProceed.swift; sourceTree = "<group>"; };
+		03B2858321EFA73900B8DCEE /* AccountStatementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatementModel.swift; sourceTree = "<group>"; };
+		03B2858521EFA8C100B8DCEE /* StringToDate+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringToDate+Extensions.swift"; sourceTree = "<group>"; };
+		03B2858721EFC4DA00B8DCEE /* MonetaryString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonetaryString.swift; sourceTree = "<group>"; };
+		03B2858921EFCEBE00B8DCEE /* AccountTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewHeader.swift; sourceTree = "<group>"; };
 		07A53BCBC301AA25E4CA2896 /* Pods-TesteiOSv2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		526FB2D85887199548EA1B75 /* Pods_TesteiOSv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		639DB3C09B80052F715F600E /* Pods-TesteiOSv2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteiOSv2Tests/Pods-TesteiOSv2Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +223,7 @@
 				03B2855A21EE8E0000B8DCEE /* String+SpecialCharacterValidator.swift */,
 				03B2855C21EE8F6000B8DCEE /* String+NumericAndUpperCaseValidator.swift */,
 				03B2856921EEC28300B8DCEE /* Date+Extensions.swift */,
+				03B2858521EFA8C100B8DCEE /* StringToDate+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -361,6 +370,7 @@
 				03B2856521EEBA0E00B8DCEE /* AccontDetailTableViewCell.swift */,
 				03B2856721EEBAA100B8DCEE /* AccontDetailUnitCellView.swift */,
 				03B2855421EE7D4600B8DCEE /* HeadView.swift */,
+				03B2858921EFCEBE00B8DCEE /* AccountTableViewHeader.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -388,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				03B2857F21EF80E500B8DCEE /* AccountDetailHeaderModel.swift */,
+				03B2858321EFA73900B8DCEE /* AccountStatementModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -403,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				03B2856021EEA11700B8DCEE /* LoginValidationErrorEnum.swift */,
+				03B2858721EFC4DA00B8DCEE /* MonetaryString.swift */,
 				03B2855021EE7C8000B8DCEE /* ViewCode */,
 			);
 			name = Communs;
@@ -647,6 +659,7 @@
 				03B2858021EF80E500B8DCEE /* AccountDetailHeaderModel.swift in Sources */,
 				03B2856A21EEC28300B8DCEE /* Date+Extensions.swift in Sources */,
 				03B2853021EE4BCA00B8DCEE /* KeyChainConstants.swift in Sources */,
+				03B2858A21EFCEBE00B8DCEE /* AccountTableViewHeader.swift in Sources */,
 				03B2855B21EE8E0000B8DCEE /* String+SpecialCharacterValidator.swift in Sources */,
 				03B2857A21EF73FC00B8DCEE /* AccountDetailPresenterLogic.swift in Sources */,
 				03B2852321EE2DC300B8DCEE /* UserLogin.swift in Sources */,
@@ -654,10 +667,13 @@
 				03B2857021EEC9AA00B8DCEE /* Statement.swift in Sources */,
 				03B2855721EE842600B8DCEE /* String+CPFValidator.swift in Sources */,
 				03B2854421EE6E6D00B8DCEE /* LoginDataPassing.swift in Sources */,
+				03B2858621EFA8C100B8DCEE /* StringToDate+Extensions.swift in Sources */,
 				03B2854221EE694B00B8DCEE /* LoginPresenter.swift in Sources */,
 				03B2855D21EE8F6000B8DCEE /* String+NumericAndUpperCaseValidator.swift in Sources */,
 				03B2856821EEBAA100B8DCEE /* AccontDetailUnitCellView.swift in Sources */,
+				03B2858821EFC4DA00B8DCEE /* MonetaryString.swift in Sources */,
 				03B2856C21EEC76C00B8DCEE /* StatementTarget.swift in Sources */,
+				03B2858421EFA73900B8DCEE /* AccountStatementModel.swift in Sources */,
 				03B2856E21EEC90600B8DCEE /* StatementGateway.swift in Sources */,
 				03B2853E21EE62FC00B8DCEE /* LoginInteractor.swift in Sources */,
 				03B2855521EE7D4600B8DCEE /* HeadView.swift in Sources */,

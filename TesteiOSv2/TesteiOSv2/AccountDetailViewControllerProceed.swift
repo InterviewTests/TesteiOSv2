@@ -10,5 +10,6 @@ import Foundation
 
 protocol AccountDetailViewControllerProceed{
     func updateHeader(account: AccountDetailHeaderModel)
+    func updateTableView(statements: [AccountStatementModel])
     func updateAccountValue(value: String)
 }

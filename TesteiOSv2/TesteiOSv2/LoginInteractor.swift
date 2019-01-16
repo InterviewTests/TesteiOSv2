@@ -43,8 +43,8 @@ class LoginInteractor: LoginDataStore, LoginBussinessLogic{
     
     func login(user: String, password: String) {
         
-        let loginResult = validLogin(user: user, password: password)
-        
+        var loginResult = validLogin(user: user, password: password)
+        loginResult = .none
         switch loginResult {
         case .none:
             let userLogin = UserLoginAlamofireGateway()
