@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UserViewDelegate {
+    func logout()
+}
+
 class UserView: UIView {
     
     @IBOutlet private var userView: UIView!
@@ -20,13 +24,34 @@ class UserView: UIView {
         }
     }
     
+    
+    @IBOutlet private weak var nameLabel: UILabel! {
+        didSet {
+            nameLabel.text = User.name
+        }
+    }
+    @IBOutlet private weak var accountLabel: UILabel! {
+        didSet {
+            accountLabel.text = "\(User.agency ?? "") / \(User.bankAccount ?? "")"
+        }
+    }
+    @IBOutlet private weak var amountLabel: UILabel! {
+        didSet {
+            amountLabel.text = "R$ \(User.balance ?? 0.00)".replacingOccurrences(of: ".", with: ",")
+        }
+    }
+
+    
+    
+    
+    var delegate: UserViewDelegate?
+    
     var userProvider = UserProvider()
     var statements: [StatementObject]?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-    
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,10 +65,13 @@ class UserView: UIView {
         addSubview(self.userView)
         self.userView.frame = self.bounds
         self.userView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
         userProvider.getStatements(userId: User.userId)
     }
-
+    
+    @IBAction func logoutAction(_ sender: Any) {
+        delegate?.logout()
+    }
+    
 }
 
 extension UserView: UITableViewDataSource {
@@ -55,7 +83,7 @@ extension UserView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell") as? UserTableViewCell {
             if let statement: StatementObject = statements?[indexPath.row] {
-                cell.statementDate = parseDate(date: statement.date)
+                cell.statementDate = statement.date.replacingOccurrences(of: "-", with: "/")
                 cell.statementName = statement.desc
                 cell.statementType = statement.title
                 cell.statementValue = "R$ \(String(statement.value ?? 0.0).replacingOccurrences(of: ".", with: ","))"
@@ -78,18 +106,4 @@ extension UserView: UserProviderDelegate {
         print(error)
     }
     
-}
-
-extension UserView {
-    func parseDate(date: String) -> String {
-        
-        let dateString = date // change to your date format
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        
-        let parsedDate = dateFormatter.date(from: dateString)
-        
-        return String(describing: parsedDate)
-    }
 }

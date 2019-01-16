@@ -37,11 +37,13 @@ class LoginView: UIView {
     }
     
     weak var delegate: LoginViewDelegate?
+    var username: String?
+    var password: String?
     
     @IBAction func loginAction(_ sender: Any) {
-        let username = userTextField.text ?? ""
-        let password = passwdTextField.text ?? ""
-        self.checkUserEntry(user: username, password: password)
+        self.username = userTextField.text
+        self.password = passwdTextField.text
+        self.checkUserEntry(user: username ?? "", password: password ?? "")
     }
     
     override init(frame: CGRect) {
@@ -71,6 +73,9 @@ extension LoginView: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+}
+
+extension LoginView {
     
     func setButtonLayout() {
         loginButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
@@ -80,7 +85,7 @@ extension LoginView: UITextFieldDelegate {
         loginButton.layer.masksToBounds = false
         loginButton.layer.cornerRadius = 4.0
     }
-
+    
     func checkUserEntry(user: String, password: String) {
         let userRange = NSRange(location: 0, length: user.utf16.count)
         let userCpfRegex = try! NSRegularExpression(pattern: "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}")
@@ -103,12 +108,11 @@ extension LoginView: UITextFieldDelegate {
         let passwordRegex = try! NSRegularExpression(pattern: "(?=.*[A-Z])(?=.*[0-9])(?=.*\\W)")
         
         if passwordRegex.firstMatch(in: password, options: [], range: passwordRange) != nil {
-                self.delegate?.login(user: user, password: password)
+            self.delegate?.login(user: user, password: password)
             return
         } else {
             delegate?.error()
             return
         }
     }
-    
 }

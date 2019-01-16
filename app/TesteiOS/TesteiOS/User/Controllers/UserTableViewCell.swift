@@ -53,12 +53,12 @@ class UserTableViewCell: UITableViewCell {
 
 extension UserTableViewCell {
     func setCellView() {
-        cellView.layer.cornerRadius = 4.0
+        cellView.layer.cornerRadius = 2.0
         cellView.clipsToBounds = true
         cellView.layer.shadowColor = UIColor.black.cgColor
-        cellView.layer.shadowOpacity = 1
+        cellView.layer.shadowOpacity = 0.7
         cellView.layer.shadowOffset = CGSize.zero
-        cellView.layer.shadowRadius = 10
+        cellView.layer.shadowRadius = 50
         cellView.layer.shadowPath = UIBezierPath(rect: cellView.bounds).cgPath
         cellView.layer.shouldRasterize = true
     }

@@ -10,11 +10,16 @@ import UIKit
 
 class UserViewController: UIViewController {
     
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    @IBOutlet weak var userView: UserView! {
+        didSet {
+            userView.delegate = self
+        }
     }
 
+}
+
+extension UserViewController: UserViewDelegate {
+    func logout() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
