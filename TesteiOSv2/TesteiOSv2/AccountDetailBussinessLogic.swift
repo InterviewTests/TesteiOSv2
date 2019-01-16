@@ -1,5 +1,5 @@
 //
-//  StatementGateway.swift
+//  AccountDetailBussinessLogic.swift
 //  TesteiOSv2
 //
 //  Created by Felipe Rodrigues Silva on 16/01/19.
@@ -8,6 +8,7 @@
 
 import Foundation
 
-protocol StatementGateway{
-    func fecthStatements(page: String,  completion: @escaping (StatementList) -> ())
+protocol AccountDetailBussinessLogic{
+    func updateUserAccountDetail(user: UserAccount)
+    func fetchStatements()
 }

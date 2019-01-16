@@ -11,9 +11,15 @@ import Foundation
 enum LoginValidationErrorEnum : Int {
     case none = 0, username, password
     
+    
+    var errorTitle : String {
+        let title = ["", LOGIN_ERROR_TITTLE_USERNAME, LOGIN_ERROR_TITTLE_PASSWORD]
+        return title[rawValue]
+    }
+    
     var errorMensage : String {
         let mensage = ["", LOGIN_ERROR_USERNAME, LOGIN_ERROR_PASSWORD]
-        
         return mensage[rawValue]
     }
+
 }

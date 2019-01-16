@@ -17,9 +17,10 @@ class LoginPresenter : LogicPresenterLogic{
     }
     
     func presentLoginError(with loginErrorEnum: LoginValidationErrorEnum) {
+        let errortitle = loginErrorEnum.errorTitle
         let errorMensage = loginErrorEnum.errorMensage
         
-        let alertController = UIAlertController(title: LOGIN_ERROR_TITTLE, message: errorMensage, preferredStyle: .alert)
+        let alertController = UIAlertController(title: errortitle, message: errorMensage, preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         viewController?.callALertController(alert: alertController)

@@ -11,11 +11,10 @@ import Alamofire
 
 class StatementAlamofireGateway : StatementGateway{
 
-    func fecthStatements(page: Int, completion: @escaping (StatementList) -> ()) {
+    func fecthStatements(page: String, completion: @escaping (StatementList) -> ()) {
         let statementTarget = StatementTarget.list(page: page)
         
-        Alamofire.request(statementTarget.Url, method: statementTarget.method, parameters: statementTarget.parameters, encoding: JSONEncoding.default, headers: statementTarget.headers).responseJSON { response in
-            
+        Alamofire.request(statementTarget.Url, method: statementTarget.method, parameters: nil, encoding: JSONEncoding.default, headers: statementTarget.headers).responseJSON { response in
             switch response.result {
             case .success:
                 do{
@@ -25,10 +24,10 @@ class StatementAlamofireGateway : StatementGateway{
                     let statements = try decodable.decode(StatementList.self , from:data)
                     completion(statements)
                 }catch let error{
-                    "data could not be decoded: \(error)"
+                    print("data could not be decoded: \(error)")
                 }
-            case .failure:
-                print("Alamofire JSON request error.")
+            case .failure(let error):
+                print("Alamofire JSON request error.\(error)")
             }
         }
     }

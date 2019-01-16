@@ -90,23 +90,23 @@ class AccontDetailUnitCellView : UIView {
 extension AccontDetailUnitCellView : ViewCode{
     func buildViewHierarchy() {
         
-        upperViewConteiner.addArrangedSubview(tittle)
-        upperViewConteiner.addArrangedSubview(dataLabel)
-        downViewConteiner.addArrangedSubview(descriptionAccount)
-        downViewConteiner.addArrangedSubview(value)
-        viewConteiner.addArrangedSubview(upperViewConteiner)
-        viewConteiner.addArrangedSubview(downViewConteiner)
-        self.addSubview(viewConteiner)
+//        upperViewConteiner.addArrangedSubview(tittle)
+//        upperViewConteiner.addArrangedSubview(dataLabel)
+//        downViewConteiner.addArrangedSubview(descriptionAccount)
+//        downViewConteiner.addArrangedSubview(value)
+//        viewConteiner.addArrangedSubview(upperViewConteiner)
+//        viewConteiner.addArrangedSubview(downViewConteiner)
+//        self.addSubview(viewConteiner)
     }
     
     func setupConstraints() {
         
-        self.viewConteiner.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(25)
-            make.right.equalToSuperview().inset(32)
-            make.top.equalToSuperview().offset(18)
-        }
+//        self.viewConteiner.snp.makeConstraints { make in
+//            make.bottom.equalToSuperview()
+//            make.left.equalToSuperview().offset(25)
+//            make.right.equalToSuperview().inset(32)
+//            make.top.equalToSuperview().offset(18)
+//        }
     }
     
     func setupAdditionalConfigurations() {

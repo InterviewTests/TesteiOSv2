@@ -9,8 +9,8 @@
 import Foundation
 
 struct Statement : Decodable{
-    let tittle : String
+    let title : String
     let desc : String
-    let date : Date
+    let date : String
     let value: Double
 }

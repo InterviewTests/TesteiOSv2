@@ -22,6 +22,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         username.delegate = self
         password.delegate = self
+     
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -37,7 +38,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     }
     
     /**
-     Setup UpcomingMovieListViewController protocols.
+     Setup LoginViewController protocols.
      */
     private func setup()
     {
@@ -58,6 +59,8 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         guard let usernameText = username.text, let passwordText = password.text else {
             return
         }
+//        let accountDetailViewController = AccontDetailViewController()
+//        self.show(accountDetailViewController,sender: nil)
         interactor?.login(user: usernameText, password: passwordText)
     }
     

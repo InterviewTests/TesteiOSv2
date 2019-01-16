@@ -10,6 +10,8 @@ import UIKit
 
 class AccontDetailTableViewCell : UITableViewCell{
     
+    
+    
     lazy var accontDetailUnitCellView : AccontDetailUnitCellView = {
         let accontDetailUnitCellView = AccontDetailUnitCellView()
         return accontDetailUnitCellView

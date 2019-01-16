@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 enum StatementTarget{
-    case list(page: Int)
+    case list(page: String)
 }
 extension StatementTarget{
     var Url: URL {
@@ -22,8 +22,8 @@ extension StatementTarget{
     
     var path: String {
         switch self {
-        case .list:
-            return API_URL_LOGIN
+        case .list(let page):
+            return API_URL_STATEMENT + page
         }
     }
     
@@ -34,10 +34,10 @@ extension StatementTarget{
         }
     }
     
-    var parameters : Parameters {
+    var parameters : Parameters? {
         switch self {
-        case .list(let page):
-            return ["":page]
+        case .list:
+            return nil
         }
     }
     
