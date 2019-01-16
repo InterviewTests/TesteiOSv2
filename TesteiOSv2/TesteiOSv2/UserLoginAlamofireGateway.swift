@@ -27,7 +27,7 @@ final class UserLoginAlamofireGateway : UserLoginGateway{
                         fatalError("data could not be decoded: \(error)")
                 }
                 case .failure:
-                print("deu error")
+                print("Alamofire JSON request error.")
             }
         }
     }

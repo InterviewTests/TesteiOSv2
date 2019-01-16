@@ -13,7 +13,7 @@ class LoginPresenter : LogicPresenterLogic{
     weak var viewController : LoginViewControllerProceed?
     
     func presentLoginResults(user: UserAccount) {
-        print(user.name)
+        viewController?.goToNextViewController()
     }
     
     func presentLoginError(with loginErrorEnum: LoginValidationErrorEnum) {
