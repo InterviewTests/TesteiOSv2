@@ -10,7 +10,7 @@ import Foundation
 
 class AccountDetailPresenter: AccountDetailPresenterLogic{
     
-    var viewController : AccountDetailViewControllerProceed?
+    weak var viewController : AccountDetailViewController?
     
     func presentAccountDetails(user: UserAccount , statements: [Statement]) {
         

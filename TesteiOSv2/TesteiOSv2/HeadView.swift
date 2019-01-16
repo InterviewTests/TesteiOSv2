@@ -82,7 +82,13 @@ class HeadView : UIView{
     }
     
     @objc func pressedAction(sender: UIButton!) {
-       print("logout")
+        guard let superView = self.parentViewController as? AccountDetailViewController else {
+            print("tem nada")
+            return
+            
+        }
+        superView.logOut()
+        
     }
     
 }

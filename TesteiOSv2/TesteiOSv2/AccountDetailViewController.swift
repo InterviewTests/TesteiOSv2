@@ -9,11 +9,13 @@
 import UIKit
 import SnapKit
 
-class AccontDetailViewController : UIViewController, UITableViewDelegate, UITableViewDataSource , AccountDetailViewControllerProceed{
+class AccountDetailViewController : UIViewController, UITableViewDelegate, UITableViewDataSource , AccountDetailViewControllerProceed{
 
     
     
     var interactor : AccountDetailBussinessLogic?
+    
+    var router : AccountDetailRoutingLogic?
     
     lazy var headView : HeadView = {
         let headView = HeadView()
@@ -71,18 +73,16 @@ class AccontDetailViewController : UIViewController, UITableViewDelegate, UITabl
         let viewController = self
         let interactor = AccountDetailInteractor()
         let presenter = AccountDetailPresenter()
-      //  let router = LoginRouter()
+        let router = AccountDetailRouter()
         viewController.interactor = interactor
-      //  viewController.router = router
+        viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
-      // router.viewController = viewController
-       // router.dataStore = interactor
+        router.viewController = viewController
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let statements = self.statementsList else{return 0}
-        print("count")
         return statements.count
     }
     
@@ -137,9 +137,12 @@ class AccontDetailViewController : UIViewController, UITableViewDelegate, UITabl
         self.statementsList = statements
         self.tableView.reloadData()
     }
+    func logOut(){
+        router?.logOut()
+    }
 }
 
-extension AccontDetailViewController : ViewCode{
+extension AccountDetailViewController : ViewCode{
     func buildViewHierarchy() {
         self.view.addSubview(headView)
         self.view.addSubview(tableView)
