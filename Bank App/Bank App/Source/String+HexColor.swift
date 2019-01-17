@@ -9,6 +9,7 @@
 import UIKit
 
 extension String {
+    
     func hexColor()-> UIColor {
         var cString:String = self.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         

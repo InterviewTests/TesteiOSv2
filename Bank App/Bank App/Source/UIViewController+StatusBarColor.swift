@@ -10,7 +10,6 @@ import UIKit
 
 extension UIViewController {
     
-    ///
     func setStatusBarStyle(_ style: UIStatusBarStyle, backgroundColor: UIColor) {
         if let statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView {
             statusBar.backgroundColor = backgroundColor

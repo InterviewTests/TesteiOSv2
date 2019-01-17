@@ -35,36 +35,3 @@ extension UserAccount {
         balance = try values.decodeIfPresent(Double.self, forKey: .balance)?.toStringValue()
     }
 }
-
-extension Double {
-    func toString() -> String {
-        return String(self)
-    }
-    
-    func toStringValue() -> String {
-        let currencyFormat: String = "R$"
-        var stringFormated: String = currencyFormat
-        let stringValue = String(format: "%.2f", self)
-        
-        if stringValue.contains("-") {
-            for letter in stringValue {
-                if letter != "-" {
-                    stringFormated.append(letter)
-                }
-            }
-            return "-\(stringFormated)"
-        }
-        else {
-            return "\(currencyFormat)\(stringValue)"
-        }
-    }
-}
-
-extension String {
-    func toBankAgency() -> String {
-        var string = self
-        string.insert("-", at: string.index(before: string.endIndex))
-        string.insert(".", at: string.index(after: string.index(after: string.startIndex)))
-        return string
-    }
-}

@@ -38,6 +38,10 @@
 		B879C06C21E6B72300ED1591 /* Dictionary+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879C06B21E6B72300ED1591 /* Dictionary+Data.swift */; };
 		B89D1F4E21DEEA8A00F1CD9C /* String+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D1F4D21DEEA8A00F1CD9C /* String+HexColor.swift */; };
 		B89D1F5021DEEB1900F1CD9C /* UIViewController+StatusBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D1F4F21DEEB1900F1CD9C /* UIViewController+StatusBarColor.swift */; };
+		B8A2E5AE21F0DA65006912C4 /* UserLoginParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A2E5AD21F0DA65006912C4 /* UserLoginParsingTests.swift */; };
+		B8A2E5B021F0DBF7006912C4 /* Double+CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A2E5AF21F0DBF7006912C4 /* Double+CurrencyFormatter.swift */; };
+		B8A2E5B221F0DC1E006912C4 /* String+AgencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A2E5B121F0DC1E006912C4 /* String+AgencyFormatter.swift */; };
+		B8A2E5B621F0DC8E006912C4 /* HexColorToUIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A2E5B521F0DC8E006912C4 /* HexColorToUIColorTests.swift */; };
 		B8AA34F121E1348D00E609DA /* BankHistoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AA34F021E1348D00E609DA /* BankHistoryHeaderView.swift */; };
 		B8BCD4D021DC04AB0004F1D2 /* KeychainWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCD4CF21DC04AB0004F1D2 /* KeychainWorker.swift */; };
 		B8BCD4D221DC071D0004F1D2 /* KeychainWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCD4D121DC071D0004F1D2 /* KeychainWorkerProtocol.swift */; };
@@ -94,6 +98,10 @@
 		B879C06B21E6B72300ED1591 /* Dictionary+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Data.swift"; sourceTree = "<group>"; };
 		B89D1F4D21DEEA8A00F1CD9C /* String+HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HexColor.swift"; sourceTree = "<group>"; };
 		B89D1F4F21DEEB1900F1CD9C /* UIViewController+StatusBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StatusBarColor.swift"; sourceTree = "<group>"; };
+		B8A2E5AD21F0DA65006912C4 /* UserLoginParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginParsingTests.swift; sourceTree = "<group>"; };
+		B8A2E5AF21F0DBF7006912C4 /* Double+CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+CurrencyFormatter.swift"; sourceTree = "<group>"; };
+		B8A2E5B121F0DC1E006912C4 /* String+AgencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AgencyFormatter.swift"; sourceTree = "<group>"; };
+		B8A2E5B521F0DC8E006912C4 /* HexColorToUIColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColorToUIColorTests.swift; sourceTree = "<group>"; };
 		B8AA34F021E1348D00E609DA /* BankHistoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryHeaderView.swift; sourceTree = "<group>"; };
 		B8BCD4CF21DC04AB0004F1D2 /* KeychainWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWorker.swift; sourceTree = "<group>"; };
 		B8BCD4D121DC071D0004F1D2 /* KeychainWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWorkerProtocol.swift; sourceTree = "<group>"; };
@@ -299,18 +307,11 @@
 		B879C06221E6B4B700ED1591 /* Bank AppTests */ = {
 			isa = PBXGroup;
 			children = (
-				B89A857421E6C8BD00BA55B1 /* Parsing */,
+				B8A2E5B421F0DC6A006912C4 /* Extensions */,
+				B8A2E5AC21F0D9E8006912C4 /* Parsing */,
 				B879C06521E6B4B700ED1591 /* Info.plist */,
 			);
 			path = "Bank AppTests";
-			sourceTree = "<group>";
-		};
-		B89A857421E6C8BD00BA55B1 /* Parsing */ = {
-			isa = PBXGroup;
-			children = (
-				B879C06321E6B4B700ED1591 /* UserResponseParsingTests.swift */,
-			);
-			path = Parsing;
 			sourceTree = "<group>";
 		};
 		B89D1F4C21DEEA7600F1CD9C /* Extensions */ = {
@@ -321,6 +322,25 @@
 				B879C06B21E6B72300ED1591 /* Dictionary+Data.swift */,
 				B852F9C521EE87770054FC2B /* String+PasswordValidation.swift */,
 				B852F9C921EE8BC80054FC2B /* UIView+ShakeAnimation.swift */,
+				B8A2E5AF21F0DBF7006912C4 /* Double+CurrencyFormatter.swift */,
+				B8A2E5B121F0DC1E006912C4 /* String+AgencyFormatter.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		B8A2E5AC21F0D9E8006912C4 /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				B879C06321E6B4B700ED1591 /* UserResponseParsingTests.swift */,
+				B8A2E5AD21F0DA65006912C4 /* UserLoginParsingTests.swift */,
+			);
+			name = Parsing;
+			sourceTree = "<group>";
+		};
+		B8A2E5B421F0DC6A006912C4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B8A2E5B521F0DC8E006912C4 /* HexColorToUIColorTests.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -492,10 +512,12 @@
 				B89D1F4E21DEEA8A00F1CD9C /* String+HexColor.swift in Sources */,
 				B8425BA221D51FB3009DD707 /* BankHistoryRouter.swift in Sources */,
 				B879C06C21E6B72300ED1591 /* Dictionary+Data.swift in Sources */,
+				B8A2E5B021F0DBF7006912C4 /* Double+CurrencyFormatter.swift in Sources */,
 				B8425B9E21D10A39009DD707 /* BankHistoryInteractor.swift in Sources */,
 				B8425BA721D79B61009DD707 /* UserAccountData.swift in Sources */,
 				B8EFA78721DD78BF00994062 /* BankAPINetwork.swift in Sources */,
 				B840A45521AA0BA100E0A22D /* IntroPresenter.swift in Sources */,
+				B8A2E5B221F0DC1E006912C4 /* String+AgencyFormatter.swift in Sources */,
 				B86E3F4E21A62B0800A9B84F /* AppDelegate.swift in Sources */,
 				B852F9C621EE87770054FC2B /* String+PasswordValidation.swift in Sources */,
 				B8425B9921D10248009DD707 /* IntroRouter.swift in Sources */,
@@ -520,7 +542,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A2E5AE21F0DA65006912C4 /* UserLoginParsingTests.swift in Sources */,
 				B879C06421E6B4B700ED1591 /* UserResponseParsingTests.swift in Sources */,
+				B8A2E5B621F0DC8E006912C4 /* HexColorToUIColorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

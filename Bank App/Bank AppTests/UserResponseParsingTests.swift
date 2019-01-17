@@ -12,7 +12,6 @@ import XCTest
 class UserResponseParsingTests: XCTestCase {
 
     func testDecodableWithUserAccountData() {
-     
         let jsonString: [String: Any] = [
             "userAccount": [
                 "userId": 1,
