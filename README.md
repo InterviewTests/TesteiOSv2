@@ -1,4 +1,4 @@
-# Felipe Rodrigues - TCS **
+# Felipe Rodrigues - TCS
 	
 Esse projeto tem como objetivo demonstrar meus conhecimentos sobre CleanSwift, Autolayout, uso de APIs REST, Testes unitários no desenvolvimento de software para iOS.
 	
