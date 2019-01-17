@@ -43,7 +43,7 @@ class LoginViewControllerSpec : QuickSpec{
                     
                     isPassingOnPresentLoginError = (loginViewcontroller.errorAlert.title == LOGIN_ERROR_TITLE_PASSWORD)
                     
-                    presenter.presentLoginResults(user: UserAccount(userId: 12, name: "Teste", bankAccount: "Teste", agency: "Teste", balance: 120.968))
+                    presenter.presentLoginResults()
                     
                 }
                 

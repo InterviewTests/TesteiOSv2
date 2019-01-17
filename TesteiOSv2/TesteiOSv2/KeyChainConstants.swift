@@ -8,6 +8,7 @@
 
 import Foundation
 
+///Keychain Contantes values
 struct KeychainConstans {
     static let keychainBase: String = "com.br.TesteiOSv2.Login"
     static let username: String = "\(keychainBase).usename"

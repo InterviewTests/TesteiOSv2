@@ -18,6 +18,9 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var password: UITextField!
     
+    /**
+     This view's loadAlert.
+     */
     lazy var loadAlert : UIAlertController = {
         let alert = UIAlertController(title: nil, message: LOAD_MENSAGE, preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
@@ -68,7 +71,9 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         router.dataStore = interactor
     }
     
-    
+    /**
+     Call this view's interactor.
+     */
     @IBAction func loginAction(_ sender: Any) {
         guard let usernameText = username.text, let passwordText = password.text else {
             return
@@ -80,6 +85,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        ///If touches any where in view, keyboard will hide
         self.view.endEditing(true)
     }
 
@@ -87,12 +93,22 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
+    /**
+     Present this view's loading Alert.
+     */
     func lodingAlert(){
         self.present(loadAlert, animated: true, completion: nil)
     }
+    /**
+     Dismiss this view's loading Alert.
+     */
     func dismissLoadAlert(){
         self.loadAlert.dismiss(animated: false, completion: nil)
     }
+    
+    /**
+     Get keychain user and set in username's textfield.
+     */
     func checkSavedUser(){
         let keychain = LoginKeychain()
         guard let user = keychain.getUsername() else{return}
@@ -101,13 +117,21 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
 }
 
 extension LoginViewController : LoginViewControllerProceed{
+    /**
+    Dismiss any UIAlertController if exist and presenter a new one.
+     
+     - parameters:
+     - alert: UIAlertController.
+     */
     func callALertController(alert: UIAlertController) {
         self.errorAlert = alert
         self.loadAlert.dismiss(animated: false){
             self.present(alert, animated: true)
         }
     }
-    
+    /**
+     Call router to go to next controllerView.
+     */
     func goToNextViewController() {
         self.router?.routeToAccountDetail()
     }

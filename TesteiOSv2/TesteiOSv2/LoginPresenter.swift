@@ -12,10 +12,18 @@ class LoginPresenter : LogicPresenterLogic{
     
     weak var viewController : LoginViewControllerProceed?
     
-    func presentLoginResults(user: UserAccount) {
+    /**
+    Call viewController fuction to show account viewController.
+     */
+    func presentLoginResults() {
         viewController?.goToNextViewController()
     }
-    
+    /**
+     Set UIAlertController according valided error to viewControlller.
+     
+     - parameters:
+     - loginErrorEnum: LoginValidationErrorEnums
+     */
     func presentLoginError(with loginErrorEnum: LoginValidationErrorEnum) {
         let errortitle = loginErrorEnum.errorTitle
         let errorMensage = loginErrorEnum.errorMensage

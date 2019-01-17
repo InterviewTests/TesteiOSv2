@@ -10,7 +10,9 @@ import UIKit
 import SnapKit
 
 class HeadView : UIView{
-    
+    /**
+     This view's userName label.
+     */
     lazy var userName : UILabel = {
         let userName = UILabel()
         userName.font = UIFont.init(name: "HelveticaNeue-Light", size: 25)
@@ -20,7 +22,9 @@ class HeadView : UIView{
         userName.translatesAutoresizingMaskIntoConstraints = false
         return userName
     }()
-    
+    /**
+     This view's logOut button.
+     */
     lazy var logoutButton : UIButton = {
         let logoutButton = UIButton()
         let img = UIImage(named: LOGOUT_IMAGE_NAME)
@@ -30,7 +34,9 @@ class HeadView : UIView{
         
         return logoutButton
     }()
-    
+    /**
+     This view's accont title label.
+     */
     lazy var accontLabel : UILabel = {
         let accontLabel = UILabel()
         accontLabel.font = UIFont.init(name: "HelveticaNeue-Light", size: 12)
@@ -41,17 +47,21 @@ class HeadView : UIView{
         accontLabel.translatesAutoresizingMaskIntoConstraints = false
         return accontLabel
     }()
-    
+    /**
+     This view's account number label.
+     */
     lazy var accontNumberLabel : UILabel = {
         let accontNumberLabel = UILabel()
         accontNumberLabel.font = UIFont.init(name: "HelveticaNeue-Light", size: 25)
         accontNumberLabel.numberOfLines = 0
         accontNumberLabel.textAlignment = .center
-        accontNumberLabel.textColor = .white//UIColor.init(displayP3Red: 168/255, green: 180/255, blue: 196/255, alpha: 1)
+        accontNumberLabel.textColor = .white
         accontNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         return accontNumberLabel
     }()
-    
+    /**
+     This view's balance title label.
+     */
     lazy var balanceLabel : UILabel = {
         let balanceLabel = UILabel()
         balanceLabel.font = UIFont.init(name: "HelveticaNeue-Light", size: 12)
@@ -62,7 +72,9 @@ class HeadView : UIView{
         balanceLabel.translatesAutoresizingMaskIntoConstraints = false
         return balanceLabel
     }()
-    
+    /**
+     This view's value label.
+     */
     lazy var accontValueLabel : UILabel = {
         let accontValueLabel = UILabel()
         accontValueLabel.font = UIFont.init(name: "HelveticaNeue-Light", size: 25)
@@ -72,6 +84,7 @@ class HeadView : UIView{
         accontValueLabel.translatesAutoresizingMaskIntoConstraints = false
         return accontValueLabel
     }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()

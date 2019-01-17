@@ -11,9 +11,12 @@ import Foundation
 class LoginRouter :LoginDataPassing, LoginRoutingLogic {
     var dataStore: LoginDataStore?
     
-    //ViewController of UpComingMovieListViewController. It's weak for ARC don't count more one reference
+    //ViewController of LoginViewController. It's weak for ARC don't count more one reference
     weak var viewController: LoginViewController?
     
+    /**
+     Show this viewcontroller.
+     */
     func routeToAccountDetail() {
         
         if let user = dataStore?.user, let loginViewController = viewController {

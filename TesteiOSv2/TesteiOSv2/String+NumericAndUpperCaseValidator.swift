@@ -9,6 +9,9 @@
 import Foundation
 
 extension String{
+    /**
+     Check if string has a uppercase character.
+     */
     func hasUpperCase() -> Bool {
         
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "(?=.*[A-Z]).{1,}")

@@ -13,8 +13,16 @@ class LoginInteractor: LoginDataStore, LoginBussinessLogic{
     
     var presenter : LogicPresenterLogic?
     
+    ///Login configurations keychain instace
     let keychain : LoginKeychain = LoginKeychain()
     
+    /**
+     Validate user and password and returns a LoginValidationErrorEnum.
+     
+     - parameters:
+     - user: String
+     - password: String
+     */
     func validLogin(user: String, password: String) -> LoginValidationErrorEnum {
         
         var isValidUser : Bool {
@@ -42,7 +50,13 @@ class LoginInteractor: LoginDataStore, LoginBussinessLogic{
             return .none
         }
     }
-    
+    /**
+     Execute the login and call presenter way acording validLogin results.
+     
+     - parameters:
+     - user: String
+     - password: String
+     */
     func login(user: String, password: String) {
         
         let loginResult = validLogin(user: user, password: password)
@@ -54,7 +68,7 @@ class LoginInteractor: LoginDataStore, LoginBussinessLogic{
                 strongSelf.user = userResult
                 strongSelf.keychain.save(user: user)
                 strongSelf.keychain.save(password: password)
-                strongSelf.presenter?.presentLoginResults(user: userResult)
+                strongSelf.presenter?.presentLoginResults()
             }
         case .username:
             self.presenter?.presentLoginError(with: .username)

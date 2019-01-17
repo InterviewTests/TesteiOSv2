@@ -16,11 +16,19 @@ class AccountDetailInteractor : AccountDetailBussinessLogic, AccountDetailDataSt
     
     var presenter : AccountDetailPresenterLogic?
     
+    /**
+     Call Account interactor fetch and set iteractor user value.
+     
+     - parameters:
+     - user: UserAccount.
+     */
     func updateUserAccountDetail(user: UserAccount) {
         self.user = user
         self.fetchStatements()
     }
-    
+    /**
+     Call Account interactor fetcher statements and call presenter.
+     */
     func fetchStatements() {
         StatementAlamofireGateway().fecthStatements(page: "1") { result in
             self.statements = result.statementList

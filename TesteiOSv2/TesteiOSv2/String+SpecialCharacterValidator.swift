@@ -9,6 +9,9 @@
 import Foundation
 
 extension String{
+    /**
+     Check if string has a special character.
+     */
     func hasSpecialCharacters() -> Bool {
         
         do {

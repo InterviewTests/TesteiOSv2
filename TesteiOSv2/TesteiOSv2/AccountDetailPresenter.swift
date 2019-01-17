@@ -9,9 +9,18 @@
 import Foundation
 
 class AccountDetailPresenter: AccountDetailPresenterLogic{
-    
+ 
+    //ViewController of AccountDetailViewController. It's weak for ARC don't count more one reference
     weak var viewController : AccountDetailViewController?
     
+    
+    /**
+     Update this viewcontroller header and tableview with user and statements.
+     
+     - parameters:
+     - user: UserAccount.
+     - statements: [Statement].
+     */
     func presentAccountDetails(user: UserAccount , statements: [Statement]) {
         
         var accountModel = AccountDetailHeaderModel(user: user)

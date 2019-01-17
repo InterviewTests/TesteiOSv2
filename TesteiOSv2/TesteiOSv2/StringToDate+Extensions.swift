@@ -9,6 +9,9 @@
 import Foundation
 
 extension String{
+    /**
+     Returns a date from a string.
+     */
     func toDate() -> Date
     {
         let dateFormatter = DateFormatter()

@@ -13,14 +13,27 @@ struct AccountDetailHeaderModel {
     let bankAccount : String
     var value : String
     
+    /**
+     Initiate AccountDetailHeaderModel.
+     
+     - parameters:
+     - user: UserAccount.
+     */
     init(user: UserAccount) {
         name = user.name
-        bankAccount = AccountDetailHeaderModel.getBankAccountFormmater(account: user.bankAccount, agency: user.agency)
+        bankAccount = AccountDetailHeaderModel.getBankAccountFormater(account: user.bankAccount, agency: user.agency)
         value = MonetaryString.getValueFormmater(value: 00.00)
         
     }
     
-    static func getBankAccountFormmater(account: String, agency: String) -> String{
+    /**
+    Returns a string with this bankAccount formarter.
+     
+     - parameters:
+     - account: String.
+     - agency: String.
+     */
+    static func getBankAccountFormater(account: String, agency: String) -> String{
         var bankAccount = account
         var bankAgency = agency
         bankAccount.insert(contentsOf: " / ", at: bankAccount.endIndex)

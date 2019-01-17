@@ -10,9 +10,11 @@ import Foundation
 
 class AccountDetailRouter : AccountDetailRoutingLogic{
     
+    //ViewController of AccountDetailViewController. It's weak for ARC don't count more one reference
     weak var viewController : AccountDetailViewController?
     
     func logOut() {
+        //Get this accountDetailViewController and dismiss it.
         guard let accountViewController = viewController else{return}
         accountViewController.dismiss(animated: true, completion: nil)
     }

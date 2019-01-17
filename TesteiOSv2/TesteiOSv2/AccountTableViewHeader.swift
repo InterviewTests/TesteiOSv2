@@ -9,7 +9,9 @@
 import UIKit
 
 class AccountTableViewHeader : UIView{
-    
+    /**
+     This header title label.
+     */
     lazy var title : UILabel = {
         let title = UILabel()
         title.font = UIFont.boldSystemFont(ofSize: 17)

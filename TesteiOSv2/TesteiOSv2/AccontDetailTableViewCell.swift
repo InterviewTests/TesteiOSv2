@@ -9,12 +9,16 @@
 import UIKit
 
 class AccontDetailTableViewCell : UITableViewCell{
-    
+    /**
+     This view's cell view for the statements.
+     */
     lazy var cellView : UIView = {
         let cellView = UIView()
         return cellView
     }()
-    
+    /**
+     This view's title label for the statements.
+     */
     lazy var title : UILabel = {
         let title = UILabel()
         title.font = UIFont.init(name: "HelveticaNeue-Light", size: 16)
@@ -24,7 +28,9 @@ class AccontDetailTableViewCell : UITableViewCell{
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
-    
+    /**
+     This view's descriptionAccount label for the statements.
+     */
     lazy var descriptionAccount : UILabel = {
         let descriptionAccount = UILabel()
         descriptionAccount.font =  UIFont.init(name: "HelveticaNeue-Light", size: 16)
@@ -35,7 +41,7 @@ class AccontDetailTableViewCell : UITableViewCell{
     }()
     
     /**
-     This view's data label for the movie.
+     This view's data label for the statements.
      */
     lazy var dataLabel : UILabel = {
         let dataLabel = UILabel()
@@ -46,7 +52,9 @@ class AccontDetailTableViewCell : UITableViewCell{
         dataLabel.translatesAutoresizingMaskIntoConstraints = false
         return dataLabel
     }()
-    
+    /**
+     This view's value label for the statements.
+     */
     lazy var value : UILabel = {
         let value = UILabel()
         value.font =  UIFont.init(name: "HelveticaNeue-Light", size: 20)
@@ -64,7 +72,11 @@ class AccontDetailTableViewCell : UITableViewCell{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    /**
+     Update this view labels.
+     - parameters:
+     - statement: AccountStatementModel
+     */
     func uploadCell(with statement: AccountStatementModel){
         self.title.text = statement.title
         self.descriptionAccount.text = statement.desc

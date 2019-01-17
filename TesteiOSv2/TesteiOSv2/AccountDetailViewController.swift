@@ -17,18 +17,25 @@ class AccountDetailViewController : UIViewController, UITableViewDelegate, UITab
     
     var router : AccountDetailRoutingLogic?
     
+    /**
+     Top view for this view.
+     */
     lazy var headView : HeadView = {
         let headView = HeadView()
         return headView
     }()
     
-    
+    /**
+    Tableview header.
+     */
     lazy var tableViewHeader : AccountTableViewHeader = {
         let headView = AccountTableViewHeader()
         return headView
         }()
     
-    
+    /**
+     TableView for this view.
+     */
     lazy var tableView : UITableView = {
         let tableView = UITableView(frame: self.view.frame)
         tableView.register(AccontDetailTableViewCell.self, forCellReuseIdentifier: UPCOMING_STATEMENTTABLE_CELL)
@@ -41,6 +48,9 @@ class AccountDetailViewController : UIViewController, UITableViewDelegate, UITab
         return tableView
     }()
     
+    /**
+     Array with AccountStatementModel.
+     */
     var statementsList : [AccountStatementModel]?
     
     /**
@@ -93,13 +103,16 @@ class AccountDetailViewController : UIViewController, UITableViewDelegate, UITab
         cell.uploadCell(with: statements[indexPath.row])
         return cell
     }
+     ///set TableView header height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height : CGFloat = 100
         return height
     }
+     ///set TableView header title
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Resultados"
+        return "Recentes"
     }
+     ///Seted table HeaderView text label settings
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
             view.backgroundView?.backgroundColor = UIColor.init(red: 254/255, green:  254/255, blue:  254/255, alpha: 1)
@@ -114,22 +127,30 @@ class AccountDetailViewController : UIViewController, UITableViewDelegate, UITab
         return ACCOUNT_TABLEVIEW_HEADER_HEIGHT
     }
     /**
-     Set MovieDetailViewController interactor movie value.
+     Call LoginViewController interactor with user value.
      
      - parameters:
-     - movie: Movie.
+     - user: UserAccount.
      */
     private func callIteractor(user: UserAccount){
         guard let interactor = self.interactor else{return}
         interactor.updateUserAccountDetail(user: user)
     }
-    
+    /**
+     Update LoginViewController headview text labels values.
+     - parameters:
+     - account: AccountDetailHeaderModel
+     */
     func updateHeader(account: AccountDetailHeaderModel) {
         self.headView.userName.text = account.name
         self.headView.accontNumberLabel.text = account.bankAccount
         self.headView.accontValueLabel.text = account.value
     }
-    
+    /**
+     It adds one more string path to the base URL of images.
+     - parameters:
+     - path: String
+     */
     func updateAccountValue(value: String){
         self.headView.accontValueLabel.text = value
     }
@@ -138,6 +159,9 @@ class AccountDetailViewController : UIViewController, UITableViewDelegate, UITab
         self.statementsList = statements
         self.tableView.reloadData()
     }
+    /**
+     Call LoginViewController router logout fuction.
+     */
     func logOut(){
         router?.logOut()
     }
