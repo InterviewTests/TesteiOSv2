@@ -24,7 +24,7 @@ class AccontDetailTableViewCell : UITableViewCell{
         title.font = UIFont.init(name: "HelveticaNeue-Light", size: 16)
         title.numberOfLines = 0
         title.textAlignment = .center
-        title.textColor = UIColor.init(displayP3Red: 168/255, green: 180/255, blue: 196/255, alpha: 1)
+        title.textColor = UIColor.init(red: 168/255, green: 180/255, blue: 196/255, alpha: 1)
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
@@ -47,7 +47,7 @@ class AccontDetailTableViewCell : UITableViewCell{
         let dataLabel = UILabel()
         dataLabel.font =  UIFont.init(name: "HelveticaNeue-Light", size: 12)
         dataLabel.numberOfLines = 0
-        dataLabel.textColor = UIColor.init(displayP3Red: 168/255, green: 180/255, blue: 196/255, alpha: 1)
+        dataLabel.textColor = UIColor.init(red: 168, green: 180, blue: 196, alpha: 1)
         dataLabel.textAlignment = .center
         dataLabel.translatesAutoresizingMaskIntoConstraints = false
         return dataLabel

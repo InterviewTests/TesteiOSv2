@@ -146,7 +146,7 @@ extension HeadView: ViewCode{
     }
     
     func setupAdditionalConfigurations() {
-        self.backgroundColor = UIColor.init(displayP3Red: 59/255, green: 73/255, blue: 238/255, alpha: 1)
+        self.backgroundColor = UIColor.init(red: 59/255, green: 73/255, blue: 238/255, alpha: 1)
 
     }
     
