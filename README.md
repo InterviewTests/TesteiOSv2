@@ -6,10 +6,10 @@ Foi desenvolvido duas telas, uma de Login e uma segunda de informações de cont
 
 ## Frameworks
 Neste projeto foi utilizado seguintes depedencias:
-	*Alamofire: Facilita a manipulações de dados e requisições com a API.
-  *KeychainSwift: Salva os dados designados de forma segura.
-  *Quick e Nimble: Para testes menos verbosos e melhora a percpção de fluxo de teste.
-  *SnapKit: Para o autolayout programaticamente menos verboso.
+* Alamofire: Facilita a manipulações de dados e requisições com a API.
+* KeychainSwift: Salva os dados designados de forma segura.
+* Quick e Nimble: Para testes menos verbosos e melhora a percpção de fluxo de teste.
+* SnapKit: Para o autolayout programaticamente menos verboso.
   
 ## Requisitos
 Para executar o projeto será nescessário que seja feito o clone na máquina local 
