@@ -19,8 +19,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     @IBOutlet weak var password: UITextField!
     
     lazy var loadAlert : UIAlertController = {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-    
+        let alert = UIAlertController(title: nil, message: LOAD_MENSAGE, preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.gray
@@ -30,14 +29,16 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         return alert
     }()
     
-    
+    lazy var errorAlert : UIAlertController = {
+        let alert = UIAlertController(title: nil, message: "", preferredStyle: .alert)
+        return alert
+    }()
 
     override func viewDidLoad() {
         username.delegate = self
         password.delegate = self
         self.checkSavedUser()
     }
-
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -74,6 +75,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         }
         self.lodingAlert()
         interactor?.login(user: usernameText, password: passwordText)
+        
         self.dismissLoadAlert()
     }
     
@@ -100,6 +102,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
 
 extension LoginViewController : LoginViewControllerProceed{
     func callALertController(alert: UIAlertController) {
+        self.errorAlert = alert
         self.loadAlert.dismiss(animated: false){
             self.present(alert, animated: true)
         }

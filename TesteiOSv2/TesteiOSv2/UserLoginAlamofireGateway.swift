@@ -23,8 +23,8 @@ final class UserLoginAlamofireGateway : UserLoginGateway{
                         guard let data = response.data else{return}
                         let user = try decodable.decode(UserLogin.self , from:data)
                         completion(user.userAccount)
-                    } catch let error{
-                        fatalError("data could not be decoded: \(error)")
+                    } catch{
+                        fatalError("data could not be decoded.")
                 }
                 case .failure:
                 print("Alamofire JSON request error.")

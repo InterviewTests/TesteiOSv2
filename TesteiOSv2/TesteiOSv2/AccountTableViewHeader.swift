@@ -10,23 +10,23 @@ import UIKit
 
 class AccountTableViewHeader : UIView{
     
-    lazy var tittle : UILabel = {
-        let tittle = UILabel()
-        tittle.font = UIFont.boldSystemFont(ofSize: 17)
-        tittle.numberOfLines = 0
-        tittle.text = ACCOUNT_TABLEVIEW_HEADER_TITTLE
-        tittle.textAlignment = .center
-        tittle.translatesAutoresizingMaskIntoConstraints = false
-        return tittle
+    lazy var title : UILabel = {
+        let title = UILabel()
+        title.font = UIFont.boldSystemFont(ofSize: 17)
+        title.numberOfLines = 0
+        title.text = ACCOUNT_TABLEVIEW_HEADER_TITLE
+        title.textAlignment = .center
+        title.translatesAutoresizingMaskIntoConstraints = false
+        return title
     }()
 }
 extension AccountTableViewHeader : ViewCode{
     func buildViewHierarchy() {
-        self.addSubview(tittle)
+        self.addSubview(title)
     }
     
     func setupConstraints() {
-        self.tittle.snp.makeConstraints { make in
+        self.title.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(14)
             make.left.equalToSuperview().offset(18)
             make.bottom.equalToSuperview().inset(8)

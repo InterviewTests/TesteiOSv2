@@ -13,7 +13,7 @@ enum LoginValidationErrorEnum : Int {
     
     
     var errorTitle : String {
-        let title = ["", LOGIN_ERROR_TITTLE_USERNAME, LOGIN_ERROR_TITTLE_PASSWORD]
+        let title = ["", LOGIN_ERROR_TITLE_USERNAME, LOGIN_ERROR_TITLE_PASSWORD]
         return title[rawValue]
     }
     

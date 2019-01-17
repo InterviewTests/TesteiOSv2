@@ -15,14 +15,14 @@ class AccontDetailTableViewCell : UITableViewCell{
         return cellView
     }()
     
-    lazy var tittle : UILabel = {
-        let tittle = UILabel()
-        tittle.font = UIFont.init(name: "HelveticaNeue-Light", size: 16)
-        tittle.numberOfLines = 0
-        tittle.textAlignment = .center
-        tittle.textColor = UIColor.init(displayP3Red: 168/255, green: 180/255, blue: 196/255, alpha: 1)
-        tittle.translatesAutoresizingMaskIntoConstraints = false
-        return tittle
+    lazy var title : UILabel = {
+        let title = UILabel()
+        title.font = UIFont.init(name: "HelveticaNeue-Light", size: 16)
+        title.numberOfLines = 0
+        title.textAlignment = .center
+        title.textColor = UIColor.init(displayP3Red: 168/255, green: 180/255, blue: 196/255, alpha: 1)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        return title
     }()
     
     lazy var descriptionAccount : UILabel = {
@@ -66,7 +66,7 @@ class AccontDetailTableViewCell : UITableViewCell{
     }
     
     func uploadCell(with statement: AccountStatementModel){
-        self.tittle.text = statement.title
+        self.title.text = statement.title
         self.descriptionAccount.text = statement.desc
         self.dataLabel.text = statement.date
         self.value.text = statement.value
@@ -75,7 +75,7 @@ class AccontDetailTableViewCell : UITableViewCell{
 extension AccontDetailTableViewCell : ViewCode{
     func buildViewHierarchy() {
         self.addSubview(cellView)
-        self.addSubview(tittle)
+        self.addSubview(title)
         self.addSubview(dataLabel)
         self.addSubview(descriptionAccount)
         self.addSubview(value)
@@ -88,13 +88,13 @@ extension AccontDetailTableViewCell : ViewCode{
             make.right.equalToSuperview().inset(16)
             make.top.equalToSuperview().offset(5)
         }
-        self.tittle.snp.makeConstraints { make in
+        self.title.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(30)
             make.top.equalToSuperview().offset(18)
         }
         self.descriptionAccount.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(30)
-            make.top.equalTo(tittle.snp.bottom).offset(19.2)
+            make.top.equalTo(title.snp.bottom).offset(19.2)
         }
         self.dataLabel.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(32)

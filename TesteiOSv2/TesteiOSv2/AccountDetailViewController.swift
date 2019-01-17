@@ -106,7 +106,7 @@ class AccountDetailViewController : UIViewController, UITableViewDelegate, UITab
             view.textLabel!.backgroundColor = UIColor.clear
             view.textLabel!.textColor = UIColor.black
             view.textLabel!.font =  UIFont.init(name: "HelveticaNeue-Light", size: 17)
-            view.textLabel!.text = ACCOUNT_TABLEVIEW_HEADER_TITTLE
+            view.textLabel!.text = ACCOUNT_TABLEVIEW_HEADER_TITLE
         }
     }
     

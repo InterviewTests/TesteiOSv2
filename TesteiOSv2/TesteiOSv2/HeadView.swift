@@ -16,7 +16,7 @@ class HeadView : UIView{
         userName.font = UIFont.init(name: "HelveticaNeue-Light", size: 25)
         userName.numberOfLines = 0
         userName.textAlignment = .center
-        userName.textColor = .white//UIColor.init(displayP3Red: 168/255, green: 180/255, blue: 196/255, alpha: 1)
+        userName.textColor = .white
         userName.translatesAutoresizingMaskIntoConstraints = false
         return userName
     }()
@@ -58,7 +58,7 @@ class HeadView : UIView{
         balanceLabel.numberOfLines = 0
         balanceLabel.textAlignment = .center
         balanceLabel.text = "Saldo"
-        balanceLabel.textColor = .white//UIColor.init(displayP3Red: 168/255, green: 180/255, blue: 196/255, alpha: 1)
+        balanceLabel.textColor = .white
         balanceLabel.translatesAutoresizingMaskIntoConstraints = false
         return balanceLabel
     }()
@@ -68,7 +68,7 @@ class HeadView : UIView{
         accontValueLabel.font = UIFont.init(name: "HelveticaNeue-Light", size: 25)
         accontValueLabel.numberOfLines = 0
         accontValueLabel.textAlignment = .center
-        accontValueLabel.textColor = .white//UIColor.init(displayP3Red: 168/255, green: 180/255, blue: 196/255, alpha: 1)
+        accontValueLabel.textColor = .white
         accontValueLabel.translatesAutoresizingMaskIntoConstraints = false
         return accontValueLabel
     }()
@@ -83,7 +83,6 @@ class HeadView : UIView{
     
     @objc func pressedAction(sender: UIButton!) {
         guard let superView = self.parentViewController as? AccountDetailViewController else {
-            print("tem nada")
             return
             
         }
@@ -135,9 +134,7 @@ extension HeadView: ViewCode{
     
     func setupAdditionalConfigurations() {
         self.backgroundColor = UIColor.init(displayP3Red: 59/255, green: 73/255, blue: 238/255, alpha: 1)
-        userName.text = "asdkamsd"
-        accontNumberLabel.text = "2050 / 01.111222-4"
-        accontValueLabel.text = "R$1.000,00"
+
     }
     
     
