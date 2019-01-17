@@ -18,11 +18,24 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var password: UITextField!
     
+    lazy var loadAlert : UIAlertController = {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+    
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating()
+        
+        alert.view.addSubview(loadingIndicator)
+        return alert
+    }()
+    
+    
 
     override func viewDidLoad() {
         username.delegate = self
         password.delegate = self
-     
+        self.checkSavedUser()
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -59,9 +72,9 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         guard let usernameText = username.text, let passwordText = password.text else {
             return
         }
-//        let accountDetailViewController = AccontDetailViewController()
-//        self.show(accountDetailViewController,sender: nil)
+        self.lodingAlert()
         interactor?.login(user: usernameText, password: passwordText)
+        self.dismissLoadAlert()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -72,11 +85,24 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
+    func lodingAlert(){
+        self.present(loadAlert, animated: true, completion: nil)
+    }
+    func dismissLoadAlert(){
+        self.loadAlert.dismiss(animated: false, completion: nil)
+    }
+    func checkSavedUser(){
+        let keychain = LoginKeychain()
+        guard let user = keychain.getUsername() else{return}
+        self.username.text = user
+    }
 }
 
 extension LoginViewController : LoginViewControllerProceed{
     func callALertController(alert: UIAlertController) {
-        self.present(alert, animated: true)
+        self.loadAlert.dismiss(animated: false){
+            self.present(alert, animated: true)
+        }
     }
     
     func goToNextViewController() {

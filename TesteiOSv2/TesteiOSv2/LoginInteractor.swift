@@ -13,6 +13,8 @@ class LoginInteractor: LoginDataStore, LoginBussinessLogic{
     
     var presenter : LogicPresenterLogic?
     
+    let keychain : LoginKeychain = LoginKeychain()
+    
     func validLogin(user: String, password: String) -> LoginValidationErrorEnum {
         
         var isValidUser : Bool {
@@ -43,14 +45,15 @@ class LoginInteractor: LoginDataStore, LoginBussinessLogic{
     
     func login(user: String, password: String) {
         
-        var loginResult = validLogin(user: user, password: password)
-        loginResult = .none
+        let loginResult = validLogin(user: user, password: password)
         switch loginResult {
         case .none:
             let userLogin = UserLoginAlamofireGateway()
             userLogin.authLogin(user: user, password: password) { [weak self] userResult in
                 guard let strongSelf = self else {return}
                 strongSelf.user = userResult
+                strongSelf.keychain.save(user: user)
+                strongSelf.keychain.save(password: password)
                 strongSelf.presenter?.presentLoginResults(user: userResult)
             }
         case .username:

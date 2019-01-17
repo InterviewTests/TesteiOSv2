@@ -116,6 +116,7 @@ extension AccontDetailTableViewCell : ViewCode{
         cellView.layer.borderColor = UIColor.init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1).cgColor
         cellView.layer.borderWidth = 1
         cellView.layer.shadowOpacity = 0.05
+        
     }
     
     

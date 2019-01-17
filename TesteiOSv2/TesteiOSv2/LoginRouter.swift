@@ -17,7 +17,7 @@ class LoginRouter :LoginDataPassing, LoginRoutingLogic {
     func routeToAccountDetail() {
         
         if let user = dataStore?.user, let loginViewController = viewController {
-           let accountDetailViewController = AccountDetailViewController(user: user)
+            let accountDetailViewController = AccountDetailViewController(user: user)
             loginViewController.show(accountDetailViewController,sender: nil)
         }
     }

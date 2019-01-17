@@ -37,6 +37,7 @@ class AccountDetailViewController : UIViewController, UITableViewDelegate, UITab
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .white
+        tableView.allowsSelection = false
         return tableView
     }()
     
