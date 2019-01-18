@@ -19,9 +19,7 @@ class CurrencyVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var userAccountLbl: UILabel!
     @IBOutlet weak var userBalance: UILabel!
     
-    var statements = [StatementList]()
-    var arrRes = [[String:AnyObject]]()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,25 +29,35 @@ class CurrencyVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         userAccountLbl.text = AuthService.instance.userBankAccount + " / " + AuthService.instance.userAgency
         userBalance.text = "R$" + AuthService.instance.userBalance
         
-        StatementService.instance.findAllChannel { (sucess) in
+        StatementService.instance.findAllStatement { (sucess) in
             
-        }
+        }// Statement Service instance
+        
+        tblJson.delegate = self
+        tblJson.dataSource = self
         
     }// View Did Load
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "jsonCell")! as! JsonCell
-        var dict = arrRes[(indexPath as NSIndexPath).row]
-        cell.title.text = dict["title"] as? String
-        cell.desc.text = dict["desc"] as? String
-        cell.data.text = dict["date"] as? String
-        cell.value.text = dict["value"] as? String
-        return cell
+        print("Quase no if")
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "jsonCell", for: indexPath) as? JsonCell{
+            let statement = StatementService.instance.statements[indexPath.row]
+            print("Entrou na funcTableview")
+            print (statement)
+            cell.configureCell(statement: statement)
+            return cell
+        }else {
+            return UITableViewCell()
+        }
+    }// Func table
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrRes.count
+        return StatementService.instance.statements.count
     }
     
     

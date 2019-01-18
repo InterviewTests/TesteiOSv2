@@ -26,6 +26,22 @@ class JsonCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configureCell(statement: StatementList){
+        let titleByStatement = statement.title ?? ""
+        title.text = titleByStatement
+        print("Configure Cell")
+        print(titleByStatement)
+        
+        let descByStatement = statement.desc ?? ""
+        desc.text = descByStatement
+        
+        let dateByStatement = statement.date ?? ""
+        data.text = dateByStatement
+        
+        let valueByStatement = statement.value ?? ""
+        value.text = valueByStatement
+        
+    }//func configureCell
     
 
 }

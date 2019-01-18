@@ -18,7 +18,7 @@ class StatementService {
     
     let defaults = UserDefaults.standard
     
-    func findAllChannel(completion: @escaping CompletionHandler) {
+    func findAllStatement(completion: @escaping CompletionHandler) {
         AF.request(URL_STATEMENTS, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { (response) in
             
             switch response.result{
@@ -26,12 +26,14 @@ class StatementService {
                 let json = JSON(value)
                 json["statementList"].array?.forEach({(statement)in
                     let title = statement["title"].stringValue
+                    print( title)
                     let desc = statement["desc"].stringValue
                     let date = statement["date"].stringValue
                     let value = statement["value"].stringValue
                     let statement = StatementList(title: title, desc: desc, date: date, value: value)
                     self.statements.append(statement)
                 })
+                completion(true)
             case .failure( _):
                 print(response.result.error as Any)
                 debugPrint(response.result.error as Any)
