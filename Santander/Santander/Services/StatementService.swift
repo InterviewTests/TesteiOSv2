@@ -13,61 +13,40 @@ import SwiftyJSON
 class StatementService {
     static let instance = StatementService()
     
+    var statements = [StatementList]()
+    var arrRes = [[String:AnyObject]]()
+    
     let defaults = UserDefaults.standard
     
-    var isLoggedIn : Bool {
-        get {
-            return defaults.bool(forKey: LOGGED_IN_KEY)
+    func findAllChannel(completion: @escaping CompletionHandler) {
+        AF.request(URL_STATEMENTS, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { (response) in
+            
+            switch response.result{
+            case .success(let value):
+                let json = JSON(value)
+                json["statementList"].array?.forEach({(statement)in
+                    let title = statement["title"].stringValue
+                    let desc = statement["desc"].stringValue
+                    let date = statement["date"].stringValue
+                    let value = statement["value"].stringValue
+                    let statement = StatementList(title: title, desc: desc, date: date, value: value)
+                    self.statements.append(statement)
+                })
+            case .failure( _):
+                print(response.result.error as Any)
+                debugPrint(response.result.error as Any)
+            } // Switcase
         }
-        set {
-            defaults.set(newValue, forKey: LOGGED_IN_KEY)
-        }
-    }
+        
+    } // FIM DA FUN FINDALLCHANNEL
     
-    var title: String {
-        get {
-            return defaults.value(forKey: TITLE) as! String
-        }
-        set {
-            defaults.set(newValue, forKey: TITLE)
-        }
-    }
     
-    var desc: String {
-        get {
-            return defaults.value(forKey: DESC) as! String
-        }
-        set {
-            defaults.set(newValue, forKey: DESC)
-        }
-    }
-    
-    var date: String {
-        get {
-            return defaults.value(forKey: DATE) as! String
-        }
-        set {
-            defaults.set(newValue, forKey: DATE)
-        }
-    }
-    
-    var value: String {
-        get {
-            return defaults.value(forKey: VALUE) as! String
-        }
-        set {
-            defaults.set(newValue, forKey: VALUE)
-        }
-    }
-    
-    var arrRes = [[String:AnyObject]]()
     
     func getStatement(completion: @escaping CompletionHandler) {
         
        
         AF.request(URL_STATEMENTS, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { (response) in
             if response.result.error == nil {
-                guard let data = response.data else { return }
                 
                 let swiftyJsonVar = JSON(response.result.value!)
                 //print(swiftyJsonVar)
@@ -92,7 +71,7 @@ class StatementService {
         }
     }
     
-}
+} // CLASS STATEMENT
 
 
 
