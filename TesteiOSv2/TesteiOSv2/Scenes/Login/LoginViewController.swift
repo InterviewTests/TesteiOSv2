@@ -125,10 +125,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
 
   func displaySomething(viewModel: Login.LoginLoad.ViewModel)
   {
-    if viewModel.user.userAccount != nil{
-        if let login = loginTextField.text, let passWord = passWordTextField.text{
-            saveLogin(login: login, passWord: passWord)
-        }
+    if let userAccount =  viewModel.user.userAccount{
+        saveLogin(userAccount: userAccount)
         self.view.activityStopAnimating()
         router?.routeLoginToShowStatements(segue: nil)
     }
@@ -164,9 +162,15 @@ extension LoginViewController{
         }
     }
 
-    func saveLogin(login : String, passWord : String){
-        keychainLogin.clear()
-        keychainLogin.set(login, forKey: LoginKeys.userKey)
-        keychainLogin.set(passWord, forKey: LoginKeys.passWordKey)
+    func saveLogin(userAccount : UserAcount){
+        let jsonEncoder = JSONEncoder()
+        do{
+            let jsonData = try jsonEncoder.encode(userAccount)
+            keychainLogin.clear()
+            keychainLogin.set(jsonData, forKey: LoginKeys.userKey)
+        }catch{
+            print(error.localizedDescription)
+        }
     }
+
 }

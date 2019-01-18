@@ -13,6 +13,8 @@ class StatementsView: UIView {
     @IBOutlet private weak var nameLabel : UILabel!
     @IBOutlet private weak var countAndAgency : UILabel!
     @IBOutlet private weak var balanceLabel : UILabel!
+    var logoffButtonTapped: (UIButton) -> Void = {_ in }
+
 
 
     override init(frame : CGRect){
@@ -38,6 +40,11 @@ class StatementsView: UIView {
         }
 
     }
+
+    @IBAction func logoffButtonTapped(_ sender: Any) {
+        logoffButtonTapped(sender as! UIButton)
+    }
+    
 }
 
 

@@ -12,6 +12,8 @@
 
 
 import UIKit
+import KeychainSwift
+
 
 protocol StatementsDisplayLogic: class
 {
@@ -25,6 +27,8 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
     var listStatements : StatementModel?
     var userAccount : UserAcount?
+    let keychainLogin = KeychainSwift()
+
 
   // MARK: Object lifecycle
   
@@ -76,6 +80,15 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+
+    fileprivate func dismissButtonTapped() {
+        self.statementsView?.logoffButtonTapped = {sender in
+            self.dismiss(animated: true, completion: {
+                //..
+            })
+        }
+    }
+
   
   // MARK: View lifecycle
 
@@ -85,17 +98,27 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
   {
     super.viewDidLoad()
     self.setUpLayout()
-    if let userId = self.userAccount?.userId{
-        doStatement(param: "\(userId)")
-    }
+    isValidLastUser()
+
   }
 
     func setUpLayout(){
         self.statementsView =  Bundle.main.loadNibNamed("StatementsView", owner: self, options: nil)![0] as! StatementsView
         self.view.addSubview(statementsView ?? StatementsView())
+        dismissButtonTapped()
+
     }
 
   // MARK: Do something
+
+    func isValidLastUser() {
+        if let userAccount = getUserAccount(){
+            if let userId = userAccount.userId{
+                print(userId)
+                doStatement(param: "\(userId)")
+            }
+        }
+    }
   
   //@IBOutlet weak var nameTextField: UITextField!
   
@@ -135,6 +158,23 @@ extension StatementsViewController : UITableViewDataSource{
 
 }
 
+
+extension StatementsViewController{
+    func getUserAccount() -> UserAcount?{
+        do{
+            // Decode
+            if let dataDecode = keychainLogin.getData(LoginKeys.userKey){
+                let jsonDecoder = JSONDecoder()
+                let userAccount = try jsonDecoder.decode(UserAcount.self, from: dataDecode)
+                return userAccount
+            }
+        }catch{
+            print(error.localizedDescription)
+        }
+
+        return nil
+    }
+}
 
 extension UIView {
     class func fromNib() -> UIView {
