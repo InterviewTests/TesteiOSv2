@@ -27,6 +27,13 @@
 		F498561821EC073000B5558C /* StatementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498561721EC073000B5558C /* StatementsViewController.swift */; };
 		F498561B21EC0D6800B5558C /* StatementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498561A21EC0D6800B5558C /* StatementsTableViewCell.swift */; };
 		F498561D21EC126700B5558C /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498561C21EC126700B5558C /* Double+Extensions.swift */; };
+		F498562121EC160900B5558C /* Realm-Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498562021EC160900B5558C /* Realm-Config.swift */; };
+		F498562321EC162B00B5558C /* UserAccountObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498562221EC162B00B5558C /* UserAccountObject.swift */; };
+		F498562F21EFEF0900B5558C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498562E21EFEF0900B5558C /* LoginViewModel.swift */; };
+		F498563121EFF20600B5558C /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498563021EFF20600B5558C /* LoginModel.swift */; };
+		F4E828C021F15F5200C2FDF7 /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E828BF21F15F5200C2FDF7 /* StoryboardIdentifiable.swift */; };
+		F4E828C221F15FB900C2FDF7 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E828C121F15FB900C2FDF7 /* UIStoryboard+Extensions.swift */; };
+		F4E828C421F1682700C2FDF7 /* StatemensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E828C321F1682700C2FDF7 /* StatemensViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +86,13 @@
 		F498561721EC073000B5558C /* StatementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsViewController.swift; sourceTree = "<group>"; };
 		F498561A21EC0D6800B5558C /* StatementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsTableViewCell.swift; sourceTree = "<group>"; };
 		F498561C21EC126700B5558C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		F498562021EC160900B5558C /* Realm-Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm-Config.swift"; sourceTree = "<group>"; };
+		F498562221EC162B00B5558C /* UserAccountObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountObject.swift; sourceTree = "<group>"; };
+		F498562E21EFEF0900B5558C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F498563021EFF20600B5558C /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		F4E828BF21F15F5200C2FDF7 /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
+		F4E828C121F15FB900C2FDF7 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
+		F4E828C321F1682700C2FDF7 /* StatemensViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatemensViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,9 +172,10 @@
 			isa = PBXGroup;
 			children = (
 				F498560F21EBCA6900B5558C /* Extensions */,
-				F4605C2321E82C9A008C9F90 /* Resources */,
-				F4605C2021E82886008C9F90 /* Network */,
+				F4605C2021E82886008C9F90 /* Services */,
+				F4E828BE21F15F2C00C2FDF7 /* Protocols */,
 				F4605C2821E83220008C9F90 /* Model */,
+				F498562D21EFEEEF00B5558C /* ViewModel */,
 				F498561421EC06B600B5558C /* View */,
 				F4605BF221E82181008C9F90 /* AppDelegate.swift */,
 				F4605BF621E82181008C9F90 /* Main.storyboard */,
@@ -189,27 +204,23 @@
 			path = "TesteiOSv2-MariaEugeniaUITests";
 			sourceTree = "<group>";
 		};
-		F4605C2021E82886008C9F90 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				F4605C2121E82B02008C9F90 /* TesteAPI.swift */,
-				F4605C2621E83081008C9F90 /* TesteAPIManager.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		F4605C2321E82C9A008C9F90 /* Resources */ = {
+		F4605C2021E82886008C9F90 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				F4605C2421E82CD3008C9F90 /* Config.swift */,
+				F4605C2121E82B02008C9F90 /* TesteAPI.swift */,
+				F4605C2621E83081008C9F90 /* TesteAPIManager.swift */,
 			);
-			path = Resources;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		F4605C2821E83220008C9F90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F498562021EC160900B5558C /* Realm-Config.swift */,
+				F498563021EFF20600B5558C /* LoginModel.swift */,
 				F4605C2B21E839F7008C9F90 /* UserAccountModel.swift */,
+				F498562221EC162B00B5558C /* UserAccountObject.swift */,
 				F4605C2D21E8410D008C9F90 /* StatementModel.swift */,
 			);
 			path = Model;
@@ -221,6 +232,7 @@
 				F498561021EBCC4200B5558C /* String+Extensions.swift */,
 				F498561C21EC126700B5558C /* Double+Extensions.swift */,
 				F498561221EBD3C300B5558C /* UIViewController+Extensions.swift */,
+				F4E828C121F15FB900C2FDF7 /* UIStoryboard+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +253,23 @@
 				F498561A21EC0D6800B5558C /* StatementsTableViewCell.swift */,
 			);
 			path = CELL;
+			sourceTree = "<group>";
+		};
+		F498562D21EFEEEF00B5558C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F498562E21EFEF0900B5558C /* LoginViewModel.swift */,
+				F4E828C321F1682700C2FDF7 /* StatemensViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F4E828BE21F15F2C00C2FDF7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F4E828BF21F15F5200C2FDF7 /* StoryboardIdentifiable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,7 +481,12 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -461,7 +495,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -476,16 +515,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				F498561D21EC126700B5558C /* Double+Extensions.swift in Sources */,
+				F4E828C421F1682700C2FDF7 /* StatemensViewModel.swift in Sources */,
 				F498561B21EC0D6800B5558C /* StatementsTableViewCell.swift in Sources */,
 				F4605C2C21E839F7008C9F90 /* UserAccountModel.swift in Sources */,
 				F4605BF521E82181008C9F90 /* LoginViewController.swift in Sources */,
 				F4605C2521E82CD3008C9F90 /* Config.swift in Sources */,
+				F498563121EFF20600B5558C /* LoginModel.swift in Sources */,
+				F4E828C221F15FB900C2FDF7 /* UIStoryboard+Extensions.swift in Sources */,
 				F4605C2221E82B02008C9F90 /* TesteAPI.swift in Sources */,
+				F498562321EC162B00B5558C /* UserAccountObject.swift in Sources */,
 				F498561321EBD3C300B5558C /* UIViewController+Extensions.swift in Sources */,
+				F498562F21EFEF0900B5558C /* LoginViewModel.swift in Sources */,
+				F4E828C021F15F5200C2FDF7 /* StoryboardIdentifiable.swift in Sources */,
 				F498561121EBCC4200B5558C /* String+Extensions.swift in Sources */,
 				F4605C2721E83081008C9F90 /* TesteAPIManager.swift in Sources */,
 				F4605BF321E82181008C9F90 /* AppDelegate.swift in Sources */,
 				F498561821EC073000B5558C /* StatementsViewController.swift in Sources */,
+				F498562121EC160900B5558C /* Realm-Config.swift in Sources */,
 				F4605C2E21E8410D008C9F90 /* StatementModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

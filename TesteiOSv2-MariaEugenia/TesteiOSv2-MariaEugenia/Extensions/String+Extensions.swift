@@ -11,7 +11,7 @@ import UIKit
 extension String {
     
     func isValidPassord() -> Bool {
-        let passwordRegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&#]{1,}"
+        let passwordRegEx = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{1,}$"
         let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: self)
     }

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import RxSwift
 
-class StatementsViewController: UIViewController {
+class StatementsViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var accountLabel: UILabel!
@@ -18,47 +19,63 @@ class StatementsViewController: UIViewController {
     
     var statementsList = [StatementList]()
     
+    var viewModel = StatemensViewModel()
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
-        tableView.dataSource = self
-        
-        TesteAPIManager.shared.getStatments(failure: { (error) in
-            self.presentMessage(error ?? "Tivemos um problema, tente novamente.")
-        }) { (statementsResult) in
-            if let list = statementsResult?.statementList {
-                self.statementsList = list
-                self.tableView.reloadData()
-            } else if let errorMessage = statementsResult?.error?.message {
-                self.presentMessage(errorMessage)
-            }
-        }
+        viewModel.queryUserAccount()
+        viewModel.fetchStatements()
+        bindView()
+    
     }
     
     @IBAction func logoutButtonAction(_ sender: Any) {
+        viewModel.logoutUser()
+    }
+    
+    func bindView() {
+        
+        viewModel.userAccount.asObservable()
+            .bind { (userAccount) in
+                self.nameLabel.text = userAccount?.name ?? ""
+                self.accountLabel.text = "\(userAccount?.bankAccount ?? "-")" + "/" + "\(userAccount?.agency ?? "-")"
+                self.balanceLabel.text = userAccount?.balance?.formatCurrency()
+            }.disposed(by: disposeBag)
+        
+        viewModel.statementsViewModel.asObservable().bind { (_) in
+            self.tableView.reloadData()
+            }.disposed(by: disposeBag)
+        
+        viewModel.statementsViewModel
+            .bind(to: tableView.rx.items(cellIdentifier: "CELL", cellType: StatementsTableViewCell.self)) { (row, element, cell) in
+                cell.configureCell(statement: element)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func createCallBacks() {
+        
+        viewModel.isSuccess.asObservable()
+            .bind{ value in
+                if value { self.callLoginViewController() }
+            }.disposed(by: disposeBag)
+        
+        viewModel.errorMsg.asObservable()
+            .bind { errorMessage in
+                if !errorMessage.isEmpty { self.presentMessage(errorMessage) }
+            }.disposed(by: disposeBag)
+        
+    }
+    
+    func callLoginViewController() {
+        let storyboard = UIStoryboard(storyboard: .main)
+        let viewController: LoginViewController = storyboard.instantiateViewController()
+        present(viewController, animated: true, completion: nil)
     }
     
 
 }
 
-extension StatementsViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statementsList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CELL", for: indexPath) as? StatementsTableViewCell else { return UITableViewCell() }
-        
-        let statement = statementsList[indexPath.row]
-        cell.configureCell(statement: statement)
-        
-        return cell
-    }
-}

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct LoginModel: Decodable {
+struct UserModel: Decodable {
     let userAccount: UserAccountModel?
     let error: ErrorModel?
 }

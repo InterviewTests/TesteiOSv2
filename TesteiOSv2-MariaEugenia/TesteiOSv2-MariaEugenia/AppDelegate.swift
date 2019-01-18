@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        IQKeyboardManager.shared.enable = true
+        
+        let container = try! Container()
+        let results = container.values(UserAccountModel.self)
+        if results.count > 0 {
+            let storyboard = UIStoryboard(storyboard: .main)
+            let viewController: StatementsViewController = storyboard.instantiateViewController()
+            self.window?.rootViewController = viewController
+        }
+        
         return true
     }
 

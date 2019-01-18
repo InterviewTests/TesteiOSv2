@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIViewController {
+extension UIViewController: StoryboardIdentifiable {
     
     func presentMessage(_ message: String) {
         let alertController = UIAlertController(title: "Alerta",
@@ -17,5 +17,6 @@ extension UIViewController {
         alertController.addAction(.init(title: "OK", style: .default))
         self.present(alertController, animated: true)
     }
+
     
 }
