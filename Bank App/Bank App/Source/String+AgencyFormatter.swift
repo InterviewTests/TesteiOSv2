@@ -13,8 +13,8 @@ extension String {
     
     func toBankAgency() -> String {
         var string = self
-        string.insert("-", at: string.index(before: string.endIndex))
-        string.insert(".", at: string.index(after: string.index(after: string.startIndex)))
+        if self.contains("-") {} else { string.insert("-", at: string.index(before: string.endIndex)) }
+        if self.contains(".") {} else { string.insert(".", at: string.index(after: string.index(after: string.startIndex))) }
         return string
     }
 }

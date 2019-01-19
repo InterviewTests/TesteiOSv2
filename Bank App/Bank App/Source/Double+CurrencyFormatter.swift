@@ -20,16 +20,20 @@ extension Double {
         var stringFormated: String = currencyFormat
         let stringValue = String(format: "%.2f", self)
         
-        if stringValue.contains("-") {
-            for letter in stringValue {
-                if letter != "-" {
-                    stringFormated.append(letter)
-                }
+        for letter in stringValue {
+            if letter == "." {
+                stringFormated.append(",")
             }
+            else if letter != "-" {
+                stringFormated.append(letter)
+            }
+        }
+        
+        if stringValue.contains("-") {
             return "-\(stringFormated)"
         }
         else {
-            return "\(currencyFormat)\(stringValue)"
+            return "\(stringFormated)"
         }
     }
 }
