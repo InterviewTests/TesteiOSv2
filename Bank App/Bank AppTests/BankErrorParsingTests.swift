@@ -12,13 +12,13 @@ import XCTest
 class BankErrorParsingTests: XCTestCase {
 
     func testDecodableWithoutOptionals() {
-        let jsonString: [String: Any] = [
+        let jsonValue: [String: Any] = [
             "code": 53,
             "message": "Usuário ou senha incorreta"
         ]
         
         do {
-            let jsonData = try jsonString.convertToJsonData()
+            let jsonData = try jsonValue.convertToJsonData()
             let objResponse = try JSONDecoder().decode(BankError.self, from: jsonData)
             XCTAssertEqual(objResponse.code, 53)
             XCTAssertEqual(objResponse.message, "Usuário ou senha incorreta")
@@ -28,10 +28,10 @@ class BankErrorParsingTests: XCTestCase {
     }
     
     func testDecodableOptionalsNil() {
-        let jsonString: [String: Any] = [:]
+        let jsonValue: [String: Any] = [:]
         
         do {
-            let jsonData = try jsonString.convertToJsonData()
+            let jsonData = try jsonValue.convertToJsonData()
             let objResponse = try JSONDecoder().decode(BankError.self, from: jsonData)
             XCTAssertNil(objResponse.code)
             XCTAssertNil(objResponse.message)

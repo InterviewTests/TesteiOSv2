@@ -20,11 +20,11 @@ extension Dictionary {
         }
     }
     
-    public func convertToJsonString() throws -> String? {
+    public func convertTojsonValue() throws -> String? {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: self, options: [])
-            let jsonString = String(data: jsonData, encoding: .utf8)
-            return jsonString
+            let jsonValue = String(data: jsonData, encoding: .utf8)
+            return jsonValue
         } catch {
             throw error
         }

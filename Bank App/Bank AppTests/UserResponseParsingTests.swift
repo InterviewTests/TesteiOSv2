@@ -12,7 +12,7 @@ import XCTest
 class UserResponseParsingTests: XCTestCase {
 
     func testDecodableWithUserAccountData() {
-        let jsonString: [String: Any] = [
+        let jsonValue: [String: Any] = [
             "userAccount": [
                 "userId": 1,
                 "name": "Jose da Silva Teste",
@@ -24,7 +24,26 @@ class UserResponseParsingTests: XCTestCase {
         ]
         
         do {
-            let jsonData = try jsonString.convertToJsonData()
+            let jsonData = try jsonValue.convertToJsonData()
+            let objResponse = try JSONDecoder().decode(UserResponse.self, from: jsonData)
+            XCTAssertNotNil(objResponse.userAccount)
+            XCTAssertNotNil(objResponse.error)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testDecodableWithErrorData() {
+        let jsonValue: [String: Any] = [
+            "userAccount": [:],
+            "error": [
+                "code": 53,
+                "message": "Usuário ou senha incorreta"
+            ]
+        ]
+        
+        do {
+            let jsonData = try jsonValue.convertToJsonData()
             let objResponse = try JSONDecoder().decode(UserResponse.self, from: jsonData)
             XCTAssertNotNil(objResponse.userAccount)
             XCTAssertNotNil(objResponse.error)
@@ -34,10 +53,10 @@ class UserResponseParsingTests: XCTestCase {
     }
     
     func testDecodableWithNil() {
-        let jsonString: [String: Any] = [:]
+        let jsonValue: [String: Any] = [:]
         
         do {
-            let jsonData = try jsonString.convertToJsonData()
+            let jsonData = try jsonValue.convertToJsonData()
             let objResponse = try JSONDecoder().decode(UserResponse.self, from: jsonData)
             XCTAssertNil(objResponse.userAccount)
             XCTAssertNil(objResponse.error)

@@ -12,7 +12,7 @@ import XCTest
 class UserAccountParsingTests: XCTestCase {
 
     func testDecodable() {
-        let jsonString: [String: Any] = [
+        let jsonValue: [String: Any] = [
             "userId": 1,
             "name": "Jose da Silva Teste",
             "bankAccount": "2050",
@@ -21,7 +21,7 @@ class UserAccountParsingTests: XCTestCase {
         ]
         
         do {
-            let jsonData = try jsonString.convertToJsonData()
+            let jsonData = try jsonValue.convertToJsonData()
             let objResponse = try JSONDecoder().decode(UserAccount.self, from: jsonData)
             
             XCTAssertEqual(objResponse.userId, 1)
