@@ -13,21 +13,21 @@ class DoubleFormatAsCurrencyStringTests: XCTestCase {
 
     func testFormattingCreditValue() {
         let doubleValue = 200.00
-        XCTAssertEqual(doubleValue.toStringValue(), "R$200,00")
+        XCTAssertEqual(doubleValue.toStringCurrency(), "R$200,00")
     }
     
     func testFormattingDebtValue() {
         let doubleValue = -450.55
-        XCTAssertEqual(doubleValue.toStringValue(), "-R$450,55")
+        XCTAssertEqual(doubleValue.toStringCurrency(), "-R$450,55")
     }
     
     func testFormattingWrongValue() {
         let doubleValue = -450.550
-        XCTAssertEqual(doubleValue.toStringValue(), "-R$450,55")
+        XCTAssertEqual(doubleValue.toStringCurrency(), "-R$450,55")
     }
     
     func testFormattingRoundingValue() {
         let doubleValue = 1000.999
-        XCTAssertEqual(doubleValue.toStringValue(), "R$1001,00")
+        XCTAssertEqual(doubleValue.toStringCurrency(), "R$1001,00")
     }
 }

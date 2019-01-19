@@ -32,6 +32,6 @@ extension UserAccount {
         name = try values.decodeIfPresent(String.self, forKey: .name)
         bankAccount = try values.decodeIfPresent(String.self, forKey: .bankAccount)
         agency = try values.decodeIfPresent(String.self, forKey: .agency)?.toBankAgency()
-        balance = try values.decodeIfPresent(Double.self, forKey: .balance)?.toStringValue()
+        balance = try values.decodeIfPresent(Double.self, forKey: .balance)?.toStringCurrency()
     }
 }

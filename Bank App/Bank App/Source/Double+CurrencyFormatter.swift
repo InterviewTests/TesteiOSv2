@@ -15,7 +15,7 @@ extension Double {
         return String(self)
     }
     
-    func toStringValue() -> String {
+    func toStringCurrency() -> String {
         let currencyFormat: String = "R$"
         var stringFormated: String = currencyFormat
         let stringValue = String(format: "%.2f", self)

@@ -29,7 +29,7 @@ extension Statement: Decodable {
         title = try values.decode(String.self, forKey: .title)
         description = try values.decode(String.self, forKey: .description)
         date = try values.decode(String.self, forKey: .date).toDate()!
-        value = try values.decode(Double.self, forKey: .value).toStringValue()
+        value = try values.decode(Double.self, forKey: .value).toStringCurrency()
     }
 }
 
