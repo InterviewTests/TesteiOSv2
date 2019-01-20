@@ -19,7 +19,7 @@ class CurrencyWorker {
     
     func fetchStatements(userId:Int!, responseRequest:@escaping(currencyResponseHandler)) {
         if verificaInternet() {
-            Alamofire.request(Endpoints.Bank.Statements.url+"1").validate(contentType: ["application/json"]).responseJSON { dataResponse in
+            Alamofire.request(Endpoints.Bank.Statements.url + "\(userId)").validate(contentType: ["application/json"]).responseJSON { dataResponse in
                 switch dataResponse.result {
                     case .success(let json):
                         let response = json as! NSDictionary
