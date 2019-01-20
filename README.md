@@ -1,3 +1,8 @@
+## Thiago Lima - ZUP
+
+### Passos para Executar o projeto
+Para executar o projeto, será nescessario o clone do mesmo ou download, após deve ser executado o comando `` pod install `` para downloads das dependencias.
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
