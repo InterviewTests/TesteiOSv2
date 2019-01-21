@@ -48,7 +48,15 @@ class JsonCell: UITableViewCell {
         desc.text = descByStatement
         
         let dateByStatement = statement.date ?? ""
-        data.text = dateByStatement
+        //Convert yy-MM-dd to dd/MM/yyyy
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+        let showDate = inputFormatter.date(from: dateByStatement)
+        inputFormatter.dateFormat = "dd/MM/yyyy"
+        let resultDateString = inputFormatter.string(from: showDate!)
+        print(resultDateString)
+        
+        data.text = resultDateString
         
         let valueByStatement = statement.value ?? ""
         value.text = "R$ \(valueByStatement)"
