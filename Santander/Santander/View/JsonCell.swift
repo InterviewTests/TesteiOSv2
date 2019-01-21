@@ -54,7 +54,6 @@ class JsonCell: UITableViewCell {
         let showDate = inputFormatter.date(from: dateByStatement)
         inputFormatter.dateFormat = "dd/MM/yyyy"
         let resultDateString = inputFormatter.string(from: showDate!)
-        print(resultDateString)
         
         data.text = resultDateString
         

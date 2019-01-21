@@ -10,8 +10,8 @@ import Foundation
 
 struct StatementList: Decodable {
     
-     public private(set) var title: String!
-     public private(set) var desc: String!
+    public private(set) var title: String!
+    public private(set) var desc: String!
     public private(set) var date: String!
     public private(set) var value: String!
 }

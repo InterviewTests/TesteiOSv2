@@ -39,7 +39,6 @@ class CurrencyVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "jsonCell", for: indexPath) as? JsonCell{
             let statement = StatementService.instance.statements[indexPath.row]
-            print (statement)
             cell.configureCell(statement: statement)
             return cell
         }else {
