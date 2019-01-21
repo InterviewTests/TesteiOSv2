@@ -13,7 +13,7 @@ typealias CompletionHandler = (_ Success: Bool) -> ()
 // URL Constants
 let BASE_URL = "https://bank-app-test.herokuapp.com/api"
 let URL_LOGIN = "\(BASE_URL)/login"
-let URL_STATEMENTS = "\(BASE_URL)/statements/1"
+let URL_STATEMENTS = "\(BASE_URL)/statements/\(AuthService.instance.userId)"
 
 // Segues
 let TO_CURRENCY = "toCurrency"

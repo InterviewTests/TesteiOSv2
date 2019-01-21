@@ -43,8 +43,6 @@ class JsonCell: UITableViewCell {
     func configureCell(statement: StatementList){
         let titleByStatement = statement.title ?? ""
         title.text = titleByStatement
-        print("Configure Cell")
-        print(titleByStatement)
         
         let descByStatement = statement.desc ?? ""
         desc.text = descByStatement
@@ -53,7 +51,7 @@ class JsonCell: UITableViewCell {
         data.text = dateByStatement
         
         let valueByStatement = statement.value ?? ""
-        value.text = valueByStatement
+        value.text = "R$ \(valueByStatement)"
         
     }//func configureCell
     

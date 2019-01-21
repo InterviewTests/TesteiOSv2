@@ -20,7 +20,6 @@ class LoginVC: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         StatementService.instance.findAllStatement { (sucess) in
-            
         }// Statement Service instance
 
     }//DidLoad

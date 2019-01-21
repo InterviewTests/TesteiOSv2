@@ -29,9 +29,6 @@ class CurrencyVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         userAccountLbl.text = AuthService.instance.userBankAccount + " / " + AuthService.instance.userAgency
         userBalance.text = "R$" + AuthService.instance.userBalance
         
-        StatementService.instance.findAllStatement { (sucess) in
-            
-        }// Statement Service instance
         
         tblJson.delegate = self
         tblJson.dataSource = self
@@ -40,10 +37,8 @@ class CurrencyVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Quase no if")
         if let cell = tableView.dequeueReusableCell(withIdentifier: "jsonCell", for: indexPath) as? JsonCell{
             let statement = StatementService.instance.statements[indexPath.row]
-            print("Entrou na funcTableview")
             print (statement)
             cell.configureCell(statement: statement)
             return cell

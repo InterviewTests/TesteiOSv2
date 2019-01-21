@@ -26,7 +26,6 @@ class StatementService {
                 let json = JSON(value)
                 json["statementList"].array?.forEach({(statement)in
                     let title = statement["title"].stringValue
-                    print( title)
                     let desc = statement["desc"].stringValue
                     let date = statement["date"].stringValue
                     let value = statement["value"].stringValue
