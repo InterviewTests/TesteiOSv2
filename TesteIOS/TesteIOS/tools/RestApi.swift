@@ -31,7 +31,6 @@ class RestApi: RestApiProtocol {
             }
 
             let user = response.result.value
-            print(user?.userAccount?.print())
             if user?.userAccount != nil {
                 callback(user?.userAccount)
             }
