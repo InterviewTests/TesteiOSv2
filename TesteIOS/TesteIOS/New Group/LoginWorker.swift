@@ -14,7 +14,12 @@ import UIKit
 
 class LoginWorker
 {
-  func doSomeWork()
+    func doLogin(request: Login.doLogin.Request, callback: @escaping (_ request: Login.doLogin.Response?)->())
   {
+    RestApi.doLogin(user: request.user, password: request.password){ response in
+        let response = Login.doLogin.Response(userAccount: response!)
+        callback(response)
+        
+    }
   }
 }

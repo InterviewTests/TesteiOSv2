@@ -8,19 +8,19 @@
 
 import ObjectMapper
 
-class UserAccount: Mappable {
-    var user: [User]?
+class User : Mappable {
+    var userAccount: UserAccount?
     
     required init?(map: Map){
         
     }
     
     func mapping(map: Map) {
-        user <- map["userAccount"]
+        userAccount <- map["userAccount"]
     }
 }
 
-class User: Mappable {
+class UserAccount: Mappable {
     
     var userId: Int?
     var name: String?
@@ -39,5 +39,16 @@ class User: Mappable {
         agency <- map["agency"]
         balance <- map["balance"]
     }
+    
+    func validUserAccount() -> Bool
+    {
+        return (userId != nil)
+    }
+    
+    func print() -> String{
+        let ret = "UserAccount: userid=\(userId), name=\(name), bankAccount=\(bankAccount)"
+        return ret
+    }
+    
 }
 

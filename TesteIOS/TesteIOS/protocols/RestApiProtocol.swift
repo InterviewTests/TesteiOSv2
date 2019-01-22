@@ -9,6 +9,6 @@
 import Foundation
 
 protocol RestApiProtocol {
-    func GetStatments(id: String, callback : @escaping (_ statments:Statments?) -> Void)
-    func doLogin(user: String, password: String, callback : @escaping (_ userAccount:UserAccount?) -> Void)
+    static func GetStatments(id: String, callback: @escaping (_ statments: Statments?) -> Void)
+    static func doLogin(user: String, password: String, callback: @escaping (_ userAccount: UserAccount?) -> Void)
 }

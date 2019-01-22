@@ -13,7 +13,7 @@
 import UIKit
 
 protocol LoginDisplayLogic: class {
-    func displaySomething(viewModel: Login.Something.ViewModel)
+    func displayStatmentView()
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -74,10 +74,20 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         passwordInput.layer.cornerRadius = 4.0
         passwordInput.layer.borderColor = UIColor(red: 220, green: 226, blue: 238, alpha: 1).cgColor
 
-        doSomething()
     }
 
     @IBAction func LoginClick(_ sender: Any) {
+        doLogin()
+    }
+
+
+    func doLogin() {
+        let request = Login.doLogin.Request(user: userInput.text!, password: passwordInput.text!)
+        interactor?.doLogin(request: request)
+    }
+
+    func displayStatmentView() {
+        
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let statmentsView = mainStoryBoard.instantiateViewController(withIdentifier: "statementsViewController") as? statementsViewController else {
             print("couldn't find view")
@@ -86,15 +96,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         print("deu certo rsrs")
         statmentsView.modalTransitionStyle = .flipHorizontal
         present(statmentsView, animated: true, completion: nil)
-    }
-
-
-    func doSomething() {
-        let request = Login.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-
-    func displaySomething(viewModel: Login.Something.ViewModel) {
-        // nameTextField.text = viewModel.name
+        
     }
 }

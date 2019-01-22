@@ -14,18 +14,24 @@ import UIKit
 
 enum Login
 {
-  // MARK: Use cases
-  
-  enum Something
+  enum doLogin
   {
     struct Request
     {
+        var user: String
+        var password: String
     }
     struct Response
     {
+        var userAccount: UserAccount?
     }
     struct ViewModel
     {
+        var withIdentifier: String
+        var vController: UIViewController
+        func viewController () ->UIViewController {
+            return vController
+        }
     }
   }
 }
