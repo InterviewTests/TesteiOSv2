@@ -20,6 +20,7 @@ protocol statementsPresentationLogic
 class statementsPresenter: statementsPresentationLogic
 {
   weak var viewController: statementsDisplayLogic?
+    weak var repository: UserRepository?
   
   // MARK: Do something
   

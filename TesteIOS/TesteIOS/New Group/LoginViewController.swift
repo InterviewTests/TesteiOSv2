@@ -11,14 +11,36 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 protocol LoginDisplayLogic: class {
     func displayStatmentView()
+    func showAlertMsg(title: String, message: String)
+    func showLoading()
+    func hideLoading()
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
+    func showLoading() {
+        SVProgressHUD.show()
+    }
+    
+    func hideLoading() {
+        SVProgressHUD.dismiss()
+    }
+    
+    func showAlertMsg(title: String, message: String) {
+        hideLoading()
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Tentar novamente", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
+    
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    var repository: UserRepository?
 
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var userInput: UITextField!
@@ -43,10 +65,14 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
         let router = LoginRouter()
+        let repository = UserRepository.shared
         viewController.interactor = interactor
         viewController.router = router
+        viewController.repository = repository
         interactor.presenter = presenter
+        interactor.repository = repository
         presenter.viewController = viewController
+        presenter.repository = repository
         router.viewController = viewController
         router.dataStore = interactor
     }
@@ -82,6 +108,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
 
 
     func doLogin() {
+        showLoading()
         let request = Login.doLogin.Request(user: userInput.text!, password: passwordInput.text!)
         interactor?.doLogin(request: request)
     }
@@ -96,6 +123,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         print("deu certo rsrs")
         statmentsView.modalTransitionStyle = .flipHorizontal
         present(statmentsView, animated: true, completion: nil)
-        
+        hideLoading()
     }
+    
+
 }

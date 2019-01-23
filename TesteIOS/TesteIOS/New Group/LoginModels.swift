@@ -24,6 +24,7 @@ enum Login
     struct Response
     {
         var userAccount: UserAccount?
+        var error: [String: String]?
     }
     struct ViewModel
     {

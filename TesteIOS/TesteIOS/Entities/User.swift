@@ -7,6 +7,8 @@
 //
 
 import ObjectMapper
+import Realm
+import RealmSwift
 
 class User : Mappable {
     var userAccount: UserAccount?
@@ -20,33 +22,49 @@ class User : Mappable {
     }
 }
 
-class UserAccount: Mappable {
+class UserAccount: Object, Mappable {
     
-    var userId: Int?
-    var name: String?
-    var bankAccount: Int?
-    var agency: Int?
-    var balance: String?
+    @objc dynamic var userId: Int = -1
+    @objc dynamic var name: String?
+    @objc dynamic var bankAccount: String?
+    @objc dynamic var agency: String?
+    @objc dynamic var balance: String?
     
-    required init?(map: Map){
-        
+    required convenience init?(map: Map){
+        self.init()
     }
     
     func mapping(map: Map) {
+        let transform = TransformOf<String, Double>(fromJSON: { (value: Double?) -> String? in
+            
+            if let v = value {
+                NSLog("from json value: " + String(v))
+                return String(v)
+            }
+            NSLog("from json value: null")
+            return nil
+        }, toJSON: { (value: String?) -> Double? in
+            // transform value from Double? to String?
+            if let value = value {
+                return Double(value)
+            }
+            return nil
+        })
+        
         userId <- map["userId"]
         name <- map["name"]
         bankAccount <- map["bankAccount"]
         agency <- map["agency"]
-        balance <- map["balance"]
+        balance <- (map["balance"], transform)
     }
     
     func validUserAccount() -> Bool
     {
-        return (userId != nil)
+        return (userId >= 0)
     }
     
     func print() -> String{
-        let ret = "UserAccount: userid=\(userId), name=\(name), bankAccount=\(bankAccount)"
+        let ret = "UserAccount: userid=\(userId), name=\(String(describing: name)), bankAccount=\(bankAccount), agency=\(agency), balance=\(String(describing: balance))"
         return ret
     }
     

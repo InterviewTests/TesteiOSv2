@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Validator {
+public class Validator {
     private static var pesoCPF: [Int] = [11, 10, 9, 8, 7, 6, 5, 4, 3, 2]
     private static let EMAIL_REGEX: String = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$"
     private static let PASSWORD_REGEX: String = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$"

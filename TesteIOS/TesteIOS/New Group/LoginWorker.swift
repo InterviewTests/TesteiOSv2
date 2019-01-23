@@ -15,11 +15,22 @@ import UIKit
 class LoginWorker
 {
     func doLogin(request: Login.doLogin.Request, callback: @escaping (_ request: Login.doLogin.Response?)->())
-  {
-    RestApi.doLogin(user: request.user, password: request.password){ response in
-        let response = Login.doLogin.Response(userAccount: response!)
-        callback(response)
-        
+    {
+        if !(Validator.isValidEmail(email: request.user) || Validator.isValidCPF(cpf: request.user))
+        {
+            
+            let response = Login.doLogin.Response(userAccount: nil, error: ["Nome do usuário incorreto": "O nome do usuário deve ser um email ou CPF válido"])
+            callback(response)
+        }else if !Validator.isValidPassword(password: request.password) {
+            
+            let response = Login.doLogin.Response(userAccount: nil, error: ["Sinha inválida": "A senha deve ser mais que 7 caracteres com pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico"])
+            callback(response)
+        }else{
+            RestApi.doLogin(user: request.user, password: request.password){
+                                response in
+                let response = Login.doLogin.Response(userAccount: response! , error: nil)
+                callback(response)
+            }
+        }
     }
-  }
 }
