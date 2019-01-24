@@ -9,5 +9,5 @@
 import Foundation
 
 class Constants {
-    static public let BASEURL = "https://bank-app-test.herokuapp.com/api"
+    public static let BASEURL = "https://bank-app-test.herokuapp.com/api"
 }

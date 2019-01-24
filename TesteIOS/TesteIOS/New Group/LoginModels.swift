@@ -12,27 +12,24 @@
 
 import UIKit
 
-enum Login
-{
-  enum doLogin
-  {
-    struct Request
-    {
-        var user: String
-        var password: String
-    }
-    struct Response
-    {
-        var userAccount: UserAccount?
-        var error: [String: String]?
-    }
-    struct ViewModel
-    {
-        var withIdentifier: String
-        var vController: UIViewController
-        func viewController () ->UIViewController {
-            return vController
+enum Login {
+    enum doLogin {
+        struct Request {
+            var user: String
+            var password: String
+        }
+
+        struct Response {
+            var userAccount: UserAccount?
+            var error: [String: String]?
+        }
+
+        struct ViewModel {
+            var withIdentifier: String
+            var vController: UIViewController
+            func viewController() -> UIViewController {
+                return vController
+            }
         }
     }
-  }
 }

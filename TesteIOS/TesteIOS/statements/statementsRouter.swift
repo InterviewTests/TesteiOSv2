@@ -12,49 +12,28 @@
 
 import UIKit
 
-@objc protocol statementsRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol statementsRoutingLogic {
+    func goToLogin()
+    // func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol statementsDataPassing
-{
-  var dataStore: statementsDataStore? { get }
+protocol statementsDataPassing {
+    var dataStore: statementsDataStore? { get }
 }
 
-class statementsRouter: NSObject, statementsRoutingLogic, statementsDataPassing
-{
-  weak var viewController: statementsViewController?
-  var dataStore: statementsDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+class statementsRouter: NSObject, statementsRoutingLogic, statementsDataPassing {
+    weak var viewController: statementsViewController?
+    var dataStore: statementsDataStore?
+    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: statementsViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: statementsDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    // MARK: Routing
+
+    func goToLogin() {
+        guard let view = mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
+            print("couldn't find view")
+            return
+        }
+        view.modalTransitionStyle = .coverVertical
+        viewController?.present(view, animated: true, completion: nil)
+    }
 }

@@ -12,21 +12,18 @@
 
 import UIKit
 
-protocol statementsPresentationLogic
-{
-  func presentSomething(response: statements.Something.Response)
+protocol statementsPresentationLogic {
+    func presentUpdateStatmentsList(response: statements.get.Response)
 }
 
-class statementsPresenter: statementsPresentationLogic
-{
-  weak var viewController: statementsDisplayLogic?
+class statementsPresenter: statementsPresentationLogic {
+    weak var viewController: statementsDisplayLogic?
     weak var repository: UserRepository?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: statements.Something.Response)
-  {
-    let viewModel = statements.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+
+    // MARK: Do something
+
+    func presentUpdateStatmentsList(response: statements.get.Response) {
+        let viewModel = statements.get.ViewModel(userAccount: response.userAccount, statments: response.statments)
+        viewController?.updateViews(viewModel: viewModel)
+    }
 }

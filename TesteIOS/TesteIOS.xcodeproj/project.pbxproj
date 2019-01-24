@@ -57,6 +57,8 @@
 		E93034ED21F69FD7002FFC89 /* statementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93034DD21F69FD7002FFC89 /* statementsInteractor.swift */; };
 		E93034EE21F69FD7002FFC89 /* statementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93034DD21F69FD7002FFC89 /* statementsInteractor.swift */; };
 		E93034EF21F69FD7002FFC89 /* statementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93034DD21F69FD7002FFC89 /* statementsInteractor.swift */; };
+		E97E729121F93E1800E75A36 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97E729021F93E1800E75A36 /* Double.swift */; };
+		E97E729621F9462200E75A36 /* StatmentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97E729521F9462200E75A36 /* StatmentViewCell.swift */; };
 		E987FE0621F7F53500421D61 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987FE0521F7F53500421D61 /* UserRepository.swift */; };
 		F58DC63F872543860C6B1BD7 /* Pods_TesteIOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC62D19BD7BDE36D6530DE31 /* Pods_TesteIOSTests.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +120,8 @@
 		E93034DB21F69FD7002FFC89 /* statementsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statementsModels.swift; sourceTree = "<group>"; };
 		E93034DC21F69FD7002FFC89 /* statementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statementsViewController.swift; sourceTree = "<group>"; };
 		E93034DD21F69FD7002FFC89 /* statementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statementsInteractor.swift; sourceTree = "<group>"; };
+		E97E729021F93E1800E75A36 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		E97E729521F9462200E75A36 /* StatmentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatmentViewCell.swift; sourceTree = "<group>"; };
 		E987FE0521F7F53500421D61 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +179,7 @@
 		E90C823D21F6B5E3008F4E07 /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				E97E728E21F93DEE00E75A36 /* extentions */,
 				E90C823E21F6B5FD008F4E07 /* tools.swift */,
 				E90C824521F75A7F008F4E07 /* RestApi.swift */,
 			);
@@ -274,6 +279,7 @@
 		E93034D721F69FC5002FFC89 /* statements */ = {
 			isa = PBXGroup;
 			children = (
+				E97E729221F945C200E75A36 /* statementTable */,
 				E93034D821F69FD7002FFC89 /* statementsPresenter.swift */,
 				E93034D921F69FD7002FFC89 /* statementsWorker.swift */,
 				E93034DA21F69FD7002FFC89 /* statementsRouter.swift */,
@@ -282,6 +288,22 @@
 				E93034DD21F69FD7002FFC89 /* statementsInteractor.swift */,
 			);
 			path = statements;
+			sourceTree = "<group>";
+		};
+		E97E728E21F93DEE00E75A36 /* extentions */ = {
+			isa = PBXGroup;
+			children = (
+				E97E729021F93E1800E75A36 /* Double.swift */,
+			);
+			path = extentions;
+			sourceTree = "<group>";
+		};
+		E97E729221F945C200E75A36 /* statementTable */ = {
+			isa = PBXGroup;
+			children = (
+				E97E729521F9462200E75A36 /* StatmentViewCell.swift */,
+			);
+			path = statementTable;
 			sourceTree = "<group>";
 		};
 		E987FE0421F7F50E00421D61 /* repositories */ = {
@@ -528,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E97E729621F9462200E75A36 /* StatmentViewCell.swift in Sources */,
 				E93034E121F69FD7002FFC89 /* statementsWorker.swift in Sources */,
 				E90C824E21F75CC9008F4E07 /* Constants.swift in Sources */,
 				E93034ED21F69FD7002FFC89 /* statementsInteractor.swift in Sources */,
@@ -544,6 +567,7 @@
 				E93034E721F69FD7002FFC89 /* statementsModels.swift in Sources */,
 				E93034EA21F69FD7002FFC89 /* statementsViewController.swift in Sources */,
 				E93034CE21F69F3C002FFC89 /* LoginModels.swift in Sources */,
+				E97E729121F93E1800E75A36 /* Double.swift in Sources */,
 				E90C824C21F75BB3008F4E07 /* RestApiProtocol.swift in Sources */,
 				E93034CB21F69F3C002FFC89 /* LoginRouter.swift in Sources */,
 				E90C824621F75A7F008F4E07 /* RestApi.swift in Sources */,

@@ -10,16 +10,36 @@
 //  see http://clean-swift.com
 //
 
+import SVProgressHUD
 import UIKit
 
 protocol statementsDisplayLogic: class {
-    func displaySomething(viewModel: statements.Something.ViewModel)
+    func updateViews(viewModel: statements.get.ViewModel)
 }
 
 class statementsViewController: UIViewController, statementsDisplayLogic {
     var interactor: statementsBusinessLogic?
     var router: (NSObjectProtocol & statementsRoutingLogic & statementsDataPassing)?
     var repository: UserRepository?
+
+    @IBOutlet var userName: UILabel!
+    @IBOutlet var userAccount: UILabel!
+    @IBOutlet var userBalance: UILabel!
+    @IBOutlet var statmentsTable: UITableView!
+
+    var statments: [Statment] = [] {
+        didSet {
+            statmentsTable?.reloadData()
+        }
+    }
+
+    func showLoading() {
+        SVProgressHUD.show()
+    }
+
+    func hideLoading() {
+        SVProgressHUD.dismiss()
+    }
 
     // MARK: Object lifecycle
 
@@ -67,20 +87,46 @@ class statementsViewController: UIViewController, statementsDisplayLogic {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        showLoading()
+        UpdateView()
     }
 
     // MARK: Do something
 
     // @IBOutlet weak var nameTextField: UITextField!
 
-    func doSomething() {
-        
-        let request = statements.Something.Request()
-        interactor?.doSomething(request: request)
+    func UpdateView() {
+        interactor?.updateStatmentsList()
     }
 
-    func displaySomething(viewModel: statements.Something.ViewModel) {
-        // nameTextField.text = viewModel.name
+    func updateViews(viewModel: statements.get.ViewModel) {
+        let uAccount = viewModel.userAccount!
+        statments = viewModel.statments!
+
+        userName?.text = uAccount.name!
+        userAccount?.text = uAccount.agency! + "/" + uAccount.bankAccount!
+        userBalance?.text = uAccount.balance!
+    }
+
+    // @IBAction func Logout(_ sender: Any) {
+    //    repository?.deleteAll()
+    // }
+    @IBAction func Logout(_ sender: Any) {
+        repository?.deleteAll()
+        router?.goToLogin()
+    }
+}
+
+extension statementsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statments.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let statment = statments[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StatmentViewCell") as! StatmentViewCell
+        cell.value?.text = statment.value
+        cell.SetStatment(statment: statment)
+        return cell
     }
 }

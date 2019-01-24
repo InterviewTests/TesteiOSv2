@@ -12,9 +12,8 @@
 
 import UIKit
 
-
 protocol statementsBusinessLogic {
-    func doSomething(request: statements.Something.Request)
+    func updateStatmentsList()
 }
 
 protocol statementsDataStore {
@@ -29,15 +28,17 @@ class statementsInteractor: statementsBusinessLogic, statementsDataStore {
 
     // MARK: Do something
 
-    func doSomething(request: statements.Something.Request) {
+    func updateStatmentsList() {
         worker = statementsWorker()
-        worker?.doSomeWork()
 
-        let response = statements.Something.Response()
-        presenter?.presentSomething(response: response)
-        repository?.getUser() {
-            user in
-            print(user?.name)
+        repository?.getUser {
+            userAccount in
+            let request = statements.get.Request(userAccount: userAccount)
+            self.worker?.getStatments(request: request) {
+                response in
+                let response = statements.get.Response(userAccount: userAccount, statments: response?.statments)
+                self.presenter?.presentUpdateStatmentsList(response: response)
+            }
         }
     }
 }

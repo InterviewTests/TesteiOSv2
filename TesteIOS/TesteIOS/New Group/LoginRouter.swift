@@ -12,49 +12,28 @@
 
 import UIKit
 
-@objc protocol LoginRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol LoginRoutingLogic {
+    func goToStatments()
+    // func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol LoginDataPassing
-{
-  var dataStore: LoginDataStore? { get }
+protocol LoginDataPassing {
+    var dataStore: LoginDataStore? { get }
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
-{
-  weak var viewController: LoginViewController?
-  var dataStore: LoginDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
+    weak var viewController: LoginViewController?
+    var dataStore: LoginDataStore?
+    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: LoginViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: LoginDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    // MARK: Routing
+
+    func goToStatments() {
+        guard let statmentsView = mainStoryBoard.instantiateViewController(withIdentifier: "statementsViewController") as? statementsViewController else {
+            print("couldn't find view")
+            return
+        }
+        statmentsView.modalTransitionStyle = .flipHorizontal
+        viewController?.present(statmentsView, animated: true, completion: nil)
+    }
 }

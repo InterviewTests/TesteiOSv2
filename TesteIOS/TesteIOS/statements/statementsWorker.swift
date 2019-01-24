@@ -12,9 +12,12 @@
 
 import UIKit
 
-class statementsWorker
-{
-  func doSomeWork()
-  {
-  }
+class statementsWorker {
+    func getStatments(request: statements.get.Request, callback: @escaping (_ request: statements.get.Response?) -> Void) {
+        RestApi.GetStatments(id: String(request.userAccount?.userId ?? 0)) {
+            response in
+            let response = statements.get.Response(userAccount: request.userAccount, statments: response?.statmentList)
+            callback(response)
+        }
+    }
 }

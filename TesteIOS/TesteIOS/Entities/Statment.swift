@@ -10,31 +10,47 @@ import ObjectMapper
 
 class Statments: Mappable {
     var statmentList: [Statment]?
-    
-    required init?(map: Map){
-        
+
+    required init?(map: Map) {
     }
-    
+
     func mapping(map: Map) {
         statmentList <- map["statementList"]
     }
 }
 
 class Statment: Mappable {
-    
     var title: String?
     var desc: String?
-    var data: String?
+    var date: String?
     var value: String?
-    
-    required init?(map: Map){
-        
+
+    required init?(map: Map) {
     }
-    
+
     func mapping(map: Map) {
+        let transform = TransformOf<String, Double>(fromJSON: { (value: Double?) -> String? in
+
+            if let v = value {
+                return v.toCurrency()
+            }
+            return nil
+        }, toJSON: { (value: String?) -> Double? in
+            // transform value from Double? to String?
+            if let value = value {
+                return Double(value)
+            }
+            return nil
+        })
+
         title <- map["title"]
         desc <- map["desc"]
-        data <- map["data"]
-        value <- map["value"]
+        date <- map["date"]
+        value <- (map["value"], transform)
+    }
+
+    func print() -> String {
+        let text = "Statments: title=\(title), desc=\(desc), data=\(date), value=\(value)"
+        return text
     }
 }

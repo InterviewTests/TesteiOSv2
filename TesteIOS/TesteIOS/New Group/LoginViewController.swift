@@ -10,8 +10,8 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
 import SVProgressHUD
+import UIKit
 
 protocol LoginDisplayLogic: class {
     func displayStatmentView()
@@ -24,20 +24,20 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     func showLoading() {
         SVProgressHUD.show()
     }
-    
+
     func hideLoading() {
         SVProgressHUD.dismiss()
     }
-    
+
     func showAlertMsg(title: String, message: String) {
         hideLoading()
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
+
         alert.addAction(UIAlertAction(title: "Tentar novamente", style: .default, handler: nil))
-        
-        self.present(alert, animated: true)
+
+        present(alert, animated: true)
     }
-    
+
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     var repository: UserRepository?
@@ -99,13 +99,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         passwordInput.layer.borderWidth = 1
         passwordInput.layer.cornerRadius = 4.0
         passwordInput.layer.borderColor = UIColor(red: 220, green: 226, blue: 238, alpha: 1).cgColor
-
     }
 
     @IBAction func LoginClick(_ sender: Any) {
         doLogin()
     }
-
 
     func doLogin() {
         showLoading()
@@ -114,17 +112,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     }
 
     func displayStatmentView() {
-        
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let statmentsView = mainStoryBoard.instantiateViewController(withIdentifier: "statementsViewController") as? statementsViewController else {
-            print("couldn't find view")
-            return
-        }
-        print("deu certo rsrs")
-        statmentsView.modalTransitionStyle = .flipHorizontal
-        present(statmentsView, animated: true, completion: nil)
+        router?.goToStatments()
         hideLoading()
     }
-    
-
 }
