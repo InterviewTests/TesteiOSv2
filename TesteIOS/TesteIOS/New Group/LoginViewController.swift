@@ -92,6 +92,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.endEditing(true)
         loginButton.layer.cornerRadius = 4.0
         userInput.layer.borderWidth = 1
         userInput.layer.cornerRadius = 4.0
