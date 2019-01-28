@@ -1,3 +1,8 @@
+# Renato Carvalhan - IBM
+
+###  Para executar o projeto
+Deve ser executado o comando `` pod install `` para downloads das dependencias.
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
