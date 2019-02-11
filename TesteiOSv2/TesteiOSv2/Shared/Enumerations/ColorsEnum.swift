@@ -11,4 +11,5 @@ import Foundation
 enum Colors: String {
     case TextFieldBorderColor = "TextFieldBorderColor"
     case ButtonBackgroundColor = "ButtonBackgroundColor"
+    case ShadowCellColor = "ShadowCellColor"
 }

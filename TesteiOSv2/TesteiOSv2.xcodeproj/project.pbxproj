@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		12CEE224220DC2C400E565EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE223220DC2C400E565EF /* AppDelegate.swift */; };
-		12CEE226220DC2C400E565EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE225220DC2C400E565EF /* ViewController.swift */; };
-		12CEE229220DC2C400E565EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12CEE227220DC2C400E565EF /* Main.storyboard */; };
 		12CEE22B220DC2C500E565EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CEE22A220DC2C500E565EF /* Assets.xcassets */; };
 		12CEE22E220DC2C500E565EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12CEE22C220DC2C500E565EF /* LaunchScreen.storyboard */; };
 		12CEE239220DC2C500E565EF /* TesteiOSv2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE238220DC2C500E565EF /* TesteiOSv2Tests.swift */; };
@@ -25,6 +23,18 @@
 		12CEE28E220DCC3700E565EF /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE28D220DCC3700E565EF /* UIColor+Extension.swift */; };
 		12CEE290220DCDEB00E565EF /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE28F220DCDEB00E565EF /* UITextField+Extension.swift */; };
 		12CEE293220DF3AF00E565EF /* ColorsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE292220DF3AF00E565EF /* ColorsEnum.swift */; };
+		12CEE29B220DFA3200E565EF /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE295220DFA3200E565EF /* HomePresenter.swift */; };
+		12CEE29C220DFA3200E565EF /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE296220DFA3200E565EF /* HomeWorker.swift */; };
+		12CEE29D220DFA3200E565EF /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE297220DFA3200E565EF /* HomeRouter.swift */; };
+		12CEE29E220DFA3200E565EF /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE298220DFA3200E565EF /* HomeModels.swift */; };
+		12CEE29F220DFA3200E565EF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE299220DFA3200E565EF /* HomeViewController.swift */; };
+		12CEE2A0220DFA3200E565EF /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE29A220DFA3200E565EF /* HomeInteractor.swift */; };
+		12CEE2A2220DFA3E00E565EF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12CEE2A1220DFA3E00E565EF /* Home.storyboard */; };
+		12CEE2A4220DFB5E00E565EF /* HomeTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12CEE2A3220DFB5E00E565EF /* HomeTableHeader.xib */; };
+		12CEE2A9220E0A2000E565EF /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE2A7220E0A2000E565EF /* HomeTableViewCell.swift */; };
+		12CEE2AA220E0A2000E565EF /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12CEE2A8220E0A2000E565EF /* HomeTableViewCell.xib */; };
+		12CEE2AD220E0B3A00E565EF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE2AC220E0B3A00E565EF /* Helper.swift */; };
+		12CEE2AF220E140100E565EF /* HomeTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE2AE220E140100E565EF /* HomeTableHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +57,6 @@
 /* Begin PBXFileReference section */
 		12CEE220220DC2C400E565EF /* TesteiOSv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12CEE223220DC2C400E565EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		12CEE225220DC2C400E565EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		12CEE228220DC2C400E565EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		12CEE22A220DC2C500E565EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12CEE22D220DC2C500E565EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12CEE22F220DC2C500E565EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,6 +77,18 @@
 		12CEE28D220DCC3700E565EF /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		12CEE28F220DCDEB00E565EF /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		12CEE292220DF3AF00E565EF /* ColorsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsEnum.swift; sourceTree = "<group>"; };
+		12CEE295220DFA3200E565EF /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		12CEE296220DFA3200E565EF /* HomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
+		12CEE297220DFA3200E565EF /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		12CEE298220DFA3200E565EF /* HomeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModels.swift; sourceTree = "<group>"; };
+		12CEE299220DFA3200E565EF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		12CEE29A220DFA3200E565EF /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		12CEE2A1220DFA3E00E565EF /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		12CEE2A3220DFB5E00E565EF /* HomeTableHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableHeader.xib; sourceTree = "<group>"; };
+		12CEE2A7220E0A2000E565EF /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		12CEE2A8220E0A2000E565EF /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		12CEE2AC220E0B3A00E565EF /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		12CEE2AE220E140100E565EF /* HomeTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +116,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1293B3F72210D26B007BADA8 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				12CEE294220DFA2100E565EF /* Home */,
+				12CEE284220DC65A00E565EF /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		12CEE217220DC2C400E565EF = {
 			isa = PBXGroup;
 			children = (
@@ -119,12 +148,9 @@
 		12CEE222220DC2C400E565EF /* TesteiOSv2 */ = {
 			isa = PBXGroup;
 			children = (
-				12CEE291220DF38C00E565EF /* Enumerations */,
-				12CEE28A220DCB8C00E565EF /* Extensions */,
-				12CEE284220DC65A00E565EF /* Login */,
+				1293B3F72210D26B007BADA8 /* Scenes */,
+				12CEE2AB220E0B0200E565EF /* Shared */,
 				12CEE223220DC2C400E565EF /* AppDelegate.swift */,
-				12CEE225220DC2C400E565EF /* ViewController.swift */,
-				12CEE227220DC2C400E565EF /* Main.storyboard */,
 				12CEE22A220DC2C500E565EF /* Assets.xcassets */,
 				12CEE22C220DC2C500E565EF /* LaunchScreen.storyboard */,
 				12CEE22F220DC2C500E565EF /* Info.plist */,
@@ -180,6 +206,34 @@
 				12CEE292220DF3AF00E565EF /* ColorsEnum.swift */,
 			);
 			path = Enumerations;
+			sourceTree = "<group>";
+		};
+		12CEE294220DFA2100E565EF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				12CEE295220DFA3200E565EF /* HomePresenter.swift */,
+				12CEE296220DFA3200E565EF /* HomeWorker.swift */,
+				12CEE297220DFA3200E565EF /* HomeRouter.swift */,
+				12CEE298220DFA3200E565EF /* HomeModels.swift */,
+				12CEE299220DFA3200E565EF /* HomeViewController.swift */,
+				12CEE29A220DFA3200E565EF /* HomeInteractor.swift */,
+				12CEE2A1220DFA3E00E565EF /* Home.storyboard */,
+				12CEE2A3220DFB5E00E565EF /* HomeTableHeader.xib */,
+				12CEE2AE220E140100E565EF /* HomeTableHeader.swift */,
+				12CEE2A7220E0A2000E565EF /* HomeTableViewCell.swift */,
+				12CEE2A8220E0A2000E565EF /* HomeTableViewCell.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		12CEE2AB220E0B0200E565EF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				12CEE291220DF38C00E565EF /* Enumerations */,
+				12CEE28A220DCB8C00E565EF /* Extensions */,
+				12CEE2AC220E0B3A00E565EF /* Helper.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,9 +341,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				12CEE287220DCA3D00E565EF /* Login.storyboard in Resources */,
+				12CEE2A2220DFA3E00E565EF /* Home.storyboard in Resources */,
+				12CEE2AA220E0A2000E565EF /* HomeTableViewCell.xib in Resources */,
+				12CEE2A4220DFB5E00E565EF /* HomeTableHeader.xib in Resources */,
 				12CEE22E220DC2C500E565EF /* LaunchScreen.storyboard in Resources */,
 				12CEE22B220DC2C500E565EF /* Assets.xcassets in Resources */,
-				12CEE229220DC2C400E565EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,14 +372,22 @@
 			files = (
 				12CEE281220DC5E700E565EF /* LoginViewController.swift in Sources */,
 				12CEE27D220DC5E700E565EF /* LoginPresenter.swift in Sources */,
-				12CEE226220DC2C400E565EF /* ViewController.swift in Sources */,
+				12CEE2AF220E140100E565EF /* HomeTableHeader.swift in Sources */,
+				12CEE29F220DFA3200E565EF /* HomeViewController.swift in Sources */,
 				12CEE28C220DCBAF00E565EF /* UIView+Extension.swift in Sources */,
+				12CEE29D220DFA3200E565EF /* HomeRouter.swift in Sources */,
+				12CEE2A9220E0A2000E565EF /* HomeTableViewCell.swift in Sources */,
+				12CEE2AD220E0B3A00E565EF /* Helper.swift in Sources */,
 				12CEE224220DC2C400E565EF /* AppDelegate.swift in Sources */,
 				12CEE282220DC5E700E565EF /* LoginInteractor.swift in Sources */,
 				12CEE293220DF3AF00E565EF /* ColorsEnum.swift in Sources */,
+				12CEE29E220DFA3200E565EF /* HomeModels.swift in Sources */,
 				12CEE290220DCDEB00E565EF /* UITextField+Extension.swift in Sources */,
+				12CEE29C220DFA3200E565EF /* HomeWorker.swift in Sources */,
 				12CEE280220DC5E700E565EF /* LoginModels.swift in Sources */,
+				12CEE29B220DFA3200E565EF /* HomePresenter.swift in Sources */,
 				12CEE27F220DC5E700E565EF /* LoginRouter.swift in Sources */,
+				12CEE2A0220DFA3200E565EF /* HomeInteractor.swift in Sources */,
 				12CEE27E220DC5E700E565EF /* LoginWorker.swift in Sources */,
 				12CEE28E220DCC3700E565EF /* UIColor+Extension.swift in Sources */,
 			);
@@ -361,14 +425,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		12CEE227220DC2C400E565EF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				12CEE228220DC2C400E565EF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		12CEE22C220DC2C500E565EF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

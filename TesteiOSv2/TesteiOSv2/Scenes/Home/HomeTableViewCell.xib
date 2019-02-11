@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="88" id="KGk-i7-Jjw" customClass="HomeTableViewCell" customModule="TesteiOSv2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="87.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9b-Ha-kaR">
+                        <rect key="frame" x="5" y="5" width="310" height="72.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOU-ta-xjc">
+                                <rect key="frame" x="8" y="10" width="83" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.6588235294" green="0.70588235290000001" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta de luz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7M-w1-Ifb">
+                                <rect key="frame" x="8" y="48" width="91" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.28235294119999998" green="0.3294117647" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$1.000,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MpB-tc-ciS">
+                                <rect key="frame" x="192" y="45.5" width="103" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.28235294119999998" green="0.3294117647" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/12/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwo-6y-iks">
+                                <rect key="frame" x="233" y="12.5" width="62" height="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.6588235294" green="0.70588235290000001" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jwo-6y-iks" firstAttribute="centerY" secondItem="XOU-ta-xjc" secondAttribute="centerY" id="6GE-04-GSK"/>
+                            <constraint firstItem="U7M-w1-Ifb" firstAttribute="leading" secondItem="XOU-ta-xjc" secondAttribute="leading" id="C61-Ka-lY3"/>
+                            <constraint firstAttribute="trailing" secondItem="Jwo-6y-iks" secondAttribute="trailing" constant="15" id="S4T-1f-Leu"/>
+                            <constraint firstItem="MpB-tc-ciS" firstAttribute="centerY" secondItem="U7M-w1-Ifb" secondAttribute="centerY" id="jbm-g8-QRm"/>
+                            <constraint firstItem="U7M-w1-Ifb" firstAttribute="top" secondItem="XOU-ta-xjc" secondAttribute="bottom" constant="19" id="mzL-fl-akT"/>
+                            <constraint firstItem="XOU-ta-xjc" firstAttribute="top" secondItem="o9b-Ha-kaR" secondAttribute="top" constant="10" id="teQ-DM-beH"/>
+                            <constraint firstItem="XOU-ta-xjc" firstAttribute="leading" secondItem="o9b-Ha-kaR" secondAttribute="leading" constant="8" id="wUs-ZL-Fe9"/>
+                            <constraint firstItem="MpB-tc-ciS" firstAttribute="trailing" secondItem="Jwo-6y-iks" secondAttribute="trailing" id="yur-eR-w0M"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="o9b-Ha-kaR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="5nN-vU-KVe"/>
+                    <constraint firstAttribute="bottom" secondItem="o9b-Ha-kaR" secondAttribute="bottom" constant="10" id="UYx-l0-ssx"/>
+                    <constraint firstItem="o9b-Ha-kaR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="b4t-vq-Kub"/>
+                    <constraint firstAttribute="trailing" secondItem="o9b-Ha-kaR" secondAttribute="trailing" constant="5" id="mvs-eB-LM0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="label_date" destination="Jwo-6y-iks" id="ldK-os-KTP"/>
+                <outlet property="label_price" destination="MpB-tc-ciS" id="Cub-WS-CQA"/>
+                <outlet property="label_type" destination="U7M-w1-Ifb" id="WfV-Kf-MBT"/>
+                <outlet property="view_container" destination="o9b-Ha-kaR" id="j8r-cK-i7o"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="173.61319340329837"/>
+        </tableViewCell>
+    </objects>
+</document>
