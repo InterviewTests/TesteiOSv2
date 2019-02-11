@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1293B3F92211A28D007BADA8 /* RegexEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1293B3F82211A28D007BADA8 /* RegexEnum.swift */; };
+		12B674BB2211E22400495CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B674BA2211E22400495CBA /* User.swift */; };
+		12B674BD2211E33200495CBA /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B674BC2211E33200495CBA /* Statement.swift */; };
+		12B674BF2211EEA200495CBA /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B674BE2211EEA200495CBA /* Request.swift */; };
+		12B674C12212086E00495CBA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B674C02212086E00495CBA /* HTTPMethod.swift */; };
+		12B674C32212095F00495CBA /* ServicePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B674C22212095F00495CBA /* ServicePaths.swift */; };
+		12B674C522120B2900495CBA /* HTTPHeaderMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B674C422120B2900495CBA /* HTTPHeaderMethod.swift */; };
 		12CEE224220DC2C400E565EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE223220DC2C400E565EF /* AppDelegate.swift */; };
 		12CEE22B220DC2C500E565EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CEE22A220DC2C500E565EF /* Assets.xcassets */; };
 		12CEE22E220DC2C500E565EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12CEE22C220DC2C500E565EF /* LaunchScreen.storyboard */; };
@@ -55,6 +62,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1293B3F82211A28D007BADA8 /* RegexEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexEnum.swift; sourceTree = "<group>"; };
+		12B674BA2211E22400495CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		12B674BC2211E33200495CBA /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
+		12B674BE2211EEA200495CBA /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		12B674C02212086E00495CBA /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		12B674C22212095F00495CBA /* ServicePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicePaths.swift; sourceTree = "<group>"; };
+		12B674C422120B2900495CBA /* HTTPHeaderMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderMethod.swift; sourceTree = "<group>"; };
 		12CEE220220DC2C400E565EF /* TesteiOSv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12CEE223220DC2C400E565EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12CEE22A220DC2C500E565EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,6 +137,27 @@
 				12CEE284220DC65A00E565EF /* Login */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		12B674B82211DDC800495CBA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				12B674C02212086E00495CBA /* HTTPMethod.swift */,
+				12B674B92211E21400495CBA /* Models */,
+				12B674BE2211EEA200495CBA /* Request.swift */,
+				12B674C22212095F00495CBA /* ServicePaths.swift */,
+				12B674C422120B2900495CBA /* HTTPHeaderMethod.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		12B674B92211E21400495CBA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				12B674BA2211E22400495CBA /* User.swift */,
+				12B674BC2211E33200495CBA /* Statement.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		12CEE217220DC2C400E565EF = {
@@ -204,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				12CEE292220DF3AF00E565EF /* ColorsEnum.swift */,
+				1293B3F82211A28D007BADA8 /* RegexEnum.swift */,
 			);
 			path = Enumerations;
 			sourceTree = "<group>";
@@ -229,6 +265,7 @@
 		12CEE2AB220E0B0200E565EF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				12B674B82211DDC800495CBA /* Service */,
 				12CEE291220DF38C00E565EF /* Enumerations */,
 				12CEE28A220DCB8C00E565EF /* Extensions */,
 				12CEE2AC220E0B3A00E565EF /* Helper.swift */,
@@ -371,24 +408,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				12CEE281220DC5E700E565EF /* LoginViewController.swift in Sources */,
+				12B674BF2211EEA200495CBA /* Request.swift in Sources */,
+				12B674BD2211E33200495CBA /* Statement.swift in Sources */,
 				12CEE27D220DC5E700E565EF /* LoginPresenter.swift in Sources */,
 				12CEE2AF220E140100E565EF /* HomeTableHeader.swift in Sources */,
 				12CEE29F220DFA3200E565EF /* HomeViewController.swift in Sources */,
 				12CEE28C220DCBAF00E565EF /* UIView+Extension.swift in Sources */,
 				12CEE29D220DFA3200E565EF /* HomeRouter.swift in Sources */,
+				12B674C12212086E00495CBA /* HTTPMethod.swift in Sources */,
 				12CEE2A9220E0A2000E565EF /* HomeTableViewCell.swift in Sources */,
 				12CEE2AD220E0B3A00E565EF /* Helper.swift in Sources */,
 				12CEE224220DC2C400E565EF /* AppDelegate.swift in Sources */,
 				12CEE282220DC5E700E565EF /* LoginInteractor.swift in Sources */,
+				12B674BB2211E22400495CBA /* User.swift in Sources */,
 				12CEE293220DF3AF00E565EF /* ColorsEnum.swift in Sources */,
 				12CEE29E220DFA3200E565EF /* HomeModels.swift in Sources */,
 				12CEE290220DCDEB00E565EF /* UITextField+Extension.swift in Sources */,
 				12CEE29C220DFA3200E565EF /* HomeWorker.swift in Sources */,
 				12CEE280220DC5E700E565EF /* LoginModels.swift in Sources */,
 				12CEE29B220DFA3200E565EF /* HomePresenter.swift in Sources */,
+				1293B3F92211A28D007BADA8 /* RegexEnum.swift in Sources */,
 				12CEE27F220DC5E700E565EF /* LoginRouter.swift in Sources */,
 				12CEE2A0220DFA3200E565EF /* HomeInteractor.swift in Sources */,
 				12CEE27E220DC5E700E565EF /* LoginWorker.swift in Sources */,
+				12B674C32212095F00495CBA /* ServicePaths.swift in Sources */,
+				12B674C522120B2900495CBA /* HTTPHeaderMethod.swift in Sources */,
 				12CEE28E220DCC3700E565EF /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,19 @@ import UIKit
 
 class LoginWorker
 {
-  func doSomeWork()
-  {
-  }
+    func doLogin()
+    {
+        let parameters = ["user":"test_user@dd.dd", "password":"Test@1"]
+        let httpRequest : HttpRequest<UserAccount> = HttpRequest()
+        
+        httpRequest.postRequest(servicePath: .LOGIN_PATH, parameters: parameters, success: { (userAccount) in
+            print(userAccount)
+        }) { (error) in
+            
+        }
+        
+//        HttpRequest.postRequest(servicePath: ServicePath.LOGIN_PATH, parameters:parameters, su )
+        
+//        HttpRequest.sharedInstance.getRequest(servicePath: .STATEMENTS_PATH)
+    }
 }

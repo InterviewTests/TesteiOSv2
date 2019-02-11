@@ -16,10 +16,12 @@ enum Login
 {
   // MARK: Use cases
   
-  enum Something
+  enum LoginModels
   {
     struct Request
     {
+        var user: String?
+        var password: String?
     }
     struct Response
     {

@@ -14,7 +14,8 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    func displaySomething(viewModel: Login.Something.ViewModel)
+    func displayHome(viewModel: Login.LoginModels.ViewModel)
+    func displayAlert()
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -68,10 +69,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func viewDidLoad(){
         super.viewDidLoad()
         self.setUpUI()
-        doSomething()
     }
-    
-    // MARK: Do something
     
     // MARK: - IBOutlets
     @IBOutlet weak var text_field_user: UITextField!
@@ -82,9 +80,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     // MARK: - IBActions
     @IBAction func didTouchLoginButton(_ sender: Any) {
         print("didTouchLoginButton")
-        self.performSegue(withIdentifier: "segueHome", sender: nil)
-        let user = self.text_field_user.text
-        let password = self.text_field_password.text
+        self.doLogin()
     }
     
     // MARK: - Functions
@@ -107,14 +103,26 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         self.button_login.addBorder(color: .ButtonBackgroundColor)
     }
     
-    func doSomething()
+    func doLogin()
     {
-        let request = Login.Something.Request()
-        interactor?.doSomething(request: request)
+        self.text_field_user.text = "dsd@dsd.ds"
+        self.text_field_password.text = "dD3#"
+        let user = self.text_field_user.text!
+        let password = self.text_field_password.text!
+        
+        let request = Login.LoginModels.Request(user:user,password:password)
+
+        interactor?.doLogin(request: request)
     }
     
-    func displaySomething(viewModel: Login.Something.ViewModel)
+    func displayHome(viewModel: Login.LoginModels.ViewModel)
     {
-        //nameTextField.text = viewModel.name
+        router?.routeToHome(segue: nil)
     }
+    
+    func displayAlert(){
+        Helper.showAlert(with: "Error!", message: "Preencher todos os campos!", titleFirstButton: "Ok!", viewController: self)
+
+    }
+    
 }

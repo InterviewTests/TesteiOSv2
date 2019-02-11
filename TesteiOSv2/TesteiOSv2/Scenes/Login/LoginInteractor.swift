@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+  func doLogin(request: Login.LoginModels.Request)
 }
 
 protocol LoginDataStore
@@ -30,12 +30,47 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
   
   // MARK: Do something
   
-  func doSomething(request: Login.Something.Request)
+  func doLogin(request: Login.LoginModels.Request)
   {
-    worker = LoginWorker()
-    worker?.doSomeWork()
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
+    guard let user = request.user, let password = request.password  else {
+        presenter?.presentAlert()
+        return
+    }
+    
+    if !isValidEmail(email: user) || !isValidPassword(password: password){
+        presenter?.presentAlert()
+        return
+    }
+    
+    worker = LoginWorker()
+    worker?.doLogin()
+    
+    let response = Login.LoginModels.Response()
+    presenter?.presentHome(response: response)
   }
+}
+
+//MARK: - Validations
+extension LoginInteractor{
+    
+    func isValidEmail(email:String) -> Bool {
+        if email.count == 0{
+            return false
+        }
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", Regex.email.rawValue)
+        print("isValidEmail - \(emailTest.evaluate(with: email))")
+        return emailTest.evaluate(with: email)
+        
+    }
+    
+    func isValidPassword(password:String) -> Bool {
+        if password.count == 0{
+            return false
+        }
+        let passwordTest = NSPredicate(format:"SELF MATCHES %@", Regex.password.rawValue)
+        print("isValidPassword - \(passwordTest.evaluate(with: password))")
+        return passwordTest.evaluate(with: password)
+    }
+    
 }
