@@ -14,18 +14,19 @@ import UIKit
 
 enum Home
 {
-  // MARK: Use cases
-  
-  enum HomeModels
-  {
-    struct Request
+    // MARK: Use cases
+    
+    enum HomeModels
     {
+        struct Request
+        {
+        }
+        struct Response
+        {
+            let statementModel: StatementModel
+        }
+        struct ViewModel{
+            let statementModel : StatementModel
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }

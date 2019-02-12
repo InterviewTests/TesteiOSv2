@@ -21,6 +21,9 @@ class HomeViewController: UIViewController, HomeDisplayLogic
 {
     var interactor: HomeBusinessLogic?
     var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
+    var userModel: UserModel?
+    var statementList: [Statement]?
+    
     
     // MARK: Object lifecycle
     
@@ -70,7 +73,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     {
         super.viewDidLoad()
         self.setUpUI()
-        doSomething()
+        self.getStatements()
     }
     
     // MARK: Do something
@@ -95,15 +98,16 @@ class HomeViewController: UIViewController, HomeDisplayLogic
         self.dismiss(animated: true, completion: nil)
     }
     
-    func doSomething()
+    func getStatements()
     {
         let request = Home.HomeModels.Request()
-        interactor?.doSomething(request: request)
+        interactor?.getStatements(request: request)
     }
     
     func displaySomething(viewModel: Home.HomeModels.ViewModel)
     {
-        //nameTextField.text = viewModel.name
+        self.statementList = viewModel.statementModel.statementList
+        self.table_view_statements.reloadData()
     }
 }
 
@@ -113,18 +117,23 @@ extension HomeViewController: UITableViewDelegate{
 
 extension HomeViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        guard let statementList = self.statementList else {
+            return 0
+        }
+        return statementList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "cell"
         let homeTableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! HomeTableViewCell
-        homeTableViewCell.setUpCell()
+        if let statementList = self.statementList{
+            homeTableViewCell.populateFields(statement: statementList[indexPath.row])
+        }
         return homeTableViewCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 112
+        return 95
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -132,6 +141,9 @@ extension HomeViewController: UITableViewDataSource{
             if let homeTableHeader = nib[0] as? HomeTableHeader{
                 homeTableHeader.delagete = self
                 self.table_view_statements.tableHeaderView?.frame = homeTableHeader.frame
+                if let user = router?.dataStore?.userModel.user{
+                    homeTableHeader.populateFields(user: user)
+                }
                 return homeTableHeader
             }
         }

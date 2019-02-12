@@ -33,4 +33,29 @@ class Helper: NSObject {
 
     }
     
+    static func convertStringToDate(stringDate:String, format:String) -> Date? {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        
+        guard let date:Date = dateFormatter.date(from: stringDate) else{
+            return nil
+        }
+        
+        return date
+        
+    }
+    
+    static func convertDateToString(date: Date, format:String) -> String {
+        
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = format
+        dateFormat.isLenient = true
+        
+        let dateString = dateFormat.string(from: date)
+        
+        return dateString
+        
+    }
+    
 }

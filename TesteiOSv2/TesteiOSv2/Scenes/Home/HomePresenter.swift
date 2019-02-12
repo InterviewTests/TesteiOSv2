@@ -14,7 +14,7 @@ import UIKit
 
 protocol HomePresentationLogic
 {
-  func presentSomething(response: Home.HomeModels.Response)
+  func presentStatements(response: Home.HomeModels.Response)
 }
 
 class HomePresenter: HomePresentationLogic
@@ -23,9 +23,9 @@ class HomePresenter: HomePresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: Home.HomeModels.Response)
+  func presentStatements(response: Home.HomeModels.Response)
   {
-    let viewModel = Home.HomeModels.ViewModel()
+    let viewModel = Home.HomeModels.ViewModel(statementModel: response.statementModel)
     viewController?.displaySomething(viewModel: viewModel)
   }
 }

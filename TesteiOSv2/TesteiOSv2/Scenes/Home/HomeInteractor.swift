@@ -14,28 +14,35 @@ import UIKit
 
 protocol HomeBusinessLogic
 {
-  func doSomething(request: Home.HomeModels.Request)
+    func getStatements(request: Home.HomeModels.Request)
 }
 
 protocol HomeDataStore
 {
-  //var name: String { get set }
+    var userModel: UserModel { get set }
+    var statementModel: StatementModel { get set }
 }
 
 class HomeInteractor: HomeBusinessLogic, HomeDataStore
 {
-  var presenter: HomePresentationLogic?
-  var worker: HomeWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Home.HomeModels.Request)
-  {
-    worker = HomeWorker()
-    worker?.doSomeWork()
+    var presenter: HomePresentationLogic?
+    var worker: HomeWorker?
+    var userModel: UserModel = UserModel()
+    var statementModel: StatementModel = StatementModel()
     
-    let response = Home.HomeModels.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func getStatements(request: Home.HomeModels.Request)
+    {
+        worker = HomeWorker()
+        worker?.getStatements(success: { (statements) in
+            
+            let response = Home.HomeModels.Response(statementModel: statements)
+            self.presenter?.presentStatements(response: response)
+            
+        }, failure: { (error) in
+            print(error)
+        })
+        
+    }
 }

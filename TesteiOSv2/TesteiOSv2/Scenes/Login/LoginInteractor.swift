@@ -14,41 +14,47 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doLogin(request: Login.LoginModels.Request)
+    func doLogin(request: Login.LoginModels.Request)
 }
 
 protocol LoginDataStore
 {
-  //var name: String { get set }
+    var userModel: UserModel { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doLogin(request: Login.LoginModels.Request)
-  {
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
+    var userModel: UserModel = UserModel()
     
-    guard let user = request.user, let password = request.password  else {
-        presenter?.presentAlert()
-        return
+    // MARK: Do something
+    
+    func doLogin(request: Login.LoginModels.Request)
+    {
+        
+        guard let user = request.user, let password = request.password  else {
+            presenter?.presentAlert()
+            return
+        }
+        
+        if !isValidEmail(email: user) || !isValidPassword(password: password){
+            presenter?.presentAlert()
+            return
+        }
+        
+        worker = LoginWorker()
+        worker?.doLogin(success: { (userModel) in
+            
+            let response = Login.LoginModels.Response(userModel: userModel)
+            self.userModel = userModel
+            self.presenter?.presentHome(response: response)
+            
+        }, failure: { (error) in
+            print(error)
+        })
+        
     }
-    
-    if !isValidEmail(email: user) || !isValidPassword(password: password){
-        presenter?.presentAlert()
-        return
-    }
-    
-    worker = LoginWorker()
-    worker?.doLogin()
-    
-    let response = Login.LoginModels.Response()
-    presenter?.presentHome(response: response)
-  }
 }
 
 //MARK: - Validations

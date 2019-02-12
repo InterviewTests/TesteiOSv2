@@ -18,13 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="eqv-Ke-vCq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="eqv-Ke-vCq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.23137254900000001" green="0.28235294119999998" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eqv-Ke-vCq" firstAttribute="trailing" secondItem="jYi-aT-A30" secondAttribute="trailing" id="Je2-In-ghL"/>
+                            <constraint firstItem="eqv-Ke-vCq" firstAttribute="top" secondItem="sPM-pY-fx5" secondAttribute="top" id="KVD-OM-csj"/>
+                            <constraint firstItem="eqv-Ke-vCq" firstAttribute="bottom" secondItem="jYi-aT-A30" secondAttribute="bottom" id="MJ9-Qs-yyy"/>
+                            <constraint firstItem="eqv-Ke-vCq" firstAttribute="leading" secondItem="jYi-aT-A30" secondAttribute="leading" id="nRN-TQ-jYe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jYi-aT-A30"/>
                     </view>
                     <connections>

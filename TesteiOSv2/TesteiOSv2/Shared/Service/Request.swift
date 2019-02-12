@@ -9,13 +9,11 @@
 import Foundation
 
 struct  HttpRequest<T:Codable> {
-    
-    typealias HTTPNetworkingDataTask = (Data?, URLResponse?, Error?)-> Swift.Void
         
     func postRequest(servicePath: ServicePath, parameters: [String: Any]? = nil, success: @escaping (T?)->Void, failure : @escaping (NSError)-> Void) {
         
         guard let url = URL(string: ServicePath.BASE_URL.description+servicePath.description) else {return}
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters as Any, options: []) else {return}
         
         var request = URLRequest(url: url)
         request.httpMethod = HttpMethod.POST.description
@@ -27,6 +25,7 @@ struct  HttpRequest<T:Codable> {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
+            
             self.responseHandler(success: success, failure: failure)(data, response, error)
         }
         
@@ -53,7 +52,7 @@ struct  HttpRequest<T:Codable> {
         task.resume()
     }
     
-    private func responseHandler(success : @escaping (T?)->Void, failure : @escaping (NSError)-> Void)-> HTTPNetworkingDataTask {
+    private func responseHandler(success : @escaping (T?)->Void, failure : @escaping (NSError)-> Void)-> (Data?, URLResponse?, Error?) -> Void {
         return { data, response, error in
             
             if error != nil {

@@ -12,4 +12,5 @@ enum Colors: String {
     case TextFieldBorderColor = "TextFieldBorderColor"
     case ButtonBackgroundColor = "ButtonBackgroundColor"
     case ShadowCellColor = "ShadowCellColor"
+    case BorderCellColor = "BorderCellColor"
 }

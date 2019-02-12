@@ -14,7 +14,17 @@ import UIKit
 
 class HomeWorker
 {
-  func doSomeWork()
-  {
-  }
+    func getStatements(success: @escaping (StatementModel)->Void, failure : @escaping (NSError)-> Void) {
+        
+        let httpRequest : HttpRequest<StatementModel> = HttpRequest()
+        httpRequest.getRequest(success: { (response) in
+            guard let statements = response else {
+                return
+            }
+            success(statements)
+        }, failure: { (error) in
+            
+        }, servicePath: .STATEMENTS_PATH)
+
+    }
 }

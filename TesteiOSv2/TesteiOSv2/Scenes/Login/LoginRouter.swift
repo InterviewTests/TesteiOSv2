@@ -14,49 +14,51 @@ import UIKit
 
 @objc protocol LoginRoutingLogic
 {
-  func routeToHome(segue: UIStoryboardSegue?)
+    func routeToHome(segue: UIStoryboardSegue?)
 }
 
 protocol LoginDataPassing
 {
-  var dataStore: LoginDataStore? { get }
+    var dataStore: LoginDataStore? { get }
 }
 
 class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
 {
-  weak var viewController: LoginViewController?
-  var dataStore: LoginDataStore?
-  
-  // MARK: Routing
-  
-  func routeToHome(segue: UIStoryboardSegue?)
-  {
-    if let _ = segue {
-
-    }else {
-      let destinationVC = self.instantiaheHomeViewController()
-      navigateToSomewhere(source: viewController!, destination: destinationVC)
+    weak var viewController: LoginViewController?
+    var dataStore: LoginDataStore?
+    
+    // MARK: Routing
+    
+    func routeToHome(segue: UIStoryboardSegue?)
+    {
+        if let _ = segue {
+            
+        }else {
+            let destinationVC = self.instantiaheHomeViewController()
+            var destinationDS = destinationVC.router!.dataStore!
+            passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+            navigateToSomewhere(source: viewController!, destination: destinationVC)
+        }
     }
-  }
     
     func instantiaheHomeViewController() -> HomeViewController{
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         return homeViewController
     }
-
-  // MARK: Navigation
-  
-  func navigateToSomewhere(source: LoginViewController, destination: HomeViewController)
-  {
-    source.show(destination, sender: nil)
-  }
-  
-   // MARK: Passing data
-  
-  func passDataToSomewhere(source: LoginDataStore, destination: inout HomeViewController)
-  {
-//    destination.name = source.name
-  }
+    
+    // MARK: Navigation
+    
+    func navigateToSomewhere(source: LoginViewController, destination: HomeViewController)
+    {
+        source.show(destination, sender: nil)
+    }
+    
+    // MARK: Passing data
+    
+    func passDataToSomewhere(source: LoginDataStore, destination: inout HomeDataStore)
+    {
+        destination.userModel = source.userModel
+    }
     
 }

@@ -36,4 +36,14 @@ extension UIColor{
         
     }
     
+    @nonobjc class var BorderCellColor: UIColor {
+        if #available(iOS 11.0, *) {
+            return UIColor(named: Colors.ShadowCellColor.rawValue) ?? .black
+        } else {
+            return UIColor(red:219/255, green:223/255, blue: 227/255, alpha:0.3)
+        }
+        
+    }
+    
+    
 }

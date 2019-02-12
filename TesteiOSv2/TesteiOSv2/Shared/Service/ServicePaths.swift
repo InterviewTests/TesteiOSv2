@@ -9,9 +9,9 @@
 import Foundation
 
 enum ServicePath:String {
-    case BASE_URL = "https://bank-app-test.herokuapp.com/"
+    case BASE_URL = "https://bank-app-test.herokuapp.com"
     case LOGIN_PATH = "/api/login"
-    case STATEMENTS_PATH = "ap1/statements/1"
+    case STATEMENTS_PATH = "/api/statements/1"
     
     var description: String {
         return self.rawValue

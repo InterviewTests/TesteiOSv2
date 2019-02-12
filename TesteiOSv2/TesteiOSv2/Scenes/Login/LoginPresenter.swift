@@ -21,15 +21,15 @@ protocol LoginPresentationLogic
 class LoginPresenter: LoginPresentationLogic
 {
     
-  weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentHome(response: Login.LoginModels.Response)
-  {
-    let viewModel = Login.LoginModels.ViewModel()
-    viewController?.displayHome(viewModel: viewModel)
-  }
+    weak var viewController: LoginDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentHome(response: Login.LoginModels.Response)
+    {
+        let viewModel = Login.LoginModels.ViewModel()
+        viewController?.displayHome(viewModel: viewModel)
+    }
     
     func presentAlert() {
         viewController?.displayAlert()
