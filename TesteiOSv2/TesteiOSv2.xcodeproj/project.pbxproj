@@ -24,6 +24,7 @@
 		12B674D62212EC2900495CBA /* TesteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B674D02212EC2900495CBA /* TesteInteractor.swift */; };
 		12B674D92212FC8100495CBA /* StatementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B674D82212FC8100495CBA /* StatementModel.swift */; };
 		12B674DB221305A500495CBA /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B674DA221305A500495CBA /* Double+Extension.swift */; };
+		12B674DD2213484B00495CBA /* ErrorsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B674DC2213484B00495CBA /* ErrorsEnum.swift */; };
 		12CEE224220DC2C400E565EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEE223220DC2C400E565EF /* AppDelegate.swift */; };
 		12CEE22B220DC2C500E565EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CEE22A220DC2C500E565EF /* Assets.xcassets */; };
 		12CEE22E220DC2C500E565EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12CEE22C220DC2C500E565EF /* LaunchScreen.storyboard */; };
@@ -89,6 +90,7 @@
 		12B674D02212EC2900495CBA /* TesteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteInteractor.swift; sourceTree = "<group>"; };
 		12B674D82212FC8100495CBA /* StatementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementModel.swift; sourceTree = "<group>"; };
 		12B674DA221305A500495CBA /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		12B674DC2213484B00495CBA /* ErrorsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsEnum.swift; sourceTree = "<group>"; };
 		12CEE220220DC2C400E565EF /* TesteiOSv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12CEE223220DC2C400E565EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12CEE22A220DC2C500E565EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -209,6 +211,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		12B674DE22134AE800495CBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12CEE289220DCA3D00E565EF /* Login.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		12CEE217220DC2C400E565EF = {
 			isa = PBXGroup;
 			children = (
@@ -263,13 +273,13 @@
 		12CEE284220DC65A00E565EF /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				12B674DE22134AE800495CBA /* View */,
 				12CEE277220DC5E700E565EF /* LoginPresenter.swift */,
 				12CEE278220DC5E700E565EF /* LoginWorker.swift */,
 				12CEE279220DC5E700E565EF /* LoginRouter.swift */,
 				12CEE27A220DC5E700E565EF /* LoginModels.swift */,
 				12CEE27B220DC5E700E565EF /* LoginViewController.swift */,
 				12CEE27C220DC5E700E565EF /* LoginInteractor.swift */,
-				12CEE289220DCA3D00E565EF /* Login.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -290,6 +300,7 @@
 			children = (
 				12CEE292220DF3AF00E565EF /* ColorsEnum.swift */,
 				1293B3F82211A28D007BADA8 /* RegexEnum.swift */,
+				12B674DC2213484B00495CBA /* ErrorsEnum.swift */,
 			);
 			path = Enumerations;
 			sourceTree = "<group>";
@@ -462,6 +473,7 @@
 				12B674C92212E3D600495CBA /* UserModel.swift in Sources */,
 				12CEE27D220DC5E700E565EF /* LoginPresenter.swift in Sources */,
 				12CEE2AF220E140100E565EF /* HomeTableHeader.swift in Sources */,
+				12B674DD2213484B00495CBA /* ErrorsEnum.swift in Sources */,
 				12CEE29F220DFA3200E565EF /* HomeViewController.swift in Sources */,
 				12CEE28C220DCBAF00E565EF /* UIView+Extension.swift in Sources */,
 				12CEE29D220DFA3200E565EF /* HomeRouter.swift in Sources */,

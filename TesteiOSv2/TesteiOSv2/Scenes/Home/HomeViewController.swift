@@ -21,9 +21,9 @@ class HomeViewController: UIViewController, HomeDisplayLogic
 {
     var interactor: HomeBusinessLogic?
     var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
-    var userModel: UserModel?
     var statementList: [Statement]?
     
+    @IBOutlet weak var fff: HomeTableHeader!
     
     // MARK: Object lifecycle
     
@@ -141,6 +141,7 @@ extension HomeViewController: UITableViewDataSource{
             if let homeTableHeader = nib[0] as? HomeTableHeader{
                 homeTableHeader.delagete = self
                 self.table_view_statements.tableHeaderView?.frame = homeTableHeader.frame
+                
                 if let user = router?.dataStore?.userModel.user{
                     homeTableHeader.populateFields(user: user)
                 }

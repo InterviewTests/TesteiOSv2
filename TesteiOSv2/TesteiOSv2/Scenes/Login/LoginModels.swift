@@ -29,7 +29,7 @@ enum Login
         }
         struct ViewModel
         {
-            let viewModel: UserModel
+            let userModel: UserModel
         }
     }
 }

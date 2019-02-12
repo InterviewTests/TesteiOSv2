@@ -30,29 +30,47 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     
     // MARK: Do something
     
-    func doLogin(request: Login.LoginModels.Request)
-    {
+    func doLogin(request: Login.LoginModels.Request){
         
-        guard let user = request.user, let password = request.password  else {
-            presenter?.presentAlert()
-            return
-        }
-        
-        if !isValidEmail(email: user) || !isValidPassword(password: password){
-            presenter?.presentAlert()
-            return
-        }
-        
-        worker = LoginWorker()
-        worker?.doLogin(success: { (userModel) in
+        do{
             
-            let response = Login.LoginModels.Response(userModel: userModel)
-            self.userModel = userModel
-            self.presenter?.presentHome(response: response)
+            let isValidForm = try self.validateForm(request: request)
             
-        }, failure: { (error) in
-            print(error)
-        })
+            if isValidForm{
+                
+                if let user = request.user, let password = request.password{
+                    
+                    let parameters: Dictionary<String, Any> = ["user":user, "password": password]
+                    
+                    worker = LoginWorker()
+                    worker?.doLogin(parameters: parameters, success: { (userModel) in
+                        
+                        let response = Login.LoginModels.Response(userModel: userModel)
+                        
+                        self.userModel = userModel
+                        self.presenter?.presentHome(response: response)
+                        
+                    }, failure: { (error) in
+                        print(error.description)
+                    })
+                }
+            }
+            
+        }catch LoginError.incompleteForm{
+            self.presenter?.presentLoginErrorAlert(error: .incompleteForm)
+            
+        }catch LoginError.invalidEmail{
+            self.presenter?.presentLoginErrorAlert(error: .invalidEmail)
+            
+        }catch LoginError.invalidCPF{
+            self.presenter?.presentLoginErrorAlert(error: .invalidCPF)
+            
+        }catch LoginError.invalidPassword{
+            self.presenter?.presentLoginErrorAlert(error: .invalidPassword)
+            
+        }catch{
+            self.presenter?.presentLoginErrorAlert(error: .unknwowError)
+        }
         
     }
 }
@@ -60,11 +78,34 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
 //MARK: - Validations
 extension LoginInteractor{
     
-    func isValidEmail(email:String) -> Bool {
+    func validateForm(request: Login.LoginModels.Request) throws -> Bool{
+        
+        guard let user = request.user, let password = request.password else {
+            throw LoginError.incompleteForm
+        }
+        
+        if user == "" || password == ""{
+            throw LoginError.incompleteForm
+        }
+        
+        if !isValidEmail(email: user){
+            throw LoginError.invalidEmail
+            //            throw LoginError.invalidCPF
+        }
+        
+        if !self.isValidPassword(password: password){
+            throw LoginError.invalidPassword
+        }
+        
+        return true
+    }
+    
+    func isValidEmail(email:String) -> Bool{
+        
         if email.count == 0{
             return false
         }
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", Regex.email.rawValue)
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", Regex.email.description)
         print("isValidEmail - \(emailTest.evaluate(with: email))")
         return emailTest.evaluate(with: email)
         
@@ -74,7 +115,7 @@ extension LoginInteractor{
         if password.count == 0{
             return false
         }
-        let passwordTest = NSPredicate(format:"SELF MATCHES %@", Regex.password.rawValue)
+        let passwordTest = NSPredicate(format:"SELF MATCHES %@", Regex.password.description)
         print("isValidPassword - \(passwordTest.evaluate(with: password))")
         return passwordTest.evaluate(with: password)
     }

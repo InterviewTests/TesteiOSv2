@@ -15,7 +15,7 @@ extension Double{
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: localeIdentifier)
         formatter.numberStyle = .currency
-        if var formattedTipAmount = formatter.string(from: self as NSNumber){
+        if let formattedTipAmount = formatter.string(from: self as NSNumber){
             return formattedTipAmount
         }
         

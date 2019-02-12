@@ -15,13 +15,14 @@ import UIKit
 protocol LoginDisplayLogic: class
 {
     func displayHome(viewModel: Login.LoginModels.ViewModel)
-    func displayAlert()
+    func displayAlert(title: String, message: String, titleFirstButton: String)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    var userModel: UserModel?
     
     // MARK: Object lifecycle
     
@@ -105,14 +106,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     func doLogin()
     {
-        self.text_field_user.text = "dsd@dsd.ds"
-        self.text_field_password.text = "dD3#"
-        let user = self.text_field_user.text!
-        let password = self.text_field_password.text!
-        
-        let request = Login.LoginModels.Request(user:user,password:password)
-
-        interactor?.doLogin(request: request)
+        if let user = self.text_field_user.text, let password = self.text_field_password.text{
+            let request = Login.LoginModels.Request(user:user,password:password)
+            interactor?.doLogin(request: request)
+        }
     }
     
     func displayHome(viewModel: Login.LoginModels.ViewModel)
@@ -120,9 +117,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         router?.routeToHome(segue: nil)
     }
     
-    func displayAlert(){
-        Helper.showAlert(with: "Error!", message: "Preencher todos os campos!", titleFirstButton: "Ok!", viewController: self)
-
+    func displayAlert(title: String, message: String, titleFirstButton: String){
+        Helper.showAlert(title: title, message: message, titleFirstButton: titleFirstButton, viewController: self)
     }
     
 }

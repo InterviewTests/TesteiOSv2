@@ -25,12 +25,6 @@ class HomeTableViewCell: UITableViewCell {
         self.contentView.addShadow(color: .ShadowCellColor, opacity: 1.0, offSetWidth: 1, offSetHeight: 1, radius: 5)
         self.view_container.addBorder(radius: 6.0, color: .BorderCellColor)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     //MARK: - Functions
     func populateFields(statement: Statement){
@@ -39,7 +33,7 @@ class HomeTableViewCell: UITableViewCell {
         if let date = statement.date{
             if let stringDate = Helper.convertStringToDate(stringDate: date, format: "YYY/MM/dd"){
                 self.label_date.text = Helper.convertDateToString(date: stringDate, format: "dd/MM/YYYY")
-            }    
+            }
         }
         
         if let value = statement.value{

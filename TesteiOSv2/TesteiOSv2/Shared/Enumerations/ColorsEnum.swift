@@ -13,4 +13,8 @@ enum Colors: String {
     case ButtonBackgroundColor = "ButtonBackgroundColor"
     case ShadowCellColor = "ShadowCellColor"
     case BorderCellColor = "BorderCellColor"
+    
+    var description: String {
+        return self.rawValue
+    }
 }

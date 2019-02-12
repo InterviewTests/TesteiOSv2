@@ -14,8 +14,8 @@ import UIKit
 
 class LoginWorker
 {
-    func doLogin(success: @escaping (UserModel)->Void, failure : @escaping (NSError)-> Void) {
-        let parameters = ["user":"test_user@dd.dd", "password":"Test@1"]
+    func doLogin(parameters: Dictionary<String,Any>, success: @escaping (UserModel)->Void, failure : @escaping (NSError)-> Void) {
+        
         let httpRequest : HttpRequest<UserModel> = HttpRequest()
         
         httpRequest.postRequest(servicePath: .LOGIN_PATH, parameters: parameters, success: { (response) in
@@ -25,7 +25,7 @@ class LoginWorker
             
             success(userModel)
         }) { (error) in
-            
+            failure(error)
         }
         
     }

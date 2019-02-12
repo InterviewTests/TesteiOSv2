@@ -15,7 +15,7 @@ import UIKit
 protocol LoginPresentationLogic
 {
     func presentHome(response: Login.LoginModels.Response)
-    func presentAlert()
+    func presentLoginErrorAlert(error:LoginError)
 }
 
 class LoginPresenter: LoginPresentationLogic
@@ -27,11 +27,11 @@ class LoginPresenter: LoginPresentationLogic
     
     func presentHome(response: Login.LoginModels.Response)
     {
-        let viewModel = Login.LoginModels.ViewModel()
+        let viewModel = Login.LoginModels.ViewModel(userModel: response.userModel)
         viewController?.displayHome(viewModel: viewModel)
     }
     
-    func presentAlert() {
-        viewController?.displayAlert()
+    func presentLoginErrorAlert(error:LoginError) {
+        viewController?.displayAlert(title: error.title, message: error.description, titleFirstButton: "Ok")
     }
 }
