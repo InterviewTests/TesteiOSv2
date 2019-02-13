@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="88" id="KGk-i7-Jjw" customClass="HomeTableViewCell" customModule="TesteiOSv2" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="88" id="KGk-i7-Jjw" customClass="StatementTableViewCell" customModule="TesteiOSv2" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -61,19 +61,20 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="o9b-Ha-kaR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="5nN-vU-KVe"/>
                     <constraint firstItem="o9b-Ha-kaR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="b4t-vq-Kub"/>
                     <constraint firstAttribute="trailing" secondItem="o9b-Ha-kaR" secondAttribute="trailing" constant="5" id="mvs-eB-LM0"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="label_date" destination="Jwo-6y-iks" id="ldK-os-KTP"/>
-                <outlet property="label_price" destination="MpB-tc-ciS" id="Cub-WS-CQA"/>
-                <outlet property="label_type" destination="U7M-w1-Ifb" id="WfV-Kf-MBT"/>
-                <outlet property="view_container" destination="o9b-Ha-kaR" id="j8r-cK-i7o"/>
+                <outlet property="label_date" destination="Jwo-6y-iks" id="dV8-DI-3td"/>
+                <outlet property="label_price" destination="MpB-tc-ciS" id="bEP-vn-biF"/>
+                <outlet property="label_type" destination="U7M-w1-Ifb" id="jD9-1T-fJm"/>
+                <outlet property="view_container" destination="o9b-Ha-kaR" id="CKn-sR-sVd"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="173.61319340329837"/>
         </tableViewCell>

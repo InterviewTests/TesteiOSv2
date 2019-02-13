@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  StatementViewController.swift
 //  TesteiOSv2
 //
 //  Created by jeffersoncsilva on 08/02/2019.
@@ -12,18 +12,18 @@
 
 import UIKit
 
-protocol HomeDisplayLogic: class
+protocol StatementDisplayLogic: class
 {
-    func displaySomething(viewModel: Home.HomeModels.ViewModel)
+    func displayLoading()
+    func removeLoading()
+    func displaySomething(viewModel: Statement.StatementModels.ViewModel)
 }
 
-class HomeViewController: UIViewController, HomeDisplayLogic
+class StatementViewController: UIViewController, StatementDisplayLogic
 {
-    var interactor: HomeBusinessLogic?
-    var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
-    var statementList: [Statement]?
-    
-    @IBOutlet weak var fff: HomeTableHeader!
+    var interactor: StatementBusinessLogic?
+    var router: (NSObjectProtocol & StatementRoutingLogic & StatementDataPassing)?
+    var statementList: [StatementItem]?
     
     // MARK: Object lifecycle
     
@@ -44,9 +44,9 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     private func setup()
     {
         let viewController = self
-        let interactor = HomeInteractor()
-        let presenter = HomePresenter()
-        let router = HomeRouter()
+        let interactor = StatementInteractor()
+        let presenter = StatementPresenter()
+        let router = StatementRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -78,6 +78,13 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     
     // MARK: Do something
     
+    func displayLoading() {
+        self.showLoading()
+    }
+    
+    func removeLoading() {
+        self.hideLoading()
+    }
     
     @IBOutlet weak var table_view_statements: UITableView!
     
@@ -90,8 +97,8 @@ class HomeViewController: UIViewController, HomeDisplayLogic
         self.table_view_statements.dataSource = self
         self.table_view_statements.separatorStyle = .none
         self.automaticallyAdjustsScrollViewInsets = false
-        let homeTableViewCell = UINib(nibName: "HomeTableViewCell", bundle: nil)
-        self.table_view_statements.register(homeTableViewCell, forCellReuseIdentifier: "cell")
+        let statementTableViewCell = UINib(nibName: "StatementTableViewCell", bundle: nil)
+        self.table_view_statements.register(statementTableViewCell, forCellReuseIdentifier: "cell")
     }
     
     func dismiss(){
@@ -100,22 +107,22 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     
     func getStatements()
     {
-        let request = Home.HomeModels.Request()
+        let request = Statement.StatementModels.Request()
         interactor?.getStatements(request: request)
     }
     
-    func displaySomething(viewModel: Home.HomeModels.ViewModel)
+    func displaySomething(viewModel: Statement.StatementModels.ViewModel)
     {
         self.statementList = viewModel.statementModel.statementList
         self.table_view_statements.reloadData()
     }
 }
 
-extension HomeViewController: UITableViewDelegate{
+extension StatementViewController: UITableViewDelegate{
     
 }
 
-extension HomeViewController: UITableViewDataSource{
+extension StatementViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let statementList = self.statementList else {
             return 0
@@ -125,11 +132,11 @@ extension HomeViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "cell"
-        let homeTableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! HomeTableViewCell
+        let statementTableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! StatementTableViewCell
         if let statementList = self.statementList{
-            homeTableViewCell.populateFields(statement: statementList[indexPath.row])
+            statementTableViewCell.populateFields(statement: statementList[indexPath.row])
         }
-        return homeTableViewCell
+        return statementTableViewCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -137,15 +144,15 @@ extension HomeViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let nib = Bundle.main.loadNibNamed("HomeTableHeader", owner: self, options: nil){
-            if let homeTableHeader = nib[0] as? HomeTableHeader{
-                homeTableHeader.delagete = self
-                self.table_view_statements.tableHeaderView?.frame = homeTableHeader.frame
+        if let nib = Bundle.main.loadNibNamed("StatementTableHeader", owner: self, options: nil){
+            if let statementTableHeader = nib[0] as? StatementTableHeader{
+                statementTableHeader.delagete = self
+                self.table_view_statements.tableHeaderView?.frame = statementTableHeader.frame
                 
                 if let user = router?.dataStore?.userModel.user{
-                    homeTableHeader.populateFields(user: user)
+                    statementTableHeader.populateFields(user: user)
                 }
-                return homeTableHeader
+                return statementTableHeader
             }
         }
         
@@ -153,9 +160,9 @@ extension HomeViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if let nib = Bundle.main.loadNibNamed("HomeTableHeader", owner: self, options: nil){
-            if let homeTableHeader = nib[0] as? HomeTableHeader{
-                return homeTableHeader.frame.size.height
+        if let nib = Bundle.main.loadNibNamed("StatementTableHeader", owner: self, options: nil){
+            if let statementTableHeader = nib[0] as? StatementTableHeader{
+                return statementTableHeader.frame.size.height
             }
         }
         
@@ -164,7 +171,7 @@ extension HomeViewController: UITableViewDataSource{
     
 }
 
-extension HomeViewController: HomeTableHeaderProtocol{
+extension StatementViewController: StatementTableHeaderProtocol{
     
     func didLogOut() {
         self.dismiss()

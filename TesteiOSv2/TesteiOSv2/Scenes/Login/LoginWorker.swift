@@ -12,13 +12,14 @@
 
 import UIKit
 
+//MARK: - Class body
 class LoginWorker
 {
-    func doLogin(parameters: Dictionary<String,Any>, success: @escaping (UserModel)->Void, failure : @escaping (NSError)-> Void) {
+    func doLogin(parameters: Dictionary<String,Any>, success: @escaping (UserModel)->Void, failure : @escaping (Error)-> Void) {
         
-        let httpRequest : HttpRequest<UserModel> = HttpRequest()
+        let httpServiceRequest : HTTPServiceRequest<UserModel> = HTTPServiceRequest()
         
-        httpRequest.postRequest(servicePath: .LOGIN_PATH, parameters: parameters, success: { (response) in
+        httpServiceRequest.postRequest(servicePath: .LOGIN_PATH, parameters: parameters, success: { (response) in
             guard let userModel = response else {
                 return
             }

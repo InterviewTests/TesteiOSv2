@@ -12,9 +12,10 @@
 
 import UIKit
 
+//MARK: - Protocols
 @objc protocol LoginRoutingLogic
 {
-    func routeToHome(segue: UIStoryboardSegue?)
+    func routeToStatement(segue: UIStoryboardSegue?)
 }
 
 protocol LoginDataPassing
@@ -22,41 +23,45 @@ protocol LoginDataPassing
     var dataStore: LoginDataStore? { get }
 }
 
+//MARK: - Class body
 class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
 {
+    
+    //MARK: - Properties
     weak var viewController: LoginViewController?
     var dataStore: LoginDataStore?
     
     // MARK: Routing
     
-    func routeToHome(segue: UIStoryboardSegue?)
+    func routeToStatement(segue: UIStoryboardSegue?)
     {
         if let _ = segue {
             
         }else {
-            let destinationVC = self.instantiaheHomeViewController()
+            let destinationVC = self.instantiaheStatementViewController()
             var destinationDS = destinationVC.router!.dataStore!
             passDataToSomewhere(source: dataStore!, destination: &destinationDS)
             navigateToSomewhere(source: viewController!, destination: destinationVC)
         }
     }
     
-    func instantiaheHomeViewController() -> HomeViewController{
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        return homeViewController
+    //MARK: - Functions
+    func instantiaheStatementViewController() -> StatementViewController{
+        let storyboard = UIStoryboard(name: "Statement", bundle: nil)
+        let statementViewController = storyboard.instantiateViewController(withIdentifier: "StatementViewController") as! StatementViewController
+        return statementViewController
     }
     
     // MARK: Navigation
     
-    func navigateToSomewhere(source: LoginViewController, destination: HomeViewController)
+    func navigateToSomewhere(source: LoginViewController, destination: StatementViewController)
     {
         source.show(destination, sender: nil)
     }
     
     // MARK: Passing data
     
-    func passDataToSomewhere(source: LoginDataStore, destination: inout HomeDataStore)
+    func passDataToSomewhere(source: LoginDataStore, destination: inout StatementDataStore)
     {
         destination.userModel = source.userModel
     }

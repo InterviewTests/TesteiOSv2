@@ -12,26 +12,39 @@
 
 import UIKit
 
+//MARK: - Protocols
 protocol LoginPresentationLogic
 {
-    func presentHome(response: Login.LoginModels.Response)
+    func presentStatement(response: Login.LoginModels.Response)
+    func presentLoading()
+    func removeLoading()
     func presentLoginErrorAlert(error:LoginError)
 }
 
+//MARK: - Class body
 class LoginPresenter: LoginPresentationLogic
 {
     
+    //MARK: - Properties
     weak var viewController: LoginDisplayLogic?
     
-    // MARK: Do something
-    
-    func presentHome(response: Login.LoginModels.Response)
+    //MARK: - Functions
+    func presentStatement(response: Login.LoginModels.Response)
     {
         let viewModel = Login.LoginModels.ViewModel(userModel: response.userModel)
-        viewController?.displayHome(viewModel: viewModel)
+        viewController?.displayStatement(viewModel: viewModel)
     }
     
     func presentLoginErrorAlert(error:LoginError) {
         viewController?.displayAlert(title: error.title, message: error.description, titleFirstButton: "Ok")
     }
+    
+    func presentLoading() {
+        viewController?.displayLoading()
+    }
+    
+    func removeLoading() {
+        viewController?.removeLoading()
+    }
+    
 }

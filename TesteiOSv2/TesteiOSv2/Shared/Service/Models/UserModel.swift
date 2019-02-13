@@ -9,6 +9,7 @@
 import Foundation
 
 struct UserModel: Codable {
+    
     var user: User?
     var error : ErrorModel?
     

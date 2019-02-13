@@ -1,5 +1,5 @@
 //
-//  HomeModels.swift
+//  StatementModels.swift
 //  TesteiOSv2
 //
 //  Created by jeffersoncsilva on 08/02/2019.
@@ -12,21 +12,21 @@
 
 import UIKit
 
-enum Home
+enum Statement
 {
     // MARK: Use cases
     
-    enum HomeModels
+    enum StatementModels
     {
         struct Request
         {
         }
         struct Response
         {
-            let statementModel: StatementModel
+            let statementModel: StatementListModel
         }
         struct ViewModel{
-            let statementModel : StatementModel
+            let statementModel : StatementListModel
         }
     }
 }

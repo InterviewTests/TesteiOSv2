@@ -9,6 +9,7 @@
 import Foundation
 
 enum Colors: String {
+    
     case TextFieldBorderColor = "TextFieldBorderColor"
     case ButtonBackgroundColor = "ButtonBackgroundColor"
     case ShadowCellColor = "ShadowCellColor"
@@ -17,4 +18,5 @@ enum Colors: String {
     var description: String {
         return self.rawValue
     }
+    
 }

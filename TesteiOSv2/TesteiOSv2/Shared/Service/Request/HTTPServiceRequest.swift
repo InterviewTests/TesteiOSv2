@@ -8,11 +8,15 @@
 
 import Foundation
 
-struct  HttpRequest<T:Codable> {
+struct HTTPServiceRequest<T:Codable> {
+    
+    typealias HTTPServiceRequestWithSuccess = (T?) -> Void
+    typealias HTTPServiceRequestWithError  = (Error) -> Void
+    typealias HTTPServiceRequestResponse = (Data?, URLResponse?, Error?) -> Void
+    
+    func postRequest(servicePath: HTTPServicePaths, parameters: [String: Any]? = nil, success: @escaping HTTPServiceRequestWithSuccess, failure : @escaping HTTPServiceRequestWithError) {
         
-    func postRequest(servicePath: ServicePath, parameters: [String: Any]? = nil, success: @escaping (T?)->Void, failure : @escaping (NSError)-> Void) {
-        
-        guard let url = URL(string: ServicePath.BASE_URL.description+servicePath.description) else {return}
+        guard let url = URL(string: HTTPServicePaths.BASE_URL.description+servicePath.description) else {return}
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters as Any, options: []) else {return}
         
         var request = URLRequest(url: url)
@@ -32,9 +36,9 @@ struct  HttpRequest<T:Codable> {
         task.resume()
     }
     
-    func getRequest(success: @escaping (T?)->Void, failure : @escaping (NSError)-> Void, servicePath: ServicePath) {
+    func getRequest(success: @escaping HTTPServiceRequestWithSuccess, failure : @escaping HTTPServiceRequestWithError, servicePath: HTTPServicePaths) {
         
-        guard let url = URL(string: ServicePath.BASE_URL.description+servicePath.description) else {return}
+        guard let url = URL(string: HTTPServicePaths.BASE_URL.description+servicePath.description) else {return}
         var request = URLRequest(url: url)
         request.httpMethod = HttpMethod.GET.description
         request.addValue(RequestHeaderMethod.json.description, forHTTPHeaderField: "Content-Type")
@@ -44,24 +48,23 @@ struct  HttpRequest<T:Codable> {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-
+            
             self.responseHandler(success: success, failure: failure)(data, response, error)
-
+            
         }
         
         task.resume()
     }
     
-    private func responseHandler(success : @escaping (T?)->Void, failure : @escaping (NSError)-> Void)-> (Data?, URLResponse?, Error?) -> Void {
-        return { data, response, error in
-            
+    private func responseHandler(success : @escaping (T?)->Void, failure : @escaping HTTPServiceRequestWithError) -> HTTPServiceRequestResponse {
+        
+        let handler: HTTPServiceRequestResponse = ({ data, response, error in
             if error != nil {
                 DispatchQueue.main.async {
-                    failure(error! as NSError)
+                    failure(error!)
                     return
                 }
             }
-            
             do {
                 let decoder = JSONDecoder()
                 let json = try data.map {
@@ -72,11 +75,12 @@ struct  HttpRequest<T:Codable> {
                 }
             }catch let error {
                 DispatchQueue.main.async {
-                    print(error)
-                    failure(error as NSError)
+                    failure(error)
                 }
             }
-        }
+        })
+        
+        return handler
     }
     
     init() {

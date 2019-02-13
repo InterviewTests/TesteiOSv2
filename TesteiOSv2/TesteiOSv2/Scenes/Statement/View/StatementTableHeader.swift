@@ -1,5 +1,5 @@
 //
-//  HomeTableHeader.swift
+//  StatementTableHeader.swift
 //  TesteiOSv2
 //
 //  Created by jeffersoncsilva on 08/02/2019.
@@ -9,15 +9,15 @@
 import UIKit
 
 //MARK: - Protocol's
-protocol HomeTableHeaderProtocol {
+protocol StatementTableHeaderProtocol {
    func didLogOut()
 }
 
 //MARK: - Class Body
-class HomeTableHeader: UIView {
+class StatementTableHeader: UIView {
     
     //MARK: - Properties
-    var delagete: HomeTableHeaderProtocol?
+    var delagete: StatementTableHeaderProtocol?
 
     //MARK: - IBOutlets
     @IBOutlet weak var label_user_name: UILabel!

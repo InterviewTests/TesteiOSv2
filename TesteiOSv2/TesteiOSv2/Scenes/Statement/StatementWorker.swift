@@ -1,5 +1,5 @@
 //
-//  HomeWorker.swift
+//  StatementWorker.swift
 //  TesteiOSv2
 //
 //  Created by jeffersoncsilva on 08/02/2019.
@@ -12,12 +12,14 @@
 
 import UIKit
 
-class HomeWorker
+//MARK: - Class body
+class StatementWorker
 {
-    func getStatements(success: @escaping (StatementModel)->Void, failure : @escaping (NSError)-> Void) {
+    //MARK: - Functions
+    func getStatements(success: @escaping (StatementListModel)->Void, failure : @escaping (NSError)-> Void) {
         
-        let httpRequest : HttpRequest<StatementModel> = HttpRequest()
-        httpRequest.getRequest(success: { (response) in
+        let httpServiceRequest : HTTPServiceRequest<StatementListModel> = HTTPServiceRequest()
+        httpServiceRequest.getRequest(success: { (response) in
             guard let statements = response else {
                 return
             }

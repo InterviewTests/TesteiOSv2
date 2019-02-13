@@ -41,17 +41,18 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
                 if let user = request.user, let password = request.password{
                     
                     let parameters: Dictionary<String, Any> = ["user":user, "password": password]
-                    
+                    self.presenter?.presentLoading()
                     worker = LoginWorker()
                     worker?.doLogin(parameters: parameters, success: { (userModel) in
                         
                         let response = Login.LoginModels.Response(userModel: userModel)
-                        
+                        self.presenter?.removeLoading()
                         self.userModel = userModel
-                        self.presenter?.presentHome(response: response)
+                        self.presenter?.presentStatement(response: response)
                         
                     }, failure: { (error) in
-                        print(error.description)
+                        self.presenter?.removeLoading()
+
                     })
                 }
             }
@@ -88,9 +89,14 @@ extension LoginInteractor{
             throw LoginError.incompleteForm
         }
         
-        if !isValidEmail(email: user){
-            throw LoginError.invalidEmail
-            //            throw LoginError.invalidCPF
+        if self.textConstainsJustNumbers(text: user){
+            if !isValidCPF(cpf: user){
+                throw LoginError.invalidCPF
+            }
+        }else{
+            if !isValidEmail(email: user){
+                throw LoginError.invalidEmail
+            }
         }
         
         if !self.isValidPassword(password: password){
@@ -100,24 +106,20 @@ extension LoginInteractor{
         return true
     }
     
+    func textConstainsJustNumbers(text: String) -> Bool{
+        return text.textConstainsJustNumbers()
+    }
+    
     func isValidEmail(email:String) -> Bool{
-        
-        if email.count == 0{
-            return false
-        }
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", Regex.email.description)
-        print("isValidEmail - \(emailTest.evaluate(with: email))")
-        return emailTest.evaluate(with: email)
-        
+        return email.isValidEmail()
     }
     
     func isValidPassword(password:String) -> Bool {
-        if password.count == 0{
-            return false
-        }
-        let passwordTest = NSPredicate(format:"SELF MATCHES %@", Regex.password.description)
-        print("isValidPassword - \(passwordTest.evaluate(with: password))")
-        return passwordTest.evaluate(with: password)
+        return password.isValidPassword()
+    }
+    
+    func isValidCPF(cpf: String) -> Bool {
+        return cpf.isValidCPF()
     }
     
 }

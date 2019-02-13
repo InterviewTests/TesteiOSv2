@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ServicePath:String {
+enum HTTPServicePaths:String {
     case BASE_URL = "https://bank-app-test.herokuapp.com"
     case LOGIN_PATH = "/api/login"
     case STATEMENTS_PATH = "/api/statements/1"

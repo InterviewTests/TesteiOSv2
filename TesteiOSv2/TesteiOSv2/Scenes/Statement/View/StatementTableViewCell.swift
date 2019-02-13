@@ -1,5 +1,5 @@
 //
-//  HomeTableViewCell.swift
+//  StatementTableViewCell.swift
 //  TesteiOSv2
 //
 //  Created by jeffersoncsilva on 08/02/2019.
@@ -9,7 +9,7 @@
 import UIKit
 
 //MARK: - Class Body
-class HomeTableViewCell: UITableViewCell {
+class StatementTableViewCell: UITableViewCell {
     
     //MARK: - IBOutlets
     @IBOutlet weak var label_date: UILabel!
@@ -27,12 +27,12 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     //MARK: - Functions
-    func populateFields(statement: Statement){
+    func populateFields(statement: StatementItem){
         self.selectionStyle = .none
         
         if let date = statement.date{
-            if let stringDate = Helper.convertStringToDate(stringDate: date, format: "YYY/MM/dd"){
-                self.label_date.text = Helper.convertDateToString(date: stringDate, format: "dd/MM/YYYY")
+            if let stringDate = date.convertStringToDate(format: "YYY/MM/dd"){
+                self.label_date.text = stringDate.convertDateToString(format: "dd/MM/YYYY")
             }
         }
         

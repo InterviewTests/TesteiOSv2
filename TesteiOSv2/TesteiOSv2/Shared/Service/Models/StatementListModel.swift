@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct StatementModel : Codable{
+struct StatementListModel : Codable{
     
-    var statementList : [Statement]?
+    var statementList : [StatementItem]?
     var error : ErrorModel?
     
     private enum CodingKeys : String, CodingKey {

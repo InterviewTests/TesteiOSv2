@@ -14,12 +14,15 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    func displayHome(viewModel: Login.LoginModels.ViewModel)
+    func displayStatement(viewModel: Login.LoginModels.ViewModel)
+    func displayLoading()
+    func removeLoading()
     func displayAlert(title: String, message: String, titleFirstButton: String)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
+    
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     var userModel: UserModel?
@@ -107,18 +110,32 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     func doLogin()
     {
         if let user = self.text_field_user.text, let password = self.text_field_password.text{
+            self.text_field_user.text = ""
+            self.text_field_password.text = ""
             let request = Login.LoginModels.Request(user:user,password:password)
             interactor?.doLogin(request: request)
         }
     }
     
-    func displayHome(viewModel: Login.LoginModels.ViewModel)
+    func displayStatement(viewModel: Login.LoginModels.ViewModel)
     {
-        router?.routeToHome(segue: nil)
+        router?.routeToStatement(segue: nil)
     }
     
     func displayAlert(title: String, message: String, titleFirstButton: String){
-        Helper.showAlert(title: title, message: message, titleFirstButton: titleFirstButton, viewController: self)
+        self.showAlert(title: title, message: message, titleFirstButton: titleFirstButton)
+    }
+    
+    func displayLoading() {
+        self.showLoading()
+    }
+    
+    func removeLoading() {
+        self.hideLoading()
+    }
+    
+    func displayCpf(cpf: String) {
+        self.text_field_user.text = cpf
     }
     
 }

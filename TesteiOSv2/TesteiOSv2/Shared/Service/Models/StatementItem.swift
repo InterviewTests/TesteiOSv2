@@ -1,5 +1,5 @@
 //
-//  Statements.swift
+//  Statement.swift
 //  TesteiOSv2
 //
 //  Created by jeffersoncsilva on 11/02/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Statement  : Codable {
+struct StatementItem : Codable {
     
     let title: String?
     let desc: String?
