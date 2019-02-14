@@ -40,5 +40,15 @@ class LoginInteractorTests: XCTestCase {
         let password = "password"
         XCTAssertFalse(self.loginInteractor.isValidPassword(password: password), "The password is invalid!!!")
     }
+    
+    func testCPFSuccessfully() {
+        let cpf = "06884461080"
+        XCTAssert(self.loginInteractor.isValidCPF(cpf: cpf), "The password is valid!!!")
+    }
+    
+    func testCPFFailed() {
+        let cpf = "78635782635"
+        XCTAssertFalse(self.loginInteractor.isValidCPF(cpf: cpf), "The password is invalid!!!")
+    }
 
 }
