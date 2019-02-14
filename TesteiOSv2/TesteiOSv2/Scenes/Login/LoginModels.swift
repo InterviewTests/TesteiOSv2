@@ -12,23 +12,19 @@
 
 import UIKit
 
-enum Login
-{
+enum Login{
     // MARK: Use cases
     
-    enum LoginModels
-    {
+    enum LoginModels{
         struct Request
         {
             var user: String?
             var password: String?
         }
-        struct Response
-        {
+        struct Response{
             let userModel: UserModel
         }
-        struct ViewModel
-        {
+        struct ViewModel{
             let userModel: UserModel
         }
     }

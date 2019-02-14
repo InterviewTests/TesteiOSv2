@@ -13,8 +13,8 @@
 import UIKit
 
 //MARK: - Class body
-class StatementWorker
-{
+class StatementWorker{
+
     //MARK: - Functions
     func getStatements(success: @escaping (StatementListModel)->Void, failure : @escaping (NSError)-> Void) {
         
@@ -28,5 +28,9 @@ class StatementWorker
             
         }, servicePath: .STATEMENTS_PATH)
 
+    }
+    
+    func clearCredentials(){
+        KeychainManager.shared.clearCredentials()
     }
 }

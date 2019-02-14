@@ -12,24 +12,25 @@
 
 import UIKit
 
-protocol LoginBusinessLogic
-{
+//MARK: - Protocols
+protocol LoginBusinessLogic{
     func doLogin(request: Login.LoginModels.Request)
+    func getCredentials()
 }
 
-protocol LoginDataStore
-{
+protocol LoginDataStore{
     var userModel: UserModel { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
+//MARK: - Class body
+class LoginInteractor: LoginBusinessLogic, LoginDataStore{
+    
+    //MARK: - Properties
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
     var userModel: UserModel = UserModel()
     
-    // MARK: Do something
-    
+    //MARK: - Functions
     func doLogin(request: Login.LoginModels.Request){
         
         do{
@@ -73,6 +74,13 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
             self.presenter?.presentLoginErrorAlert(error: .unknwowError)
         }
         
+    }
+    
+    func getCredentials() {
+        worker = LoginWorker()
+        if let credentials = self.worker?.getCredentials(){
+            self.presenter?.presentCredentials(credentials: credentials)
+        }
     }
 }
 

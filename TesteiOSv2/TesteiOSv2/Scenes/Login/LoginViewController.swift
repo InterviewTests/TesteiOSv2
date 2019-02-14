@@ -12,39 +12,38 @@
 
 import UIKit
 
-protocol LoginDisplayLogic: class
-{
+//MARK: - Protocols
+protocol LoginDisplayLogic: class{
     func displayStatement(viewModel: Login.LoginModels.ViewModel)
     func displayLoading()
     func removeLoading()
     func displayAlert(title: String, message: String, titleFirstButton: String)
+    func displayCredentials(credentials: Dictionary<String, Any>)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
-{
-    
+//MARK: - Class body
+class LoginViewController: UIViewController{
+
+    //MARK: - Properties
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     var userModel: UserModel?
     
     // MARK: Object lifecycle
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?){
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         setup()
     }
     
     // MARK: Setup
     
-    private func setup()
-    {
+    private func setup(){
         let viewController = self
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
@@ -73,6 +72,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func viewDidLoad(){
         super.viewDidLoad()
         self.setUpUI()
+        self.interactor?.getCredentials()
     }
     
     // MARK: - IBOutlets
@@ -83,7 +83,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     // MARK: - IBActions
     @IBAction func didTouchLoginButton(_ sender: Any) {
-        print("didTouchLoginButton")
         self.doLogin()
     }
     
@@ -91,35 +90,54 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     func setUpUI(){
         self.setUpTextFields()
         self.setUpTextButton()
+        self.setUpGestures()
     }
     
     func setUpTextFields(){
         self.text_field_user.addLeftPadding()
         self.text_field_user.addBorder(color: .TextFieldBorderColor)
         self.text_field_user.keyboardType = .default
+        self.text_field_user.delegate = self
         
         self.text_field_password.addLeftPadding()
         self.text_field_password.addBorder(color: .TextFieldBorderColor)
         self.text_field_password.isSecureTextEntry = true
+        self.text_field_password.delegate = self
     }
     
     func setUpTextButton(){
         self.button_login.addBorder(color: .ButtonBackgroundColor)
     }
     
-    func doLogin()
-    {
+    func clearFields(){
+        self.text_field_user.text = ""
+        self.text_field_password.text = ""
+    }
+    
+    func doLogin(){
         if let user = self.text_field_user.text, let password = self.text_field_password.text{
-            self.text_field_user.text = ""
-            self.text_field_password.text = ""
             let request = Login.LoginModels.Request(user:user,password:password)
             interactor?.doLogin(request: request)
         }
     }
     
-    func displayStatement(viewModel: Login.LoginModels.ViewModel)
-    {
+    func setUpGestures(){
+        let viewTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapView))
+        view.addGestureRecognizer(viewTapGesture)
+    }
+    
+    @objc func tapView(){
+        self.view.endEditing(true)
+    }
+
+    
+}
+
+extension LoginViewController: LoginDisplayLogic{
+    
+    func displayStatement(viewModel: Login.LoginModels.ViewModel){
         router?.routeToStatement(segue: nil)
+        self.clearFields()
     }
     
     func displayAlert(title: String, message: String, titleFirstButton: String){
@@ -134,8 +152,26 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         self.hideLoading()
     }
     
-    func displayCpf(cpf: String) {
-        self.text_field_user.text = cpf
+    func displayCredentials(credentials: Dictionary<String, Any>) {
+        if let user = credentials["user"] as? String{
+            self.text_field_user.text = user
+        }
+        
+        if let password = credentials["password"] as? String{
+            self.text_field_password.text = password
+        }
+        
     }
-    
+}
+
+extension LoginViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == self.text_field_user{
+            self.text_field_password.becomeFirstResponder()
+        }else{
+            self.doLogin()
+        }
+        return true
+    }
 }

@@ -13,20 +13,18 @@
 import UIKit
 
 //MARK: - Protocols
-protocol StatementBusinessLogic
-{
+protocol StatementBusinessLogic{
     func getStatements(request: Statement.StatementModels.Request)
+    func clearCredentials()
 }
 
-protocol StatementDataStore
-{
+protocol StatementDataStore{
     var userModel: UserModel { get set }
     var statementModel: StatementListModel { get set }
 }
 
 //MARK: - Class body
-class StatementInteractor: StatementBusinessLogic, StatementDataStore
-{
+class StatementInteractor: StatementBusinessLogic, StatementDataStore{
     
     //MARK: - Properties
     var presenter: StatementPresentationLogic?
@@ -35,8 +33,7 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore
     var statementModel: StatementListModel = StatementListModel()
     
     //MARK: - Functions
-    func getStatements(request: Statement.StatementModels.Request)
-    {
+    func getStatements(request: Statement.StatementModels.Request){
         self.presenter?.presentLoading()
         worker = StatementWorker()
         worker?.getStatements(success: { (statements) in
@@ -49,5 +46,11 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore
             print(error)
         })
         
+    }
+    
+    func clearCredentials() {
+        worker = StatementWorker()
+        worker?.clearCredentials()
+
     }
 }

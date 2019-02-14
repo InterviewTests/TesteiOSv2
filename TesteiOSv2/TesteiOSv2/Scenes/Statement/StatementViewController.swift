@@ -12,37 +12,36 @@
 
 import UIKit
 
-protocol StatementDisplayLogic: class
-{
+//MARK: - Protocols
+protocol StatementDisplayLogic: class{
     func displayLoading()
     func removeLoading()
-    func displaySomething(viewModel: Statement.StatementModels.ViewModel)
+    func displayStatementList(viewModel: Statement.StatementModels.ViewModel)
 }
 
-class StatementViewController: UIViewController, StatementDisplayLogic
-{
+//MARK: - Class body
+class StatementViewController: UIViewController, StatementDisplayLogic{
+    
+    //MARK: - Properties
     var interactor: StatementBusinessLogic?
     var router: (NSObjectProtocol & StatementRoutingLogic & StatementDataPassing)?
     var statementList: [StatementItem]?
     
     // MARK: Object lifecycle
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?){
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         setup()
     }
     
     // MARK: Setup
     
-    private func setup()
-    {
+    private func setup(){
         let viewController = self
         let interactor = StatementInteractor()
         let presenter = StatementPresenter()
@@ -57,8 +56,7 @@ class StatementViewController: UIViewController, StatementDisplayLogic
     
     // MARK: Routing
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
             if let router = router, router.responds(to: selector) {
@@ -69,15 +67,16 @@ class StatementViewController: UIViewController, StatementDisplayLogic
     
     // MARK: View lifecycle
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad(){
         super.viewDidLoad()
         self.setUpUI()
         self.getStatements()
     }
+    //MARK: - @IBOutlets
+    @IBOutlet weak var table_view_statements: UITableView!
+    @IBOutlet weak var view_user_informations: StatementTableHeader!
     
-    // MARK: Do something
-    
+    //MARK: - Functions
     func displayLoading() {
         self.showLoading()
     }
@@ -86,33 +85,33 @@ class StatementViewController: UIViewController, StatementDisplayLogic
         self.hideLoading()
     }
     
-    @IBOutlet weak var table_view_statements: UITableView!
-    
     func setUpUI(){
-        self.table_view_statements.contentInset = UIEdgeInsets(top: -20,left: 0,bottom: 0,right: 0);
         self.modalTransitionStyle = .crossDissolve
         self.modalPresentationStyle = .currentContext
         self.table_view_statements.tableFooterView = UIView()
-        self.table_view_statements.delegate = self
+        self.table_view_statements.tableHeaderView = UIView()
         self.table_view_statements.dataSource = self
+        self.table_view_statements.delegate = self
         self.table_view_statements.separatorStyle = .none
         self.automaticallyAdjustsScrollViewInsets = false
         let statementTableViewCell = UINib(nibName: "StatementTableViewCell", bundle: nil)
         self.table_view_statements.register(statementTableViewCell, forCellReuseIdentifier: "cell")
+        self.view_user_informations.delagete = self
+        if let user = router?.dataStore?.userModel.user{
+            self.view_user_informations.populateFields(user: user)
+        }
     }
     
     func dismiss(){
         self.dismiss(animated: true, completion: nil)
     }
     
-    func getStatements()
-    {
+    func getStatements(){
         let request = Statement.StatementModels.Request()
         interactor?.getStatements(request: request)
     }
     
-    func displaySomething(viewModel: Statement.StatementModels.ViewModel)
-    {
+    func displayStatementList(viewModel: Statement.StatementModels.ViewModel){
         self.statementList = viewModel.statementModel.statementList
         self.table_view_statements.reloadData()
     }
@@ -123,6 +122,7 @@ extension StatementViewController: UITableViewDelegate{
 }
 
 extension StatementViewController: UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let statementList = self.statementList else {
             return 0
@@ -143,37 +143,12 @@ extension StatementViewController: UITableViewDataSource{
         return 95
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let nib = Bundle.main.loadNibNamed("StatementTableHeader", owner: self, options: nil){
-            if let statementTableHeader = nib[0] as? StatementTableHeader{
-                statementTableHeader.delagete = self
-                self.table_view_statements.tableHeaderView?.frame = statementTableHeader.frame
-                
-                if let user = router?.dataStore?.userModel.user{
-                    statementTableHeader.populateFields(user: user)
-                }
-                return statementTableHeader
-            }
-        }
-        
-        return nil
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if let nib = Bundle.main.loadNibNamed("StatementTableHeader", owner: self, options: nil){
-            if let statementTableHeader = nib[0] as? StatementTableHeader{
-                return statementTableHeader.frame.size.height
-            }
-        }
-        
-        return 0.0
-    }
-    
 }
 
 extension StatementViewController: StatementTableHeaderProtocol{
     
     func didLogOut() {
+        self.interactor?.clearCredentials()
         self.dismiss()
     }
     

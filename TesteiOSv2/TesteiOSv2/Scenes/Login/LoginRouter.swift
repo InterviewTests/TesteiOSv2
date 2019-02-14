@@ -13,19 +13,16 @@
 import UIKit
 
 //MARK: - Protocols
-@objc protocol LoginRoutingLogic
-{
+@objc protocol LoginRoutingLogic{
     func routeToStatement(segue: UIStoryboardSegue?)
 }
 
-protocol LoginDataPassing
-{
+protocol LoginDataPassing{
     var dataStore: LoginDataStore? { get }
 }
 
 //MARK: - Class body
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
-{
+class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing{
     
     //MARK: - Properties
     weak var viewController: LoginViewController?
@@ -33,8 +30,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
     
     // MARK: Routing
     
-    func routeToStatement(segue: UIStoryboardSegue?)
-    {
+    func routeToStatement(segue: UIStoryboardSegue?){
         if let _ = segue {
             
         }else {
@@ -54,15 +50,13 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
     
     // MARK: Navigation
     
-    func navigateToSomewhere(source: LoginViewController, destination: StatementViewController)
-    {
+    func navigateToSomewhere(source: LoginViewController, destination: StatementViewController){
         source.show(destination, sender: nil)
     }
     
     // MARK: Passing data
     
-    func passDataToSomewhere(source: LoginDataStore, destination: inout StatementDataStore)
-    {
+    func passDataToSomewhere(source: LoginDataStore, destination: inout StatementDataStore){
         destination.userModel = source.userModel
     }
     

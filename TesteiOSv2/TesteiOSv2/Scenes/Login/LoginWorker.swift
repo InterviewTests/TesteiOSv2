@@ -13,8 +13,8 @@
 import UIKit
 
 //MARK: - Class body
-class LoginWorker
-{
+class LoginWorker{
+    
     func doLogin(parameters: Dictionary<String,Any>, success: @escaping (UserModel)->Void, failure : @escaping (Error)-> Void) {
         
         let httpServiceRequest : HTTPServiceRequest<UserModel> = HTTPServiceRequest()
@@ -24,10 +24,20 @@ class LoginWorker
                 return
             }
             
+            self.storeCredentials(credentials: parameters)
             success(userModel)
         }) { (error) in
             failure(error)
         }
         
     }
+    
+    func storeCredentials(credentials: Dictionary<String,Any>){
+        KeychainManager.shared.storeCredentials(credentials: credentials, key: "credentials")
+    }
+    
+    func getCredentials() -> Dictionary<String,Any>?{
+        return KeychainManager.shared.getCredentials(key: "credentials")
+    }
+
 }

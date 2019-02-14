@@ -13,24 +13,22 @@
 import UIKit
 
 //MARK: - Protocols
-protocol LoginPresentationLogic
-{
+protocol LoginPresentationLogic{
     func presentStatement(response: Login.LoginModels.Response)
     func presentLoading()
     func removeLoading()
     func presentLoginErrorAlert(error:LoginError)
+    func presentCredentials(credentials: Dictionary<String, Any>)
 }
 
 //MARK: - Class body
-class LoginPresenter: LoginPresentationLogic
-{
+class LoginPresenter: LoginPresentationLogic{
     
     //MARK: - Properties
     weak var viewController: LoginDisplayLogic?
     
     //MARK: - Functions
-    func presentStatement(response: Login.LoginModels.Response)
-    {
+    func presentStatement(response: Login.LoginModels.Response){
         let viewModel = Login.LoginModels.ViewModel(userModel: response.userModel)
         viewController?.displayStatement(viewModel: viewModel)
     }
@@ -45,6 +43,10 @@ class LoginPresenter: LoginPresentationLogic
     
     func removeLoading() {
         viewController?.removeLoading()
+    }
+    
+    func presentCredentials(credentials: Dictionary<String, Any>) {
+        viewController?.displayCredentials(credentials: credentials)
     }
     
 }

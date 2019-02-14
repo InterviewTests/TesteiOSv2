@@ -21,16 +21,14 @@ protocol StatementPresentationLogic
 }
 
 //MARK: - Class body
-class StatementPresenter: StatementPresentationLogic
-{
+class StatementPresenter: StatementPresentationLogic{
     //MARK: - Properties
     weak var viewController: StatementDisplayLogic?
     
     //MARK: - Functions
-    func presentStatements(response: Statement.StatementModels.Response)
-    {
+    func presentStatements(response: Statement.StatementModels.Response){
         let viewModel = Statement.StatementModels.ViewModel(statementModel: response.statementModel)
-        viewController?.displaySomething(viewModel: viewModel)
+        viewController?.displayStatementList(viewModel: viewModel)
     }
     
     func presentLoading() {

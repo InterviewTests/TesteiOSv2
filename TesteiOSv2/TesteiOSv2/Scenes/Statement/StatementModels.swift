@@ -12,17 +12,13 @@
 
 import UIKit
 
-enum Statement
-{
+enum Statement{
     // MARK: Use cases
     
-    enum StatementModels
-    {
-        struct Request
-        {
+    enum StatementModels{
+        struct Request{
         }
-        struct Response
-        {
+        struct Response{
             let statementModel: StatementListModel
         }
         struct ViewModel{

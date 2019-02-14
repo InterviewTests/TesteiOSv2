@@ -13,19 +13,16 @@
 import UIKit
 
 //MARK: - Protocols
-@objc protocol StatementRoutingLogic
-{
+@objc protocol StatementRoutingLogic{
     
 }
 
-protocol StatementDataPassing
-{
+protocol StatementDataPassing{
     var dataStore: StatementDataStore? { get }
 }
 
 //MARK: - Class body
-class StatementRouter: NSObject, StatementRoutingLogic, StatementDataPassing
-{
+class StatementRouter: NSObject, StatementRoutingLogic, StatementDataPassing{
     //MARK: - Properties
     weak var viewController: StatementViewController?
     var dataStore: StatementDataStore?

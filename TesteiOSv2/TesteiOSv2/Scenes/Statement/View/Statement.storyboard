@@ -13,32 +13,43 @@
         <!--Statement View Controller-->
         <scene sceneID="slL-TK-4HV">
             <objects>
-                <viewController storyboardIdentifier="StatementViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a5l-hH-5X7" customClass="StatementViewController" customModule="TesteiOSv2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatementViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a5l-hH-5X7" customClass="StatementViewController" customModule="TesteiOSv2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sPM-pY-fx5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="eqv-Ke-vCq">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pd-hz-BW7" customClass="StatementTableHeader" customModule="TesteiOSv2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="280" id="UlS-es-Qzz"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="eqv-Ke-vCq">
+                                <rect key="frame" x="0.0" y="280" width="375" height="387"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="eqv-Ke-vCq" firstAttribute="trailing" secondItem="jYi-aT-A30" secondAttribute="trailing" id="Je2-In-ghL"/>
-                            <constraint firstItem="eqv-Ke-vCq" firstAttribute="top" secondItem="sPM-pY-fx5" secondAttribute="top" id="KVD-OM-csj"/>
-                            <constraint firstItem="eqv-Ke-vCq" firstAttribute="bottom" secondItem="jYi-aT-A30" secondAttribute="bottom" id="MJ9-Qs-yyy"/>
+                            <constraint firstItem="jYi-aT-A30" firstAttribute="trailing" secondItem="7pd-hz-BW7" secondAttribute="trailing" id="BEO-Hp-ND0"/>
+                            <constraint firstItem="jYi-aT-A30" firstAttribute="trailing" secondItem="eqv-Ke-vCq" secondAttribute="trailing" id="J4l-4x-m0c"/>
+                            <constraint firstItem="eqv-Ke-vCq" firstAttribute="bottom" secondItem="sPM-pY-fx5" secondAttribute="bottom" id="MJ9-Qs-yyy"/>
+                            <constraint firstItem="7pd-hz-BW7" firstAttribute="top" secondItem="sPM-pY-fx5" secondAttribute="top" id="N1K-XP-4mn"/>
+                            <constraint firstItem="7pd-hz-BW7" firstAttribute="leading" secondItem="jYi-aT-A30" secondAttribute="leading" id="Odb-L7-KUp"/>
+                            <constraint firstItem="eqv-Ke-vCq" firstAttribute="top" secondItem="7pd-hz-BW7" secondAttribute="bottom" id="ffO-h7-eWU"/>
                             <constraint firstItem="eqv-Ke-vCq" firstAttribute="leading" secondItem="jYi-aT-A30" secondAttribute="leading" id="nRN-TQ-jYe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jYi-aT-A30"/>
                     </view>
                     <connections>
                         <outlet property="table_view_statements" destination="eqv-Ke-vCq" id="nM5-Ls-ShT"/>
+                        <outlet property="view_user_informations" destination="7pd-hz-BW7" id="P6O-t6-MFr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9i-PM-P6z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="94" y="12"/>
+            <point key="canvasLocation" x="93.599999999999994" y="11.244377811094454"/>
         </scene>
     </scenes>
 </document>
