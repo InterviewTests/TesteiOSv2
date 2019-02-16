@@ -30,8 +30,6 @@ struct HTTPService {
       request.httpBody = try JSONEncoder().encode(parameters)
       URLSession.shared.dataTask(with: request) { data, _, err in
         if let data = data {
-          let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-          print(json)
           completion { data }
         } else if let err = err {
           completion { throw err }

@@ -12,6 +12,8 @@
 
 import UIKit
 
+import KeychainSwift
+
 final class LoginWorker {
   func validateUser(fields: Login.SubmitFields) throws {
     guard let user = fields.user, !user.isEmpty else { throw LoginError.emptyUser }
@@ -25,6 +27,22 @@ final class LoginWorker {
   }
 
   func submitLogin(request: Login.SubmitLogin.Request, completion: @escaping (Login.SubmitLogin.Response) -> Void) {
-    API.login(request: request, completion: completion)
+    API.login(request: request) { [weak self] response in
+      if response.userAccount != nil {
+        self?.persistCredentials(fields: request.fields)
+      }
+      completion(response)
+    }
+  }
+
+  func persistCredentials(fields: Login.SubmitFields) {
+    guard let data = try? JSONEncoder().encode(fields) else { return }
+    KeychainSwift().set(data, forKey: "bank")
+  }
+
+  func getPersistedCredentials() -> Login.SubmitFields? {
+    guard let data = KeychainSwift().getData("bank") else { return nil }
+    guard let fields = try? JSONDecoder().decode(Login.SubmitFields.self, from: data) else { return nil }
+    return fields
   }
 }

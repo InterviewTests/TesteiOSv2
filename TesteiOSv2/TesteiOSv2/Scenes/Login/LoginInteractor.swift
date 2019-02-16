@@ -13,6 +13,7 @@
 import UIKit
 
 protocol LoginBusinessLogic {
+  func getPersistedCredentials() -> Login.SubmitFields?
   func submitLogin(request: Login.SubmitLogin.Request)
 }
 
@@ -42,5 +43,9 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
       let response = Login.SubmitLogin.Response(userAccount: nil, error: error as? ErrorProtocol)
       presenter?.presentError(response: response)
     }
+  }
+
+  func getPersistedCredentials() -> Login.SubmitFields? {
+    return worker?.getPersistedCredentials()
   }
 }

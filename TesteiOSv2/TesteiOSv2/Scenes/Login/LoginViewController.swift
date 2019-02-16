@@ -64,6 +64,14 @@ final class LoginViewController: UIViewController, LoginDisplayLogic {
     self.view = view
   }
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    if let fields = interactor?.getPersistedCredentials() {
+      loginView?.userTextField.text = fields.user
+      loginView?.passwordTextField.text = fields.password
+    }
+  }
+
   // MARK: Submit Response
 
   func displayError(viewModel: Login.SubmitLogin.ViewModel) {

@@ -13,7 +13,7 @@
 import UIKit
 
 enum Login {
-  struct SubmitFields {
+  struct SubmitFields: Codable {
     let user: String?
     let password: String?
   }
