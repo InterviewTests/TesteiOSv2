@@ -23,4 +23,8 @@ final class LoginWorker {
 
     guard PasswordValidation.validate(value: password) else { throw LoginError.invalidPassword }
   }
+
+  func submitLogin(request: Login.SubmitLogin.Request, completion: @escaping (Login.SubmitLogin.Response) -> Void) {
+    API.login(request: request, completion: completion)
+  }
 }

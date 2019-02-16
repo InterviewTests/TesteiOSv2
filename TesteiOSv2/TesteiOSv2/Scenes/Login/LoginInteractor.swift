@@ -31,10 +31,15 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     do {
       try worker?.validateUser(fields: request.fields)
 
-//      let response = Login.SubmitLogin.Response()
-//      presenter?.presentSomething(response: response)
+      worker?.submitLogin(request: request) { response in
+        if response.userAccount != nil {
+          print(response.userAccount)
+        } else {
+          self.presenter?.presentError(response: response)
+        }
+      }
     } catch {
-      let response = Login.SubmitLogin.Response(error: error as? LoginError)
+      let response = Login.SubmitLogin.Response(userAccount: nil, error: error as? ErrorProtocol)
       presenter?.presentError(response: response)
     }
   }

@@ -24,9 +24,11 @@ enum Login {
     }
 
     struct Response {
-      let error: LoginError?
+      let userAccount: UserAccount?
+      let error: ErrorProtocol?
 
-      init(error: LoginError? = nil) {
+      init(userAccount: UserAccount?, error: ErrorProtocol? = nil) {
+        self.userAccount = userAccount
         self.error = error
       }
     }
@@ -36,9 +38,9 @@ enum Login {
       var activateUserTextField = false
       var activatePasswordTextField = false
 
-      init(error: LoginError?) {
+      init(error: ErrorProtocol?) {
         errorMessage = error?.localizedDescription
-        switch error {
+        switch error as? LoginError {
         case .some(.emptyUser), .some(.invalidUser):
           activateUserTextField = true
         case .some(.emptyPassword), .some(.invalidPassword):
