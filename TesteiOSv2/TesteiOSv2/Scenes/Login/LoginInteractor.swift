@@ -18,12 +18,13 @@ protocol LoginBusinessLogic {
 }
 
 protocol LoginDataStore {
-  //var name: String { get set }
+  var userAccount: UserAccount? { get set }
 }
 
 final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
   var presenter: LoginPresentationLogic?
   var worker: LoginWorker?
+  var userAccount: UserAccount?
 
   // MARK: Submit Login
 
@@ -34,7 +35,8 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
 
       worker?.submitLogin(request: request) { response in
         if response.userAccount != nil {
-          print(response.userAccount)
+          self.userAccount = response.userAccount
+          self.presenter?.presentUserAccount(response: response)
         } else {
           self.presenter?.presentError(response: response)
         }

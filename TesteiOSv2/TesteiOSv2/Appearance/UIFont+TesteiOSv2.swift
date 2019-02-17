@@ -12,4 +12,12 @@ extension UIFont {
   static var headerFont: UIFont {
     return UIFont.boldSystemFont(ofSize: 20)
   }
+
+  static var h1Font: UIFont {
+    return UIFont.systemFont(ofSize: 25, weight: .light)
+  }
+
+  static var smallFont: UIFont {
+    return UIFont.systemFont(ofSize: 12)
+  }
 }

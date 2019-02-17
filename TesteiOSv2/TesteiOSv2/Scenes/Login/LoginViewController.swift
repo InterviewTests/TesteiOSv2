@@ -18,8 +18,7 @@ protocol LoginViewLogic: class {
 
 protocol LoginDisplayLogic: class {
   func displayError(viewModel: Login.SubmitLogin.ViewModel)
-  func startLoading()
-  func stopLoading()
+  func displayUserAccount()
 }
 
 final class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -54,8 +53,6 @@ final class LoginViewController: UIViewController, LoginDisplayLogic {
     router.dataStore = interactor
   }
 
-  // MARK: Routing
-
   // MARK: View lifecycle
 
   override func loadView() {
@@ -75,16 +72,26 @@ final class LoginViewController: UIViewController, LoginDisplayLogic {
   // MARK: Submit Response
 
   func displayError(viewModel: Login.SubmitLogin.ViewModel) {
-    let alert = UIAlertController(title: viewModel.errorMessage, message: nil, preferredStyle: .alert)
-    let okAction = UIAlertAction(title: String.Shared.close, style: .default) { [weak self] _ in
-      if viewModel.activateUserTextField {
-        self?.loginView?.userTextField.becomeFirstResponder()
-      } else if viewModel.activatePasswordTextField {
-        self?.loginView?.passwordTextField.becomeFirstResponder()
+    DispatchQueue.main.async {
+      self.stopLoading()
+      let alert = UIAlertController(title: viewModel.errorMessage, message: nil, preferredStyle: .alert)
+      let okAction = UIAlertAction(title: String.Shared.close, style: .default) { [weak self] _ in
+        if viewModel.activateUserTextField {
+          self?.loginView?.userTextField.becomeFirstResponder()
+        } else if viewModel.activatePasswordTextField {
+          self?.loginView?.passwordTextField.becomeFirstResponder()
+        }
       }
+      alert.addAction(okAction)
+      self.present(alert, animated: true, completion: nil)
     }
-    alert.addAction(okAction)
-    present(alert, animated: true, completion: nil)
+  }
+
+  func displayUserAccount() {
+    DispatchQueue.main.async {
+      self.stopLoading()
+      self.router?.routeToAccount()
+    }
   }
 
   func startLoading() {
