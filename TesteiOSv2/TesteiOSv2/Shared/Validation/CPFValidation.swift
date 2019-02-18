@@ -10,7 +10,7 @@ import Foundation
 
 struct CPFValidation: Validation {
   static func validate(value: String?) -> Bool {
-    let pattern = "[0-9]{11}"
+    let pattern = "^[0-9]{11}$"
     guard let cpf = value, !cpf.isEmpty else { return false }
     let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
     let range = NSRange(0..<cpf.count)

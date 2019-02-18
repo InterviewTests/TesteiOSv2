@@ -13,7 +13,7 @@ struct API {
     return "https://bank-app-test.herokuapp.com"
   }
 
-  private static var baseUrl: URL {
+  public static var baseUrl: URL {
     guard let url = URL(string: baseUrlString) else { fatalError("invalid base url") }
     return url
   }

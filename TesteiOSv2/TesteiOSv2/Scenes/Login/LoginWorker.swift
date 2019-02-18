@@ -15,7 +15,7 @@ import UIKit
 import KeychainSwift
 
 final class LoginWorker {
-  func validateUser(fields: Login.SubmitFields) throws {
+  func validateCredentials(fields: Login.SubmitFields) throws {
     guard let user = fields.user, !user.isEmpty else { throw LoginError.emptyUser }
     guard let password = fields.password, !password.isEmpty else { throw LoginError.emptyPassword }
 

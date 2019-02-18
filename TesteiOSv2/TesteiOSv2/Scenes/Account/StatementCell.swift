@@ -25,21 +25,21 @@ final class StatementCell: UITableViewCell {
     return view
   }()
 
-  private let titleLabel: UILabel = {
+  public private(set) var titleLabel: UILabel = {
     let label = UILabel()
     label.font = .regularFont
     label.textColor = .lightText
     return label
   }()
 
-  private let descriptionLabel: UILabel = {
+  public private(set) var descriptionLabel: UILabel = {
     let label = UILabel()
     label.font = .regularFont
     label.textColor = .darkText
     return label
   }()
 
-  private let dateLabel: UILabel = {
+  public private(set) var dateLabel: UILabel = {
     let label = UILabel()
     label.font = .smallFont
     label.textColor = .lightText
@@ -47,7 +47,7 @@ final class StatementCell: UITableViewCell {
     return label
   }()
 
-  private let valueLabel: UILabel = {
+  public private(set) var valueLabel: UILabel = {
     let label = UILabel()
     label.font = .largeLightFont
     label.textColor = .darkText

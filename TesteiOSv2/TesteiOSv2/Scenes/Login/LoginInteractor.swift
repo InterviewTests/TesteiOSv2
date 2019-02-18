@@ -30,7 +30,7 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
 
   func submitLogin(request: Login.SubmitLogin.Request) {
     do {
-      try worker?.validateUser(fields: request.fields)
+      try worker?.validateCredentials(fields: request.fields)
 
       worker?.submitLogin(request: request) { response in
         if response.userAccount != nil {
