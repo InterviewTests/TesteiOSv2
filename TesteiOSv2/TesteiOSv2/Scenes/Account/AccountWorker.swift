@@ -13,4 +13,7 @@
 import UIKit
 
 final class AccountWorker {
+  func fetchStatements(completion: @escaping (Account.FetchStatements.Response) -> Void) {
+    API.getStatements(completion: completion)
+  }
 }

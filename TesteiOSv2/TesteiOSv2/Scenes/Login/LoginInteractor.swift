@@ -23,13 +23,12 @@ protocol LoginDataStore {
 
 final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
   var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
+  lazy var worker: LoginWorker? = LoginWorker()
   var userAccount: UserAccount?
 
   // MARK: Submit Login
 
   func submitLogin(request: Login.SubmitLogin.Request) {
-    worker = LoginWorker()
     do {
       try worker?.validateUser(fields: request.fields)
 

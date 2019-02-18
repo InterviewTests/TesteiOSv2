@@ -18,12 +18,14 @@ protocol AccountViewLogic: class {
 
 protocol AccountDisplayLogic: class {
   func displayAccountDetails(viewModel: Account.ShowAccountDetails.ViewModel)
+  func displayStatements(viewModel: Account.FetchStatements.ViewModel)
 }
 
 final class AccountViewController: UIViewController {
   var interactor: AccountBusinessLogic?
   var router: (NSObjectProtocol & AccountRoutingLogic & AccountDataPassing)?
   var accountView: AccountView?
+  var displayedStatements: [Account.FetchStatements.ViewModel.DisplayedStatement] = []
 
   // MARK: Object lifecycle
 
@@ -67,6 +69,7 @@ final class AccountViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     showAccountDetails()
+    fetchStatements()
   }
 
   // MARK: Show Account Details
@@ -74,6 +77,13 @@ final class AccountViewController: UIViewController {
   func showAccountDetails() {
     let request = Account.ShowAccountDetails.Request()
     interactor?.showAccountDetails(request: request)
+  }
+
+  // MARK: Fetch Statements
+
+  func fetchStatements() {
+    let request = Account.FetchStatements.Request()
+    interactor?.fetchStatements(request: request)
   }
 }
 
@@ -84,6 +94,11 @@ extension AccountViewController: AccountDisplayLogic {
     accountView?.nameLabel.text = viewModel.accountDetails.name
     accountView?.accountValueLabel.text = viewModel.accountDetails.account
     accountView?.balanceValueLabel.text = viewModel.accountDetails.balance
+  }
+
+  func displayStatements(viewModel: Account.FetchStatements.ViewModel) {
+    displayedStatements = viewModel.displayedStatements
+//    tableView.reloadData()
   }
 }
 

@@ -28,4 +28,20 @@ enum Account {
       var accountDetails: AccountDetails
     }
   }
+
+  enum FetchStatements {
+    struct Request {}
+    struct Response {
+      var statements: [Statement]
+    }
+    struct ViewModel {
+      struct DisplayedStatement {
+        var title: String
+        var description: String
+        var date: String
+        var value: String
+      }
+      var displayedStatements: [DisplayedStatement]
+    }
+  }
 }

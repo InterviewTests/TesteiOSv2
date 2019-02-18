@@ -14,6 +14,7 @@ import UIKit
 
 protocol AccountBusinessLogic {
   func showAccountDetails(request: Account.ShowAccountDetails.Request)
+  func fetchStatements(request: Account.FetchStatements.Request)
 }
 
 protocol AccountDataStore {
@@ -22,13 +23,19 @@ protocol AccountDataStore {
 
 final class AccountInteractor: AccountBusinessLogic, AccountDataStore {
   var presenter: AccountPresentationLogic?
-  var worker: AccountWorker?
+  lazy var worker: AccountWorker? = AccountWorker()
   var userAccount: UserAccount?
 
   func showAccountDetails(request: Account.ShowAccountDetails.Request) {
     if let userAccount = userAccount {
       let response = Account.ShowAccountDetails.Response(userAccount: userAccount)
       presenter?.presentAccountDetails(response: response)
+    }
+  }
+
+  func fetchStatements(request: Account.FetchStatements.Request) {
+    worker?.fetchStatements { [weak self] response in
+      self?.presenter?.presentStatements(response: response)
     }
   }
 }
