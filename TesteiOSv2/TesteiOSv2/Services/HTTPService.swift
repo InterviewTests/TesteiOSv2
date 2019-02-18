@@ -14,10 +14,15 @@ enum Method: String {
 }
 
 struct HTTPService {
+  static func request(method: Method, baseUrl: URL, path: String, completion: @escaping (() throws -> Data) -> Void) {
+    let parameters: Data? = nil
+    request(method: method, baseUrl: baseUrl, path: path, parameters: parameters, completion: completion)
+  }
+
   static func request<T>(method: Method,
                          baseUrl: URL,
                          path: String,
-                         parameters: T? = nil,
+                         parameters: T?,
                          completion: @escaping (() throws -> Data) -> Void) where T: Encodable {
     guard var urlComponents = URLComponents(url: baseUrl, resolvingAgainstBaseURL: true) else { return }
     urlComponents.path = path
@@ -27,7 +32,9 @@ struct HTTPService {
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
     do {
-      request.httpBody = try JSONEncoder().encode(parameters)
+      if let parameters = parameters {
+        request.httpBody = try JSONEncoder().encode(parameters)
+      }
       URLSession.shared.dataTask(with: request) { data, _, err in
         if let data = data {
           completion { data }

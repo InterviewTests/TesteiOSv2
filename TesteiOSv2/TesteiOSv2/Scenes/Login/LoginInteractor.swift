@@ -18,23 +18,24 @@ protocol LoginBusinessLogic {
 }
 
 protocol LoginDataStore {
-  //var name: String { get set }
+  var userAccount: UserAccount? { get set }
 }
 
 final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
   var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
+  lazy var worker: LoginWorker? = LoginWorker()
+  var userAccount: UserAccount?
 
   // MARK: Submit Login
 
   func submitLogin(request: Login.SubmitLogin.Request) {
-    worker = LoginWorker()
     do {
       try worker?.validateUser(fields: request.fields)
 
       worker?.submitLogin(request: request) { response in
         if response.userAccount != nil {
-          print(response.userAccount)
+          self.userAccount = response.userAccount
+          self.presenter?.presentUserAccount(response: response)
         } else {
           self.presenter?.presentError(response: response)
         }

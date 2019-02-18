@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol LoginRoutingLogic {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+  func routeToAccount()
 }
 
 protocol LoginDataPassing {
@@ -26,33 +26,24 @@ final class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
 
   // MARK: Routing
 
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController
-  //(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+  func routeToAccount() {
+    let viewController = AccountViewController()
+    guard let loginViewController = self.viewController,
+      let sourceDataStore = self.dataStore,
+      var destinationDataStore = viewController.router?.dataStore else { return }
+    passDataToAccount(source: sourceDataStore, destination: &destinationDataStore)
+    navigateToAccount(source: loginViewController, destination: viewController)
+  }
 
   // MARK: Navigation
 
-  //func navigateToSomewhere(source: LoginViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+  func navigateToAccount(source: LoginViewController, destination: AccountViewController) {
+    source.view.window?.transition(from: source, to: destination)
+  }
 
   // MARK: Passing data
 
-  //func passDataToSomewhere(source: LoginDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+  func passDataToAccount(source: LoginDataStore, destination: inout AccountDataStore) {
+    destination.userAccount = source.userAccount
+  }
 }

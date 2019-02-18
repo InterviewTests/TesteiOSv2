@@ -20,6 +20,7 @@ struct API {
 
   enum Endpoints: String {
     case login = "/api/login"
+    case statements = "/api/statements/1"
   }
 
   static func login(request: Login.SubmitLogin.Request, completion: @escaping (Login.SubmitLogin.Response) -> Void) {
@@ -34,6 +35,24 @@ struct API {
         completion(response)
       } catch {
         let response = Login.SubmitLogin.Response(userAccount: nil, error: error as? ErrorProtocol)
+        completion(response)
+      }
+    }
+  }
+
+  static func getStatements(completion: @escaping (Account.FetchStatements.Response) -> Void) {
+    let method = Method.get
+    let path = Endpoints.statements.rawValue
+    HTTPService.request(method: method, baseUrl: baseUrl, path: path) { callback in
+      do {
+        let data = try callback()
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.apiDateFormatter)
+        let apiResponse = try decoder.decode(StatementAPIResponse.self, from: data)
+        let response = Account.FetchStatements.Response(statements: apiResponse.statements)
+        completion(response)
+      } catch {
+        let response = Account.FetchStatements.Response(statements: [])
         completion(response)
       }
     }

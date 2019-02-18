@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginPresentationLogic {
   func presentError(response: Login.SubmitLogin.Response)
-
+  func presentUserAccount(response: Login.SubmitLogin.Response)
 }
 
 final class LoginPresenter: LoginPresentationLogic {
@@ -23,5 +23,9 @@ final class LoginPresenter: LoginPresentationLogic {
   func presentError(response: Login.SubmitLogin.Response) {
     let viewModel = Login.SubmitLogin.ViewModel(error: response.error)
     viewController?.displayError(viewModel: viewModel)
+  }
+
+  func presentUserAccount(response: Login.SubmitLogin.Response) {
+    viewController?.displayUserAccount()
   }
 }

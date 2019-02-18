@@ -16,4 +16,16 @@ extension UIColor {
   static var strongBlue: UIColor {
     return UIColor(red: 59, green: 72, blue: 238)
   }
+
+  static var lightText: UIColor {
+    return UIColor(red: 168, green: 180, blue: 196)
+  }
+
+  static var darkText: UIColor {
+    return UIColor(red: 72, green: 84, blue: 101)
+  }
+
+  static var tableViewBackgroundColor: UIColor {
+    return UIColor(red: 254, green: 254, blue: 254)
+  }
 }
