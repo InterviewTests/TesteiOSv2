@@ -20,6 +20,8 @@ protocol LoginDisplayLogic: class {
   func displayError(viewModel: Login.SubmitLogin.ViewModel)
   func startLoading()
   func stopLoading()
+  func displayUserAccount()
+  func displayPersistedCredentials(viewModel: Login.PrefillCredentials.ViewModel)
 }
 
 final class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -66,10 +68,11 @@ final class LoginViewController: UIViewController, LoginDisplayLogic {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    if let fields = interactor?.getPersistedCredentials() {
-      loginView?.userTextField.text = fields.user
-      loginView?.passwordTextField.text = fields.password
-    }
+    getPersistedCredentials()
+  }
+
+  func getPersistedCredentials() {
+    interactor?.getPersistedCredentials()
   }
 
   // MARK: Submit Response
@@ -85,6 +88,13 @@ final class LoginViewController: UIViewController, LoginDisplayLogic {
     }
     alert.addAction(okAction)
     present(alert, animated: true, completion: nil)
+  }
+
+  func displayPersistedCredentials(viewModel: Login.PrefillCredentials.ViewModel) {
+    DispatchQueue.main.async {
+      self.loginView?.userTextField.text = viewModel.user
+      self.loginView?.passwordTextField.text = viewModel.password
+    }
   }
 
   func startLoading() {
