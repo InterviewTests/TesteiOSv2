@@ -51,20 +51,15 @@ enum Login {
       }
     }
   }
-}
 
-//enum CreateOrder
-//{
-//  struct Request
-//  {
-//    var orderFormFields: OrderFormFields
-//  }
-//  struct Response
-//  {
-//    var order: Order?
-//  }
-//  struct ViewModel
-//  {
-//    var order: Order?
-//  }
-//}
+  enum PrefillCredentials {
+    struct Request {}
+    struct Response {
+      let fields: SubmitFields
+    }
+    struct ViewModel {
+      let user: String?
+      let password: String?
+    }
+  }
+}

@@ -15,6 +15,7 @@ import UIKit
 protocol LoginPresentationLogic {
   func presentError(response: Login.SubmitLogin.Response)
   func presentUserAccount(response: Login.SubmitLogin.Response)
+  func presentPersistedCredentials(response: Login.PrefillCredentials.Response)
 }
 
 final class LoginPresenter: LoginPresentationLogic {
@@ -27,5 +28,10 @@ final class LoginPresenter: LoginPresentationLogic {
 
   func presentUserAccount(response: Login.SubmitLogin.Response) {
     viewController?.displayUserAccount()
+  }
+
+  func presentPersistedCredentials(response: Login.PrefillCredentials.Response) {
+    let viewModel = Login.PrefillCredentials.ViewModel(user: response.fields.user, password: response.fields.password)
+    viewController?.displayPersistedCredentials(viewModel: viewModel)
   }
 }
