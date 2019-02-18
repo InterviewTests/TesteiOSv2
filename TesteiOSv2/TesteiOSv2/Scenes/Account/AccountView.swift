@@ -14,6 +14,7 @@ protocol AccountViewProperties: class {
   var nameLabel: UILabel { get }
   var accountValueLabel: UILabel { get }
   var balanceValueLabel: UILabel { get }
+  var tableView: UITableView { get }
 }
 
 final class AccountView: UIView, AccountViewProperties {
@@ -42,6 +43,7 @@ final class AccountView: UIView, AccountViewProperties {
     let view = UIView()
     view.backgroundColor = .strongBlue
     view.setContentHuggingPriority(.required, for: .vertical)
+    view.isUserInteractionEnabled = false
     return view
   }()
 
@@ -75,6 +77,15 @@ final class AccountView: UIView, AccountViewProperties {
     return label
   }()
 
+  public private(set) var tableView: UITableView = {
+    let tableView = UITableView(frame: .zero, style: .plain)
+    tableView.backgroundColor = .clear
+    tableView.separatorStyle = .none
+    tableView.rowHeight = 96
+    tableView.allowsSelection = false
+    return tableView
+  }()
+
   private weak var viewLogic: AccountViewLogic?
 
   init(viewLogic: AccountViewLogic) {
@@ -91,22 +102,23 @@ final class AccountView: UIView, AccountViewProperties {
     addSubviews()
     addConstraints()
 
-    backgroundColor = .white
+    backgroundColor = .tableViewBackgroundColor
   }
 
   private func addSubviews() {
-    addSubview(topView)
-    topView.addSubview(nameLabel)
-    topView.addSubview(logoutButton)
     addSubview(headerView)
     headerView.addSubview(accountLabel)
     headerView.addSubview(accountValueLabel)
     headerView.addSubview(balanceLabel)
     headerView.addSubview(balanceValueLabel)
+    addSubview(tableView)
+    addSubview(topView)
+    topView.addSubview(nameLabel)
+    topView.addSubview(logoutButton)
   }
 
   private func addConstraints() {
-    constrain(self, topView, headerView) { view, top, header in
+    constrain(self, topView, headerView, tableView) { view, top, header, table in
       top.top == view.top
       top.left == view.left
       top.right == view.right
@@ -119,6 +131,11 @@ final class AccountView: UIView, AccountViewProperties {
       header.top == top.bottom
       header.left == view.left
       header.right == view.right
+
+      table.top == top.bottom
+      table.left == view.left
+      table.bottom == view.bottom
+      table.right == view.right
     }
 
     constrain(topView, nameLabel, logoutButton) { top, name, logout in
@@ -147,6 +164,11 @@ final class AccountView: UIView, AccountViewProperties {
         balanceValue.top == balance.bottom + 4
         balanceValue.bottom == header.bottom - 18
     }
+  }
+
+  override func layoutIfNeeded() {
+    super.layoutIfNeeded()
+    tableView.contentInset = UIEdgeInsets(top: headerView.bounds.height, left: 0, bottom: 0, right: 0)
   }
 }
 

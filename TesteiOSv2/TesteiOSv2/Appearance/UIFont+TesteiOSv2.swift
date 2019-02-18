@@ -20,4 +20,12 @@ extension UIFont {
   static var smallFont: UIFont {
     return UIFont.systemFont(ofSize: 12)
   }
+
+  static var regularFont: UIFont {
+    return UIFont.systemFont(ofSize: 16)
+  }
+
+  static var largeLightFont: UIFont {
+    return UIFont.systemFont(ofSize: 20, weight: .light)
+  }
 }

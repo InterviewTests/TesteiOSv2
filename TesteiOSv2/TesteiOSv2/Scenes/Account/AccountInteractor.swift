@@ -19,12 +19,14 @@ protocol AccountBusinessLogic {
 
 protocol AccountDataStore {
   var userAccount: UserAccount? { get set }
+  var displayedStatements: [Account.FetchStatements.ViewModel.DisplayedStatement]? { get set }
 }
 
 final class AccountInteractor: AccountBusinessLogic, AccountDataStore {
   var presenter: AccountPresentationLogic?
   lazy var worker: AccountWorker? = AccountWorker()
   var userAccount: UserAccount?
+  var displayedStatements: [Account.FetchStatements.ViewModel.DisplayedStatement]? = []
 
   func showAccountDetails(request: Account.ShowAccountDetails.Request) {
     if let userAccount = userAccount {

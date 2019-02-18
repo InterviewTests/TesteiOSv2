@@ -25,7 +25,7 @@ final class AccountViewController: UIViewController {
   var interactor: AccountBusinessLogic?
   var router: (NSObjectProtocol & AccountRoutingLogic & AccountDataPassing)?
   var accountView: AccountView?
-  var displayedStatements: [Account.FetchStatements.ViewModel.DisplayedStatement] = []
+  var dataStore: AccountDataStore?
 
   // MARK: Object lifecycle
 
@@ -52,6 +52,7 @@ final class AccountViewController: UIViewController {
     presenter.viewController = viewController
     router.viewController = viewController
     router.dataStore = interactor
+    dataStore = interactor
   }
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -70,6 +71,12 @@ final class AccountViewController: UIViewController {
     super.viewDidLoad()
     showAccountDetails()
     fetchStatements()
+    configureTableView()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    view.layoutIfNeeded()
   }
 
   // MARK: Show Account Details
@@ -85,6 +92,14 @@ final class AccountViewController: UIViewController {
     let request = Account.FetchStatements.Request()
     interactor?.fetchStatements(request: request)
   }
+
+  // MARK: Configure Table View
+
+  func configureTableView() {
+    accountView?.tableView.register(StatementCell.self,
+                                    forCellReuseIdentifier: StatementCell.reuseIdentifier)
+    accountView?.tableView.dataSource = self
+  }
 }
 
 // MARK: - Account Display Logic
@@ -97,8 +112,10 @@ extension AccountViewController: AccountDisplayLogic {
   }
 
   func displayStatements(viewModel: Account.FetchStatements.ViewModel) {
-    displayedStatements = viewModel.displayedStatements
-//    tableView.reloadData()
+    dataStore?.displayedStatements = viewModel.displayedStatements
+    DispatchQueue.main.async {
+      self.accountView?.tableView.reloadData()
+    }
   }
 }
 
@@ -107,5 +124,21 @@ extension AccountViewController: AccountDisplayLogic {
 extension AccountViewController: AccountViewLogic {
   func didTapLogout() {
     router?.routeToLogin()
+  }
+}
+
+// MARK: - UITableView DataSource
+extension AccountViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return dataStore?.displayedStatements?.count ?? 0
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: StatementCell.reuseIdentifier, for: indexPath)
+    if let displayedStatement = dataStore?.displayedStatements?[indexPath.row],
+      let statementCell = cell as? StatementCellDisplayLogic {
+      statementCell.update(with: displayedStatement)
+    }
+    return cell
   }
 }
