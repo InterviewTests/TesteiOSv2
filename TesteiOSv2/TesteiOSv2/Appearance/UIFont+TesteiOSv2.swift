@@ -17,6 +17,10 @@ extension UIFont {
     return UIFont.systemFont(ofSize: 25, weight: .light)
   }
 
+  static var h2Font: UIFont {
+    return UIFont.systemFont(ofSize: 17)
+  }
+
   static var smallFont: UIFont {
     return UIFont.systemFont(ofSize: 12)
   }
