@@ -9,11 +9,10 @@
 import XCTest
 @testable import Bank_App
 
-class Bank_AppUITests: KIFTestCase {
+class IntroControllerUITests: KIFTestCase {
     
     let emailFieldPlaceholder = NSLocalizedString("EMAIL_PLACEHOLDER", comment: "")
     let passwordFieldPlaceholder = NSLocalizedString("PASSWORD_PLACEHOLDER", comment: "")
-    let passwordErrorFeedbackPlaceholder = NSLocalizedString("SENHA_INVALIDA", comment: "")
     
     func test1ViewSetup() {
         tester().waitForView(withAccessibilityLabel: emailFieldPlaceholder, traits: [])
@@ -32,9 +31,26 @@ class Bank_AppUITests: KIFTestCase {
     }
     
     /// Try a login.
-    func test3LoginInterface() {
+    func test3UserAndPasswordError() {
         // Try enter some data into emailTf
         tester().tapView(withAccessibilityLabel: emailFieldPlaceholder)
+        tester().waitForSoftwareKeyboard()
+        tester().enterText(intoCurrentFirstResponder: "test_user")
+        
+        // Try enter some data into passwordTf
+        tester().tapView(withAccessibilityLabel: passwordFieldPlaceholder)
+        tester().waitForSoftwareKeyboard()
+        tester().enterText(intoCurrentFirstResponder: "Test@1")
+        
+        tester().tapView(withAccessibilityLabel: "Login")
+        tester().waitForView(withAccessibilityLabel: "OK", traits: [])
+        tester().tapView(withAccessibilityLabel: "OK")
+    }
+    
+    /// Try a login.
+    func test4LoginInterface() {
+        // Try enter some data into emailTf
+        tester().tapView(withAccessibilityLabel: passwordFieldPlaceholder)
         tester().waitForSoftwareKeyboard()
         tester().enterText(intoCurrentFirstResponder: "test_user")
         
@@ -44,7 +60,5 @@ class Bank_AppUITests: KIFTestCase {
         tester().enterText(intoCurrentFirstResponder: "Test@1")
         
         tester().tapView(withAccessibilityLabel: "Login")
-        tester().waitForView(withAccessibilityLabel: "OK", traits: [])
-        tester().tapView(withAccessibilityLabel: "OK")
     }
 }
