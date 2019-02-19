@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		18C305DB89594B4F761AA6EB /* Pods_Bank_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC297534D8E43F6E19E4E25F /* Pods_Bank_App.framework */; };
-		78224099221C42A90056ED10 /* Bank_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78224098221C42A90056ED10 /* Bank_AppUITests.swift */; };
+		78224099221C42A90056ED10 /* IntroControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78224098221C42A90056ED10 /* IntroControllerUITests.swift */; };
 		7882FE1C221C50C5008B6AC7 /* KIFHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7882FE1B221C50C5008B6AC7 /* KIFHelper.swift */; };
+		789B921E221C7AE400701C86 /* BankHistoryControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B921D221C7AE400701C86 /* BankHistoryControllerUITests.swift */; };
 		B826FB6E21DBEA44007DBC21 /* BankHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826FB6D21DBEA44007DBC21 /* BankHistoryTableViewCell.swift */; };
 		B826FB7021DBEF1D007DBC21 /* Localizable + IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826FB6F21DBEF1D007DBC21 /* Localizable + IBInspectable.swift */; };
 		B826FB7221DBEF68007DBC21 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B826FB7121DBEF68007DBC21 /* Localizable.strings */; };
@@ -83,10 +84,11 @@
 		24A69C4A2103C87D6E1BFE44 /* Pods-Bank App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bank App/Pods-Bank App.release.xcconfig"; sourceTree = "<group>"; };
 		27B341741942221D8AB10AA4 /* Pods_Bank_App_Bank_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bank_App_Bank_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78224096221C42A90056ED10 /* Bank AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bank AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78224098221C42A90056ED10 /* Bank_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank_AppUITests.swift; sourceTree = "<group>"; };
+		78224098221C42A90056ED10 /* IntroControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroControllerUITests.swift; sourceTree = "<group>"; };
 		7822409A221C42A90056ED10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		782240C2221C49F30056ED10 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		7882FE1B221C50C5008B6AC7 /* KIFHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KIFHelper.swift; sourceTree = "<group>"; };
+		789B921D221C7AE400701C86 /* BankHistoryControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryControllerUITests.swift; sourceTree = "<group>"; };
 		8188E6485E8091F9CE29D698 /* Pods-Bank App-Bank AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank App-Bank AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bank App-Bank AppUITests/Pods-Bank App-Bank AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		870DC600025C6A5E441C4BA2 /* Pods-Bank AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bank AppUITests/Pods-Bank AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A77F93FF0602ABF3B815BA6B /* Pods-Bank App-Bank AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank App-Bank AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bank App-Bank AppUITests/Pods-Bank App-Bank AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -205,12 +207,21 @@
 		78224097221C42A90056ED10 /* Bank AppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				78224098221C42A90056ED10 /* Bank_AppUITests.swift */,
+				789B921C221C7AA900701C86 /* KIF */,
 				7822409A221C42A90056ED10 /* Info.plist */,
 				782240C2221C49F30056ED10 /* BridgingHeader.h */,
-				7882FE1B221C50C5008B6AC7 /* KIFHelper.swift */,
 			);
 			path = "Bank AppUITests";
+			sourceTree = "<group>";
+		};
+		789B921C221C7AA900701C86 /* KIF */ = {
+			isa = PBXGroup;
+			children = (
+				78224098221C42A90056ED10 /* IntroControllerUITests.swift */,
+				7882FE1B221C50C5008B6AC7 /* KIFHelper.swift */,
+				789B921D221C7AE400701C86 /* BankHistoryControllerUITests.swift */,
+			);
+			name = KIF;
 			sourceTree = "<group>";
 		};
 		B840A44521A9C54500E0A22D /* Models */ = {
@@ -648,8 +659,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				789B921E221C7AE400701C86 /* BankHistoryControllerUITests.swift in Sources */,
 				7882FE1C221C50C5008B6AC7 /* KIFHelper.swift in Sources */,
-				78224099221C42A90056ED10 /* Bank_AppUITests.swift in Sources */,
+				78224099221C42A90056ED10 /* IntroControllerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

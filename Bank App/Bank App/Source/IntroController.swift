@@ -37,17 +37,16 @@ class IntroController: UIViewController, IntroDisplayLogic {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
-        tryAutoLogin()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
-        tryAutoLogin()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tryAutoLogin()
         setupUIElements()
     }
     
@@ -82,6 +81,11 @@ class IntroController: UIViewController, IntroDisplayLogic {
         router?.routeToBankHistory(segue: nil)
     }
     
+    private func resertTextFields() {
+        userTf.text = ""
+        passwordTf.text = ""
+    }
+    
     private func getDataFromDisplay() -> UserLogin? {
         var userLogin = UserLogin()
         userLogin.user = userTf.text
@@ -91,7 +95,7 @@ class IntroController: UIViewController, IntroDisplayLogic {
     }
     
     func configureLoginAnimationLoading() {
-        self.loadingView = LoadingView()
+        loadingView = LoadingView()
         loadingView?.show(in: self.view)
         
         stackViewFields.alpha = 0
@@ -99,7 +103,8 @@ class IntroController: UIViewController, IntroDisplayLogic {
     }
     
     func configureLoginAnimationCompletion() {
-        self.loadingView?.dismiss()
+        loadingView?.dismiss()
+        clearTf()
         
         stackViewFields.alpha = 1
         btnLogin.isUserInteractionEnabled = true
@@ -107,8 +112,14 @@ class IntroController: UIViewController, IntroDisplayLogic {
     
     func configureInvalidPassword() {
         self.passwordTf.shakeError()
-        self.passwordTf.text = ""
         self.passwordTf.placeholder = NSLocalizedString("SENHA_INVALIDA", comment: "")
+        
+        clearTf()
+    }
+    
+    private func clearTf() {
+        self.userTf.text = ""
+        self.passwordTf.text = ""
     }
     
     // Mark: Actions

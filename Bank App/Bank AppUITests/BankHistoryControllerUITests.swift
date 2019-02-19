@@ -9,9 +9,19 @@
 import XCTest
 @testable import Bank_App
 
-class BankHistoryControllerUITests: XCTestCase {
+class BankHistoryControllerUITests: KIFTestCase {
+    
+    let emailFieldPlaceholder = NSLocalizedString("EMAIL_PLACEHOLDER", comment: "")
+    let passwordFieldPlaceholder = NSLocalizedString("PASSWORD_PLACEHOLDER", comment: "")
     
     override func setUp() {
-        let viewController = UIViewController(nibName: "BankHistory", bundle: Bundle.main)
+        let storyboard = UIStoryboard(name: "BankHistory", bundle: Bundle.main)
+        let viewController = storyboard.instantiateInitialViewController()
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+    }
+    
+    func test2Header() {
+        tester().waitForView(withAccessibilityLabel: "headerView", traits: [])
+        tester().tapView(withAccessibilityLabel: "exitButton")
     }
 }

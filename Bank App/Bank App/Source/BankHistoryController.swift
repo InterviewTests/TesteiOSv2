@@ -36,6 +36,8 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.accessibilityLabel = "tableViewLabel"
     }
     
     override func viewWillAppear(_ animated: Bool) {
