@@ -17,5 +17,9 @@ extension String {
     static var balanceLabel: String {
       return "ACCOUNT_BALANCE_LABEL".localized
     }
+
+    static var statementHeaderLabel: String {
+      return "ACCOUNT_STATEMENT_HEADER_LABEL".localized
+    }
   }
 }

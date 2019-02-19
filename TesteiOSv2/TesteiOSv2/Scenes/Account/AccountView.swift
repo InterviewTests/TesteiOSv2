@@ -77,12 +77,15 @@ final class AccountView: UIView, AccountViewProperties {
     return label
   }()
 
-  public private(set) var tableView: UITableView = {
+  private let tableViewHeader = StatementHeader()
+
+  public private(set) lazy var tableView: UITableView = {
     let tableView = UITableView(frame: .zero, style: .plain)
     tableView.backgroundColor = .clear
     tableView.separatorStyle = .none
     tableView.rowHeight = 96
     tableView.allowsSelection = false
+    tableView.tableHeaderView = tableViewHeader
     return tableView
   }()
 
@@ -163,6 +166,11 @@ final class AccountView: UIView, AccountViewProperties {
         balance.top == accountValue.bottom + 20
         balanceValue.top == balance.bottom + 4
         balanceValue.bottom == header.bottom - 18
+    }
+
+    constrain(tableView, tableViewHeader) { tableView, header in
+      header.height == 40
+      header.width == tableView.width
     }
   }
 
