@@ -46,6 +46,10 @@ class IntroController: UIViewController, IntroDisplayLogic {
         tryAutoLogin()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUIElements()
+    }
     
     private func setup() {
         let viewController = self
@@ -103,6 +107,7 @@ class IntroController: UIViewController, IntroDisplayLogic {
     
     func configureInvalidPassword() {
         self.passwordTf.shakeError()
+        self.passwordTf.text = ""
         self.passwordTf.placeholder = NSLocalizedString("SENHA_INVALIDA", comment: "")
     }
     
@@ -121,5 +126,14 @@ class IntroController: UIViewController, IntroDisplayLogic {
         let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
         guard let router = router, router.responds(to: selector) else { return }
         router.perform(selector)
+    }
+}
+
+extension IntroController {
+    
+    /// Initialize all ui elements.
+    private func setupUIElements() {
+        self.userTf.placeholder = NSLocalizedString("EMAIL_PLACEHOLDER", comment: "email placeholder")
+        self.passwordTf.placeholder = NSLocalizedString("PASSWORD_PLACEHOLDER", comment: "password placeholder")
     }
 }

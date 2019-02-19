@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 protocol IntroPresentationLogic {
-    
     func showHistoryController()
     func showError(error: BankError)
     func showLoading()
@@ -22,13 +21,11 @@ class IntroPresenter: IntroPresentationLogic {
     weak var viewController: IntroDisplayLogic?
     
     func showHistoryController() {
-        
         viewController?.presentDetailController()
         viewController?.configureLoginAnimationCompletion()
     }
     
     func showError(error: BankError) {
-        
         if let errorMessage = error.message {
             buildAlert(title: "Erro", menssage: errorMessage)
         }
@@ -36,7 +33,6 @@ class IntroPresenter: IntroPresentationLogic {
     }
     
     func showLoading() {
-        
         viewController?.configureLoginAnimationLoading()
     }
     
@@ -48,7 +44,6 @@ class IntroPresenter: IntroPresentationLogic {
     }
     
     private func buildAlert(title: String, menssage: String) {
-
         let alertBox = UIAlertController(title: title, message: menssage, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
             alertBox.dismiss(animated: true, completion: nil)
@@ -60,7 +55,6 @@ class IntroPresenter: IntroPresentationLogic {
 }
 
 class LoadingView {
-    
     var spinningView: UIActivityIndicatorView?
     
     init() {
@@ -68,7 +62,6 @@ class LoadingView {
     }
     
     func show(in view: UIView) {
-        
         if let _ = spinningView {
             spinningView?.center = view.center
             spinningView?.startAnimating()
@@ -77,7 +70,6 @@ class LoadingView {
     }
     
     func dismiss() {
-        
         spinningView?.stopAnimating()
         spinningView = nil
     }

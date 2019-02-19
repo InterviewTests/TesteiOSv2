@@ -8,5 +8,8 @@ target 'Bank App' do
   # Pods for Bank App
     pod 'KeychainSwift', '~> 13.0'
     pod 'TPKeyboardAvoiding', :git => 'https://github.com/michaeltyson/TPKeyboardAvoiding.git'
-
+    
+    target 'Bank AppUITests' do
+      pod 'KIF'
+    end
 end
