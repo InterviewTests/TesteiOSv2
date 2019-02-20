@@ -15,6 +15,7 @@
 		789B922E221D973C00701C86 /* IntroInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B922A221D973C00701C86 /* IntroInteractorTests.swift */; };
 		789B922F221D973C00701C86 /* IntroWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B922B221D973C00701C86 /* IntroWorkerTests.swift */; };
 		789B9230221D973C00701C86 /* IntroPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B922C221D973C00701C86 /* IntroPresenterTests.swift */; };
+		78BA8F8B221DCBEB006D44F0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA8F8A221DCBEB006D44F0 /* LoadingView.swift */; };
 		B826FB6E21DBEA44007DBC21 /* BankHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826FB6D21DBEA44007DBC21 /* BankHistoryTableViewCell.swift */; };
 		B826FB7021DBEF1D007DBC21 /* Localizable + IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826FB6F21DBEF1D007DBC21 /* Localizable + IBInspectable.swift */; };
 		B826FB7221DBEF68007DBC21 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B826FB7121DBEF68007DBC21 /* Localizable.strings */; };
@@ -97,6 +98,7 @@
 		789B922A221D973C00701C86 /* IntroInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroInteractorTests.swift; sourceTree = "<group>"; };
 		789B922B221D973C00701C86 /* IntroWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroWorkerTests.swift; sourceTree = "<group>"; };
 		789B922C221D973C00701C86 /* IntroPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPresenterTests.swift; sourceTree = "<group>"; };
+		78BA8F8A221DCBEB006D44F0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8188E6485E8091F9CE29D698 /* Pods-Bank App-Bank AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank App-Bank AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bank App-Bank AppUITests/Pods-Bank App-Bank AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		870DC600025C6A5E441C4BA2 /* Pods-Bank AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bank AppUITests/Pods-Bank AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A77F93FF0602ABF3B815BA6B /* Pods-Bank App-Bank AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank App-Bank AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bank App-Bank AppUITests/Pods-Bank App-Bank AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +245,14 @@
 			name = Scenes;
 			sourceTree = "<group>";
 		};
+		78BA8F89221DCBD9006D44F0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				78BA8F8A221DCBEB006D44F0 /* LoadingView.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		B840A44521A9C54500E0A22D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +372,7 @@
 		B86E3F6221A6332C00A9B84F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				78BA8F89221DCBD9006D44F0 /* Helpers */,
 				B852F9C821EE87EB0054FC2B /* Scenes */,
 				B89D1F4C21DEEA7600F1CD9C /* Extensions */,
 				B8425BAD21D7B201009DD707 /* Services */,
@@ -722,6 +733,7 @@
 				B8425BA921D79F79009DD707 /* UserAccountable.swift in Sources */,
 				B8425BAF21D7B211009DD707 /* BankAPI.swift in Sources */,
 				B826FB6E21DBEA44007DBC21 /* BankHistoryTableViewCell.swift in Sources */,
+				78BA8F8B221DCBEB006D44F0 /* LoadingView.swift in Sources */,
 				B840A44721A9C54F00E0A22D /* UserLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

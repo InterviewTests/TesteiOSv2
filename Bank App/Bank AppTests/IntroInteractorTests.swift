@@ -38,42 +38,68 @@ class IntroInteractorTests: XCTestCase {
     // MARK: Test doubles
     
     class IntroPresentationLogicSpy: IntroPresentationLogic {
+        var presentSomethingCalled = false
+        
         func showHistoryController() {
-            // ...
+            presentSomethingCalled = true
         }
         
         func showError(error: BankError) {
-            // ...
+            print(error.message ?? "")
+            presentSomethingCalled = true
         }
         
         func showLoading() {
-            // ...
+            presentSomethingCalled = true
         }
         
         func catchPasswordInvalid() {
-            // ...
+            presentSomethingCalled = true
         }
         
-        var presentSomethingCalled = false
-        
-        //    func presentSomething(response: Intro.Something.Response)
-        //    {
-        //      presentSomethingCalled = true
-        //    }
+        func abortAutoLogin(error: BankError) {
+            print(error.message)
+            presentSomethingCalled = true
+        }
     }
     
     // MARK: Tests
-    
-    func testDoSomething() {
+    func testAutoLogin() {
+        
         // Given
         let spy = IntroPresentationLogicSpy()
         sut.presenter = spy
-        //    let request = Intro.Something.Request()
         
         // When
-        //    sut.doSomething(request: request)
+            sut.tryAutoLogin()
         
         // Then
-        XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
+        XCTAssertTrue(spy.presentSomethingCalled, "testAutoLogin() dentro do presenter foi chamado")
+    }
+    
+    func testManualLoginError() {
+        
+        // Given
+        let spy = IntroPresentationLogicSpy()
+        sut.presenter = spy
+        
+        // When
+        sut.loginUser(user: UserLogin(user: "", password: "1223456"))
+        
+        // Then
+        XCTAssertTrue(spy.presentSomethingCalled, "o método loginUser() chamou alguem la dentro do presenter no caso de erro.")
+    }
+    
+    func testManualLoginSuccess() {
+        
+        // Given
+        let spy = IntroPresentationLogicSpy()
+        sut.presenter = spy
+        
+        // When
+        sut.loginUser(user: UserLogin(user: "user_login", password: "Teste2@19"))
+        
+        // Then
+        XCTAssertTrue(spy.presentSomethingCalled, "o método loginUser() chamou alguem la dentro do presenter no caso de sucesso.")
     }
 }

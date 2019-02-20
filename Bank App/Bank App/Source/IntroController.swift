@@ -79,15 +79,7 @@ class IntroController: UIViewController, IntroDisplayLogic {
         // ...
     }
     
-    private func getDataFromDisplay() -> UserLogin? {
-        var userLogin = UserLogin()
-        userLogin.user = userTf.text
-        userLogin.password = passwordTf.text
-        
-        return userLogin
-    }
-    
-    private func tryAutoLogin() {
+    func tryAutoLogin() {
         interactor?.tryAutoLogin()
     }
     
@@ -127,10 +119,14 @@ class IntroController: UIViewController, IntroDisplayLogic {
         passwordTf.text = ""
     }
     
+    func doLogin() {
+        let userLogin = UserLogin(user: userTf.text, password: passwordTf.text)
+        interactor?.loginUser(user: userLogin)
+    }
+    
     // MARK: Actions
     @IBAction func actionLogin(_ sender: Any) {
-        guard let userData = getDataFromDisplay() else { return }
-        interactor?.loginUser(user: userData)
+        doLogin()
     }
     
     @IBAction func unwindToIntroController(segue: UIStoryboardSegue) {

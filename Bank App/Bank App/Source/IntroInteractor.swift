@@ -38,6 +38,10 @@ class IntroInteractor: IntroBusinessLogic, UserAccountData {
         if user.user != nil {
             loginUser(user: user)
         }
+        else {
+            let error = BankErrorType.userNotFound.error
+            presenter?.abortAutoLogin(error: error)
+        }
     }
     
     private func tryLogin(user: UserLogin) {

@@ -14,6 +14,7 @@ protocol IntroPresentationLogic {
     func showError(error: BankError)
     func showLoading()
     func catchPasswordInvalid()
+    func abortAutoLogin(error: BankError)
 }
 
 class IntroPresenter: IntroPresentationLogic {
@@ -43,6 +44,12 @@ class IntroPresenter: IntroPresentationLogic {
         viewController?.configureInvalidPassword()
     }
     
+    func abortAutoLogin(error: BankError) {
+        #if DEBUG
+            print(error.message)
+        #endif
+    }
+    
     private func buildAlert(title: String, menssage: String) {
         let alertBox = UIAlertController(title: title, message: menssage, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
@@ -51,26 +58,5 @@ class IntroPresenter: IntroPresentationLogic {
         alertBox.addAction(action)
         
         viewController?.showError(alertBox)
-    }
-}
-
-class LoadingView {
-    var spinningView: UIActivityIndicatorView?
-    
-    init() {
-        self.spinningView = UIActivityIndicatorView(style: .gray)
-    }
-    
-    func show(in view: UIView) {
-        if let _ = spinningView {
-            spinningView?.center = view.center
-            spinningView?.startAnimating()
-            view.addSubview(spinningView!)
-        }
-    }
-    
-    func dismiss() {
-        spinningView?.stopAnimating()
-        spinningView = nil
     }
 }

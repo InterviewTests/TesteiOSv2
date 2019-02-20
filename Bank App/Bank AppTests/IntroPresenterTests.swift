@@ -15,79 +15,101 @@ import XCTest
 
 class IntroPresenterTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: IntroPresenter!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupIntroPresenter()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupIntroPresenter()
-  {
-    sut = IntroPresenter()
-  }
-  
-  // MARK: Test doubles
-  
-  class IntroDisplayLogicSpy: IntroDisplayLogic
-  {
-    func displayData() {
-        // ...
+    // MARK: Subject under test
+    
+    var sut: IntroPresenter!
+    
+    // MARK: Test lifecycle
+    
+    override func setUp() {
+        super.setUp()
+        setupIntroPresenter()
     }
     
-    func showError(_ alertController: UIAlertController) {
-        // ...
+    override func tearDown() {
+        super.tearDown()
     }
     
-    func presentDetailController() {
-        // ...
+    // MARK: Test setup
+    
+    func setupIntroPresenter() {
+        sut = IntroPresenter()
     }
     
-    func configureLoginAnimationLoading() {
-        // ...
+    // MARK: Test doubles
+    
+    class IntroDisplayLogicSpy: IntroDisplayLogic {
+        var displaySomethingCalled = false
+        
+        func displayData() {
+            displaySomethingCalled = true
+        }
+        
+        func showError(_ alertController: UIAlertController) {
+            displaySomethingCalled = true
+        }
+        
+        func presentDetailController() {
+            displaySomethingCalled = true
+        }
+        
+        func configureLoginAnimationLoading() {
+            displaySomethingCalled = true
+        }
+        
+        func configureLoginAnimationCompletion() {
+            displaySomethingCalled = true
+        }
+        
+        func configureInvalidPassword() {
+            displaySomethingCalled = true
+        }
     }
     
-    func configureLoginAnimationCompletion() {
-        // ...
+    // MARK: Tests
+    
+    func testShowError() {
+        let spy = IntroDisplayLogicSpy()
+        sut.viewController = spy
+        
+        // When
+        let error = BankErrorType.userWrong.error
+        sut.showError(error: error)
+        
+        // Then
+        XCTAssertTrue(spy.displaySomethingCalled, "Foi chamado o método correspondente no controller para showError")
     }
     
-    func configureInvalidPassword() {
-        // ...
+    func testShowHistoryController() {
+        let spy = IntroDisplayLogicSpy()
+        sut.viewController = spy
+        
+        // When
+        sut.showHistoryController()
+        
+        // Then
+        XCTAssertTrue(spy.displaySomethingCalled, "Foi chamado o método correspondente no controller showHistoryController")
     }
     
-    var displaySomethingCalled = false
+    func testLoginLoadingAnimation() {
+        let spy = IntroDisplayLogicSpy()
+        sut.viewController = spy
+        
+        // When
+        sut.showLoading()
+        
+        // Then
+                XCTAssertTrue(spy.displaySomethingCalled, "Foi chamado o método correspondente no controller para loadingAnimation")
+    }
     
-//    func displaySomething(viewModel: Intro.Something.ViewModel)
-//    {
-//      displaySomethingCalled = true
-//    }
-  }
-  
-  // MARK: Tests
-  
-  func testPresentSomething()
-  {
-    // Given
-    let spy = IntroDisplayLogicSpy()
-    sut.viewController = spy
-//    let response = Intro.Something.Response()
-    
-    // When
-//    sut.presentSomething(response: response)
-    
-    // Then
-    XCTAssertTrue(spy.displaySomethingCalled, "presentSomething(response:) should ask the view controller to display the result")
-  }
+    func testInvalidPassword() {
+        let spy = IntroDisplayLogicSpy()
+        sut.viewController = spy
+        
+        // When
+        sut.catchPasswordInvalid()
+        
+        // Then
+                XCTAssertTrue(spy.displaySomethingCalled, "Foi chamado o método correspondente no controller para invalidPassword")
+    }
 }

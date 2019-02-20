@@ -15,40 +15,36 @@ import XCTest
 
 class IntroWorkerTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: BankWorker!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupIntroWorker()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupIntroWorker()
-  {
-    sut = BankWorker()
-  }
-  
-  // MARK: Test doubles
-  
-  // MARK: Tests
-  
-  func testSomething()
-  {
-    // Given
+    // MARK: Subject under test
     
-    // When
+    var sut: BankWorker!
     
-    // Then
-  }
+    // MARK: Test lifecycle
+    
+    override func setUp() {
+        super.setUp()
+        setupIntroWorker()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
+    // MARK: Test setup
+    
+    func setupIntroWorker() {
+        sut = BankWorker()
+    }
+    
+    // MARK: Test doubles
+    
+    // MARK: Tests
+    
+    func testSomething() {
+        // Given
+        
+        // When
+        
+        // Then
+    }
 }

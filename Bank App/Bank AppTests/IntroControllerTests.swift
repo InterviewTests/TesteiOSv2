@@ -13,8 +13,7 @@
 @testable import Bank_App
 import XCTest
 
-class IntroControllerTests: XCTestCase
-{
+class IntroControllerTests: XCTestCase {
     // MARK: Subject under test
     
     var sut: IntroController!
@@ -22,15 +21,13 @@ class IntroControllerTests: XCTestCase
     
     // MARK: Test lifecycle
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         window = UIWindow()
         setupIntroViewController()
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         window = nil
         super.tearDown()
     }
@@ -64,7 +61,7 @@ class IntroControllerTests: XCTestCase
     
     // MARK: Tests
     
-    func testShouldDoSomethingWhenViewIsLoaded() {
+    func testTryAutoLogin() {
         // Given
         let spy = IntroBusinessLogicSpy()
         sut.interactor = spy
@@ -73,21 +70,24 @@ class IntroControllerTests: XCTestCase
         loadView()
         
         // Do
-        spy.tryAutoLogin()
+        sut.tryAutoLogin()
         
         // Then
-        XCTAssertTrue(spy.doSomethingCalled, "viewDidLoad() should ask the interactor to do something")
+        XCTAssertTrue(spy.doSomethingCalled, "o método relativo ao tryAutoLogin() no interactor foi chamado")
     }
     
-    func testDisplaySomething() {
+    func testLogin() {
         // Given
-        //    let viewModel = Intro.Something.ViewModel()
+        let spy = IntroBusinessLogicSpy()
+        sut.interactor = spy
         
         // When
         loadView()
-        sut.configureLoginAnimationLoading()
+        
+        // Do
+        sut.doLogin()
         
         // Then
-        XCTAssert(sut.loadingView?.spinningView != nil)
+        XCTAssertTrue(spy.doSomethingCalled, "o método relativo ao tryAutoLogin() no interactor foi chamado")
     }
 }
