@@ -14,7 +14,7 @@ protocol BankHistoryDisplayLogic: class {
     func requestElements()
     func displayData(_ statementList: [Statement])
     func showError(_ alertController: UIAlertController)
-    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor)
+    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?)
 }
 
 class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
@@ -34,12 +34,6 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
         setup()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.tableView.accessibilityLabel = "tableViewLabel"
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         interactor?.configureStatusBar()
@@ -48,6 +42,11 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         requestElements()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        interactor?.resetStatusBar()
     }
     
     private func setup() {
@@ -82,7 +81,7 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor) {
+    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?) {
         self.setStatusBarStyle(statusBarStyle, backgroundColor: backgroudColor)
     }
     
@@ -103,8 +102,8 @@ extension BankHistoryController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell") as! BankHistoryTableViewCell
-        cell.display(statementList[indexPath.row])
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell") as? BankHistoryTableViewCell
+        cell?.display(statementList[indexPath.row])
+        return cell ?? UITableViewCell()
     }
 }
