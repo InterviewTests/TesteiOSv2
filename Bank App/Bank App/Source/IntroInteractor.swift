@@ -11,12 +11,12 @@ import Foundation
 /*
  - Trata das ações de interação fora do app, servidor, cor data entre outros.
  */
-protocol IntroInteractorLogic {
+protocol IntroBusinessLogic {
     func loginUser(user: UserLogin)
     func tryAutoLogin()
 }
 
-class IntroInteractor: IntroInteractorLogic, UserAccountData {
+class IntroInteractor: IntroBusinessLogic, UserAccountData {
     var userAccount: UserAccountable?
     var presenter: IntroPresentationLogic?
     

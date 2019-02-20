@@ -25,14 +25,14 @@ class BankHistoryHeaderView: UIView {
         super.init(coder: aDecoder)
     }
     
-    func configure(_ user: UserAccountData) {
-        lbUserName.text = user.userAccount?.name
+    func configure(_ user: UserAccountable) {
+        lbUserName.text = user.name
         
-        if let _balance = user.userAccount?.balance {
+        if let _balance = user.balance {
             lbUserBalance.text = "R$\(_balance)"
         }
         
-        if let agency = user.userAccount?.agency, let bankAccount = user.userAccount?.bankAccount {
+        if let agency = user.agency, let bankAccount = user.bankAccount {
             lbUserAccountNumber.text = "\(bankAccount) / \(agency)"
         }
     }

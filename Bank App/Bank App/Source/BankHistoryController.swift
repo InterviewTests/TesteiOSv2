@@ -22,7 +22,7 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     var interactor: BankHistoryInteractionLogic?
     var router: (NSObjectProtocol & BankHistoryRouterLogic & BankHistoryDataPassing)?
     
-    private var statementList: [Statement] = []
+    var statementList: [Statement] = []
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -32,21 +32,6 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        interactor?.configureStatusBar()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        requestElements()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        interactor?.resetStatusBar()
     }
     
     private func setup() {
@@ -63,13 +48,34 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
         router.dataStore = interactor
     }
     
+    // MARK: View lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.configureStatusBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        requestElements()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        interactor?.resetStatusBar()
+    }
+    
     func displayData(_ statementList: [Statement]) {
         self.statementList = statementList
         self.tableView.reloadData()
         
-        guard let userAccountData = router?.dataStore else { return }
+        guard let userAccount = router?.dataStore?.userAccount else { return }
+        displayHeaderData(userAccount: userAccount)
+    }
+    
+    func displayHeaderData(userAccount: UserAccountable) {
         guard let headerView = tableView.tableHeaderView as? BankHistoryHeaderView else { return }
-        headerView.configure(userAccountData)
+        headerView.configure(userAccount)
     }
     
     func requestElements() {
@@ -84,6 +90,8 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?) {
         self.setStatusBarStyle(statusBarStyle, backgroundColor: backgroudColor)
     }
+    
+    // MARK: Action
     
     @IBAction func actionLogOut(_ sender: Any) {
         performSegue(withIdentifier: "unwindToIntroController", sender: nil)

@@ -1,5 +1,5 @@
 //
-//  IntroViewController.swift
+//  IntroController.swift
 //  Bank App
 //
 //  Created by Chrystian on 24/11/18.
@@ -28,7 +28,7 @@ class IntroController: UIViewController, IntroDisplayLogic {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var containerFields: UIView!
     
-    var interactor: IntroInteractorLogic?
+    var interactor: IntroBusinessLogic?
     var router: (NSObjectProtocol & IntroRouterLogic)?
     
     var loadingView: LoadingView?
@@ -42,12 +42,6 @@ class IntroController: UIViewController, IntroDisplayLogic {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tryAutoLogin()
-        setupUIElements()
     }
     
     private func setup() {
@@ -64,9 +58,33 @@ class IntroController: UIViewController, IntroDisplayLogic {
         router.dataStore = interactor
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let scene = segue.identifier else { return }
+        
+        let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+        guard let router = router, router.responds(to: selector) else { return }
+        router.perform(selector)
+    }
+    
+    // MARK: View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tryAutoLogin()
+        setupUIElements()
+    }
+    
     /// Recive some object to display in view controller.
     func displayData() {
         // ...
+    }
+    
+    private func getDataFromDisplay() -> UserLogin? {
+        var userLogin = UserLogin()
+        userLogin.user = userTf.text
+        userLogin.password = passwordTf.text
+        
+        return userLogin
     }
     
     private func tryAutoLogin() {
@@ -77,21 +95,15 @@ class IntroController: UIViewController, IntroDisplayLogic {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func configureInvalidPassword() {
+        passwordTf.shakeError()
+        passwordTf.placeholder = NSLocalizedString("SENHA_INVALIDA", comment: "")
+        
+        clearTf()
+    }
+    
     func presentDetailController() {
         router?.routeToBankHistory(segue: nil)
-    }
-    
-    private func resertTextFields() {
-        userTf.text = ""
-        passwordTf.text = ""
-    }
-    
-    private func getDataFromDisplay() -> UserLogin? {
-        var userLogin = UserLogin()
-        userLogin.user = userTf.text
-        userLogin.password = passwordTf.text
-        
-        return userLogin
     }
     
     func configureLoginAnimationLoading() {
@@ -110,33 +122,18 @@ class IntroController: UIViewController, IntroDisplayLogic {
         btnLogin.isUserInteractionEnabled = true
     }
     
-    func configureInvalidPassword() {
-        self.passwordTf.shakeError()
-        self.passwordTf.placeholder = NSLocalizedString("SENHA_INVALIDA", comment: "")
-        
-        clearTf()
-    }
-    
     private func clearTf() {
-        self.userTf.text = ""
-        self.passwordTf.text = ""
+        userTf.text = ""
+        passwordTf.text = ""
     }
     
-    // Mark: Actions
+    // MARK: Actions
     @IBAction func actionLogin(_ sender: Any) {
         guard let userData = getDataFromDisplay() else { return }
         interactor?.loginUser(user: userData)
     }
     
     @IBAction func unwindToIntroController(segue: UIStoryboardSegue) {
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let scene = segue.identifier else { return }
-        
-        let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-        guard let router = router, router.responds(to: selector) else { return }
-        router.perform(selector)
     }
 }
 

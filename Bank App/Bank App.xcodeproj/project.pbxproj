@@ -11,6 +11,10 @@
 		78224099221C42A90056ED10 /* IntroControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78224098221C42A90056ED10 /* IntroControllerUITests.swift */; };
 		7882FE1C221C50C5008B6AC7 /* KIFHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7882FE1B221C50C5008B6AC7 /* KIFHelper.swift */; };
 		789B921E221C7AE400701C86 /* BankHistoryControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B921D221C7AE400701C86 /* BankHistoryControllerUITests.swift */; };
+		789B922D221D973C00701C86 /* IntroControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B9229221D973C00701C86 /* IntroControllerTests.swift */; };
+		789B922E221D973C00701C86 /* IntroInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B922A221D973C00701C86 /* IntroInteractorTests.swift */; };
+		789B922F221D973C00701C86 /* IntroWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B922B221D973C00701C86 /* IntroWorkerTests.swift */; };
+		789B9230221D973C00701C86 /* IntroPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B922C221D973C00701C86 /* IntroPresenterTests.swift */; };
 		B826FB6E21DBEA44007DBC21 /* BankHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826FB6D21DBEA44007DBC21 /* BankHistoryTableViewCell.swift */; };
 		B826FB7021DBEF1D007DBC21 /* Localizable + IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826FB6F21DBEF1D007DBC21 /* Localizable + IBInspectable.swift */; };
 		B826FB7221DBEF68007DBC21 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B826FB7121DBEF68007DBC21 /* Localizable.strings */; };
@@ -89,6 +93,10 @@
 		782240C2221C49F30056ED10 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		7882FE1B221C50C5008B6AC7 /* KIFHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KIFHelper.swift; sourceTree = "<group>"; };
 		789B921D221C7AE400701C86 /* BankHistoryControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryControllerUITests.swift; sourceTree = "<group>"; };
+		789B9229221D973C00701C86 /* IntroControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroControllerTests.swift; sourceTree = "<group>"; };
+		789B922A221D973C00701C86 /* IntroInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroInteractorTests.swift; sourceTree = "<group>"; };
+		789B922B221D973C00701C86 /* IntroWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroWorkerTests.swift; sourceTree = "<group>"; };
+		789B922C221D973C00701C86 /* IntroPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPresenterTests.swift; sourceTree = "<group>"; };
 		8188E6485E8091F9CE29D698 /* Pods-Bank App-Bank AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank App-Bank AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bank App-Bank AppUITests/Pods-Bank App-Bank AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		870DC600025C6A5E441C4BA2 /* Pods-Bank AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bank AppUITests/Pods-Bank AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A77F93FF0602ABF3B815BA6B /* Pods-Bank App-Bank AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank App-Bank AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bank App-Bank AppUITests/Pods-Bank App-Bank AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -224,6 +232,17 @@
 			name = KIF;
 			sourceTree = "<group>";
 		};
+		78BA8F88221DC1BC006D44F0 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				789B9229221D973C00701C86 /* IntroControllerTests.swift */,
+				789B922A221D973C00701C86 /* IntroInteractorTests.swift */,
+				789B922B221D973C00701C86 /* IntroWorkerTests.swift */,
+				789B922C221D973C00701C86 /* IntroPresenterTests.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
 		B840A44521A9C54500E0A22D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,13 +318,13 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
-		B852F9C821EE87EB0054FC2B /* Screens */ = {
+		B852F9C821EE87EB0054FC2B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				B8425B9A21D10878009DD707 /* BankHistory */,
 				B840A44D21AA008D00E0A22D /* Intro */,
 			);
-			name = Screens;
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 		B86E3F4121A62B0700A9B84F = {
@@ -343,7 +362,7 @@
 		B86E3F6221A6332C00A9B84F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B852F9C821EE87EB0054FC2B /* Screens */,
+				B852F9C821EE87EB0054FC2B /* Scenes */,
 				B89D1F4C21DEEA7600F1CD9C /* Extensions */,
 				B8425BAD21D7B201009DD707 /* Services */,
 				B8425BAA21D7A088009DD707 /* Worker */,
@@ -378,6 +397,7 @@
 		B879C06221E6B4B700ED1591 /* Bank AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				78BA8F88221DC1BC006D44F0 /* Scenes */,
 				B8A2E5B421F0DC6A006912C4 /* Extensions */,
 				B8A2E5AC21F0D9E8006912C4 /* Parsing */,
 				B879C06521E6B4B700ED1591 /* Info.plist */,
@@ -713,12 +733,16 @@
 				B879C06421E6B4B700ED1591 /* UserResponseParsingTests.swift in Sources */,
 				B848043F21F36D84005DBDB2 /* PasswordValidationTests.swift in Sources */,
 				B848044121F36F0C005DBDB2 /* DoubleFormatAsCurrencyStringTests.swift in Sources */,
+				789B9230221D973C00701C86 /* IntroPresenterTests.swift in Sources */,
+				789B922D221D973C00701C86 /* IntroControllerTests.swift in Sources */,
 				B848044921F38756005DBDB2 /* StatementParsingTests.swift in Sources */,
 				B848044721F3847C005DBDB2 /* BankErrorParsingTests.swift in Sources */,
 				B8A2E5B621F0DC8E006912C4 /* HexColorToUIColorTests.swift in Sources */,
+				789B922E221D973C00701C86 /* IntroInteractorTests.swift in Sources */,
 				B848043D21F36BC7005DBDB2 /* ChangeStatusBarBackgroundColorTests.swift in Sources */,
 				B848044521F381F6005DBDB2 /* UserAccountParsingTests.swift in Sources */,
 				B848044321F37F75005DBDB2 /* FormattingBankAgencyTests.swift in Sources */,
+				789B922F221D973C00701C86 /* IntroWorkerTests.swift in Sources */,
 				B848044B21F3893E005DBDB2 /* StatementResponseParsingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
