@@ -19,6 +19,8 @@
 		C58F53F9221CC55400C53886 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F53F8221CC55400C53886 /* LoginResponse.swift */; };
 		C58F53FB221CC56600C53886 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F53FA221CC56600C53886 /* ErrorResponse.swift */; };
 		C58F53FF221CD73F00C53886 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F53FE221CD73F00C53886 /* LoginWorker.swift */; };
+		C58F5401221CE09500C53886 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F5400221CE09500C53886 /* LoginPresenter.swift */; };
+		C58F5403221CE0A200C53886 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F5402221CE0A200C53886 /* LoginInteractor.swift */; };
 		C5D203BE221BAA010036409C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D203BD221BAA010036409C /* ApiClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		C58F53F8221CC55400C53886 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		C58F53FA221CC56600C53886 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		C58F53FE221CD73F00C53886 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		C58F5400221CE09500C53886 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		C58F5402221CE0A200C53886 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		C5D203BD221BAA010036409C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		CDDA4582890E335E43F0720A /* Pods_BankAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1C592BA68BA7D646A7F44B2 /* Pods-BankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankApp.release.xcconfig"; path = "Target Support Files/Pods-BankApp/Pods-BankApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 		C58F53FD221CD72400C53886 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				C58F5402221CE0A200C53886 /* LoginInteractor.swift */,
+				C58F5400221CE09500C53886 /* LoginPresenter.swift */,
 				C58F53FE221CD73F00C53886 /* LoginWorker.swift */,
 			);
 			path = Login;
@@ -350,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C58F5401221CE09500C53886 /* LoginPresenter.swift in Sources */,
 				C5376363221BA81C0063C021 /* BankApp.xcdatamodeld in Sources */,
 				C537635D221BA81C0063C021 /* ViewController.swift in Sources */,
 				C58F53FF221CD73F00C53886 /* LoginWorker.swift in Sources */,
@@ -357,6 +364,7 @@
 				C58F53FB221CC56600C53886 /* ErrorResponse.swift in Sources */,
 				C5D203BE221BAA010036409C /* ApiClient.swift in Sources */,
 				C58F53F9221CC55400C53886 /* LoginResponse.swift in Sources */,
+				C58F5403221CE0A200C53886 /* LoginInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
