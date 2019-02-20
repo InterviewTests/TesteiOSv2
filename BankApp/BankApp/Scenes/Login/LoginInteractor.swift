@@ -28,10 +28,24 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     }
     
     func login(user: String, password: String) {
-        
+        if validateFields(user, password){
+            worker?.login(user: user, password: password, { userAccount in
+                self.account = userAccount
+                self.presenter?.loginSuccess()
+            }, { errorMessage in
+                self.presenter?.presentError(message: errorMessage)
+            })
+        }
     }
     
-
-    
-    
+    private func validateFields(_ user: String, _ password: String) -> Bool {
+        
+        var isValid = true
+        
+        if (user.isEmpty) {
+            isValid = false
+            presenter?.presentError(message: "Campo usuário vazio")
+        }
+        return isValid
+    }
 }

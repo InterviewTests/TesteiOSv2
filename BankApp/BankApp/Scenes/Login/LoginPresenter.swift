@@ -10,15 +10,22 @@ import Foundation
 
 protocol LoginPresentationLogic {
     func presentError(message: String)
-    func loginSuccess(account: UserAccount)
+    func loginSuccess()
 }
 
 class LoginPresenter: LoginPresentationLogic {
+    
+    var view: LoginDisplayLogic
+    
+    init() {
+        view = LoginViewController()
+    }
+    
     func presentError(message: String) {
         
     }
     
-    func loginSuccess(account: UserAccount) {
+    func loginSuccess() {
         
     }
 }

@@ -21,6 +21,9 @@
 		C58F53FF221CD73F00C53886 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F53FE221CD73F00C53886 /* LoginWorker.swift */; };
 		C58F5401221CE09500C53886 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F5400221CE09500C53886 /* LoginPresenter.swift */; };
 		C58F5403221CE0A200C53886 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F5402221CE0A200C53886 /* LoginInteractor.swift */; };
+		C58F5407221CE83C00C53886 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F5406221CE83C00C53886 /* LoginViewController.swift */; };
+		C58F540A221CEA7300C53886 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F5409221CEA7300C53886 /* BaseView.swift */; };
+		C58F540C221CF2CE00C53886 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F540B221CF2CE00C53886 /* LoginRouter.swift */; };
 		C5D203BE221BAA010036409C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D203BD221BAA010036409C /* ApiClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +56,9 @@
 		C58F53FE221CD73F00C53886 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		C58F5400221CE09500C53886 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		C58F5402221CE0A200C53886 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		C58F5406221CE83C00C53886 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C58F5409221CEA7300C53886 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		C58F540B221CF2CE00C53886 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		C5D203BD221BAA010036409C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		CDDA4582890E335E43F0720A /* Pods_BankAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1C592BA68BA7D646A7F44B2 /* Pods-BankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankApp.release.xcconfig"; path = "Target Support Files/Pods-BankApp/Pods-BankApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 		C58F53FC221CD6C500C53886 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C58F5408221CEA6700C53886 /* Core */,
 				C58F53FD221CD72400C53886 /* Login */,
 			);
 			path = Scenes;
@@ -166,11 +173,21 @@
 		C58F53FD221CD72400C53886 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				C58F5406221CE83C00C53886 /* LoginViewController.swift */,
 				C58F5402221CE0A200C53886 /* LoginInteractor.swift */,
 				C58F5400221CE09500C53886 /* LoginPresenter.swift */,
 				C58F53FE221CD73F00C53886 /* LoginWorker.swift */,
+				C58F540B221CF2CE00C53886 /* LoginRouter.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		C58F5408221CEA6700C53886 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C58F5409221CEA7300C53886 /* BaseView.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		C5D203BC221BA9F30036409C /* Network */ = {
@@ -358,12 +375,15 @@
 			files = (
 				C58F5401221CE09500C53886 /* LoginPresenter.swift in Sources */,
 				C5376363221BA81C0063C021 /* BankApp.xcdatamodeld in Sources */,
+				C58F540C221CF2CE00C53886 /* LoginRouter.swift in Sources */,
 				C537635D221BA81C0063C021 /* ViewController.swift in Sources */,
 				C58F53FF221CD73F00C53886 /* LoginWorker.swift in Sources */,
 				C537635B221BA81C0063C021 /* AppDelegate.swift in Sources */,
 				C58F53FB221CC56600C53886 /* ErrorResponse.swift in Sources */,
 				C5D203BE221BAA010036409C /* ApiClient.swift in Sources */,
 				C58F53F9221CC55400C53886 /* LoginResponse.swift in Sources */,
+				C58F5407221CE83C00C53886 /* LoginViewController.swift in Sources */,
+				C58F540A221CEA7300C53886 /* BaseView.swift in Sources */,
 				C58F5403221CE0A200C53886 /* LoginInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,3 +8,27 @@
 
 import Foundation
 import UIKit
+
+protocol LoginDisplayLogic: BaseView {
+    func onLoginSuccess()
+}
+
+class LoginViewController: UIViewController, LoginDisplayLogic {
+    var interactor: LoginBusinessLogic?
+    var router: (LoginRouterLogic & AccountDataPassing)?
+    
+    func onLoginSuccess() {
+        router?.openEntriesScene()
+    }
+    
+    
+
+}
+
+
+
+
+
+
+
+
