@@ -16,6 +16,8 @@
 		C5376365221BA81C0063C021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5376364221BA81C0063C021 /* Assets.xcassets */; };
 		C5376368221BA81C0063C021 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5376366221BA81C0063C021 /* LaunchScreen.storyboard */; };
 		C5376373221BA81C0063C021 /* BankAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5376372221BA81C0063C021 /* BankAppTests.swift */; };
+		C58F53F9221CC55400C53886 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F53F8221CC55400C53886 /* LoginResponse.swift */; };
+		C58F53FB221CC56600C53886 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F53FA221CC56600C53886 /* ErrorResponse.swift */; };
 		C5D203BE221BAA010036409C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D203BD221BAA010036409C /* ApiClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		C537636E221BA81C0063C021 /* BankAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5376372221BA81C0063C021 /* BankAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAppTests.swift; sourceTree = "<group>"; };
 		C5376374221BA81C0063C021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C58F53F8221CC55400C53886 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		C58F53FA221CC56600C53886 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		C5D203BD221BAA010036409C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		CDDA4582890E335E43F0720A /* Pods_BankAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1C592BA68BA7D646A7F44B2 /* Pods-BankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankApp.release.xcconfig"; path = "Target Support Files/Pods-BankApp/Pods-BankApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 		C5376359221BA81C0063C021 /* BankApp */ = {
 			isa = PBXGroup;
 			children = (
+				C58F53F7221CC33100C53886 /* Model */,
 				C5D203BC221BA9F30036409C /* Network */,
 				C537635A221BA81C0063C021 /* AppDelegate.swift */,
 				C537635C221BA81C0063C021 /* ViewController.swift */,
@@ -132,6 +137,15 @@
 				C5376374221BA81C0063C021 /* Info.plist */,
 			);
 			path = BankAppTests;
+			sourceTree = "<group>";
+		};
+		C58F53F7221CC33100C53886 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C58F53F8221CC55400C53886 /* LoginResponse.swift */,
+				C58F53FA221CC56600C53886 /* ErrorResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C5D203BC221BA9F30036409C /* Network */ = {
@@ -320,7 +334,9 @@
 				C5376363221BA81C0063C021 /* BankApp.xcdatamodeld in Sources */,
 				C537635D221BA81C0063C021 /* ViewController.swift in Sources */,
 				C537635B221BA81C0063C021 /* AppDelegate.swift in Sources */,
+				C58F53FB221CC56600C53886 /* ErrorResponse.swift in Sources */,
 				C5D203BE221BAA010036409C /* ApiClient.swift in Sources */,
+				C58F53F9221CC55400C53886 /* LoginResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
