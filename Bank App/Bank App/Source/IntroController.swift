@@ -113,16 +113,20 @@ class IntroController: UIViewController, IntroDisplayLogic {
         loadingView = LoadingView()
         loadingView?.show(in: self.view)
         
-        stackViewFields.alpha = 0
-        btnLogin.isUserInteractionEnabled = false
+        hiddenLoginElements(true)
     }
     
     func configureLoginAnimationCompletion() {
         loadingView?.dismiss()
-        clearTf()
         
-        stackViewFields.alpha = 1
-        btnLogin.isUserInteractionEnabled = true
+        clearTf()
+        hiddenLoginElements(false)
+    }
+    
+    private func hiddenLoginElements(_ hidden: Bool) {
+        let _hidden: CGFloat = hidden ? 0 : 1
+        stackViewFields.alpha = _hidden
+        btnLogin.alpha = _hidden
     }
     
     private func clearTf() {
@@ -147,6 +151,7 @@ class IntroController: UIViewController, IntroDisplayLogic {
     // MARK: Actions
     @IBAction func actionLogin(_ sender: Any) {
         doLogin()
+        
     }
     
     @IBAction func unwindToIntroController(segue: UIStoryboardSegue) {
