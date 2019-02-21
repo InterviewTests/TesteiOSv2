@@ -151,7 +151,6 @@ class IntroController: UIViewController, IntroDisplayLogic {
     // MARK: Actions
     @IBAction func actionLogin(_ sender: Any) {
         doLogin()
-        
     }
     
     @IBAction func unwindToIntroController(segue: UIStoryboardSegue) {
