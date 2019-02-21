@@ -69,7 +69,7 @@ class IntroControllerUITests: KIFTestCase {
         }
     }
     
-    func getPasswordTfName(completion: @escaping (_ tfName: String)->Void) {
+    private func getPasswordTfName(completion: @escaping (_ tfName: String)->Void) {
         // Try enter some data into emailTf
         do {
             try tester().tryFindingTappableView(withAccessibilityLabel: passwordFieldPlaceholder)

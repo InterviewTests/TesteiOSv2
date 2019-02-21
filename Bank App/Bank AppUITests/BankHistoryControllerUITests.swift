@@ -37,7 +37,6 @@ class BankHistoryControllerUITests: KIFTestCase {
     }
     
     func test2Header() {
-        
         tester().waitForView(withAccessibilityLabel: "headerView", traits: [])
         tester().tapView(withAccessibilityLabel: "exitButton")
     }
