@@ -13,12 +13,13 @@ import UIKit
 protocol IntroDisplayLogic: class {
     
     func displayData()
+    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?)
     func showError(_ alertController: UIAlertController)
+    func configureInvalidPassword()
     func presentDetailController()
     func configureLoginAnimationLoading()
     func configureLoginAnimationCompletion()
-    func configureInvalidPassword()
-    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?)
+    func enableLogin(_ enabled: Bool)
 }
 
 class IntroController: UIViewController, IntroDisplayLogic {
@@ -71,6 +72,10 @@ class IntroController: UIViewController, IntroDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        passwordTf.delegate = self
+        userTf.delegate = self
+        
         tryAutoLogin()
         setupUIElements()
     }
@@ -83,6 +88,10 @@ class IntroController: UIViewController, IntroDisplayLogic {
     /// Recive some object to display in view controller.
     func displayData() {
         // ...
+    }
+    
+    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?) {
+        self.setStatusBarStyle(statusBarStyle, backgroundColor: backgroudColor)
     }
     
     func tryAutoLogin() {
@@ -98,10 +107,6 @@ class IntroController: UIViewController, IntroDisplayLogic {
         passwordTf.placeholder = NSLocalizedString("SENHA_INVALIDA", comment: "")
         
         clearTf()
-    }
-    
-    func presentDetailController() {
-        router?.routeToBankHistory(segue: nil)
     }
     
     func configureLoginAnimationLoading() {
@@ -125,13 +130,18 @@ class IntroController: UIViewController, IntroDisplayLogic {
         passwordTf.text = ""
     }
     
+    func enableLogin(_ enabled: Bool) {
+        btnLogin.isEnabled = enabled
+        btnLogin.alpha = enabled ? 1 : 0.6
+    }
+    
     func doLogin() {
         let userLogin = UserLogin(user: userTf.text, password: passwordTf.text)
         interactor?.loginUser(user: userLogin)
     }
     
-    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?) {
-        self.setStatusBarStyle(statusBarStyle, backgroundColor: backgroudColor)
+    func presentDetailController() {
+        router?.routeToBankHistory(segue: nil)
     }
     
     // MARK: Actions
@@ -143,11 +153,24 @@ class IntroController: UIViewController, IntroDisplayLogic {
     }
 }
 
+extension IntroController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        interactor?.verifyFields([userTf, passwordTf])
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        interactor?.verifyFields([userTf, passwordTf])
+        return true
+    }
+}
+
 extension IntroController {
     
     /// Initialize all ui elements.
     private func setupUIElements() {
         self.userTf.placeholder = NSLocalizedString("EMAIL_PLACEHOLDER", comment: "email placeholder")
         self.passwordTf.placeholder = NSLocalizedString("PASSWORD_PLACEHOLDER", comment: "password placeholder")
+        self.enableLogin(false)
     }
 }

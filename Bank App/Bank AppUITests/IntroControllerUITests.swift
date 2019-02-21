@@ -23,6 +23,7 @@ class IntroControllerUITests: KIFTestCase {
     func test1ViewSetup() {
         tester().waitForView(withAccessibilityLabel: emailFieldPlaceholder, traits: [])
         tester().waitForView(withAccessibilityLabel: passwordFieldPlaceholder, traits: [])
+        tester().waitForView(withAccessibilityLabel: "Login", traits: .notEnabled)
     }
 
     /// Try catch password error.
@@ -30,10 +31,7 @@ class IntroControllerUITests: KIFTestCase {
         tester().tapView(withAccessibilityLabel: passwordFieldPlaceholder)
         tester().waitForSoftwareKeyboard()
         tester().enterText(intoCurrentFirstResponder: "123456")
-        tester().tapView(withAccessibilityLabel: "Login")
-        tester().waitForView(withAccessibilityLabel: NSLocalizedString("SENHA_INVALIDA", comment: ""), traits: [])
-        tester().waitForView(withAccessibilityLabel: "OK", traits: [])
-        tester().tapView(withAccessibilityLabel: "OK")
+        tester().waitForView(withAccessibilityLabel: "Login", traits: .notEnabled)
     }
     
     /// Try a login.

@@ -62,6 +62,11 @@ class IntroControllerTests: XCTestCase {
         func resetStatusBar() {
             doSomethingCalled = true
         }
+        
+        func verifyFields(_ fields: [UITextField]) {
+            doSomethingCalled = true
+        }
+        
     }
     
     // MARK: Tests

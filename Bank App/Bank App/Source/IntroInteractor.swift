@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /*
  - Trata das ações de interação fora do app, servidor, cor data entre outros.
@@ -15,9 +16,11 @@ protocol IntroBusinessLogic {
     func loginUser(user: UserLogin)
     func tryAutoLogin()
     func resetStatusBar()
+    func verifyFields(_ fields: [UITextField])
 }
 
 class IntroInteractor: IntroBusinessLogic, UserAccountData {
+    
     var userAccount: UserAccountable?
     var presenter: IntroPresentationLogic?
     
@@ -63,6 +66,19 @@ class IntroInteractor: IntroBusinessLogic, UserAccountData {
     
     func resetStatusBar() {
         presenter?.setDefaultStatusBar()
+    }
+    
+    func verifyFields(_ fields: [UITextField]) {
+        var enabled: [Bool] = []
+        for field in fields {
+            if let text = field.text, text != "" {
+                enabled.append(true)
+            }
+            else {
+                enabled.append(false)
+            }
+            presenter?.enableLoginButton(!enabled.contains(false))
+        }
     }
     
     /// Asks for user validation.

@@ -66,6 +66,10 @@ class IntroInteractorTests: XCTestCase {
         func setDefaultStatusBar() {
             presentSomethingCalled = true
         }
+        
+        func enableLoginButton(_ enable: Bool) {
+            presentSomethingCalled = true
+        }
     }
     
     // MARK: Tests
@@ -119,5 +123,18 @@ class IntroInteractorTests: XCTestCase {
         
         // Then
         XCTAssertTrue(spy.presentSomethingCalled, "o método setDefaultStatusBar() chamou alguem la dentro do presenter no caso de sucesso.")
+    }
+    
+    func testEnableLoginButton() {
+        
+        // Given
+        let spy = IntroPresentationLogicSpy()
+        sut.presenter = spy
+        
+        // When
+        sut.verifyFields([UITextField()])
+        
+        // Then
+        XCTAssertTrue(spy.presentSomethingCalled, "o método enableLoginButton() foi chamado no presenter.")
     }
 }

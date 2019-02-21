@@ -28,7 +28,7 @@ class UserAccountParsingTests: XCTestCase {
             XCTAssertEqual(objResponse.name, "Jose da Silva Teste")
             XCTAssertEqual(objResponse.bankAccount, "2050")
             XCTAssertEqual(objResponse.agency, "01.231456-4")
-            XCTAssertEqual(objResponse.balance, "R$3,34")
+            XCTAssertEqual(objResponse.balance, 3.3445)
         } catch {
             XCTFail("\(error.localizedDescription)")
         }

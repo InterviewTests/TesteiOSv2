@@ -16,6 +16,7 @@ protocol IntroPresentationLogic {
     func catchPasswordInvalid()
     func abortAutoLogin(error: BankError)
     func setDefaultStatusBar()
+    func enableLoginButton(_ enable: Bool)
 }
 
 class IntroPresenter: IntroPresentationLogic {
@@ -53,6 +54,10 @@ class IntroPresenter: IntroPresentationLogic {
     
     func setDefaultStatusBar() {
         viewController?.setupStatusBar(statusBarStyle: .default, backgroudColor: .clear)
+    }
+    
+    func enableLoginButton(_ enable: Bool) {
+        viewController?.enableLogin(enable)
     }
     
     private func buildAlert(title: String, menssage: String) {

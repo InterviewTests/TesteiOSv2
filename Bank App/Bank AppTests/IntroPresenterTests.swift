@@ -69,6 +69,11 @@ class IntroPresenterTests: XCTestCase
         func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?) {
             displaySomethingCalled = true
         }
+        
+        func enableLogin(_ enabled: Bool) {
+            displaySomethingCalled = true
+        }
+        
     }
     
     // MARK: Tests
@@ -127,5 +132,16 @@ class IntroPresenterTests: XCTestCase
         
         // Then
         XCTAssertTrue(spy.displaySomethingCalled, "Foi chamado o método correspondente no controller para setDefaultStatusBar()")
+    }
+    
+    func testEnableLoginButton() {
+        let spy = IntroDisplayLogicSpy()
+        sut.viewController = spy
+        
+        // When
+        sut.enableLoginButton(true)
+        
+        // Then
+        XCTAssertTrue(spy.displaySomethingCalled, "Foi chamado o método correspondente no controller para enableLoginButton(_ boolean: Bool)")
     }
 }

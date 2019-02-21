@@ -14,7 +14,7 @@ struct UserAccount: UserAccountable, Decodable {
     var name: String?
     var bankAccount: String?
     var agency: String?
-    var balance: String?
+    var balance: Double?
     
     enum CodingKeys: String, CodingKey {
         case userId = "userId"
@@ -32,6 +32,6 @@ extension UserAccount {
         name = try values.decodeIfPresent(String.self, forKey: .name)
         bankAccount = try values.decodeIfPresent(String.self, forKey: .bankAccount)
         agency = try values.decodeIfPresent(String.self, forKey: .agency)?.toBankAgency()
-        balance = try values.decodeIfPresent(Double.self, forKey: .balance)?.toStringCurrency()
+        balance = try values.decodeIfPresent(Double.self, forKey: .balance)
     }
 }

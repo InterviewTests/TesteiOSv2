@@ -13,5 +13,5 @@ protocol UserAccountable {
     var name: String? { get set }
     var bankAccount: String? { get set }
     var agency: String? { get set }
-    var balance: String? { get set }
+    var balance: Double? { get set }
 }
