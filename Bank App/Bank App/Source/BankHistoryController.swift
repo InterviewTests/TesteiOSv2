@@ -94,12 +94,7 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 216 - 16 {
-            setStatusBarStyle(.default, backgroundColor: .clear)
-        }
-        else {
-            interactor?.configureStatusBar()
-        }
+       interactor?.configureStatusBarRelative(to: scrollView.contentOffset.y)
     }
 }
 

@@ -126,7 +126,7 @@ class IntroController: UIViewController, IntroDisplayLogic {
     private func hiddenLoginElements(_ hidden: Bool) {
         let _hidden: CGFloat = hidden ? 0 : 1
         stackViewFields.alpha = _hidden
-        btnLogin.alpha = _hidden
+        enableLogin(!hidden)
     }
     
     private func clearTf() {
