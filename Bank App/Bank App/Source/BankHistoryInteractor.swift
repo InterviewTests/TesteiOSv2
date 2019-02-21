@@ -13,7 +13,6 @@ protocol BankHistoryInteractionLogic {
     func getStatementList(by userId: UserAccountable)
     func clearAutoLogin()
     func configureStatusBar()
-    func resetStatusBar()
 }
 
 class BankHistoryInteractor: BankHistoryInteractionLogic, UserAccountData {
@@ -40,9 +39,5 @@ class BankHistoryInteractor: BankHistoryInteractionLogic, UserAccountData {
     
     func configureStatusBar() {
         presenter?.configureStatusBar()
-    }
-    
-    func resetStatusBar() {
-        presenter?.setDefaultStatusBar()
     }
 }

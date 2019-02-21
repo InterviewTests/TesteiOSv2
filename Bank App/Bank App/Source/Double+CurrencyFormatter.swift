@@ -16,7 +16,7 @@ extension Double {
     }
     
     func toStringCurrency() -> String {
-        let currencyFormat: String = "R$"
+        let currencyFormat: String = NSLocalizedString("CURRENCY_FORMAT", comment: "currency")
         var stringFormated: String = currencyFormat
         let stringValue = String(format: "%.2f", self)
         

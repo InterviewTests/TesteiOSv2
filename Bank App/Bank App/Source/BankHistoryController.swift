@@ -60,11 +60,6 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
         requestElements()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        interactor?.resetStatusBar()
-    }
-    
     func displayData(_ statementList: [Statement]) {
         self.statementList = statementList
         self.tableView.reloadData()
@@ -96,6 +91,15 @@ class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     @IBAction func actionLogOut(_ sender: Any) {
         performSegue(withIdentifier: "unwindToIntroController", sender: nil)
         interactor?.clearAutoLogin()
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 216 - 16 {
+            setStatusBarStyle(.default, backgroundColor: .clear)
+        }
+        else {
+            interactor?.configureStatusBar()
+        }
     }
 }
 

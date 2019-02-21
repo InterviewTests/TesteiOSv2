@@ -14,6 +14,7 @@ import Foundation
 protocol IntroBusinessLogic {
     func loginUser(user: UserLogin)
     func tryAutoLogin()
+    func resetStatusBar()
 }
 
 class IntroInteractor: IntroBusinessLogic, UserAccountData {
@@ -58,6 +59,10 @@ class IntroInteractor: IntroBusinessLogic, UserAccountData {
                 self.presenter?.showHistoryController()
             }
         }
+    }
+    
+    func resetStatusBar() {
+        presenter?.setDefaultStatusBar()
     }
     
     /// Asks for user validation.

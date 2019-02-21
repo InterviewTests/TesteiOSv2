@@ -48,6 +48,7 @@ class IntroControllerTests: XCTestCase {
     // MARK: Test doubles
     
     class IntroBusinessLogicSpy: IntroBusinessLogic {
+        
         var doSomethingCalled = false
         
         func loginUser(user: UserLogin) {
@@ -55,6 +56,10 @@ class IntroControllerTests: XCTestCase {
         }
         
         func tryAutoLogin() {
+            doSomethingCalled = true
+        }
+        
+        func resetStatusBar() {
             doSomethingCalled = true
         }
     }

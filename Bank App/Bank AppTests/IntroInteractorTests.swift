@@ -38,6 +38,7 @@ class IntroInteractorTests: XCTestCase {
     // MARK: Test doubles
     
     class IntroPresentationLogicSpy: IntroPresentationLogic {
+        
         var presentSomethingCalled = false
         
         func showHistoryController() {
@@ -59,6 +60,10 @@ class IntroInteractorTests: XCTestCase {
         
         func abortAutoLogin(error: BankError) {
             print(error.message)
+            presentSomethingCalled = true
+        }
+        
+        func setDefaultStatusBar() {
             presentSomethingCalled = true
         }
     }
@@ -101,5 +106,18 @@ class IntroInteractorTests: XCTestCase {
         
         // Then
         XCTAssertTrue(spy.presentSomethingCalled, "o método loginUser() chamou alguem la dentro do presenter no caso de sucesso.")
+    }
+    
+    func testSetDefaultStatusBar() {
+        
+        // Given
+        let spy = IntroPresentationLogicSpy()
+        sut.presenter = spy
+        
+        // When
+        sut.resetStatusBar()
+        
+        // Then
+        XCTAssertTrue(spy.presentSomethingCalled, "o método setDefaultStatusBar() chamou alguem la dentro do presenter no caso de sucesso.")
     }
 }

@@ -29,7 +29,7 @@ class BankHistoryHeaderView: UIView {
         lbUserName.text = user.name
         
         if let _balance = user.balance {
-            lbUserBalance.text = "R$\(_balance)"
+            lbUserBalance.text = "\(_balance)"
         }
         
         if let agency = user.agency, let bankAccount = user.bankAccount {

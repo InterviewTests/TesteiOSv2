@@ -39,6 +39,7 @@ class IntroPresenterTests: XCTestCase
     // MARK: Test doubles
     
     class IntroDisplayLogicSpy: IntroDisplayLogic {
+       
         var displaySomethingCalled = false
         
         func displayData() {
@@ -62,6 +63,10 @@ class IntroPresenterTests: XCTestCase
         }
         
         func configureInvalidPassword() {
+            displaySomethingCalled = true
+        }
+        
+        func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?) {
             displaySomethingCalled = true
         }
     }
@@ -110,6 +115,17 @@ class IntroPresenterTests: XCTestCase
         sut.catchPasswordInvalid()
         
         // Then
-                XCTAssertTrue(spy.displaySomethingCalled, "Foi chamado o método correspondente no controller para invalidPassword")
+        XCTAssertTrue(spy.displaySomethingCalled, "Foi chamado o método correspondente no controller para invalidPassword")
+    }
+    
+    func testSetupStatusBar() {
+        let spy = IntroDisplayLogicSpy()
+        sut.viewController = spy
+        
+        // When
+        sut.setDefaultStatusBar()
+        
+        // Then
+        XCTAssertTrue(spy.displaySomethingCalled, "Foi chamado o método correspondente no controller para setDefaultStatusBar()")
     }
 }

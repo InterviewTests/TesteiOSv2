@@ -18,6 +18,7 @@ protocol IntroDisplayLogic: class {
     func configureLoginAnimationLoading()
     func configureLoginAnimationCompletion()
     func configureInvalidPassword()
+    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?)
 }
 
 class IntroController: UIViewController, IntroDisplayLogic {
@@ -74,6 +75,11 @@ class IntroController: UIViewController, IntroDisplayLogic {
         setupUIElements()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.resetStatusBar()
+    }
+    
     /// Recive some object to display in view controller.
     func displayData() {
         // ...
@@ -122,6 +128,10 @@ class IntroController: UIViewController, IntroDisplayLogic {
     func doLogin() {
         let userLogin = UserLogin(user: userTf.text, password: passwordTf.text)
         interactor?.loginUser(user: userLogin)
+    }
+    
+    func setupStatusBar(statusBarStyle: UIStatusBarStyle, backgroudColor: UIColor?) {
+        self.setStatusBarStyle(statusBarStyle, backgroundColor: backgroudColor)
     }
     
     // MARK: Actions
