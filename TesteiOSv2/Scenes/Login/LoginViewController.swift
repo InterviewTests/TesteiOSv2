@@ -47,6 +47,13 @@ class LoginViewController: UIViewController , LoginDisplayLogic {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let lastLogin = interactor?.lastLogin() {
+            userTextfield?.text = lastLogin
+        }
+    }
+    
     
     private func setup(){
         let viewController = self

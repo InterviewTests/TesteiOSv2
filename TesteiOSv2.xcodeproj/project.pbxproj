@@ -32,6 +32,8 @@
 		07EE89C322237EBE009A9D9F /* LNSUserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07EE89C222237EBE009A9D9F /* LNSUserInfoView.xib */; };
 		07EE89C522238746009A9D9F /* LNSUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EE89C422238746009A9D9F /* LNSUserInfoView.swift */; };
 		07EE89C722238D67009A9D9F /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EE89C622238D67009A9D9F /* StatementTableViewCell.swift */; };
+		07FF3DAB2224DEB100CDE86B /* UserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07FF3DA92224DEB100CDE86B /* UserDataModel.xcdatamodeld */; };
+		07FF3DAD2224E95200CDE86B /* BankDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF3DAC2224E95200CDE86B /* BankDAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		07EE89C222237EBE009A9D9F /* LNSUserInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LNSUserInfoView.xib; sourceTree = "<group>"; };
 		07EE89C422238746009A9D9F /* LNSUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNSUserInfoView.swift; sourceTree = "<group>"; };
 		07EE89C622238D67009A9D9F /* StatementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
+		07FF3DAA2224DEB100CDE86B /* UserDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserDataModel.xcdatamodel; sourceTree = "<group>"; };
+		07FF3DAC2224E95200CDE86B /* BankDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				0756BA882220EFF3002D7D02 /* BankAPI.swift */,
+				07FF3DAC2224E95200CDE86B /* BankDAO.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				07D4A241221F560800AF34EC /* Assets.xcassets */,
 				07D4A243221F560800AF34EC /* LaunchScreen.storyboard */,
 				07D4A246221F560800AF34EC /* Info.plist */,
+				07FF3DA92224DEB100CDE86B /* UserDataModel.xcdatamodeld */,
 			);
 			path = TesteiOSv2;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 				0756843822231D34003717F7 /* StatementsInteractor.swift in Sources */,
 				0756BA782220C27F002D7D02 /* LoginInteractor.swift in Sources */,
 				07EE89C722238D67009A9D9F /* StatementTableViewCell.swift in Sources */,
+				07FF3DAD2224E95200CDE86B /* BankDAO.swift in Sources */,
 				0756BA762220C248002D7D02 /* LoginViewController.swift in Sources */,
 				0756BA7F2220C2CD002D7D02 /* LoginWorker.swift in Sources */,
 				0756843122230F22003717F7 /* LNSTextField.swift in Sources */,
@@ -323,6 +330,7 @@
 				0756BA832220C62C002D7D02 /* User.swift in Sources */,
 				07D4A23B221F560700AF34EC /* AppDelegate.swift in Sources */,
 				0756BA812220C302002D7D02 /* LoginRouter.swift in Sources */,
+				07FF3DAB2224DEB100CDE86B /* UserDataModel.xcdatamodeld in Sources */,
 				0756BA7B2220C2A5002D7D02 /* LoginPresenter.swift in Sources */,
 				0756BA892220EFF3002D7D02 /* BankAPI.swift in Sources */,
 				0756BA852220C73B002D7D02 /* Statement.swift in Sources */,
@@ -597,6 +605,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		07FF3DA92224DEB100CDE86B /* UserDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				07FF3DAA2224DEB100CDE86B /* UserDataModel.xcdatamodel */,
+			);
+			currentVersion = 07FF3DAA2224DEB100CDE86B /* UserDataModel.xcdatamodel */;
+			path = UserDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 07D4A22F221F560700AF34EC /* Project object */;
 }
