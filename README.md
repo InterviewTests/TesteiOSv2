@@ -1,41 +1,36 @@
-# Show me the code
+# TesteiOSv2
+> Projeto criado para testar meus conhecimentos.
 
-Esse repositório contem todo o material necessário para realizar o teste: 
-- A especificação do layout está na pasta 'bank_app_layout' abrindo o index.html, os icones estão na pasta 'assets'
+[![Swift Version][swift-image]][swift-url]
+[![Build Status][travis-image]][travis-url]
+[![License][license-image]][license-url]
+[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
 
-- Os dados da Api estão mockados, os exemplos e a especificação dos serviços (login e statements) se encontram no arquivo BankApp.postman_collection.json ( é necessário instalar o postman e importar a colection https://www.getpostman.com/apps)
+Este projeto, foi um teste solicitado por uma empresa, para testar meus conhecimentos em CleanSwift, Arquitetura, AutoLayout entre outros.
 
-![Image of Yaktocat](https://github.com/SantanderTecnologia/TesteiOSv2/blob/master/telas.png)
+![](assets_readme/login.png)
+![](assets_readme/Statements.png)
 
-### # DESAFIO:
+## Features
 
-Na primeira tela teremos um formulario de login, o campo user deve aceitar email ou cpf,
-o campo password deve validar se a senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.
-Apos a validação, realizar o login no endpoint https://bank-app-test.herokuapp.com/api/login e exibir os dados de retorno na próxima tela.
-O ultimo usuário logado deve ser salvo de forma segura localmente, e exibido na tela de login se houver algum salvo. 
+- [x] Login
+- [x] Statements
 
-Na segunda tela será exibido os dados formatados do retorno do login e será necessário fazer um segundo request para obter os lançamentos do usuário, no endpoint https://bank-app-test.herokuapp.com/api/statements/{idUser} que retornará uma lista de lançamentos
+## Requirements
+- iOS 9.0+
+- Xcode 9
 
-### # Avaliação
+## Meta
 
-Você será avaliado pela usabilidade, por respeitar o design e pela arquitetura do app. É esperado que você consiga explicar as decisões que tomou durante o desenvolvimento através de commits.
+Lucas Neto Santana – [@LinkedIn](https://www.linkedin.com/in/lucasnetosantana/)
 
-Obrigatórios:
+Distributed under the XYZ license. See ``LICENSE`` for more information.
 
-* Swift 3.0 ou superior
-* Autolayout
-* O app deve funcionar no iOS 9
-* Testes unitários, pode usar a ferramenta que você tem mais experiência, só nos explique o que ele tem de bom.
-* Arquitetura a ser utilizada: Swift Clean ([https://clean-swift.com/handbook/](https://clean-swift.com/handbook/) && [https://github.com/Clean-Swift/CleanStore](https://github.com/Clean-Swift/CleanStore)
-* Uso do git.
+[https://github.com/LucasNeto/TesteiOSv2](https://github.com/LucasNeto/TesteiOSv2)
 
-### # Observações gerais
-
-Adicione um arquivo [README.md](http://README.md) com os procedimentos para executar o projeto.
-Pedimos que trabalhe sozinho e não divulgue o resultado na internet.
-
-Faça um fork desse desse repositório em seu Github e ao finalizar nos envie um Pull Request com o resultado, por favor informe por qual empresa você esta se candidatando.
-
-# Importante: não há prazo de entrega, faça com qualidade!
-
-# BOA SORTE!
+[swift-image]:https://img.shields.io/badge/swift-3.0-orange.svg
+[swift-url]: https://swift.org/
+[license-image]: https://img.shields.io/badge/License-MIT-blue.svg
+[license-url]: LICENSE
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
