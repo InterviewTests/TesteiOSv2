@@ -39,6 +39,7 @@
 		837C0DFF2225BC1B003D268B /* StatementRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0DFE2225BC1B003D268B /* StatementRouter.swift */; };
 		837C0E012225BDD6003D268B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0E002225BDD6003D268B /* Helpers.swift */; };
 		837C0E042225BECA003D268B /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0E032225BECA003D268B /* BankViewController.swift */; };
+		837C0E072227231F003D268B /* StatementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0E062227231F003D268B /* StatementCell.swift */; };
 		CFECA76FAD6DC4199483717B /* Pods_BankTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BDB1EDCA631379302A78BD /* Pods_BankTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		837C0DFE2225BC1B003D268B /* StatementRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementRouter.swift; sourceTree = "<group>"; };
 		837C0E002225BDD6003D268B /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		837C0E032225BECA003D268B /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
+		837C0E062227231F003D268B /* StatementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCell.swift; sourceTree = "<group>"; };
 		8B96E685A3605E80CD291851 /* Pods-BankUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankUITests/Pods-BankUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8A956503E7922B90D89749A /* Pods-Bank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bank/Pods-Bank.debug.xcconfig"; sourceTree = "<group>"; };
 		BC4BF21781B4CC9E424A5D9C /* Pods-BankUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BankUITests/Pods-BankUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		837C0DF12225BA53003D268B /* Statement */ = {
 			isa = PBXGroup;
 			children = (
+				837C0E05222722E5003D268B /* Components */,
 				837C0DF22225BA73003D268B /* StatementVC.swift */,
 				837C0DF62225BBEB003D268B /* StatementInteractor.swift */,
 				837C0DF82225BBF5003D268B /* StatementPresenter.swift */,
@@ -324,6 +327,14 @@
 			isa = PBXGroup;
 			children = (
 				837C0E032225BECA003D268B /* BankViewController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		837C0E05222722E5003D268B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				837C0E062227231F003D268B /* StatementCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -569,6 +580,7 @@
 				837C0DF02225B7D2003D268B /* BankStoreProtocol.swift in Sources */,
 				837C0DFD2225BC10003D268B /* StatementWorker.swift in Sources */,
 				837C0E042225BECA003D268B /* BankViewController.swift in Sources */,
+				837C0E072227231F003D268B /* StatementCell.swift in Sources */,
 				837C0DEB2225843D003D268B /* BankWorker.swift in Sources */,
 				837C0DD222257E02003D268B /* LoginModels.swift in Sources */,
 				837C0DF32225BA73003D268B /* StatementVC.swift in Sources */,

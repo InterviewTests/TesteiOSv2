@@ -21,18 +21,30 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore {
     var presenter: StatementPresentationLogic?
     
     var user: User?
-    var statementUser: StatementView.ViewModel.DisplayedStatementUser?
+    var bankWorker = BankWorker(bankStore: BankAPI())
     
     func loadViewData() {
-        if(statementUser == nil) {
-            statementUser = StatementView.ViewModel.DisplayedStatementUser(user: user)
+        presenter?.loadViewDataUser(user: user)
+        do{
+            try bankWorker.getStatements(userId: (user?.userId)!) { (statementsApi, error) in
+                if let error = error
+                {
+                    self.presenter?.showErrorMessage(message: error.localizedDescription)
+                    self.presenter?.loadViewDataStatement(statements: nil)
+                }
+                else
+                {
+                    self.presenter?.loadViewDataStatement(statements: statementsApi)
+                }
+            }
         }
-        presenter?.loadViewData(user: statementUser)
+        catch {
+            self.presenter?.showErrorMessage(message: "Ocorreu um problema ao tentar o extrato! Tente novamente")
+        }
     }
     
     func cleanData() {
         user = nil
-        statementUser = nil
         presenter?.cleanData()
     }
 }

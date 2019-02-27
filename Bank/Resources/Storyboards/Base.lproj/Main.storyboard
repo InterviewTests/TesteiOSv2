@@ -192,7 +192,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="statementCell" id="fW2-hk-pbZ" customClass="CollectionViewCell" customModule="Bank" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="statementCell" id="fW2-hk-pbZ" customClass="StatementCell" customModule="Bank" customModuleProvider="target">
                                         <rect key="frame" x="4.5" y="50" width="366" height="104"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -202,8 +202,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgI-ci-Sc0">
                                                     <rect key="frame" x="11.5" y="6" width="343" height="80"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/12/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMC-lO-Cxq">
-                                                            <rect key="frame" x="264.5" y="18" width="62" height="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Date]" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMC-lO-Cxq">
+                                                            <rect key="frame" x="295" y="18" width="31.5" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="14" id="MHp-c5-yKR"/>
                                                             </constraints>
@@ -211,8 +211,8 @@
                                                             <color key="textColor" red="0.6588235294" green="0.70588235290000001" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta de Luz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcK-rF-Q97">
-                                                            <rect key="frame" x="9" y="50" width="96" height="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Desc]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcK-rF-Q97">
+                                                            <rect key="frame" x="9" y="50" width="45" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="18" id="FcS-ta-gys"/>
                                                             </constraints>
@@ -220,8 +220,8 @@
                                                             <color key="textColor" red="0.28235294119999998" green="0.3294117647" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 1.000,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vye-cG-rpx">
-                                                            <rect key="frame" x="224" y="47" width="108" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Value]" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vye-cG-rpx">
+                                                            <rect key="frame" x="276" y="47" width="56" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="Ho1-7X-Uwc"/>
                                                             </constraints>
@@ -229,8 +229,8 @@
                                                             <color key="textColor" red="0.28235294119999998" green="0.3294117647" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U31-Kc-IeL">
-                                                            <rect key="frame" x="9" y="12" width="82.5" height="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Title]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U31-Kc-IeL">
+                                                            <rect key="frame" x="9" y="12" width="38.5" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="18" id="ljv-AG-6lZ"/>
                                                             </constraints>
@@ -263,7 +263,11 @@
                                             <constraint firstItem="rgI-ci-Sc0" firstAttribute="top" secondItem="fW2-hk-pbZ" secondAttribute="top" constant="6" id="wqK-DR-9Hg"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="viewCell" destination="rgI-ci-Sc0" id="y9i-Id-JZ7"/>
+                                            <outlet property="lblDate" destination="MMC-lO-Cxq" id="oxT-JA-hPx"/>
+                                            <outlet property="lblDesc" destination="zcK-rF-Q97" id="mgu-OG-Ayp"/>
+                                            <outlet property="lblTitle" destination="U31-Kc-IeL" id="kKL-3t-cTa"/>
+                                            <outlet property="lblValue" destination="Vye-cG-rpx" id="SkT-W6-Y6u"/>
+                                            <outlet property="viewCell" destination="rgI-ci-Sc0" id="yzT-g1-NIV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -285,6 +289,10 @@
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Q9x-ry-4ly" secondAttribute="trailing" constant="20" symbolic="YES" id="Ilz-bd-Twx"/>
                                     </constraints>
                                 </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="7iO-N9-R4a" id="W30-BR-9wC"/>
+                                    <outlet property="delegate" destination="7iO-N9-R4a" id="m8P-C6-5t8"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058819999999" green="0.98039215690000003" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -305,6 +313,7 @@
                         <outlet property="lblAccount" destination="qyw-Be-TRh" id="srx-vU-kXl"/>
                         <outlet property="lblBalance" destination="EH4-Ly-qQR" id="d2V-tf-N1Z"/>
                         <outlet property="lblUserName" destination="ce8-S6-mVq" id="hRf-wO-XOk"/>
+                        <outlet property="tblStatements" destination="vIY-JZ-N70" id="TQ4-e6-P3a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J0c-oB-eum" userLabel="First Responder" sceneMemberID="firstResponder"/>

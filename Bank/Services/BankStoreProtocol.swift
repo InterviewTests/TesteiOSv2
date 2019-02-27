@@ -8,4 +8,5 @@
 
 protocol BankStoreProtocol {
     func authenticate(user: String, password: String, completion: @escaping(User?, BankError?) -> Void) throws
+    func getStatements(userId: Int, completion: @escaping([Statement]?, BankError?) -> Void) throws
 }

@@ -51,6 +51,47 @@ class BankAPI: BankStoreProtocol {
         })
     }
     
+    func getStatements(userId: Int, completion: @escaping([Statement]?, BankError?) -> Void) throws {
+        requestData(method: .get, request: "\(Constants.urlAPI)statements/\(userId)", paramRequest: nil, completion: { (data) in
+            switch(data)
+            {
+            case .success(let dataResponse):
+                do {
+                    let jsonObject = try JSONSerialization.jsonObject(with: dataResponse, options: [])
+                    guard let jsonDictionary = jsonObject as? [String: Any] else {
+                        return
+                    }
+                    var total = 0
+                    for (key,values) in jsonDictionary
+                    {
+                        if(key == "error") {
+                            total = (values as! [String: AnyObject]).count
+                            if(total > 0) {
+                                let obj = try JSONDecoder().decode(ResponseError.self, from: try! JSONSerialization.data(withJSONObject: values, options: JSONSerialization.WritingOptions.prettyPrinted))
+                                completion(nil, .authenticationError(obj.message))
+                                break
+                            }
+                        }
+                        else if(key == "statementList") {
+                            total = (values as! [AnyObject]).count
+                            if(total > 0) {
+                                let obj = try JSONDecoder().decode([Statement].self, from: try! JSONSerialization.data(withJSONObject: values, options: JSONSerialization.WritingOptions.prettyPrinted))
+                                completion(obj, nil)
+                                break
+                            }
+                        }
+                    }
+                }
+                catch let error
+                {
+                    completion(nil, .badRequest(error.localizedDescription))
+                }
+            case .failed(let error):
+                completion(nil, .badRequest(error.localizedDescription))
+            }
+        })
+    }
+    
     private func requestData(method: HttpMethod, request: String, paramRequest: NSDictionary?, completion: @escaping(Result<BankError>) -> Void) {
         guard let url = URL(string: request) else {
             completion(.failed(.urlInvalid("Serviço requisitado inválido!")))

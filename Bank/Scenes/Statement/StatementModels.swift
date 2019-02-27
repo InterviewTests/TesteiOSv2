@@ -28,5 +28,11 @@ enum StatementView {
                 self.user = user
             }
         }
+        struct DisplayedStatementItem {
+            let title: String
+            let desc: String
+            let date: String
+            let value: String
+        }
     }
 }
