@@ -45,4 +45,16 @@ class Helpers {
         }
         return false
     }
+    
+    static func formmaterCurrency(value: Double?) -> String {
+        var description = "-"
+        let formatter = NumberFormatter()
+        formatter.locale =  Locale(identifier: "pt_BR")
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = "\(formatter.currencySymbol!) "
+        if let value = value, let formattedAmount = formatter.string(from: value as NSNumber) {
+             description = formattedAmount
+        }
+        return description
+    }
 }

@@ -9,6 +9,7 @@
 import Foundation
 
 @objc protocol StatementRoutingLogic {
+    func navigateToLogin()
 }
 
 protocol StatementDataPassing
@@ -19,4 +20,11 @@ protocol StatementDataPassing
 class StatementRouter: NSObject, StatementRoutingLogic, StatementDataPassing {
     weak var viewController: StatementVC?
     var dataStore: StatementDataStore?
+    
+    func navigateToLogin() {
+        viewController?.dismiss(animated: true, completion: {
+            self.viewController = nil
+            self.dataStore = nil;
+        })
+    }
 }

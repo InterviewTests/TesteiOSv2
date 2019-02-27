@@ -9,7 +9,8 @@
 import Foundation
 
 protocol StatementBusinessLogic {
-    
+    func loadViewData()
+    func cleanData()
 }
 
 protocol StatementDataStore {
@@ -17,5 +18,21 @@ protocol StatementDataStore {
 }
 
 class StatementInteractor: StatementBusinessLogic, StatementDataStore {
+    var presenter: StatementPresentationLogic?
+    
     var user: User?
+    var statementUser: StatementView.ViewModel.DisplayedStatementUser?
+    
+    func loadViewData() {
+        if(statementUser == nil) {
+            statementUser = StatementView.ViewModel.DisplayedStatementUser(user: user)
+        }
+        presenter?.loadViewData(user: statementUser)
+    }
+    
+    func cleanData() {
+        user = nil
+        statementUser = nil
+        presenter?.cleanData()
+    }
 }
