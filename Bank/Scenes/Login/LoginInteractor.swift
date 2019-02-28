@@ -23,6 +23,14 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var bankWorker = BankWorker(bankStore: BankAPI())
     var user: User?
     
+    init() {
+        
+    }
+    
+    init(worker: BankWorker) {
+        bankWorker = worker
+    }
+    
     func autenticate(request: Login.ViewModel.DiplayedUser) {
         bankWorker.authenticate(user: request.login, password: request.password) { (user, error) in
             if let error = error
@@ -51,7 +59,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             dataValid = false
             message += "\r\nInforme o nome do usuário!"
         }
-        else if(Helpers.isValidEmail(email: user.login) || Helpers.isValidCPF(cpf: user.login))
+        else if(!Helpers.isValidEmail(email: user.login) && !Helpers.isValidCPF(cpf: user.login))
         {
             dataValid = false
             message += "\r\nInforme um usuário válido!"

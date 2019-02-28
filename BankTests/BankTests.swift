@@ -2,12 +2,11 @@
 //  BankTests.swift
 //  BankTests
 //
-//  Created by Administrador on 26/02/2019.
+//  Created by Administrador on 28/02/2019.
 //  Copyright © 2019 Bank Co. All rights reserved.
 //
 
 import XCTest
-@testable import Bank
 
 class BankTests: XCTestCase {
 

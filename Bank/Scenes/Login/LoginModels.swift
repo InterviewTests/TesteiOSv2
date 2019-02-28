@@ -17,7 +17,7 @@ enum Login {
             func isPasswordValid() -> Bool {
                 return password.rangeOfCharacter(from: CharacterSet.uppercaseLetters) != nil
                     && password.rangeOfCharacter(from: CharacterSet.lowercaseLetters) != nil
-                    && password.rangeOfCharacter(from: CharacterSet.alphanumerics) != nil
+                    && password.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil
                     && password.rangeOfCharacter(from: CharacterSet.punctuationCharacters) != nil
             }
         }

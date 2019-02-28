@@ -39,6 +39,7 @@ class StatementVC: BankViewController, StatementDisplayLogic, UICollectionViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        ModalView.showModalView(viewController: self, text: "Carregando ...")
         interactor?.loadViewData()
     }
     
@@ -71,6 +72,7 @@ class StatementVC: BankViewController, StatementDisplayLogic, UICollectionViewDe
     }
     
     func setStatements(statementsDisplay: [StatementView.ViewModel.DisplayedStatementItem]) {
+        ModalView.hiddenModalView(viewController: self)
         self.statementsDisplay = statementsDisplay
         tblStatements.reloadData()
     }

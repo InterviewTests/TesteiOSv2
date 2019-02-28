@@ -12,6 +12,7 @@ import SwiftKeychainWrapper
 protocol LoginDisplayLogic: class {
     func showErrorMessage(message: String)
     func routeShowStatement()
+    func hiddenModal()
 }
 
 class LoginVC: BankViewController, LoginDisplayLogic, UITextFieldDelegate {
@@ -60,6 +61,7 @@ class LoginVC: BankViewController, LoginDisplayLogic, UITextFieldDelegate {
     }
     
     @objc private func autenticate() {
+        ModalView.showModalView(viewController: self, text: "Autenticando ...")
         interactor?.validateLoginData(user: Login.ViewModel.DiplayedUser(login: txtUser.text ?? "", password: txtPassword.text ?? ""))
     }
     
@@ -77,6 +79,7 @@ class LoginVC: BankViewController, LoginDisplayLogic, UITextFieldDelegate {
     }
     
     func routeShowStatement() {
+        ModalView.hiddenModalView(viewController: self)
         let selector = NSSelectorFromString("routeToShowStatement")
         if let router = router, router.responds(to: selector) {
             router.perform(selector)

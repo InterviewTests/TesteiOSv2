@@ -7,15 +7,8 @@ target 'Bank' do
 
   # Pods for Bank
   pod 'SwiftKeychainWrapper'
-
+  
   target 'BankTests' do
     inherit! :search_paths
-    # Pods for testing
   end
-
-  target 'BankUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
