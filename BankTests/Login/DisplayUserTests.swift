@@ -26,7 +26,7 @@ class DisplayUserTests: XCTestCase {
         XCTAssert(!user.isPasswordValid(), "A senha tem que ter pelo menos uma caracter especial")
         
         
-        user.password = "Test@"
+        user.password = "@"
         XCTAssert(!user.isPasswordValid(), "A senha tem que ter pelo menos uma caracter alfanumérico")
     }
 

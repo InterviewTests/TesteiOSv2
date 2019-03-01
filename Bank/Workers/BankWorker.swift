@@ -8,7 +8,12 @@
 
 import Foundation
 
-class BankWorker {
+protocol BankWorkerProtocol {
+    func authenticate(user: String, password: String, completion: @escaping(User?, BankError?) -> Void)
+    func getStatements(userId: Int, completion: @escaping([Statement]?, BankError?) -> Void) throws
+}
+
+class BankWorker: BankWorkerProtocol {
     var bankStore: BankStoreProtocol
     
     init(bankStore: BankStoreProtocol) {

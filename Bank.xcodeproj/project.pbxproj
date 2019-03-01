@@ -36,6 +36,8 @@
 		837AF0D32228980B00865899 /* StatementModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0DFA2225BBFD003D268B /* StatementModels.swift */; };
 		837AF0D42228980B00865899 /* StatementWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0DFC2225BC10003D268B /* StatementWorker.swift */; };
 		837AF0D52228980B00865899 /* StatementRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0DFE2225BC1B003D268B /* StatementRouter.swift */; };
+		837AF0D722297FA800865899 /* LoginVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837AF0D622297FA800865899 /* LoginVCTests.swift */; };
+		837AF0D82229831C00865899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 837C0D9822257B2C003D268B /* Main.storyboard */; };
 		837C0D9522257B2C003D268B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0D9422257B2C003D268B /* AppDelegate.swift */; };
 		837C0D9A22257B2C003D268B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 837C0D9822257B2C003D268B /* Main.storyboard */; };
 		837C0D9C22257B31003D268B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 837C0D9B22257B31003D268B /* Assets.xcassets */; };
@@ -66,7 +68,6 @@
 		837C0E042225BECA003D268B /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0E032225BECA003D268B /* BankViewController.swift */; };
 		837C0E072227231F003D268B /* StatementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0E062227231F003D268B /* StatementCell.swift */; };
 		837C0E112228413F003D268B /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0E102228413F003D268B /* ModalView.swift */; };
-		837C0E5A22286D73003D268B /* BankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0E5922286D73003D268B /* BankTests.swift */; };
 		837C0E652228938A003D268B /* DisplayUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0E642228938A003D268B /* DisplayUserTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		44BDB1EDCA631379302A78BD /* Pods_BankTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81DC1F23BE8621092E7CB06B /* Pods-Bank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bank/Pods-Bank.release.xcconfig"; sourceTree = "<group>"; };
 		837AF0B52228972900865899 /* LoginInterectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInterectorTests.swift; sourceTree = "<group>"; };
+		837AF0D622297FA800865899 /* LoginVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCTests.swift; sourceTree = "<group>"; };
 		837C0D9122257B2C003D268B /* Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		837C0D9422257B2C003D268B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		837C0D9922257B2C003D268B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,7 +121,6 @@
 		837C0E062227231F003D268B /* StatementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCell.swift; sourceTree = "<group>"; };
 		837C0E102228413F003D268B /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		837C0E5722286D72003D268B /* BankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		837C0E5922286D73003D268B /* BankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTests.swift; sourceTree = "<group>"; };
 		837C0E5B22286D73003D268B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		837C0E642228938A003D268B /* DisplayUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUserTests.swift; sourceTree = "<group>"; };
 		8B96E685A3605E80CD291851 /* Pods-BankUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankUITests/Pods-BankUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +161,13 @@
 				BC4BF21781B4CC9E424A5D9C /* Pods-BankUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		837AF0D922298E6000865899 /* Statement */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Statement;
 			sourceTree = "<group>";
 		};
 		837C0D8822257B2C003D268B = {
@@ -335,8 +343,8 @@
 		837C0E5822286D73003D268B /* BankTests */ = {
 			isa = PBXGroup;
 			children = (
+				837AF0D922298E6000865899 /* Statement */,
 				837C0E682228962A003D268B /* Login */,
-				837C0E5922286D73003D268B /* BankTests.swift */,
 				837C0E5B22286D73003D268B /* Info.plist */,
 			);
 			path = BankTests;
@@ -347,6 +355,7 @@
 			children = (
 				837AF0B52228972900865899 /* LoginInterectorTests.swift */,
 				837C0E642228938A003D268B /* DisplayUserTests.swift */,
+				837AF0D622297FA800865899 /* LoginVCTests.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -455,6 +464,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				837AF0D82229831C00865899 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,7 +581,6 @@
 				837AF0CA222897D700865899 /* Result.swift in Sources */,
 				837AF0C5222897D000865899 /* User.swift in Sources */,
 				837AF0BD2228979300865899 /* LoginPresenter.swift in Sources */,
-				837C0E5A22286D73003D268B /* BankTests.swift in Sources */,
 				837AF0C9222897D300865899 /* ModalView.swift in Sources */,
 				837C0E652228938A003D268B /* DisplayUserTests.swift in Sources */,
 				837AF0D52228980B00865899 /* StatementRouter.swift in Sources */,
@@ -584,6 +593,7 @@
 				837AF0BB2228979300865899 /* LoginVC.swift in Sources */,
 				837AF0D02228980B00865899 /* StatementVC.swift in Sources */,
 				837AF0C4222897C700865899 /* BankWorker.swift in Sources */,
+				837AF0D722297FA800865899 /* LoginVCTests.swift in Sources */,
 				837AF0C02228979300865899 /* LoginRouter.swift in Sources */,
 				837AF0CD222897DA00865899 /* Constants.swift in Sources */,
 				837AF0BC2228979300865899 /* LoginInteractor.swift in Sources */,
