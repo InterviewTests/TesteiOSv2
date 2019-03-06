@@ -9,7 +9,6 @@
 import Foundation
 
 struct UserLogin: Encodable {
-    
     var user: String?
     var password: String?
     

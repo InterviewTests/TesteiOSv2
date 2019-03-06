@@ -9,6 +9,5 @@
 import Foundation
 
 enum ErrorType {
-    
     case loginError
 }

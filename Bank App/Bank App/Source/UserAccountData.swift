@@ -9,6 +9,5 @@
 import Foundation
 
 protocol UserAccountData {
-    
     var userAccount: UserAccountable? { get set }
 }

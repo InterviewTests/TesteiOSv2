@@ -9,7 +9,6 @@
 import Foundation
 
 struct StatementResponse: Decodable {
-    
     let statementList: [Statement]?
     let error: BankError?
     

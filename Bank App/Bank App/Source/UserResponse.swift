@@ -9,7 +9,6 @@
 import Foundation
 
 struct UserResponse {
-    
     let userAccount: UserAccount?
     let error: BankError?
     

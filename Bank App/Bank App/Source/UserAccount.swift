@@ -9,7 +9,6 @@
 import Foundation
 
 struct UserAccount: UserAccountable, Decodable {
-    
     var userId: Int?
     var name: String?
     var bankAccount: String?
