@@ -13,16 +13,13 @@ class KeychainWorker: KeychainWorkerProtocol {
     
     var keychainAcess: KeychainSwift
     
-    internal var loginKey = "keychain_user_login"
-    internal var passwordKey = "keychain_user_password"
-    
     init () {
         self.keychainAcess = KeychainSwift()
     }
     
     func getUserLogin() -> UserLogin {
-        let user = keychainAcess.get(loginKey)
-        let password = keychainAcess.get(passwordKey)
+        let user = keychainAcess.get(UserLogin().userKeychainKey())
+        let password = keychainAcess.get(UserLogin().passwordKeychainKey())
         
         return UserLogin.init(user: user, password: password)
     }
@@ -31,12 +28,12 @@ class KeychainWorker: KeychainWorkerProtocol {
         guard let user = login.user else { return }
         guard let password = login.password else { return }
         
-        keychainAcess.set(user, forKey: loginKey)
-        keychainAcess.set(password, forKey: passwordKey)
+        keychainAcess.set(user, forKey: login.userKeychainKey())
+        keychainAcess.set(password, forKey: login.passwordKeychainKey())
     }
     
     func deleteUser() {
-        keychainAcess.delete(loginKey)
-        keychainAcess.delete(passwordKey)
+        keychainAcess.delete(UserLogin().userKeychainKey())
+        keychainAcess.delete(UserLogin().passwordKeychainKey())
     }
 }

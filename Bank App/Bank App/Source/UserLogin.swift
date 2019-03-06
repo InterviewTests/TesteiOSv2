@@ -16,4 +16,17 @@ struct UserLogin: Encodable {
         case user
         case password
     }
+    
+    private enum KeychainKey: String {
+        case user = "keychain_user_login"
+        case password = "keychain_user_password"
+    }
+    
+    func userKeychainKey() -> String {
+        return KeychainKey.user.rawValue
+    }
+    
+    func passwordKeychainKey() -> String {
+        return KeychainKey.user.rawValue
+    }
 }
