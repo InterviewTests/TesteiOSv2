@@ -11,24 +11,23 @@ import XCTest
 class LoginInterectorTests: XCTestCase {
     
     var loginInteractor: LoginInteractor!
+    static var allowSuccess: Bool = false
     
     class LoginPresenterMocker: LoginPresentationLogic {
         var expectedMsg: String = ""
-        var allowSuccess: Bool = false
         func showErrorMessage(message: String) {
-            XCTAssert(!allowSuccess, "Validação incorreta")
+            XCTAssert(!LoginInterectorTests.allowSuccess, "Validação incorreta")
             XCTAssertEqual(expectedMsg, message, "Esperado:\(expectedMsg) | Retornado:\(message)")
         }
         
         func routeShowStatement() {
-            XCTAssert(allowSuccess, "Os dados não estão corretos para chamar Route")
+            XCTAssert(LoginInterectorTests.allowSuccess, "Os dados não estão corretos para chamar Route")
         }
     }
     
     class LoginWorkerMoker: BankWorkerProtocol {
-        var allowSuccess: Bool = false
         func authenticate(user: String, password: String, completion: @escaping (User?, BankError?) -> Void) {
-            XCTAssert(allowSuccess, "Os dados não estão corretos para chamar authenticate")
+            XCTAssert(LoginInterectorTests.allowSuccess, "Os dados não estão corretos para chamar authenticate")
             completion(nil,nil)
         }
         
@@ -50,8 +49,7 @@ class LoginInterectorTests: XCTestCase {
     func testValidadeMessageAutentication() {
         
         let presentation: LoginPresenterMocker = loginInteractor.presenter! as! LoginInterectorTests.LoginPresenterMocker
-        presentation.allowSuccess = false
-        (loginInteractor.bankWorker as! LoginWorkerMoker).allowSuccess = false
+        LoginInterectorTests.allowSuccess = false
         
         var user = Login.ViewModel.DiplayedUser(login:"",password: "Test@1")
         presentation.expectedMsg = "\r\nInforme o nome do usuário!"
@@ -69,10 +67,11 @@ class LoginInterectorTests: XCTestCase {
         user.password = "@"
         presentation.expectedMsg = "\r\nSenha incorreta!"
         loginInteractor.validateLoginData(user: user)
-        
-        user.password = "T@"
-        presentation.allowSuccess = true
-        (loginInteractor.bankWorker as! LoginWorkerMoker).allowSuccess = true
+    }
+    
+    func testValidadeAutentication() {
+        let user = Login.ViewModel.DiplayedUser(login:"teste@teste.com.br",password: "Test@1")
+        LoginInterectorTests.allowSuccess = true
         loginInteractor.validateLoginData(user: user)
     }
 }

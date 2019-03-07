@@ -33,6 +33,13 @@ enum StatementView {
             let desc: String
             let date: String
             let value: String
+            
+            init(title: String, desc: String, date: String, value: String) {
+                self.title = title
+                self.desc = desc
+                self.date = date
+                self.value = value
+            }
         }
     }
 }

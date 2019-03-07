@@ -37,15 +37,13 @@ class StatementPresenter: StatementPresentationLogic {
     }
     
     func loadViewDataUser(user: User?) {
-        DispatchQueue.main.async {
-            if let user = user {
-                let statementUser = StatementView.ViewModel.DisplayedStatementUser(user: user)
-                self.viewController!.setUserData(statementUser)
-            }
-            else
-            {
-                self.viewController!.setUserData(StatementView.ViewModel.DisplayedStatementUser(user: nil))
-            }
+        if let user = user {
+            let statementUser = StatementView.ViewModel.DisplayedStatementUser(user: user)
+            self.viewController!.setUserData(statementUser)
+        }
+        else
+        {
+            self.viewController!.setUserData(StatementView.ViewModel.DisplayedStatementUser(user: nil))
         }
     }
     

@@ -21,7 +21,15 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore {
     var presenter: StatementPresentationLogic?
     
     var user: User?
-    var bankWorker = BankWorker(bankStore: BankAPI())
+    var bankWorker: BankWorkerProtocol
+    
+    init() {
+        bankWorker = BankWorker(bankStore: BankAPI())
+    }
+    
+    init(worker: BankWorkerProtocol) {
+        bankWorker = worker
+    }
     
     func loadViewData() {
         presenter?.loadViewDataUser(user: user)
@@ -29,7 +37,14 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore {
             try bankWorker.getStatements(userId: (user?.userId)!) { (statementsApi, error) in
                 if let error = error
                 {
-                    self.presenter?.showErrorMessage(message: error.localizedDescription)
+                    var errorMsg = ""
+                    switch (error) {
+                    case .badRequest(let msg), .urlInvalid(let msg):
+                        errorMsg = msg
+                    case .authenticationError(_):
+                        errorMsg = "Ocorreu um erro não esperado. Cod.: 1"
+                    }
+                    self.presenter?.showErrorMessage(message: errorMsg)
                     self.presenter?.loadViewDataStatement(statements: nil)
                 }
                 else
