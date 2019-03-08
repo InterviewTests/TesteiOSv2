@@ -20,14 +20,14 @@ protocol LoginDataStore {
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
     
-    var bankWorker: BankWorkerProtocol
+    var bankWorker: LoginWorkerProtocol
     var user: User?
     
     init() {
-       bankWorker = BankWorker(bankStore: BankAPI())
+        bankWorker = LoginWorker(bankStore: BankAPI())
     }
     
-    init(worker: BankWorkerProtocol) {
+    init(worker: LoginWorkerProtocol) {
         bankWorker = worker
     }
     

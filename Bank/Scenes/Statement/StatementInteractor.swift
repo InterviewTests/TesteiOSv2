@@ -21,13 +21,13 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore {
     var presenter: StatementPresentationLogic?
     
     var user: User?
-    var bankWorker: BankWorkerProtocol
+    var bankWorker: StatementWorkerProtocol
     
     init() {
-        bankWorker = BankWorker(bankStore: BankAPI())
+        bankWorker = StatementWorker(bankStore: BankAPI())
     }
     
-    init(worker: BankWorkerProtocol) {
+    init(worker: StatementWorkerProtocol) {
         bankWorker = worker
     }
     

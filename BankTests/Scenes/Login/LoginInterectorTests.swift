@@ -25,14 +25,10 @@ class LoginInterectorTests: XCTestCase {
         }
     }
     
-    class LoginWorkerMoker: BankWorkerProtocol {
+    class LoginWorkerMoker: LoginWorkerProtocol {
         func authenticate(user: String, password: String, completion: @escaping (User?, BankError?) -> Void) {
             XCTAssert(LoginInterectorTests.allowSuccess, "Os dados não estão corretos para chamar authenticate")
             completion(nil,nil)
-        }
-        
-        func getStatements(userId: Int, completion: @escaping ([Statement]?, BankError?) -> Void) throws {
-            
         }
     }
     

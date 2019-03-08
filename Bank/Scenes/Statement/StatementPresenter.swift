@@ -21,14 +21,12 @@ class StatementPresenter: StatementPresentationLogic {
     let dateShort: DateFormatter = {
         let dateShort = DateFormatter()
         dateShort.dateFormat = "yyyy-MM-dd"
-        //dateShort.timeStyle = .none
         return dateShort
     }()
     
     let dateDisplay: DateFormatter = {
         let dateDisplay = DateFormatter()
         dateDisplay.dateFormat = "dd/MM/yyyy"
-        //dateDisplay.timeStyle = .none
         return dateDisplay
     }()
     

@@ -44,11 +44,7 @@ class StatementInteractorTests: XCTestCase {
         }
     }
     
-    class StatementWorkerMoker: BankWorkerProtocol {
-        func authenticate(user: String, password: String, completion: @escaping (User?, BankError?) -> Void) {
-            
-        }
-        
+    class StatementWorkerMoker: StatementWorkerProtocol {
         func getStatements(userId: Int, completion: @escaping ([Statement]?, BankError?) -> Void) throws {
             if(userId == 0) {
                 completion(nil, .badRequest(errorMessageRequest))

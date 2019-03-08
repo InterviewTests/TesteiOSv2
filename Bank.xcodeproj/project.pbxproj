@@ -71,6 +71,7 @@
 		837C0E652228938A003D268B /* DisplayUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C0E642228938A003D268B /* DisplayUserTests.swift */; };
 		837C294C22316B03003D031C /* StatementInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C294B22316B03003D031C /* StatementInteractorTests.swift */; };
 		837C29502231C8CA003D031C /* StatetmentPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C294F2231C8CA003D031C /* StatetmentPresenterTests.swift */; };
+		837C29542232019C003D031C /* BankAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C29532232019C003D031C /* BankAPITest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		837C0E642228938A003D268B /* DisplayUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUserTests.swift; sourceTree = "<group>"; };
 		837C294B22316B03003D031C /* StatementInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementInteractorTests.swift; sourceTree = "<group>"; };
 		837C294F2231C8CA003D031C /* StatetmentPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatetmentPresenterTests.swift; sourceTree = "<group>"; };
+		837C29532232019C003D031C /* BankAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAPITest.swift; sourceTree = "<group>"; };
 		8B96E685A3605E80CD291851 /* Pods-BankUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankUITests/Pods-BankUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8A956503E7922B90D89749A /* Pods-Bank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bank/Pods-Bank.debug.xcconfig"; sourceTree = "<group>"; };
 		BC4BF21781B4CC9E424A5D9C /* Pods-BankUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BankUITests/Pods-BankUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -349,8 +351,8 @@
 		837C0E5822286D73003D268B /* BankTests */ = {
 			isa = PBXGroup;
 			children = (
-				837AF0D922298E6000865899 /* Statement */,
-				837C0E682228962A003D268B /* Login */,
+				837C2952223200C3003D031C /* Services */,
+				837C2951223200A1003D031C /* Scenes */,
 				837C0E5B22286D73003D268B /* Info.plist */,
 			);
 			path = BankTests;
@@ -364,6 +366,23 @@
 				837AF0D622297FA800865899 /* LoginVCTests.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		837C2951223200A1003D031C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				837AF0D922298E6000865899 /* Statement */,
+				837C0E682228962A003D268B /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		837C2952223200C3003D031C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				837C29532232019C003D031C /* BankAPITest.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		A10AB7C4825E02CDD36708B2 /* Frameworks */ = {
@@ -586,6 +605,7 @@
 			files = (
 				837AF0CA222897D700865899 /* Result.swift in Sources */,
 				837AF0C5222897D000865899 /* User.swift in Sources */,
+				837C29542232019C003D031C /* BankAPITest.swift in Sources */,
 				837AF0BD2228979300865899 /* LoginPresenter.swift in Sources */,
 				837AF0C9222897D300865899 /* ModalView.swift in Sources */,
 				837C0E652228938A003D268B /* DisplayUserTests.swift in Sources */,
