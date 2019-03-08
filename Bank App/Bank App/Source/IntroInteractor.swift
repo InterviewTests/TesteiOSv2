@@ -17,10 +17,11 @@ protocol IntroBusinessLogic {
     func tryAutoLogin()
     func resetStatusBar()
     func verifyFields(_ fields: [UITextField])
+    func registerNotifications()
 }
 
 class IntroInteractor: IntroBusinessLogic, UserAccountData {
-    
+
     var userAccount: UserAccountable?
     var presenter: IntroPresentationLogic?
     
@@ -81,8 +82,20 @@ class IntroInteractor: IntroBusinessLogic, UserAccountData {
         }
     }
     
+    /// Register notification centter
+    func registerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showData(_:)), name: NSNotification.Name(rawValue: Notification.dataFromWatch.rawValue), object: nil)
+    }
+    
+    @objc func showData(_ notification: NSNotification) {
+        print(notification.userInfo)
+    }
+}
+
+extension IntroInteractor {
+    
     /// Asks for user validation.
-    private func validUserPassword(_ user: UserLogin) -> Bool {
+    fileprivate func validUserPassword(_ user: UserLogin) -> Bool {
         guard let password = user.password else { return false }
         return password.isValidPassword()
     }

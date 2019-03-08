@@ -8,13 +8,29 @@
 
 import WatchKit
 import Foundation
+import UIKit
+import WatchConnectivity
 
 class InterfaceController: WKInterfaceController {
-
+    
+    @IBOutlet weak var lbName: WKInterfaceLabel!
+    @IBOutlet weak var lbAgency: WKInterfaceLabel!
+    @IBOutlet weak var lbAccount: WKInterfaceLabel!
+    @IBOutlet weak var lbBalance: WKInterfaceLabel!
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        // Configure interface objects here.
+        setup()
+    }
+    
+    override func didAppear() {
+        super.didAppear()
+        let information: [String : Any] = ["data": "requestUserData"]
+        WCSession.default.transferUserInfo(information)
+    }
+    
+    private func setup() {
     }
     
     override func willActivate() {

@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        configureWatchConnectivity()
+        
         return true
     }
 
@@ -43,3 +45,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+extension AppDelegate {
+    
+    fileprivate func configureWatchConnectivity() {
+        if WCSession.isSupported() {
+            WCSession.default.delegate = self
+            WCSession.default.activate()
+        }
+    }
+    
+    @available(iOS 9.3, *)
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        switch activationState {
+        case .activated:
+            print("Conectivity has been activated")
+        default:
+            print("Some error is occour \(error?.localizedDescription)")
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        // ...
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        // ...
+    }
+    
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.dataFromWatch.rawValue), object: nil, userInfo: userInfo)
+    }
+}

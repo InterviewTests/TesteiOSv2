@@ -22,6 +22,7 @@ class BankHistoryInteractor: BankHistoryInteractionLogic, UserAccountData {
     var userAccount: UserAccountable?
     var presenter: BankHistoryPresentationLogic?
     
+    /// Perform request for statementList
     func getStatementList(by user: UserAccountable) {
         guard let userId = user.userId else { return }
         
@@ -40,7 +41,7 @@ class BankHistoryInteractor: BankHistoryInteractionLogic, UserAccountData {
     }
     
     func configureStatusBar() {
-        let hexColor = "#3B49EE".hexColor()
+        let hexColor = Constants.hexColors.purple.rawValue.hexColor()
         presenter?.configureStatusBar(statusBarStyle: .lightContent, backgroudColor: hexColor)
     }
     
