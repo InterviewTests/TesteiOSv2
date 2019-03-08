@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import WatchConnectivity
 
 /*
  - Trata das ações de interação fora do app, servidor, cor data entre outros.
@@ -17,7 +18,6 @@ protocol IntroBusinessLogic {
     func tryAutoLogin()
     func resetStatusBar()
     func verifyFields(_ fields: [UITextField])
-    func registerNotifications()
 }
 
 class IntroInteractor: IntroBusinessLogic, UserAccountData {
@@ -60,6 +60,7 @@ class IntroInteractor: IntroBusinessLogic, UserAccountData {
                 self.userAccount = userAccount
                 
                 KeychainWorker().saveUserLogin(login: user)
+                self.sendUserAccountToAppleWatch(userAccount)
                 self.presenter?.showHistoryController()
             }
         }
@@ -81,15 +82,6 @@ class IntroInteractor: IntroBusinessLogic, UserAccountData {
             presenter?.enableLoginButton(!enabled.contains(false))
         }
     }
-    
-    /// Register notification centter
-    func registerNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.showData(_:)), name: NSNotification.Name(rawValue: Notification.dataFromWatch.rawValue), object: nil)
-    }
-    
-    @objc func showData(_ notification: NSNotification) {
-        print(notification.userInfo)
-    }
 }
 
 extension IntroInteractor {
@@ -98,5 +90,20 @@ extension IntroInteractor {
     fileprivate func validUserPassword(_ user: UserLogin) -> Bool {
         guard let password = user.password else { return false }
         return password.isValidPassword()
+    }
+    
+    fileprivate func sendDataFromAppleWatch(dict: [String: Any]) {
+        do {
+            try WCSession.default.updateApplicationContext(dict)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    fileprivate func sendUserAccountToAppleWatch(_ userAccount: UserAccountable) {
+        sendDataFromAppleWatch(dict: ["name": userAccount.name])
+        sendDataFromAppleWatch(dict: ["agency": userAccount.agency])
+        sendDataFromAppleWatch(dict: ["bankAccount": userAccount.bankAccount])
+        sendDataFromAppleWatch(dict: ["balance": userAccount.balance])
     }
 }

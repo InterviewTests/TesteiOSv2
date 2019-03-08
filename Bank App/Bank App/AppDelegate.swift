@@ -73,6 +73,6 @@ extension AppDelegate {
     }
     
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.dataFromWatch.rawValue), object: nil, userInfo: userInfo)
+        // ...
     }
 }

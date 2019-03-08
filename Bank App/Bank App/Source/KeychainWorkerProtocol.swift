@@ -9,7 +9,6 @@
 import Foundation
 
 protocol KeychainWorkerProtocol {
-    
     func getUserLogin() -> UserLogin
     func saveUserLogin(login: UserLogin)
     func deleteUser()

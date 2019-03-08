@@ -14,17 +14,9 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Bank_Watch_App" customModuleProvider="target">
                     <items>
-                        <label width="1" alignment="left" text="Name" textAlignment="left" id="7gJ-c1-UCK">
-                            <color key="textColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </label>
                         <label width="1" alignment="left" text="..." numberOfLines="2" id="M6Q-rK-Dgo">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </label>
-                        <label width="1" alignment="left" text="Agency" textAlignment="left" id="GtZ-ma-WOl">
-                            <color key="textColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </label>
-                        <label width="1" alignment="left" text="..." numberOfLines="2" id="Cgf-qh-qM7">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" style="UICTFontTextStyleTitle1"/>
                         </label>
                         <label width="1" alignment="left" text="Account" textAlignment="left" id="jhm-zo-bYu">
                             <color key="textColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,8 +33,9 @@
                     </items>
                     <connections>
                         <outlet property="lbAccount" destination="1H0-v3-Vid" id="knm-ig-W5N"/>
-                        <outlet property="lbAgency" destination="Cgf-qh-qM7" id="RvO-iT-fBH"/>
+                        <outlet property="lbAccountTitle" destination="jhm-zo-bYu" id="Jgs-u1-ngz"/>
                         <outlet property="lbBalance" destination="JMk-he-uBn" id="flP-Fg-9Mz"/>
+                        <outlet property="lbBalanceTitle" destination="88r-Vo-W4h" id="sDT-pI-XfZ"/>
                         <outlet property="lbName" destination="M6Q-rK-Dgo" id="Tfu-f8-wFh"/>
                     </connections>
                 </controller>

@@ -30,6 +30,7 @@ extension UILabel: XIBLocalizable {
         }
     }
 }
+
 extension UIButton: XIBLocalizable {
     @IBInspectable var xibLocKey: String? {
         get { return nil }

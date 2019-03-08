@@ -21,8 +21,6 @@ class BankAPI: BankAPIProtocol {
     var urlScheme = "https"
     var urlPath = ""
     
-    var parameters: [[String: String]]? = []
-    
     func loginUser(login: UserLogin, completionHandler: @escaping (UserResponse?) -> Void) {
         
         let encoder = JSONEncoder()

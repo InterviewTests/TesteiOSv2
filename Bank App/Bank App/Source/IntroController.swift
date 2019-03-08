@@ -76,7 +76,6 @@ class IntroController: UIViewController, IntroDisplayLogic {
         passwordTf.delegate = self
         userTf.delegate = self
         
-        interactor?.registerNotifications()
         tryAutoLogin()
         setupUIElements()
     }

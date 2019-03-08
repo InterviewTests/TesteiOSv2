@@ -11,7 +11,7 @@ import UIKit
 
 class BankHistoryHeaderView: UIView {
     
-    @IBOutlet weak var lbUserName: UILabel!
+    @IBOutlet weak var lbUserName: UILabel?
     @IBOutlet weak var lbUserAccountNumber: UILabel!
     @IBOutlet weak var lbUserBalance: UILabel!
     
@@ -23,6 +23,10 @@ class BankHistoryHeaderView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func animate() {
+        lbUserName?.animatedLoading()
     }
     
     func configure(_ user: UserAccountable) {

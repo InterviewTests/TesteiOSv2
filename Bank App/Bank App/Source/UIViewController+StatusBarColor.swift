@@ -18,7 +18,7 @@ extension UIViewController {
             }
         }
         else {
-            UIApplication.shared.statusBarStyle = style
+            // ...
         }
     }
     
@@ -30,7 +30,7 @@ extension UIViewController {
             }
         }
         else {
-            UIApplication.shared.statusBarStyle = style
+            //...
         }
     }
 }

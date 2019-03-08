@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum RequestType: String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+}
+
 extension BankAPI {
     
     func urlRequest(type: RequestType, params: Any?, completionHandler: @escaping (Data?) -> Void) {
@@ -58,10 +64,4 @@ extension BankAPI {
         let error = try? JSONSerialization.jsonObject(with: data, options: [])
         print(error)
     }
-}
-
-enum RequestType: String {
-    case get = "GET"
-    case post = "POST"
-    case put = "PUT"
 }
