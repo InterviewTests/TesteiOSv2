@@ -10,6 +10,13 @@
 		18C305DB89594B4F761AA6EB /* Pods_Bank_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC297534D8E43F6E19E4E25F /* Pods_Bank_App.framework */; };
 		78224099221C42A90056ED10 /* IntroControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78224098221C42A90056ED10 /* IntroControllerUITests.swift */; };
 		7882FE1C221C50C5008B6AC7 /* KIFHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7882FE1B221C50C5008B6AC7 /* KIFHelper.swift */; };
+		789A07A02232A30900ACD61D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789A079E2232A30900ACD61D /* Interface.storyboard */; };
+		789A07A22232A30A00ACD61D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789A07A12232A30A00ACD61D /* Assets.xcassets */; };
+		789A07A92232A30A00ACD61D /* Bank Watch App Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 789A07A82232A30A00ACD61D /* Bank Watch App Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		789A07AE2232A30A00ACD61D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789A07AD2232A30A00ACD61D /* InterfaceController.swift */; };
+		789A07B02232A30A00ACD61D /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789A07AF2232A30A00ACD61D /* ExtensionDelegate.swift */; };
+		789A07B22232A30B00ACD61D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789A07B12232A30B00ACD61D /* Assets.xcassets */; };
+		789A07B62232A30B00ACD61D /* Bank Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 789A079C2232A30900ACD61D /* Bank Watch App.app */; };
 		789B921E221C7AE400701C86 /* BankHistoryControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B921D221C7AE400701C86 /* BankHistoryControllerUITests.swift */; };
 		789B922D221D973C00701C86 /* IntroControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B9229221D973C00701C86 /* IntroControllerTests.swift */; };
 		789B922E221D973C00701C86 /* IntroInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B922A221D973C00701C86 /* IntroInteractorTests.swift */; };
@@ -76,6 +83,20 @@
 			remoteGlobalIDString = B86E3F4921A62B0700A9B84F;
 			remoteInfo = "Bank App";
 		};
+		789A07AA2232A30A00ACD61D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B86E3F4221A62B0700A9B84F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 789A07A72232A30A00ACD61D;
+			remoteInfo = "Bank Watch App Extension";
+		};
+		789A07B42232A30B00ACD61D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B86E3F4221A62B0700A9B84F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 789A079B2232A30900ACD61D;
+			remoteInfo = "Bank Watch App";
+		};
 		B879C06621E6B4B700ED1591 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B86E3F4221A62B0700A9B84F /* Project object */;
@@ -85,6 +106,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		789A07BC2232A30B00ACD61D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				789A07A92232A30A00ACD61D /* Bank Watch App Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		789A07BE2232A30B00ACD61D /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				789A07B62232A30B00ACD61D /* Bank Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		24A69C4A2103C87D6E1BFE44 /* Pods-Bank App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bank App/Pods-Bank App.release.xcconfig"; sourceTree = "<group>"; };
 		27B341741942221D8AB10AA4 /* Pods_Bank_App_Bank_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bank_App_Bank_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +139,15 @@
 		7822409A221C42A90056ED10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		782240C2221C49F30056ED10 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		7882FE1B221C50C5008B6AC7 /* KIFHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KIFHelper.swift; sourceTree = "<group>"; };
+		789A079C2232A30900ACD61D /* Bank Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bank Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		789A079F2232A30900ACD61D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		789A07A12232A30A00ACD61D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		789A07A32232A30A00ACD61D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		789A07A82232A30A00ACD61D /* Bank Watch App Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Bank Watch App Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		789A07AD2232A30A00ACD61D /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		789A07AF2232A30A00ACD61D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		789A07B12232A30B00ACD61D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		789A07B32232A30B00ACD61D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		789B921D221C7AE400701C86 /* BankHistoryControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankHistoryControllerUITests.swift; sourceTree = "<group>"; };
 		789B9229221D973C00701C86 /* IntroControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroControllerTests.swift; sourceTree = "<group>"; };
 		789B922A221D973C00701C86 /* IntroInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroInteractorTests.swift; sourceTree = "<group>"; };
@@ -174,6 +229,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		789A07A52232A30A00ACD61D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B86E3F4721A62B0700A9B84F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +284,59 @@
 				782240C2221C49F30056ED10 /* BridgingHeader.h */,
 			);
 			path = "Bank AppUITests";
+			sourceTree = "<group>";
+		};
+		789A079D2232A30900ACD61D /* Bank Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				789A07C22232A35500ACD61D /* Other Sources */,
+				789A07BF2232A31800ACD61D /* Resources */,
+				789A07A32232A30A00ACD61D /* Info.plist */,
+			);
+			path = "Bank Watch App";
+			sourceTree = "<group>";
+		};
+		789A07AC2232A30A00ACD61D /* Bank Watch App Extension */ = {
+			isa = PBXGroup;
+			children = (
+				789A07C12232A34B00ACD61D /* Other Sources */,
+				789A07C02232A34100ACD61D /* Sources */,
+			);
+			path = "Bank Watch App Extension";
+			sourceTree = "<group>";
+		};
+		789A07BF2232A31800ACD61D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				789A079E2232A30900ACD61D /* Interface.storyboard */,
+				789A07A12232A30A00ACD61D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		789A07C02232A34100ACD61D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				789A07AD2232A30A00ACD61D /* InterfaceController.swift */,
+				789A07AF2232A30A00ACD61D /* ExtensionDelegate.swift */,
+				789A07B12232A30B00ACD61D /* Assets.xcassets */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		789A07C12232A34B00ACD61D /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				789A07B32232A30B00ACD61D /* Info.plist */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		789A07C22232A35500ACD61D /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		789B921C221C7AA900701C86 /* KIF */ = {
@@ -351,6 +466,8 @@
 				B86E3F4C21A62B0700A9B84F /* Bank App */,
 				B879C06221E6B4B700ED1591 /* Bank AppTests */,
 				78224097221C42A90056ED10 /* Bank AppUITests */,
+				789A079D2232A30900ACD61D /* Bank Watch App */,
+				789A07AC2232A30A00ACD61D /* Bank Watch App Extension */,
 				B86E3F4B21A62B0700A9B84F /* Products */,
 				0E44DA7E5EB946CB73310F4A /* Pods */,
 				770DA5F9389005C0D495A25B /* Frameworks */,
@@ -363,6 +480,8 @@
 				B86E3F4A21A62B0700A9B84F /* Bank App.dev.app */,
 				B879C06121E6B4B700ED1591 /* Bank AppTests.xctest */,
 				78224096221C42A90056ED10 /* Bank AppUITests.xctest */,
+				789A079C2232A30900ACD61D /* Bank Watch App.app */,
+				789A07A82232A30A00ACD61D /* Bank Watch App Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -485,6 +604,40 @@
 			productReference = 78224096221C42A90056ED10 /* Bank AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		789A079B2232A30900ACD61D /* Bank Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 789A07BD2232A30B00ACD61D /* Build configuration list for PBXNativeTarget "Bank Watch App" */;
+			buildPhases = (
+				789A079A2232A30900ACD61D /* Resources */,
+				789A07BC2232A30B00ACD61D /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				789A07AB2232A30A00ACD61D /* PBXTargetDependency */,
+			);
+			name = "Bank Watch App";
+			productName = "Bank Watch App";
+			productReference = 789A079C2232A30900ACD61D /* Bank Watch App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		789A07A72232A30A00ACD61D /* Bank Watch App Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 789A07BB2232A30B00ACD61D /* Build configuration list for PBXNativeTarget "Bank Watch App Extension" */;
+			buildPhases = (
+				789A07A42232A30A00ACD61D /* Sources */,
+				789A07A52232A30A00ACD61D /* Frameworks */,
+				789A07A62232A30A00ACD61D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bank Watch App Extension";
+			productName = "Bank Watch App Extension";
+			productReference = 789A07A82232A30A00ACD61D /* Bank Watch App Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		B86E3F4921A62B0700A9B84F /* Bank App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B86E3F5F21A62B0F00A9B84F /* Build configuration list for PBXNativeTarget "Bank App" */;
@@ -494,10 +647,12 @@
 				B86E3F4721A62B0700A9B84F /* Frameworks */,
 				B86E3F4821A62B0700A9B84F /* Resources */,
 				86FED68651ABAE8F08023635 /* [CP] Embed Pods Frameworks */,
+				789A07BE2232A30B00ACD61D /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				789A07B52232A30B00ACD61D /* PBXTargetDependency */,
 			);
 			name = "Bank App";
 			productName = "Bank App";
@@ -537,6 +692,12 @@
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = B86E3F4921A62B0700A9B84F;
 					};
+					789A079B2232A30900ACD61D = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					789A07A72232A30A00ACD61D = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					B86E3F4921A62B0700A9B84F = {
 						CreatedOnToolsVersion = 10.0;
 					};
@@ -563,6 +724,8 @@
 				B86E3F4921A62B0700A9B84F /* Bank App */,
 				B879C06021E6B4B700ED1591 /* Bank AppTests */,
 				78224095221C42A90056ED10 /* Bank AppUITests */,
+				789A079B2232A30900ACD61D /* Bank Watch App */,
+				789A07A72232A30A00ACD61D /* Bank Watch App Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -572,6 +735,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		789A079A2232A30900ACD61D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				789A07A22232A30A00ACD61D /* Assets.xcassets in Resources */,
+				789A07A02232A30900ACD61D /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		789A07A62232A30A00ACD61D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				789A07B22232A30B00ACD61D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +884,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		789A07A42232A30A00ACD61D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				789A07B02232A30A00ACD61D /* ExtensionDelegate.swift in Sources */,
+				789A07AE2232A30A00ACD61D /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B86E3F4621A62B0700A9B84F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -775,6 +964,16 @@
 			target = B86E3F4921A62B0700A9B84F /* Bank App */;
 			targetProxy = 7822409B221C42A90056ED10 /* PBXContainerItemProxy */;
 		};
+		789A07AB2232A30A00ACD61D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 789A07A72232A30A00ACD61D /* Bank Watch App Extension */;
+			targetProxy = 789A07AA2232A30A00ACD61D /* PBXContainerItemProxy */;
+		};
+		789A07B52232A30B00ACD61D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 789A079B2232A30900ACD61D /* Bank Watch App */;
+			targetProxy = 789A07B42232A30B00ACD61D /* PBXContainerItemProxy */;
+		};
 		B879C06721E6B4B700ED1591 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B86E3F4921A62B0700A9B84F /* Bank App */;
@@ -783,6 +982,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		789A079E2232A30900ACD61D /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				789A079F2232A30900ACD61D /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		B86E3F5921A62B0F00A9B84F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -857,6 +1064,88 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bank App.dev.app/Bank App.dev";
+			};
+			name = Release;
+		};
+		789A07B72232A30B00ACD61D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HT3YCTX6YE;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IBSC_MODULE = Bank_Watch_App_Extension;
+				INFOPLIST_FILE = "Bank Watch App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.salgados.productions.Bank-App$(APP_SUFIX).watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		789A07B82232A30B00ACD61D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HT3YCTX6YE;
+				IBSC_MODULE = Bank_Watch_App_Extension;
+				INFOPLIST_FILE = "Bank Watch App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.salgados.productions.Bank-App$(APP_SUFIX).watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+		789A07B92232A30B00ACD61D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "Bank Watch App Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.salgados.productions.Bank-App$(APP_SUFIX).watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		789A07BA2232A30B00ACD61D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Bank Watch App Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.salgados.productions.Bank-App.$(APP_SUFIX)watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
 			};
 			name = Release;
 		};
@@ -1073,6 +1362,24 @@
 			buildConfigurations = (
 				7822409D221C42A90056ED10 /* Debug */,
 				7822409E221C42A90056ED10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		789A07BB2232A30B00ACD61D /* Build configuration list for PBXNativeTarget "Bank Watch App Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				789A07B92232A30B00ACD61D /* Debug */,
+				789A07BA2232A30B00ACD61D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		789A07BD2232A30B00ACD61D /* Build configuration list for PBXNativeTarget "Bank Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				789A07B72232A30B00ACD61D /* Debug */,
+				789A07B82232A30B00ACD61D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
