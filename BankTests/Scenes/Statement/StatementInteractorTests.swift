@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Bank
 
 class StatementInteractorTests: XCTestCase {
 
@@ -57,6 +58,7 @@ class StatementInteractorTests: XCTestCase {
     }
     
     override func setUp() {
+        super.setUp()
         statementInteractor = StatementInteractor.init(worker: StatementWorkerMoker())
         statementInteractor.presenter = StatementPresenterMocker()
     }
@@ -66,6 +68,7 @@ class StatementInteractorTests: XCTestCase {
         statementInteractor = nil
         StatementInteractorTests.statement = nil
         StatementInteractorTests.user = nil
+        super.tearDown()
     }
     
     func testLoadData() {

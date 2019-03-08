@@ -7,15 +7,16 @@
 //
 
 import XCTest
+@testable import Bank
 
 class DisplayUserTests: XCTestCase {
 
     override func setUp() {
-        
+        super.setUp()
     }
 
     override func tearDown() {
-        
+        super.tearDown()
     }
 
     func testPassword() {

@@ -41,8 +41,8 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore {
                     switch (error) {
                     case .badRequest(let msg), .urlInvalid(let msg):
                         errorMsg = msg
-                    case .authenticationError(_):
-                        errorMsg = "Ocorreu um erro não esperado. Cod.: 1"
+                    default:
+                        break
                     }
                     self.presenter?.showErrorMessage(message: errorMsg)
                     self.presenter?.loadViewDataStatement(statements: nil)

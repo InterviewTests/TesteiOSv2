@@ -31,11 +31,18 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         bankWorker = worker
     }
     
-    private func autenticate(request: Login.ViewModel.DiplayedUser) {
+    func autenticate(request: Login.ViewModel.DiplayedUser) {
         bankWorker.authenticate(user: request.login, password: request.password) { (user, error) in
             if let error = error
             {
-                self.presenter?.showErrorMessage(message: error.localizedDescription)
+                var msgError = ""
+                switch (error) {
+                case .authenticationError(let msg):
+                    msgError = msg
+                default:
+                    break
+                }
+                self.presenter?.showErrorMessage(message: msgError)
             }
             else
             {

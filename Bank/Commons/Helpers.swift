@@ -16,7 +16,7 @@ class Helpers {
     }
     
     static func isValidCPF(cpf: String) -> Bool {
-        let checkCPF = cpf.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "-", with: ".").replacingOccurrences(of: " ", with: "")
+        let checkCPF = cpf.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: " ", with: "")
         if checkCPF.count == 11 {
             let d1 = Int(checkCPF[cpf.index(cpf.startIndex, offsetBy: 9)].description)
             let d2 = Int(checkCPF[cpf.index(cpf.startIndex, offsetBy: 10)].description)

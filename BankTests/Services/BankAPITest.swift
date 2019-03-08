@@ -7,17 +7,20 @@
 //
 
 import XCTest
+@testable import Bank
 
 class BankAPITest: XCTestCase {
     
     var bankAPI: BankAPI!
 
     override func setUp() {
+        super.setUp()
         bankAPI = BankAPI()
     }
 
     override func tearDown() {
         bankAPI = nil
+        super.tearDown()
     }
     
     func testAuthenticate() {
@@ -35,11 +38,11 @@ class BankAPITest: XCTestCase {
         } catch {
             XCTFail("Ocorreu um problema na autenticação")
         }
-        waitForExpectations(timeout: 10, handler: nil)
+        waitForExpectations(timeout: 15, handler: nil)
     }
     
     func testAuthenticateFailed() {
-        let promise = expectation(description: "Autenticathion Success")
+        let promise = expectation(description: "Autenticathion Failed")
         do {
             try bankAPI.authenticate(user: "", password: "") { (user, error) in
                 if user == nil && error != nil{
@@ -53,7 +56,7 @@ class BankAPITest: XCTestCase {
         } catch {
             XCTFail("Ocorreu um problema na autenticação")
         }
-        waitForExpectations(timeout: 10, handler: nil)
+        waitForExpectations(timeout: 15, handler: nil)
     }
     
 }
