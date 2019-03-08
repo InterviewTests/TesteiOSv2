@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol BankHistoryInteractionLogic {
+protocol BankHistoryBusinessLogic {
     
     func getStatementList(by userId: UserAccountable)
     func clearAutoLogin()
@@ -17,7 +17,7 @@ protocol BankHistoryInteractionLogic {
     func configureStatusBarRelative(to y: CGFloat)
 }
 
-class BankHistoryInteractor: BankHistoryInteractionLogic, UserAccountData {
+class BankHistoryInteractor: BankHistoryBusinessLogic, UserAccountData {
     
     var userAccount: UserAccountable?
     var presenter: BankHistoryPresentationLogic?

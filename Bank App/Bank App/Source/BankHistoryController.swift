@@ -19,7 +19,7 @@ protocol BankHistoryDisplayLogic: class {
 
 class BankHistoryController: UITableViewController, BankHistoryDisplayLogic {
     
-    var interactor: BankHistoryInteractionLogic?
+    var interactor: BankHistoryBusinessLogic?
     var router: (NSObjectProtocol & BankHistoryRouterLogic & BankHistoryDataPassing)?
     
     var statementList: [Statement] = []
