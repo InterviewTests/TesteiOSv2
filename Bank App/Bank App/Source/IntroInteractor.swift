@@ -101,9 +101,10 @@ extension IntroInteractor {
     }
     
     fileprivate func sendUserAccountToAppleWatch(_ userAccount: UserAccountable) {
-        sendDataFromAppleWatch(dict: ["name": userAccount.name])
-        sendDataFromAppleWatch(dict: ["agency": userAccount.agency])
-        sendDataFromAppleWatch(dict: ["bankAccount": userAccount.bankAccount])
-        sendDataFromAppleWatch(dict: ["balance": userAccount.balance])
+        guard let _ = userAccount.name else { return }
+        sendDataFromAppleWatch(dict: ["name": userAccount.name!])
+        sendDataFromAppleWatch(dict: ["agency": userAccount.agency!])
+        sendDataFromAppleWatch(dict: ["bankAccount": userAccount.bankAccount!])
+        sendDataFromAppleWatch(dict: ["balance": userAccount.balance!])
     }
 }

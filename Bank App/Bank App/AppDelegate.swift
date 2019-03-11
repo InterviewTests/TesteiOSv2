@@ -60,7 +60,7 @@ extension AppDelegate {
         case .activated:
             print("Conectivity has been activated")
         default:
-            print("Some error is occour \(error?.localizedDescription)")
+            print("Some error is occour \(error!.localizedDescription)")
         }
     }
     
