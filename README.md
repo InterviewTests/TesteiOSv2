@@ -5,7 +5,7 @@ Esse projeto tem como objetivo demonstrar meus conhecimentos sobre CleanSwift, A
 Foi desenvolvido duas telas, uma de Login e uma segunda de informações de conta, sendo a segunda foi desenvolvida programaticamente e obecendo as regras de layout.
 
 ## Frameworks
-Neste projeto foi utilizado seguintes depedencias:
+Neste projeto foi utilizado seguintes dependências:
 * Alamofire: Facilita a manipulações de dados e requisições com a API.
 * KeychainSwift: Salva os dados designados de forma segura.
 * Quick e Nimble: Para testes menos verbosos e melhora a percpção de fluxo de teste.
