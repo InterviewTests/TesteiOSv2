@@ -23,6 +23,8 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     @IBOutlet weak var account: UILabel!
     @IBOutlet weak var Balance: UILabel!
     @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityLoading: UIActivityIndicatorView!
     
     
     var interactor: StatementsBusinessLogic?
@@ -67,18 +69,29 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        setupUserDetails()
+        setupViewLoading()
+        setupUserInformations()
         configureTableView()
         registerNibFiles()
         fetchStatements()
     }
     
-    func setupUserDetails(){
+    func setupUserInformations(){
         name.text = displayLogin?.name
         account.text = displayLogin?.bankAccount
         Balance.text = displayLogin?.balance
-        
-        
+    }
+    
+    func setupDataDownloadedView(){
+        activityLoading.stopAnimating()
+        loadingView.isHidden = true
+        activityLoading.isHidden = true
+    }
+    
+    func setupViewLoading(){
+        loadingView.isHidden = false
+        activityLoading.isHidden = false
+        activityLoading.startAnimating()
     }
     
     private func registerNibFiles(){
@@ -89,8 +102,7 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     }
     
     private func configureTableView() {
-        tableview.estimatedRowHeight = 400
-        tableview.rowHeight = 104 //UITableView.automaticDimension
+        tableview.rowHeight = 110
     }
   
     func fetchStatements() {
@@ -99,6 +111,7 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     }
     
     func displayFetchedStatements(viewModel: Statements.fetchStatements.ViewModel) {
+        setupDataDownloadedView()
         displayedStatments = viewModel.displayStatements
         tableview.reloadData()
     }

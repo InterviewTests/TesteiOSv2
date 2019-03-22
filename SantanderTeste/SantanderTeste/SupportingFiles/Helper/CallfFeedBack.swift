@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 class CallFeedBack{
-    static let shared = CallFeedBack()
     
     func feedbackError()->UIAlertController{
         let alert = UIAlertController(title: "Alerta", message: "Usuário ou Senha Invalida", preferredStyle:  UIAlertController.Style.alert)

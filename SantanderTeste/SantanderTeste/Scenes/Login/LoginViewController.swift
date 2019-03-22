@@ -20,6 +20,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityLoading: UIActivityIndicatorView!
     
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
@@ -63,11 +65,18 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-   
+        setupView()
     }
   
-    
+    func setupView(){
+        loadingView.isHidden = true
+        activityLoading.isHidden = true
+    }
+    func setupViewLoading(){
+        loadingView.isHidden = false
+        activityLoading.isHidden = false
+        activityLoading.startAnimating()
+    }
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
@@ -75,7 +84,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     @IBAction func login(_ sender: Any) {
        // router?.routeToStatementDetails(display: displayLogin!)
          if validateLoginData(){
+            setupViewLoading()
             fetchLogin()
+         }else{
+            self.present(CallFeedBack().feedbackError(), animated: true, completion: nil)
         }
         
     }
@@ -103,14 +115,16 @@ class LoginViewController: UIViewController, LoginDisplayLogic
 }
 
 extension LoginViewController: UITextFieldDelegate{
-    func setupTextFild(){
-        self.userTextField.delegate = self
-        self.passwordTextField.delegate = self
+
+   
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
-    func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.userTextField.resignFirstResponder()
-        self.passwordTextField.resignFirstResponder()
-        self.view.endEditing(true)
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+       self.view.endEditing(true)
     }
+
 }

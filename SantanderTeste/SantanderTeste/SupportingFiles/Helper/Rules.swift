@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 class Rules{
-    static let getFunctions = Rules()
     
     func verifyPassword(Password: String)-> Bool{
         if capitalLetter(Password: Password) && specialCharacter(Password: Password) && checkAlphaNumeric(Password: Password){
