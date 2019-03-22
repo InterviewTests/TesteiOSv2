@@ -9,11 +9,11 @@
 import Foundation
 
 
-struct UserModel: Codable{
-    let userAccount: userAccount
-    let error: erro
+struct UserModel: Codable {
+    let userAccount: UserAccount
+    let error: Error
 }
-class userAccount: Codable {
+class UserAccount: Codable {
     let userId: Int
     let name: String
     let bankAccount: String
@@ -21,5 +21,5 @@ class userAccount: Codable {
     let balance: Double
 }
 
-class erro: Codable{
+class Error: Codable{
 }

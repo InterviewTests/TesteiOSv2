@@ -8,82 +8,109 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+import UIKit
 
-class LoginViewController: UICollectionViewController {
+protocol LoginDisplayLogic: class
+{
+    func displayFetchLogin(viewModel: Login.fetchlogin.ViewModel)
+}
 
-    override func viewDidLoad() {
+class LoginViewController: UIViewController, LoginDisplayLogic
+{
+    
+    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    var interactor: LoginBusinessLogic?
+    var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    var displayLogin: Login.fetchlogin.ViewModel.DisplayViewModel? = nil
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = LoginInteractor()
+        let presenter = LoginPresenter()
+        let router = LoginRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
+   
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+  
     
-        // Configure the cell
+    // MARK: Do something
     
-        return cell
+    //@IBOutlet weak var nameTextField: UITextField!
+    
+    @IBAction func login(_ sender: Any) {
+       // router?.routeToStatementDetails(display: displayLogin!)
+         if validateLoginData(){
+            fetchLogin()
+        }
+        
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+    
+    func displayFetchLogin(viewModel: Login.fetchlogin.ViewModel) {
+        displayLogin = viewModel.displayLogin
+        router?.routeToStatementDetails(display: displayLogin!)
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+    
+    func validateLoginData() -> Bool { 
+        if Rules().verifyPassword(Password: passwordTextField.text!) &&  Rules().isValidUser(user: userTextField.text!){
+            return true
+        }
         return false
     }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    func fetchLogin(){
+        let request = Login.fetchlogin.Request(user: userTextField.text!, password: passwordTextField.text!)
+        interactor?.fetchLogin(request: request)
     }
-    */
+    
+    
+    
+   
+}
 
+extension LoginViewController: UITextFieldDelegate{
+    func setupTextFild(){
+        self.userTextField.delegate = self
+        self.passwordTextField.delegate = self
+    }
+    
+    func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.userTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        self.view.endEditing(true)
+    }
 }

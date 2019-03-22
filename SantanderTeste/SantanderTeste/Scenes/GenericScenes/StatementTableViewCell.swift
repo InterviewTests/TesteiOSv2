@@ -10,15 +10,28 @@ import UIKit
 
 class StatementTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var descritpion: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var value: UILabel!
+    @IBOutlet weak var viewShadow: UIView!
+    
+    var viewModel: StatementViewModels.Statement.ViewModel? {
+        didSet {
+            didSetViewModel()
+            setupView()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func didSetViewModel(){
+        guard let viewModel = viewModel else { return }
+        title.text = viewModel.title
+        descritpion.text = viewModel.description
+        date.text = viewModel.date.formatStringDate()
+        value.text = viewModel.value
     }
-
+    
+    func setupView(){
+        self.viewShadow.applyShadow()
+    }
 }

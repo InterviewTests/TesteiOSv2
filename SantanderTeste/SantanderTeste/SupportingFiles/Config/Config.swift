@@ -9,4 +9,8 @@
 import Foundation
 class Config{
     static let endPointURL = "https://bank-app-test.herokuapp.com"
+    
+    static func pathStatements(id: String)->String{
+            return "/api/statements/" + id
+    }
 }

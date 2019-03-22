@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Statements: Codable {
-    let statementList: [statementList]!
-    let error: erro
+struct StatementsModel: Codable {
+    let statementList: [StatementList]
+    let error: Error
 }
-class statementList: Codable {
+class StatementList: Codable {
     let title:String
     let desc:String
     let date: String
