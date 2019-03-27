@@ -10,13 +10,32 @@ import Foundation
 
 class LoginInteractor {
     
-    func login(_ user: String, _ password: String, completionHandler: @escaping ((UserAccount?, Error?) -> Void )) {
+    var presenter: LoginPresentationLogic?
+    
+    func validateUsername(_ username: String?) -> Bool {
+        guard let username = username else { return false }
+        
+        let isEmail = ValidatorHelper.isEmail(username)
+        let isDocument = ValidatorHelper.isCpf(username)
+        guard isEmail || isDocument else {
+            return false
+        }
+        
+        return true
+    }
+    
+    func validatePassword(_ password: String?) -> Bool {
+        guard let password = password else { return false }
+        return ValidatorHelper.password(password)
+    }
+    
+    func login(_ user: String, _ password: String) {
         let service = LoginService()
         
         let parameters = "user=\(user)&password=\(password)".data(using: .utf8)
         
         RKLoading.showLoading()
-        service.login(parameters: parameters) { (data, response, error) in
+        service.login(parameters: parameters) { [unowned self] (data, response, error) in
             RKLoading.hideLoading()
             
             var error: Error?
@@ -30,12 +49,11 @@ class LoginInteractor {
                 return
             }
             
-            do {
-                let login = try JSONDecoder().decode(Login.self, from: data!)
-                completionHandler(login.userAccount, error)
-            } catch {
-                completionHandler(nil, error)
-            }
+            let login = try? JSONDecoder().decode(Login.self, from: data!)
+            KeychainHelper.saveAccount(account: (login?.userAccount)!)
+            self.presenter?.presentUserLogged(login?.userAccount, error)
+            let teste = KeychainHelper.account(agency: "012314564", bankAccount: "2050")
+            print("teste", teste)
         }
     }
     

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4494C4CB7FAFD962C109BA70 /* Pods_DesafioSantanderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DB46AA7F8112F447BB1FCF /* Pods_DesafioSantanderTests.framework */; };
+		777E343C224BFEB4004B8BE0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777E343B224BFEB4004B8BE0 /* String+Extension.swift */; };
+		777E343E224C0354004B8BE0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777E343D224C0354004B8BE0 /* LoginPresenter.swift */; };
+		777E3441224C1849004B8BE0 /* ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777E3440224C1849004B8BE0 /* ValidatorHelper.swift */; };
+		777E3443224C1B8E004B8BE0 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777E3442224C1B8E004B8BE0 /* KeychainHelper.swift */; };
+		777E3445224C1CA7004B8BE0 /* KeychainAccountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777E3444224C1CA7004B8BE0 /* KeychainAccountItem.swift */; };
 		77AF8601224B999600F9F260 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AF8600224B999600F9F260 /* AppDelegate.swift */; };
 		77AF8603224B999600F9F260 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AF8602224B999600F9F260 /* LoginViewController.swift */; };
 		77AF8606224B999600F9F260 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77AF8604224B999600F9F260 /* Main.storyboard */; };
@@ -35,6 +40,11 @@
 
 /* Begin PBXFileReference section */
 		36DB46AA7F8112F447BB1FCF /* Pods_DesafioSantanderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DesafioSantanderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		777E343B224BFEB4004B8BE0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		777E343D224C0354004B8BE0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		777E3440224C1849004B8BE0 /* ValidatorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorHelper.swift; sourceTree = "<group>"; };
+		777E3442224C1B8E004B8BE0 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		777E3444224C1CA7004B8BE0 /* KeychainAccountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccountItem.swift; sourceTree = "<group>"; };
 		77AF85FD224B999600F9F260 /* DesafioSantander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioSantander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AF8600224B999600F9F260 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77AF8602224B999600F9F260 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +97,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		777E343A224BFE73004B8BE0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				777E343B224BFEB4004B8BE0 /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		777E343F224C0694004B8BE0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				777E3440224C1849004B8BE0 /* ValidatorHelper.swift */,
+				777E3442224C1B8E004B8BE0 /* KeychainHelper.swift */,
+				777E3444224C1CA7004B8BE0 /* KeychainAccountItem.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		77AF85F4224B999600F9F260 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +138,8 @@
 		77AF85FF224B999600F9F260 /* DesafioSantander */ = {
 			isa = PBXGroup;
 			children = (
+				777E343F224C0694004B8BE0 /* Helpers */,
+				777E343A224BFE73004B8BE0 /* Extensions */,
 				77AF8630224BA88700F9F260 /* Components */,
 				77AF8622224B9A3C00F9F260 /* Services */,
 				77AF862D224BA3B300F9F260 /* Models */,
@@ -163,6 +193,7 @@
 		77AF8623224B9A4600F9F260 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				777E343D224C0354004B8BE0 /* LoginPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -363,13 +394,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				777E343C224BFEB4004B8BE0 /* String+Extension.swift in Sources */,
 				77AF8603224B999600F9F260 /* LoginViewController.swift in Sources */,
+				777E3441224C1849004B8BE0 /* ValidatorHelper.swift in Sources */,
 				77AF8625224BA02F00F9F260 /* LoginService.swift in Sources */,
+				777E343E224C0354004B8BE0 /* LoginPresenter.swift in Sources */,
+				777E3443224C1B8E004B8BE0 /* KeychainHelper.swift in Sources */,
 				77AF862F224BA3D200F9F260 /* Login.swift in Sources */,
 				77AF8628224BA0A200F9F260 /* GlobalFunctions.swift in Sources */,
 				77AF8632224BA89700F9F260 /* RKLoading.swift in Sources */,
 				77AF862C224BA28D00F9F260 /* LoginInteractor.swift in Sources */,
 				77AF8601224B999600F9F260 /* AppDelegate.swift in Sources */,
+				777E3445224C1CA7004B8BE0 /* KeychainAccountItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,7 +573,10 @@
 				DEVELOPMENT_TEAM = GP5GGMAWR6;
 				INFOPLIST_FILE = DesafioSantander/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.rk.DesafioSantander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -554,7 +593,10 @@
 				DEVELOPMENT_TEAM = GP5GGMAWR6;
 				INFOPLIST_FILE = DesafioSantander/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.rk.DesafioSantander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -571,7 +613,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GP5GGMAWR6;
 				INFOPLIST_FILE = DesafioSantanderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.rk.DesafioSantanderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -589,7 +635,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GP5GGMAWR6;
 				INFOPLIST_FILE = DesafioSantanderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.rk.DesafioSantanderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

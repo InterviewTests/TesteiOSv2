@@ -13,6 +13,7 @@ class LoginTests: XCTestCase {
     
     var loginInteractor: LoginInteractor!
     var promise: XCTestExpectation!
+    var userAccount: UserAccount?
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,8 +25,17 @@ class LoginTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testWhenUserPassLoginAndPasswordReturnsLoggedUser() {
+    class LoginPresenterSpy: LoginPresentationLogic {
+        var objectTest: LoginTests?
         
+        // MARK: Spied methods
+        func presentUserLogged(_ user: UserAccount?, _ error: Error?) {
+            objectTest?.userAccount = user
+            objectTest?.promise.fulfill()
+        }
+    }
+    
+    func testWhenUserPassLoginAndPasswordReturnsLoggedUser() {
         let user = "teste@teste.com"
         let password = "Test@1"
 
@@ -36,26 +46,17 @@ class LoginTests: XCTestCase {
         expected.agency = "012314564"
         expected.balance = 3.3445
 
+        let presenterSpy = LoginPresenterSpy()
+        presenterSpy.objectTest = self
+        loginInteractor.presenter = presenterSpy
         
-        loginInteractor.login(user, password) { [unowned self] (userAccount, error) in
-            XCTAssertNil(error)
-
-            XCTAssertEqual(userAccount?.userId, expected.userId, "userId diferente")
-            XCTAssertEqual(userAccount?.name, expected.name, "name diferente")
-            XCTAssertEqual(userAccount?.bankAccount, expected.bankAccount, "bankAccount diferente")
-            XCTAssertEqual(userAccount?.agency, expected.agency, "agency diferente")
-            XCTAssertEqual(userAccount?.balance, expected.balance, "balance diferente")
-            
-            self.promise.fulfill()
-        }
+        loginInteractor.login(user, password)
         waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertEqual(self.userAccount?.userId, expected.userId, "userId diferente")
+        XCTAssertEqual(self.userAccount?.name, expected.name, "name diferente")
+        XCTAssertEqual(self.userAccount?.bankAccount, expected.bankAccount, "bankAccount diferente")
+        XCTAssertEqual(self.userAccount?.agency, expected.agency, "agency diferente")
+        XCTAssertEqual(self.userAccount?.balance, expected.balance, "balance diferente")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

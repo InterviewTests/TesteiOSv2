@@ -19,6 +19,21 @@ func shadow(in view: UIView, color: UIColor, offset: CGSize, opacity: Float, rad
     view.layer.shadowOpacity = opacity
 }
 
+func removeFormatterFromNumbers(stringFormatted: String) -> String {
+    let pattern = "[^\\d]"
+    
+    do {
+        let regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive)
+        let stringWithoutFormatter = regex.stringByReplacingMatches(in: stringFormatted, options: NSRegularExpression.MatchingOptions(),range: NSMakeRange(0, stringFormatted.length), withTemplate:"")
+        
+        return stringWithoutFormatter
+    }
+    catch {
+        debugPrint(error)
+        return stringFormatted
+    }
+}
+
 // MARK: - HTTP
 
 var acceptableStatusCodes: [Int] { return Array(200..<300) }
