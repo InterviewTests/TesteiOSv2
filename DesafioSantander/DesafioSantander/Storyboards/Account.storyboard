@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Account View Controller-->
         <scene sceneID="sN3-X9-6WC">
             <objects>
-                <viewController id="cgR-Ho-Rkm" sceneMemberID="viewController">
+                <viewController id="cgR-Ho-Rkm" customClass="AccountViewController" customModule="DesafioSantander" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="svK-e3-EE2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mG5-we-XXW">
-                                        <rect key="frame" x="18" y="48" width="65.5" height="29.5"/>
+                                        <rect key="frame" x="18" y="48" width="301" height="29.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <nil key="highlightedColor"/>
@@ -45,33 +45,38 @@
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout 2" translatesAutoresizingMaskIntoConstraints="NO" id="pIL-qd-Gu6">
-                                        <rect key="frame" x="335" y="48" width="27" height="27"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="27" id="rr6-ce-UrG"/>
-                                            <constraint firstAttribute="height" constant="27" id="sHV-ux-LTd"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$0,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0m-r9-kms">
                                         <rect key="frame" x="18" y="196" width="79.5" height="29.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldi-7x-4Sq">
+                                        <rect key="frame" x="335" y="48" width="27" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="27" id="b0Z-ym-Q36"/>
+                                            <constraint firstAttribute="height" constant="27" id="r1D-fC-8sb"/>
+                                        </constraints>
+                                        <state key="normal" image="logout 2"/>
+                                        <connections>
+                                            <action selector="logoutAction:" destination="cgR-Ho-Rkm" eventType="touchUpInside" id="UId-p9-k7S"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.28627450980392155" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="pIL-qd-Gu6" firstAttribute="top" secondItem="91e-5I-rvO" secondAttribute="topMargin" constant="20" id="DPo-Ku-jBQ"/>
                                     <constraint firstItem="k0m-OM-0z7" firstAttribute="top" secondItem="mG5-we-XXW" secondAttribute="bottom" constant="28" id="Ghx-PA-hjG"/>
                                     <constraint firstItem="mG5-we-XXW" firstAttribute="leading" secondItem="91e-5I-rvO" secondAttribute="leading" constant="18" id="Iet-on-MUl"/>
                                     <constraint firstItem="zNP-bd-JI6" firstAttribute="top" secondItem="k0m-OM-0z7" secondAttribute="bottom" constant="6" id="JdS-wV-NpM"/>
                                     <constraint firstItem="mG5-we-XXW" firstAttribute="top" secondItem="91e-5I-rvO" secondAttribute="topMargin" constant="20" id="PkP-Vj-GhG"/>
                                     <constraint firstItem="zNP-bd-JI6" firstAttribute="leading" secondItem="91e-5I-rvO" secondAttribute="leading" constant="18" id="QBP-5i-Rkq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ldi-7x-4Sq" secondAttribute="trailing" constant="13" id="QSd-9w-Opz"/>
                                     <constraint firstItem="IAT-lE-SLR" firstAttribute="leading" secondItem="91e-5I-rvO" secondAttribute="leading" constant="18" id="Uac-Fz-3qn"/>
                                     <constraint firstAttribute="height" constant="233" id="aG5-Hy-lCq"/>
                                     <constraint firstItem="IAT-lE-SLR" firstAttribute="top" secondItem="zNP-bd-JI6" secondAttribute="bottom" constant="21" id="cqf-bC-9pg"/>
                                     <constraint firstItem="T0m-r9-kms" firstAttribute="leading" secondItem="91e-5I-rvO" secondAttribute="leading" constant="18" id="hjJ-08-PzE"/>
-                                    <constraint firstAttribute="trailing" secondItem="pIL-qd-Gu6" secondAttribute="trailing" constant="13" id="oyS-Rp-cd0"/>
+                                    <constraint firstItem="Ldi-7x-4Sq" firstAttribute="top" secondItem="91e-5I-rvO" secondAttribute="topMargin" constant="20" id="m7R-cY-Izy"/>
+                                    <constraint firstItem="Ldi-7x-4Sq" firstAttribute="leading" secondItem="mG5-we-XXW" secondAttribute="trailing" constant="16" id="oPV-hy-1DN"/>
                                     <constraint firstItem="T0m-r9-kms" firstAttribute="top" secondItem="IAT-lE-SLR" secondAttribute="bottom" constant="6" id="vCq-qi-7UL"/>
                                     <constraint firstItem="k0m-OM-0z7" firstAttribute="leading" secondItem="91e-5I-rvO" secondAttribute="leading" constant="18" id="xeU-hs-ozj"/>
                                 </constraints>
@@ -151,6 +156,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ETe-pX-uo7"/>
                     </view>
+                    <connections>
+                        <outlet property="accountNameLabel" destination="mG5-we-XXW" id="rty-Z5-HbX"/>
+                        <outlet property="accountNumberLabel" destination="zNP-bd-JI6" id="ThK-ik-8Rh"/>
+                        <outlet property="balanceLabel" destination="T0m-r9-kms" id="gHc-LB-W57"/>
+                        <outlet property="tableView" destination="ovg-RH-0GZ" id="tel-mm-JAH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uxt-1S-EaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
