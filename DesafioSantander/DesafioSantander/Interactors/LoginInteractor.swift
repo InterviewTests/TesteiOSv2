@@ -50,10 +50,10 @@ class LoginInteractor {
             }
             
             let login = try? JSONDecoder().decode(Login.self, from: data!)
-            KeychainHelper.saveAccount(account: (login?.userAccount)!)
+//            KeychainHelper.saveAccount(account: (login?.userAccount)!)
             self.presenter?.presentUserLogged(login?.userAccount, error)
-            let teste = KeychainHelper.account(agency: "012314564", bankAccount: "2050")
-            print("teste", teste)
+//            let teste = KeychainHelper.account(agency: "012314564", bankAccount: "2050")
+//            print("teste", teste)
         }
     }
     
