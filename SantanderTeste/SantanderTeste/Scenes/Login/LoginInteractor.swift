@@ -14,13 +14,13 @@ protocol LoginBusinessLogic
 
 protocol LoginDataStore
 {
-    var loginResponse: Login.fetchlogin.Response? { get }
+    var user: UserModel? { get }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
     
-    var loginResponse: Login.fetchlogin.Response?
+    var user: UserModel?
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
     
@@ -28,14 +28,19 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     
     func fetchLogin(request: Login.fetchlogin.Request)
     {
+        guard Rules().verifyPassword(Password: request.password) &&  Rules().isValidUser(user: request.user) else {
+           presenter?.presentError(error: "Email ou Senha inválidos")
+            return
+        }
+        
+        
         worker = LoginWorker()
-        worker?.requestUser(user: request.user, password: request.password, { [weak self] (response) in
-            self?.loginResponse = response
+        worker?.requestUser(user: request.user, password: request.password, { [weak self] (user, error) in
+            self?.user = user
+            let response = Login.fetchlogin.Response(LoginResponse: user, message: error)
             self?.presenter?.presentLogin(response: response)
             
         })
-       /* let response = Login.fetchlogin.Response()
-        presenter?.presentSomething(response: response)*/
         
     }
 }

@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 class CallFeedBack{
     
-    func feedbackError()->UIAlertController{
-        let alert = UIAlertController(title: "Alerta", message: "Usuário ou Senha Invalida", preferredStyle:  UIAlertController.Style.alert)
+    func feedbackError(error: String)->UIAlertController{
+        let alert = UIAlertController(title: "Alerta", message: error, preferredStyle:  UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "OK", style:  UIAlertAction.Style.default){
             UIAlertAction in

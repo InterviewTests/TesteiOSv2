@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class Config{
     static let endPointURL = "https://bank-app-test.herokuapp.com"
     

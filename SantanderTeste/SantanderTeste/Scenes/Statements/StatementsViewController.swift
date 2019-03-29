@@ -13,10 +13,18 @@ import UIKit
 protocol StatementsDisplayLogic: class
 {
     func displayFetchedStatements(viewModel: Statements.fetchStatements.ViewModel)
+    func displayFetchLogin(viewModel: Statements.User.ViewModel)
+    func displayError(error: String)
 }
 
 class StatementsViewController: UIViewController, StatementsDisplayLogic
 {
+   
+    
+    func displayError(error: String) {
+        self.present(CallFeedBack().feedbackError(error: error), animated: true, completion: nil)
+    }
+    
     
     
     @IBOutlet weak var name: UILabel!
@@ -30,6 +38,7 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     var interactor: StatementsBusinessLogic?
     var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
     var displayedStatments: [Statements.fetchStatements.ViewModel.DisplayViewModel] = []
+    
  
     // MARK: Object lifecycle
     
@@ -65,22 +74,20 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     
     // MARK: View lifecycle
     
-    var displayLogin: Login.fetchlogin.ViewModel.DisplayViewModel?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        setupUserDetails()
         setupViewLoading()
-        setupUserInformations()
         configureTableView()
         registerNibFiles()
-        fetchStatements()
     }
     
-    func setupUserInformations(){
-        name.text = displayLogin?.name
-        account.text = displayLogin?.bankAccount
-        Balance.text = displayLogin?.balance
+    func setupUserDetails(){
+        interactor?.UserData()
     }
+
     
     func setupDataDownloadedView(){
         activityLoading.stopAnimating()
@@ -102,18 +109,32 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     }
     
     private func configureTableView() {
-        tableview.rowHeight = 110
+        tableview.rowHeight = 140
     }
   
-    func fetchStatements() {
-        let request = Statements.fetchStatements.Request(id: (displayLogin?.userId)!)
-        interactor?.fetchStatements(request: request)
-    }
     
     func displayFetchedStatements(viewModel: Statements.fetchStatements.ViewModel) {
         setupDataDownloadedView()
         displayedStatments = viewModel.displayStatements
         tableview.reloadData()
+    }
+    func displayFetchLogin(viewModel: Statements.User.ViewModel) {
+        name.text = viewModel.displayLogin.name
+        account.text = viewModel.displayLogin.bankAccount
+        Balance.text = viewModel.displayLogin.balance
+        print(viewModel.displayLogin.userId)
+        fetchStatements(userID: viewModel.displayLogin.userId)
+        
+    }
+    func fetchStatements(userID: String) {
+        let request = Statements.fetchStatements.Request(id: userID)
+        interactor?.fetchStatements(request: request)
+    }
+    
+    
+    @IBAction func logout(_ sender: Any) {
+        
+        router?.routeToLogin()
     }
     
 }
@@ -132,20 +153,20 @@ extension StatementsViewController: UITableViewDataSource, UITableViewDelegate{
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
 
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: StatementViewModels.cellReuseIdentifier,
-                for: indexPath) as! StatementTableViewCell
-        
-            
-            let display = displayedStatments[indexPath.row]
-            cell.viewModel = StatementViewModels.Statement.ViewModel(
-                title: display.title,
-                description: display.desc,
-                date: display.date,
-                value: display.value)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: StatementViewModels.cellReuseIdentifier,
+            for: indexPath) as! StatementTableViewCell
     
-            
-            return cell
+    
+        let display = displayedStatments[indexPath.row]
+        cell.viewModel = StatementViewModels.Statement.ViewModel(
+            title: display.title,
+            description: display.desc,
+            date: display.date,
+            value: display.value)
+
+    
+        return cell
    
     }
     

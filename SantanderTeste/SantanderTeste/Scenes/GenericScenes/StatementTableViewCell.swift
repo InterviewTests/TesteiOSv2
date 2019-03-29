@@ -11,10 +11,10 @@ import UIKit
 class StatementTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var descritpion: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var value: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descritpionLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var viewShadow: UIView!
     
     var viewModel: StatementViewModels.Statement.ViewModel? {
@@ -25,10 +25,10 @@ class StatementTableViewCell: UITableViewCell {
     }
     func didSetViewModel(){
         guard let viewModel = viewModel else { return }
-        title.text = viewModel.title
-        descritpion.text = viewModel.description
-        date.text = viewModel.date.formatStringDate()
-        value.text = viewModel.value
+        titleLabel.text = viewModel.title
+        descritpionLabel.text = viewModel.description
+        dateLabel.text = viewModel.date.formatStringDate()
+        valueLabel.text = viewModel.value
     }
     
     func setupView(){

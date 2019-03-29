@@ -12,20 +12,27 @@ import UIKit
 protocol StatementsBusinessLogic
 {
     func fetchStatements(request: Statements.fetchStatements.Request)
+    func UserData()
 }
 
 protocol StatementsDataStore
 {
-      var StatementsResponse: Statements.fetchStatements.Response? { get }
+    var user: UserModel! { get set }
+    var StatementsResponse: Statements.fetchStatements.Response? { get }
+    
 }
 
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
 {
-    
+    var StatementsResponse: Statements.fetchStatements.Response?
+    var user: UserModel!
+    func UserData() {
+        self.presenter?.presentuser(response: user )
+    }
     
     var presenter: StatementsPresentationLogic?
     var worker: StatementsWorker?
-    var StatementsResponse: Statements.fetchStatements.Response?
+
 
     func fetchStatements(request: Statements.fetchStatements.Request) {
         worker = StatementsWorker()

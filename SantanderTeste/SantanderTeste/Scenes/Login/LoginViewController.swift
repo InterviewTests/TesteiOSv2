@@ -13,15 +13,21 @@ import UIKit
 protocol LoginDisplayLogic: class
 {
     func displayFetchLogin(viewModel: Login.fetchlogin.ViewModel)
+    func displayError(error: String)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
+    func displayError(error: String) {
+        self.present(CallFeedBack().feedbackError(error: error), animated: true, completion: nil)
+    }
+    
     
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityLoading: UIActivityIndicatorView!
+    @IBOutlet weak var loginButtonView: UIButton!
     
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
@@ -69,6 +75,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     }
   
     func setupView(){
+        loginButtonView.applyShadow()
         loadingView.isHidden = true
         activityLoading.isHidden = true
     }
@@ -82,36 +89,20 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     //@IBOutlet weak var nameTextField: UITextField!
     
     @IBAction func login(_ sender: Any) {
-       // router?.routeToStatementDetails(display: displayLogin!)
-         if validateLoginData(){
-            setupViewLoading()
-            fetchLogin()
-         }else{
-            self.present(CallFeedBack().feedbackError(), animated: true, completion: nil)
-        }
-        
+        setupViewLoading()
+        fetchLogin()
     }
     
     func displayFetchLogin(viewModel: Login.fetchlogin.ViewModel) {
-        displayLogin = viewModel.displayLogin
-        router?.routeToStatementDetails(display: displayLogin!)
+        router?.routeToStatementDetails(display:  viewModel.displayLogin)
     }
     
-    func validateLoginData() -> Bool { 
-        if Rules().verifyPassword(Password: passwordTextField.text!) &&  Rules().isValidUser(user: userTextField.text!){
-            return true
-        }
-        return false
-    }
     
     func fetchLogin(){
         let request = Login.fetchlogin.Request(user: userTextField.text!, password: passwordTextField.text!)
         interactor?.fetchLogin(request: request)
     }
     
-    
-    
-   
 }
 
 extension LoginViewController: UITextFieldDelegate{

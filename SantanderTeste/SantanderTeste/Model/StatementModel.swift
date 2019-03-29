@@ -9,12 +9,12 @@
 import Foundation
 
 struct StatementsModel: Codable {
-    let statementList: [StatementList]
-    let error: Error
+    let statementList: [StatementList]?
+    let error: Error?
 }
 class StatementList: Codable {
-    let title:String
-    let desc:String
-    let date: String
-    let value: Double
+    let title:String?
+    let desc:String?
+    let date: String?
+    let value: Double?
 }

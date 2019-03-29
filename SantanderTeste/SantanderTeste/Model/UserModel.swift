@@ -10,15 +10,15 @@ import Foundation
 
 
 struct UserModel: Codable {
-    let userAccount: UserAccount
-    let error: Error
+    let userAccount: UserAccount?
+    let error: Error?
 }
 class UserAccount: Codable {
-    let userId: Int
-    let name: String
-    let bankAccount: String
-    let agency: String
-    let balance: Double
+    let userId: Int?
+    let name: String?
+    let bankAccount: String?
+    let agency: String?
+    let balance: Double?
 }
 
 class Error: Codable{

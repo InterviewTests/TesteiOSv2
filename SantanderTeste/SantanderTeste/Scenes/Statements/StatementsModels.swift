@@ -39,4 +39,26 @@ enum Statements
             
         }
     }
+    enum User
+    {
+        struct Request
+        {
+    
+        }
+        struct Response
+        {
+        
+        }
+        struct ViewModel
+        {
+            struct DisplayViewModel {
+                let userId: String
+                let name: String
+                let bankAccount: String
+                let agency: String
+                let balance: String
+            }
+            var displayLogin: DisplayViewModel
+        }
+    }
 }

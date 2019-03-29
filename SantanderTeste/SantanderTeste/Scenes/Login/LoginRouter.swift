@@ -31,7 +31,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
     func routeToStatementDetails(display: Login.fetchlogin.ViewModel.DisplayViewModel) {
         let storyboard = UIStoryboard(name: "Statements", bundle: nil)
         let destinationVC = storyboard.instantiateInitialViewController() as! StatementsViewController
-        destinationVC.displayLogin = display
+        destinationVC.router?.dataStore?.user = dataStore?.user//display
         navigateStatements(source: viewController!, destination: destinationVC)
     }
   
@@ -43,10 +43,5 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
       source.show(destination, sender: nil)
     }
     
-    // MARK: Passing data
-    
-    //func passDataToSomewhere(source: LoginDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+ 
 }

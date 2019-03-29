@@ -11,48 +11,32 @@ import UIKit
 
 @objc protocol StatementsRoutingLogic
 {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToLogin()
 }
 
 protocol StatementsDataPassing
 {
-    var dataStore: StatementsDataStore? { get }
+    var dataStore: StatementsDataStore? { get set }
+    
 }
 
 class StatementsRouter: NSObject, StatementsRoutingLogic, StatementsDataPassing
 {
+    
+   
     weak var viewController: StatementsViewController?
     var dataStore: StatementsDataStore?
     
-    
     // MARK: Routing
-    
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-    //{
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
-    
-    // MARK: Navigation
-    
-    //func navigateToSomewhere(source: StatementsViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
-    
-    // MARK: Passing data
-    
-    //func passDataToSomewhere(source: StatementsDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+    func routeToLogin() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let destinationVC = storyboard.instantiateInitialViewController() as! LoginViewController
+        navigateToLogin(source: viewController!, destination: destinationVC)
+    }
+   
+    func navigateToLogin(source: StatementsViewController, destination: LoginViewController) {
+        source.show(source, sender: nil)
+    }
+   
+ 
 }
