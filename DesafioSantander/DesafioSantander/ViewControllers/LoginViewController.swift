@@ -10,7 +10,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class {
     func showAlert(_ message: String)
-    func logged()
+    func logged(_ account: UserAccount)
 }
 
 class LoginViewController: UIViewController {
@@ -19,11 +19,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    var currentTextField: UITextField?
-    var keyboardHeight: CGFloat = 0
     var interactor: LoginInteractor?
     
-    // MARK: - View Contoller life cycle
+    // MARK: - View Controller life cycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -90,6 +88,8 @@ class LoginViewController: UIViewController {
 
 }
 
+// MARK: - Extensions
+
 extension LoginViewController: LoginDisplayLogic {
     func showAlert(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle:.alert)
@@ -99,7 +99,14 @@ extension LoginViewController: LoginDisplayLogic {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func logged() {
-        print("USUSARIO LOGADO")
+    func logged(_ account: UserAccount) {
+        let storyboard = UIStoryboard(name: "Account", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "accountViewController") as? AccountViewController
+        controller?.account = account
+        
+        DispatchQueue.main.async {
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            delegate.window?.rootViewController = controller
+        }
     }
 }

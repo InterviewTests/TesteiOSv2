@@ -34,7 +34,7 @@ class LoginTests: XCTestCase {
             objectTest?.promise.fulfill()
         }
     }
-    
+        
     func testWhenUserPassLoginAndPasswordReturnsLoggedUser() {
         let user = "teste@teste.com"
         let password = "Test@1"

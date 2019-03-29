@@ -21,6 +21,6 @@ class LoginPresenter: LoginPresentationLogic {
             return
         }
         
-        viewController?.logged()
+        viewController?.logged(user!)
     }
 }
