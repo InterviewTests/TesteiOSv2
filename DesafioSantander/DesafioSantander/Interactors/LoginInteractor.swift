@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 
 class LoginInteractor {
     
+    let keychainKey = "userAccountKey"
     var presenter: LoginPresentationLogic?
     
     func validateUsername(_ username: String?) -> Bool {
@@ -50,11 +52,20 @@ class LoginInteractor {
             }
             
             let login = try? JSONDecoder().decode(Login.self, from: data!)
-//            KeychainHelper.saveAccount(account: (login?.userAccount)!)
+            
+            let userData = try? JSONEncoder().encode(login?.userAccount)
+            KeychainWrapper.standard.set(userData!, forKey: self.keychainKey)
             self.presenter?.presentUserLogged(login?.userAccount, error)
-//            let teste = KeychainHelper.account(agency: "012314564", bankAccount: "2050")
-//            print("teste", teste)
         }
+    }
+    
+    func checkPreviousUser() {
+        guard let data = KeychainWrapper.standard.data(forKey: keychainKey) else {
+            return
+        }
+        
+        let userAccount = try? JSONDecoder().decode(UserAccount.self, from: data)
+        self.presenter?.presentPreviousUser(userAccount)
     }
     
 }

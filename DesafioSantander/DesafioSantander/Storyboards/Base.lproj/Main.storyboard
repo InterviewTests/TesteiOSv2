@@ -61,12 +61,49 @@
                                             <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uaC-Wh-FuT"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnS-sG-lNF">
+                                        <rect key="frame" x="16" y="343" width="343" height="78"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7R-V4-TGG">
+                                                <rect key="frame" x="8" y="26" width="327" height="19"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000 / 00.000000-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgg-wB-Ae9">
+                                                <rect key="frame" x="8" y="53" width="327" height="17"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <color key="textColor" red="0.074509803920000006" green="0.098039215690000001" blue="0.15686274510000001" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Último login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWR-ss-thT">
+                                                <rect key="frame" x="8" y="8" width="59" height="13"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                <color key="textColor" red="0.074509803920000006" green="0.098039215690000001" blue="0.15686274510000001" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="BWR-ss-thT" firstAttribute="leading" secondItem="pnS-sG-lNF" secondAttribute="leading" constant="8" id="3Lo-Jn-jQb"/>
+                                            <constraint firstItem="Zgg-wB-Ae9" firstAttribute="leading" secondItem="pnS-sG-lNF" secondAttribute="leading" constant="8" id="HTJ-6G-HVD"/>
+                                            <constraint firstItem="BWR-ss-thT" firstAttribute="top" secondItem="pnS-sG-lNF" secondAttribute="top" constant="8" id="KnU-WT-858"/>
+                                            <constraint firstItem="R7R-V4-TGG" firstAttribute="top" secondItem="BWR-ss-thT" secondAttribute="bottom" constant="5" id="Ri3-Dk-MfX"/>
+                                            <constraint firstItem="R7R-V4-TGG" firstAttribute="leading" secondItem="pnS-sG-lNF" secondAttribute="leading" constant="8" id="X27-cZ-9FN"/>
+                                            <constraint firstAttribute="bottom" secondItem="Zgg-wB-Ae9" secondAttribute="bottom" constant="8" id="cPu-XN-Io0"/>
+                                            <constraint firstItem="Zgg-wB-Ae9" firstAttribute="top" secondItem="R7R-V4-TGG" secondAttribute="bottom" constant="8" id="eh4-IH-YYT"/>
+                                            <constraint firstAttribute="trailing" secondItem="R7R-V4-TGG" secondAttribute="trailing" constant="8" id="vLu-Z4-THh"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zgg-wB-Ae9" secondAttribute="trailing" constant="8" id="zdn-ST-5JR"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="pnS-sG-lNF" firstAttribute="top" secondItem="W8F-f3-AfC" secondAttribute="bottom" constant="16" id="2FP-45-Fcn"/>
                                     <constraint firstItem="7w2-hz-H3H" firstAttribute="top" secondItem="wrP-v1-PQw" secondAttribute="bottom" constant="100" id="5rV-rT-Trb"/>
                                     <constraint firstItem="W8F-f3-AfC" firstAttribute="leading" secondItem="7L6-V0-1bt" secondAttribute="leading" constant="16" id="FYX-aT-2w0"/>
                                     <constraint firstItem="wrP-v1-PQw" firstAttribute="top" secondItem="7L6-V0-1bt" secondAttribute="top" constant="36" id="JgL-oR-UU1"/>
+                                    <constraint firstItem="pnS-sG-lNF" firstAttribute="leading" secondItem="7L6-V0-1bt" secondAttribute="leading" constant="16" id="KMY-yF-Oe9"/>
                                     <constraint firstAttribute="trailing" secondItem="W8F-f3-AfC" secondAttribute="trailing" constant="16" id="QOt-7H-M5m"/>
                                     <constraint firstItem="W8F-f3-AfC" firstAttribute="top" secondItem="7w2-hz-H3H" secondAttribute="bottom" constant="21" id="Sd6-eX-6l1"/>
                                     <constraint firstItem="kbS-IG-i0C" firstAttribute="centerX" secondItem="7L6-V0-1bt" secondAttribute="centerX" id="bA9-5H-tdQ"/>
@@ -74,6 +111,7 @@
                                     <constraint firstAttribute="trailing" secondItem="7w2-hz-H3H" secondAttribute="trailing" constant="16" id="r80-tr-zM3"/>
                                     <constraint firstItem="wrP-v1-PQw" firstAttribute="centerX" secondItem="7L6-V0-1bt" secondAttribute="centerX" id="r8v-P8-0aY"/>
                                     <constraint firstAttribute="bottom" secondItem="kbS-IG-i0C" secondAttribute="bottom" constant="33" id="sBc-Al-Syz"/>
+                                    <constraint firstAttribute="trailing" secondItem="pnS-sG-lNF" secondAttribute="trailing" constant="16" id="zwz-z5-Aod"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -87,7 +125,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="accountLabel" destination="Zgg-wB-Ae9" id="zj5-gd-iMH"/>
+                        <outlet property="lastUserView" destination="pnS-sG-lNF" id="Rz7-k1-oRv"/>
                         <outlet property="loginButton" destination="kbS-IG-i0C" id="0mn-4e-4Of"/>
+                        <outlet property="nameLabel" destination="R7R-V4-TGG" id="69u-Ea-GGM"/>
                         <outlet property="passwordText" destination="W8F-f3-AfC" id="qPc-d9-KAR"/>
                         <outlet property="userText" destination="7w2-hz-H3H" id="tJA-kg-99w"/>
                     </connections>

@@ -11,6 +11,7 @@ import UIKit
 protocol LoginDisplayLogic: class {
     func showAlert(_ message: String)
     func logged(_ account: UserAccount)
+    func showPreviousUser(_ user: UserAccount)
 }
 
 class LoginViewController: UIViewController {
@@ -18,6 +19,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var lastUserView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var accountLabel: UILabel!
     
     var interactor: LoginInteractor?
     
@@ -55,7 +60,11 @@ class LoginViewController: UIViewController {
     }
     
     private func configureView() {
+        lastUserView.alpha = 0
+        
+        interactor?.checkPreviousUser()
         corner(in: loginButton, radius: 5)
+        corner(in: lastUserView, radius: 5)
     }
     
     // MARK: - Selectors
@@ -64,7 +73,7 @@ class LoginViewController: UIViewController {
         userText.resignFirstResponder()
         passwordText.resignFirstResponder()
     }
-
+    
     // MARK: - Actions
     
     @IBAction func loginAction(_ sender: Any) {
@@ -107,6 +116,15 @@ extension LoginViewController: LoginDisplayLogic {
         DispatchQueue.main.async {
             let delegate = UIApplication.shared.delegate as! AppDelegate
             delegate.window?.rootViewController = controller
+        }
+    }
+    
+    func showPreviousUser(_ user: UserAccount) {
+        nameLabel.text = user.name
+        accountLabel.text = FormatterHelper.bankAccountFormatter(agency: user.bankAccount ?? "0000", accountNumber: user.agency ?? "000000000")
+        
+        UIView.animate(withDuration: 0.3) {
+            self.lastUserView.alpha = 1
         }
     }
 }

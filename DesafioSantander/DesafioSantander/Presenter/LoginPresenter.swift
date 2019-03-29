@@ -10,6 +10,7 @@ import Foundation
 
 protocol LoginPresentationLogic {
     func presentUserLogged(_ user: UserAccount?, _ error: Error?)
+    func presentPreviousUser(_ user: UserAccount?)
 }
 
 class LoginPresenter: LoginPresentationLogic {
@@ -22,5 +23,10 @@ class LoginPresenter: LoginPresentationLogic {
         }
         
         viewController?.logged(user!)
+    }
+    
+    func presentPreviousUser(_ user: UserAccount?) {
+        guard let user = user else { return }
+        viewController?.showPreviousUser(user)
     }
 }
