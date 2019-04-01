@@ -37,7 +37,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         worker = LoginWorker()
         worker?.requestUser(user: request.user, password: request.password, { [weak self] (user, error) in
             self?.user = user
-            let response = Login.fetchlogin.Response(LoginResponse: user, message: error)
+            let response = Login.fetchlogin.Response(LoginResponse: user, error: error)
             self?.presenter?.presentLogin(response: response)
             
         })

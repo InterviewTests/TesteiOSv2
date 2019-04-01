@@ -37,6 +37,8 @@
 		316C393622402C6A00F0E789 /* StatementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316C393522402C6A00F0E789 /* StatementCell.xib */; };
 		316C393822402E1100F0E789 /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316C393722402E1100F0E789 /* StatementTableViewCell.swift */; };
 		316C393A22402F9000F0E789 /* StatementViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316C393922402F9000F0E789 /* StatementViewModels.swift */; };
+		3177892A224DE053004F6A9D /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31778929224DE053004F6A9D /* KeychainConfiguration.swift */; };
+		3177892C224DE28B004F6A9D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3177892B224DE28B004F6A9D /* KeychainPasswordItem.swift */; };
 		508728F318097A4CBE02C440 /* Pods_SantanderTeste.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D765E8ABD31CCD8AAA4FE082 /* Pods_SantanderTeste.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +75,9 @@
 		316C393522402C6A00F0E789 /* StatementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementCell.xib; sourceTree = "<group>"; };
 		316C393722402E1100F0E789 /* StatementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
 		316C393922402F9000F0E789 /* StatementViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementViewModels.swift; sourceTree = "<group>"; };
+		31778929224DE053004F6A9D /* KeychainConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
+		3177892B224DE28B004F6A9D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		3177892D224DE417004F6A9D /* SantanderTeste.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SantanderTeste.entitlements; sourceTree = "<group>"; };
 		726883DA922D27DA4A51B79E /* Pods-SantanderTeste.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderTeste.release.xcconfig"; path = "Target Support Files/Pods-SantanderTeste/Pods-SantanderTeste.release.xcconfig"; sourceTree = "<group>"; };
 		A866329BBFD479807E357A61 /* Pods-SantanderTeste.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderTeste.debug.xcconfig"; path = "Target Support Files/Pods-SantanderTeste/Pods-SantanderTeste.debug.xcconfig"; sourceTree = "<group>"; };
 		D765E8ABD31CCD8AAA4FE082 /* Pods_SantanderTeste.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SantanderTeste.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +126,7 @@
 		316C38C0223EDEEC00F0E789 /* SantanderTeste */ = {
 			isa = PBXGroup;
 			children = (
+				3177892D224DE417004F6A9D /* SantanderTeste.entitlements */,
 				316C38C1223EDEEC00F0E789 /* AppDelegate.swift */,
 				316C38C3223EDEEC00F0E789 /* ViewController.swift */,
 				316C38DF223EE78500F0E789 /* SupportingFiles */,
@@ -177,6 +183,7 @@
 		316C38DF223EE78500F0E789 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				31778928224DE024004F6A9D /* Keychain */,
 				316C38EA223EE96D00F0E789 /* Config */,
 				316C38E5223EE8BE00F0E789 /* Extension */,
 				316C38E0223EE7B600F0E789 /* Helper */,
@@ -233,6 +240,15 @@
 				316C393922402F9000F0E789 /* StatementViewModels.swift */,
 			);
 			path = GenericScenes;
+			sourceTree = "<group>";
+		};
+		31778928224DE024004F6A9D /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				31778929224DE053004F6A9D /* KeychainConfiguration.swift */,
+				3177892B224DE28B004F6A9D /* KeychainPasswordItem.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		8C7ACEF671C6FBDCA5D0A7F6 /* Frameworks */ = {
@@ -385,6 +401,7 @@
 				316C38DE223EE61500F0E789 /* LoginViewController.swift in Sources */,
 				316C38F2223F17DA00F0E789 /* LoginPresenter.swift in Sources */,
 				316C38DA223EE2B100F0E789 /* StatementModel.swift in Sources */,
+				3177892A224DE053004F6A9D /* KeychainConfiguration.swift in Sources */,
 				316C392D223FF8D100F0E789 /* StatementsPresenter.swift in Sources */,
 				316C3931223FF8F000F0E789 /* StatementsWorker.swift in Sources */,
 				316C38C4223EDEEC00F0E789 /* ViewController.swift in Sources */,
@@ -405,6 +422,7 @@
 				316C38C2223EDEEC00F0E789 /* AppDelegate.swift in Sources */,
 				316C38E7223EE8E500F0E789 /* Extension+UIView.swift in Sources */,
 				316C38F6223F182200F0E789 /* LoginWorker.swift in Sources */,
+				3177892C224DE28B004F6A9D /* KeychainPasswordItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

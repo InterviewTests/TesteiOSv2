@@ -24,7 +24,7 @@ enum Login
         struct Response
         {
             let LoginResponse: UserModel?
-            let message: String?
+            let error: String?
         }
         struct ViewModel
         {

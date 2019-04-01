@@ -22,7 +22,7 @@ class StatementsPresenter: StatementsPresentationLogic
     
    
     func presentError(error: String) {
-        
+        viewController?.displayError(error: error)
     }
     
     weak var viewController: StatementsDisplayLogic?
