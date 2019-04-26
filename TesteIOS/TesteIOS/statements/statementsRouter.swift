@@ -29,11 +29,8 @@ class statementsRouter: NSObject, statementsRoutingLogic, statementsDataPassing 
     // MARK: Routing
 
     func goToLogin() {
-        guard let view = mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
-            print("couldn't find view")
-            return
-        }
-        view.modalTransitionStyle = .coverVertical
-        viewController?.present(view, animated: true, completion: nil)
+        let loginViewController = LoginViewController()
+        loginViewController.modalTransitionStyle = .coverVertical
+        viewController?.present(loginViewController, animated: true, completion: nil)
     }
 }

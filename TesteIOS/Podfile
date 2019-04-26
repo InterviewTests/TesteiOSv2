@@ -6,19 +6,22 @@ target 'TesteIOS' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   
   # Pods for TesteIOS
-  use_frameworks!
   pod 'RealmSwift'
-  pod 'AlamofireObjectMapper'
+  pod 'AlamofireObjectMapper', '~> 5.2'
   pod 'SVProgressHUD'
   
   target 'TesteIOSTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Nimble'
   end
 
   target 'TesteIOSUITests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
   end
+  
 
 end

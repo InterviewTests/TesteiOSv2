@@ -29,10 +29,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     // MARK: Routing
 
     func goToStatments() {
-        guard let statmentsView = mainStoryBoard.instantiateViewController(withIdentifier: "statementsViewController") as? statementsViewController else {
-            print("couldn't find view")
-            return
-        }
+        let statmentsView = statementsViewController()
         statmentsView.modalTransitionStyle = .flipHorizontal
         viewController?.present(statmentsView, animated: true, completion: nil)
     }

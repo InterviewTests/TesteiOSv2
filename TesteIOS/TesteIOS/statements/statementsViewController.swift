@@ -22,14 +22,155 @@ class statementsViewController: UIViewController, statementsDisplayLogic {
     var router: (NSObjectProtocol & statementsRoutingLogic & statementsDataPassing)?
     var repository: UserRepository?
 
-    @IBOutlet var userName: UILabel!
-    @IBOutlet var userAccount: UILabel!
-    @IBOutlet var userBalance: UILabel!
-    @IBOutlet var statmentsTable: UITableView!
+    lazy var mainView: UIView = {
+        var view = UIView()
+        view.backgroundColor = UIColor(rgb: 0x3B49EE)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var logoutLogo: UIImageView = {
+        let image = UIImage(named: "logout 2")
+        var view = UIImageView(image: image)
+        view.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.Logout))
+        view.addGestureRecognizer(tapRecognizer)
+        view.contentMode = .scaleAspectFit
+        if view.bounds.size.width > (image?.size.width ?? 0.0) && view.bounds.size.height > (image?.size.height ?? 0.0) {
+            view.contentMode = .scaleAspectFit
+        }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var userName: UILabel = {
+        var view = UILabel()
+        view.font = .systemFont(ofSize: 22)
+        view.textColor = UIColor(rgb: 0xffffff)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var userAccountLabel: UILabel = {
+        var view = UILabel()
+        view.font = .systemFont(ofSize: 11)
+        view.textColor = UIColor(rgb: 0xffffff)
+        view.text = "Conta"
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var userAccount: UILabel = {
+        var view = UILabel()
+        view.font = .systemFont(ofSize: 20)
+        view.textColor = UIColor(rgb: 0xffffff)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var userBalanceLabel: UILabel = {
+        var view = UILabel()
+        view.font = .systemFont(ofSize: 11)
+        view.textColor = UIColor(rgb: 0xffffff)
+        view.text = "Saldo"
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var userBalance: UILabel = {
+        var view = UILabel()
+        view.font = .systemFont(ofSize: 20)
+        view.textColor = UIColor(rgb: 0xffffff)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var recentesLabel: UILabel = {
+        var view = UILabel()
+        view.text = "Recentes"
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var statmentsTable: UITableView = {
+        var view = UITableView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    func activateConstraints(_ constraints: [NSLayoutConstraint]){
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    func mainViewConstraints(){
+        view.addSubview(mainView)
+        let constraints = [mainView.topAnchor.constraint(equalTo: view.topAnchor),
+                           mainView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                           mainView.rightAnchor.constraint(equalTo: view.rightAnchor),
+                           mainView.heightAnchor.constraint(equalToConstant: 250)]
+        activateConstraints(constraints)
+    }
+    
+    func logoutLogoConstraints(){
+        mainView.addSubview(logoutLogo)
+        let constraints = [logoutLogo.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 60),
+                           logoutLogo.rightAnchor.constraint(equalTo: mainView.rightAnchor, constant: -20)]
+        activateConstraints(constraints)
+    }
+    
+    func userNameConstraints(){
+        mainView.addSubview(userName)
+        let constraints = [userName.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 60),
+                           userName.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 20)]
+        activateConstraints(constraints)
+    }
+    
+    func userAccountLabelConstraints(){
+        mainView.addSubview(userAccountLabel)
+        let constraints = [userAccountLabel.topAnchor.constraint(equalTo: userName.bottomAnchor, constant: 30),
+                           userAccountLabel.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 20)]
+        activateConstraints(constraints)
+    }
+    
+    func userAccountConstraints(){
+        mainView.addSubview(userAccount)
+        let constraints = [userAccount.topAnchor.constraint(equalTo: userAccountLabel.bottomAnchor, constant: 5),
+                           userAccount.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 20)]
+        activateConstraints(constraints)
+    }
+    
+    func userBalanceLabelConstraints(){
+        mainView.addSubview(userBalanceLabel)
+        let constraints = [userBalanceLabel.topAnchor.constraint(equalTo: userAccount.bottomAnchor, constant: 30),
+                           userBalanceLabel.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 20)]
+        activateConstraints(constraints)
+    }
+    
+    func userBalanceConstraints(){
+        mainView.addSubview(userBalance)
+        let constraints = [userBalance.topAnchor.constraint(equalTo: userBalanceLabel.bottomAnchor, constant: 5),
+                           userBalance.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 20)]
+        activateConstraints(constraints)
+    }
+    
+    func recentesLabelConstraints(){
+        view.addSubview(recentesLabel)
+        let constraints = [recentesLabel.topAnchor.constraint(equalTo: mainView.bottomAnchor, constant: 5),
+                           recentesLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20)]
+        activateConstraints(constraints)
+    }
+    
+    func statmentsTableConstraints(){
+        view.addSubview(statmentsTable)
+        statmentsTable.register(StatmentViewCell.self, forCellReuseIdentifier: "StatmentViewCell")
+        statmentsTable.dataSource = self
+        statmentsTable.delegate = self
+        let constraints = [statmentsTable.topAnchor.constraint(equalTo: recentesLabel.bottomAnchor, constant: 20),
+                           statmentsTable.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+                           statmentsTable.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+                           statmentsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)]
+        activateConstraints(constraints)
+    }
 
     var statments: [Statment] = [] {
         didSet {
-            statmentsTable?.reloadData()
+            //statmentsTable.reloadData()
+            DispatchQueue.main.async{
+                self.statmentsTable.reloadData()
+            }
+            print("statments.count: \(statments.count)")
         }
     }
 
@@ -88,6 +229,16 @@ class statementsViewController: UIViewController, statementsDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
+        view.backgroundColor = .white
+        mainViewConstraints()
+        logoutLogoConstraints()
+        userNameConstraints()
+        userAccountLabelConstraints()
+        userAccountConstraints()
+        userBalanceLabelConstraints()
+        userBalanceConstraints()
+        recentesLabelConstraints()
+        statmentsTableConstraints()
         UpdateView()
     }
 
@@ -103,15 +254,16 @@ class statementsViewController: UIViewController, statementsDisplayLogic {
         let uAccount = viewModel.userAccount!
         statments = viewModel.statments!
 
-        userName?.text = uAccount.name!
-        userAccount?.text = uAccount.agency! + "/" + uAccount.bankAccount!
-        userBalance?.text = uAccount.balance!
+        userName.text = uAccount.name!
+        userAccount.text = uAccount.agency! + "/" + uAccount.bankAccount!
+        userBalance.text = uAccount.balance!
+        hideLoading()
     }
 
     // @IBAction func Logout(_ sender: Any) {
     //    repository?.deleteAll()
     // }
-    @IBAction func Logout(_ sender: Any) {
+    @objc func Logout(_ sender: Any) {
         repository?.deleteAll()
         router?.goToLogin()
     }
@@ -125,7 +277,6 @@ extension statementsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let statment = statments[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "StatmentViewCell") as! StatmentViewCell
-        cell.value?.text = statment.value
         cell.SetStatment(statment: statment)
         return cell
     }

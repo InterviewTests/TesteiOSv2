@@ -42,9 +42,119 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     var repository: UserRepository?
 
-    @IBOutlet var loginButton: UIButton!
-    @IBOutlet var userInput: UITextField!
-    @IBOutlet var passwordInput: UITextField!
+    
+    
+    lazy var mainView: UIView = {
+        let mView = UIView()
+        mView.translatesAutoresizingMaskIntoConstraints = false
+        return mView
+    }()
+    lazy var loginLogo: UIImageView = {
+        let image = UIImage(named: "Logo")
+        var view = UIImageView(image: image)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var loginButton: UIButton = {
+        var view = UIButton(type: .system)
+        view.setTitle("login", for: UIControl.State.normal)
+        view.tintColor = UIColor(rgb: 0xffffff)
+        view.backgroundColor = UIColor(rgb: 0x3B48EE)
+        view.addTarget(self, action: #selector(self.LoginClick), for: .touchUpInside)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var inputsView: UIView = {
+        var view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var userInput: UITextField = {
+        var view = UITextField()
+        view.placeholder = "User"
+        view.setLeftPaddingPoints(10)
+        view.setRightPaddingPoints(10)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var passwordInput: UITextField = {
+        var view = UITextField()
+        view.placeholder = "Password"
+        view.setLeftPaddingPoints(10)
+        view.setRightPaddingPoints(10)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    func activateConstraints(_ constraints: [NSLayoutConstraint]){
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    func mainViewConstraints(){
+        view.addSubview(mainView)
+        mainView.backgroundColor = .white
+        if let view = view {
+            let constraints = [mainView.topAnchor.constraint(equalTo: view.topAnchor),
+                            mainView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                            mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                            mainView.rightAnchor.constraint(equalTo: view.rightAnchor)]
+            activateConstraints(constraints)
+        }
+    }
+    
+    func loginLogoConstraints(){
+        mainView.addSubview(loginLogo)
+        loginButton.layer.cornerRadius = 4.0
+        let constraints = [loginLogo.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 90),
+                           loginLogo.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+                           loginLogo.heightAnchor.constraint(equalToConstant: 70),
+                           loginLogo.widthAnchor.constraint(equalToConstant: 140)]
+        activateConstraints(constraints)
+    }
+    
+    func loginButtonConstraints(){
+        mainView.addSubview(loginButton)
+        let constraints = [loginButton.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -90),
+                           loginButton.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+                           loginButton.widthAnchor.constraint(equalToConstant: 190),
+                           loginButton.heightAnchor.constraint(equalToConstant: 50)]
+        activateConstraints(constraints)
+    }
+    
+    func inputsViewConstraints(){
+        mainView.addSubview(inputsView)
+        let constraints = [inputsView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+                           inputsView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
+                           inputsView.heightAnchor.constraint(equalToConstant: 130),
+                           inputsView.widthAnchor.constraint(equalTo: mainView.widthAnchor, constant: -50)]
+        activateConstraints(constraints)
+    }
+    
+    func userInputConstraints(){
+        inputsView.addSubview(userInput)
+        userInput.layer.borderWidth = 1
+        userInput.layer.cornerRadius = 4.0
+        userInput.layer.borderColor = UIColor(red: 220, green: 226, blue: 238, alpha: 1).cgColor
+        let constraints = [userInput.topAnchor.constraint(equalTo: inputsView.topAnchor),
+                           userInput.centerXAnchor.constraint(equalTo: inputsView.centerXAnchor),
+                           userInput.widthAnchor.constraint(equalTo: inputsView.widthAnchor),
+                           userInput.heightAnchor.constraint(equalToConstant: 50)]
+        activateConstraints(constraints)
+    }
+    
+    func passwordInputConstraints(){
+        inputsView.addSubview(passwordInput)
+        passwordInput.layer.borderWidth = 1
+        passwordInput.layer.cornerRadius = 4.0
+        passwordInput.layer.borderColor = UIColor(red: 220, green: 226, blue: 238, alpha: 1).cgColor
+        let constraints = [passwordInput.topAnchor.constraint(equalTo: userInput.bottomAnchor, constant: 30),
+                           passwordInput.centerXAnchor.constraint(equalTo: inputsView.centerXAnchor),
+                           passwordInput.widthAnchor.constraint(equalTo: inputsView.widthAnchor),
+                           passwordInput.heightAnchor.constraint(equalToConstant: 50)]
+        activateConstraints(constraints)
+    }
+    
+    
 
     // MARK: Object lifecycle
 
@@ -93,16 +203,15 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.endEditing(true)
-        loginButton.layer.cornerRadius = 4.0
-        userInput.layer.borderWidth = 1
-        userInput.layer.cornerRadius = 4.0
-        userInput.layer.borderColor = UIColor(red: 220, green: 226, blue: 238, alpha: 1).cgColor
-        passwordInput.layer.borderWidth = 1
-        passwordInput.layer.cornerRadius = 4.0
-        passwordInput.layer.borderColor = UIColor(red: 220, green: 226, blue: 238, alpha: 1).cgColor
+        mainViewConstraints()
+        loginLogoConstraints()
+        loginButtonConstraints()
+        inputsViewConstraints()
+        userInputConstraints()
+        passwordInputConstraints()
     }
 
-    @IBAction func LoginClick(_ sender: Any) {
+    @objc func LoginClick(_ sender: Any) {
         doLogin()
     }
 
