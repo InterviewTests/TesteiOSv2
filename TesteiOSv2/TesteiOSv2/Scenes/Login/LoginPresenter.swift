@@ -9,9 +9,15 @@
 import Foundation
 
 protocol LoginPresenterProcotol {
-    
+    func presentErrorMessage(response: LoginModel.Response)
 }
 
 class LoginPresenter: LoginPresenterProcotol {
     weak var viewController: LoginViewControllerProtocol?
+    
+    func presentErrorMessage(response: LoginModel.Response) {
+        if let errorMessage = response.errorMessage {
+            viewController?.displayErrorMessage(message: errorMessage)
+        }
+    }
 }
