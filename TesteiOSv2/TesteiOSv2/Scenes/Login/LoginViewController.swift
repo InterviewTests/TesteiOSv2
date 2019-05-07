@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonClick(_ sender: Any) {
         let request = LoginModel.Request(user: userTextField.text, password: passwordTextField.text)
-        interactor?.doLogin(request: request)
+        interactor?.validateLogin(request: request)
     }
     
     /*

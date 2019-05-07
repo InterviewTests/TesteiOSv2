@@ -9,37 +9,45 @@
 import Foundation
 
 protocol LoginInteractorProtocol {
-    func doLogin(request: LoginModel.Request)
+    func validateLogin(request: LoginModel.Request)
 }
 
 class LoginInteractor: LoginInteractorProtocol {
     var worker: LoginWorker? = LoginWorker()
     var presenter: LoginPresenterProcotol?
     
-    func doLogin(request: LoginModel.Request) {
+    func validateLogin(request: LoginModel.Request) {
         guard let user = request.user, let password = request.password else {
-            presenter?.presentErrorMessage(response: LoginModel.Response(errorMessage: "Erro no Request"))
+            presenter?.presentErrorMessage(message: "Erro no Request")
             return
         }
         
         if user.isEmpty {
-            presenter?.presentErrorMessage(response: LoginModel.Response(errorMessage: "Preencha o campo User"))
+            presenter?.presentErrorMessage(message: "Preencha o campo User")
             return
         }
         if password.isEmpty {
-            presenter?.presentErrorMessage(response: LoginModel.Response(errorMessage: "Preencha o campo Password"))
+            presenter?.presentErrorMessage(message: "Preencha o campo Password")
             return
         }
         
         if !isValidEmail(testStr: user) && !isValidCPF(testStr: user) {
-            presenter?.presentErrorMessage(response: LoginModel.Response(errorMessage: "Campo User inválido. Informe um e-mail ou CPF."))
+            presenter?.presentErrorMessage(message: "Campo User inválido. Informe um e-mail ou CPF.")
             return
         }
         
         if !isValidPassword(testStr: password) {
-            presenter?.presentErrorMessage(response: LoginModel.Response(errorMessage: "Campo Password inválido. Necessário pelo menos uma letra maiúscula, um caracter especial e um caracter alfanumérico."))
+            presenter?.presentErrorMessage(message: "Campo Password inválido. Necessário pelo menos uma letra maiúscula, um caracter especial e um caracter alfanumérico.")
             return
         }
+        
+        worker?.requestLogin(request: request, completionSuccess: { (response) in
+            self.presenter?.presentErrorMessage(message: "LOGIN SUCCESS")
+            return
+        }, completionError: { (error) in
+            self.presenter?.presentErrorMessage(message: error.localizedDescription)
+            return
+        })
         
     }
     
