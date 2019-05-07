@@ -36,6 +36,11 @@ class LoginInteractor: LoginInteractorProtocol {
             return
         }
         
+        if !isValidPassword(testStr: password) {
+            presenter?.presentErrorMessage(response: LoginModel.Response(errorMessage: "Campo Password inválido. Necessário pelo menos uma letra maiúscula, um caracter especial e um caracter alfanumérico."))
+            return
+        }
+        
     }
     
     private func isValidEmail(testStr:String) -> Bool {
@@ -59,5 +64,11 @@ class LoginInteractor: LoginInteractorProtocol {
         let dv1 = digitCalculator(numbers.prefix(9))
         let dv2 = digitCalculator(numbers.prefix(10))
         return dv1 == numbers[9] && dv2 == numbers[10]
+    }
+    private func isValidPassword(testStr: String) -> Bool {
+        let passwordRegEx = "^(?=.*[A-Z])(?=.*[@$!%*#?&])(?=.*[a-z0-9])[A-Za-z0-9@$!%*#?&]{3,}$"
+        
+        let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        return passwordTest.evaluate(with: testStr)
     }
 }
