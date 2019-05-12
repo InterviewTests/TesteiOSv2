@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class {
     func getData(viewModel: LoginModel.Login.ViewModel)
+    func displayErrorAlert(error: String)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -58,22 +59,45 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLoadingView()
     }
     
     // MARK: Outlets
     @IBOutlet weak var userTextField: UITextField!
-    @IBAction func passwordTextField(_ sender: Any) {
+    @IBOutlet weak var passwordTextField: UITextField!
+    var loadingView: Loading?
+    
+    func setupLoadingView() {
+        loadingView = Loading.instanceFromNib(rect: self.view.frame)
     }
-  
+    
+    func removeLoadingView() {
+        
+    }
+    
     func performLogin() {
-        let request = LoginModel.Login.Request(user: "", password: "")
+        let request = LoginModel.Login.Request(user: userTextField.text, password: passwordTextField.text)
         interactor?.performLogin(request: request)
     }
   
     func getData(viewModel: LoginModel.Login.ViewModel) {
-        
+        self.loadingView?.activityIndicator.stopAnimating()
+        self.loadingView?.removeFromSuperview()
+        self.performSegue(withIdentifier: Constants.Identifiers.statementSegue, sender: self)
+    }
+    
+    func displayErrorAlert(error: String) {
+        self.loadingView?.activityIndicator.stopAnimating()
+        self.loadingView?.removeFromSuperview()
+        let alert = UIAlertController(title: "erro", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func tapLogin(_ sender: Any) {
+        guard let loading = loadingView else { return }
+        loading.activityIndicator.startAnimating()
+        self.view.addSubview(loading)
+        performLogin()
     }
 }

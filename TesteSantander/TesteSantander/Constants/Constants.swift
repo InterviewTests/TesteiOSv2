@@ -10,4 +10,6 @@ import UIKit
 
 struct Constants {
     struct Url { }
+    struct Regex { }
+    struct Identifiers { }
 }

@@ -17,19 +17,35 @@ protocol LoginBusinessLogic {
 }
 
 protocol LoginDataStore {
-    //var name: String { get set }
+    var userAccount: UserAccount? { get }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
+    var userAccount: UserAccount?
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
     
     func performLogin(request: LoginModel.Login.Request) {
         worker = LoginWorker()
-        worker?.login(requestData: request, completionSuccess: { (response) in
-            self.presenter?.presentLogin(response: response)
-        }, completionFailure: { (error) in
-            self.presenter?.presentLoginError(error: error)
-        })
+        
+        guard let userIsValid = worker?.validateUserName(username: request.user ?? ""),
+            let passwordIsValid = worker?.validatePassword(password: request.password ?? "") else { return }
+        
+        if userIsValid && passwordIsValid {
+            worker?.login(requestData: request, completionSuccess: { (response) in
+                self.userAccount = response.user?.userAccount
+                DispatchQueue.main.async {
+                    self.presenter?.presentLogin(response: response)
+                }
+            }, completionFailure: { (error) in
+                DispatchQueue.main.async {
+                    self.presenter?.presentLoginError(error: error)
+                }
+            })
+        } else {
+            DispatchQueue.main.async {
+                self.presenter?.presentLoginError(error: "usuário ou senha inválida")
+            }
+        }
     }
 }
