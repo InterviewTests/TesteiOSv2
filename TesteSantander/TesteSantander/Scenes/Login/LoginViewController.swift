@@ -11,6 +11,7 @@ import UIKit
 protocol LoginDisplayLogic: class {
     func getData(viewModel: LoginModel.Login.ViewModel)
     func displayErrorAlert(error: String)
+    func fillLastUsername(username: String)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -60,19 +61,52 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLoadingView()
+        getLastUsername()
+        setupNotification()
     }
     
     // MARK: Outlets
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var loadingView: Loading?
+    @IBOutlet weak var usernameConstraint: NSLayoutConstraint!
     
     func setupLoadingView() {
         loadingView = Loading.instanceFromNib(rect: self.view.frame)
     }
     
+    func setupNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        usernameConstraint.constant = 75
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        usernameConstraint.constant = 105
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func startLoadingView() {
+        guard let loading = loadingView else { return }
+        loading.activityIndicator.startAnimating()
+        self.view.addSubview(loading)
+    }
+    
     func removeLoadingView() {
-        
+        self.loadingView?.activityIndicator.stopAnimating()
+        self.loadingView?.removeFromSuperview()
+    }
+    
+    func getLastUsername() {
+        interactor?.getLastUserName()
     }
     
     func performLogin() {
@@ -81,23 +115,41 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     }
   
     func getData(viewModel: LoginModel.Login.ViewModel) {
-        self.loadingView?.activityIndicator.stopAnimating()
-        self.loadingView?.removeFromSuperview()
+        removeLoadingView()
         self.performSegue(withIdentifier: Constants.Identifiers.statementSegue, sender: self)
     }
     
     func displayErrorAlert(error: String) {
-        self.loadingView?.activityIndicator.stopAnimating()
-        self.loadingView?.removeFromSuperview()
+        removeLoadingView()
         let alert = UIAlertController(title: "erro", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
+    func fillLastUsername(username: String) {
+        userTextField.text = username
+    }
+    
     @IBAction func tapLogin(_ sender: Any) {
-        guard let loading = loadingView else { return }
-        loading.activityIndicator.startAnimating()
-        self.view.addSubview(loading)
+        startLoadingView()
         performLogin()
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField.returnKeyType {
+        case .next:
+            passwordTextField.becomeFirstResponder()
+            return true
+        case .go:
+            textField.resignFirstResponder()
+            startLoadingView()
+            performLogin()
+            return true
+        default:
+            textField.resignFirstResponder()
+            return true
+        }
     }
 }

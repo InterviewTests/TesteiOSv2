@@ -29,6 +29,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="sgT-Yr-ZZe"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h86-5n-3Jf">
                                 <rect key="frame" x="17" y="302" width="341" height="50"/>
@@ -38,6 +41,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="IGf-lX-vyv"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aV2-4H-baz">
                                 <rect key="frame" x="77.5" y="568" width="220" height="62"/>
@@ -78,6 +84,7 @@
                     <connections>
                         <outlet property="passwordTextField" destination="h86-5n-3Jf" id="jfa-iO-IVD"/>
                         <outlet property="userTextField" destination="Xjy-4I-6ig" id="AWN-OG-caX"/>
+                        <outlet property="usernameConstraint" destination="QzA-E6-FyQ" id="GZb-WB-Ahs"/>
                         <segue destination="51o-ac-e0M" kind="show" identifier="ShowStatement" id="EtS-2A-s0W"/>
                     </connections>
                 </viewController>

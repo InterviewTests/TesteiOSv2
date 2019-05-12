@@ -11,4 +11,5 @@ import UIKit
 extension Constants.Identifiers {
     static let statementSegue = "ShowStatement"
     static let statementCell = "statementCell"
+    static let lastUsername = "lastUsername"
 }
