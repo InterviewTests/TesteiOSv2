@@ -87,6 +87,11 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
         accountLabel.text = viewModel.account
         balanceLabel.text = viewModel.balance
     }
+    
+    @IBAction func tapDismiss(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension StatementsViewController: UITableViewDataSource {
