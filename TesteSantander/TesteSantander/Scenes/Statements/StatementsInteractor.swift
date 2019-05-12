@@ -28,7 +28,10 @@ class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore {
     }
   
     func fetchStatements() {
-        worker = StatementsWorker()
+        if worker == nil {
+            worker = StatementsWorker()
+        }
+        
         worker?.fetchStatements(completionSuccess: { (response) in
             DispatchQueue.main.async {
                 self.presenter?.presentFetchStatements(response: response)

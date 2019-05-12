@@ -23,7 +23,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var worker: LoginWorker?
     
     func performLogin(request: LoginModel.Login.Request) {
-        worker = LoginWorker()
+        if worker == nil {
+            worker = LoginWorker()
+        }
         
         guard let userIsValid = worker?.validateUserName(username: request.user ?? ""),
             let passwordIsValid = worker?.validatePassword(password: request.password ?? "") else { return }
@@ -52,7 +54,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         self.presenter?.getLastUsername(username: username)
     }
     
-    func saveLastUsername(username: String) {
+    private func saveLastUsername(username: String) {
         UserDefaults.standard.set(username, forKey: Constants.Identifiers.lastUsername)
     }
 }

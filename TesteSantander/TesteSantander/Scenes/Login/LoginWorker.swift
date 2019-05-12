@@ -13,7 +13,7 @@ typealias LoginResponseFailure = (_ response: String) -> ()
 
 
 class LoginWorker {
-    private func createRequest(requestData: LoginModel.Login.Request, urlRequest: URL) -> URLRequest {
+    func createRequest(requestData: LoginModel.Login.Request, urlRequest: URL) -> URLRequest {
         var request = URLRequest(url: urlRequest)
         request.httpMethod = "POST"
         request.httpBody = requestData.getBody().data(using: .utf8)
