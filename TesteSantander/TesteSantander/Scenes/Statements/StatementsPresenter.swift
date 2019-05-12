@@ -35,7 +35,7 @@ class StatementsPresenter: StatementsPresentationLogic {
     func setupHeader(data: StatementsModel.Header.Response) {
         let name = data.headerData?.name ?? ""
         let account = "\(data.headerData?.bankAccount ?? "")/\(data.headerData?.agency ?? "")"
-        let balance = String(format: "R$ %.02f", data.headerData?.balance ?? 0.0)
+        let balance = data.headerData?.balance?.currencyFormatted() ?? "R$ 0,00"
         let viewModel = StatementsModel.Header.ViewModel(name: name,
                                                          account: account,
                                                          balance: balance)

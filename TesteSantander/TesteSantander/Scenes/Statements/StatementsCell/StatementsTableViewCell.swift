@@ -18,6 +18,6 @@ class StatementsTableViewCell: UITableViewCell {
         titleLabel.text = statement.title ?? ""
         descLabel.text = statement.desc ?? ""
         dateLabel.text = statement.date?.convertDataFormat() ?? ""
-        valueLabel.text = String(format: "R$ $%.02f", statement.value ?? "")
+        valueLabel.text = statement.value?.currencyFormatted() ?? "R$ 0,00"
     }
 }
