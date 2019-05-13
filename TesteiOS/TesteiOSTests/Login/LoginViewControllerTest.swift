@@ -53,15 +53,13 @@ class LoginViewControllerTest: XCTestCase {
     
     // MARK: Tests
     
-    func testperformLogin() {
-        // Given
+    func testPostLogin() {
         let spy = LoginBusinessLogicSpy()
         sut.interactor = spy
         
-        // When
+        loadView()
         sut.postLogin()
         
-        // Then
         XCTAssertTrue(spy.postLoginIsCalled)
     }
     

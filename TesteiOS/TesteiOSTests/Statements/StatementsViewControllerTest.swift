@@ -32,6 +32,10 @@ class StatementsViewControllerTest: XCTestCase {
         sut = storyboard.instantiateViewController(withIdentifier: "StatementsViewController") as? StatementsViewController
     }
     
+    func loadView() {
+        window.addSubview(sut.view)
+        RunLoop.current.run(until: Date())
+    }
     
     class StatementsBusinessLogicSpy: StatementsBusinessLogic {
         var getStatementIsCalled = false
@@ -49,28 +53,25 @@ class StatementsViewControllerTest: XCTestCase {
     // MARK: Tests
     
     func testFetchHeader() {
-        // Given
         let spy = StatementsBusinessLogicSpy()
         sut.interactor = spy
-        
-        // Then
+        loadView()
+
         XCTAssertTrue(spy.getHeaderIsCalled)
     }
     
     func testFetchStatements() {
-        // Given
         let spy = StatementsBusinessLogicSpy()
         sut.interactor = spy
         
-        // When        loadView()
+        loadView()
 
-
-        // Then
         XCTAssertTrue(spy.getStatementIsCalled)
     }
     
     func testSetupHeader() {
         // When
+        loadView()
         let viewModel = StatementsModel.Header.ViewModel(name: "Jose da Silva Teste",
                                                          account: "2050/012314564",
                                                          balance: "R$ 1000,00")
@@ -83,12 +84,12 @@ class StatementsViewControllerTest: XCTestCase {
     }
     
     func testSetupStatement() {
+        loadView()
         let statement = StatementList(title: "", accountName: "", date: "", accountValue: 0.0)
         
         let viewModel = StatementsModel.Fetch.ViewModel(statementEntries: [statement])
         sut.setData(viewModel: viewModel)
         
-        // Then
         XCTAssertEqual(sut.statementList.count, 1)
     }
 
