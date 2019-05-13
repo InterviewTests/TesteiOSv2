@@ -27,7 +27,6 @@ class StatementsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
         getData()
         headerSetup()
     }

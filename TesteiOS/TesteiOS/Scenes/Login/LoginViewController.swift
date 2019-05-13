@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userIdentificationTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
-    
+    var keyboardIsOnTheScreen = false
     
     // MARK: Object lifecycle
     override func awakeFromNib() {
@@ -67,12 +67,16 @@ class LoginViewController: UIViewController {
         let keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         let adjustment = keyboardFrame.height + 20
 
-        if show {
+        if show && keyboardIsOnTheScreen == true {
+            
+        }else if show && keyboardIsOnTheScreen == false  {
             self.scrollView.contentInset.bottom += adjustment
             self.scrollView.scrollIndicatorInsets.bottom += adjustment
+            keyboardIsOnTheScreen = true
         }else {
             self.scrollView.contentInset = UIEdgeInsets.zero
             self.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+            keyboardIsOnTheScreen = false
         }
     }
     
@@ -84,7 +88,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
     
     func getLastUsername() {
         interactor?.getSavedUserName()
