@@ -30,7 +30,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getLastUsername()
-        setup()
         self.dismissKeyboardWhenTappedAround()
         setupKeyboardNotification()
     }
