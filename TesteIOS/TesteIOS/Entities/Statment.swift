@@ -8,7 +8,11 @@
 
 import ObjectMapper
 
-class Statments: Mappable {
+class Statments: Mappable, Equatable {
+    static func == (lhs: Statments, rhs: Statments) -> Bool {
+        return lhs.statmentList! == rhs.statmentList!
+    }
+    
     var statmentList: [Statment]?
 
     required init?(map: Map) {
@@ -19,7 +23,11 @@ class Statments: Mappable {
     }
 }
 
-class Statment: Mappable {
+class Statment: Mappable, Equatable {
+    static func == (lhs: Statment, rhs: Statment) -> Bool {
+        return lhs.title == rhs.title && lhs.desc == rhs.desc && lhs.date == rhs.date && lhs.value == rhs.value
+    }
+    
     var title: String?
     var desc: String?
     var date: String?

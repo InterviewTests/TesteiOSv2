@@ -54,11 +54,11 @@ class UserAccount: Object, Mappable {
     }
 
     func validUserAccount() -> Bool {
-        return (userId >= 0)
+        return userId >= 0
     }
 
     func print() -> String {
-        let ret = "UserAccount: userid=\(userId), name=\(String(describing: name)), bankAccount=\(bankAccount), agency=\(agency), balance=\(String(describing: balance))"
+        let ret = "UserAccount: userid=\(userId), name=\(String(describing: name)), bankAccount=\(String(describing: bankAccount)), agency=\(String(describing: agency)), balance=\(String(describing: balance))"
         return ret
     }
 }

@@ -10,7 +10,8 @@ import Alamofire
 import AlamofireObjectMapper
 
 class RestApi: RestApiProtocol {
-    public static func doLogin(user: String, password: String, callback: @escaping (_ userAccount: UserAccount?) -> Void) {
+    
+    public static func doLogin(user: String, password: String, callback: @escaping (_ userAccount: UserAccount?) -> Void, error: @escaping () -> Void) {
         let url = Constants.BASEURL + "/login"
         Alamofire.request(url, method: .post, parameters: ["user": user, "password": password], encoding: URLEncoding.default, headers: ["Content-Type": "application/x-www-form-urlencoded"]).validate().responseObject { (response: DataResponse<User>) in
 
@@ -21,7 +22,7 @@ class RestApi: RestApiProtocol {
         }
     }
 
-    public static func GetStatments(id: String, callback: @escaping (_ statments: Statments?) -> Void) {
+    public static func GetStatments(id: String, callback: @escaping (_ statments: Statments?) -> Void, error: @escaping () -> Void) {
         let url = Constants.BASEURL + "/statements/" + id
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: ["Content-Type": "application/x-www-form-urlencoded"]).validate().responseObject { (response: DataResponse<Statments>) in
             let response = response.result.value

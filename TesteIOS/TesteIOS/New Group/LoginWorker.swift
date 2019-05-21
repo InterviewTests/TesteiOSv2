@@ -21,11 +21,13 @@ class LoginWorker {
             let response = Login.doLogin.Response(userAccount: nil, error: ["Senha inválida": "A senha deve ser mais que 7 caracteres com pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico"])
             callback(response)
         } else {
-            RestApi.doLogin(user: request.user, password: request.password) {
+            RestApi.doLogin(user: request.user, password: request.password, callback: {
                 response in
                 let response = Login.doLogin.Response(userAccount: response!, error: nil)
                 callback(response)
-            }
+            }, error:{
+                
+            })
         }
     }
 }
