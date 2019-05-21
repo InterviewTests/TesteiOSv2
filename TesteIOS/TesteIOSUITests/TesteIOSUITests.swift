@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import TesteIOS
 
 class TesteIOSUITests: XCTestCase {
     
@@ -56,6 +57,7 @@ class TesteIOSUITests: XCTestCase {
         
         
         //get passord text field
+        
         let passwordSecureTextField = app.secureTextFields["Password"]
         //check passord text field if exist
         XCTAssertTrue(passwordSecureTextField.exists)
@@ -76,7 +78,7 @@ class TesteIOSUITests: XCTestCase {
         
         
         //get logout button
-        let lougouButton = app.buttons["logout 2"]
+        let lougouButton = app.images["logout 2"]
         
         
         let expectation = XCTKVOExpectation(keyPath: "exists", object: lougouButton,

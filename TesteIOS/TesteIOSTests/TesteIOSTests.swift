@@ -7,6 +7,7 @@
 //
 
 import XCTest
+//import UserAccount
 @testable import TesteIOS
 
 class TesteIOSTests: XCTestCase {
@@ -43,34 +44,27 @@ class TesteIOSTests: XCTestCase {
     }
     
     func testLoginAPI(){
-        let exp = expectation(description: "GetStatments running in the callback closure")
+        
+        let expectation = XCTestExpectation(description: "GetStatments running in the callback closure")
         RestApi.doLogin(user: "test", password: "Aabbcc11@@", callback: { userAccount in
             XCTAssertTrue(type(of: userAccount!) === UserAccount.self)
-            exp.fulfill()
+            expectation.fulfill()
         }, error: {
             XCTFail("Received error from API")
         })
-        waitForExpectations(timeout: 10) { error in
-            if let error = error {
-                XCTFail("waitForExpectations With Timeout errored: \(error)")
-            }
-        }
+        wait(for: [expectation], timeout: 10)
     }
     
     func testGetStatmentsAPI(){
-        let exp = expectation(description: "GetStatments running in the callback closure")
+        let expectation = XCTestExpectation(description: "GetStatments running in the callback closure")
         RestApi.GetStatments(id: "1", callback: { statments in
             XCTAssertTrue(type(of: statments!) === Statments.self)
-            exp.fulfill()
+            expectation.fulfill()
             
         }, error: {
             XCTFail("Received error from API")
         })
-        waitForExpectations(timeout: 10) { error in
-            if let error = error {
-                XCTFail("waitForExpectations With Timeout errored: \(error)")
-            }
-        }
+        wait(for: [expectation], timeout: 10)
     }
     
     

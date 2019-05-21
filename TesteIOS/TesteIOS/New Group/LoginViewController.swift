@@ -57,7 +57,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     }()
     lazy var loginButton: UIButton = {
         var view = UIButton(type: .system)
-        view.setTitle("login", for: UIControl.State.normal)
+        view.setTitle("Login", for: UIControl.State.normal)
         view.tintColor = UIColor(rgb: 0xffffff)
         view.backgroundColor = UIColor(rgb: 0x3B48EE)
         view.addTarget(self, action: #selector(self.LoginClick), for: .touchUpInside)
@@ -77,11 +77,13 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
     lazy var passwordInput: UITextField = {
         var view = UITextField()
         view.placeholder = "Password"
         view.setLeftPaddingPoints(10)
         view.setRightPaddingPoints(10)
+        view.isSecureTextEntry = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
