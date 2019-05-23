@@ -19,4 +19,5 @@ Para executar os testes unitários basta executar o comando `bundle exec fastlan
 
 ### Dados pessoais ###
 *Nome*: Pedro Veloso
+
 *Empresa*: Resource IT
