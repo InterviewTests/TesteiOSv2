@@ -17,4 +17,6 @@ Após execução da lane um novo arquivo `BankApp.xcworkspace` será criado, bas
 ### Executar Unit Tests ##
 Para executar os testes unitários basta executar o comando `bundle exec fastlane test` a partir da pasta do projeto.
 
-
+### Dados pessoais ###
+*Nome*: Pedro Veloso
+*Empresa*: Resource IT
