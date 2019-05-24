@@ -14,28 +14,40 @@ import UIKit
 
 protocol StatementsBusinessLogic
 {
-  func doSomething(request: Statements.Something.Request)
+    func loadStatements(request: Statements.LoadStatements.Request)
+    func loadCustomerData(request: Statements.LoadCustomerData.Request)
+    func logout(request: Statements.Logout.Request)
 }
 
 protocol StatementsDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
 {
-  var presenter: StatementsPresentationLogic?
-  var worker: StatementsWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Statements.Something.Request)
-  {
-    worker = StatementsWorker()
-    worker?.doSomeWork()
     
-    let response = Statements.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    var presenter: StatementsPresentationLogic?
+    var worker: StatementsWorker?
+    //var name: String = ""
+    
+    // MARK: - Presenter methods
+    
+    func loadStatements(request: Statements.LoadStatements.Request)
+    {
+        worker = StatementsWorker()
+        if let response = worker?.loadStatements(){
+            presenter?.presentStatements(response: response)
+        }
+    }
+    
+    func logout(request: Statements.Logout.Request) {
+        let response = Statements.Logout.Response()
+        presenter?.presentLoggedOut(response: response)
+    }
+    
+    func loadCustomerData(request: Statements.LoadCustomerData.Request) {
+        let response = Statements.LoadCustomerData.Response()
+        presenter?.presentCustomerData(response: response)
+    }
 }

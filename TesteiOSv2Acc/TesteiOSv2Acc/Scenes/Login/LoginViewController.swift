@@ -22,7 +22,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   var interactor: LoginBusinessLogic?
   var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
 
-  // MARK: Object lifecycle
+  // MARK: - Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
   {
@@ -36,7 +36,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     setup()
   }
   
-  // MARK: Setup
+  // MARK: - Setup
   
   private func setup()
   {
@@ -52,7 +52,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     router.dataStore = interactor
   }
   
-  // MARK: Routing
+  // MARK: - Routing
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?)
   {
@@ -64,7 +64,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     }
   }
   
-  // MARK: View lifecycle
+  // MARK: - View lifecycle
   
   override func viewDidLoad()
   {
@@ -72,7 +72,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     doSomething()
   }
   
-  // MARK: Do something
+  // MARK: - Do something
   
   //@IBOutlet weak var nameTextField: UITextField!
   

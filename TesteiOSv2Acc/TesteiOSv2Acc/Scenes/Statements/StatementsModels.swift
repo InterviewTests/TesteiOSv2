@@ -14,18 +14,44 @@ import UIKit
 
 enum Statements
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
+    // MARK: - Use cases
+    
+    enum LoadStatements
     {
+        struct Request
+        {
+        }
+        struct Response
+        {
+        }
+        struct ViewModel
+        {
+        }
     }
-    struct Response
+    
+    enum Logout
     {
+        struct Request
+        {
+        }
+        struct Response
+        {
+        }
+        struct ViewModel
+        {
+        }
     }
-    struct ViewModel
+    
+    enum LoadCustomerData
     {
+        struct Request
+        {
+        }
+        struct Response
+        {
+        }
+        struct ViewModel
+        {
+        }
     }
-  }
 }

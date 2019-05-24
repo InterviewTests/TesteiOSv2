@@ -24,6 +24,9 @@
                                     <constraint firstAttribute="width" secondItem="phM-gw-TaS" secondAttribute="height" multiplier="1:1" id="b26-l3-zRo"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="logout 2"/>
+                                <connections>
+                                    <action selector="logoutAction:" destination="Ljh-37-Tfe" eventType="touchUpInside" id="hS2-9g-qPH"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jose da Silva Teste" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jd5-iR-gdX">
                                 <rect key="frame" x="18" y="62.5" width="351" height="30"/>
@@ -86,6 +89,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YVN-2X-XCm"/>
                     </view>
+                    <connections>
+                        <outlet property="bankAccountBalanceLabel" destination="GYB-4s-Wuz" id="4lh-13-Fe1"/>
+                        <outlet property="bankAccountLabel" destination="YTx-H8-Okp" id="5R6-te-4Uv"/>
+                        <outlet property="customerNameLabel" destination="jd5-iR-gdX" id="hXS-D0-IwG"/>
+                        <outlet property="logoutButton" destination="phM-gw-TaS" id="jzD-PC-T5G"/>
+                        <outlet property="statementsTableView" destination="PJR-t7-ePu" id="sN1-zS-AgH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLI-j6-G1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

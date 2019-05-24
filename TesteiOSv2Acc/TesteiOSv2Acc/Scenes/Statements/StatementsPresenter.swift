@@ -14,18 +14,31 @@ import UIKit
 
 protocol StatementsPresentationLogic
 {
-  func presentSomething(response: Statements.Something.Response)
+    func presentStatements(response: Statements.LoadStatements.Response)
+    func presentCustomerData(response: Statements.LoadCustomerData.Response)
+    func presentLoggedOut(response: Statements.Logout.Response)
 }
 
 class StatementsPresenter: StatementsPresentationLogic
 {
-  weak var viewController: StatementsDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Statements.Something.Response)
-  {
-    let viewModel = Statements.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    
+    weak var viewController: StatementsDisplayLogic?
+    
+    // MARK: - ViewController methods
+    
+    func presentCustomerData(response: Statements.LoadCustomerData.Response) {
+        let viewModel = Statements.LoadCustomerData.ViewModel()
+        viewController?.displayCustomerData(viewModel: viewModel)
+    }
+    
+    func presentStatements(response: Statements.LoadStatements.Response)
+    {
+        let viewModel = Statements.LoadStatements.ViewModel()
+        viewController?.displayStatements(viewModel: viewModel)
+    }
+    
+    func presentLoggedOut(response: Statements.Logout.Response) {
+        let viewModel = Statements.Logout.ViewModel()
+        viewController?.displayLoggedOut(viewModel: viewModel)
+    }
 }

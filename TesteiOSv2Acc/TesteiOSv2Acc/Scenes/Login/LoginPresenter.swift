@@ -21,7 +21,7 @@ class LoginPresenter: LoginPresentationLogic
 {
   weak var viewController: LoginDisplayLogic?
   
-  // MARK: Do something
+  // MARK: - Do something
   
   func presentSomething(response: Login.Something.Response)
   {

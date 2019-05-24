@@ -14,76 +14,122 @@ import UIKit
 
 protocol StatementsDisplayLogic: class
 {
-  func displaySomething(viewModel: Statements.Something.ViewModel)
+    func displayStatements(viewModel: Statements.LoadStatements.ViewModel)
+    func displayCustomerData(viewModel: Statements.LoadCustomerData.ViewModel)
+    func displayLoggedOut(viewModel: Statements.Logout.ViewModel)
 }
 
-class StatementsViewController: UIViewController, StatementsDisplayLogic
+class StatementsViewController: UIViewController
 {
-  var interactor: StatementsBusinessLogic?
-  var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = StatementsInteractor()
-    let presenter = StatementsPresenter()
-    let router = StatementsRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    // MARK: - IBOutlets
+    
+    @IBOutlet weak var customerNameLabel: UILabel!
+    @IBOutlet weak var bankAccountLabel: UILabel!
+    @IBOutlet weak var bankAccountBalanceLabel: UILabel!
+    @IBOutlet weak var statementsTableView: UITableView!
+    @IBOutlet weak var logoutButton: UIButton!
+    
+    //MARK: - Local Instances
+    
+    var interactor: StatementsBusinessLogic?
+    var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
+    
+    // MARK: - Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Statements.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Statements.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: - Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = StatementsInteractor()
+        let presenter = StatementsPresenter()
+        let router = StatementsRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: - Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    // MARK: - View lifecycle
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        loadCustomerData()
+        loadStatements()
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func logoutAction(_ sender: Any) {
+        logout()
+    }
+    
+    // MARK: - Interactor methods
+    
+    private func loadCustomerData()
+    {
+        let request = Statements.LoadCustomerData.Request()
+        interactor?.loadCustomerData(request: request)
+    }
+    
+    private func loadStatements()
+    {
+        let request = Statements.LoadStatements.Request()
+        interactor?.loadStatements(request: request)
+    }
+    
+    private func logout()
+    {
+        let request = Statements.Logout.Request()
+        interactor?.logout(request: request)
+    }
+    
+}
+
+// MARK: - StatementsDisplayLogic implementation
+
+extension StatementsViewController: StatementsDisplayLogic{
+    
+    func displayLoggedOut(viewModel: Statements.Logout.ViewModel) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func displayCustomerData(viewModel: Statements.LoadCustomerData.ViewModel)
+    {
+        customerNameLabel.text = ""
+        bankAccountLabel.text = ""
+        bankAccountBalanceLabel.text = ""
+    }
+    
+    func displayStatements(viewModel: Statements.LoadStatements.ViewModel)
+    {
+    }
+    
 }

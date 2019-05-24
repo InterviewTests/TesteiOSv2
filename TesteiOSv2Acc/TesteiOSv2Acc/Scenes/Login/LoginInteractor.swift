@@ -28,7 +28,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
   var worker: LoginWorker?
   //var name: String = ""
   
-  // MARK: Do something
+  // MARK: - Do something
   
   func doSomething(request: Login.Something.Request)
   {

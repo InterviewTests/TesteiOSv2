@@ -14,7 +14,8 @@ import UIKit
 
 class StatementsWorker
 {
-  func doSomeWork()
-  {
-  }
+    func loadStatements() -> Statements.LoadStatements.Response
+    {
+        return Statements.LoadStatements.Response()
+    }
 }
