@@ -6,11 +6,7 @@
 //  Copyright © 2019 Marlon Santos Heitor. All rights reserved.
 //
 
-import UIKit
-
-struct ServiceError {
-
-    let code: Int
-    let message: String
-    
+struct ServiceError: Codable {
+    let code: Int?
+    let message: String?
 }

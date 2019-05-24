@@ -16,10 +16,14 @@ class LoginWorker
 {
     func doLogin(user: String, password: String, completion: (UserAccount?, ServiceError?) -> Void)
     {
-        if user == "" && password == ""{
-            completion(nil, ServiceError(code: 500, message:"Internal server error"))
-        }else{
-        completion(UserAccount(userId: 1, name: "Marlon", bankAccount: "323232", agency: "4433", balance: 100), nil)
+        
+//        if user == "" && password == ""{
+//            completion(nil, ServiceError(code: 500, message:"Internal server error"))
+//        }else{
+//        completion(UserAccount(userId: 1, name: "Marlon", bankAccount: "323232", agency: "4433", balance: 100), nil)
+//        }
+        let _ = RestService<LoginResponse>().executeServiceRequest() { (loginResponse: LoginResponse) in
+            
         }
         
     }

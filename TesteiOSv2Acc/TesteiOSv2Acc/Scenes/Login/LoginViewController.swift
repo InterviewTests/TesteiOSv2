@@ -102,9 +102,8 @@ extension LoginViewController: LoginDisplayLogic{
     
     func displayLoggedInUser(viewModel: Login.LoginUser.ViewModel) {
         
-        if let serviceError = viewModel.serviceError{
+        if let serviceError = viewModel.serviceError, let message = serviceError.message{
             let title = "Error"
-            let message = serviceError.message
             AlertManager.showOkAlert(context: self, title: title, message: message)
         }else{
             router?.routeToStatements(segue: nil)

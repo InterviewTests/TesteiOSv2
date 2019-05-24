@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,8 +13,12 @@
 		2302FA10229775C30012592F /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA0E229775C30012592F /* UserAccount.swift */; };
 		2302FA1222977D960012592F /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA1122977D960012592F /* ServiceError.swift */; };
 		2302FA1322977D960012592F /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA1122977D960012592F /* ServiceError.swift */; };
-		239648E0229812AE00F3FAD1 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648DF229812AE00F3FAD1 /* RestService.swift */; };
-		239648E1229812AE00F3FAD1 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648DF229812AE00F3FAD1 /* RestService.swift */; };
+		239648E0229812AE00F3FAD1 /* RestServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648DF229812AE00F3FAD1 /* RestServiceManager.swift */; };
+		239648E1229812AE00F3FAD1 /* RestServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648DF229812AE00F3FAD1 /* RestServiceManager.swift */; };
+		239648E42298179300F3FAD1 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648E32298179300F3FAD1 /* LoginResponse.swift */; };
+		239648E52298179300F3FAD1 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648E32298179300F3FAD1 /* LoginResponse.swift */; };
+		239648E722981C0F00F3FAD1 /* BaseServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648E622981C0F00F3FAD1 /* BaseServiceModel.swift */; };
+		239648E822981C0F00F3FAD1 /* BaseServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648E622981C0F00F3FAD1 /* BaseServiceModel.swift */; };
 		23B392592294DA5900F92001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B392582294DA5900F92001 /* AppDelegate.swift */; };
 		23B392602294DA5C00F92001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B3925F2294DA5C00F92001 /* Assets.xcassets */; };
 		23B392632294DA5C00F92001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B392612294DA5C00F92001 /* LaunchScreen.storyboard */; };
@@ -65,7 +69,9 @@
 		2302FA08229772E00012592F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		2302FA0E229775C30012592F /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		2302FA1122977D960012592F /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
-		239648DF229812AE00F3FAD1 /* RestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
+		239648DF229812AE00F3FAD1 /* RestServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestServiceManager.swift; sourceTree = "<group>"; };
+		239648E32298179300F3FAD1 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		239648E622981C0F00F3FAD1 /* BaseServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseServiceModel.swift; sourceTree = "<group>"; };
 		23B392552294DA5900F92001 /* TesteiOSv2Acc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2Acc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B392582294DA5900F92001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B3925F2294DA5C00F92001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +153,8 @@
 			children = (
 				2302FA0E229775C30012592F /* UserAccount.swift */,
 				2302FA1122977D960012592F /* ServiceError.swift */,
+				239648E32298179300F3FAD1 /* LoginResponse.swift */,
+				239648E622981C0F00F3FAD1 /* BaseServiceModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -154,7 +162,7 @@
 		239648DE2298128800F3FAD1 /* Rest */ = {
 			isa = PBXGroup;
 			children = (
-				239648DF229812AE00F3FAD1 /* RestService.swift */,
+				239648DF229812AE00F3FAD1 /* RestServiceManager.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -431,9 +439,11 @@
 			files = (
 				23B3929D2294DD0100F92001 /* StatementsInteractor.swift in Sources */,
 				23B392862294DCAD00F92001 /* LoginViewController.swift in Sources */,
+				239648E42298179300F3FAD1 /* LoginResponse.swift in Sources */,
 				23B392952294DD0100F92001 /* StatementsWorker.swift in Sources */,
 				23B3927E2294DCAD00F92001 /* LoginPresenter.swift in Sources */,
 				23B392972294DD0100F92001 /* StatementsRouter.swift in Sources */,
+				239648E722981C0F00F3FAD1 /* BaseServiceModel.swift in Sources */,
 				23B392592294DA5900F92001 /* AppDelegate.swift in Sources */,
 				23B392882294DCAD00F92001 /* LoginInteractor.swift in Sources */,
 				23B392932294DD0100F92001 /* StatementsPresenter.swift in Sources */,
@@ -443,7 +453,7 @@
 				23B392822294DCAD00F92001 /* LoginRouter.swift in Sources */,
 				23B392802294DCAD00F92001 /* LoginWorker.swift in Sources */,
 				2302FA09229772E00012592F /* AlertManager.swift in Sources */,
-				239648E0229812AE00F3FAD1 /* RestService.swift in Sources */,
+				239648E0229812AE00F3FAD1 /* RestServiceManager.swift in Sources */,
 				23B3929B2294DD0100F92001 /* StatementsViewController.swift in Sources */,
 				2302FA0F229775C30012592F /* UserAccount.swift in Sources */,
 			);
@@ -455,9 +465,11 @@
 			files = (
 				23B3929C2294DD0100F92001 /* StatementsViewController.swift in Sources */,
 				23B392872294DCAD00F92001 /* LoginViewController.swift in Sources */,
+				239648E52298179300F3FAD1 /* LoginResponse.swift in Sources */,
 				23B3927F2294DCAD00F92001 /* LoginPresenter.swift in Sources */,
 				23B392892294DCAD00F92001 /* LoginInteractor.swift in Sources */,
 				23B392852294DCAD00F92001 /* LoginModels.swift in Sources */,
+				239648E822981C0F00F3FAD1 /* BaseServiceModel.swift in Sources */,
 				23B392942294DD0100F92001 /* StatementsPresenter.swift in Sources */,
 				23B392962294DD0100F92001 /* StatementsWorker.swift in Sources */,
 				23B3929E2294DD0100F92001 /* StatementsInteractor.swift in Sources */,
@@ -467,7 +479,7 @@
 				23B392832294DCAD00F92001 /* LoginRouter.swift in Sources */,
 				23B392982294DD0100F92001 /* StatementsRouter.swift in Sources */,
 				2302FA0A229772E00012592F /* AlertManager.swift in Sources */,
-				239648E1229812AE00F3FAD1 /* RestService.swift in Sources */,
+				239648E1229812AE00F3FAD1 /* RestServiceManager.swift in Sources */,
 				23B392812294DCAD00F92001 /* LoginWorker.swift in Sources */,
 				2302FA10229775C30012592F /* UserAccount.swift in Sources */,
 			);
