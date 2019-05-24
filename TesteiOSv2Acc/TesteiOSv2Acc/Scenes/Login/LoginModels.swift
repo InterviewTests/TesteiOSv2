@@ -14,18 +14,47 @@ import UIKit
 
 enum Login
 {
-  // MARK: - Use cases
-  
-  enum Something
-  {
-    struct Request
+    // MARK: Use cases
+    
+    enum FetchLoginData
     {
+        struct Request
+        {
+            let user: String
+            let password: String
+        }
+        struct Response
+        {
+            let user: String?
+            let password: String?
+            
+            let isError: Bool
+        }
+        struct ViewModel
+        {
+            let user: String?
+            let password: String?
+            
+            let errorMessage: String?
+        }
     }
-    struct Response
+    
+    enum LoginUser
     {
+        struct Request
+        {
+            let user: String
+            let password: String
+        }
+        struct Response
+        {
+            let userAccount: UserAccount?
+            let serviceError: ServiceError?
+        }
+        struct ViewModel
+        {
+            let userAccount: UserAccount?
+            let serviceError: ServiceError?
+        }
     }
-    struct ViewModel
-    {
-    }
-  }
 }

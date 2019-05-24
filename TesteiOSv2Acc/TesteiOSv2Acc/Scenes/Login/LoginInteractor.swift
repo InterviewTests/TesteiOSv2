@@ -14,28 +14,45 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+    func doLogin(request: Login.LoginUser.Request)
+    func loadLoginDataIfExists()
 }
 
 protocol LoginDataStore
 {
-  //var name: String { get set }
+    var userAccount: UserAccount? { get }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: - Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
+    
+    var userAccount: UserAccount?
+    
+    // MARK: Do something
+    
+    func doLogin(request: Login.LoginUser.Request)
+    {
+        
+        let user = request.user
+        let password = request.password
+        worker = LoginWorker()
+        worker?.doLogin(user: user, password: password)
+        { userAccount, serviceError in
+            
+            let response = Login.LoginUser.Response(userAccount: userAccount, serviceError: serviceError)
+            
+            presenter?.presentLoggedInUser(response: response)
+            
+        }
+        
+    }
+    
+    func loadLoginDataIfExists() {
+        let response = Login.FetchLoginData.Response(user: nil, password: nil, isError: false)
+        presenter?.presentSavedLoginData(response: response)
+    }
+    
 }

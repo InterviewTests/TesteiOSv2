@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2302FA09229772E00012592F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA08229772E00012592F /* AlertManager.swift */; };
+		2302FA0A229772E00012592F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA08229772E00012592F /* AlertManager.swift */; };
+		2302FA0F229775C30012592F /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA0E229775C30012592F /* UserAccount.swift */; };
+		2302FA10229775C30012592F /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA0E229775C30012592F /* UserAccount.swift */; };
+		2302FA1222977D960012592F /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA1122977D960012592F /* ServiceError.swift */; };
+		2302FA1322977D960012592F /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA1122977D960012592F /* ServiceError.swift */; };
 		23B392592294DA5900F92001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B392582294DA5900F92001 /* AppDelegate.swift */; };
 		23B392602294DA5C00F92001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B3925F2294DA5C00F92001 /* Assets.xcassets */; };
 		23B392632294DA5C00F92001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B392612294DA5C00F92001 /* LaunchScreen.storyboard */; };
@@ -54,6 +60,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1ED5BAD7B2FE52BB0D5979B7 /* Pods_TesteiOSv2Acc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2Acc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2302FA08229772E00012592F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		2302FA0E229775C30012592F /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		2302FA1122977D960012592F /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		23B392552294DA5900F92001 /* TesteiOSv2Acc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2Acc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B392582294DA5900F92001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B3925F2294DA5C00F92001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +114,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2302FA07229772C20012592F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2302FA0C229775910012592F /* Services */,
+				2302FA0B229775860012592F /* Alert */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2302FA0B229775860012592F /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				2302FA08229772E00012592F /* AlertManager.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		2302FA0C229775910012592F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2302FA0D229775A60012592F /* Models */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2302FA0D229775A60012592F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2302FA0E229775C30012592F /* UserAccount.swift */,
+				2302FA1122977D960012592F /* ServiceError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		23B3924C2294DA5900F92001 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +171,7 @@
 		23B392572294DA5900F92001 /* TesteiOSv2Acc */ = {
 			isa = PBXGroup;
 			children = (
+				2302FA07229772C20012592F /* Shared */,
 				23B3928A2294DCB300F92001 /* Scenes */,
 				23B392582294DA5900F92001 /* AppDelegate.swift */,
 				23B3925F2294DA5C00F92001 /* Assets.xcassets */,
@@ -363,11 +408,14 @@
 				23B392592294DA5900F92001 /* AppDelegate.swift in Sources */,
 				23B392882294DCAD00F92001 /* LoginInteractor.swift in Sources */,
 				23B392932294DD0100F92001 /* StatementsPresenter.swift in Sources */,
+				2302FA1222977D960012592F /* ServiceError.swift in Sources */,
 				23B392842294DCAD00F92001 /* LoginModels.swift in Sources */,
 				23B392992294DD0100F92001 /* StatementsModels.swift in Sources */,
 				23B392822294DCAD00F92001 /* LoginRouter.swift in Sources */,
 				23B392802294DCAD00F92001 /* LoginWorker.swift in Sources */,
+				2302FA09229772E00012592F /* AlertManager.swift in Sources */,
 				23B3929B2294DD0100F92001 /* StatementsViewController.swift in Sources */,
+				2302FA0F229775C30012592F /* UserAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,11 +431,14 @@
 				23B392942294DD0100F92001 /* StatementsPresenter.swift in Sources */,
 				23B392962294DD0100F92001 /* StatementsWorker.swift in Sources */,
 				23B3929E2294DD0100F92001 /* StatementsInteractor.swift in Sources */,
+				2302FA1322977D960012592F /* ServiceError.swift in Sources */,
 				23B3929A2294DD0100F92001 /* StatementsModels.swift in Sources */,
 				23B3926E2294DA5C00F92001 /* TesteiOSv2AccTests.swift in Sources */,
 				23B392832294DCAD00F92001 /* LoginRouter.swift in Sources */,
 				23B392982294DD0100F92001 /* StatementsRouter.swift in Sources */,
+				2302FA0A229772E00012592F /* AlertManager.swift in Sources */,
 				23B392812294DCAD00F92001 /* LoginWorker.swift in Sources */,
+				2302FA10229775C30012592F /* UserAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
