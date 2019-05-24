@@ -13,6 +13,8 @@
 		2302FA10229775C30012592F /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA0E229775C30012592F /* UserAccount.swift */; };
 		2302FA1222977D960012592F /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA1122977D960012592F /* ServiceError.swift */; };
 		2302FA1322977D960012592F /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302FA1122977D960012592F /* ServiceError.swift */; };
+		239648E0229812AE00F3FAD1 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648DF229812AE00F3FAD1 /* RestService.swift */; };
+		239648E1229812AE00F3FAD1 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648DF229812AE00F3FAD1 /* RestService.swift */; };
 		23B392592294DA5900F92001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B392582294DA5900F92001 /* AppDelegate.swift */; };
 		23B392602294DA5C00F92001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B3925F2294DA5C00F92001 /* Assets.xcassets */; };
 		23B392632294DA5C00F92001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B392612294DA5C00F92001 /* LaunchScreen.storyboard */; };
@@ -60,10 +62,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1ED5BAD7B2FE52BB0D5979B7 /* Pods_TesteiOSv2Acc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2Acc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2302FA08229772E00012592F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		2302FA0E229775C30012592F /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		2302FA1122977D960012592F /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		239648DF229812AE00F3FAD1 /* RestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
 		23B392552294DA5900F92001 /* TesteiOSv2Acc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2Acc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B392582294DA5900F92001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B3925F2294DA5C00F92001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		2302FA0C229775910012592F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				239648DE2298128800F3FAD1 /* Rest */,
 				2302FA0D229775A60012592F /* Models */,
 			);
 			path = Services;
@@ -146,6 +149,14 @@
 				2302FA1122977D960012592F /* ServiceError.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		239648DE2298128800F3FAD1 /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				239648DF229812AE00F3FAD1 /* RestService.swift */,
+			);
+			path = Rest;
 			sourceTree = "<group>";
 		};
 		23B3924C2294DA5900F92001 = {
@@ -258,6 +269,7 @@
 				23B392512294DA5900F92001 /* Sources */,
 				23B392522294DA5900F92001 /* Frameworks */,
 				23B392532294DA5900F92001 /* Resources */,
+				F81762A9C8997E450A8DE849 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -371,6 +383,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F81762A9C8997E450A8DE849 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TesteiOSv2Acc/Pods-TesteiOSv2Acc-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TesteiOSv2Acc/Pods-TesteiOSv2Acc-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TesteiOSv2Acc/Pods-TesteiOSv2Acc-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FE1C61E8033AF09D98369BF3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +443,7 @@
 				23B392822294DCAD00F92001 /* LoginRouter.swift in Sources */,
 				23B392802294DCAD00F92001 /* LoginWorker.swift in Sources */,
 				2302FA09229772E00012592F /* AlertManager.swift in Sources */,
+				239648E0229812AE00F3FAD1 /* RestService.swift in Sources */,
 				23B3929B2294DD0100F92001 /* StatementsViewController.swift in Sources */,
 				2302FA0F229775C30012592F /* UserAccount.swift in Sources */,
 			);
@@ -437,6 +467,7 @@
 				23B392832294DCAD00F92001 /* LoginRouter.swift in Sources */,
 				23B392982294DD0100F92001 /* StatementsRouter.swift in Sources */,
 				2302FA0A229772E00012592F /* AlertManager.swift in Sources */,
+				239648E1229812AE00F3FAD1 /* RestService.swift in Sources */,
 				23B392812294DCAD00F92001 /* LoginWorker.swift in Sources */,
 				2302FA10229775C30012592F /* UserAccount.swift in Sources */,
 			);
