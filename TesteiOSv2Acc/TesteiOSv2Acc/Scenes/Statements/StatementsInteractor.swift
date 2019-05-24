@@ -19,14 +19,15 @@ protocol StatementsBusinessLogic
 
 protocol StatementsDataStore
 {
-  //var name: String { get set }
+  var userAccount: UserAccount? { get set }
 }
 
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
 {
+    
   var presenter: StatementsPresentationLogic?
   var worker: StatementsWorker?
-  //var name: String = ""
+  var userAccount: UserAccount?
   
   // MARK: Do something
   

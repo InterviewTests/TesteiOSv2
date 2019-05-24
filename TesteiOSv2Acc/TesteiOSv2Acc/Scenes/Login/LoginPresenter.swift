@@ -14,18 +14,33 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-  func presentSomething(response: Login.Something.Response)
+    func presentSavedLoginData(response: Login.FetchLoginData.Response)
+    func presentLoggedInUser(response: Login.LoginUser.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
 {
-  weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Login.Something.Response)
-  {
-    let viewModel = Login.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    
+    weak var viewController: LoginDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentLoggedInUser(response: Login.LoginUser.Response) {
+        let viewModel = Login.LoginUser.ViewModel(userAccount: response.userAccount, serviceError:  response.serviceError)
+        viewController?.displayLoggedInUser(viewModel: viewModel)
+    }
+    
+    func presentSavedLoginData(response: Login.FetchLoginData.Response)
+    {
+        
+        var viewModel = Login.FetchLoginData.ViewModel(user: nil, password: nil, errorMessage: nil)
+        
+        if let user = response.user,
+            let password = response.password
+        {
+            viewModel = Login.FetchLoginData.ViewModel(user: user, password: password, errorMessage: nil)
+        }
+        
+        viewController?.displaySavedLoginData(viewModel: viewModel)
+    }
 }
