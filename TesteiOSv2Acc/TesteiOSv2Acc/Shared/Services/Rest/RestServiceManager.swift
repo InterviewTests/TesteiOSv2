@@ -8,34 +8,46 @@
 
 import Alamofire
 
-class RestService<T: BaseServiceModel> {
+class RestService<T: Codable> {
     
-    func executeServiceRequest(completion: @escaping (_ result:T) -> Void) -> DataRequest{
+    var currentRequest: DataRequest?
+    
+    func executeServiceRequest(serviceRequest: ServiceRequest, completion: @escaping (T?, Error?) -> Void){
         
-        let url = "https://bank-app-test.herokuapp.com/api/login"
-        let method = HTTPMethod.post
-        let parameters: [String: Any] = ["User":"test_user", "password": "Test@1"]
-        let headers: [String:String] = ["Content-Type":"application/x-www-form-urlencoded"]
+        let url = serviceRequest.url
+        let method = serviceRequest.method
+        let parameters = serviceRequest.parameters
+        let headers = serviceRequest.headers
         
-        let dataRequest = Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding(destination: .httpBody), headers: headers)
+        currentRequest = Alamofire.request(url, method: method, parameters: parameters, headers: headers)
         
-        dataRequest.responseJSON
-        { (response) in
-            
-            if let json = response.result.value{
-                print(json)
-            }
-            
-            if let data = response.data{
-                //TODO: handle try catch
-                let object: BaseServiceModel = T.parse(jsonData: data)
+        currentRequest?.responseJSON
+            { (response) in
                 
-                //completion(
-            }
-            
+                switch response.result{
+                case .success(_):
+                    do{
+                        if let data = response.data{
+                            let result = try JSONDecoder().decode(T.self, from: data)
+                            completion(result, nil)
+                        }
+                    }catch{
+                        let error = NSError(domain: "JSON decode failed", code: 2, userInfo: nil)
+                        completion(nil, error)
+                    }
+                    break;
+                case .failure(let error):
+                    completion(nil, error)
+                    break;
+                }
         }
         
-        return dataRequest
+    }
+    
+    func cancelCurrentRequest(){
+        currentRequest?.cancel()
     }
     
 }
+
+

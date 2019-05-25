@@ -17,8 +17,6 @@
 		239648E1229812AE00F3FAD1 /* RestServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648DF229812AE00F3FAD1 /* RestServiceManager.swift */; };
 		239648E42298179300F3FAD1 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648E32298179300F3FAD1 /* LoginResponse.swift */; };
 		239648E52298179300F3FAD1 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648E32298179300F3FAD1 /* LoginResponse.swift */; };
-		239648E722981C0F00F3FAD1 /* BaseServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648E622981C0F00F3FAD1 /* BaseServiceModel.swift */; };
-		239648E822981C0F00F3FAD1 /* BaseServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239648E622981C0F00F3FAD1 /* BaseServiceModel.swift */; };
 		23B392592294DA5900F92001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B392582294DA5900F92001 /* AppDelegate.swift */; };
 		23B392602294DA5C00F92001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B3925F2294DA5C00F92001 /* Assets.xcassets */; };
 		23B392632294DA5C00F92001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B392612294DA5C00F92001 /* LaunchScreen.storyboard */; };
@@ -51,6 +49,12 @@
 		23B392A12294DD1300F92001 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B3929F2294DD1300F92001 /* Login.storyboard */; };
 		23B392A32294DD3F00F92001 /* Statements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B392A22294DD3F00F92001 /* Statements.storyboard */; };
 		23B392A42294DD3F00F92001 /* Statements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B392A22294DD3F00F92001 /* Statements.storyboard */; };
+		23EFB0A32298EDAB004C2A75 /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EFB0A22298EDAB004C2A75 /* ServiceRequest.swift */; };
+		23EFB0A42298EDAB004C2A75 /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EFB0A22298EDAB004C2A75 /* ServiceRequest.swift */; };
+		23EFB0A622997084004C2A75 /* StatementsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EFB0A522997084004C2A75 /* StatementsResponse.swift */; };
+		23EFB0A722997084004C2A75 /* StatementsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EFB0A522997084004C2A75 /* StatementsResponse.swift */; };
+		23EFB0A9229970F6004C2A75 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EFB0A8229970F6004C2A75 /* Statement.swift */; };
+		23EFB0AA229970F6004C2A75 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EFB0A8229970F6004C2A75 /* Statement.swift */; };
 		9CA9785E4E9516F37656B6D9 /* Pods_TesteiOSv2AccTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AEC4031A96B8F0230FAB26 /* Pods_TesteiOSv2AccTests.framework */; };
 		C414F5385E35B2AB371606BA /* Pods_TesteiOSv2Acc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD838ECEBC45AF4DE0B6180F /* Pods_TesteiOSv2Acc.framework */; };
 /* End PBXBuildFile section */
@@ -71,7 +75,6 @@
 		2302FA1122977D960012592F /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		239648DF229812AE00F3FAD1 /* RestServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestServiceManager.swift; sourceTree = "<group>"; };
 		239648E32298179300F3FAD1 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
-		239648E622981C0F00F3FAD1 /* BaseServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseServiceModel.swift; sourceTree = "<group>"; };
 		23B392552294DA5900F92001 /* TesteiOSv2Acc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2Acc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B392582294DA5900F92001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B3925F2294DA5C00F92001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +97,9 @@
 		23B392922294DD0100F92001 /* StatementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractor.swift; sourceTree = "<group>"; };
 		23B3929F2294DD1300F92001 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		23B392A22294DD3F00F92001 /* Statements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statements.storyboard; sourceTree = "<group>"; };
+		23EFB0A22298EDAB004C2A75 /* ServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
+		23EFB0A522997084004C2A75 /* StatementsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsResponse.swift; sourceTree = "<group>"; };
+		23EFB0A8229970F6004C2A75 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
 		36F5C5FF5754772AC6B0EA95 /* Pods-TesteiOSv2AccTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2AccTests.release.xcconfig"; path = "Target Support Files/Pods-TesteiOSv2AccTests/Pods-TesteiOSv2AccTests.release.xcconfig"; sourceTree = "<group>"; };
 		5F2CD1D7E732CE8D6655D189 /* Pods-TesteiOSv2Acc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSv2Acc.debug.xcconfig"; path = "Target Support Files/Pods-TesteiOSv2Acc/Pods-TesteiOSv2Acc.debug.xcconfig"; sourceTree = "<group>"; };
 		76AEC4031A96B8F0230FAB26 /* Pods_TesteiOSv2AccTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSv2AccTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,7 +160,8 @@
 				2302FA0E229775C30012592F /* UserAccount.swift */,
 				2302FA1122977D960012592F /* ServiceError.swift */,
 				239648E32298179300F3FAD1 /* LoginResponse.swift */,
-				239648E622981C0F00F3FAD1 /* BaseServiceModel.swift */,
+				23EFB0A522997084004C2A75 /* StatementsResponse.swift */,
+				23EFB0A8229970F6004C2A75 /* Statement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				239648DF229812AE00F3FAD1 /* RestServiceManager.swift */,
+				23EFB0A22298EDAB004C2A75 /* ServiceRequest.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -437,16 +445,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23EFB0A9229970F6004C2A75 /* Statement.swift in Sources */,
 				23B3929D2294DD0100F92001 /* StatementsInteractor.swift in Sources */,
 				23B392862294DCAD00F92001 /* LoginViewController.swift in Sources */,
 				239648E42298179300F3FAD1 /* LoginResponse.swift in Sources */,
 				23B392952294DD0100F92001 /* StatementsWorker.swift in Sources */,
 				23B3927E2294DCAD00F92001 /* LoginPresenter.swift in Sources */,
+				23EFB0A32298EDAB004C2A75 /* ServiceRequest.swift in Sources */,
 				23B392972294DD0100F92001 /* StatementsRouter.swift in Sources */,
-				239648E722981C0F00F3FAD1 /* BaseServiceModel.swift in Sources */,
 				23B392592294DA5900F92001 /* AppDelegate.swift in Sources */,
 				23B392882294DCAD00F92001 /* LoginInteractor.swift in Sources */,
 				23B392932294DD0100F92001 /* StatementsPresenter.swift in Sources */,
+				23EFB0A622997084004C2A75 /* StatementsResponse.swift in Sources */,
 				2302FA1222977D960012592F /* ServiceError.swift in Sources */,
 				23B392842294DCAD00F92001 /* LoginModels.swift in Sources */,
 				23B392992294DD0100F92001 /* StatementsModels.swift in Sources */,
@@ -463,16 +473,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23EFB0AA229970F6004C2A75 /* Statement.swift in Sources */,
 				23B3929C2294DD0100F92001 /* StatementsViewController.swift in Sources */,
 				23B392872294DCAD00F92001 /* LoginViewController.swift in Sources */,
 				239648E52298179300F3FAD1 /* LoginResponse.swift in Sources */,
 				23B3927F2294DCAD00F92001 /* LoginPresenter.swift in Sources */,
 				23B392892294DCAD00F92001 /* LoginInteractor.swift in Sources */,
+				23EFB0A42298EDAB004C2A75 /* ServiceRequest.swift in Sources */,
 				23B392852294DCAD00F92001 /* LoginModels.swift in Sources */,
-				239648E822981C0F00F3FAD1 /* BaseServiceModel.swift in Sources */,
 				23B392942294DD0100F92001 /* StatementsPresenter.swift in Sources */,
 				23B392962294DD0100F92001 /* StatementsWorker.swift in Sources */,
 				23B3929E2294DD0100F92001 /* StatementsInteractor.swift in Sources */,
+				23EFB0A722997084004C2A75 /* StatementsResponse.swift in Sources */,
 				2302FA1322977D960012592F /* ServiceError.swift in Sources */,
 				23B3929A2294DD0100F92001 /* StatementsModels.swift in Sources */,
 				23B3926E2294DA5C00F92001 /* TesteiOSv2AccTests.swift in Sources */,
