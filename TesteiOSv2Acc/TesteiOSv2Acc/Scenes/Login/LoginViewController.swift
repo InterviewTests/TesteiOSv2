@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    func displaySavedLoginData(viewModel: Login.FetchLoginData.ViewModel)
+    func displaySavedLoginData(viewModel: Login.LoadLoginData.ViewModel)
     func displayLoggedInUser(viewModel: Login.LoginUser.ViewModel)
 }
 
@@ -73,17 +73,24 @@ class LoginViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        setupHideKeyboard()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         loadLoginDataIfExists()
     }
     
-    // MARK: Do something
+    // MARK: IBActions
     
     @IBAction func loginAction(_ sender: Any) {
         doLogin()
     }
     
+    // MARK: - Interactor communication
+    
     private func loadLoginDataIfExists(){
-        interactor?.loadLoginDataIfExists()
+        let request = Login.LoadLoginData.Request()
+        interactor?.loadLoginDataIfExists(request: request)
     }
     
     private func doLogin()
@@ -98,6 +105,8 @@ class LoginViewController: UIViewController
     
 }
 
+// MARK: - Login display logic
+
 extension LoginViewController: LoginDisplayLogic{
     
     func displayLoggedInUser(viewModel: Login.LoginUser.ViewModel) {
@@ -111,10 +120,10 @@ extension LoginViewController: LoginDisplayLogic{
         
     }
     
-    func displaySavedLoginData(viewModel: Login.FetchLoginData.ViewModel)
+    func displaySavedLoginData(viewModel: Login.LoadLoginData.ViewModel)
     {
         userTextField.text = viewModel.user
-        passwordTextField.text = viewModel.password
+        passwordTextField.text = ""
     }
     
 }

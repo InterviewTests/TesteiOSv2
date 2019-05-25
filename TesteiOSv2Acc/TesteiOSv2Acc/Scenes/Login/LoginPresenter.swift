@@ -10,12 +10,10 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 protocol LoginPresentationLogic
 {
-    func presentSavedLoginData(response: Login.FetchLoginData.Response)
-    func presentLoggedInUser(response: Login.LoginUser.Response)
+    func presentLoadLoginData(response: Login.LoadLoginData.Response)
+    func presentLoginUser(response: Login.LoginUser.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
@@ -23,22 +21,22 @@ class LoginPresenter: LoginPresentationLogic
     
     weak var viewController: LoginDisplayLogic?
     
-    // MARK: Do something
+    // MARK: View controller communication
     
-    func presentLoggedInUser(response: Login.LoginUser.Response) {
+    func presentLoginUser(response: Login.LoginUser.Response)
+    {
         let viewModel = Login.LoginUser.ViewModel(userAccount: response.userAccount, serviceError:  response.serviceError)
         viewController?.displayLoggedInUser(viewModel: viewModel)
     }
     
-    func presentSavedLoginData(response: Login.FetchLoginData.Response)
+    func presentLoadLoginData(response: Login.LoadLoginData.Response)
     {
         
-        var viewModel = Login.FetchLoginData.ViewModel(user: nil, password: nil, errorMessage: nil)
+        var viewModel = Login.LoadLoginData.ViewModel(user: nil, errorMessage: nil)
         
-        if let user = response.user,
-            let password = response.password
+        if let user = response.user
         {
-            viewModel = Login.FetchLoginData.ViewModel(user: user, password: password, errorMessage: nil)
+            viewModel = Login.LoadLoginData.ViewModel(user: user, errorMessage: nil)
         }
         
         viewController?.displaySavedLoginData(viewModel: viewModel)

@@ -10,30 +10,24 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 enum Login
 {
     // MARK: Use cases
     
-    enum FetchLoginData
+    enum LoadLoginData
     {
         struct Request
         {
-            let user: String
-            let password: String
         }
         struct Response
         {
             let user: String?
-            let password: String?
             
             let isError: Bool
         }
         struct ViewModel
         {
             let user: String?
-            let password: String?
             
             let errorMessage: String?
         }

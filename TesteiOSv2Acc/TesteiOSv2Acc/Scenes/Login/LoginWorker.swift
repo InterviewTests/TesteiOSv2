@@ -10,21 +10,42 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 class LoginWorker
 {
-    func doLogin(user: String, password: String, completion: (UserAccount?, ServiceError?) -> Void)
+    var loginRestService: RestService<LoginResponse>?
+    
+    func doLoginRequest(user: String, password: String, completion: @escaping (UserAccount?, ServiceError?) -> Void)
     {
         
-//        if user == "" && password == ""{
-//            completion(nil, ServiceError(code: 500, message:"Internal server error"))
-//        }else{
-//        completion(UserAccount(userId: 1, name: "Marlon", bankAccount: "323232", agency: "4433", balance: 100), nil)
-//        }
-        let _ = RestService<LoginResponse>().executeServiceRequest() { (loginResponse: LoginResponse) in
+        let serviceRequest = ServiceRequest.requestForLogin(user: user, password: password)
+        
+        loginRestService = RestService<LoginResponse>()
+        loginRestService?.executeServiceRequest(serviceRequest: serviceRequest)
+        { (loginResponse, requestError) in
+            
+            if loginResponse?.error?.code != nil{
+                completion(nil, loginResponse?.error)
+            }else{
+                self.saveUserToKeychain(user: user)
+                completion(loginResponse?.userAccount, nil)
+            }
             
         }
         
     }
+    
+    func cancelLoginRequest(){
+        loginRestService?.cancelCurrentRequest()
+    }
+    
+    //MARK: - Helper methods
+    
+    func saveUserToKeychain(user: String){
+        KeychainManager(service: .userSafeStore).save(value: user, key: .user)
+    }
+    
+    func retrieveUserFromKeychain() -> String?{
+        return KeychainManager(service: .userSafeStore).retrieveString(key: .user)
+    }
+    
 }
