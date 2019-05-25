@@ -10,12 +10,30 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 class StatementsWorker
 {
-    func loadStatements() -> Statements.LoadStatements.Response
+    var loadStatementsRestService: RestService<StatementsResponse>?
+    
+    func doLoadStatementsRequest(userId: Int, completion: @escaping ([Statement]?, ServiceError?) -> Void)
     {
-        return Statements.LoadStatements.Response()
+        
+        let serviceRequest = ServiceRequest.requestForStatements(userId: userId)
+        
+        loadStatementsRestService = RestService<StatementsResponse>()
+        loadStatementsRestService?.executeServiceRequest(serviceRequest: serviceRequest)
+        { (statementsResponse, requestError) in
+            
+            if statementsResponse?.error?.code != nil{
+                completion(nil, statementsResponse?.error)
+            }else{
+                completion(statementsResponse?.statementList, nil)
+            }
+            
+        }
+        
+    }
+    
+    func cancelLoginRequest(){
+        loadStatementsRestService?.cancelCurrentRequest()
     }
 }

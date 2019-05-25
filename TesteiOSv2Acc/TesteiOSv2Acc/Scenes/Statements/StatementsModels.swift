@@ -10,8 +10,6 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 enum Statements
 {
     // MARK: - Use cases
@@ -20,12 +18,17 @@ enum Statements
     {
         struct Request
         {
+            let userId: Int
         }
         struct Response
         {
+            let statements: [Statement]?
+            let serviceError: ServiceError?
         }
         struct ViewModel
         {
+            let statements: [Statement]?
+            let serviceError: ServiceError?
         }
     }
     

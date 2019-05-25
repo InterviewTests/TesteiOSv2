@@ -101,7 +101,7 @@ class StatementsViewController: UIViewController
     
     private func loadStatements()
     {
-        let request = Statements.LoadStatements.Request()
+        let request = Statements.LoadStatements.Request(userId: 1)
         interactor?.loadStatements(request: request)
     }
     
@@ -130,6 +130,7 @@ extension StatementsViewController: StatementsDisplayLogic{
     
     func displayStatements(viewModel: Statements.LoadStatements.ViewModel)
     {
+        print(viewModel.statements)
     }
     
 }

@@ -10,8 +10,6 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 protocol StatementsBusinessLogic
 {
     func loadStatements(request: Statements.LoadStatements.Request)
@@ -35,10 +33,15 @@ class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
     
     func loadStatements(request: Statements.LoadStatements.Request)
     {
+        let userId = request.userId
+        
         worker = StatementsWorker()
-        if let response = worker?.loadStatements(){
-            presenter?.presentStatements(response: response)
-        }
+        worker?.doLoadStatementsRequest(userId: userId, completion: { (statements, error) in
+            
+            let response = Statements.LoadStatements.Response(statements: statements, serviceError: error)
+            
+            self.presenter?.presentStatements(response: response)
+        })
     }
     
     func logout(request: Statements.Logout.Request) {

@@ -10,8 +10,6 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 protocol StatementsPresentationLogic
 {
     func presentStatements(response: Statements.LoadStatements.Response)
@@ -33,7 +31,7 @@ class StatementsPresenter: StatementsPresentationLogic
     
     func presentStatements(response: Statements.LoadStatements.Response)
     {
-        let viewModel = Statements.LoadStatements.ViewModel()
+        let viewModel = Statements.LoadStatements.ViewModel(statements: response.statements, serviceError: response.serviceError)
         viewController?.displayStatements(viewModel: viewModel)
     }
     
