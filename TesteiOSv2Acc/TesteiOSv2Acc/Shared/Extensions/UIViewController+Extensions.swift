@@ -18,4 +18,34 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    func showLoading()
+    {
+        
+        if let activityIndicator = view.viewWithTag(-8765) as? UIActivityIndicatorView
+        {
+            activityIndicator.startAnimating()
+            return
+        }
+        
+        let activityIndicator = UIActivityIndicatorView()
+        
+        let selfFrame = self.view.frame
+        activityIndicator.frame = CGRect(x: selfFrame.origin.x, y: selfFrame.origin.y, width: selfFrame.width, height: selfFrame.height)
+        activityIndicator.backgroundColor = UIColor.init(red: 1/255, green: 1/255, blue: 1/255, alpha: 0.4)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.tag = -8765
+        
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+    
+    func hideLoading()
+    {
+        if let activityIndicator = view.viewWithTag(-8765) as? UIActivityIndicatorView
+        {
+            activityIndicator.stopAnimating()
+        }
+    }
+    
 }

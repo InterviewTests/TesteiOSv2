@@ -15,6 +15,10 @@
 		2331B0C3229B119A00CE9216 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331B0C1229B119A00CE9216 /* DateHelper.swift */; };
 		2331B0C5229B130A00CE9216 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331B0C4229B130A00CE9216 /* AlertHelper.swift */; };
 		2331B0C6229B130A00CE9216 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331B0C4229B130A00CE9216 /* AlertHelper.swift */; };
+		2331B0CF229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331B0CD229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.swift */; };
+		2331B0D0229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331B0CD229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.swift */; };
+		2331B0D1229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2331B0CE229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.xib */; };
+		2331B0D2229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2331B0CE229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.xib */; };
 		2383B9F72299DD6200995864 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383B9F62299DD6200995864 /* KeychainManager.swift */; };
 		2383B9F82299DD6200995864 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383B9F62299DD6200995864 /* KeychainManager.swift */; };
 		2383B9FA229A0F4E00995864 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383B9F9229A0F4E00995864 /* Validator.swift */; };
@@ -88,6 +92,8 @@
 		2302FA1122977D960012592F /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		2331B0C1229B119A00CE9216 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		2331B0C4229B130A00CE9216 /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		2331B0CD229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsTableViewHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		2331B0CE229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementsTableViewHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		2383B9F62299DD6200995864 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		2383B9F9229A0F4E00995864 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		2383B9FD229AD61F00995864 /* StatementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
@@ -205,6 +211,8 @@
 			children = (
 				2383B9FD229AD61F00995864 /* StatementTableViewCell.swift */,
 				2383B9FE229AD61F00995864 /* StatementTableViewCell.xib */,
+				2331B0CD229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.swift */,
+				2331B0CE229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -420,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2331B0D1229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.xib in Resources */,
 				23B392A32294DD3F00F92001 /* Statements.storyboard in Resources */,
 				23B392A02294DD1300F92001 /* Login.storyboard in Resources */,
 				2383BA01229AD61F00995864 /* StatementTableViewCell.xib in Resources */,
@@ -434,6 +443,7 @@
 			files = (
 				23B392A42294DD3F00F92001 /* Statements.storyboard in Resources */,
 				2383BA02229AD61F00995864 /* StatementTableViewCell.xib in Resources */,
+				2331B0D2229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.xib in Resources */,
 				23B392A12294DD1300F92001 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +521,7 @@
 			files = (
 				23EFB0B122998DCF004C2A75 /* UIViewController+Extensions.swift in Sources */,
 				23EFB0A9229970F6004C2A75 /* Statement.swift in Sources */,
+				2331B0CF229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.swift in Sources */,
 				23B3929D2294DD0100F92001 /* StatementsInteractor.swift in Sources */,
 				23B392862294DCAD00F92001 /* LoginViewController.swift in Sources */,
 				239648E42298179300F3FAD1 /* LoginResponse.swift in Sources */,
@@ -545,6 +556,7 @@
 			files = (
 				23EFB0B222998DCF004C2A75 /* UIViewController+Extensions.swift in Sources */,
 				23EFB0AA229970F6004C2A75 /* Statement.swift in Sources */,
+				2331B0D0229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.swift in Sources */,
 				23B3929C2294DD0100F92001 /* StatementsViewController.swift in Sources */,
 				23B392872294DCAD00F92001 /* LoginViewController.swift in Sources */,
 				239648E52298179300F3FAD1 /* LoginResponse.swift in Sources */,

@@ -60,7 +60,8 @@ class LoginViewController: UIViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let scene = segue.identifier {
+        if let scene = segue.identifier
+        {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
             if let router = router, router.responds(to: selector) {
                 router.perform(selector, with: segue)
@@ -76,31 +77,36 @@ class LoginViewController: UIViewController
         setupHideKeyboard()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         loadLoginDataIfExists()
     }
     
     // MARK: IBActions
     
-    @IBAction func loginAction(_ sender: Any) {
+    @IBAction func loginAction(_ sender: Any)
+    {
         doLogin()
     }
     
     // MARK: - Interactor communication
     
-    private func loadLoginDataIfExists(){
+    private func loadLoginDataIfExists()
+    {
+        showLoading()
         let request = Login.LoadLoginData.Request()
         interactor?.loadLoginDataIfExists(request: request)
     }
     
     private func doLogin()
     {
+        showLoading()
         if let user = userTextField.text,
-            let password = passwordTextField.text{
+           let password = passwordTextField.text
+        {
             let request = Login.LoginUser.Request(user: user, password: password)
             interactor?.doLogin(request: request)
         }
-        
     }
     
 }
@@ -109,19 +115,21 @@ class LoginViewController: UIViewController
 
 extension LoginViewController: LoginDisplayLogic{
     
-    func displayLoggedInUser(viewModel: Login.LoginUser.ViewModel) {
-        
-        if let serviceError = viewModel.serviceError, let message = serviceError.message{
+    func displayLoggedInUser(viewModel: Login.LoginUser.ViewModel)
+    {
+        hideLoading()
+        if let message = viewModel.serviceError?.message
+        {
             let title = "Error"
             AlertHelper.showOkAlert(context: self, title: title, message: message)
         }else{
             router?.routeToStatements(segue: nil)
         }
-        
     }
     
     func displaySavedLoginData(viewModel: Login.LoadLoginData.ViewModel)
     {
+        hideLoading()
         userTextField.text = viewModel.user
         passwordTextField.text = ""
     }

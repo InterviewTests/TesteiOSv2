@@ -70,6 +70,19 @@ class StatementsViewController: UIViewController
         let nib = UINib(nibName: "StatementTableViewCell", bundle: nil)
         statementsTableView.register(nib, forCellReuseIdentifier: StatementTableViewCell.identifier)
         
+        let headerNib = UINib(nibName: "StatementsTableViewHeaderTableViewCell", bundle: nil)
+        statementsTableView.register(headerNib, forCellReuseIdentifier: StatementsTableViewHeaderTableViewCell.identifier)
+        
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(loadStatements), for: .valueChanged)
+        
+        if #available(iOS 10.0, *) {
+            statementsTableView.refreshControl = refreshControl
+        } else {
+            statementsTableView.addSubview(refreshControl)
+        }
+        
         statementsTableView.dataSource = self
         statementsTableView.delegate = self
     }
@@ -113,8 +126,14 @@ class StatementsViewController: UIViewController
         }
     }
     
-    private func loadStatements()
+    @objc private func loadStatements()
     {
+        if #available(iOS 10.0, *) {
+            statementsTableView.refreshControl?.beginRefreshing()
+        } else {
+            showLoading()
+        }
+        
         guard let userId = router?.dataStore?.userAccount?.userId else {
             return
         }
@@ -150,6 +169,12 @@ extension StatementsViewController: StatementsDisplayLogic{
     
     func displayStatements(viewModel: Statements.LoadStatements.ViewModel)
     {
+        if #available(iOS 10.0, *) {
+            statementsTableView.refreshControl?.endRefreshing()
+        } else {
+            hideLoading()
+        }
+        
         if let message = viewModel.serviceError?.message
         {
             let title = "Error"
@@ -192,9 +217,12 @@ extension StatementsViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let header = tableView.headerView(forSection: section)
-        
+
+        guard let header = tableView.dequeueReusableCell(withIdentifier: StatementsTableViewHeaderTableViewCell.identifier) else
+        {
+            return UIView()
+        }
+
         return header
     }
     

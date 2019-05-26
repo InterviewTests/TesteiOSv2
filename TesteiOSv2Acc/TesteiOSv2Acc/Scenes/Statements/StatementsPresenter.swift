@@ -69,8 +69,8 @@ class StatementsPresenter: StatementsPresentationLogic
             
             let date = DateHelper.convertDateString(value: statement.date, inputPattern: "yyyy-MM-dd", outputPattern: "dd/MM/yyyy")
             
-            let prefix = statement.value ?? 0 >= 0 ? "R$" : "- R$"
-            let value = "\(prefix) \(statement.value ?? 0)"
+            let unwrappedValue = statement.value ?? 0
+            let value = unwrappedValue >= 0 ? "R$ \(unwrappedValue)" : "- R$ \(unwrappedValue * -1)"
             
             let statementData = StatementData(title: title, description: description, date: date, value: value)
             statementsData.append(statementData)
