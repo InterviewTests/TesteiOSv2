@@ -25,7 +25,14 @@ class StatementsPresenter: StatementsPresentationLogic
     // MARK: - ViewController methods
     
     func presentCustomerData(response: Statements.LoadCustomerData.Response) {
-        let viewModel = Statements.LoadCustomerData.ViewModel()
+        
+        let userAccount = response.userAccount
+        
+        let fullname = response.userAccount.name ?? ""
+        let bankAgencyAccount = "\(userAccount.bankAccount ?? "") / \(userAccount.agency ?? "")"
+        let balance = String(format: "R$ %.02f", userAccount.balance ?? 0)
+        
+        let viewModel = Statements.LoadCustomerData.ViewModel(fullname: fullname, bankAgencyAccount: bankAgencyAccount, balance: balance)
         viewController?.displayCustomerData(viewModel: viewModel)
     }
     

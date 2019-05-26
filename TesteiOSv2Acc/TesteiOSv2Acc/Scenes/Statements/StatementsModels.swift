@@ -49,12 +49,17 @@ enum Statements
     {
         struct Request
         {
+            let userAccount: UserAccount
         }
         struct Response
         {
+            let userAccount: UserAccount
         }
         struct ViewModel
         {
+            let fullname: String
+            let bankAgencyAccount: String
+            let balance: String
         }
     }
 }

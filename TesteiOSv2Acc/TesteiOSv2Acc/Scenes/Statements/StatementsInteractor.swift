@@ -50,7 +50,7 @@ class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
     }
     
     func loadCustomerData(request: Statements.LoadCustomerData.Request) {
-        let response = Statements.LoadCustomerData.Response()
+        let response = Statements.LoadCustomerData.Response(userAccount: request.userAccount)
         presenter?.presentCustomerData(response: response)
     }
 }

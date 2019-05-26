@@ -95,8 +95,13 @@ class StatementsViewController: UIViewController
     
     private func loadCustomerData()
     {
-        let request = Statements.LoadCustomerData.Request()
-        interactor?.loadCustomerData(request: request)
+        if let router = router,
+           let dataStore = router.dataStore,
+           let userAccount = dataStore.userAccount
+        {
+            let request = Statements.LoadCustomerData.Request(userAccount: userAccount)
+            interactor?.loadCustomerData(request: request)
+        }
     }
     
     private func loadStatements()
@@ -123,9 +128,9 @@ extension StatementsViewController: StatementsDisplayLogic{
     
     func displayCustomerData(viewModel: Statements.LoadCustomerData.ViewModel)
     {
-        customerNameLabel.text = ""
-        bankAccountLabel.text = ""
-        bankAccountBalanceLabel.text = ""
+        customerNameLabel.text = viewModel.fullname
+        bankAccountLabel.text = viewModel.bankAgencyAccount
+        bankAccountBalanceLabel.text = viewModel.balance
     }
     
     func displayStatements(viewModel: Statements.LoadStatements.ViewModel)
