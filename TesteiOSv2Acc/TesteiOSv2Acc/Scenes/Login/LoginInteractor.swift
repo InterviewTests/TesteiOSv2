@@ -37,7 +37,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         
         let inputValidationResult = isUserAndPasswordValid(user: user, password: password)
         
-        if (inputValidationResult.isValid){
+        if (inputValidationResult.isValid()){
             worker = LoginWorker()
             worker?.doLoginRequest(user: user, password: password)
             { userAccount, serviceError in
@@ -67,34 +67,39 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         let userValidationResult = isUserValid(user: user)
         let passwordValidationResult = isPasswordValid(password: password)
         
-        if !userValidationResult.isValid{
+        if !userValidationResult.isValid(){
             return userValidationResult
-        }else if !passwordValidationResult.isValid{
+        }else if !passwordValidationResult.isValid(){
             return passwordValidationResult
         }
         
-        return InputValidationResult(isValid: true, serviceError: nil)
+        return InputValidationResult(serviceError: nil)
     }
     
     private func isUserValid(user: String) -> InputValidationResult
     {
         if user.isEmpty{
-            return InputValidationResult(isValid: false, serviceError: ServiceError(code: -1, message: "Preencha o campo usuário"))
+            return InputValidationResult(serviceError: ServiceError(code: -1, message: "Preencha o campo usuário"))
         }
         
-        //TODO: User validation
-        return InputValidationResult(isValid: false, serviceError: ServiceError(code: -1, message: "User not validated"))
+        let userValidationResult = Validator.validate(user: user)
+        if !userValidationResult.isValid(){
+            return userValidationResult
+        }
+        
+        return InputValidationResult(serviceError: nil)
     }
     
     private func isPasswordValid(password: String) -> InputValidationResult
     {
         
         if password.isEmpty{
-            return InputValidationResult(isValid: false, serviceError: ServiceError(code: -1, message: "Preencha o campo senha"))
+            return InputValidationResult(serviceError: ServiceError(code: -1, message: "Preencha o campo senha"))
+        } else if !Validator.validate(password: password){
+            return InputValidationResult(serviceError: ServiceError(code: -1, message: "Usuário ou senha inválida"))
         }
         
-        //TODO: Password validation
-        return InputValidationResult(isValid: false, serviceError: ServiceError(code: -1, message: "Password not validated"))
+        return InputValidationResult(serviceError: nil)
     }
     
 }

@@ -23,6 +23,46 @@ class TesteiOSv2AccTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func testUserValidation(){
+        
+        XCTAssertFalse(Validator.validate(user: "").isValid())
+        XCTAssertFalse(Validator.validate(user: "a").isValid())
+        XCTAssertFalse(Validator.validate(user: "abc").isValid())
+        XCTAssertFalse(Validator.validate(user: "123").isValid())
+        XCTAssertFalse(Validator.validate(user: "aaa@a").isValid())
+        XCTAssertFalse(Validator.validate(user: "aaa").isValid())
+        XCTAssertFalse(Validator.validate(user: "!@234").isValid())
+        XCTAssertFalse(Validator.validate(user: "11111").isValid())
+        XCTAssertFalse(Validator.validate(user: "11111111111").isValid())
+        XCTAssertFalse(Validator.validate(user: "12345678901").isValid())
+
+     
+        XCTAssertTrue(Validator.validate(user: "a@a.com").isValid())
+        XCTAssertTrue(Validator.validate(user: "41971628042").isValid())
+        XCTAssertTrue(Validator.validate(user: "34987897083").isValid())
+        XCTAssertTrue(Validator.validate(user: "sandra@hotmail.com").isValid())
+        XCTAssertTrue(Validator.validate(user: "test_149@globo.com").isValid())
+
+    }
+    
+    func testPasswordValidation(){
+        XCTAssertFalse(Validator.validate(password: ""))
+        XCTAssertFalse(Validator.validate(password: "a"))
+        XCTAssertFalse(Validator.validate(password: "abc"))
+        XCTAssertFalse(Validator.validate(password: "123"))
+        XCTAssertFalse(Validator.validate(password: "123a"))
+        XCTAssertFalse(Validator.validate(password: "abc123"))
+        XCTAssertFalse(Validator.validate(password: "Abc123"))
+        XCTAssertFalse(Validator.validate(password: "ABC123"))
+        XCTAssertFalse(Validator.validate(password: "!@234"))
+        XCTAssertFalse(Validator.validate(password: "1a!"))
+        
+        XCTAssertTrue(Validator.validate(password: "1A!"))
+        XCTAssertTrue(Validator.validate(password: "A1!"))
+        XCTAssertTrue(Validator.validate(password: "Ab!"))
+        XCTAssertTrue(Validator.validate(password: "aaaB32@"))
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

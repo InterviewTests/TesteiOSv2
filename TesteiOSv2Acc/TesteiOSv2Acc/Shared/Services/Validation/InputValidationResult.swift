@@ -7,6 +7,10 @@
 //
 
 struct InputValidationResult {
-    let isValid: Bool
     let serviceError: ServiceError?
+    
+    func isValid() -> Bool
+    {
+        return serviceError == nil
+    }
 }

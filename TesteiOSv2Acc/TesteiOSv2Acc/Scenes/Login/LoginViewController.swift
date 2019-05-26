@@ -76,7 +76,7 @@ class LoginViewController: UIViewController
         setupHideKeyboard()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         loadLoginDataIfExists()
     }
     
@@ -96,7 +96,7 @@ class LoginViewController: UIViewController
     private func doLogin()
     {
         if let user = userTextField.text,
-            let password = userTextField.text{
+            let password = passwordTextField.text{
             let request = Login.LoginUser.Request(user: user, password: password)
             interactor?.doLogin(request: request)
         }
