@@ -42,6 +42,8 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
             worker?.doLoginRequest(user: user, password: password)
             { userAccount, serviceError in
                 
+                self.userAccount = userAccount
+                
                 let response = Login.LoginUser.Response(userAccount: userAccount, serviceError: serviceError)
                 
                 self.presenter?.presentLoginUser(response: response)
