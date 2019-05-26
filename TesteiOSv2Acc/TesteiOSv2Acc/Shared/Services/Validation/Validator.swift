@@ -12,7 +12,7 @@ import CPF_CNPJ_Validator
 
 class Validator {
 
-    internal required init(){}
+    private init(){}
     
     static func validate(password: String) -> Bool
     {

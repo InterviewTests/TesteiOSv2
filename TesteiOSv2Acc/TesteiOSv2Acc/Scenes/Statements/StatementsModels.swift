@@ -27,7 +27,7 @@ enum Statements
         }
         struct ViewModel
         {
-            let statements: [Statement]?
+            let statementsData: [StatementData]?
             let serviceError: ServiceError?
         }
     }

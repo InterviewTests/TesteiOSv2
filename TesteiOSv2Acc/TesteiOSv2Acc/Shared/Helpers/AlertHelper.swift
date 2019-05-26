@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AlertManager {
+class AlertHelper {
 
-    internal required init(){}
+    private init(){}
     
     static func showOkAlert(context: UIViewController, title: String, message: String)
     {

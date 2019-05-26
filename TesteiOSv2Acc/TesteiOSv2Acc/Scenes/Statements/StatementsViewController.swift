@@ -34,6 +34,8 @@ class StatementsViewController: UIViewController
     var interactor: StatementsBusinessLogic?
     var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
     
+    var statementsData: [StatementData]?
+    
     // MARK: - Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -64,6 +66,14 @@ class StatementsViewController: UIViewController
         router.dataStore = interactor
     }
     
+    private func setupTableView(){
+        let nib = UINib(nibName: "StatementTableViewCell", bundle: nil)
+        statementsTableView.register(nib, forCellReuseIdentifier: StatementTableViewCell.identifier)
+        
+        statementsTableView.dataSource = self
+        statementsTableView.delegate = self
+    }
+    
     // MARK: - Routing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -81,6 +91,7 @@ class StatementsViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        setupTableView()
         loadCustomerData()
         loadStatements()
     }
@@ -95,9 +106,7 @@ class StatementsViewController: UIViewController
     
     private func loadCustomerData()
     {
-        if let router = router,
-           let dataStore = router.dataStore,
-           let userAccount = dataStore.userAccount
+        if let userAccount = router?.dataStore?.userAccount
         {
             let request = Statements.LoadCustomerData.Request(userAccount: userAccount)
             interactor?.loadCustomerData(request: request)
@@ -106,7 +115,11 @@ class StatementsViewController: UIViewController
     
     private func loadStatements()
     {
-        let request = Statements.LoadStatements.Request(userId: 1)
+        guard let userId = router?.dataStore?.userAccount?.userId else {
+            return
+        }
+        
+        let request = Statements.LoadStatements.Request(userId: userId)
         interactor?.loadStatements(request: request)
     }
     
@@ -135,7 +148,60 @@ extension StatementsViewController: StatementsDisplayLogic{
     
     func displayStatements(viewModel: Statements.LoadStatements.ViewModel)
     {
-        print(viewModel.statements)
+        if let message = viewModel.serviceError?.message
+        {
+            let title = "Error"
+            AlertHelper.showOkAlert(context: self, title: title, message: message)
+        }else{
+            statementsData = viewModel.statementsData
+            statementsTableView.reloadData()
+        }
+    }
+    
+}
+
+//MARK: - TableView Datasource and Delegate
+
+extension StatementsViewController: UITableViewDataSource, UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let statementsData = statementsData else
+        {
+            return 0
+        }
+        return statementsData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StatementTableViewCell.identifier) as? StatementTableViewCell
+        else
+        {
+            return UITableViewCell()
+        }
+        
+        if let statementsData = statementsData
+        {
+            let statementData = statementsData[indexPath.row]
+            cell.load(data: statementData)
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let header = tableView.headerView(forSection: section)
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
     
 }

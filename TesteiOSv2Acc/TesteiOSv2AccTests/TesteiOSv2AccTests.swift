@@ -63,6 +63,19 @@ class TesteiOSv2AccTests: XCTestCase {
         XCTAssertTrue(Validator.validate(password: "Ab!"))
         XCTAssertTrue(Validator.validate(password: "aaaB32@"))
     }
+    
+    func testDateConversion(){
+        
+        let expectedOutput = "20/10/2019"
+        
+        let input = "2019-10-20"
+        let inputPattern = "yyyy-MM-dd"
+        let outputPattern = "dd/MM/yyyy"
+        
+        let output = DateHelper.convertDateString(value: input, inputPattern: inputPattern, outputPattern: outputPattern)
+        
+        XCTAssertEqual(output, expectedOutput)
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

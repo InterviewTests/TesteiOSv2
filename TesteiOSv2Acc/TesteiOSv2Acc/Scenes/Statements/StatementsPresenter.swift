@@ -10,6 +10,8 @@
 //  see http://clean-swift.com
 //
 
+import Foundation
+
 protocol StatementsPresentationLogic
 {
     func presentStatements(response: Statements.LoadStatements.Response)
@@ -38,7 +40,14 @@ class StatementsPresenter: StatementsPresentationLogic
     
     func presentStatements(response: Statements.LoadStatements.Response)
     {
-        let viewModel = Statements.LoadStatements.ViewModel(statements: response.statements, serviceError: response.serviceError)
+        var statementsData: [StatementData]? = nil
+        
+        if let statements = response.statements
+        {
+            statementsData = convertToStatementsData(statements: statements)
+        }
+        
+        let viewModel = Statements.LoadStatements.ViewModel(statementsData: statementsData, serviceError: response.serviceError)
         viewController?.displayStatements(viewModel: viewModel)
     }
     
@@ -46,4 +55,28 @@ class StatementsPresenter: StatementsPresentationLogic
         let viewModel = Statements.Logout.ViewModel()
         viewController?.displayLoggedOut(viewModel: viewModel)
     }
+    
+    // MARK: - Helper methods
+    
+    private func convertToStatementsData(statements: [Statement]) -> [StatementData]{
+        
+        var statementsData: [StatementData] = []
+        
+        for statement in statements
+        {
+            let title = statement.title ?? ""
+            let description = statement.desc ?? ""
+            
+            let date = DateHelper.convertDateString(value: statement.date, inputPattern: "yyyy-MM-dd", outputPattern: "dd/MM/yyyy")
+            
+            let prefix = statement.value ?? 0 >= 0 ? "R$" : "- R$"
+            let value = "\(prefix) \(statement.value ?? 0)"
+            
+            let statementData = StatementData(title: title, description: description, date: date, value: value)
+            statementsData.append(statementData)
+        }
+        
+        return statementsData
+    }
+    
 }
