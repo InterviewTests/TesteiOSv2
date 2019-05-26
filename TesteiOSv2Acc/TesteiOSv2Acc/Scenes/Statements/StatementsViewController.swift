@@ -125,8 +125,10 @@ class StatementsViewController: UIViewController
     
     private func logout()
     {
-        let request = Statements.Logout.Request()
-        interactor?.logout(request: request)
+        AlertHelper.showYesNoAlert(context: self, title: "Atenção", message: "Deseja realmente sair?", yesAction: { (action) in
+            let request = Statements.Logout.Request()
+            self.interactor?.logout(request: request)
+        }, noAction: nil)
     }
     
 }

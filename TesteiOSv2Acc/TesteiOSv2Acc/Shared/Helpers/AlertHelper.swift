@@ -12,13 +12,26 @@ class AlertHelper {
 
     private init(){}
     
-    static func showOkAlert(context: UIViewController, title: String, message: String)
+    static func showOkAlert(context: UIViewController, title: String, message: String, okAction: ((UIAlertAction) -> Void)? = nil)
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: okAction)
         
         alert.addAction(action)
+        
+        context.present(alert, animated: true)
+    }
+    
+    static func showYesNoAlert(context: UIViewController, title: String, message: String, yesAction: ((UIAlertAction) -> Void)? = nil, noAction: ((UIAlertAction) -> Void)? = nil)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let no = UIAlertAction(title: "Não", style: .default, handler: noAction)
+        let yes = UIAlertAction(title: "Sim", style: .default, handler: yesAction)
+        
+        alert.addAction(no)
+        alert.addAction(yes)
         
         context.present(alert, animated: true)
     }
