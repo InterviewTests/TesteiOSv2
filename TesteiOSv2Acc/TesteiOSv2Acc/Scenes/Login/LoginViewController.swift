@@ -56,6 +56,11 @@ class LoginViewController: UIViewController
         router.dataStore = interactor
     }
     
+    private func setupTextFields(){
+        userTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
     // MARK: Routing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -75,6 +80,7 @@ class LoginViewController: UIViewController
     {
         super.viewDidLoad()
         setupHideKeyboard()
+        setupTextFields()
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -134,4 +140,23 @@ extension LoginViewController: LoginDisplayLogic{
         passwordTextField.text = ""
     }
     
+}
+
+// MARK: - TextField delegate
+
+extension LoginViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        let nextTag = textField.tag + 1
+        if let nextView = view.viewWithTag(nextTag)
+        {
+            nextView.becomeFirstResponder()
+        }else{
+            view.endEditing(false)
+            doLogin()
+        }
+        
+        return true
+    }
 }
