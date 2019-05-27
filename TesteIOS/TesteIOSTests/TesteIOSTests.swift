@@ -43,29 +43,5 @@ class TesteIOSTests: XCTestCase {
         XCTAssertFalse(Validator.isValidEmail(email: email))
     }
     
-    func testLoginAPI(){
-        
-        let expectation = XCTestExpectation(description: "GetStatments running in the callback closure")
-        RestApi.doLogin(user: "test", password: "Aabbcc11@@", callback: { userAccount in
-            XCTAssertTrue(type(of: userAccount!) === UserAccount.self)
-            expectation.fulfill()
-        }, error: {
-            XCTFail("Received error from API")
-        })
-        wait(for: [expectation], timeout: 10)
-    }
-    
-    func testGetStatmentsAPI(){
-        let expectation = XCTestExpectation(description: "GetStatments running in the callback closure")
-        RestApi.GetStatments(id: "1", callback: { statments in
-            XCTAssertTrue(type(of: statments!) === Statments.self)
-            expectation.fulfill()
-            
-        }, error: {
-            XCTFail("Received error from API")
-        })
-        wait(for: [expectation], timeout: 10)
-    }
-    
     
 }
