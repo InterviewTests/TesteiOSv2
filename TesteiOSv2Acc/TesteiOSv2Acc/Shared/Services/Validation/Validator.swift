@@ -16,7 +16,7 @@ class Validator {
     
     static func validate(password: String) -> Bool
     {
-        let regex = "^(?=.*[A-Z])(?=.*[a-z0-9])(?=.*[!@#$%^&*()_+=\\-{}|:;<>]).{3,}$"
+        let regex = "^(?=.*[A-Z])(?=.*[a-z0-9])(?=.*[!@#$%^?&*()_+=\\-{}|:;<>]).{3,}$"
         let isValid = NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: password)
         return isValid
     }

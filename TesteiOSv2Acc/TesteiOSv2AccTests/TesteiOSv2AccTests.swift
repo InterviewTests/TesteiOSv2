@@ -58,7 +58,7 @@ class TesteiOSv2AccTests: XCTestCase {
         XCTAssertFalse(Validator.validate(password: "!@234"))
         XCTAssertFalse(Validator.validate(password: "1a!"))
         
-        XCTAssertTrue(Validator.validate(password: "1A!"))
+        XCTAssertTrue(Validator.validate(password: "1Ad?"))
         XCTAssertTrue(Validator.validate(password: "A1!"))
         XCTAssertTrue(Validator.validate(password: "Ab!"))
         XCTAssertTrue(Validator.validate(password: "aaaB32@"))
