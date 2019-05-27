@@ -120,7 +120,7 @@ extension LoginViewController: LoginDisplayLogic{
         hideLoading()
         if let message = viewModel.serviceError?.message
         {
-            let title = "Error"
+            let title = "Atenção"
             AlertHelper.showOkAlert(context: self, title: title, message: message)
         }else{
             router?.routeToStatements(segue: nil)
