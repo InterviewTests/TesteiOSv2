@@ -32,7 +32,7 @@ class StatementsPresenter: StatementsPresentationLogic
         
         let fullname = response.userAccount.name ?? ""
         let bankAgencyAccount = "\(userAccount.bankAccount ?? "") / \(userAccount.agency ?? "")"
-        let balance = String(format: "R$ %.02f", userAccount.balance ?? 0)
+        let balance = CurrencyHelper.convertToCurrency(value: userAccount.balance ?? 0)
         
         let viewModel = Statements.LoadCustomerData.ViewModel(fullname: fullname, bankAgencyAccount: bankAgencyAccount, balance: balance)
         viewController?.displayCustomerData(viewModel: viewModel)
@@ -66,11 +66,8 @@ class StatementsPresenter: StatementsPresentationLogic
         {
             let title = statement.title ?? ""
             let description = statement.desc ?? ""
-            
             let date = DateHelper.convertDateString(value: statement.date, inputPattern: "yyyy-MM-dd", outputPattern: "dd/MM/yyyy")
-            
-            let unwrappedValue = statement.value ?? 0
-            let value = unwrappedValue >= 0 ? "R$ \(unwrappedValue)" : "- R$ \(unwrappedValue * -1)"
+            let value = CurrencyHelper.convertToCurrency(value: statement.value ?? 0)
             
             let statementData = StatementData(title: title, description: description, date: date, value: value)
             statementsData.append(statementData)

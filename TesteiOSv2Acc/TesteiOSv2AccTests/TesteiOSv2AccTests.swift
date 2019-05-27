@@ -64,6 +64,23 @@ class TesteiOSv2AccTests: XCTestCase {
         XCTAssertTrue(Validator.validate(password: "aaaB32@"))
     }
     
+    func testCurrencyConvertion()
+    {
+        let locale = Locale(identifier: "pt-BR")
+        
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: -1000.00, locale: locale), "-R$\u{00a0}1.000,00")
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: -1000, locale: locale), "-R$\u{00a0}1.000,00")
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: -99.9, locale: locale), "-R$\u{00a0}99,90")
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: -10.0, locale: locale), "-R$\u{00a0}10,00")
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: -10, locale: locale), "-R$\u{00a0}10,00")
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: 0, locale: locale), "R$\u{00a0}0,00")
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: 10, locale: locale), "R$\u{00a0}10,00")
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: 10.0, locale: locale), "R$\u{00a0}10,00")
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: 99.9, locale: locale), "R$\u{00a0}99,90")
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: 1000, locale: locale), "R$\u{00a0}1.000,00")
+        XCTAssertEqual(CurrencyHelper.convertToCurrency(value: 1000.00, locale: locale), "R$\u{00a0}1.000,00")
+    }
+    
     func testDateConversion(){
         
         let expectedOutput = "20/10/2019"
