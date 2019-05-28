@@ -23,7 +23,7 @@ class LoginPresenter: LoginPresentationLogic {
     // MARK: Do something
 
     func presentLogin(response: Login.doLogin.Response) {
-        if response.userAccount == nil && response.error?.count ?? 0 > 0 {
+        if response.userAccount == nil || response.error?.count ?? 0 > 0 {
             for (title, message) in response.error! {
                 viewController?.showAlertMsg(title: title, message: message)
             }

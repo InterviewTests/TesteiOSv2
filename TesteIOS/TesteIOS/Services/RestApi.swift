@@ -9,6 +9,11 @@
 import Alamofire
 import AlamofireObjectMapper
 
+protocol RestApiProtocol {
+    static func GetStatments(id: String, callback: @escaping (_ statments: Statments?) -> Void, error: @escaping () -> Void)
+    static func doLogin(user: String, password: String, callback: @escaping (_ userAccount: UserAccount?) -> Void, error: @escaping () -> Void)
+}
+
 class RestApi: RestApiProtocol {
     
     public static func doLogin(user: String, password: String, callback: @escaping (_ userAccount: UserAccount?) -> Void, error: @escaping () -> Void) {
