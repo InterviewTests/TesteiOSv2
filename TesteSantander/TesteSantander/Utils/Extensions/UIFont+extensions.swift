@@ -12,15 +12,17 @@ import UIKit
 extension UIFont {
     
     static func helveticaNeue(size: CGFloat) -> UIFont {
-        return getFont(UIFont(name: "HelveticaNeue", size: size))
+        return loadFont(UIFont(name: "HelveticaNeue", size: size))
     }
     
     static func helveticaNeueLight(size: CGFloat) -> UIFont {
-        return getFont(UIFont(name: "HelveticaNeue-Light", size: 25.0))
+        return loadFont(UIFont(name: "HelveticaNeue-Light", size: 25.0))
     }
     
-    static func getFont(_ font: UIFont?) -> UIFont {
-        guard let font = font else { fatalError("Erro ao carregar a fonte") }
+    static func loadFont(_ font: UIFont?) -> UIFont {
+        guard let font = font else {
+            fatalError(Constants.errors.loadFont)
+        }
         return font
     }
     
