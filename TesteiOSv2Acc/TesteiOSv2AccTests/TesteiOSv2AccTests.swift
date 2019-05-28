@@ -64,7 +64,7 @@ class TesteiOSv2AccTests: XCTestCase {
         XCTAssertTrue(Validator.validate(password: "aaaB32@"))
     }
     
-    func testCurrencyConvertion()
+    func testCurrencyFormatter()
     {
         let locale = Locale(identifier: "pt-BR")
         
@@ -81,7 +81,7 @@ class TesteiOSv2AccTests: XCTestCase {
         XCTAssertEqual(CurrencyHelper.convertToCurrency(value: 1000.00, locale: locale), "R$\u{00a0}1.000,00")
     }
     
-    func testDateConversion(){
+    func testDateFormatter(){
         
         let expectedOutput = "20/10/2019"
         

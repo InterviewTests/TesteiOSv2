@@ -14,12 +14,18 @@ class LoginWorker
 {
     var loginRestService: RestService<LoginResponse>?
     
+    // MARK: - Initialization
+    
+    required init(){
+        loginRestService = RestService<LoginResponse>()
+    }
+    
+    // MARK: - Services
+    
     func doLoginRequest(user: String, password: String, completion: @escaping (UserAccount?, ServiceError?) -> Void)
     {
         
         let serviceRequest = ServiceRequest.requestForLogin(user: user, password: password)
-        
-        loginRestService = RestService<LoginResponse>()
         loginRestService?.executeServiceRequest(serviceRequest: serviceRequest)
         { (loginResponse, requestError) in
             
@@ -37,8 +43,6 @@ class LoginWorker
     func cancelLoginRequest(){
         loginRestService?.cancelCurrentRequest()
     }
-    
-    //MARK: - Helper methods
     
     func saveUserToKeychain(user: String){
         KeychainManager(service: .userSafeStore).save(value: user, key: .user)

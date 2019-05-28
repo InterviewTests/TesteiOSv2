@@ -28,6 +28,12 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     
     var userAccount: UserAccount?
     
+    // MARK: - Initialization
+    
+    required init() {
+        worker = LoginWorker()
+    }
+    
     // MARK: Presenter communication
     
     func doLogin(request: Login.LoginUser.Request)
@@ -38,7 +44,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         let inputValidationResult = isUserAndPasswordValid(user: user, password: password)
         
         if (inputValidationResult.isValid()){
-            worker = LoginWorker()
             worker?.doLoginRequest(user: user, password: password)
             { userAccount, serviceError in
                 
@@ -56,7 +61,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     
     func loadLoginDataIfExists(request: Login.LoadLoginData.Request)
     {
-        worker = LoginWorker()
         let user = worker?.retrieveUserFromKeychain()
         let response = Login.LoadLoginData.Response(user: user, isError: false)
         presenter?.presentLoadLoginData(response: response)

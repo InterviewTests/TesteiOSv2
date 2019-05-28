@@ -14,12 +14,19 @@ class StatementsWorker
 {
     var loadStatementsRestService: RestService<StatementsResponse>?
     
+    // MARK: - Initialization
+    
+    required init(){
+        loadStatementsRestService = RestService<StatementsResponse>()
+    }
+    
+    // MARK: - Services
+    
     func doLoadStatementsRequest(userId: Int, completion: @escaping ([Statement]?, ServiceError?) -> Void)
     {
         
         let serviceRequest = ServiceRequest.requestForStatements(userId: userId)
         
-        loadStatementsRestService = RestService<StatementsResponse>()
         loadStatementsRestService?.executeServiceRequest(serviceRequest: serviceRequest)
         { (statementsResponse, requestError) in
             
