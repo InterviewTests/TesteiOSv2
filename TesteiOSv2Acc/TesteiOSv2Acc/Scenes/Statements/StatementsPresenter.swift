@@ -31,7 +31,8 @@ class StatementsPresenter: StatementsPresentationLogic
         let userAccount = response.userAccount
         
         let fullname = response.userAccount.name ?? ""
-        let bankAgencyAccount = "\(userAccount.bankAccount ?? "") / \(userAccount.agency ?? "")"
+        let agency = StringHelper.formatBankAccount(bankAccount: userAccount.agency ?? "")
+        let bankAgencyAccount = "\(userAccount.bankAccount ?? "") / \(agency)"
         let balance = CurrencyHelper.convertToCurrency(value: userAccount.balance ?? 0)
         
         let viewModel = Statements.LoadCustomerData.ViewModel(fullname: fullname, bankAgencyAccount: bankAgencyAccount, balance: balance)

@@ -81,6 +81,36 @@ class TesteiOSv2AccTests: XCTestCase {
         XCTAssertEqual(CurrencyHelper.convertToCurrency(value: 1000.00, locale: locale), "R$\u{00a0}1.000,00")
     }
     
+    func testFormatAgency(){
+        
+        let value = "123456"
+        
+        let formatted = StringHelper.formatBankAccount(bankAccount: value)
+        
+        XCTAssertEqual(formatted, "12.345-6")
+        
+        
+        let value2 = "123"
+        
+        let formatted2 = StringHelper.formatBankAccount(bankAccount: value2)
+        
+        XCTAssertEqual(formatted2, "")
+        
+        
+        let value3 = "1234"
+        
+        let formatted3 = StringHelper.formatBankAccount(bankAccount: value3)
+        
+        XCTAssertEqual(formatted3, "12.3-4")
+        
+        
+        let valueError = ""
+        
+        let formattedError = StringHelper.formatBankAccount(bankAccount: valueError)
+        
+        XCTAssertEqual(formattedError, "")
+    }
+    
     func testDateFormatter(){
         
         let expectedOutput = "20/10/2019"
