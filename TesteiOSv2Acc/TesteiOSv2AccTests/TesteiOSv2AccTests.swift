@@ -93,6 +93,50 @@ class TesteiOSv2AccTests: XCTestCase {
         
         XCTAssertEqual(output, expectedOutput)
     }
+    
+    func testValidLogin(){
+        let request = ServiceRequest.requestForLogin(user: "a@a.com", password: "1!A")
+        
+        let expectation = self.expectation(description: "Login passed")
+        var userAccount: UserAccount? = nil
+        var serviceError: ServiceError? = nil
+        
+        let _ = RestService<LoginResponse>().executeServiceRequest(serviceRequest: request)
+        { (response, error) in
+            
+            userAccount = response?.userAccount
+            serviceError = response?.error
+            
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+        
+        XCTAssertTrue(userAccount?.userId != nil)
+        XCTAssertTrue(serviceError?.code == nil)
+    }
+    
+    func testInvalidLogin(){
+        let request = ServiceRequest.requestForLogin(user: "", password: "")
+        
+        let expectation = self.expectation(description: "Login passed")
+        var userAccount: UserAccount? = nil
+        var serviceError: ServiceError? = nil
+        
+        let _ = RestService<LoginResponse>().executeServiceRequest(serviceRequest: request)
+        { (response, error) in
+            
+            userAccount = response?.userAccount
+            serviceError = response?.error
+            
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+        
+        XCTAssertTrue(userAccount?.userId == nil)
+        XCTAssertTrue(serviceError?.code != nil)
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
