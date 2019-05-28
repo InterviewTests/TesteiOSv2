@@ -21,7 +21,7 @@ extension UIFont {
     
     static func loadFont(_ font: UIFont?) -> UIFont {
         guard let font = font else {
-            fatalError(Constants.errors.loadFont)
+            fatalError(Constants.Errors.loadFont)
         }
         return font
     }

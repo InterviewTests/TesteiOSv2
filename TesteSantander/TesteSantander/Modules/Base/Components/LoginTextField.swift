@@ -16,11 +16,39 @@ final class LoginTextField: UITextField {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        setup()
     }
     
     fileprivate func setup() {
+        // Setup placeholder font
+        attributedPlaceholder = NSAttributedString(
+            string: placeholder ?? "",
+            attributes: [
+                .foregroundColor: UIColor.lightGreyBlue,
+                .font: UIFont.helveticaNeue(size: 15)
+            ]
+        )
         
+        // Setup text font
+        font = UIFont.helveticaNeue(size: 15)
+        textColor = UIColor.warmBlue
+        
+        // Setup border
+        layer.masksToBounds = true
+        layer.cornerRadius = 4
+        layer.borderColor = UIColor.lightPeriwinkle.cgColor
+        layer.borderWidth = 1
+    }
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        // Setup placeholder padding
+        return bounds.insetBy(dx: 13, dy: 13)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        // Setup text padding
+        return bounds.insetBy(dx: 13, dy: 13)
     }
     
 }

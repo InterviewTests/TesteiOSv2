@@ -10,7 +10,7 @@ import Foundation
 
 struct Constants {
     
-    struct errors {
+    struct Errors {
         static let defaultMessage = "ERROR: "
         static let loadFont = defaultMessage + "Unable to load font"
     }
