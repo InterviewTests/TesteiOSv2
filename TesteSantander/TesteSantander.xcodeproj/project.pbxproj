@@ -24,6 +24,7 @@
 		C673F83D229DCAF400D60A40 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F837229DCAF400D60A40 /* LoginViewController.swift */; };
 		C673F83E229DCAF400D60A40 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F838229DCAF400D60A40 /* LoginInteractor.swift */; };
 		C673F840229DCB0200D60A40 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C673F83F229DCB0200D60A40 /* LoginViewController.xib */; };
+		C673F844229DCC6800D60A40 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F843229DCC6800D60A40 /* LoginTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		C673F837229DCAF400D60A40 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C673F838229DCAF400D60A40 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		C673F83F229DCB0200D60A40 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		C673F843229DCC6800D60A40 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		C9F4CC295B759026A4BE9211 /* Pods-TesteSantanderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteSantanderUITests.debug.xcconfig"; path = "Target Support Files/Pods-TesteSantanderUITests/Pods-TesteSantanderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D4237EBB9C84CDE308E52AEF /* Pods-TesteSantanderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteSantanderTests.release.xcconfig"; path = "Target Support Files/Pods-TesteSantanderTests/Pods-TesteSantanderTests.release.xcconfig"; sourceTree = "<group>"; };
 		F415C0C4A8087532BA80BE0F /* Pods-TesteSantander.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteSantander.debug.xcconfig"; path = "Target Support Files/Pods-TesteSantander/Pods-TesteSantander.debug.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		C673F82F229DCA9A00D60A40 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C673F842229DCC1C00D60A40 /* Base */,
 				C673F832229DCAC400D60A40 /* Splash */,
 				C673F830229DCAAE00D60A40 /* Login */,
 				C673F831229DCAB500D60A40 /* List */,
@@ -217,6 +220,22 @@
 			children = (
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		C673F841229DCC1300D60A40 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C673F843229DCC6800D60A40 /* LoginTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C673F842229DCC1C00D60A40 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C673F841229DCC1300D60A40 /* Components */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		C953CA9A98F33F39633D77FC /* Frameworks */ = {
@@ -469,6 +488,7 @@
 				C673F82C229DBB9C00D60A40 /* UIFont+extensions.swift in Sources */,
 				C673F82A229DBB4B00D60A40 /* UIColor+extensions.swift in Sources */,
 				C673F82E229DBDD700D60A40 /* Constants.swift in Sources */,
+				C673F844229DCC6800D60A40 /* LoginTextField.swift in Sources */,
 				C673F839229DCAF400D60A40 /* LoginPresenter.swift in Sources */,
 				C673F83B229DCAF400D60A40 /* LoginRouter.swift in Sources */,
 				C673F83E229DCAF400D60A40 /* LoginInteractor.swift in Sources */,
