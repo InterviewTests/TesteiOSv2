@@ -12,9 +12,11 @@
 
 import UIKit
 import Moya
+import ViewAnimator
 
 protocol LoginDisplayLogic: class {
     func presentStatements(viewModel: Login.Login.ViewModel)
+    func displayErrorMessage(message: String)
 }
 
 class LoginViewController: BaseViewController, LoginDisplayLogic {
@@ -22,6 +24,7 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
     // MARK: Object lifecycle
+    
     @IBOutlet weak var loginButton: UIButton!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -51,43 +54,38 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
     
     // MARK: Routing
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
     @IBOutlet weak var userTextField: LoginTextField!
     @IBOutlet weak var passwordTextField: LoginTextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     // MARK: View lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        doSomething()
         
-        let provider = MoyaProvider<APIRouter>()
-        let service = APIServiceImpl(provider: provider)
-        let repository = APIRepositoryImpl(service: service)
-        
-        repository
-            .fetchStatements()
-            .asObservable()
-            .subscribe(
-                onNext: { (response) in
-                    print(response)
-                },
-                onError: { (error) in
-                    print(error)
-                }
-            )
-            .disposed(by: disposeBag)
+//        let provider = MoyaProvider<APIRouter>()
+//        let service = APIServiceImpl(provider: provider)
+//        let repository = APIRepositoryImpl(service: service)
+//
+//        repository
+//            .fetchStatements()
+//            .asObservable()
+//            .subscribe(
+//                onNext: { (response) in
+//                    print(response)
+//                },
+//                onError: { (error) in
+//                    print(error)
+//                }
+//            )
+//            .disposed(by: disposeBag)
     }
     
     fileprivate func setupLayout() {
+        // Hide error label
+        errorLabel.alpha = 0
+        
         // Setup login button Layout
         loginButton.layer.cornerRadius = 4
         loginButton.layer.masksToBounds = false
@@ -100,13 +98,23 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
         loginButton.layer.shadowOffset = CGSize(width: 0, height: 3)
     }
     
-    func doSomething() {
-//        let request = Login.Something.Request()
-//        interactor?.doSomething(request: request)
+    func displayErrorMessage(message: String) {
+        errorLabel.text = message
+        passwordTextField.text = ""
+        guard errorLabel.alpha == 0 else { return }
+        
+        let slideAnimation = AnimationType.from(direction: .top, offset: 30)
+        let zoom = AnimationType.zoom(scale: 0.5)
+        errorLabel.animate(
+            animations: [zoom, slideAnimation],
+            reversed: false,
+            initialAlpha: 0,
+            finalAlpha: 1
+        )
     }
     
     func presentStatements(viewModel: Login.Login.ViewModel) {
-        print(viewModel)
+        router?.routeToStatements()
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {

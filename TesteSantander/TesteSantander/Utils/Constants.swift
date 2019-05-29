@@ -20,6 +20,9 @@ struct Constants {
         static let loadURL = defaultMessage + "Unable to load base url"
         static let encodeData = defaultMessage + "Unable to encode data"
         static let APIError = defaultMessage + "Unable to connect to the API"
+        
+        static let invalidUsername = "Username must be a CPF or email"
+        static let invalidPassword = "Password must contain a capital letter, a special character and an alphanumeric character"
     }
     
 }

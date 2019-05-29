@@ -31,10 +31,8 @@ class LoginWorker {
             .subscribe(onNext: { (user) in
                 callback(user)
             }, onError: { (error) in
-                
-            }) {
-                
-            }
+                print(error)
+            })
             .disposed(by: disposeBag)
     }
 }

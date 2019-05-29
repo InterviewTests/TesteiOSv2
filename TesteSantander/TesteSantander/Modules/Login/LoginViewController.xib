@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="TesteSantander" customModuleProvider="target">
             <connections>
+                <outlet property="errorLabel" destination="N5n-Gg-jrj" id="ulB-Pn-rbq"/>
                 <outlet property="loginButton" destination="2QI-5J-46Z" id="0RH-Ph-ehG"/>
                 <outlet property="passwordTextField" destination="TvE-ZT-o1V" id="XKF-3b-4q8"/>
                 <outlet property="userTextField" destination="jVh-c7-IlC" id="on6-DN-biv"/>
@@ -63,6 +64,12 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                 </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" text="Erro ao tentar se conectar com a API" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5n-Gg-jrj">
+                    <rect key="frame" x="16" y="373" width="288" height="19"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <color key="textColor" red="0.89803921568627454" green="0.28596097230911255" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -70,11 +77,15 @@
                 <constraint firstItem="jVh-c7-IlC" firstAttribute="top" secondItem="RgN-cu-LPJ" secondAttribute="bottom" constant="105" id="9fB-q6-g48"/>
                 <constraint firstItem="TvE-ZT-o1V" firstAttribute="top" secondItem="jVh-c7-IlC" secondAttribute="bottom" constant="21" id="BfO-JJ-Gl9"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jVh-c7-IlC" secondAttribute="trailing" constant="16" id="CEv-X9-z3a"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="N5n-Gg-jrj" secondAttribute="trailing" constant="16" id="HYZ-CN-sc4"/>
                 <constraint firstItem="RgN-cu-LPJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Tcu-LX-MPw"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2QI-5J-46Z" secondAttribute="bottom" constant="42" id="V1c-X4-Lz5"/>
+                <constraint firstItem="2QI-5J-46Z" firstAttribute="top" secondItem="N5n-Gg-jrj" secondAttribute="bottom" priority="750" constant="30" id="WdN-H7-Tro"/>
+                <constraint firstItem="N5n-Gg-jrj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="mfo-gt-uLR"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TvE-ZT-o1V" secondAttribute="trailing" constant="16" id="oUK-i3-dwI"/>
                 <constraint firstItem="TvE-ZT-o1V" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="rGp-oc-ovr"/>
                 <constraint firstItem="2QI-5J-46Z" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="suS-6v-Jzk"/>
+                <constraint firstItem="N5n-Gg-jrj" firstAttribute="top" secondItem="TvE-ZT-o1V" secondAttribute="bottom" constant="21" id="xZQ-uR-toy"/>
                 <constraint firstItem="jVh-c7-IlC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ygL-HT-4je"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

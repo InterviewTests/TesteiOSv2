@@ -14,6 +14,7 @@ import UIKit
 
 protocol LoginPresentationLogic {
     func presentStatements(response: Login.Login.Response)
+    func displayErrorMessage(message: String)
 }
 
 class LoginPresenter: LoginPresentationLogic {
@@ -23,5 +24,9 @@ class LoginPresenter: LoginPresentationLogic {
     func presentStatements(response: Login.Login.Response) {
         let viewModel = Login.Login.ViewModel(user: response.user)
         viewController?.presentStatements(viewModel: viewModel)
+    }
+    
+    func displayErrorMessage(message: String) {
+        viewController?.displayErrorMessage(message: message)
     }
 }

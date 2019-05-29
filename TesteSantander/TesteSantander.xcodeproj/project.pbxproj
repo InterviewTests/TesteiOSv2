@@ -32,6 +32,8 @@
 		C673F851229EC2F200D60A40 /* APIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F850229EC2F200D60A40 /* APIRepository.swift */; };
 		C673F853229EC2FD00D60A40 /* APIRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F852229EC2FD00D60A40 /* APIRepositoryImpl.swift */; };
 		C673F856229ECB9F00D60A40 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F855229ECB9F00D60A40 /* User.swift */; };
+		C673F858229EE59E00D60A40 /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F857229EE59E00D60A40 /* UIView+extensions.swift */; };
+		C673F85A229EF3C700D60A40 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F859229EF3C700D60A40 /* String+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		C673F850229EC2F200D60A40 /* APIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepository.swift; sourceTree = "<group>"; };
 		C673F852229EC2FD00D60A40 /* APIRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepositoryImpl.swift; sourceTree = "<group>"; };
 		C673F855229ECB9F00D60A40 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C673F857229EE59E00D60A40 /* UIView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
+		C673F859229EF3C700D60A40 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		C9F4CC295B759026A4BE9211 /* Pods-TesteSantanderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteSantanderUITests.debug.xcconfig"; path = "Target Support Files/Pods-TesteSantanderUITests/Pods-TesteSantanderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D4237EBB9C84CDE308E52AEF /* Pods-TesteSantanderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteSantanderTests.release.xcconfig"; path = "Target Support Files/Pods-TesteSantanderTests/Pods-TesteSantanderTests.release.xcconfig"; sourceTree = "<group>"; };
 		F415C0C4A8087532BA80BE0F /* Pods-TesteSantander.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteSantander.debug.xcconfig"; path = "Target Support Files/Pods-TesteSantander/Pods-TesteSantander.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 			children = (
 				C673F829229DBB4B00D60A40 /* UIColor+extensions.swift */,
 				C673F82B229DBB9C00D60A40 /* UIFont+extensions.swift */,
+				C673F857229EE59E00D60A40 /* UIView+extensions.swift */,
+				C673F859229EF3C700D60A40 /* String+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -557,6 +563,7 @@
 				C63D1B81229DAF4700E62432 /* AppDelegate.swift in Sources */,
 				C673F83C229DCAF400D60A40 /* LoginModels.swift in Sources */,
 				C673F82C229DBB9C00D60A40 /* UIFont+extensions.swift in Sources */,
+				C673F85A229EF3C700D60A40 /* String+extensions.swift in Sources */,
 				C673F82A229DBB4B00D60A40 /* UIColor+extensions.swift in Sources */,
 				C673F846229DD7B500D60A40 /* BaseViewController.swift in Sources */,
 				C673F82E229DBDD700D60A40 /* Constants.swift in Sources */,
@@ -566,6 +573,7 @@
 				C673F84B229EBDA700D60A40 /* APIRouter.swift in Sources */,
 				C673F839229DCAF400D60A40 /* LoginPresenter.swift in Sources */,
 				C673F83B229DCAF400D60A40 /* LoginRouter.swift in Sources */,
+				C673F858229EE59E00D60A40 /* UIView+extensions.swift in Sources */,
 				C673F853229EC2FD00D60A40 /* APIRepositoryImpl.swift in Sources */,
 				C673F856229ECB9F00D60A40 /* User.swift in Sources */,
 				C673F83E229DCAF400D60A40 /* LoginInteractor.swift in Sources */,
@@ -727,6 +735,7 @@
 			baseConfigurationReference = F415C0C4A8087532BA80BE0F /* Pods-TesteSantander.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4XWMMXB4KD;
 				INFOPLIST_FILE = TesteSantander/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -745,6 +754,7 @@
 			baseConfigurationReference = A25B1459C1642E9F652F838C /* Pods-TesteSantander.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4XWMMXB4KD;
 				INFOPLIST_FILE = TesteSantander/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
