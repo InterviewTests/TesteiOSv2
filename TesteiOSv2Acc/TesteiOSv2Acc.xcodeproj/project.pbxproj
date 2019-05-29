@@ -15,6 +15,9 @@
 		23063F10229C052400E0A69C /* CurrencyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23063F0E229C052400E0A69C /* CurrencyHelper.swift */; };
 		23063F2A229D679700E0A69C /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23063F29229D679700E0A69C /* StringHelper.swift */; };
 		23063F2B229D679700E0A69C /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23063F29229D679700E0A69C /* StringHelper.swift */; };
+		23063F4A229EA10E00E0A69C /* StatementsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23063F46229EA10E00E0A69C /* StatementsViewControllerTests.swift */; };
+		23063F4B229EA10E00E0A69C /* StatementsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23063F47229EA10E00E0A69C /* StatementsInteractorTests.swift */; };
+		23063F4D229EA10E00E0A69C /* StatementsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23063F49229EA10E00E0A69C /* StatementsPresenterTests.swift */; };
 		2331B0C2229B119A00CE9216 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331B0C1229B119A00CE9216 /* DateHelper.swift */; };
 		2331B0C3229B119A00CE9216 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331B0C1229B119A00CE9216 /* DateHelper.swift */; };
 		2331B0C5229B130A00CE9216 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331B0C4229B130A00CE9216 /* AlertHelper.swift */; };
@@ -99,6 +102,9 @@
 		2302FA1122977D960012592F /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		23063F0E229C052400E0A69C /* CurrencyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHelper.swift; sourceTree = "<group>"; };
 		23063F29229D679700E0A69C /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		23063F46229EA10E00E0A69C /* StatementsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsViewControllerTests.swift; sourceTree = "<group>"; };
+		23063F47229EA10E00E0A69C /* StatementsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractorTests.swift; sourceTree = "<group>"; };
+		23063F49229EA10E00E0A69C /* StatementsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsPresenterTests.swift; sourceTree = "<group>"; };
 		2331B0C1229B119A00CE9216 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		2331B0C4229B130A00CE9216 /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		2331B0CD229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsTableViewHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -224,6 +230,9 @@
 		23588131229E21650091DA41 /* Statements */ = {
 			isa = PBXGroup;
 			children = (
+				23063F46229EA10E00E0A69C /* StatementsViewControllerTests.swift */,
+				23063F47229EA10E00E0A69C /* StatementsInteractorTests.swift */,
+				23063F49229EA10E00E0A69C /* StatementsPresenterTests.swift */,
 			);
 			path = Statements;
 			sourceTree = "<group>";
@@ -591,10 +600,12 @@
 			files = (
 				23EFB0B222998DCF004C2A75 /* UIViewController+Extensions.swift in Sources */,
 				23EFB0AA229970F6004C2A75 /* Statement.swift in Sources */,
+				23063F4B229EA10E00E0A69C /* StatementsInteractorTests.swift in Sources */,
 				2331B0D0229B2F5F00CE9216 /* StatementsTableViewHeaderTableViewCell.swift in Sources */,
 				23B3929C2294DD0100F92001 /* StatementsViewController.swift in Sources */,
 				23588136229E217E0091DA41 /* LoginViewControllerTests.swift in Sources */,
 				23B392872294DCAD00F92001 /* LoginViewController.swift in Sources */,
+				23063F4D229EA10E00E0A69C /* StatementsPresenterTests.swift in Sources */,
 				239648E52298179300F3FAD1 /* LoginResponse.swift in Sources */,
 				23B3927F2294DCAD00F92001 /* LoginPresenter.swift in Sources */,
 				23B392892294DCAD00F92001 /* LoginInteractor.swift in Sources */,
@@ -621,6 +632,7 @@
 				2331B0C3229B119A00CE9216 /* DateHelper.swift in Sources */,
 				2331B0C6229B130A00CE9216 /* AlertHelper.swift in Sources */,
 				23B392812294DCAD00F92001 /* LoginWorker.swift in Sources */,
+				23063F4A229EA10E00E0A69C /* StatementsViewControllerTests.swift in Sources */,
 				2302FA10229775C30012592F /* UserAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
