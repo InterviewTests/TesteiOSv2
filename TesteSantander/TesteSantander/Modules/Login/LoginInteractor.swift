@@ -12,30 +12,26 @@
 
 import UIKit
 
-protocol LoginBusinessLogic
-{
-  func doSomething(request: Login.Something.Request)
+protocol LoginBusinessLogic {
+    func doSomething(request: Login.Login.Request)
 }
 
-protocol LoginDataStore
-{
-  //var name: String { get set }
+protocol LoginDataStore {
+    //var name: String { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
+class LoginInteractor: LoginBusinessLogic, LoginDataStore {
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
+    //var name: String = ""
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func doSomething(request: Login.Login.Request) {
+        worker = LoginWorker()
+        worker?.doSomeWork()
+        
+//        let response = Login.Something.Response()
+//        presenter?.presentSomething(response: response)
+    }
 }

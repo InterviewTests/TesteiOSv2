@@ -11,14 +11,13 @@
 //
 
 import UIKit
+import Moya
 
-protocol LoginDisplayLogic: class
-{
-    func displaySomething(viewModel: Login.Something.ViewModel)
+protocol LoginDisplayLogic: class {
+    func displaySomething(viewModel: Login.Login.ViewModel)
 }
 
-class LoginViewController: BaseViewController, LoginDisplayLogic
-{
+class LoginViewController: BaseViewController, LoginDisplayLogic {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
@@ -66,6 +65,36 @@ class LoginViewController: BaseViewController, LoginDisplayLogic
         super.viewDidLoad()
         setupLayout()
         doSomething()
+        
+        let provider = MoyaProvider<APIRouter>()
+        let service = APIServiceImpl(provider: provider)
+        let repository = APIRepositoryImpl(service: service)
+        
+        repository
+            .login(user: "teste_user", password: "Test@1")
+            .asObservable()
+            .subscribe(
+                onNext: { (response) in
+                    print(response)
+                },
+                onError: { (error) in
+                    print(error)
+                }
+            )
+            .disposed(by: disposeBag)
+        
+        repository
+            .fetchStatements()
+            .asObservable()
+            .subscribe(
+                onNext: { (response) in
+                    print(response)
+                },
+                onError: { (error) in
+                    print(error)
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
     fileprivate func setupLayout() {
@@ -82,11 +111,11 @@ class LoginViewController: BaseViewController, LoginDisplayLogic
     }
     
     func doSomething() {
-        let request = Login.Something.Request()
-        interactor?.doSomething(request: request)
+//        let request = Login.Something.Request()
+//        interactor?.doSomething(request: request)
     }
     
-    func displaySomething(viewModel: Login.Something.ViewModel) {
+    func displaySomething(viewModel: Login.Login.ViewModel) {
         //nameTextField.text = viewModel.name
     }
 }
