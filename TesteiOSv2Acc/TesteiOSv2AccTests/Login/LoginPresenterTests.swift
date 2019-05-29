@@ -71,7 +71,7 @@ class LoginPresenterTests: XCTestCase
         sut.presentLoadLoginData(response: response)
         
         // Then
-        XCTAssertTrue(spy.displaySavedLoginDataCalled, "presentSomething(response:) should ask the view controller to display the result")
+        XCTAssertTrue(spy.displaySavedLoginDataCalled)
         XCTAssertEqual(spy.displayedViewModel?.user!, "T2")
         XCTAssertEqual(spy.displayedViewModel?.errorMessage, nil)
     }

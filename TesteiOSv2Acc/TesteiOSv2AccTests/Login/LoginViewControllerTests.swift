@@ -90,7 +90,7 @@ class LoginViewControllerTests: XCTestCase
         sut.displaySavedLoginData(viewModel: viewModel)
         
         // Then
-        XCTAssertEqual(sut.userTextField.text, "T1@a.com", "displaySavedLoginData(viewModel:) should update the user text field")
-        XCTAssertEqual(sut.passwordTextField.text, "", "displaySomething(viewModel:) should clear the password text field")
+        XCTAssertEqual(sut.userTextField.text, "T1@a.com")
+        XCTAssertEqual(sut.passwordTextField.text, "")
     }
 }
