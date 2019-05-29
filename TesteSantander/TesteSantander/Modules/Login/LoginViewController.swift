@@ -14,7 +14,7 @@ import UIKit
 import Moya
 
 protocol LoginDisplayLogic: class {
-    func displaySomething(viewModel: Login.Login.ViewModel)
+    func presentStatements(viewModel: Login.Login.ViewModel)
 }
 
 class LoginViewController: BaseViewController, LoginDisplayLogic {
@@ -60,6 +60,9 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
         }
     }
     
+    @IBOutlet weak var userTextField: LoginTextField!
+    @IBOutlet weak var passwordTextField: LoginTextField!
+    
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,19 +72,6 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
         let provider = MoyaProvider<APIRouter>()
         let service = APIServiceImpl(provider: provider)
         let repository = APIRepositoryImpl(service: service)
-        
-        repository
-            .login(user: "teste_user", password: "Test@1")
-            .asObservable()
-            .subscribe(
-                onNext: { (response) in
-                    print(response)
-                },
-                onError: { (error) in
-                    print(error)
-                }
-            )
-            .disposed(by: disposeBag)
         
         repository
             .fetchStatements()
@@ -115,7 +105,19 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
 //        interactor?.doSomething(request: request)
     }
     
-    func displaySomething(viewModel: Login.Login.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func presentStatements(viewModel: Login.Login.ViewModel) {
+        print(viewModel)
     }
+    
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        let userFormFields = Login.UserFormFields(
+            user: userTextField.text ?? "",
+            password: passwordTextField.text ?? ""
+        )
+        
+        interactor?.login(
+            request: Login.Login.Request(userFormFields: userFormFields)
+        )
+    }
+    
 }

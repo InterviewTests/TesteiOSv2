@@ -13,7 +13,7 @@
 import UIKit
 
 protocol LoginBusinessLogic {
-    func doSomething(request: Login.Login.Request)
+    func login(request: Login.Login.Request)
 }
 
 protocol LoginDataStore {
@@ -27,11 +27,11 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     // MARK: Do something
     
-    func doSomething(request: Login.Login.Request) {
+    func login(request: Login.Login.Request) {
         worker = LoginWorker()
-        worker?.doSomeWork()
-        
-//        let response = Login.Something.Response()
-//        presenter?.presentSomething(response: response)
+        worker?.login(userFormFields: request.userFormFields) { user in
+            let response = Login.Login.Response(user: user)
+            self.presenter?.presentStatements(response: response)
+        }
     }
 }

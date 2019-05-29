@@ -13,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="TesteSantander" customModuleProvider="target">
             <connections>
                 <outlet property="loginButton" destination="2QI-5J-46Z" id="0RH-Ph-ehG"/>
+                <outlet property="passwordTextField" destination="TvE-ZT-o1V" id="XKF-3b-4q8"/>
+                <outlet property="userTextField" destination="jVh-c7-IlC" id="on6-DN-biv"/>
                 <outlet property="view" destination="iN0-l3-epB" id="FIB-8s-FhK"/>
             </connections>
         </placeholder>
@@ -39,6 +41,9 @@
                     <state key="normal" title="Login">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="loginButtonPressed:" destination="-1" eventType="touchUpInside" id="3Rc-aT-07N"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jVh-c7-IlC" customClass="LoginTextField" customModule="TesteSantander" customModuleProvider="target">
                     <rect key="frame" x="16" y="231" width="288" height="50"/>

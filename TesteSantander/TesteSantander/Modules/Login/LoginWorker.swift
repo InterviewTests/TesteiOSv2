@@ -11,8 +11,30 @@
 //
 
 import UIKit
+import Moya
+import RxSwift
 
 class LoginWorker {
-    func doSomeWork() {
+    let repository: APIRepository
+    let disposeBag = DisposeBag()
+    
+    init() {
+        let provider = MoyaProvider<APIRouter>()
+        let service = APIServiceImpl(provider: provider)
+        repository = APIRepositoryImpl(service: service)
+    }
+    
+    func login(userFormFields: Login.UserFormFields, callback: @escaping (User) -> Void) {
+        repository
+            .login(user: userFormFields.user, password: userFormFields.password)
+            .asObservable()
+            .subscribe(onNext: { (user) in
+                callback(user)
+            }, onError: { (error) in
+                
+            }) {
+                
+            }
+            .disposed(by: disposeBag)
     }
 }
