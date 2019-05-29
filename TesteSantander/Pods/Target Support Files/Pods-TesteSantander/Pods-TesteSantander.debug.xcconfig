@@ -1,9 +1,11 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager"
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager" "${PODS_CONFIGURATION_BUILD_DIR}/Moya" "${PODS_CONFIGURATION_BUILD_DIR}/Result" "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager/IQKeyboardManager.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager/IQKeyboardManager.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Moya/Moya.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Result/Result.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift/RxSwift.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager/IQKeyboardManager.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager"
-OTHER_LDFLAGS = $(inherited) -framework "CoreGraphics" -framework "Foundation" -framework "IQKeyboardManager" -framework "QuartzCore" -framework "UIKit"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager/IQKeyboardManager.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Moya/Moya.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Result/Result.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift/RxSwift.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Moya" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Result" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift"
+OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "CoreGraphics" -framework "Foundation" -framework "IQKeyboardManager" -framework "Moya" -framework "QuartzCore" -framework "Result" -framework "RxSwift" -framework "UIKit"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
