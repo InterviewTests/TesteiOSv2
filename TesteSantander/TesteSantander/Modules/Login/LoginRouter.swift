@@ -28,7 +28,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     
     func routeToStatements() {
         guard let viewController = viewController else { return }
-        let destinationVC = LoginViewController()
+        let destinationVC = StatementsViewController()
         navigateToStatements(source: viewController, destination: destinationVC)
         //      if let segue = segue {
         //        let destinationVC = segue.destination as! SomewhereViewController
@@ -45,7 +45,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     
     // MARK: Navigation
     
-    func navigateToStatements(source: LoginViewController, destination: LoginViewController) {
+    func navigateToStatements(source: LoginViewController, destination: StatementsViewController) {
         source.show(destination, sender: nil)
     }
     

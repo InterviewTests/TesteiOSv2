@@ -34,6 +34,13 @@
 		C673F856229ECB9F00D60A40 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F855229ECB9F00D60A40 /* User.swift */; };
 		C673F858229EE59E00D60A40 /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F857229EE59E00D60A40 /* UIView+extensions.swift */; };
 		C673F85A229EF3C700D60A40 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F859229EF3C700D60A40 /* String+extensions.swift */; };
+		C673F861229F086B00D60A40 /* StatementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F85B229F086B00D60A40 /* StatementsPresenter.swift */; };
+		C673F862229F086B00D60A40 /* StatementsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F85C229F086B00D60A40 /* StatementsWorker.swift */; };
+		C673F863229F086B00D60A40 /* StatementsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F85D229F086B00D60A40 /* StatementsRouter.swift */; };
+		C673F864229F086B00D60A40 /* StatementsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F85E229F086B00D60A40 /* StatementsModels.swift */; };
+		C673F865229F086B00D60A40 /* StatementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F85F229F086B00D60A40 /* StatementsViewController.swift */; };
+		C673F866229F086B00D60A40 /* StatementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673F860229F086B00D60A40 /* StatementsInteractor.swift */; };
+		C673F868229F088B00D60A40 /* StatementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C673F867229F088B00D60A40 /* StatementsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +97,13 @@
 		C673F855229ECB9F00D60A40 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C673F857229EE59E00D60A40 /* UIView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
 		C673F859229EF3C700D60A40 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
+		C673F85B229F086B00D60A40 /* StatementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsPresenter.swift; sourceTree = "<group>"; };
+		C673F85C229F086B00D60A40 /* StatementsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsWorker.swift; sourceTree = "<group>"; };
+		C673F85D229F086B00D60A40 /* StatementsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsRouter.swift; sourceTree = "<group>"; };
+		C673F85E229F086B00D60A40 /* StatementsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsModels.swift; sourceTree = "<group>"; };
+		C673F85F229F086B00D60A40 /* StatementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsViewController.swift; sourceTree = "<group>"; };
+		C673F860229F086B00D60A40 /* StatementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractor.swift; sourceTree = "<group>"; };
+		C673F867229F088B00D60A40 /* StatementsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementsViewController.xib; sourceTree = "<group>"; };
 		C9F4CC295B759026A4BE9211 /* Pods-TesteSantanderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteSantanderUITests.debug.xcconfig"; path = "Target Support Files/Pods-TesteSantanderUITests/Pods-TesteSantanderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D4237EBB9C84CDE308E52AEF /* Pods-TesteSantanderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteSantanderTests.release.xcconfig"; path = "Target Support Files/Pods-TesteSantanderTests/Pods-TesteSantanderTests.release.xcconfig"; sourceTree = "<group>"; };
 		F415C0C4A8087532BA80BE0F /* Pods-TesteSantander.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteSantander.debug.xcconfig"; path = "Target Support Files/Pods-TesteSantander/Pods-TesteSantander.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,7 +225,7 @@
 				C673F842229DCC1C00D60A40 /* Base */,
 				C673F832229DCAC400D60A40 /* Splash */,
 				C673F830229DCAAE00D60A40 /* Login */,
-				C673F831229DCAB500D60A40 /* List */,
+				C673F831229DCAB500D60A40 /* Statements */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -230,11 +244,18 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		C673F831229DCAB500D60A40 /* List */ = {
+		C673F831229DCAB500D60A40 /* Statements */ = {
 			isa = PBXGroup;
 			children = (
+				C673F85B229F086B00D60A40 /* StatementsPresenter.swift */,
+				C673F85C229F086B00D60A40 /* StatementsWorker.swift */,
+				C673F85D229F086B00D60A40 /* StatementsRouter.swift */,
+				C673F85E229F086B00D60A40 /* StatementsModels.swift */,
+				C673F85F229F086B00D60A40 /* StatementsViewController.swift */,
+				C673F860229F086B00D60A40 /* StatementsInteractor.swift */,
+				C673F867229F088B00D60A40 /* StatementsViewController.xib */,
 			);
-			path = List;
+			path = Statements;
 			sourceTree = "<group>";
 		};
 		C673F832229DCAC400D60A40 /* Splash */ = {
@@ -431,6 +452,7 @@
 			files = (
 				C673F840229DCB0200D60A40 /* LoginViewController.xib in Resources */,
 				C673F826229DBAF900D60A40 /* Assets.xcassets in Resources */,
+				C673F868229F088B00D60A40 /* StatementsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,21 +586,27 @@
 				C673F83C229DCAF400D60A40 /* LoginModels.swift in Sources */,
 				C673F82C229DBB9C00D60A40 /* UIFont+extensions.swift in Sources */,
 				C673F85A229EF3C700D60A40 /* String+extensions.swift in Sources */,
+				C673F862229F086B00D60A40 /* StatementsWorker.swift in Sources */,
 				C673F82A229DBB4B00D60A40 /* UIColor+extensions.swift in Sources */,
 				C673F846229DD7B500D60A40 /* BaseViewController.swift in Sources */,
+				C673F863229F086B00D60A40 /* StatementsRouter.swift in Sources */,
 				C673F82E229DBDD700D60A40 /* Constants.swift in Sources */,
 				C673F844229DCC6800D60A40 /* LoginTextField.swift in Sources */,
 				C673F851229EC2F200D60A40 /* APIRepository.swift in Sources */,
 				C673F84D229EBDB200D60A40 /* APIService.swift in Sources */,
+				C673F865229F086B00D60A40 /* StatementsViewController.swift in Sources */,
 				C673F84B229EBDA700D60A40 /* APIRouter.swift in Sources */,
 				C673F839229DCAF400D60A40 /* LoginPresenter.swift in Sources */,
 				C673F83B229DCAF400D60A40 /* LoginRouter.swift in Sources */,
 				C673F858229EE59E00D60A40 /* UIView+extensions.swift in Sources */,
 				C673F853229EC2FD00D60A40 /* APIRepositoryImpl.swift in Sources */,
 				C673F856229ECB9F00D60A40 /* User.swift in Sources */,
+				C673F866229F086B00D60A40 /* StatementsInteractor.swift in Sources */,
 				C673F83E229DCAF400D60A40 /* LoginInteractor.swift in Sources */,
 				C673F84F229EBDBC00D60A40 /* APIServiceImpl.swift in Sources */,
+				C673F864229F086B00D60A40 /* StatementsModels.swift in Sources */,
 				C673F83A229DCAF400D60A40 /* LoginWorker.swift in Sources */,
+				C673F861229F086B00D60A40 /* StatementsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
