@@ -62,7 +62,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     func loadLoginDataIfExists(request: Login.LoadLoginData.Request)
     {
         let user = worker?.retrieveUserFromKeychain()
-        let response = Login.LoadLoginData.Response(user: user, isError: false)
+        let response = Login.LoadLoginData.Response(user: user)
         presenter?.presentLoadLoginData(response: response)
     }
     

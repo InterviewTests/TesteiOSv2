@@ -22,8 +22,6 @@ enum Login
         struct Response
         {
             let user: String?
-            
-            let isError: Bool
         }
         struct ViewModel
         {

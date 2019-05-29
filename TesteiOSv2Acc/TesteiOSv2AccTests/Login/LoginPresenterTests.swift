@@ -65,7 +65,7 @@ class LoginPresenterTests: XCTestCase
         // Given
         let spy = LoginDisplayLogicSpy()
         sut.viewController = spy
-        let response = Login.LoadLoginData.Response(user: "T2", isError: false)
+        let response = Login.LoadLoginData.Response(user: "T2")
         
         // When
         sut.presentLoadLoginData(response: response)
