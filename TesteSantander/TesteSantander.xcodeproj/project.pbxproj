@@ -276,6 +276,7 @@
 				C63D1B7A229DAF4700E62432 /* Frameworks */,
 				C63D1B7B229DAF4700E62432 /* Resources */,
 				C673F823229DB34C00D60A40 /* SwiftLint */,
+				CE8D0FBC7373AA32DA3C1BA5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -455,6 +456,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		CE8D0FBC7373AA32DA3C1BA5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TesteSantander/Pods-TesteSantander-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TesteSantander/Pods-TesteSantander-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TesteSantander/Pods-TesteSantander-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		FDC6CF2AB9905FBE43605FAF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
