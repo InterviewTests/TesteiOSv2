@@ -34,7 +34,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         worker = LoginWorker()
     }
     
-    // MARK: Presenter communication
+    // MARK: - Presenter communication
     
     func doLogin(request: Login.LoginUser.Request)
     {
@@ -66,7 +66,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         presenter?.presentLoadLoginData(response: response)
     }
     
-    //MARK: - Validation methods
+    // MARK: - Validation methods
     
     private func isUserAndPasswordValid(user: String, password: String) -> InputValidationResult
     {

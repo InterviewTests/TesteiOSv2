@@ -12,7 +12,7 @@
 
 enum Login
 {
-    // MARK: Use cases
+    // MARK: - Use cases
     
     enum LoadLoginData
     {

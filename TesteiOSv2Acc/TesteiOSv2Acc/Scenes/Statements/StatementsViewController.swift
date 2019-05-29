@@ -29,7 +29,7 @@ class StatementsViewController: UIViewController
     @IBOutlet weak var statementsTableView: UITableView!
     @IBOutlet weak var logoutButton: UIButton!
     
-    //MARK: - Local Instances
+    // MARK: - Local Instances
     
     var interactor: StatementsBusinessLogic?
     var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
@@ -187,7 +187,7 @@ extension StatementsViewController: StatementsDisplayLogic{
     
 }
 
-//MARK: - TableView Datasource and Delegate
+// MARK: - TableView Datasource and Delegate
 
 extension StatementsViewController: UITableViewDataSource, UITableViewDelegate
 {

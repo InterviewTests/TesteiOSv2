@@ -15,11 +15,11 @@ import XCTest
 
 class LoginInteractorTests: XCTestCase
 {
-    // MARK: Subject under test
+    // MARK: - Subject under test
     
     var sut: LoginInteractor!
     
-    // MARK: Test lifecycle
+    // MARK: - Test lifecycle
     
     override func setUp()
     {
@@ -32,14 +32,14 @@ class LoginInteractorTests: XCTestCase
         super.tearDown()
     }
     
-    // MARK: Test setup
+    // MARK: - Test setup
     
     func setupLoginInteractor()
     {
         sut = LoginInteractor()
     }
     
-    // MARK: Test doubles
+    // MARK: - Test doubles
     
     class LoginPresentationLogicSpy: LoginPresentationLogic
     {
@@ -61,7 +61,7 @@ class LoginInteractorTests: XCTestCase
         }
     }
     
-    // MARK: Tests
+    // MARK: - Tests
     
     func testDoLogin()
     {

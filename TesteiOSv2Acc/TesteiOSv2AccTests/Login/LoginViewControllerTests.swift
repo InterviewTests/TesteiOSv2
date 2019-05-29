@@ -15,12 +15,12 @@ import XCTest
 
 class LoginViewControllerTests: XCTestCase
 {
-    // MARK: Subject under test
+    // MARK: - Subject under test
     
     var sut: LoginViewController!
     var window: UIWindow!
     
-    // MARK: Test lifecycle
+    // MARK: - Test lifecycle
     
     override func setUp()
     {
@@ -35,7 +35,7 @@ class LoginViewControllerTests: XCTestCase
         super.tearDown()
     }
     
-    // MARK: Test setup
+    // MARK: - Test setup
     
     func setupLoginViewController()
     {
@@ -50,7 +50,7 @@ class LoginViewControllerTests: XCTestCase
         RunLoop.current.run(until: Date())
     }
     
-    // MARK: Test doubles
+    // MARK: - Test doubles
     
     class LoginBusinessLogicSpy: LoginBusinessLogic
     {
@@ -65,7 +65,7 @@ class LoginViewControllerTests: XCTestCase
         }
     }
     
-    // MARK: Tests
+    // MARK: - Tests
     
     func testShouldCallLoadLoginDataIfExistsWhenViewIsLoaded()
     {

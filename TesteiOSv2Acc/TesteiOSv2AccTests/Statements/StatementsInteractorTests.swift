@@ -15,11 +15,11 @@ import XCTest
 
 class StatementsInteractorTests: XCTestCase
 {
-    // MARK: Subject under test
+    // MARK: - Subject under test
     
     var sut: StatementsInteractor!
     
-    // MARK: Test lifecycle
+    // MARK: - Test lifecycle
     
     override func setUp()
     {
@@ -32,14 +32,14 @@ class StatementsInteractorTests: XCTestCase
         super.tearDown()
     }
     
-    // MARK: Test setup
+    // MARK: - Test setup
     
     func setupStatementsInteractor()
     {
         sut = StatementsInteractor()
     }
     
-    // MARK: Test doubles
+    // MARK: - Test doubles
     
     class StatementsPresentationLogicSpy: StatementsPresentationLogic
     {
@@ -64,7 +64,7 @@ class StatementsInteractorTests: XCTestCase
         }
     }
     
-    // MARK: Tests
+    // MARK: - Tests
     
     func testLoadCustomerData()
     {

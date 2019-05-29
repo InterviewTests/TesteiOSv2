@@ -21,7 +21,7 @@ class LoginPresenter: LoginPresentationLogic
     
     weak var viewController: LoginDisplayLogic?
     
-    // MARK: View controller communication
+    // MARK: - View controller communication
     
     func presentLoginUser(response: Login.LoginUser.Response)
     {

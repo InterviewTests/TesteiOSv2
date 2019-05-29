@@ -28,7 +28,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
     weak var viewController: LoginViewController?
     var dataStore: LoginDataStore?
     
-    // MARK: Routing
+    // MARK: - Routing
     
     func routeToStatements(segue: UIStoryboardSegue?)
     {
@@ -45,14 +45,14 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
       }
     }
     
-    // MARK: Navigation
+    // MARK: - Navigation
     
     func navigateToStatements(source: LoginViewController, destination: StatementsViewController)
     {
       source.show(destination, sender: nil)
     }
     
-    // MARK: Passing data
+    // MARK: - Passing data
     
     func passDataToStatements(source: LoginDataStore, destination: inout StatementsDataStore)
     {

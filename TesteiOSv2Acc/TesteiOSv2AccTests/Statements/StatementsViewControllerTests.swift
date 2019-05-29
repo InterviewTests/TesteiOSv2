@@ -15,12 +15,12 @@ import XCTest
 
 class StatementsViewControllerTests: XCTestCase
 {
-    // MARK: Subject under test
+    // MARK: - Subject under test
     
     var sut: StatementsViewController!
     var window: UIWindow!
     
-    // MARK: Test lifecycle
+    // MARK: - Test lifecycle
     
     override func setUp()
     {
@@ -35,7 +35,7 @@ class StatementsViewControllerTests: XCTestCase
         super.tearDown()
     }
     
-    // MARK: Test setup
+    // MARK: - Test setup
     
     func setupStatementsViewController()
     {
@@ -50,7 +50,7 @@ class StatementsViewControllerTests: XCTestCase
         RunLoop.current.run(until: Date())
     }
     
-    // MARK: Test doubles
+    // MARK: - Test doubles
     
     class StatementsBusinessLogicSpy: StatementsBusinessLogic
     {
@@ -70,7 +70,7 @@ class StatementsViewControllerTests: XCTestCase
         }
     }
     
-    // MARK: Tests
+    // MARK: - Tests
     
     func testLoadCustomerDataWhenViewIsLoaded()
     {

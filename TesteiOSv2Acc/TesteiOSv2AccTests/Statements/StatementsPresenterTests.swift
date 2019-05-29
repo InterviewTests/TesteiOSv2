@@ -15,11 +15,11 @@ import XCTest
 
 class StatementsPresenterTests: XCTestCase
 {
-    // MARK: Subject under test
+    // MARK: - Subject under test
     
     var sut: StatementsPresenter!
     
-    // MARK: Test lifecycle
+    // MARK: - Test lifecycle
     
     override func setUp()
     {
@@ -32,14 +32,14 @@ class StatementsPresenterTests: XCTestCase
         super.tearDown()
     }
     
-    // MARK: Test setup
+    // MARK: - Test setup
     
     func setupStatementsPresenter()
     {
         sut = StatementsPresenter()
     }
     
-    // MARK: Test doubles
+    // MARK: - Test doubles
     
     class StatementsDisplayLogicSpy: StatementsDisplayLogic
     {
@@ -63,7 +63,7 @@ class StatementsPresenterTests: XCTestCase
         }
     }
     
-    // MARK: Tests
+    // MARK: - Tests
     
     func testPresentLoadCustomerData()
     {
