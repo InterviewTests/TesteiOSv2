@@ -12,7 +12,7 @@ class CurrencyHelper {
 
     private init(){}
     
-    static func convertToCurrency(value: Double, locale: Locale = Locale.current) -> String
+    static func convertToCurrency(value: Double, locale: Locale = Locale.init(identifier: "pt-BR")) -> String
     {
         let currencyFormatter = NumberFormatter()
         currencyFormatter.usesGroupingSeparator = true
