@@ -10,17 +10,25 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = LoginViewController()
+        let navigationController = UINavigationController()
+        navigationController.isNavigationBarHidden = true
+        navigationController.pushViewController(getInitialViewController(), animated: false)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true
     }
-
+    
+    fileprivate func getInitialViewController() -> UIViewController {
+//        return LoginViewController()
+        let user = UserAccount(userId: 1, name: "João", bankAccount: "12312-2", agency: "2926-2", balance: 1250.00)
+        let statementsVC = StatementsViewController(user: user)
+        return statementsVC
+    }
+    
 }

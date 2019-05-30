@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatementsViewController" customModule="TesteSantander" customModuleProvider="target">
             <connections>
+                <outlet property="headerView" destination="gPU-9h-EJo" id="3tp-82-gmj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="FbE-xe-cW7"/>
             </connections>
         </placeholder>
@@ -20,15 +21,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Statements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gf3-k6-Hv7">
-                    <rect key="frame" x="163" y="438" width="88" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPU-9h-EJo">
+                    <rect key="frame" x="0.0" y="44" width="414" height="211"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="211" id="Az8-zu-cFb"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.24158868189999999" green="0.2859609723" blue="0.89808988570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="gPU-9h-EJo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Afa-Se-N1l"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gPU-9h-EJo" secondAttribute="trailing" id="JcN-be-zBQ"/>
+                <constraint firstItem="gPU-9h-EJo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="UCF-py-3wD"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>

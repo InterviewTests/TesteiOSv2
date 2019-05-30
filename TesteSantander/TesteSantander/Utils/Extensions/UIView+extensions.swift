@@ -8,9 +8,23 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
+// Animations
 extension UIView {
     func fastAnimation(callback: @escaping () -> Void) {
         UIView.animate(withDuration: 0.25, animations: callback)
+    }
+}
+
+// Contraints
+extension UIView {
+    func pinToSuperview() {
+        snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
 }

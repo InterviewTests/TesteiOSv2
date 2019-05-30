@@ -46,7 +46,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     // MARK: Navigation
     
     func navigateToStatements(source: LoginViewController, destination: StatementsViewController) {
-        source.show(destination, sender: nil)
+        source.navigationController?.pushViewController(destination, animated: true)
     }
     
     // MARK: Passing data
