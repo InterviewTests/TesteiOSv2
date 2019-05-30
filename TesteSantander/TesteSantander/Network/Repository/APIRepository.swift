@@ -12,7 +12,7 @@ import Moya
 
 protocol APIRepository {
     func login(user: String, password: String) -> Single<User>
-    func fetchStatements() -> Single<Response>
+    func fetchStatements(userId: Int) -> Single<UserStatements>
 }
 
 struct APIError: Codable, LocalizedError {

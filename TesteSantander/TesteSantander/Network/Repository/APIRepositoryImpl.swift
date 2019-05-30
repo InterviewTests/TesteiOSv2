@@ -24,7 +24,9 @@ final class APIRepositoryImpl: APIRepository {
                 .map(User.self)
     }
     
-    func fetchStatements() -> Single<Response> {
-        return service.fetchStatements()
+    func fetchStatements(userId: Int) -> Single<UserStatements> {
+        return service
+                .fetchStatements(userId)
+                .map(UserStatements.self)
     }
 }

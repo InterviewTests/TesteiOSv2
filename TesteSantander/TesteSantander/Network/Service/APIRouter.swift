@@ -10,7 +10,7 @@ import Moya
 
 enum APIRouter {
     case login(String, String)
-    case fetchStatements
+    case fetchStatements(Int)
 }
 
 extension APIRouter: TargetType {
@@ -25,8 +25,8 @@ extension APIRouter: TargetType {
         switch self {
         case .login:
             return "/login"
-        case .fetchStatements:
-            return "/statements/1"
+        case .fetchStatements(let userId):
+            return "/statements/\(userId)"
         }
     }
     

@@ -12,30 +12,28 @@
 
 import UIKit
 
-protocol StatementsBusinessLogic
-{
-  func doSomething(request: Statements.Something.Request)
+protocol StatementsBusinessLogic {
+    func doSomething(request: Statements.Something.Request)
 }
 
-protocol StatementsDataStore
-{
-  //var name: String { get set }
+protocol StatementsDataStore {
+//    var name: String { get set }
 }
 
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
 {
-  var presenter: StatementsPresentationLogic?
-  var worker: StatementsWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Statements.Something.Request)
-  {
-    worker = StatementsWorker()
-    worker?.doSomeWork()
+    var presenter: StatementsPresentationLogic?
+    var worker: StatementsWorker?
+    //var name: String = ""
     
-    let response = Statements.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func doSomething(request: Statements.Something.Request)
+    {
+        worker = StatementsWorker()
+        worker?.doSomeWork()
+        
+        let response = Statements.Something.Response()
+        presenter?.presentSomething(response: response)
+    }
 }

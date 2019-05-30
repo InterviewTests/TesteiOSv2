@@ -12,5 +12,5 @@ import Moya
 
 protocol APIService {
     func login(_ user: String, _ password: String) -> Single<Response>
-    func fetchStatements() -> Single<Response>
+    func fetchStatements(_ userId: Int) -> Single<Response>
 }

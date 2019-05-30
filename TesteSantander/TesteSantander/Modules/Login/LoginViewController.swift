@@ -63,23 +63,6 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        
-//        let provider = MoyaProvider<APIRouter>()
-//        let service = APIServiceImpl(provider: provider)
-//        let repository = APIRepositoryImpl(service: service)
-//
-//        repository
-//            .fetchStatements()
-//            .asObservable()
-//            .subscribe(
-//                onNext: { (response) in
-//                    print(response)
-//                },
-//                onError: { (error) in
-//                    print(error)
-//                }
-//            )
-//            .disposed(by: disposeBag)
     }
     
     fileprivate func setupLayout() {

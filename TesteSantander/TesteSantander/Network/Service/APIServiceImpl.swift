@@ -22,7 +22,7 @@ final class APIServiceImpl: APIService {
         return provider.rx.request(.login(user, password))
     }
     
-    func fetchStatements() -> Single<Response> {
+    func fetchStatements(_ userId: Int) -> Single<Response> {
         return provider.rx.request(.fetchStatements)
     }
 }

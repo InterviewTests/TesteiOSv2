@@ -11,10 +11,31 @@
 //
 
 import UIKit
+import Moya
+import RxSwift
 
-class StatementsWorker
-{
-  func doSomeWork()
-  {
-  }
+class StatementsWorker {
+    let repository: APIRepository
+    let disposeBag = DisposeBag()
+    
+    init() {
+        let provider = MoyaProvider<APIRouter>()
+        let service = APIServiceImpl(provider: provider)
+        repository = APIRepositoryImpl(service: service)
+    }
+    
+    func fecthStatements(userId: Int, callback: @escaping (UserStatements) -> Void) {
+        repository
+            .fetchStatements(userId: userId)
+            .asObservable()
+            .subscribe(
+                onNext: { (userStatements) in
+                    callback(userStatements)
+            },
+                onError: { (error) in
+                    print(error)
+            }
+            )
+            .disposed(by: disposeBag)
+    }
 }
