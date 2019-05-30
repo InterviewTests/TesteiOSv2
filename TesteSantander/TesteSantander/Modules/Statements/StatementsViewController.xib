@@ -27,12 +27,20 @@
                         <constraint firstAttribute="height" constant="211" id="Az8-zu-cFb"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qsf-q0-ixo">
+                    <rect key="frame" x="0.0" y="255" width="414" height="607"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="0.24158868189999999" green="0.2859609723" blue="0.89808988570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
+                <constraint firstItem="Qsf-q0-ixo" firstAttribute="top" secondItem="gPU-9h-EJo" secondAttribute="bottom" id="1Qd-Ld-ViC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Qsf-q0-ixo" secondAttribute="trailing" id="7rw-Ls-W0m"/>
                 <constraint firstItem="gPU-9h-EJo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Afa-Se-N1l"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gPU-9h-EJo" secondAttribute="trailing" id="JcN-be-zBQ"/>
                 <constraint firstItem="gPU-9h-EJo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="UCF-py-3wD"/>
+                <constraint firstItem="Qsf-q0-ixo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vvq-aH-oPf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Qsf-q0-ixo" secondAttribute="bottom" id="xTF-Lv-tSb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
