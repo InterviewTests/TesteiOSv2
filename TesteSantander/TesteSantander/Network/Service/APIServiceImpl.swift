@@ -23,6 +23,6 @@ final class APIServiceImpl: APIService {
     }
     
     func fetchStatements(_ userId: Int) -> Single<Response> {
-        return provider.rx.request(.fetchStatements)
+        return provider.rx.request(.fetchStatements(userId))
     }
 }

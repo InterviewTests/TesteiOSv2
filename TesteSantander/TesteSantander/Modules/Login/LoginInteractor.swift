@@ -17,13 +17,13 @@ protocol LoginBusinessLogic {
 }
 
 protocol LoginDataStore {
-    //var name: String { get set }
+    var user: User? { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
-    //var name: String = ""
+    var user: User?
     
     // MARK: Do something
     
@@ -36,6 +36,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         
         worker = LoginWorker()
         worker?.login(userFormFields: request.userFormFields) { user in
+            self.user = user
             if let errorMessage = user.error.message {
                 self.presenter?.displayErrorMessage(message: errorMessage)
             } else {

@@ -13,27 +13,37 @@
 import UIKit
 
 protocol StatementsBusinessLogic {
-    func doSomething(request: Statements.Something.Request)
+    func fetchStatements()
 }
 
 protocol StatementsDataStore {
-//    var name: String { get set }
+    var userAccount: UserAccount? { get set }
+    var userStatements: UserStatements? { get set }
 }
 
-class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
-{
+class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore {
+    var userAccount: UserAccount?
+    var userStatements: UserStatements?
+    
     var presenter: StatementsPresentationLogic?
     var worker: StatementsWorker?
-    //var name: String = ""
     
     // MARK: Do something
     
-    func doSomething(request: Statements.Something.Request)
-    {
+    func fetchStatements() {
+        guard let userId = userAccount?.userId else {
+            presenter?.displayErrorMessage(message: "ERROR: Could not get userId")
+            return
+        }
+            
         worker = StatementsWorker()
-        worker?.doSomeWork()
-        
-        let response = Statements.Something.Response()
-        presenter?.presentSomething(response: response)
+        worker?.fetchStatements(userId: userId, callback: { [weak self] (userStatements) in
+            if let message = userStatements.error.message {
+                self?.presenter?.displayErrorMessage(message: message)
+            } else {
+                let response = Statements.Something.Response()
+                self?.presenter?.displayStatements(response: response)
+            }
+        })
     }
 }

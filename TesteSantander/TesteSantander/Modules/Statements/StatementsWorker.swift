@@ -24,7 +24,7 @@ class StatementsWorker {
         repository = APIRepositoryImpl(service: service)
     }
     
-    func fecthStatements(userId: Int, callback: @escaping (UserStatements) -> Void) {
+    func fetchStatements(userId: Int, callback: @escaping (UserStatements) -> Void) {
         repository
             .fetchStatements(userId: userId)
             .asObservable()

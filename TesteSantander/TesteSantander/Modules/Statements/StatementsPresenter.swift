@@ -14,18 +14,21 @@ import UIKit
 
 protocol StatementsPresentationLogic
 {
-  func presentSomething(response: Statements.Something.Response)
+    func displayStatements(response: Statements.Something.Response)
+    func displayErrorMessage(message: String)
 }
 
 class StatementsPresenter: StatementsPresentationLogic
 {
-  weak var viewController: StatementsDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Statements.Something.Response)
-  {
-    let viewModel = Statements.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: StatementsDisplayLogic?
+    
+    // MARK: Do something
+    func displayStatements(response: Statements.Something.Response) {
+        print("Display Statements")
+    }
+    
+    func displayErrorMessage(message: String) {
+        print("Display Error Message")
+    }
+    
 }

@@ -27,9 +27,8 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
     
     // MARK: Object lifecycle
     
-    init(user: UserAccount) {
+    init() {
         super.init(nibName: nil, bundle: nil)
-        self.user = user
         setup()
     }
     
@@ -61,31 +60,24 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
     // MARK: Routing
     
     // MARK: View lifecycle
-    var user: UserAccount!
     @IBOutlet weak var headerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        doSomething()
+        interactor?.fetchStatements()
     }
     
     fileprivate func setupLayout() {
         guard let statementsHeaderView = R.nib.statementsHeaderView.firstView(owner: nil) else { return }
         headerView.addSubview(statementsHeaderView)
-        statementsHeaderView.setup(name: user?.name ?? "Erro ao carregar o usuário", statementsLogoutViewController: self)
+        statementsHeaderView.setup(name: router?.dataStore?.userAccount?.name ?? "Erro ao carregar o usuário", statementsLogoutViewController: self)
         statementsHeaderView.pinToSuperview()
     }
     
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething()
-    {
-        let request = Statements.Something.Request()
-        interactor?.doSomething(request: request)
-    }
     
     func displaySomething(viewModel: Statements.Something.ViewModel)
     {
