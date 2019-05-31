@@ -25,10 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func getInitialViewController() -> UIViewController {
-        return LoginViewController()
-//        let user = UserAccount(userId: 1, name: "João", bankAccount: "12312-2", agency: "2926-2", balance: 1250.00)
-//        let statementsVC = StatementsViewController(user: user)
-//        return statementsVC
+//        return LoginViewController()
+        let user = UserAccount(userId: 1, name: "João", bankAccount: "12312-2", agency: "2926-2", balance: 1250.00)
+        let statementsVC = StatementsViewController()
+        var dataStore = statementsVC.router?.dataStore
+        dataStore?.userAccount = user
+        return statementsVC
     }
     
 }

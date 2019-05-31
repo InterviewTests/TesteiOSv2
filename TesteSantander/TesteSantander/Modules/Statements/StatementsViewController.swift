@@ -62,7 +62,8 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
     
     // MARK: View lifecycle
     static let cellIdentifier = "cellIdentifier"
-    static let rowHeight: CGFloat = 85
+    static let rowHeight: CGFloat = 95
+    static let headerHeight: CGFloat = 50.2
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -113,6 +114,13 @@ extension StatementsViewController: UITableViewDataSource, UITableViewDelegate {
             forCellReuseIdentifier: StatementsViewController.cellIdentifier
         )
         tableView.tableFooterView = UIView()
+        tableView.sectionHeaderHeight = StatementsViewController.headerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = StatementHeaderView()
+        headerView.setup()
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
