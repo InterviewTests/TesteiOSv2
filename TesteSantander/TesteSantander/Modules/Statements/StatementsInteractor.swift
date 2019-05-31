@@ -41,6 +41,7 @@ class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore {
             if let message = userStatements.error.message {
                 self?.presenter?.displayErrorMessage(message: message)
             } else {
+                self?.userStatements = userStatements
                 let response = Statements.Something.Response()
                 self?.presenter?.displayStatements(response: response)
             }

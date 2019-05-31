@@ -14,7 +14,8 @@ import UIKit
 import Rswift
 
 protocol StatementsDisplayLogic: class {
-    func displaySomething(viewModel: Statements.Something.ViewModel)
+    func displayStatements(viewModel: Statements.Something.ViewModel)
+    func displayErrorMessage(message: String)
 }
 
 protocol StatementsLogoutViewController: class {
@@ -60,11 +61,16 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
     // MARK: Routing
     
     // MARK: View lifecycle
+    static let cellIdentifier = "cellIdentifier"
+    static let rowHeight: CGFloat = 85
+    
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        setupTableView()
         interactor?.fetchStatements()
     }
     
@@ -79,14 +85,55 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func displaySomething(viewModel: Statements.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
+    func displayStatements(viewModel: Statements.Something.ViewModel) {
+        tableView.reloadData()
+    }
+    
+    func displayErrorMessage(message: String) {
+        
     }
 }
 
 extension StatementsViewController: StatementsLogoutViewController {
     func logout() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension StatementsViewController: UITableViewDataSource, UITableViewDelegate {
+    fileprivate func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(
+            UINib(
+                nibName: "StatementTableViewCell",
+                bundle: nil
+            ),
+            forCellReuseIdentifier: StatementsViewController.cellIdentifier
+        )
+        tableView.tableFooterView = UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return router?.dataStore?.userStatements?.statementList.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: StatementsViewController.cellIdentifier, for: indexPath) as? StatementTableViewCell {
+            let statement = router?.dataStore?.userStatements?.statementList[indexPath.row]
+            cell.setup(
+                title: statement?.title ?? "Dado inválido",
+                desc: statement?.desc ?? "Dado inválido",
+                date: statement?.date ?? "Dado inválido",
+                value: statement?.value?.currencyFormat() ?? "Dado inválido"
+            )
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return StatementsViewController.rowHeight
     }
 }

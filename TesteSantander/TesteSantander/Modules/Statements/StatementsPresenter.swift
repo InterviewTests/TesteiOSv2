@@ -24,7 +24,8 @@ class StatementsPresenter: StatementsPresentationLogic
     
     // MARK: Do something
     func displayStatements(response: Statements.Something.Response) {
-        print("Display Statements")
+        let viewModel = Statements.Something.ViewModel()
+        viewController?.displayStatements(viewModel: viewModel)
     }
     
     func displayErrorMessage(message: String) {

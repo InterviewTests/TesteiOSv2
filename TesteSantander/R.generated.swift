@@ -36,7 +36,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 5 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 6 nibs.
   struct nib {
     /// Nib `InfoView`.
     static let infoView = _R.nib._InfoView()
@@ -44,6 +44,8 @@ struct R: Rswift.Validatable {
     static let loginViewController = _R.nib._LoginViewController()
     /// Nib `NavigationView`.
     static let navigationView = _R.nib._NavigationView()
+    /// Nib `StatementTableViewCell`.
+    static let statementTableViewCell = _R.nib._StatementTableViewCell()
     /// Nib `StatementsHeaderView`.
     static let statementsHeaderView = _R.nib._StatementsHeaderView()
     /// Nib `StatementsViewController`.
@@ -65,6 +67,12 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.navigationView) instead")
     static func navigationView(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.navigationView)
+    }
+    
+    /// `UINib(name: "StatementTableViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.statementTableViewCell) instead")
+    static func statementTableViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.statementTableViewCell)
     }
     
     /// `UINib(name: "StatementsHeaderView", in: bundle)`
@@ -89,6 +97,10 @@ struct R: Rswift.Validatable {
     
     static func navigationView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NavigationView? {
       return R.nib.navigationView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NavigationView
+    }
+    
+    static func statementTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StatementTableViewCell? {
+      return R.nib.statementTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StatementTableViewCell
     }
     
     static func statementsHeaderView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StatementsHeaderView? {
@@ -166,6 +178,17 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "logout", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logout' is used in nib 'NavigationView', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _StatementTableViewCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "StatementTableViewCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StatementTableViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StatementTableViewCell
       }
       
       fileprivate init() {}
