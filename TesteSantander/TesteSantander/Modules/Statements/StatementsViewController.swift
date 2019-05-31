@@ -133,7 +133,7 @@ extension StatementsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.setup(
                 title: statement?.title ?? "Dado inválido",
                 desc: statement?.desc ?? "Dado inválido",
-                date: statement?.date ?? "Dado inválido",
+                date: statement?.date?.formatData() ?? "Dado inválido",
                 value: statement?.value?.currencyFormat() ?? "Dado inválido"
             )
             return cell

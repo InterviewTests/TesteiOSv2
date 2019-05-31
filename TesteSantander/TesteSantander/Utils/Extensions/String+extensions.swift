@@ -56,4 +56,18 @@ extension String {
                                     range: startIndex..<endIndex)
     }
     
+    func formatData() -> String? {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "dd/MM/yyyy"
+        
+        if let date = dateFormatterGet.date(from: self) {
+            return dateFormatterPrint.string(from: date)
+        } else {
+            return nil
+        }
+    }
+    
 }

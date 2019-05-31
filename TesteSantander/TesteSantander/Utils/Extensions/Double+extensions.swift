@@ -11,7 +11,7 @@ import Foundation
 extension Double {
     func currencyFormat() -> String? {
         let formatter = NumberFormatter()
-        formatter.locale = Locale.current
+        formatter.locale = Locale.init(identifier: "PT_BR")
         formatter.numberStyle = .currency
         if let formattedTipAmount = formatter.string(from: self as NSNumber) {
             return "\(formattedTipAmount)"
