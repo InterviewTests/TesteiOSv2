@@ -19,4 +19,14 @@ struct UserAccount: Codable {
     let bankAccount: String?
     let agency: String?
     let balance: Double?
+    
+    static func onError() -> UserAccount {
+        return UserAccount(
+            userId: 0,
+            name: Constants.Errors.UIStringError,
+            bankAccount: Constants.Errors.UIStringError,
+            agency: Constants.Errors.UIStringError,
+            balance: Constants.Errors.UIDoubleError
+        )
+    }
 }

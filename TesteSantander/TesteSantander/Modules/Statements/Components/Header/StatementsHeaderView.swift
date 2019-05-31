@@ -10,13 +10,16 @@ import UIKit
 
 class StatementsHeaderView: UIView {
     
+    static let accountViewTitle = "Conta"
+    static let balanceViewTitle = "Saldo"
+    
     fileprivate var navigationView: NavigationView!
     fileprivate var accountView: InfoView!
     fileprivate var balanceView: InfoView!
     
-    func setup(name: String, statementsLogoutViewController: StatementsLogoutViewController) {
-        addNavigationView(name: name, statementsLogoutViewController: statementsLogoutViewController)
-        addInfoViews(name: name)
+    func setup(user: UserAccount, statementsLogoutViewController: StatementsLogoutViewController) {
+        addNavigationView(name: user.name ?? Constants.Errors.UIStringError, statementsLogoutViewController: statementsLogoutViewController)
+        addInfoViews(user: user)
     }
     
     fileprivate func addNavigationView(name: String, statementsLogoutViewController: StatementsLogoutViewController) {
@@ -32,11 +35,11 @@ class StatementsHeaderView: UIView {
         }
     }
     
-    fileprivate func addInfoViews(name: String) {
+    fileprivate func addInfoViews(user: UserAccount) {
         guard let accountView = R.nib.infoView.firstView(owner: nil) else { return }
         self.accountView = accountView
         addSubview(accountView)
-        accountView.setup(title: name, value: name)
+        accountView.setup(title: StatementsHeaderView.accountViewTitle, value: "\(user.agency ?? Constants.Errors.UIStringError) / \(user.bankAccount ?? Constants.Errors.UIStringError)")
         accountView.snp.makeConstraints { (make) in
             make.top.equalTo(navigationView.snp.bottom).offset(28)
             make.trailing.equalToSuperview().inset(18)
@@ -47,7 +50,7 @@ class StatementsHeaderView: UIView {
         guard let balanceView = R.nib.infoView.firstView(owner: nil) else { return }
         self.balanceView = balanceView
         addSubview(balanceView)
-        balanceView.setup(title: name, value: name)
+        balanceView.setup(title: StatementsHeaderView.balanceViewTitle, value: user.balance?.currencyFormat() ?? Constants.Errors.UIStringError)
         balanceView.snp.makeConstraints { (make) in
             make.top.equalTo(accountView.snp.bottom).offset(21)
             make.trailing.equalToSuperview().inset(18)

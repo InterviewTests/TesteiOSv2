@@ -14,6 +14,9 @@ class StatementHeaderView: UIView {
     fileprivate var titleLabel: UILabel!
     
     func setup() {
+        backgroundColor = UIColor.whiteTwo
+        
+        // TitleLabel
         titleLabel = UILabel()
         titleLabel.text = StatementHeaderView.title
         titleLabel.font = UIFont.helveticaNeue(size: 17)

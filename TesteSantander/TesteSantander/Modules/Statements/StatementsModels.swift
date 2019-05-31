@@ -12,8 +12,7 @@
 
 import UIKit
 
-enum Statements
-{
+enum Statements {
   // MARK: Use cases
   
   enum Something {

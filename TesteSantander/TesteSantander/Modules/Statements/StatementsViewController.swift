@@ -78,7 +78,7 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
     fileprivate func setupLayout() {
         guard let statementsHeaderView = R.nib.statementsHeaderView.firstView(owner: nil) else { return }
         headerView.addSubview(statementsHeaderView)
-        statementsHeaderView.setup(name: router?.dataStore?.userAccount?.name ?? "Erro ao carregar o usuário", statementsLogoutViewController: self)
+        statementsHeaderView.setup(user: router?.dataStore?.userAccount ?? UserAccount.onError(), statementsLogoutViewController: self)
         statementsHeaderView.pinToSuperview()
     }
     
@@ -106,6 +106,7 @@ extension StatementsViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         
+        // Register nibs
         tableView.register(
             UINib(
                 nibName: "StatementTableViewCell",
@@ -113,7 +114,11 @@ extension StatementsViewController: UITableViewDataSource, UITableViewDelegate {
             ),
             forCellReuseIdentifier: StatementsViewController.cellIdentifier
         )
+        
+        // Footer
         tableView.tableFooterView = UIView()
+        
+        // Header
         tableView.sectionHeaderHeight = StatementsViewController.headerHeight
     }
     
@@ -122,7 +127,7 @@ extension StatementsViewController: UITableViewDataSource, UITableViewDelegate {
         headerView.setup()
         return headerView
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return router?.dataStore?.userStatements?.statementList.count ?? 0
     }
@@ -131,10 +136,10 @@ extension StatementsViewController: UITableViewDataSource, UITableViewDelegate {
         if let cell = tableView.dequeueReusableCell(withIdentifier: StatementsViewController.cellIdentifier, for: indexPath) as? StatementTableViewCell {
             let statement = router?.dataStore?.userStatements?.statementList[indexPath.row]
             cell.setup(
-                title: statement?.title ?? "Dado inválido",
-                desc: statement?.desc ?? "Dado inválido",
-                date: statement?.date?.formatData() ?? "Dado inválido",
-                value: statement?.value?.currencyFormat() ?? "Dado inválido"
+                title: statement?.title ?? Constants.Errors.UIStringError,
+                desc: statement?.desc ?? Constants.Errors.UIStringError,
+                date: statement?.date?.formatData() ?? Constants.Errors.UIStringError,
+                value: statement?.value?.currencyFormat() ?? Constants.Errors.UIStringError
             )
             return cell
         }

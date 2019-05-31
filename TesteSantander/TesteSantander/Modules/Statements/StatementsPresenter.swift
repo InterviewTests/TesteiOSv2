@@ -12,14 +12,12 @@
 
 import UIKit
 
-protocol StatementsPresentationLogic
-{
+protocol StatementsPresentationLogic {
     func displayStatements(response: Statements.Something.Response)
     func displayErrorMessage(message: String)
 }
 
-class StatementsPresenter: StatementsPresentationLogic
-{
+class StatementsPresenter: StatementsPresentationLogic {
     weak var viewController: StatementsDisplayLogic?
     
     // MARK: Do something

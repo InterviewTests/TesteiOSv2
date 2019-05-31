@@ -16,11 +16,11 @@ extension UIColor {
     }
     
     @nonobjc class var white: UIColor {
-        return UIColor(white: 254.0 / 255.0, alpha: 1.0)
+        return UIColor(white: 1.0, alpha: 1.0)
     }
     
     @nonobjc class var whiteTwo: UIColor {
-        return UIColor(white: 1.0, alpha: 1.0)
+        return UIColor(white: 254.0 / 255.0, alpha: 1.0)
     }
     
     @nonobjc class var lightGreyBlue: UIColor {

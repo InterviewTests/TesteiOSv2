@@ -23,6 +23,10 @@ struct Constants {
         
         static let invalidUsername = "Username must be a CPF or email"
         static let invalidPassword = "Password must contain a capital letter, a special character and an alphanumeric character"
+        
+        static let UIStringError = "Dado inválido"
+        static let UIIntError: Int = 0
+        static let UIDoubleError: Double = 0
     }
     
 }
