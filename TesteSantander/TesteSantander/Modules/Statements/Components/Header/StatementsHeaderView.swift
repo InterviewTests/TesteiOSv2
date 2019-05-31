@@ -39,7 +39,7 @@ class StatementsHeaderView: UIView {
         guard let accountView = R.nib.infoView.firstView(owner: nil) else { return }
         self.accountView = accountView
         addSubview(accountView)
-        accountView.setup(title: StatementsHeaderView.accountViewTitle, value: "\(user.agency ?? Constants.Errors.UIStringError) / \(user.bankAccount ?? Constants.Errors.UIStringError)")
+        accountView.setup(title: StatementsHeaderView.accountViewTitle, value: "\(user.bankAccount ?? Constants.Errors.UIStringError) / \(user.agency ?? Constants.Errors.UIStringError)")
         accountView.snp.makeConstraints { (make) in
             make.top.equalTo(navigationView.snp.bottom).offset(28)
             make.trailing.equalToSuperview().inset(18)
