@@ -40,12 +40,12 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     // MARK: Navigation
     
     func navigateToStatements(source: LoginViewController, destination: StatementsViewController) {
-        source.navigationController?.pushViewController(destination, animated: true)
+        source.show(destination, sender: nil)
     }
     
     // MARK: Passing data
-
+    
     fileprivate func passDataToStatementList(source: LoginDataStore, destination: inout StatementsDataStore) {
-      destination.userAccount = source.user?.userAccount
+        destination.userAccount = source.user?.userAccount
     }
 }

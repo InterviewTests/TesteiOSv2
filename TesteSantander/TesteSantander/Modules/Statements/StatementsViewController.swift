@@ -12,6 +12,8 @@
 
 import UIKit
 import Rswift
+import ViewAnimator
+import Hero
 
 protocol StatementsDisplayLogic: class {
     func displayStatements(viewModel: Statements.Something.ViewModel)
@@ -73,6 +75,9 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
         setupLayout()
         setupTableView()
         interactor?.fetchStatements()
+        
+        hero.isEnabled = true
+        headerView.hero.id = LoginViewController.loginHeaderAnimation
     }
     
     fileprivate func setupLayout() {
@@ -82,12 +87,11 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
         statementsHeaderView.pinToSuperview()
     }
     
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
     func displayStatements(viewModel: Statements.Something.ViewModel) {
         tableView.reloadData()
+        let cells = tableView.visibleCells
+        let slideAnimation = AnimationType.from(direction: .right, offset: 100)
+        UIView.animate(views: cells, animations: [slideAnimation], reversed: false, initialAlpha: 0, finalAlpha: 1)
     }
     
     func displayErrorMessage(message: String) {

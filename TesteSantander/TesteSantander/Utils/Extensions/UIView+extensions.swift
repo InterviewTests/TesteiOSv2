@@ -12,8 +12,10 @@ import SnapKit
 
 // Animations
 extension UIView {
-    func fastAnimation(callback: @escaping () -> Void) {
-        UIView.animate(withDuration: 0.25, animations: callback)
+    func fastAnimation(animation: @escaping () -> Void) {
+        UIView.animate(
+            withDuration: 0.25,
+            animations: animation)
     }
 }
 

@@ -16,21 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController()
+        navigationController.hero.isEnabled = true
+        navigationController.hero.navigationAnimationType = .fade
         navigationController.isNavigationBarHidden = true
-        navigationController.pushViewController(getInitialViewController(), animated: false)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        navigationController.pushViewController(getInitialViewController(), animated: true)
         
         return true
     }
     
     fileprivate func getInitialViewController() -> UIViewController {
-        return LoginViewController()
-//        let user = UserAccount(userId: 1, name: "João", bankAccount: "12312-2", agency: "2926-2", balance: 1250.00)
-//        let statementsVC = StatementsViewController()
-//        var dataStore = statementsVC.router?.dataStore
-//        dataStore?.userAccount = user
-//        return statementsVC
+        return SplashViewController()
     }
     
 }

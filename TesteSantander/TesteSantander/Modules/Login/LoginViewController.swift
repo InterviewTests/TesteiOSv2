@@ -13,6 +13,7 @@
 import UIKit
 import Moya
 import ViewAnimator
+import Hero
 
 protocol LoginDisplayLogic: class {
     func presentStatements(viewModel: Login.Login.ViewModel)
@@ -24,8 +25,6 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
     // MARK: Object lifecycle
-    
-    @IBOutlet weak var loginButton: UIButton!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -52,17 +51,28 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
         router.dataStore = interactor
     }
     
-    // MARK: Routing
+    // MARK: View lifecycle
+    
+    static let loginHeaderAnimation = "loginHeaderAnimation"
     
     @IBOutlet weak var userTextField: LoginTextField!
     @IBOutlet weak var passwordTextField: LoginTextField!
     @IBOutlet weak var errorLabel: UILabel!
-    
-    // MARK: View lifecycle
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        setupAnimations()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIView.animate(withDuration: 0.25, delay: 0.25, options: [], animations: { [unowned self] in
+            self.userTextField.alpha = 1
+            self.passwordTextField.alpha = 1
+        }, completion: nil)
     }
     
     fileprivate func setupLayout() {
@@ -79,6 +89,14 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
         loginButton.layer.shadowOpacity = 0.3
         loginButton.layer.shadowRadius = 5
         loginButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+    }
+    
+    fileprivate func setupAnimations() {
+        logoImageView.hero.id = SplashViewController.logoAnimation
+        loginButton.hero.id = SplashViewController.buttonAnimation
+        
+        userTextField.alpha = 0
+        passwordTextField.alpha = 0
     }
     
     func displayErrorMessage(message: String) {
@@ -101,6 +119,8 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
+        loginButton.hero.id = LoginViewController.loginHeaderAnimation
+        
         let userFormFields = Login.UserFormFields(
             user: userTextField.text ?? "",
             password: passwordTextField.text ?? ""

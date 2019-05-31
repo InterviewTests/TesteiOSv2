@@ -36,7 +36,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 6 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 7 nibs.
   struct nib {
     /// Nib `InfoView`.
     static let infoView = _R.nib._InfoView()
@@ -44,6 +44,8 @@ struct R: Rswift.Validatable {
     static let loginViewController = _R.nib._LoginViewController()
     /// Nib `NavigationView`.
     static let navigationView = _R.nib._NavigationView()
+    /// Nib `SplashViewController`.
+    static let splashViewController = _R.nib._SplashViewController()
     /// Nib `StatementTableViewCell`.
     static let statementTableViewCell = _R.nib._StatementTableViewCell()
     /// Nib `StatementsHeaderView`.
@@ -67,6 +69,12 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.navigationView) instead")
     static func navigationView(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.navigationView)
+    }
+    
+    /// `UINib(name: "SplashViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.splashViewController) instead")
+    static func splashViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.splashViewController)
     }
     
     /// `UINib(name: "StatementTableViewCell", in: bundle)`
@@ -97,6 +105,10 @@ struct R: Rswift.Validatable {
     
     static func navigationView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NavigationView? {
       return R.nib.navigationView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NavigationView
+    }
+    
+    static func splashViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.splashViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
     static func statementTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StatementTableViewCell? {
@@ -136,6 +148,7 @@ struct _R: Rswift.Validatable {
     static func validate() throws {
       try _LoginViewController.validate()
       try _NavigationView.validate()
+      try _SplashViewController.validate()
     }
     
     struct _InfoView: Rswift.NibResourceType {
@@ -176,6 +189,23 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "logout", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logout' is used in nib 'NavigationView', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _SplashViewController: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "SplashViewController"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logo' is used in nib 'SplashViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }
