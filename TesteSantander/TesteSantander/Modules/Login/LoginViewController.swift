@@ -65,7 +65,9 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
         super.viewDidLoad()
         setupLayout()
         setupAnimations()
-//        indicator.startAnimating()
+        
+        userTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -138,6 +140,15 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
         interactor?.login(
             request: Login.Login.Request(userFormFields: userFormFields)
         )
+    }
+    
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
     }
     
 }
