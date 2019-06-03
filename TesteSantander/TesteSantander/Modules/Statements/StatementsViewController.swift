@@ -24,7 +24,7 @@ protocol StatementsLogoutViewController: class {
     func logout()
 }
 
-class StatementsViewController: UIViewController, StatementsDisplayLogic {
+class StatementsViewController: BaseViewController, StatementsDisplayLogic {
     var interactor: StatementsBusinessLogic?
     var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
     
@@ -74,6 +74,8 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
         super.viewDidLoad()
         setupLayout()
         setupTableView()
+        
+        indicator.startAnimating()
         interactor?.fetchStatements()
         
         hero.isEnabled = true
@@ -88,6 +90,8 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
     }
     
     func displayStatements(viewModel: Statements.Statements.ViewModel) {
+        indicator.stopAnimating()
+        
         tableView.reloadData()
         let cells = tableView.visibleCells
         let slideAnimation = AnimationType.from(direction: .right, offset: 100)

@@ -15,6 +15,15 @@ class BaseViewController: UIViewController {
         return DisposeBag()
     }()
     
+    lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .whiteLarge)
+        indicator.tintColor = UIColor.warmBlue
+        indicator.color = UIColor.warmBlue
+        view.addSubview(indicator)
+        indicator.pinToSuperview()
+        return indicator
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -65,6 +65,7 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
         super.viewDidLoad()
         setupLayout()
         setupAnimations()
+//        indicator.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,6 +104,8 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
     }
     
     func displayErrorMessage(message: String) {
+        indicator.stopAnimating()
+        
         errorLabel.text = message
         passwordTextField.text = ""
         guard errorLabel.alpha == 0 else { return }
@@ -118,10 +121,13 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
     }
     
     func presentStatements(viewModel: Login.Login.ViewModel) {
+        indicator.stopAnimating()
+        errorLabel.alpha = 0
         router?.routeToStatements()
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
+        indicator.startAnimating()
         loginButton.hero.id = LoginViewController.loginHeaderAnimation
         
         let userFormFields = Login.UserFormFields(
