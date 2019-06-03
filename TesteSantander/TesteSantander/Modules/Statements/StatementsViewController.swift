@@ -16,7 +16,7 @@ import ViewAnimator
 import Hero
 
 protocol StatementsDisplayLogic: class {
-    func displayStatements(viewModel: Statements.Something.ViewModel)
+    func displayStatements(viewModel: Statements.Statements.ViewModel)
     func displayErrorMessage(message: String)
 }
 
@@ -87,7 +87,7 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
         statementsHeaderView.pinToSuperview()
     }
     
-    func displayStatements(viewModel: Statements.Something.ViewModel) {
+    func displayStatements(viewModel: Statements.Statements.ViewModel) {
         tableView.reloadData()
         let cells = tableView.visibleCells
         let slideAnimation = AnimationType.from(direction: .right, offset: 100)

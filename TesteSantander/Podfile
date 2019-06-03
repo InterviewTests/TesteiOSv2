@@ -18,7 +18,11 @@ target 'TesteSantander' do
 
   target 'TesteSantanderTests' do
     inherit! :search_paths
-    # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
+    pod 'RxBlocking'
+    pod 'KIF'
+    pod 'KIF/IdentifierTests'
   end
 
   target 'TesteSantanderUITests' do

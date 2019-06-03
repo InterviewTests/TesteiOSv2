@@ -25,7 +25,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var worker: LoginWorker?
     var user: User?
     
-    // MARK: Do something
+    init() {
+        worker = LoginWorker()
+    }
     
     func login(request: Login.Login.Request) {
         let userFormFields = request.userFormFields
@@ -34,7 +36,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             return
         }
         
-        worker = LoginWorker()
         worker?.login(userFormFields: request.userFormFields) { user in
             self.user = user
             if let errorMessage = user.error.message {
@@ -61,12 +62,14 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         var hasUppercasedLetter = false
         var hasDigit = false
         var hasSpecialCharacter = false
+        let specialString = "@$#!%?&"
+        
         password.forEach { (character) in
             hasUppercasedLetter = !hasUppercasedLetter ? character.isUppercase : hasUppercasedLetter
             hasDigit = !hasDigit ? character.isNumber : hasDigit
-            hasSpecialCharacter = !hasSpecialCharacter ? character.isNumber : hasSpecialCharacter
+            hasSpecialCharacter = !hasSpecialCharacter ? specialString.contains(character) : hasSpecialCharacter
         }
         
-        return hasUppercasedLetter && hasUppercasedLetter && hasDigit ? nil : Constants.Errors.invalidPassword
+        return hasUppercasedLetter && hasSpecialCharacter && hasDigit ? nil : Constants.Errors.invalidPassword
     }
 }

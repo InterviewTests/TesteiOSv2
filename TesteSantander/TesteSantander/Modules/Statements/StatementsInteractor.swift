@@ -28,21 +28,22 @@ class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore {
     var presenter: StatementsPresentationLogic?
     var worker: StatementsWorker?
     
-    // MARK: Do something
+    init() {
+        worker = StatementsWorker()
+    }
     
     func fetchStatements() {
         guard let userId = userAccount?.userId else {
             presenter?.displayErrorMessage(message: "ERROR: Could not get userId")
             return
         }
-            
-        worker = StatementsWorker()
+        
         worker?.fetchStatements(userId: userId, callback: { [weak self] (userStatements) in
             if let message = userStatements.error.message {
                 self?.presenter?.displayErrorMessage(message: message)
             } else {
                 self?.userStatements = userStatements
-                let response = Statements.Something.Response()
+                let response = Statements.Statements.Response()
                 self?.presenter?.displayStatements(response: response)
             }
         })

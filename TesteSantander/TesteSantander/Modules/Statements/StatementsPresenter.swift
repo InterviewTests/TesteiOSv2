@@ -13,7 +13,7 @@
 import UIKit
 
 protocol StatementsPresentationLogic {
-    func displayStatements(response: Statements.Something.Response)
+    func displayStatements(response: Statements.Statements.Response)
     func displayErrorMessage(message: String)
 }
 
@@ -21,8 +21,8 @@ class StatementsPresenter: StatementsPresentationLogic {
     weak var viewController: StatementsDisplayLogic?
     
     // MARK: Do something
-    func displayStatements(response: Statements.Something.Response) {
-        let viewModel = Statements.Something.ViewModel()
+    func displayStatements(response: Statements.Statements.Response) {
+        let viewModel = Statements.Statements.ViewModel()
         viewController?.displayStatements(viewModel: viewModel)
     }
     
