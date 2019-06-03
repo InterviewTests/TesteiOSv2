@@ -89,6 +89,9 @@ class LoginViewController: BaseViewController, LoginDisplayLogic {
         loginButton.layer.shadowOpacity = 0.3
         loginButton.layer.shadowRadius = 5
         loginButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        
+        // Load user saved in memory
+        userTextField.text = UserDefaults.standard.string(forKey: Constants.userDefaultsUsername)
     }
     
     fileprivate func setupAnimations() {

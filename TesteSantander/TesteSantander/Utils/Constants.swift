@@ -29,4 +29,6 @@ struct Constants {
         static let UIDoubleError: Double = 0
     }
     
+    static let userDefaultsUsername = "username"
+    
 }

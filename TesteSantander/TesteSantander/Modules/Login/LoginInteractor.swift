@@ -41,6 +41,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             if let errorMessage = user.error.message {
                 self.presenter?.displayErrorMessage(message: errorMessage)
             } else {
+                UserDefaults.standard.set(request.userFormFields.user, forKey: Constants.userDefaultsUsername)
                 let response = Login.Login.Response(user: user)
                 self.presenter?.presentStatements(response: response)
             }
