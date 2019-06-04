@@ -2,7 +2,7 @@
 	
 Esse projeto tem como objetivo demonstrar meus conhecimentos sobre CleanSwift, Autolayout, uso de APIs REST, Testes unitários no desenvolvimento de software para iOS.
 	
-Foi desenvolvido duas telas, uma de Login e uma segunda de informações de conta, sendo a segunda foi desenvolvida programaticamente e obecendo as regras de layout.
+Foi desenvolvido duas telas, uma de Login e uma segunda de informações de conta, sendo a segunda foi desenvolvida programaticamente e obedecendo as regras de layout.
 
 ## Frameworks
 Neste projeto foi utilizado seguintes dependências:
