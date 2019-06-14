@@ -14,9 +14,7 @@ import UIKit
 
 enum Login
 {
-  // MARK: Use cases
-  
-  enum Something
+  enum doLogin
   {
     struct Request
     {

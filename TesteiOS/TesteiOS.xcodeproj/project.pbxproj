@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06ADF4BFDB77DF1FA50C07D3 /* Pods_TesteiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B85BB7828FA82051A30586 /* Pods_TesteiOSUITests.framework */; };
 		33894AF17D66D380E8137BD2 /* Pods_TesteiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23C1A15318EC02DC06F7AE6 /* Pods_TesteiOSTests.framework */; };
+		397F817722B461AF00E19F55 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397F817622B461AF00E19F55 /* LoginWorker.swift */; };
 		39AA68E922B2FE5400BB144C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AA68E822B2FE5400BB144C /* AppDelegate.swift */; };
 		39AA68EE22B2FE5400BB144C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AA68EC22B2FE5400BB144C /* Main.storyboard */; };
 		39AA68F022B2FE5500BB144C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39AA68EF22B2FE5500BB144C /* Assets.xcassets */; };
@@ -18,7 +19,6 @@
 		39FE303922B41197003EAE10 /* StatementList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE303722B41197003EAE10 /* StatementList.swift */; };
 		39FE303A22B41197003EAE10 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE303822B41197003EAE10 /* Statement.swift */; };
 		39FE308122B45105003EAE10 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE307B22B45105003EAE10 /* LoginPresenter.swift */; };
-		39FE308222B45105003EAE10 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE307C22B45105003EAE10 /* LoginWorker.swift */; };
 		39FE308322B45105003EAE10 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE307D22B45105003EAE10 /* LoginRouter.swift */; };
 		39FE308422B45105003EAE10 /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE307E22B45105003EAE10 /* LoginModels.swift */; };
 		39FE308522B45105003EAE10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE307F22B45105003EAE10 /* LoginViewController.swift */; };
@@ -27,6 +27,8 @@
 		39FE309222B45713003EAE10 /* String+Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE308E22B45713003EAE10 /* String+Validator.swift */; };
 		39FE309322B45713003EAE10 /* String+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE308F22B45713003EAE10 /* String+DateFormatter.swift */; };
 		39FE309422B45713003EAE10 /* String+AccountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE309022B45713003EAE10 /* String+AccountFormatter.swift */; };
+		39FE309922B45C90003EAE10 /* RestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE309822B45C90003EAE10 /* RestApi.swift */; };
+		39FE309C22B45EE9003EAE10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE309B22B45EE9003EAE10 /* Constants.swift */; };
 		4C6CE4866BC312A24FDAEA06 /* Pods_TesteiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45D630572C2268F241E7CAB /* Pods_TesteiOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		24B85BB7828FA82051A30586 /* Pods_TesteiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		397F817622B461AF00E19F55 /* LoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		39AA68E522B2FE5400BB144C /* TesteiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39AA68E822B2FE5400BB144C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39AA68ED22B2FE5400BB144C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,7 +67,6 @@
 		39FE303722B41197003EAE10 /* StatementList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatementList.swift; sourceTree = "<group>"; };
 		39FE303822B41197003EAE10 /* Statement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
 		39FE307B22B45105003EAE10 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		39FE307C22B45105003EAE10 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		39FE307D22B45105003EAE10 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		39FE307E22B45105003EAE10 /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
 		39FE307F22B45105003EAE10 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,8 @@
 		39FE308E22B45713003EAE10 /* String+Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Validator.swift"; sourceTree = "<group>"; };
 		39FE308F22B45713003EAE10 /* String+DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+DateFormatter.swift"; sourceTree = "<group>"; };
 		39FE309022B45713003EAE10 /* String+AccountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+AccountFormatter.swift"; sourceTree = "<group>"; };
+		39FE309822B45C90003EAE10 /* RestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RestApi.swift; path = TesteiOS/Services/RestApi.swift; sourceTree = SOURCE_ROOT; };
+		39FE309B22B45EE9003EAE10 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		574238DEA7EE8F2B5077CE56 /* Pods-TesteiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSTests.debug.xcconfig"; path = "Target Support Files/Pods-TesteiOSTests/Pods-TesteiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7D7C009E3754DD6905703E64 /* Pods-TesteiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-TesteiOSUITests/Pods-TesteiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E70C0D86F95CE63AD95EF98 /* Pods-TesteiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteiOSTests.release.xcconfig"; path = "Target Support Files/Pods-TesteiOSTests/Pods-TesteiOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +128,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		397F817322B45FCA00E19F55 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				39FE309822B45C90003EAE10 /* RestApi.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		39AA68DC22B2FE5400BB144C = {
 			isa = PBXGroup;
 			children = (
@@ -149,11 +161,11 @@
 		39AA68E722B2FE5400BB144C /* TesteiOS */ = {
 			isa = PBXGroup;
 			children = (
+				397F817322B45FCA00E19F55 /* Services */,
 				39FE303F22B41279003EAE10 /* Base */,
 				39AA691A22B3348C00BB144C /* Util */,
 				39AA691922B3345F00BB144C /* Models */,
 				39AA691822B331FF00BB144C /* Workers */,
-				39AA691722B331F700BB144C /* Services */,
 				39AA691622B331EF00BB144C /* Scenes */,
 				39AA68E822B2FE5400BB144C /* AppDelegate.swift */,
 				39AA68EF22B2FE5500BB144C /* Assets.xcassets */,
@@ -188,16 +200,10 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		39AA691722B331F700BB144C /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		39AA691822B331FF00BB144C /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				39FE309522B457AA003EAE10 /* Login */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -215,6 +221,7 @@
 		39AA691A22B3348C00BB144C /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				39FE309A22B45ED8003EAE10 /* Constants */,
 				39FE308A22B45713003EAE10 /* Extension */,
 			);
 			path = Util;
@@ -240,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				39FE307B22B45105003EAE10 /* LoginPresenter.swift */,
-				39FE307C22B45105003EAE10 /* LoginWorker.swift */,
 				39FE307D22B45105003EAE10 /* LoginRouter.swift */,
 				39FE307E22B45105003EAE10 /* LoginModels.swift */,
 				39FE307F22B45105003EAE10 /* LoginViewController.swift */,
@@ -274,6 +280,22 @@
 				39FE309022B45713003EAE10 /* String+AccountFormatter.swift */,
 			);
 			path = String;
+			sourceTree = "<group>";
+		};
+		39FE309522B457AA003EAE10 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				397F817622B461AF00E19F55 /* LoginWorker.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		39FE309A22B45ED8003EAE10 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				39FE309B22B45EE9003EAE10 /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		478C3A05B1ED7053FA16839A /* Frameworks */ = {
@@ -519,6 +541,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39FE309922B45C90003EAE10 /* RestApi.swift in Sources */,
+				39FE309C22B45EE9003EAE10 /* Constants.swift in Sources */,
 				39FE308522B45105003EAE10 /* LoginViewController.swift in Sources */,
 				39AA68E922B2FE5400BB144C /* AppDelegate.swift in Sources */,
 				39FE309322B45713003EAE10 /* String+DateFormatter.swift in Sources */,
@@ -532,7 +556,7 @@
 				39FE308622B45105003EAE10 /* LoginInteractor.swift in Sources */,
 				39FE309222B45713003EAE10 /* String+Validator.swift in Sources */,
 				39FE309122B45713003EAE10 /* Double+Conversions.swift in Sources */,
-				39FE308222B45105003EAE10 /* LoginWorker.swift in Sources */,
+				397F817722B461AF00E19F55 /* LoginWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

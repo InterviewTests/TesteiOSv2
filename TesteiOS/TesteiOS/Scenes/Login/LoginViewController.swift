@@ -78,11 +78,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   
   func doSomething()
   {
-    let request = Login.Something.Request()
+    let request = Login.doLogin.Request()
     interactor?.doSomething(request: request)
   }
   
-  func displaySomething(viewModel: Login.Something.ViewModel)
+  func displaySomething(viewModel: Login.doLogin.ViewModel)
   {
     //nameTextField.text = viewModel.name
   }
