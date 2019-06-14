@@ -9,11 +9,11 @@
 import Foundation
 
 extension String {
-    func convertoToDate(withFormat format: String = "yyyy-mm-dd") -> Date{
+    func convertoToDate(withFormat format: String = "yyyy-mm-dd") -> Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         guard let date = formatter.date(from: self) else {
-            preconditionFailure("Wrong format")
+            return nil
         }
         return date
     }

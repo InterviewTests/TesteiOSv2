@@ -8,22 +8,9 @@
 
 import Foundation
 
-extension String {
-    private var hasSpecialCharacter: Bool {
-        return !isEmpty && range(of: "[!@#$%&*()_+=0987654321/?´~;{}*ºª§\\|,®†¥©¬√≈<>≤≥…™£¢∞§¶•≠:«÷€‹›‡°·±₱„★‚¡¿`♪Π∞×§←↑↓→‰℅½⅓¼⅛⅔⅜¾⁴⅝⅞∅ⁿ“”»✓π∆¹²³※¤⁇⁈（）［］｛｝❨❩❲❳❴❵❛❜❝❞〈〉《》〔〕【】〘〙「」『』︵︶︷︸︹︹︻︼︽︾︿﹀﹁﹂↚↛↜↝↞↟↠↡↢↣↤↥↦↧↨↫↬↭↮↯↰↱↲↳↴↵↶↷↸↹↺↻↼↽↾↿⇀⇁⇂⇃⇄⇅⇆⇇⇈⇉⇊⇋⇌⇍⇎⇏⇐⇑⇒⇓⇔⇕⇖⇗⇘⇙⇚⇛⇜⇝⇞⇟⇠⇡⇢⇣≡≦≮≧≯⊕⊗∀∂∃∀∇∈∉∋∌∝∟∠∧∨∥∩∪∫∬∮∴∵∶∷⊂⊃⊄⊅⊆⊇∪∩ΓΞ①②③④⑤⑥⑦⑧⑨⑩⑴⑵⑶⑷⑸⑹⑺⑻⑼⑽ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ●○■□☆◆◇▲△▷▼▽◁◐◑♀♂♤♡♧♢❖✓✕✗✘✙✚✛✜✝✞✟✠✡✢✣✤✥✦✧✩✪✫✬✭✮✯✰✱✲✵✶✷✸✹✺✻✼✽✾✿❀❁❂❃❅❆❈❉❊❋❍❏❐❑❒◈◉◊○◢◣◤◥❢❣❥❦❧§^\\[\\]\"]", options: .regularExpression) == nil
-
-    }
-    
-    private var hasAlphanumeric: Bool {
-        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
-    }
-    
-    private var hasCapittalLetter: Bool {
-        return !isEmpty && range(of: "[A-Z]", options: .regularExpression) == nil
-    }
-    
+extension String {    
     public var isValidPassword: Bool {
-        return hasSpecialCharacter && hasAlphanumeric && hasCapittalLetter
+        return !isEmpty && NSPredicate(format: "SELF MATCHES %@", "^(?=.*[A-Z])(?=.*[a-z0-9])(?=.*[!@#$%^?&*()_+=\\-{}|:;<>]).{3,}$").evaluate(with: self)
     }
     
     private var onlyCpfNumber:String {
@@ -66,6 +53,6 @@ extension String {
     }
     
     public var isValidEmail: Bool {
-        return !isEmpty && range(of: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", options: .regularExpression) == nil
+        return !isEmpty && NSPredicate(format:"SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}").evaluate(with: self)
     }
 }

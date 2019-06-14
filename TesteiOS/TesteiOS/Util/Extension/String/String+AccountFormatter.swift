@@ -9,14 +9,14 @@
 import Foundation
 
 extension String {
-    mutating func bankAccountFormatter() -> String {
-        guard self.count < 3 else {
+    func bankAccountFormatter() -> String {
+        var formattedAccount = self
+        if formattedAccount.count > 3 {
             var characters = Array(self)
             characters.insert(".", at: 2)
-            characters.insert("-", at: self.count - 1)
-            self = String(characters)
-            return self
+            characters.insert("-", at: self.count)
+            formattedAccount = String(characters)
         }
-        return self
+        return formattedAccount
     }
 }
