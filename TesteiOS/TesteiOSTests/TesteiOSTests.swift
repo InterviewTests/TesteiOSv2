@@ -30,5 +30,53 @@ class TesteiOSTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testeEmailValidation() {
+        XCTAssertFalse("teste".isValidEmail)
+        XCTAssertFalse("teste@".isValidEmail)
+        XCTAssertFalse("teste@teste".isValidEmail)
+        XCTAssertTrue("teste@teste.com".isValidEmail)
+        XCTAssertTrue("teste@teste.com.br".isValidEmail)
+    }
+    
+    func testeCpfValidation() {
+        XCTAssertFalse("1".isValidCpf)
+        XCTAssertFalse("123.123".isValidCpf)
+        XCTAssertFalse("123.1233.322-00".isValidCpf)
+        XCTAssertFalse("a".isValidCpf)
+        XCTAssertTrue("94709220000".isValidCpf)
+        XCTAssertTrue("800.444.980-80".isValidCpf)
+    }
+    
+    func testPasswordValidation() {
+        XCTAssertFalse("t".isValidPassword)
+        XCTAssertFalse("teste".isValidPassword)
+        XCTAssertFalse("teste1".isValidPassword)
+        XCTAssertFalse("teste123".isValidPassword)
+        XCTAssertFalse("Teste".isValidPassword)
+        XCTAssertTrue("Teste@123".isValidPassword)
+    }
+    
+    func testDataConverter() {
+        XCTAssertNil("2".convertoToDate())
+        XCTAssertNil("2019-".convertoToDate())
+        XCTAssertNil("2019-06".convertoToDate())
+        XCTAssertNil("2019-06-".convertoToDate())
+        XCTAssertNil("14-06-2019".convertoToDate())
+        XCTAssertNil("14/06/2019".convertoToDate())
+        XCTAssertEqual("2019-06-14".convertoToDate(), "2019-06-14".convertoToDate())
+    }
+    
+    func testBankAccountFormatter() {
+        XCTAssertTrue(NSPredicate(format: "SELF MATCHES %@", "^[0-9]{2}.[0-9]*-[0-9]{1}").evaluate(with: "012314564".bankAccountFormatter()))
+        XCTAssertTrue(NSPredicate(format: "SELF MATCHES %@", "^[0-9]{2}.[0-9]*-[0-9]{1}").evaluate(with: "0124564".bankAccountFormatter()))
+        XCTAssertFalse(NSPredicate(format: "SELF MATCHES %@", "^[0-9]{2}.[0-9]*-[0-9]{1}").evaluate(with: "01".bankAccountFormatter()))
+        XCTAssertFalse(NSPredicate(format: "SELF MATCHES %@", "^[0-9]{2}.[0-9]*-[0-9]{1}").evaluate(with: "01.2456".bankAccountFormatter()))
+        XCTAssertFalse(NSPredicate(format: "SELF MATCHES %@", "^[0-9]{2}.[0-9]*-[0-9]{1}").evaluate(with: "".bankAccountFormatter()))
+        XCTAssertFalse(NSPredicate(format: "SELF MATCHES %@", "^[0-9]{2}.[0-9]*-[0-9]{1}").evaluate(with: "a".bankAccountFormatter()))
+        
+        
+        
+    }
 
 }
