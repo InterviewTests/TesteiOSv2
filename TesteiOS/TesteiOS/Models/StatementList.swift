@@ -7,3 +7,18 @@
 //
 
 import Foundation
+import ObjectMapper
+
+class StatementList: Mappable {
+    var statementList: [Statement]?
+    var error: String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        statementList <- map["statementList"]
+        error <- map["error"]
+    }
+}
