@@ -10,30 +10,45 @@ import Foundation
 import ObjectMapper
 
 class User: Mappable {
-    var userId: Int?
-    var name: String?
-    var bankAccount: String?
-    var agency: String?
-    var balance: Double?
-    
-    init(userId: Int, name: String, bankAccount: String,
-         agency: String, balance: Double) {
-        self.userId = userId
-        self.name = name
-        self.bankAccount = bankAccount
-        self.agency = agency
-        self.balance = balance
-    }
+    var userAccount: UserAccount?
     
     required init?(map: Map) {
-        
     }
     
     func mapping(map: Map) {
+        userAccount <- map["userAccount"]
+    }
+}
+
+class UserAccount: Mappable {
+    @objc dynamic var userId: Int = -1
+    @objc dynamic var name: String?
+    @objc dynamic var bankAccount: String?
+    @objc dynamic var agency: String?
+    @objc dynamic var balance: String?
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        let transform = TransformOf<String, Double>(fromJSON: { (value: Double?) -> String? in
+            
+            if let v = value {
+                return v.changeCurrency()
+            }
+            return nil
+        }, toJSON: { (value: String?) -> Double? in
+            if let value = value {
+                return Double(value)
+            }
+            return nil
+        })
+        
         userId <- map["userId"]
         name <- map["name"]
         bankAccount <- map["bankAccount"]
         agency <- map["agency"]
-        balance <- map["balance"]
+        balance <- (map["balance"], transform)
     }
 }

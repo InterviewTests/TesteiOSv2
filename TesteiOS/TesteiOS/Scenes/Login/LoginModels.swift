@@ -20,9 +20,13 @@ enum Login
   {
     struct Request
     {
+        var user: String
+        var password: String
     }
     struct Response
     {
+        var userAccount: UserAccount?
+        var error: [String: String]?
     }
     struct ViewModel
     {
