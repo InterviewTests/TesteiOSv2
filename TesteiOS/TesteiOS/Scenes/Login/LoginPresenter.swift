@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-  func presentSomething(response: Login.doLogin.Response)
+  func presentLogin(response: Login.doLogin.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
@@ -23,9 +23,12 @@ class LoginPresenter: LoginPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: Login.doLogin.Response)
+  func presentLogin(response: Login.doLogin.Response)
   {
-    let viewModel = Login.doLogin.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+    if (response.userAccount!.userId >= 0) {
+    viewController?.displayStatmentView()
+    } else {
+        viewController?.displayErrorMessage(title: "Falha!", message: "Usuário ou senha inválido")
+    }
   }
 }
