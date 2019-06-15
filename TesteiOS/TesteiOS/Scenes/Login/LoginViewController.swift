@@ -12,13 +12,36 @@
 
 import UIKit
 
-protocol LoginDisplayLogic: class
-{
-  func displaySomething(viewModel: Login.Something.ViewModel)
+protocol LoginDisplayLogic: class {
+    func displayStatmentView()
+    func displayErrorMessage(title: String, message: String)
+    func showLoading()
+    func hideLoading()
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
+    func showLoading() {
+        
+    }
+    
+    func hideLoading() {
+        
+    }
+    
+    func displayErrorMessage(title: String, message: String) {
+        hideLoading()
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Tente novamente", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    func displayStatmentView() {
+        
+    }
+    
+    
+
   var interactor: LoginBusinessLogic?
   var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
 
@@ -66,24 +89,29 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   
   // MARK: View lifecycle
   
-  override func viewDidLoad()
+    @IBOutlet weak var loginTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBAction func loginAction(_ sender: UIButton) {
+        doLogin()
+    }
+    
+    override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    view.endEditing(true)
   }
   
-  // MARK: Do something
+
   
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Login.doLogin.Request()
-    interactor?.doSomething(request: request)
+  func doLogin() {
+    showLoading()
+    let request = Login.doLogin.Request(user: loginTextField.text!, password: passwordTextField.text!)
+    interactor?.doLogin(request: request)
   }
   
-  func displaySomething(viewModel: Login.doLogin.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+//  func displayStatmentView()
+//  {
+//    router?.goToStatments()
+//    hideLoading()
+//  }
 }
