@@ -80,8 +80,6 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         }
         self.lodingAlert()
         interactor?.login(user: usernameText, password: passwordText)
-        
-        self.dismissLoadAlert()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -133,7 +131,9 @@ extension LoginViewController : LoginViewControllerProceed{
      Call router to go to next controllerView.
      */
     func goToNextViewController() {
-        self.router?.routeToAccountDetail()
+        self.loadAlert.dismiss(animated: false){
+            self.router?.routeToAccountDetail()
+        }
     }
     
     
