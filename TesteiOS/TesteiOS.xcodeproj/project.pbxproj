@@ -10,8 +10,9 @@
 		06ADF4BFDB77DF1FA50C07D3 /* Pods_TesteiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B85BB7828FA82051A30586 /* Pods_TesteiOSUITests.framework */; };
 		33894AF17D66D380E8137BD2 /* Pods_TesteiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23C1A15318EC02DC06F7AE6 /* Pods_TesteiOSTests.framework */; };
 		3954DCA722B577BA00ABA8D4 /* StatementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3954DCA622B577BA00ABA8D4 /* StatementTableViewCell.xib */; };
-		3954DCA922B57C6E00ABA8D4 /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCA822B57C6E00ABA8D4 /* StatementTableViewCell.swift */; };
 		3954DCAB22B59BFE00ABA8D4 /* StatementTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3954DCAA22B59BFE00ABA8D4 /* StatementTableViewHeaderCell.xib */; };
+		3954DCAF22B59DB100ABA8D4 /* StatementTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCAE22B59DB100ABA8D4 /* StatementTableViewHeaderCell.swift */; };
+		3954DCB122B59DD700ABA8D4 /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCB022B59DD700ABA8D4 /* StatementTableViewCell.swift */; };
 		397F817722B461AF00E19F55 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397F817622B461AF00E19F55 /* LoginWorker.swift */; };
 		39AA68E922B2FE5400BB144C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AA68E822B2FE5400BB144C /* AppDelegate.swift */; };
 		39AA68EE22B2FE5400BB144C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AA68EC22B2FE5400BB144C /* Main.storyboard */; };
@@ -55,8 +56,9 @@
 /* Begin PBXFileReference section */
 		24B85BB7828FA82051A30586 /* Pods_TesteiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3954DCA622B577BA00ABA8D4 /* StatementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementTableViewCell.xib; sourceTree = "<group>"; };
-		3954DCA822B57C6E00ABA8D4 /* StatementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
 		3954DCAA22B59BFE00ABA8D4 /* StatementTableViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementTableViewHeaderCell.xib; sourceTree = "<group>"; };
+		3954DCAE22B59DB100ABA8D4 /* StatementTableViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewHeaderCell.swift; sourceTree = "<group>"; };
+		3954DCB022B59DD700ABA8D4 /* StatementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
 		397F817622B461AF00E19F55 /* LoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		39AA68E522B2FE5400BB144C /* TesteiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39AA68E822B2FE5400BB144C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		3954DCAD22B59D8F00ABA8D4 /* Statement */ = {
+			isa = PBXGroup;
+			children = (
+				3954DCB022B59DD700ABA8D4 /* StatementTableViewCell.swift */,
+				3954DCAE22B59DB100ABA8D4 /* StatementTableViewHeaderCell.swift */,
+			);
+			path = Statement;
+			sourceTree = "<group>";
+		};
 		397F817322B45FCA00E19F55 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +212,7 @@
 		39AA691622B331EF00BB144C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3954DCAD22B59D8F00ABA8D4 /* Statement */,
 				39FE307A22B450F7003EAE10 /* Login */,
 			);
 			path = Scenes;
@@ -259,7 +271,6 @@
 				39FE307E22B45105003EAE10 /* LoginModels.swift */,
 				39FE307F22B45105003EAE10 /* LoginViewController.swift */,
 				39FE308022B45105003EAE10 /* LoginInteractor.swift */,
-				3954DCA822B57C6E00ABA8D4 /* StatementTableViewCell.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -554,10 +565,12 @@
 			files = (
 				39FE309922B45C90003EAE10 /* RestApi.swift in Sources */,
 				39FE309C22B45EE9003EAE10 /* Constants.swift in Sources */,
+				3954DCAF22B59DB100ABA8D4 /* StatementTableViewHeaderCell.swift in Sources */,
 				39FE308522B45105003EAE10 /* LoginViewController.swift in Sources */,
 				39AA68E922B2FE5400BB144C /* AppDelegate.swift in Sources */,
 				39FE309322B45713003EAE10 /* String+DateFormatter.swift in Sources */,
 				39FE308422B45105003EAE10 /* LoginModels.swift in Sources */,
+				3954DCB122B59DD700ABA8D4 /* StatementTableViewCell.swift in Sources */,
 				39FE302722B3C2E0003EAE10 /* User.swift in Sources */,
 				39FE303922B41197003EAE10 /* StatementList.swift in Sources */,
 				39FE303A22B41197003EAE10 /* Statement.swift in Sources */,
@@ -565,7 +578,6 @@
 				39FE308122B45105003EAE10 /* LoginPresenter.swift in Sources */,
 				39FE308322B45105003EAE10 /* LoginRouter.swift in Sources */,
 				39FE308622B45105003EAE10 /* LoginInteractor.swift in Sources */,
-				3954DCA922B57C6E00ABA8D4 /* StatementTableViewCell.swift in Sources */,
 				39FE309222B45713003EAE10 /* String+Validator.swift in Sources */,
 				39FE309122B45713003EAE10 /* Double+Conversions.swift in Sources */,
 				397F817722B461AF00E19F55 /* LoginWorker.swift in Sources */,
