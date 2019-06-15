@@ -8,6 +8,7 @@
 
 import Alamofire
 import AlamofireObjectMapper
+import ObjectMapper
 
 protocol RestApiProtocol {
     static func doLogin(user: String, password: String, callback: @escaping(_ userAccount: UserAccount?) ->
@@ -23,9 +24,9 @@ class RestApi: RestApiProtocol {
     static func doLogin(user: String, password: String, callback: @escaping(_ userAccount: UserAccount?) ->
         Void, error: @escaping () -> Void) {
         let url = Constants.BaseUrl + "/login"
-        AF.request(url, method: .post, parameters: ["user": user, "password": password], encoding: URLEncoding.default, headers: ["Content-Type": "application/x-www-form-urlencoded"]).validate().responseObject { (response: DataResponse<User>) in
+        AF.request(url, method: .post, parameters: ["user": user, "password": password], encoding: URLEncoding.default, headers: ["Content-Type": "application/x-www-form-urlencoded"]).validate().responseString { (response: DataResponse<String>) in
             
-            let user = response.value
+            let user = Mapper<User>().map(JSONString: response.value!)
             if user?.userAccount != nil {
                 callback(user?.userAccount)
             }
