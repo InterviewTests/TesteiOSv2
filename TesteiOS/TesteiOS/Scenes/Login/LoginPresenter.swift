@@ -25,7 +25,7 @@ class LoginPresenter: LoginPresentationLogic
   
   func presentLogin(response: Login.doLogin.Response)
   {
-    if (response.userAccount!.userId >= 0) {
+    if (response.userAccount != nil) {
     viewController?.displayStatmentView()
     } else {
         viewController?.displayErrorMessage(title: "Falha!", message: "Usuário ou senha inválido")
