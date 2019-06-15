@@ -31,9 +31,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
   
     func doLogin(request: Login.doLogin.Request) {
         worker = LoginWorker()
-        worker?.doLogin(request: request) {
+        worker!.doLogin(request: request) {
             response in
-            self.presenter?.presentLogin(response: response)
+            self.presenter?.presentLogin(response: response!)
         }
     }
 }
