@@ -9,24 +9,30 @@
 import Foundation
 import ObjectMapper
 
+
 class User: Mappable {
+    var userAccount: UserAccount?
+    var error: String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        userAccount <- map["userAccount"]
+        error <- map["error"]
+    }
+}
+
+class UserAccount: Mappable {
     var userId: Int?
     var name: String?
     var bankAccount: String?
     var agency: String?
-    var balance: Double?
-    
-    init(userId: Int, name: String, bankAccount: String,
-         agency: String, balance: Double) {
-        self.userId = userId
-        self.name = name
-        self.bankAccount = bankAccount
-        self.agency = agency
-        self.balance = balance
-    }
+    var balance: Float?
     
     required init?(map: Map) {
-        
+    
     }
     
     func mapping(map: Map) {
@@ -34,6 +40,8 @@ class User: Mappable {
         name <- map["name"]
         bankAccount <- map["bankAccount"]
         agency <- map["agency"]
-        balance <- map["balance"]
+        balance <- (map["balance"])
     }
+    
+
 }
