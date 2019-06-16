@@ -22,16 +22,15 @@ protocol LoginDataPassing
   var dataStore: LoginDataStore? { get }
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
-{
+class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     
-  weak var viewController: LoginViewController?
-  var dataStore: LoginDataStore?
+    weak var viewController: LoginViewController?
+    var dataStore: LoginDataStore?
+    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
     
     func goToStatement() {
-//        let statmentsView = statementsViewController()
-//        statmentsView.modalTransitionStyle = .flipHorizontal
-//        viewController?.present(statmentsView, animated: true, completion: nil)
+        let statementVC  =  mainStoryBoard.instantiateViewController(withIdentifier: "statementsVC") as! StatementViewController
+        viewController?.present(statementVC, animated: true, completion: nil)
     }
 
 }
