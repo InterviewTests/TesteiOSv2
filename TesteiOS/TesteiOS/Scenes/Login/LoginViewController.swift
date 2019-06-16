@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
 
   var interactor: LoginBusinessLogic?
   var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
-
+  var repository: UserRepository?
   // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -67,10 +67,14 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     let interactor = LoginInteractor()
     let presenter = LoginPresenter()
     let router = LoginRouter()
+    let repository = UserRepository.shared
     viewController.interactor = interactor
     viewController.router = router
+    viewController.repository = repository
     interactor.presenter = presenter
+    interactor.repository = repository
     presenter.viewController = viewController
+    presenter.repository = repository
     router.viewController = viewController
     router.dataStore = interactor
   }

@@ -18,13 +18,14 @@ protocol StatementDisplayLogic: class
 }
 
 class StatementViewController: UIViewController, StatementDisplayLogic {
-  var interactor: StatementBusinessLogic?
-  var router: (NSObjectProtocol & StatementRoutingLogic & StatementDataPassing)?
-    
+    var interactor: StatementBusinessLogic?
+    var router: (NSObjectProtocol & StatementRoutingLogic & StatementDataPassing)?
+    var repository: UserRepository?
+
     var statements: [Statement] = [] {
         didSet {
             DispatchQueue.main.async {
-                // reload table view
+                self.statementsTableView.reloadData()
             }
         }
     }
@@ -55,12 +56,18 @@ class StatementViewController: UIViewController, StatementDisplayLogic {
     let interactor = StatementInteractor()
     let presenter = StatementPresenter()
     let router = StatementRouter()
+    let repository = UserRepository.shared
+    
     viewController.interactor = interactor
     viewController.router = router
+    viewController.repository = repository
     interactor.presenter = presenter
+    interactor.userRepository = repository
     presenter.viewController = viewController
+    presenter.repository = repository
     router.viewController = viewController
     router.dataStore = interactor
+    
   }
   
   // MARK: Routing
@@ -76,26 +83,53 @@ class StatementViewController: UIViewController, StatementDisplayLogic {
   }
   
   // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-//    doSomething()
-  }
-  
-  // MARK: Do something
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
-  
-  func updateViews(viewModel: Statements.get.ViewModel) {
-    let userAccount = viewModel.userAccount!
-    statements = viewModel.statements!
+    @IBOutlet weak var statementsTableView: UITableView!
     
-    nameLabel.text = userAccount.name!
-    accountLabel.text = userAccount.agency! + " / " + userAccount.bankAccount!.bankAccountFormatter()
-    balanceLabel.text = userAccount.balance?.changeCurrency()!
-    // set text to views
+  override func viewDidLoad()
+  {
+    super.viewDidLoad()
+    setupTableView()
+    loadStatements()
     
   }
+  
+  // MARK: Do something
+   
+    func setupTableView() {
+        let nib = UINib(nibName: "StatementTableViewCell", bundle: nil)
+        statementsTableView.register(nib, forCellReuseIdentifier: StatementTableViewCell.identifier)
+        statementsTableView.dataSource = self
+        statementsTableView.delegate = self
+    }
+  
+    func updateViews(viewModel: Statements.get.ViewModel) {
+        
+    let userAccount = viewModel.userAccount!
+    statements = viewModel.statements!
+//    statementsTableView.reloadData()
+    nameLabel.text = ""//userAccount.name!
+    accountLabel.text = ""//userAccount.agency! + " / " + userAccount.bankAccount!.bankAccountFormatter()
+    balanceLabel.text = ""//userAccount.balance?.changeCurrency()!
+
+    }
+    
+    func loadStatements() {
+        interactor?.updateStatementList()
+    }
+}
+
+extension StatementViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let statement = statements[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "statementCell") as! StatementTableViewCell
+        cell.setStatement(statement: statement)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statements.count
+    }
 }
