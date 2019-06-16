@@ -8,14 +8,15 @@
 
 import Foundation
 import ObjectMapper
+import Realm
+import RealmSwift
 
-
-class User: Mappable {
+class User: Object, Mappable {
     var userAccount: UserAccount?
     var error: String?
     
-    required init?(map: Map) {
-        
+    required convenience init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {
@@ -24,15 +25,15 @@ class User: Mappable {
     }
 }
 
-class UserAccount: Mappable {
+class UserAccount: Object, Mappable {
     var userId: Int?
     var name: String?
     var bankAccount: String?
     var agency: String?
     var balance: Float?
     
-    required init?(map: Map) {
-    
+    required convenience init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {
