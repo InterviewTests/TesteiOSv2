@@ -14,13 +14,21 @@ import UIKit
 
 protocol StatementDisplayLogic: class
 {
-  func displaySomething(viewModel: Statement.Something.ViewModel)
+  func updateViews(viewModel: Statements.get.ViewModel)
 }
 
-class StatementViewController: UIViewController, StatementDisplayLogic
-{
+class StatementViewController: UIViewController, StatementDisplayLogic {
   var interactor: StatementBusinessLogic?
   var router: (NSObjectProtocol & StatementRoutingLogic & StatementDataPassing)?
+    
+    var statements: [Statement] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                // reload table view
+            }
+        }
+    }
+
 
   // MARK: Object lifecycle
   
@@ -69,21 +77,24 @@ class StatementViewController: UIViewController, StatementDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+//    doSomething()
   }
   
   // MARK: Do something
   
   //@IBOutlet weak var nameTextField: UITextField!
   
-  func doSomething()
-  {
-    let request = Statement.Something.Request()
-    interactor?.doSomething(request: request)
-  }
+//  func doSomething()
+//  {
+//    let request = Statements.get.Request()
+//    interactor?.doSomething(request: request)
+//  }
   
-  func displaySomething(viewModel: Statement.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
+  func updateViews(viewModel: Statements.get.ViewModel) {
+    let uAccount = viewModel.userAccount!
+    statements = viewModel.statements!
+    
+    // set text to views
+    
   }
 }

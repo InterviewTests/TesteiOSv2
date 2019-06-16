@@ -17,20 +17,20 @@ class UserRepository {
         let config = Realm.Configuration(schemaVersion: 5, migrationBlock: { _, oldSchemaVersion in
             if oldSchemaVersion < 4 {
             }
-        }, objectTypes: [User.self])
+        }, objectTypes: [UserAccount.self])
         realm = try! Realm(configuration: config)
     }
     
-    func saveUser(user: User) {
+    func saveUser(user: UserAccount) {
         try! realm.write {
             realm.deleteAll()
             realm.add(user)
         }
     }
     
-    func getUser(callback: @escaping (_ user: User?) -> Void) {
+    func getUser(callback: @escaping (_ user: UserAccount?) -> Void) {
         try! realm.write {
-            let user = realm.objects(User.self)
+            let user = realm.objects(UserAccount.self)
             callback(user.last)
         }
     }
