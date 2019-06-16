@@ -13,10 +13,10 @@ class Statement: Mappable {
     var title: String?
     var description: String?
     var date: String?
-    var value: String?
+    var value: Double?
     
     init(title: String, description: String,
-         date: String, value: String) {
+         date: String, value: Double) {
         self.title = title
         self.description = description
         self.date = date
