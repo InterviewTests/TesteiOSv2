@@ -14,11 +14,11 @@
 		3954DCAF22B59DB100ABA8D4 /* StatementTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCAE22B59DB100ABA8D4 /* StatementTableViewHeaderCell.swift */; };
 		3954DCB122B59DD700ABA8D4 /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCB022B59DD700ABA8D4 /* StatementTableViewCell.swift */; };
 		3954DCB822B59FB800ABA8D4 /* StatementPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCB222B59FB800ABA8D4 /* StatementPresenter.swift */; };
-		3954DCB922B59FB800ABA8D4 /* StatementWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCB322B59FB800ABA8D4 /* StatementWorker.swift */; };
 		3954DCBA22B59FB800ABA8D4 /* StatementRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCB422B59FB800ABA8D4 /* StatementRouter.swift */; };
 		3954DCBB22B59FB800ABA8D4 /* StatementModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCB522B59FB800ABA8D4 /* StatementModels.swift */; };
 		3954DCBC22B59FB800ABA8D4 /* StatementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCB622B59FB800ABA8D4 /* StatementViewController.swift */; };
 		3954DCBD22B59FB800ABA8D4 /* StatementInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCB722B59FB800ABA8D4 /* StatementInteractor.swift */; };
+		3954DCC122B5AD4F00ABA8D4 /* StatementWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3954DCC022B5AD4F00ABA8D4 /* StatementWorker.swift */; };
 		397F817722B461AF00E19F55 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397F817622B461AF00E19F55 /* LoginWorker.swift */; };
 		39AA68E922B2FE5400BB144C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AA68E822B2FE5400BB144C /* AppDelegate.swift */; };
 		39AA68EE22B2FE5400BB144C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AA68EC22B2FE5400BB144C /* Main.storyboard */; };
@@ -66,11 +66,11 @@
 		3954DCAE22B59DB100ABA8D4 /* StatementTableViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewHeaderCell.swift; sourceTree = "<group>"; };
 		3954DCB022B59DD700ABA8D4 /* StatementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
 		3954DCB222B59FB800ABA8D4 /* StatementPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementPresenter.swift; sourceTree = "<group>"; };
-		3954DCB322B59FB800ABA8D4 /* StatementWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementWorker.swift; sourceTree = "<group>"; };
 		3954DCB422B59FB800ABA8D4 /* StatementRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementRouter.swift; sourceTree = "<group>"; };
 		3954DCB522B59FB800ABA8D4 /* StatementModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementModels.swift; sourceTree = "<group>"; };
 		3954DCB622B59FB800ABA8D4 /* StatementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementViewController.swift; sourceTree = "<group>"; };
 		3954DCB722B59FB800ABA8D4 /* StatementInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementInteractor.swift; sourceTree = "<group>"; };
+		3954DCC022B5AD4F00ABA8D4 /* StatementWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementWorker.swift; sourceTree = "<group>"; };
 		397F817622B461AF00E19F55 /* LoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		39AA68E522B2FE5400BB144C /* TesteiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39AA68E822B2FE5400BB144C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,11 +154,18 @@
 				3954DCB022B59DD700ABA8D4 /* StatementTableViewCell.swift */,
 				3954DCAE22B59DB100ABA8D4 /* StatementTableViewHeaderCell.swift */,
 				3954DCB222B59FB800ABA8D4 /* StatementPresenter.swift */,
-				3954DCB322B59FB800ABA8D4 /* StatementWorker.swift */,
 				3954DCB422B59FB800ABA8D4 /* StatementRouter.swift */,
 				3954DCB522B59FB800ABA8D4 /* StatementModels.swift */,
 				3954DCB622B59FB800ABA8D4 /* StatementViewController.swift */,
 				3954DCB722B59FB800ABA8D4 /* StatementInteractor.swift */,
+			);
+			path = Statement;
+			sourceTree = "<group>";
+		};
+		3954DCBF22B5AD2F00ABA8D4 /* Statement */ = {
+			isa = PBXGroup;
+			children = (
+				3954DCC022B5AD4F00ABA8D4 /* StatementWorker.swift */,
 			);
 			path = Statement;
 			sourceTree = "<group>";
@@ -239,6 +246,7 @@
 		39AA691822B331FF00BB144C /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				3954DCBF22B5AD2F00ABA8D4 /* Statement */,
 				39FE309522B457AA003EAE10 /* Login */,
 			);
 			path = Workers;
@@ -587,6 +595,7 @@
 				39FE308522B45105003EAE10 /* LoginViewController.swift in Sources */,
 				3954DCBD22B59FB800ABA8D4 /* StatementInteractor.swift in Sources */,
 				3954DCB822B59FB800ABA8D4 /* StatementPresenter.swift in Sources */,
+				3954DCC122B5AD4F00ABA8D4 /* StatementWorker.swift in Sources */,
 				39AA68E922B2FE5400BB144C /* AppDelegate.swift in Sources */,
 				39FE309322B45713003EAE10 /* String+DateFormatter.swift in Sources */,
 				39FE308422B45105003EAE10 /* LoginModels.swift in Sources */,
@@ -594,7 +603,6 @@
 				3954DCB122B59DD700ABA8D4 /* StatementTableViewCell.swift in Sources */,
 				39FE302722B3C2E0003EAE10 /* User.swift in Sources */,
 				39FE303922B41197003EAE10 /* StatementList.swift in Sources */,
-				3954DCB922B59FB800ABA8D4 /* StatementWorker.swift in Sources */,
 				39FE303A22B41197003EAE10 /* Statement.swift in Sources */,
 				39FE309422B45713003EAE10 /* String+AccountFormatter.swift in Sources */,
 				39FE308122B45105003EAE10 /* LoginPresenter.swift in Sources */,
