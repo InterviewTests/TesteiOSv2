@@ -25,7 +25,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
   var presenter: LoginPresentationLogic?
   var worker: LoginWorker?
-  //var name: String = ""
+  var repository: UserRepository?
   
   // MARK: Do something
   

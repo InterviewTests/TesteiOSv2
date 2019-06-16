@@ -26,11 +26,17 @@ class LoginPresenter: LoginPresentationLogic
   
   func presentLogin(response: Login.doLogin.Response)
   {
-    if (response.userAccount != nil) {
-        repository?.saveUser(user: response.userAccount!)
-        viewController?.displayStatmentView()
+    if response.userAccount == nil || response.error?.count ?? 0 > 0 {
+        for (title, message) in response.error! {
+            viewController?.displayErrorMessage(title: title, message: message)
+        }
     } else {
-        viewController?.displayErrorMessage(title: "Falha!", message: "Usuário ou senha inválido")
+        if (response.userAccount != nil) {
+            repository?.saveUser(user: response.userAccount!)
+            viewController?.displayStatmentView()
+        } else {
+            viewController?.displayErrorMessage(title: "Falha!", message: "Usuário ou senha inválido")
+        }
     }
   }
 }

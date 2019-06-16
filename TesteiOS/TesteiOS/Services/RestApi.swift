@@ -18,10 +18,12 @@ protocol RestApiProtocol {
 
 class RestApi: RestApiProtocol {
     static func getStatement(id: String, callback: @escaping (StatementList?) -> Void, error: @escaping () -> Void) {
-        let url = Constants.BaseUrl + "/statement/"+id
-        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: ["Content-Type": "application/x-www-form-urlencoded"]).validate().responseObject { (response: DataResponse<StatementList>) in
-            let response = response.value
-            callback(response)
+        let url = Constants.BaseUrl + "/statements/"+id
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: ["Content-Type": "application/x-www-form-urlencoded"]).validate().responseString { (response: DataResponse<String>) in
+            
+            let statements = Mapper<StatementList>().map(JSONString: response.value!)
+//            let response = response.value
+            callback(statements)
         }
     }
     
