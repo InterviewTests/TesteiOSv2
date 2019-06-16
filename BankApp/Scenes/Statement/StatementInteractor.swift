@@ -35,7 +35,7 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore
     worker = StatementWorker()
     worker?.doSomeWork()
     
-    let response = Statement.Something.Response()
-    presenter?.presentSomething(response: response)
+//    let response = Statement.Something.Response()
+//    presenter?.presentSomething(response: response)
   }
 }

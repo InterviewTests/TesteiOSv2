@@ -20,6 +20,11 @@ enum Login {
         }
         
         struct Response: Codable {
+            let userAccount: UserAccount?
+            let loginError: LoginError?
+        }
+        
+        struct UserAccount: Codable {
             let userId: Int
             let name: String
             let bankAccount: String
@@ -35,6 +40,24 @@ enum Login {
             }
         }
         
-        struct ViewModel { }
+        struct LoginError: Codable {
+            let code: Int
+            let message: String
+            
+            enum CodingKeys: String, CodingKey {
+                case code = "code"
+                case message = "message"
+            }
+        }
+        
+        struct ViewModel {
+            let code: Int
+            let message: String
+            
+            init(from model: Login.User.LoginError) {
+                code = model.code
+                message = model.message
+            }
+        }
     }
 }

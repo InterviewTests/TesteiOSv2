@@ -23,7 +23,7 @@ enum Statement
             let bankAccount: String
             let agency: String
             
-            init(from model: Login.User.Response) {
+            init?(from model: Login.User.UserAccount) {
                 name = model.name
                 bankAccount = model.bankAccount
                 agency = model.agency

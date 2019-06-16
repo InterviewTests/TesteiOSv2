@@ -1,5 +1,5 @@
 //
-//  StatementViewController.swift
+//  LoginViewController.swift
 //  BankApp
 //
 //  Created by resource on 16/06/19.
@@ -12,15 +12,15 @@
 
 import UIKit
 
-protocol StatementDisplayLogic: class
+protocol LoginDisplayLogic: class
 {
-    func displaySomething(viewModel: Statement.Something.ViewModel)
+    //  func displaySomething(viewModel: Login.Something.ViewModel)
 }
 
-class StatementViewController: UITableViewController, StatementDisplayLogic
+class LoginViewController: UIViewController, LoginDisplayLogic
 {
-    var interactor: StatementBusinessLogic?
-    var router: (NSObjectProtocol & StatementRoutingLogic & StatementDataPassing)?
+    var interactor: LoginBusinessLogic?
+    var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
     // MARK: Object lifecycle
     
@@ -41,9 +41,9 @@ class StatementViewController: UITableViewController, StatementDisplayLogic
     private func setup()
     {
         let viewController = self
-        let interactor = StatementInteractor()
-        let presenter = StatementPresenter()
-        let router = StatementRouter()
+        let interactor = LoginInteractor()
+        let presenter = LoginPresenter()
+        let router = LoginRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -70,29 +70,35 @@ class StatementViewController: UITableViewController, StatementDisplayLogic
     {
         super.viewDidLoad()
         doSomething()
+        
+        setupView()
+    }
+    
+    private func setupView() {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
     
+    @IBAction func didTouchLogin(_ sender: Any) {
+        #warning("Login")
+        router?.routeToStatement(segue: nil)
+    }
+    
     func doSomething()
     {
-        let request = Statement.Something.Request()
-        interactor?.doSomething(request: request)
+        //    let request = Login.Something.Request()
+        //    interactor?.doSomething(request: request)
     }
     
-    @IBAction func didTouchLogout(_ sender: Any) {
-        #warning("Remove saved data, go back to login")
-        close()
-    }
-    
-    func displaySomething(viewModel: Statement.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
-    }
+    //  func displaySomething(viewModel: Login.Something.ViewModel)
+    //  {
+    //    //nameTextField.text = viewModel.name
+    //  }
 }
