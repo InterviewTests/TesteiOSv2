@@ -13,7 +13,7 @@ class StatementWorker {
         
         RestApi.getStatement(id: String(request.userAccount?.userId ?? 0), callback: {
             response in
-            let response = Statements.get.Response(userAccount: request.userAccount, statments: response?.statmentList)
+            let response = Statements.get.Response(userAccount: request.userAccount, statements: response?.statementList)
             callback(response)
         }, error: {
             
