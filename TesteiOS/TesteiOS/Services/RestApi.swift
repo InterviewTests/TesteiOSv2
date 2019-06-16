@@ -13,17 +13,12 @@ import ObjectMapper
 protocol RestApiProtocol {
     static func doLogin(user: String, password: String, callback: @escaping(_ userAccount: UserAccount?) ->
     Void, error: @escaping () -> Void)
-    static func getStatement(id: String, callback: @escaping (_ statements: Statements?) -> Void, error: @escaping () -> Void)
+    static func getStatement()
 }
 
 class RestApi: RestApiProtocol {
-    static func getStatement(id: String, callback: @escaping (Statements?) -> Void, error: @escaping () -> Void) {
-        let url = Constants.BaseUrl + "/statement/"+id
+    static func getStatement() {
         
-        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: ["Content-Type": "application/x-www-form-urlencoded"]).validate().responseObject { (response: DataResponse<StatementList>) in
-            let response = response.value
-            callback(response)
-        }
     }
     
     static func doLogin(user: String, password: String, callback: @escaping(_ userAccount: UserAccount?) ->
@@ -36,6 +31,8 @@ class RestApi: RestApiProtocol {
                 callback(user?.userAccount)
             }
         }
+        
+        
     }
 }
 
