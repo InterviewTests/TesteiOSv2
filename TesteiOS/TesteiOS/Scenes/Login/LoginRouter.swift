@@ -29,11 +29,6 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
     
     func goToStatement() {
-//        let statmentsView = StatementViewController()
-//        viewController?.present(statmentsView, animated: true, completion: nil)
-        print("go to statements")
-//        let statementsVC = StatementViewController()
-//        viewController?.present(statementsVC, animated: true, completion: nil)
         let statementVC  =  mainStoryBoard.instantiateViewController(withIdentifier: "statementsVC") as! StatementViewController
         viewController?.present(statementVC, animated: true, completion: nil)
     }
