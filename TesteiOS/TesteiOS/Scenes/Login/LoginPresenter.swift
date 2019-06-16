@@ -19,14 +19,16 @@ protocol LoginPresentationLogic
 
 class LoginPresenter: LoginPresentationLogic
 {
-  weak var viewController: LoginDisplayLogic?
+    weak var viewController: LoginDisplayLogic?
+    weak var repository: UserRepository?
   
   // MARK: Do something
   
   func presentLogin(response: Login.doLogin.Response)
   {
     if (response.userAccount != nil) {
-    viewController?.displayStatmentView()
+        repository?.saveUser(user: response.userAccount!)
+        viewController?.displayStatmentView()
     } else {
         viewController?.displayErrorMessage(title: "Falha!", message: "Usuário ou senha inválido")
     }

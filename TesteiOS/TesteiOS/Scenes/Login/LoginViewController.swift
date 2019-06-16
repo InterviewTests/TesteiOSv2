@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     }
     
     func displayStatmentView() {
-        
+        router?.goToStatement()
     }
     
     
@@ -108,10 +108,4 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     let request = Login.doLogin.Request(user: loginTextField.text!, password: passwordTextField.text!)
     interactor?.doLogin(request: request)
   }
-  
-//  func displayStatmentView()
-//  {
-//    router?.goToStatments()
-//    hideLoading()
-//  }
 }
