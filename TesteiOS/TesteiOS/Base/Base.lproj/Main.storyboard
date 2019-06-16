@@ -78,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="88" y="54"/>
         </scene>
-        <!--View Controller-->
+        <!--Statement View Controller-->
         <scene sceneID="90v-TG-yzT">
             <objects>
-                <viewController id="zEj-AE-1dd" sceneMemberID="viewController">
+                <viewController id="zEj-AE-1dd" customClass="StatementViewController" customModule="TesteiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3qD-Gq-May">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,6 +157,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dli-ed-htL"/>
                     </view>
+                    <connections>
+                        <outlet property="accountLabel" destination="FyV-se-2PK" id="BIp-41-e8g"/>
+                        <outlet property="balanceLabel" destination="MSy-KR-Vou" id="bLz-25-IpD"/>
+                        <outlet property="nameLabel" destination="If9-W9-wRf" id="z4j-9m-tZP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QEm-oX-2n4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

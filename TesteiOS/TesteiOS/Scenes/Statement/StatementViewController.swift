@@ -28,6 +28,9 @@ class StatementViewController: UIViewController, StatementDisplayLogic {
             }
         }
     }
+    
+    
+    
 
 
   // MARK: Object lifecycle
@@ -81,19 +84,17 @@ class StatementViewController: UIViewController, StatementDisplayLogic {
   }
   
   // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-//  func doSomething()
-//  {
-//    let request = Statements.get.Request()
-//    interactor?.doSomething(request: request)
-//  }
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var accountLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
   
   func updateViews(viewModel: Statements.get.ViewModel) {
-    let uAccount = viewModel.userAccount!
+    let userAccount = viewModel.userAccount!
     statements = viewModel.statements!
     
+    nameLabel.text = userAccount.name!
+    accountLabel.text = userAccount.agency! + " / " + userAccount.bankAccount!.bankAccountFormatter()
+    balanceLabel.text = userAccount.balance?.changeCurrency()!
     // set text to views
     
   }
