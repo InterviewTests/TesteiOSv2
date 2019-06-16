@@ -12,20 +12,25 @@
 
 import UIKit
 
-enum Statement
+enum Statements
 {
   // MARK: Use cases
   
-  enum Something
+  enum get
   {
     struct Request
     {
+        var userAccount: UserAccount?
     }
     struct Response
     {
+        var userAccount: UserAccount?
+        var statements: [Statement]?
     }
     struct ViewModel
     {
+        var userAccount: UserAccount?
+        var statements: [Statement]?
     }
   }
 }
