@@ -30,7 +30,7 @@ class UserAccount: Object, Mappable {
     var name: String?
     var bankAccount: String?
     var agency: String?
-    var balance: Float?
+    var balance: Double?
     
     required convenience init?(map: Map) {
         self.init()
