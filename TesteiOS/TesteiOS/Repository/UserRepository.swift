@@ -14,8 +14,8 @@ class UserRepository {
     var realm: Realm
     
     private init() {
-        let config = Realm.Configuration(schemaVersion: 5, migrationBlock: { _, oldSchemaVersion in
-            if oldSchemaVersion < 4 {
+        let config = Realm.Configuration(schemaVersion: 1, migrationBlock: { _, oldSchemaVersion in
+            if oldSchemaVersion < 1 {
             }
         }, objectTypes: [UserAccount.self])
         realm = try! Realm(configuration: config)
