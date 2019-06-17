@@ -13,7 +13,8 @@
 import UIKit
 
 protocol StatementDisplayLogic: class {
-//    func displaySomething(viewModel: Statement.Something.ViewModel)
+    func showUser(_ model: Statement.User.ViewModel)
+    func returnToLogin()
 }
 
 class StatementViewController: UITableViewController {
@@ -38,9 +39,11 @@ class StatementViewController: UITableViewController {
         let interactor = StatementInteractor()
         let presenter = StatementPresenter()
         let router = StatementRouter()
+        let worker = StatementWorker()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
+        interactor.worker = worker
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
@@ -64,15 +67,20 @@ class StatementViewController: UITableViewController {
     }
     
     // MARK: View lifecycle
-    @IBOutlet weak var usernameLabel: UIBarButtonItem!
+    @IBOutlet weak var username: UIBarButtonItem!
+    @IBOutlet weak var bankAccountNumber: UILabel!
+    @IBOutlet weak var balance: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupView()
+        interactor?.getUser()
+    }
+    
+    private func setupView() {
         let font = UIFont.systemFont(ofSize: 25)
-        usernameLabel.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        username.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         navigationController?.navigationBar.barStyle = .black
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -112,7 +120,15 @@ class StatementViewController: UITableViewController {
 }
 
 extension StatementViewController: StatementDisplayLogic {
+    func showUser(_ model: Statement.User.ViewModel) {
+        username.title = model.name
+        bankAccountNumber.text = "\(model.bankAccount) / \(model.agency)"
+        balance.text = String(format: "R$ %.2f", model.balance)
+    }
     
+    func returnToLogin() {
+        close()
+    }
 }
 
 extension StatementViewController: StatementTableDataSource {

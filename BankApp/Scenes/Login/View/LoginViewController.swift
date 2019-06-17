@@ -104,16 +104,21 @@ class LoginViewController: UIViewController{
     
     @IBAction func didTouchLogin(_ sender: Any) {
         let login = Login.User.Request(user: username.text, password: password.text)
+        loginButton.isEnabled = false
         interactor?.callUserLogin(with: login)
     }
 }
 
 extension LoginViewController: LoginDisplayLogic {
     func displayAlert(_ alert: UIAlertController) {
+        loginButton.isEnabled = true
         present(alert, animated: true, completion: nil)
     }
     
     func goToStatement() {
+        loginButton.isEnabled = true
         router?.routeToStatement(segue: nil)
+        username.text = ""
+        password.text = ""
     }
 }

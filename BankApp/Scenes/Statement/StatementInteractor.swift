@@ -13,7 +13,7 @@
 import UIKit
 
 protocol StatementBusinessLogic {
-    
+    func getUser()
 }
 
 protocol StatementDataStore {
@@ -26,4 +26,11 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore {
     var presenter: StatementPresentationLogic?
     var worker: StatementWorker?
     
+    func getUser() {
+        guard let user = user else {
+            presenter?.returnToLogin()
+            return
+        }
+        presenter?.showUser(user)
+    }
 }

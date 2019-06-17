@@ -21,11 +21,13 @@ enum Statement {
             let name: String
             let bankAccount: String
             let agency: String
+            let balance: Double
             
             init?(from model: Login.User.UserAccount) {
                 name = model.name
                 bankAccount = model.bankAccount
                 agency = model.agency
+                balance = model.balance
             }
         }
     }

@@ -13,17 +13,18 @@
 import UIKit
 
 protocol StatementPresentationLogic{
-//  func presentSomething(response: Statement.Something.Response)
+    func showUser(_ model: Statement.User.ViewModel)
+    func returnToLogin()
 }
 
 class StatementPresenter: StatementPresentationLogic{
-  weak var viewController: StatementDisplayLogic?
-  
-  // MARK: Do something
-  
-//  func presentSomething(response: Statement.Something.Response)
-//  {
-//    let viewModel = Statement.Something.ViewModel()
-//    viewController?.displaySomething(viewModel: viewModel)
-//  }
+    weak var viewController: StatementDisplayLogic?
+    
+    func showUser(_ model: Statement.User.ViewModel) {
+        viewController?.showUser(model)
+    }
+    
+    func returnToLogin() {
+        viewController?.returnToLogin()
+    }
 }

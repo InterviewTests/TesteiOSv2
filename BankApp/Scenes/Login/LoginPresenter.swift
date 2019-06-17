@@ -14,7 +14,6 @@ import UIKit
 
 protocol LoginPresentationLogic{
     func showErrorOnLogin(_ message: String, isBadInput: Bool)
-    
     func goToStatement()
 }
 
