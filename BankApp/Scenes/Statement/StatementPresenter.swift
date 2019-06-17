@@ -12,13 +12,11 @@
 
 import UIKit
 
-protocol StatementPresentationLogic
-{
+protocol StatementPresentationLogic{
 //  func presentSomething(response: Statement.Something.Response)
 }
 
-class StatementPresenter: StatementPresentationLogic
-{
+class StatementPresenter: StatementPresentationLogic{
   weak var viewController: StatementDisplayLogic?
   
   // MARK: Do something

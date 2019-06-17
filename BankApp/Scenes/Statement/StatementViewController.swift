@@ -12,34 +12,28 @@
 
 import UIKit
 
-protocol StatementDisplayLogic: class
-{
-    func displaySomething(viewModel: Statement.Something.ViewModel)
+protocol StatementDisplayLogic: class {
+//    func displaySomething(viewModel: Statement.Something.ViewModel)
 }
 
-class StatementViewController: UITableViewController, StatementDisplayLogic
-{
+class StatementViewController: UITableViewController {
     var interactor: StatementBusinessLogic?
     var router: (NSObjectProtocol & StatementRoutingLogic & StatementDataPassing)?
+    var statementTable: StatementTableController?
     
     // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
     
     // MARK: Setup
-    
-    private func setup()
-    {
+    private func setup() {
         let viewController = self
         let interactor = StatementInteractor()
         let presenter = StatementPresenter()
@@ -53,9 +47,14 @@ class StatementViewController: UITableViewController, StatementDisplayLogic
     }
     
     // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? StatementTableController {
+            destination.dataSource = self
+            destination.register(nib: UINib(nibName: StatementCell.typeName, bundle: Bundle(for: StatementCell.self)), forCellWithReuseIdentifier: StatementCell.typeName)
+            self.statementTable = destination
+            return
+        }
+        
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
             if let router = router, router.responds(to: selector) {
@@ -65,11 +64,40 @@ class StatementViewController: UITableViewController, StatementDisplayLogic
     }
     
     // MARK: View lifecycle
+    @IBOutlet weak var usernameLabel: UIBarButtonItem!
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        
+        let font = UIFont.systemFont(ofSize: 25)
+        usernameLabel.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        navigationController?.navigationBar.barStyle = .black
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 140
+        }
+        var tableHeight = view.bounds.height - 140 - (navigationController?.navigationBar.frame.height ?? 0)
+        tableHeight = tableHeight > 80 * 8 ? tableHeight : 80 * 8
+        
+        return tableHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 28))
+            view.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+            
+            let label = UILabel(frame: CGRect(x: 16, y: 0, width: self.view.frame.width - 16, height: 28))
+            label.text = "Recentes"
+            label.font = UIFont.systemFont(ofSize: 17)
+            view.addSubview(label)
+            
+            return view
+        }
+        return UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,22 +105,25 @@ class StatementViewController: UITableViewController, StatementDisplayLogic
     }
     
     // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething()
-    {
-        let request = Statement.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
     @IBAction func didTouchLogout(_ sender: Any) {
         #warning("Remove saved data, go back to login")
         close()
     }
+}
+
+extension StatementViewController: StatementDisplayLogic {
     
-    func displaySomething(viewModel: Statement.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
+}
+
+extension StatementViewController: StatementTableDataSource {
+    func statementTableDataSource(_ statementTable: StatementTableController, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func planOptionCollection(_ statementTable: StatementTableController, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = statementTable.dequeueReusableCell(withReuseIdentifier: StatementCell.typeName, for: indexPath) as? StatementCell else { return UITableViewCell() }
+        let date = "01/05/2020".toDate(withFormat: "dd/MM/yyyy") ?? Date()
+        cell.setup(from: Statement.Transactions.TransactionViewModel(title: "Pagamento", description: "Descrição", date: date, value: 1000.45))
+        return cell
     }
 }

@@ -12,18 +12,15 @@
 
 import UIKit
 
-@objc protocol StatementRoutingLogic
-{
+@objc protocol StatementRoutingLogic{
   //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol StatementDataPassing
-{
+protocol StatementDataPassing{
   var dataStore: StatementDataStore? { get }
 }
 
-class StatementRouter: NSObject, StatementRoutingLogic, StatementDataPassing
-{
+class StatementRouter: NSObject, StatementRoutingLogic, StatementDataPassing{
   weak var viewController: StatementViewController?
   var dataStore: StatementDataStore?
   

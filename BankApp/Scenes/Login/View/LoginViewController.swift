@@ -12,34 +12,28 @@
 
 import UIKit
 
-protocol LoginDisplayLogic: class
-{
+protocol LoginDisplayLogic: class{
     //  func displaySomething(viewModel: Login.Something.ViewModel)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
-{
+class LoginViewController: UIViewController, LoginDisplayLogic{
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
     // MARK: Object lifecycle
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
     
     // MARK: Setup
-    
-    private func setup()
-    {
+    private func setup() {
         let viewController = self
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
@@ -52,30 +46,25 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         router.dataStore = interactor
     }
     
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
+    // MARK: @IBOutlet
+    @IBOutlet weak var loginButton: UIButton!
     
     // MARK: View lifecycle
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        doSomething()
-        
         setupView()
     }
     
     private func setupView() {
+        loginButton.layer.cornerRadius = 4
+        loginButton.layer.shadowOpacity = 0.3
+        loginButton.layer.shadowRadius = 6
+        loginButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        loginButton.layer.shadowColor = #colorLiteral(red: 0.231372549, green: 0.2823529412, blue: 0.9333333333, alpha: 1)
         
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,22 +72,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     }
     
     // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
     @IBAction func didTouchLogin(_ sender: Any) {
         #warning("Login")
         router?.routeToStatement(segue: nil)
     }
-    
-    func doSomething()
-    {
-        //    let request = Login.Something.Request()
-        //    interactor?.doSomething(request: request)
-    }
-    
-    //  func displaySomething(viewModel: Login.Something.ViewModel)
-    //  {
-    //    //nameTextField.text = viewModel.name
-    //  }
 }

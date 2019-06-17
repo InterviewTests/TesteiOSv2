@@ -12,13 +12,11 @@
 
 import UIKit
 
-protocol LoginPresentationLogic
-{
+protocol LoginPresentationLogic{
   //func presentSomething(response: Login.User.Response)
 }
 
-class LoginPresenter: LoginPresentationLogic
-{
+class LoginPresenter: LoginPresentationLogic{
   weak var viewController: LoginDisplayLogic?
   
   // MARK: Do something

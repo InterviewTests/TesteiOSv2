@@ -12,8 +12,7 @@
 
 import UIKit
 
-enum Statement
-{
+enum Statement {
     enum User {
         struct Request { }
         struct Response { }
@@ -31,7 +30,7 @@ enum Statement
         }
     }
     
-    enum Something {
+    enum Transactions {
         struct Request { }
         
         struct Response: Codable {
@@ -42,7 +41,7 @@ enum Statement
             let title: String
             let description: String
             let date: String
-            let value: Int
+            let value: Double
             
             enum CodingKeys: String, CodingKey {
                 case title = "title"
@@ -53,10 +52,14 @@ enum Statement
         }
         
         struct ViewModel {
+            let transationList: [TransactionViewModel]
+        }
+        
+        struct TransactionViewModel {
             let title: String
             let description: String
             let date: Date
-            let value: Int
+            let value: Double
         }
     }
 }

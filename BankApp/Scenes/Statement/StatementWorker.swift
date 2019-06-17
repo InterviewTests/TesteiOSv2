@@ -12,8 +12,7 @@
 
 import UIKit
 
-class StatementWorker
-{
+class StatementWorker{
   func doSomeWork()
   {
   }
