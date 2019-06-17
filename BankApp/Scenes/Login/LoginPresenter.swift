@@ -13,17 +13,24 @@
 import UIKit
 
 protocol LoginPresentationLogic{
-  //func presentSomething(response: Login.User.Response)
+    func showErrorOnLogin(_ message: String, isBadInput: Bool)
+    
+    func goToStatement()
 }
 
 class LoginPresenter: LoginPresentationLogic{
-  weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
-  
-//  func presentSomething(response: Login.User.Response)
-//  {
-//    let viewModel = Login.User.ViewModel()
-//    viewController?.displaySomething(viewModel: viewModel)
-//  }
+    weak var viewController: LoginDisplayLogic?
+    
+    func showErrorOnLogin(_ message: String, isBadInput: Bool) {
+        let title = isBadInput ? "Tente novamente" : "Houve um problema"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            alert.close()
+        }))
+        viewController?.displayAlert(alert)
+    }
+    
+    func goToStatement() {
+        viewController?.goToStatement()
+    }
 }

@@ -45,19 +45,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqE-vs-BO6" userLabel="Input view">
                                 <rect key="frame" x="16" y="189.5" width="288" height="121"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pnn-40-IPH">
-                                        <rect key="frame" x="0.0" y="71" width="288" height="50"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kH6-4g-OJ1">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="s3h-1D-Bbv"/>
+                                            <constraint firstAttribute="height" constant="50" id="JhB-Mj-Fxu"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kH6-4g-OJ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pnn-40-IPH">
+                                        <rect key="frame" x="0.0" y="71" width="288" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="JhB-Mj-Fxu"/>
+                                            <constraint firstAttribute="height" constant="50" id="s3h-1D-Bbv"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -106,7 +106,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="3Sc-3o-szE"/>
                     <connections>
+                        <outlet property="inputCenterYConstraint" destination="tcf-FW-wkT" id="1yV-4W-DgX"/>
                         <outlet property="loginButton" destination="hiz-9w-og0" id="Phy-Ou-kgT"/>
+                        <outlet property="password" destination="Pnn-40-IPH" id="gGs-WJ-di3"/>
+                        <outlet property="username" destination="kH6-4g-OJ1" id="hMY-oI-KvS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

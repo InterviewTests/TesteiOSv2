@@ -12,8 +12,21 @@
 
 import UIKit
 
-class LoginWorker{
-  func doSomeWork()
-  {
-  }
+class LoginWorker {
+    private var apiLayer = NetworkLayerAlamofire()
+    
+    func loginUser(_ user: Login.User.Request, success: ((Login.User.Response) -> Void)?, failure: ((Error) -> Void)? ) {
+        let url = URL(string: "https://bank-app-test.herokuapp.com/api/login")!
+        let parameters: [String : Any] = ["user": user.user!, "password": user.password!]
+        let headers = ["Content-Type": "application/x-www-form-urlencoded"]
+        
+        apiLayer.post(url, model: Login.User.Response.self, params: parameters, headers: headers) { result in
+            switch result {
+            case .success(let loginData):
+                success?(loginData)
+            case .failure(let error):
+                failure?(error)
+            }
+        }
+    }
 }

@@ -13,15 +13,17 @@
 import UIKit
 
 protocol StatementBusinessLogic {
-  
+    
 }
 
 protocol StatementDataStore {
-  //var name: String { get set }
+    var user: Statement.User.ViewModel? { get set }
 }
 
 class StatementInteractor: StatementBusinessLogic, StatementDataStore {
-  var presenter: StatementPresentationLogic?
-  var worker: StatementWorker?
+    var user: Statement.User.ViewModel?
+    
+    var presenter: StatementPresentationLogic?
+    var worker: StatementWorker?
     
 }

@@ -15,8 +15,8 @@ import UIKit
 enum Login {
     enum User {
         struct Request {
-            let user: String
-            let password: String
+            let user: String?
+            let password: String?
         }
         
         struct Response: Codable {

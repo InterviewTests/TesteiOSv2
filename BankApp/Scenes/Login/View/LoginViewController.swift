@@ -13,10 +13,11 @@
 import UIKit
 
 protocol LoginDisplayLogic: class{
-    //  func displaySomething(viewModel: Login.Something.ViewModel)
+    func displayAlert(_ alert: UIAlertController)
+    func goToStatement()
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic{
+class LoginViewController: UIViewController{
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
@@ -38,9 +39,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
         let router = LoginRouter()
+        let worker = LoginWorker()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
+        interactor.worker = worker
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
@@ -48,12 +51,40 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
     
     // MARK: @IBOutlet
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
     
+    @IBOutlet weak var inputCenterYConstraint: NSLayoutConstraint!
     // MARK: View lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         setupView()
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification){
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        if ((self.view.bounds.height / 2) - 70) < keyboardFrame.cgRectValue.height {
+            UIView.animate(withDuration: 0.2) {
+                self.inputCenterYConstraint.constant = -(keyboardFrame.cgRectValue.height / 3)
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification){
+        UIView.animate(withDuration: 0.2) {
+            self.inputCenterYConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
     }
     
     private func setupView() {
@@ -71,9 +102,18 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    // MARK: Do something
     @IBAction func didTouchLogin(_ sender: Any) {
-        #warning("Login")
+        let login = Login.User.Request(user: username.text, password: password.text)
+        interactor?.callUserLogin(with: login)
+    }
+}
+
+extension LoginViewController: LoginDisplayLogic {
+    func displayAlert(_ alert: UIAlertController) {
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func goToStatement() {
         router?.routeToStatement(segue: nil)
     }
 }

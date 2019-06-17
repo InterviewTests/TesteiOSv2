@@ -11,28 +11,49 @@
 //
 
 import UIKit
+import Foundation
 
 protocol LoginBusinessLogic{
-//  func doSomething(request: Login.Something.Request)
+    func callUserLogin(with model: Login.User.Request)
 }
 
 protocol LoginDataStore{
-  //var name: String { get set }
+    var user: Statement.User.ViewModel? { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore{
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-//  func doSomething(request: Login.Something.Request)
-//  {
-//    worker = LoginWorker()
-//    worker?.doSomeWork()
-//    
-//    let response = Login.Something.Response()
-//    presenter?.presentSomething(response: response)
-//  }
+    var user: Statement.User.ViewModel?
+    
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
+    
+    func callUserLogin(with model: Login.User.Request) {
+        if model.user == nil || model.password == nil {
+            self.presenter?.showErrorOnLogin("Por favor preencha todos os campos", isBadInput: true)
+            return
+        }
+        
+        if model.password!.range(of: "(?=.*[A-Z])(?=.*[@$!%*#?&])(?=.*[A-Za-z\\d])[A-Za-z\\d@$!%*#?&]{3,}",
+                                 options: .regularExpression) != nil {
+            self.presenter?.showErrorOnLogin("Por favor digite uma senha que contenha um digito maiusculo, um caractere especial e um caractere alfanumérico", isBadInput: true)
+        }
+        
+        worker?.loginUser(model, success: { loginData in
+            if let error = loginData.loginError {
+                self.presenter?.showErrorOnLogin(error.message, isBadInput: false)
+                return
+            }
+            
+            guard let userData = loginData.userAccount else {
+                self.presenter?.showErrorOnLogin("Houve um problema ao obter as informações do seu login", isBadInput: false)
+                return
+            }
+            
+            self.user = Statement.User.ViewModel(from: userData)
+            
+            self.presenter?.goToStatement()
+        }, failure: { error in
+            self.presenter?.showErrorOnLogin(error.localizedDescription, isBadInput: false)
+        })
+    }
 }

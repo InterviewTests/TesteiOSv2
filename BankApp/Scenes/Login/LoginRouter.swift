@@ -46,6 +46,6 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing{
     
     // MARK: Passing data
     func passDataToStatement(source: LoginDataStore, destination: inout StatementDataStore){
-//        destination.name = source.name
+        destination.user = source.user
     }
 }
