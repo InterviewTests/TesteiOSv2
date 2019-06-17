@@ -58,13 +58,13 @@ class TesteiOSTests: XCTestCase {
     }
     
     func testDataConverter() {
-        XCTAssertNil("2".convertoToDate())
-        XCTAssertNil("2019-".convertoToDate())
-        XCTAssertNil("2019-06".convertoToDate())
-        XCTAssertNil("2019-06-".convertoToDate())
-        XCTAssertNil("14-06-2019".convertoToDate())
-        XCTAssertNil("14/06/2019".convertoToDate())
-        XCTAssertEqual("2019-06-14".convertoToDate(), "2019-06-14".convertoToDate())
+        XCTAssertEqual("2".convertoToDate(input: "yyyy-MM-dd", output: "dd/MM/yyyy"), "")
+        XCTAssertEqual("2019-".convertoToDate(input: "yyyy-MM-dd", output: "dd/MM/yyyy"), "")
+        XCTAssertEqual("2019-06".convertoToDate(input: "yyyy-MM-dd", output: "dd/MM/yyyy"), "")
+        XCTAssertEqual("2019-06-".convertoToDate(input: "yyyy-MM-dd", output: "dd/MM/yyyy"), "")
+        XCTAssertEqual("2019-06-14".convertoToDate(input: "yyyy-MM-dd", output: "dd/MM/yyyy"), "14/06/2019")
+        XCTAssertEqual("14-06-2019".convertoToDate(input: "dd-MM-yyyy", output: "dd/MM/yyyy"), "14/06/2019")
+        XCTAssertEqual("2019-06-16".convertoToDate(input: "yyyy-MM-dd", output: "dd/MM/yyyy"), "16/06/2019")
     }
     
     func testBankAccountFormatter() {
