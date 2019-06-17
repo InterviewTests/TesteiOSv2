@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 protocol LoginDisplayLogic: class {
     func displayStatmentView()
@@ -22,11 +23,13 @@ protocol LoginDisplayLogic: class {
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
     func showLoading() {
-        
+        loginButton.isEnabled = false
+        loadingAnimation.startAnimating()
     }
     
     func hideLoading() {
-        
+        loginButton.isEnabled = true
+        loadingAnimation.stopAnimating()
     }
     
     func displayErrorMessage(title: String, message: String) {
@@ -99,6 +102,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         doLogin()
     }
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loadingAnimation: NVActivityIndicatorView!
     
     override func viewDidLoad()
   {
