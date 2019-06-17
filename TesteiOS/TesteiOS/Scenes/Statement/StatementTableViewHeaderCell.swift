@@ -9,5 +9,5 @@
 import UIKit
 
 class StatementTableViewHeaderCell: UITableViewCell {
-    
+    static let identifier = "headerStatementCell"
 }

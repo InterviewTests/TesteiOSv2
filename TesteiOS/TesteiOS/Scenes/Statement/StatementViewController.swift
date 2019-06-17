@@ -100,7 +100,9 @@ class StatementViewController: UIViewController, StatementDisplayLogic {
    
     func setupTableView() {
         let nib = UINib(nibName: "StatementTableViewCell", bundle: nil)
+        let headerNib = UINib(nibName: "StatementTableViewHeaderCell", bundle: nil)
         statementsTableView.register(nib, forCellReuseIdentifier: StatementTableViewCell.identifier)
+        statementsTableView.register(headerNib, forCellReuseIdentifier: StatementTableViewHeaderCell.identifier)
         statementsTableView.dataSource = self
         statementsTableView.delegate = self
     }
@@ -130,5 +132,22 @@ extension StatementViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return statements.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableCell(withIdentifier: StatementTableViewHeaderCell.identifier) else
+        {
+            return UIView()
+        }
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }
