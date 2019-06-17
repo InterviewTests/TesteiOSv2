@@ -20,7 +20,7 @@ class StatementCell: UITableViewCell {
         transactionType.text = model.title
         transactionDate.text = model.date.toString(withFormat: "dd/MM/yyyy")
         transactionDescription.text = model.description
-        transactionValue.text = String.init(format: "R$ %.2f", arguments: [model.value])
+        transactionValue.text = String(format: "R$ %.2f", model.value)
         setupView()
     }
     

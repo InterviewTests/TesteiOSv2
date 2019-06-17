@@ -14,6 +14,7 @@ import UIKit
 
 protocol StatementBusinessLogic {
     func getUser()
+    func requestUserStatement()
 }
 
 protocol StatementDataStore {
@@ -22,6 +23,7 @@ protocol StatementDataStore {
 
 class StatementInteractor: StatementBusinessLogic, StatementDataStore {
     var user: Statement.User.ViewModel?
+    var statement: Statement.Transactions.ViewModel?
     
     var presenter: StatementPresentationLogic?
     var worker: StatementWorker?
@@ -32,5 +34,23 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore {
             return
         }
         presenter?.showUser(user)
+    }
+    
+    func requestUserStatement() {
+        guard let user = user else {
+            presenter?.returnToLogin()
+            return
+        }
+        worker?.getUserStatement(for: user.id, success: { response in
+            let statements = Statement.Transactions.ViewModel(transationList: response.statementList.compactMap({
+                Statement.Transactions.TransactionViewModel(from: $0)
+            }))
+            
+            self.statement = statements
+            self.presenter?.showStatements(statements)
+        }, failure: { error in
+            self.statement = nil
+            self.presenter?.showStatements(Statement.Transactions.ViewModel(transationList: []))
+        })
     }
 }

@@ -14,6 +14,7 @@ import UIKit
 
 protocol StatementPresentationLogic{
     func showUser(_ model: Statement.User.ViewModel)
+    func showStatements(_ model: Statement.Transactions.ViewModel)
     func returnToLogin()
 }
 
@@ -22,6 +23,10 @@ class StatementPresenter: StatementPresentationLogic{
     
     func showUser(_ model: Statement.User.ViewModel) {
         viewController?.showUser(model)
+    }
+    
+    func showStatements(_ model: Statement.Transactions.ViewModel) {
+        viewController?.refreshStatementTable(model)
     }
     
     func returnToLogin() {

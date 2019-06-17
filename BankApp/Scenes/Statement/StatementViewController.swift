@@ -14,6 +14,7 @@ import UIKit
 
 protocol StatementDisplayLogic: class {
     func showUser(_ model: Statement.User.ViewModel)
+    func refreshStatementTable(_ model: Statement.Transactions.ViewModel)
     func returnToLogin()
 }
 
@@ -67,6 +68,8 @@ class StatementViewController: UITableViewController {
     }
     
     // MARK: View lifecycle
+    private var displayerTransactions: [Statement.Transactions.TransactionViewModel]?
+    
     @IBOutlet weak var username: UIBarButtonItem!
     @IBOutlet weak var bankAccountNumber: UILabel!
     @IBOutlet weak var balance: UILabel!
@@ -75,6 +78,7 @@ class StatementViewController: UITableViewController {
         super.viewDidLoad()
         setupView()
         interactor?.getUser()
+        interactor?.requestUserStatement()
     }
     
     private func setupView() {
@@ -126,6 +130,11 @@ extension StatementViewController: StatementDisplayLogic {
         balance.text = String(format: "R$ %.2f", model.balance)
     }
     
+    func refreshStatementTable(_ model: Statement.Transactions.ViewModel) {
+        displayerTransactions = model.transationList
+        statementTable?.reloadData()
+    }
+    
     func returnToLogin() {
         close()
     }
@@ -133,13 +142,18 @@ extension StatementViewController: StatementDisplayLogic {
 
 extension StatementViewController: StatementTableDataSource {
     func statementTableDataSource(_ statementTable: StatementTableController, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return displayerTransactions?.count ?? 0
     }
     
     func planOptionCollection(_ statementTable: StatementTableController, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = statementTable.dequeueReusableCell(withReuseIdentifier: StatementCell.typeName, for: indexPath) as? StatementCell else { return UITableViewCell() }
-        let date = "01/05/2020".toDate(withFormat: "dd/MM/yyyy") ?? Date()
-        cell.setup(from: Statement.Transactions.TransactionViewModel(title: "Pagamento", description: "Descrição", date: date, value: 1000.45))
+        
+        if displayerTransactions?.count ?? 0 < (indexPath.row + 1) {
+            return UITableViewCell()
+        }
+        guard let transaction = displayerTransactions?[indexPath.row]  else { return UITableViewCell() }
+        
+        cell.setup(from: transaction)
         return cell
     }
 }

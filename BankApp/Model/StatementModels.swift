@@ -18,12 +18,14 @@ enum Statement {
         struct Response { }
         
         struct ViewModel {
+            let id: Int
             let name: String
             let bankAccount: String
             let agency: String
             let balance: Double
             
             init?(from model: Login.User.UserAccount) {
+                id = model.userId
                 name = model.name
                 bankAccount = model.bankAccount
                 agency = model.agency
@@ -62,6 +64,15 @@ enum Statement {
             let description: String
             let date: Date
             let value: Double
+            
+            init?(from model: Statement.Transactions.Transaction) {
+                guard let modelDate = model.date.toDate(withFormat: "yyyy-MM-dd") else { return nil }
+                date = modelDate
+                
+                title = model.title
+                description = model.description
+                value = model.value
+            }
         }
     }
 }
