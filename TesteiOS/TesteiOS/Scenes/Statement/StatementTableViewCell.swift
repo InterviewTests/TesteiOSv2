@@ -20,6 +20,6 @@ class StatementTableViewCell: UITableViewCell {
         titleLabel.text = statement.title
         descriptionLabel.text = statement.description
         dateLabel.text =  statement.date!.convertoToDate(input: "yyyy-MM-dd", output: "dd/MM/yyyy")
-        valueLabel.text = "R$ "+(statement.value?.changeCurrency())!
+        valueLabel.text = statement.value?.changeCurrency()!
     }
 }
