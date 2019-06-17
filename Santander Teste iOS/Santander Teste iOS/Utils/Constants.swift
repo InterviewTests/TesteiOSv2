@@ -33,6 +33,7 @@ struct K {
     
     struct AccountScene {
         //Strings
+        static let recentes = "Recentes"
         static let conta = "Conta"
         static let saldo = "Saldo"
         

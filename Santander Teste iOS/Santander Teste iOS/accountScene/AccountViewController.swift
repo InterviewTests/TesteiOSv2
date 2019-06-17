@@ -22,6 +22,7 @@ class AccountViewController: UIViewController, AccountDisplayLogic {
     let accountLabel = UILabel()
     let saldoLabel = UILabel()
     let saldoValueLabel = UILabel()
+    let recentesLabel = UILabel()
     let tableView = UITableView()
     
     var interactor: AccountBusinessLogic?
@@ -116,7 +117,11 @@ extension AccountViewController: ViewCode {
         self.saldoValueLabel.font = UIFont(name: "Arial", size: 25)
         self.userAccountView.addSubview(self.saldoValueLabel)
         
-//        self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
+        self.recentesLabel.textColor = K.Colors.darkGray
+        self.recentesLabel.text = K.AccountScene.recentes
+        self.recentesLabel.font = UIFont(name: "Arial", size: 17)
+        self.view.addSubview(self.recentesLabel)
+        
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         self.tableView.separatorStyle = .none
         self.view.addSubview(self.tableView)
@@ -170,8 +175,14 @@ extension AccountViewController: ViewCode {
             make.bottom.greaterThanOrEqualToSuperview().inset(18)
         }
         
+        self.recentesLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.userAccountView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(18)
+            make.trailing.equalToSuperview().inset(18)
+        }
+        
         self.tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.userAccountView.snp.bottom)
+            make.top.equalTo(self.recentesLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
