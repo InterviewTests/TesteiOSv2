@@ -14,31 +14,38 @@ import UIKit
 
 protocol ExtractBusinessLogic
 {
-  func getStatementList(request: Extract.Fetch.Request)
+    func getStatementList()
+    func setUserData()
 }
 
 protocol ExtractDataStore
 {
-  //var name: String { get set }
+    var userData: Login.Fetch.UserData? { get set }
 }
 
 class ExtractInteractor: ExtractBusinessLogic, ExtractDataStore
 {
-  var presenter: ExtractPresentationLogic?
-  var worker: ExtractWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func getStatementList(request: Extract.Fetch.Request)
-  {
-    worker = ExtractWorker()
+    var presenter: ExtractPresentationLogic?
+    var worker: ExtractWorker?
+    var userData: Login.Fetch.UserData?
     
-    if let idUser = request.idUser{
-        worker?.getStatementList(idUser: idUser, handler: { (response) in
-            self.presenter?.presentSomething(response: response)
-        })
+    // MARK: Do something
+    
+    func getStatementList()
+    {
+        worker = ExtractWorker()
+        
+        if let idUser = userData?.userId{
+            worker?.getStatementList(idUser: String(idUser), handler: { (response) in
+                self.presenter?.presentSomething(response: response)
+            })
+        }
+        
     }
     
-  }
+    func setUserData(){
+        if let userData = self.userData{
+            presenter?.setUserData(userData: userData)
+        }
+    }
 }

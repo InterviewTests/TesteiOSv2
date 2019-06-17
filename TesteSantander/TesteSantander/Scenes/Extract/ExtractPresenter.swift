@@ -15,6 +15,7 @@ import UIKit
 protocol ExtractPresentationLogic
 {
   func presentSomething(response: Extract.Fetch.Response?)
+    func setUserData(userData: Login.Fetch.UserData)
 }
 
 class ExtractPresenter: ExtractPresentationLogic
@@ -32,4 +33,8 @@ class ExtractPresenter: ExtractPresentationLogic
         viewController?.displayError(errorMessage: "Ocorreu um erro, por favor tente novamente")
     }
   }
+    
+    func setUserData(userData: Login.Fetch.UserData){
+        viewController?.setUserData(userName: userData.name ?? "", userAccount: userData.bankAccount ?? "", userBalance: String(userData.balance ?? 0.0))
+    }
 }

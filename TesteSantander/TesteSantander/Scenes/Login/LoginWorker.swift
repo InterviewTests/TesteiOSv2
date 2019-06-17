@@ -16,7 +16,7 @@ import Alamofire
 class LoginWorker
 {
     
-    func login(user: String, password: String, handler: @escaping((_ response: Login.Something.Response?) -> ()) ){
+    func login(user: String, password: String, handler: @escaping((_ response: Login.Fetch.Response?) -> ()) ){
         let parameters =  ["user": user, "password": password]
         
         Alamofire.request(Constants.loginURL, method: .post, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
@@ -26,7 +26,7 @@ class LoginWorker
                 if let data = response.data{
                     do{
                         let decoder = JSONDecoder()
-                        let response = try decoder.decode(Login.Something.Response.self, from: data)
+                        let response = try decoder.decode(Login.Fetch.Response.self, from: data)
                         handler(response)
                     }catch{
                         print(error)

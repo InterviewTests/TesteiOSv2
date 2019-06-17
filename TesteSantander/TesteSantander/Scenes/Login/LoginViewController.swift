@@ -14,8 +14,8 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    func displaySuccess(viewModel: Login.Something.ViewModel)
-    func displayError(viewModel: Login.Something.ViewModel)
+    func displaySuccess(viewModel: Login.Fetch.ViewModel)
+    func displayError(viewModel: Login.Fetch.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -96,16 +96,16 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     func login(){
         let parameters =  ["user": userNameTextField.text ?? "", "password": userPassTextField.text ?? ""]
-        let request = Login.Something.Request(data: parameters)
+        let request = Login.Fetch.Request(data: parameters)
         interactor?.logUserIn(request: request)
     }
     
-    func displaySuccess(viewModel: Login.Something.ViewModel)
+    func displaySuccess(viewModel: Login.Fetch.ViewModel)
     {
-        performSegue(withIdentifier: "loginSegue", sender: nil)
+        router?.routeToExtractVC(segue: nil)
     }
     
-    func displayError(viewModel: Login.Something.ViewModel) {
+    func displayError(viewModel: Login.Fetch.ViewModel) {
         let alert = UIAlertController(title: "Erro", message: viewModel.errorMessage ?? "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
         }))

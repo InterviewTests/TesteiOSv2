@@ -16,7 +16,7 @@ enum Login
 {
   // MARK: Use cases
   
-  enum Something
+  enum Fetch
   {
     struct Request
     {

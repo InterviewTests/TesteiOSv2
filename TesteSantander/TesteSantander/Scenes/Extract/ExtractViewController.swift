@@ -16,6 +16,7 @@ protocol ExtractDisplayLogic: class
 {
     func displayStatementList(viewModel: Extract.Fetch.ViewModel)
     func displayError(errorMessage: String)
+    func setUserData(userName: String, userAccount: String, userBalance: String)
 }
 
 class ExtractViewController: UIViewController, ExtractDisplayLogic
@@ -30,23 +31,10 @@ class ExtractViewController: UIViewController, ExtractDisplayLogic
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logoutButton: UIButton!
     
-    
-    var userName: String{
-        get{
-            return ""
-        }
-        set(value){
-            userNameLabel.text = value
-        }
-    }
-    var idUser: String? = "1"//apagar
-    
     @IBAction func logoutButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         
     }
-    
-    
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -95,14 +83,14 @@ class ExtractViewController: UIViewController, ExtractDisplayLogic
     {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "ExtractTableViewCell", bundle: nil), forCellReuseIdentifier: "extractTableViewCell")
-        getStatementList()
+        interactor?.getStatementList()
+        interactor?.setUserData()
     }
-
     
-    func getStatementList()
-    {
-        let request = Extract.Fetch.Request(idUser: idUser)
-        interactor?.getStatementList(request: request)
+    func setUserData(userName: String, userAccount: String, userBalance: String){
+        userNameLabel.text = userName
+        userAccountLabel.text = userAccount
+        self.userBalance.text = userBalance
     }
     
     func displayStatementList(viewModel: Extract.Fetch.ViewModel)
