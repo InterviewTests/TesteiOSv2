@@ -35,7 +35,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     func displayErrorMessage(title: String, message: String) {
         hideLoading()
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Tente novamente", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
         present(alert, animated: true)
     }
     
