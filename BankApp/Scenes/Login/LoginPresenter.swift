@@ -13,12 +13,17 @@
 import UIKit
 
 protocol LoginPresentationLogic{
+    func showPersistedUser(_ username: String?)
     func showErrorOnLogin(_ message: String, isBadInput: Bool)
     func goToStatement()
 }
 
 class LoginPresenter: LoginPresentationLogic{
     weak var viewController: LoginDisplayLogic?
+    
+    func showPersistedUser(_ username: String?) {
+        viewController?.showPersistedUser(username)
+    }
     
     func showErrorOnLogin(_ message: String, isBadInput: Bool) {
         let title = isBadInput ? "Tente novamente" : "Houve um problema"

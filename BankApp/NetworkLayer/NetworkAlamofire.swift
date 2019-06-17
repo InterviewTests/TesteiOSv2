@@ -22,7 +22,7 @@ public class NetworkLayerAlamofire: NetworkLayer {
     public func get(_ url: URL, headers: [String : String]?, completion: @escaping (NetworkResult<Data>) -> Void) {
         guard isConnectedToInternet else {
             let error = Errors.noConnectionError({ self.get(url, headers: headers, completion: completion) })
-            //completion(.failure(error))
+            completion(.failure(error))
             return
         }
         
@@ -33,7 +33,7 @@ public class NetworkLayerAlamofire: NetworkLayer {
             }
             
             guard let data = response.data else {
-                //completion(.failure(Errors.serverError(nil)))
+                completion(.failure(Errors.serverError(nil)))
                 return
             }
             

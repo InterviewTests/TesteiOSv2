@@ -12,4 +12,8 @@ struct Constants {
     struct Storyboards {
         static let statement = "Statement"
     }
+    
+    struct Persistence {
+        static let login = "persist_login"
+    }
 }

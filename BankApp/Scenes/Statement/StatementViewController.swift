@@ -118,7 +118,6 @@ class StatementViewController: UITableViewController {
     
     // MARK: Do something
     @IBAction func didTouchLogout(_ sender: Any) {
-        #warning("Remove saved data, go back to login")
         close()
     }
 }

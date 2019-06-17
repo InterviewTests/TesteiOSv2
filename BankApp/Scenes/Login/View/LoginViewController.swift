@@ -13,6 +13,7 @@
 import UIKit
 
 protocol LoginDisplayLogic: class{
+    func showPersistedUser(_ username: String?)
     func displayAlert(_ alert: UIAlertController)
     func goToStatement()
 }
@@ -56,8 +57,7 @@ class LoginViewController: UIViewController{
     
     @IBOutlet weak var inputCenterYConstraint: NSLayoutConstraint!
     // MARK: View lifecycle
-    override func viewDidLoad()
-    {
+    override func viewDidLoad(){
         super.viewDidLoad()
         setupView()
         
@@ -99,6 +99,7 @@ class LoginViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        interactor?.getPersistedUser()
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -110,6 +111,10 @@ class LoginViewController: UIViewController{
 }
 
 extension LoginViewController: LoginDisplayLogic {
+    func showPersistedUser(_ username: String?) {
+        self.username.text = username ?? self.username.text
+    }
+    
     func displayAlert(_ alert: UIAlertController) {
         loginButton.isEnabled = true
         present(alert, animated: true, completion: nil)

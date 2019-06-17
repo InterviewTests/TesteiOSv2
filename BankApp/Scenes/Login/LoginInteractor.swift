@@ -15,6 +15,7 @@ import Foundation
 
 protocol LoginBusinessLogic{
     func callUserLogin(with model: Login.User.Request)
+    func getPersistedUser()
 }
 
 protocol LoginDataStore{
@@ -33,7 +34,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore{
             return
         }
         
-        if model.password!.range(of: "(?=.*[A-Z])(?=.*[@$!%*#?&])(?=.*[A-Za-z\\d])[A-Za-z\\d@$!%*#?&]{3,}",
+        if model.password!.range(of: "^(?=.*[A-Z])(?=.*[@$!%*#?&])(?=.*[A-Za-z\\d])[A-Za-z\\d@$!%*#?&]{3,}$",
                                  options: .regularExpression) != nil {
             self.presenter?.showErrorOnLogin("Por favor digite uma senha que contenha um digito maiusculo, um caractere especial e um caractere alfanumérico", isBadInput: true)
         }
@@ -50,10 +51,14 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore{
             }
             
             self.user = Statement.User.ViewModel(from: userData)
-            
+            self.worker?.setUserToPersistence((model.user)!)
             self.presenter?.goToStatement()
         }, failure: { error in
             self.presenter?.showErrorOnLogin(error.localizedDescription, isBadInput: false)
         })
+    }
+    
+    func getPersistedUser() {
+        presenter?.showPersistedUser(worker?.getUserPersisted())
     }
 }

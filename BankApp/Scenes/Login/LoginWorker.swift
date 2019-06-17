@@ -29,4 +29,12 @@ class LoginWorker {
             }
         }
     }
+    
+    func getUserPersisted() -> String? {
+        return UserDefaults.standard.string(forKey: Constants.Persistence.login)
+    }
+    
+    func setUserToPersistence(_ user: String) {
+        UserDefaults.standard.set(user, forKey: Constants.Persistence.login)
+    }
 }
