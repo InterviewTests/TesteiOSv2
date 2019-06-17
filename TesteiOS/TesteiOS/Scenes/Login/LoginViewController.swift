@@ -98,11 +98,13 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     @IBAction func loginAction(_ sender: UIButton) {
         doLogin()
     }
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad()
   {
     super.viewDidLoad()
     view.endEditing(true)
+    loginButton.layer.cornerRadius = 4.0
   }
   
 
