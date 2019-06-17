@@ -112,7 +112,7 @@ class StatementViewController: UIViewController, StatementDisplayLogic {
     let userAccount = viewModel.userAccount!
     statements = viewModel.statements!
     nameLabel.text = userAccount.name
-        accountLabel.text = userAccount.agency + " / " + userAccount.bankAccount.bankAccountFormatter()
+        accountLabel.text = userAccount.bankAccount + " / " + userAccount.agency.bankAccountFormatter() 
     balanceLabel.text = userAccount.balance.changeCurrency()!
 
     }
