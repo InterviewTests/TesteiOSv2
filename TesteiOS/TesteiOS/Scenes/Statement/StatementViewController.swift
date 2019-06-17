@@ -127,6 +127,7 @@ extension StatementViewController: UITableViewDataSource, UITableViewDelegate {
         let statement = statements[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "statementCell") as! StatementTableViewCell
         cell.setStatement(statement: statement)
+        cell.addShadow()
         return cell
     }
     
@@ -149,5 +150,19 @@ extension StatementViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 12.0
+    }
+}
+
+extension UIView {
+    func addShadow(){
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowRadius = 2.0
+        self.layer.cornerRadius = 6.0
+        self.layer.shadowOffset = CGSize.init(width: 1.0, height: 1.0)
     }
 }
