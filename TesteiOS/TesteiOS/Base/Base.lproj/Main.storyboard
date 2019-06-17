@@ -37,7 +37,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQ7-He-Cgm">
                                 <rect key="frame" x="87" y="641" width="241" height="62"/>
@@ -52,24 +52,39 @@
                                     <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wzh-8y-zT9"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Lw-kg-pl8" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="446" width="50" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.23137254900000001" green="0.28235294119999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4aG-06-8iF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="5Fo-zE-nKY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Lw-kg-pl8" secondAttribute="trailing" constant="182" id="5Hz-gS-C46"/>
                             <constraint firstItem="aG4-jp-JQJ" firstAttribute="top" secondItem="6a5-lt-aNZ" secondAttribute="bottom" constant="21" id="5vk-Pp-FJC"/>
                             <constraint firstItem="aG4-jp-JQJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="DPw-fG-WsD"/>
                             <constraint firstItem="6a5-lt-aNZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="EiL-Hm-aDL"/>
+                            <constraint firstItem="8Lw-kg-pl8" firstAttribute="top" secondItem="aG4-jp-JQJ" secondAttribute="bottom" constant="74" id="OAJ-1r-aJt"/>
+                            <constraint firstItem="oQ7-He-Cgm" firstAttribute="top" secondItem="8Lw-kg-pl8" secondAttribute="bottom" constant="145" id="OyF-ze-Cbq"/>
                             <constraint firstItem="4aG-06-8iF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="SaE-Xk-i7Y"/>
                             <constraint firstItem="6a5-lt-aNZ" firstAttribute="top" secondItem="4aG-06-8iF" secondAttribute="bottom" constant="105" id="Spt-Xm-bel"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aG4-jp-JQJ" secondAttribute="trailing" constant="16" id="ZBA-1I-6aw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oQ7-He-Cgm" secondAttribute="bottom" constant="33" id="au8-Un-B6x"/>
                             <constraint firstItem="oQ7-He-Cgm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="dbW-cJ-ZbM"/>
+                            <constraint firstItem="8Lw-kg-pl8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="182" id="q7d-uH-8Iw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6a5-lt-aNZ" secondAttribute="trailing" constant="16" id="y1Y-Pw-eKa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oQ7-He-Cgm" secondAttribute="trailing" constant="86" id="y71-y0-lLD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="loadingAnimation" destination="8Lw-kg-pl8" id="0Ti-SX-OgU"/>
+                        <outlet property="loginButton" destination="oQ7-He-Cgm" id="yj2-wf-Nl8"/>
                         <outlet property="loginTextField" destination="6a5-lt-aNZ" id="aT6-BV-SVd"/>
                         <outlet property="passwordTextField" destination="aG4-jp-JQJ" id="8VK-8j-CHr"/>
                     </connections>

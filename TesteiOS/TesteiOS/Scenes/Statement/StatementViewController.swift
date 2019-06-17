@@ -100,7 +100,9 @@ class StatementViewController: UIViewController, StatementDisplayLogic {
    
     func setupTableView() {
         let nib = UINib(nibName: "StatementTableViewCell", bundle: nil)
+        let headerNib = UINib(nibName: "StatementTableViewHeaderCell", bundle: nil)
         statementsTableView.register(nib, forCellReuseIdentifier: StatementTableViewCell.identifier)
+        statementsTableView.register(headerNib, forCellReuseIdentifier: StatementTableViewHeaderCell.identifier)
         statementsTableView.dataSource = self
         statementsTableView.delegate = self
     }
@@ -109,10 +111,9 @@ class StatementViewController: UIViewController, StatementDisplayLogic {
         
     let userAccount = viewModel.userAccount!
     statements = viewModel.statements!
-//    statementsTableView.reloadData()
-    nameLabel.text = ""//userAccount.name!
-    accountLabel.text = ""//userAccount.agency! + " / " + userAccount.bankAccount!.bankAccountFormatter()
-    balanceLabel.text = ""//userAccount.balance?.changeCurrency()!
+    nameLabel.text = userAccount.name
+        accountLabel.text = userAccount.agency + " / " + userAccount.bankAccount.bankAccountFormatter()
+    balanceLabel.text = userAccount.balance.changeCurrency()!
 
     }
     
@@ -126,10 +127,42 @@ extension StatementViewController: UITableViewDataSource, UITableViewDelegate {
         let statement = statements[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "statementCell") as! StatementTableViewCell
         cell.setStatement(statement: statement)
+        cell.addShadow()
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return statements.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableCell(withIdentifier: StatementTableViewHeaderCell.identifier) else
+        {
+            return UIView()
+        }
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 12.0
+    }
+}
+
+extension UIView {
+    func addShadow(){
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowRadius = 2.0
+        self.layer.cornerRadius = 6.0
+        self.layer.shadowOffset = CGSize.init(width: 1.0, height: 1.0)
     }
 }

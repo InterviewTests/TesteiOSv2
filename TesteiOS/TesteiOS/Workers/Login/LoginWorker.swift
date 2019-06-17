@@ -16,10 +16,10 @@ class LoginWorker
 {
     func doLogin(request: Login.doLogin.Request, callback: @escaping (_ request: Login.doLogin.Response?) -> Void) {
         if !(request.user.isValidEmail || request.user.isValidCpf) {
-            let response = Login.doLogin.Response(userAccount: nil, error: ["wrong_user":"Email / CPF inválido"])
+            let response = Login.doLogin.Response(userAccount: nil, error: ["Login failed":"You have entered an invalid email / CPF or password"])
             callback(response)
         } else if !(request.password.isValidPassword) {
-            let response = Login.doLogin.Response(userAccount: nil, error: ["wrong_password": "Senha"])
+            let response = Login.doLogin.Response(userAccount: nil, error: ["Login failed": "You have entered an invalid email / CPF or password"])
             callback(response)
         } else {
             RestApi.doLogin(user: request.user, password: request.password, callback: { response in

@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 protocol LoginDisplayLogic: class {
     func displayStatmentView()
@@ -22,17 +23,19 @@ protocol LoginDisplayLogic: class {
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
     func showLoading() {
-        
+        loginButton.isEnabled = false
+        loadingAnimation.startAnimating()
     }
     
     func hideLoading() {
-        
+        loginButton.isEnabled = true
+        loadingAnimation.stopAnimating()
     }
     
     func displayErrorMessage(title: String, message: String) {
         hideLoading()
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Tente novamente", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
         present(alert, animated: true)
     }
     
@@ -98,11 +101,14 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     @IBAction func loginAction(_ sender: UIButton) {
         doLogin()
     }
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loadingAnimation: NVActivityIndicatorView!
     
     override func viewDidLoad()
   {
     super.viewDidLoad()
     view.endEditing(true)
+    loginButton.layer.cornerRadius = 4.0
   }
   
 

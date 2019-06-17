@@ -19,7 +19,7 @@ class StatementTableViewCell: UITableViewCell {
     func setStatement(statement: Statement) {
         titleLabel.text = statement.title
         descriptionLabel.text = statement.description
-        dateLabel.text =  "\(statement.date?.convertoToDate() ?? Date())"
-        valueLabel.text = "R$ "+(statement.value?.changeCurrency())!
+        dateLabel.text =  statement.date!.convertoToDate(input: "yyyy-MM-dd", output: "dd/MM/yyyy")
+        valueLabel.text = statement.value?.changeCurrency()!
     }
 }

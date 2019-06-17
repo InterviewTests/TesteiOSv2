@@ -26,11 +26,11 @@ class User: Object, Mappable {
 }
 
 class UserAccount: Object, Mappable {
-    var userId: Int?
-    var name: String?
-    var bankAccount: String?
-    var agency: String?
-    var balance: Double?
+    @objc dynamic var userId: Int = 0
+    @objc dynamic var name: String = ""
+    @objc dynamic var bankAccount: String = ""
+    @objc dynamic var agency: String = ""
+    @objc dynamic var balance: Double = 0.0
     
     required convenience init?(map: Map) {
         self.init()
