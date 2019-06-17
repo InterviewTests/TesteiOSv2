@@ -11,6 +11,7 @@ import UIKit
 
 protocol AccountDisplayLogic: AnyObject {
     func displayAlert(alert: UIAlertController)
+    func dismissAlert()
     func displayUserAccount(userAccount: Account.UserAccountFormatted)
 }
 
@@ -61,6 +62,10 @@ class AccountViewController: UIViewController, AccountDisplayLogic {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func dismissAlert() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func displayUserAccount(userAccount: Account.UserAccountFormatted) {
         self.usernameLabel.text = userAccount.name
         self.accountLabel.text = userAccount.agencyBankAccount
@@ -68,7 +73,7 @@ class AccountViewController: UIViewController, AccountDisplayLogic {
     }
     
     @objc func logout() {
-        self.dismiss(animated: true, completion: nil)
+        self.interactor?.logout()
     }
 }
 
@@ -127,6 +132,7 @@ extension AccountViewController: ViewCode {
         self.view.addSubview(self.tableView)
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.allowsSelection = false
     }
     
     func setupConstraints() {

@@ -12,6 +12,7 @@ protocol AccountBusinessLogic {
     func setUserAccount(userAccount: UserAccount)
     func fetchStatementList()
     func getStatementList() -> [Account.Statement]?
+    func logout()
 }
 
 protocol AccountDataStore {
@@ -38,5 +39,9 @@ class AccountInteractor: AccountBusinessLogic, AccountDataStore {
     
     func getStatementList() -> [Account.Statement]? {
         return self.statementList?.statementList
+    }
+    
+    func logout() {
+        self.presenter?.presentAlert(title: K.AccountScene.logout, message: "")
     }
 }

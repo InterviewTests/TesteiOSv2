@@ -74,6 +74,7 @@ extension LoginViewController: ViewCode {
         self.imageLogo.image = UIImage(named: K.LoginScene.logoImageName)
         self.view.addSubview(self.imageLogo)
         
+        self.textFieldUser.text = UserDefaults.standard.string(forKey: K.UserDefaults.lastUserKey)
         self.textFieldUser.borderStyle = .roundedRect
         self.textFieldUser.placeholder = K.LoginScene.user
         self.textFieldUser.returnKeyType = .next

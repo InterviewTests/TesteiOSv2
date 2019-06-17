@@ -43,7 +43,11 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     }
     
     func validateUser(user: Login.Auth) -> Bool {
-        return user.user.isValidCPF || user.user.isValidEmail()
+        let validation = user.user.isValidCPF || user.user.isValidEmail()
+        if validation {
+            UserDefaults.standard.set(user.user, forKey: K.UserDefaults.lastUserKey)
+        }
+        return validation
     }
     
     func validatePassword(user: Login.Auth) -> Bool {

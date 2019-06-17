@@ -19,7 +19,10 @@ class AccountPresenter: AccountPresentationLogic {
     
     func presentAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: K.LoginScene.ok, style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: K.AccountScene.sim, style: .default, handler: { (action) in
+            self.viewController?.dismissAlert()
+        }))
+        alertController.addAction(UIAlertAction(title: K.AccountScene.cancelar, style: .cancel, handler: nil))
         self.viewController?.displayAlert(alert: alertController)
     }
     
