@@ -14,28 +14,62 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+    func logUserIn(request: Login.Something.Request)
 }
 
 protocol LoginDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
+    //var name: String = ""
     
-//    let response = Login.Something.Response()
-//    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func logUserIn(request: Login.Something.Request)
+    {
+        let user = request.data["user"]
+        let password = request.data["password"]
+        
+        if let error = validateData(user: user, pass: password){
+            var response = Login.Something.Response(userAccount: nil, error: nil)
+            response.error = Login.Something.ErrorData(code: 0, message: error)
+            presenter?.presentSomething(response: response)
+            return
+        }
+        
+        worker = LoginWorker()
+        worker?.login(user: user!, password: password!){ response in
+                self.presenter?.presentSomething(response: response)
+        }
+    }
+    func validateData(user: String?, pass: String?) -> String?{
+        
+        if user == nil || user == "" || pass == nil || user == ""{
+            return "Ambos os campos precisam ser preenchidos."
+        }
+        
+        if !(user!.contains("@") && user!.contains(".")){//It's not a email
+            let CPF = user!
+                .components(separatedBy:CharacterSet.decimalDigits.inverted)
+                .joined(separator: "")
+            if CPF.count != 11{
+                return "O campo user precisa ser uma email ou um CPF"
+            }
+        }
+        
+        let hasAlphanumerics = pass!.rangeOfCharacter(from: CharacterSet.alphanumerics)
+        let hasUpperCase = pass!.rangeOfCharacter(from: CharacterSet.uppercaseLetters)
+        let hasSpecialChar = pass!.rangeOfCharacter(from: CharacterSet.punctuationCharacters)
+        
+        if hasUpperCase == nil || hasSpecialChar == nil || hasAlphanumerics == nil {
+            return "A senha precisa ter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico"
+        }
+        
+        return nil
+    }
 }

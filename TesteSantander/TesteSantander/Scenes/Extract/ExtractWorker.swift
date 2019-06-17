@@ -11,10 +11,29 @@
 //
 
 import UIKit
+import Alamofire
 
 class ExtractWorker
 {
-  func doSomeWork()
-  {
-  }
+    func getStatementList(idUser: String, handler: @escaping( (_ response: Extract.Fetch.Response?) -> ()))
+    {
+        Alamofire.request(Constants.statementListURL + idUser).responseJSON { response in
+            switch response.result {
+            case .success:
+                if let data = response.data{
+                    do{
+                        let decoder = JSONDecoder()
+                        let response = try decoder.decode(Extract.Fetch.Response.self, from: data)
+                        handler(response)
+                    }catch{
+                        print(error)
+                        handler(nil)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+                handler(nil)
+            }
+        }
+    }
 }

@@ -16,10 +16,11 @@ enum Extract
 {
   // MARK: Use cases
   
-  enum Something
+  enum Fetch
   {
     struct Request
     {
+        let idUser: String?
     }
     struct Response: Decodable
     {
@@ -27,6 +28,7 @@ enum Extract
     }
     struct ViewModel
     {
+        let statementList: [StatementItem]?
     }
     
     struct StatementItem: Decodable{

@@ -11,17 +11,18 @@
 //
 
 import UIKit
-import Alamofire
 
 protocol LoginDisplayLogic: class
 {
-  func displaySomething(viewModel: Login.Something.ViewModel)
+    func displaySuccess(viewModel: Login.Something.ViewModel)
+    func displayError(viewModel: Login.Something.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
-  var interactor: LoginBusinessLogic?
-  var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    
+    var interactor: LoginBusinessLogic?
+    var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userPassTextField: UITextField!
@@ -32,57 +33,56 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         login()
     }
     
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = LoginInteractor()
-    let presenter = LoginPresenter()
-    let router = LoginRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-    configureTextFields()
-  }
-  
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = LoginInteractor()
+        let presenter = LoginPresenter()
+        let router = LoginRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        configureTextFields()
+    }
+    
     func configureTextFields(){
         let borderColor = UIColor(red: 220/255, green: 226/255, blue: 238/255, alpha: 1)
         userNameTextField.layer.masksToBounds = true
@@ -96,44 +96,19 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     func login(){
         let parameters =  ["user": userNameTextField.text ?? "", "password": userPassTextField.text ?? ""]
-        
-        Alamofire.request("https://bank-app-test.herokuapp.com/api/login", method: .post, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
-            if let data = response.data{
-                do{
-                    let decoder = JSONDecoder()
-                    let response = try decoder.decode(Login.Something.Response.self, from: data)
-                    
-                    DispatchQueue.main.async {
-                        if response.error?.code == nil{
-                            self.performSegue(withIdentifier: "loginSegue", sender: nil)
-                        }else{
-                            let alert = UIAlertController(title: "Erro", message: response.error!.message, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                                }))
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                    }
-                    
-                }catch{
-                    print(error)
-                    print("Error deserializing")
-                }
-            }
-        }
+        let request = Login.Something.Request(data: parameters)
+        interactor?.logUserIn(request: request)
     }
     
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-//    let request = Login.Something.Request()
-//    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Login.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    func displaySuccess(viewModel: Login.Something.ViewModel)
+    {
+        performSegue(withIdentifier: "loginSegue", sender: nil)
+    }
+    
+    func displayError(viewModel: Login.Something.ViewModel) {
+        let alert = UIAlertController(title: "Erro", message: viewModel.errorMessage ?? "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

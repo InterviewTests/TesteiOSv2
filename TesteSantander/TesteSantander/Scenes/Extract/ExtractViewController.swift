@@ -11,18 +11,18 @@
 //
 
 import UIKit
-import Alamofire
 
 protocol ExtractDisplayLogic: class
 {
-  func displaySomething(viewModel: Extract.Something.ViewModel)
+    func displayStatementList(viewModel: Extract.Fetch.ViewModel)
+    func displayError(errorMessage: String)
 }
 
 class ExtractViewController: UIViewController, ExtractDisplayLogic
 {
-  var interactor: ExtractBusinessLogic?
-  var router: (NSObjectProtocol & ExtractRoutingLogic & ExtractDataPassing)?
-    var response: Extract.Something.Response?
+    var interactor: ExtractBusinessLogic?
+    var router: (NSObjectProtocol & ExtractRoutingLogic & ExtractDataPassing)?
+    var statementList: [Extract.Fetch.StatementItem]?
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userAccountLabel: UILabel!
@@ -31,110 +31,107 @@ class ExtractViewController: UIViewController, ExtractDisplayLogic
     @IBOutlet weak var logoutButton: UIButton!
     
     
-
+    var userName: String{
+        get{
+            return ""
+        }
+        set(value){
+            userNameLabel.text = value
+        }
+    }
+    var idUser: String? = "1"//apagar
+    
     @IBAction func logoutButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         
     }
     
     
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = ExtractInteractor()
-    let presenter = ExtractPresenter()
-    let router = ExtractRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    tableView.register(UINib(nibName: "ExtractTableViewCell", bundle: nil), forCellReuseIdentifier: "extractTableViewCell")
-    doSomething()
-    GetExtractDataTeste()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Extract.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Extract.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
     
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
     
-    func GetExtractDataTeste(){
-        Alamofire.request("https://bank-app-test.herokuapp.com/api/statements/1").responseJSON { response in
-            if let data = response.data{
-                do{
-                    let decoder = JSONDecoder()
-                    self.response = try decoder.decode(Extract.Something.Response.self, from: data)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }catch{
-                    print(error)
-                    print("Error deserializing")
-                }
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = ExtractInteractor()
+        let presenter = ExtractPresenter()
+        let router = ExtractRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
             }
         }
+    }
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        tableView.register(UINib(nibName: "ExtractTableViewCell", bundle: nil), forCellReuseIdentifier: "extractTableViewCell")
+        getStatementList()
+    }
+
+    
+    func getStatementList()
+    {
+        let request = Extract.Fetch.Request(idUser: idUser)
+        interactor?.getStatementList(request: request)
+    }
+    
+    func displayStatementList(viewModel: Extract.Fetch.ViewModel)
+    {
+        statementList = viewModel.statementList
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func displayError(errorMessage: String){
+        let alert = UIAlertController(title: "Erro", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
 extension ExtractViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return response?.statementList?.count ?? 0
+        return statementList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "extractTableViewCell", for: indexPath) as! ExtractTableViewCell
         
-        if response?.statementList != nil{
-            if response!.statementList!.count > indexPath.row{
-                let item = response!.statementList![indexPath.row]
+        if statementList != nil{
+            if statementList!.count > indexPath.row{
+                let item = statementList![indexPath.row]
                 cell.configureCell(title: item.title ?? "", date: item.date ?? "", name: item.desc ?? "", amount: String(item.value ?? 0.0))
             }
         }

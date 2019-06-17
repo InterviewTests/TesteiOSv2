@@ -25,11 +25,13 @@ enum Login
     }
     struct Response: Decodable
     {
-        let userAccount: UserData?
-        let error: ErrorData?
+        var userAccount: UserData?
+        var error: ErrorData?
     }
     struct ViewModel
     {
+        var userAccount: UserData?
+        var errorMessage: String?
     }
     
     struct UserData: Decodable{
@@ -41,8 +43,8 @@ enum Login
     }
     
     struct ErrorData: Decodable{
-        let code: Int?
-        let message: String?
+        var code: Int?
+        var message: String?
     }
   }
 }

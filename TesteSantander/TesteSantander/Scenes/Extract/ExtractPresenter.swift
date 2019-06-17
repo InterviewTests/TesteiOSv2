@@ -14,7 +14,7 @@ import UIKit
 
 protocol ExtractPresentationLogic
 {
-  func presentSomething(response: Extract.Something.Response)
+  func presentSomething(response: Extract.Fetch.Response?)
 }
 
 class ExtractPresenter: ExtractPresentationLogic
@@ -23,9 +23,13 @@ class ExtractPresenter: ExtractPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: Extract.Something.Response)
+  func presentSomething(response: Extract.Fetch.Response?)
   {
-    let viewModel = Extract.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+    
+    if let statementList = response?.statementList{
+        viewController?.displayStatementList(viewModel: Extract.Fetch.ViewModel(statementList: statementList))
+    }else{
+        viewController?.displayError(errorMessage: "Ocorreu um erro, por favor tente novamente")
+    }
   }
 }

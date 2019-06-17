@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-  func presentSomething(response: Login.Something.Response)
+  func presentSomething(response: Login.Something.Response?)
 }
 
 class LoginPresenter: LoginPresentationLogic
@@ -23,9 +23,16 @@ class LoginPresenter: LoginPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: Login.Something.Response)
+  func presentSomething(response: Login.Something.Response?)
   {
-    let viewModel = Login.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+    var viewModel = Login.Something.ViewModel(userAccount: nil, errorMessage: nil)
+    
+    if response == nil || response?.error?.message != nil{
+        viewModel.errorMessage = response?.error?.message ?? "Ocorreu um erro, por favor tente novamente"
+        viewController?.displayError(viewModel: viewModel)
+    }else{
+        viewModel.userAccount = response!.userAccount
+        viewController?.displaySuccess(viewModel: viewModel)
+    }
   }
 }

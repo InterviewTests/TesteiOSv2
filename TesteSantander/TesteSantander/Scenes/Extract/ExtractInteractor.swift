@@ -14,7 +14,7 @@ import UIKit
 
 protocol ExtractBusinessLogic
 {
-  func doSomething(request: Extract.Something.Request)
+  func getStatementList(request: Extract.Fetch.Request)
 }
 
 protocol ExtractDataStore
@@ -30,12 +30,15 @@ class ExtractInteractor: ExtractBusinessLogic, ExtractDataStore
   
   // MARK: Do something
   
-  func doSomething(request: Extract.Something.Request)
+  func getStatementList(request: Extract.Fetch.Request)
   {
     worker = ExtractWorker()
-    worker?.doSomeWork()
     
-//    let response = Extract.Something.Response()
-//    presenter?.presentSomething(response: response)
+    if let idUser = request.idUser{
+        worker?.getStatementList(idUser: idUser, handler: { (response) in
+            self.presenter?.presentSomething(response: response)
+        })
+    }
+    
   }
 }

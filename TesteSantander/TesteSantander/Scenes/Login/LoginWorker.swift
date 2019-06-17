@@ -11,10 +11,32 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginWorker
 {
-  func doSomeWork()
-  {
-  }
+    
+    func login(user: String, password: String, handler: @escaping((_ response: Login.Something.Response?) -> ()) ){
+        let parameters =  ["user": user, "password": password]
+        
+        Alamofire.request(Constants.loginURL, method: .post, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            
+            switch response.result {
+            case .success:
+                if let data = response.data{
+                    do{
+                        let decoder = JSONDecoder()
+                        let response = try decoder.decode(Login.Something.Response.self, from: data)
+                        handler(response)
+                    }catch{
+                        print(error)
+                        handler(nil)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+                handler(nil)
+            }
+        }
+    }
 }
