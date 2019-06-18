@@ -30,10 +30,11 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         self.presenter?.presentLoadingIndicator()
         if self.validateUser(user: auth) && self.validatePassword(user: auth) {
             self.worker.fetchLogin(auth: auth) { (response) in
-                self.presenter?.dismissLoadingIndicator(completion: nil)
-                if let user = response?.userAccount {
-                    self.presenter?.route(userAccount: user)
-                }
+                self.presenter?.dismissLoadingIndicator(completion: {
+                    if let user = response?.userAccount {
+                        self.presenter?.route(userAccount: user)
+                    }
+                })
             }
         } else {
             self.presenter?.dismissLoadingIndicator(completion: {

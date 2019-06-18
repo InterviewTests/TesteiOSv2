@@ -13,6 +13,7 @@ protocol AccountDisplayLogic: AnyObject {
     func displayAlert(alert: UIAlertController)
     func dismissAlert()
     func displayUserAccount(userAccount: Account.UserAccountFormatted)
+    func reloadData()
 }
 
 class AccountViewController: UIViewController, AccountDisplayLogic {
@@ -70,6 +71,10 @@ class AccountViewController: UIViewController, AccountDisplayLogic {
         self.usernameLabel.text = userAccount.name
         self.accountLabel.text = userAccount.agencyBankAccount
         self.saldoValueLabel.text = userAccount.saldo
+    }
+    
+    func reloadData() {
+        self.tableView.reloadData()
     }
     
     @objc func logout() {

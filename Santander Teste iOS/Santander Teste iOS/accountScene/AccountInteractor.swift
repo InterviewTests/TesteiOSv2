@@ -24,7 +24,11 @@ class AccountInteractor: AccountBusinessLogic, AccountDataStore {
     var presenter: AccountPresentationLogic?
     var worker = AccountWorker()
     var userAccount: UserAccount?
-    var statementList: Account.Response?
+    var statementList: Account.Response? {
+        didSet {
+            self.presenter?.reloadTableViewData()
+        }
+    }
     
     func setUserAccount(userAccount: UserAccount) {
         self.userAccount = userAccount

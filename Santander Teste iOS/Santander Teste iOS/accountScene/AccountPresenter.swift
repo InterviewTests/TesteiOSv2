@@ -12,6 +12,7 @@ import UIKit
 protocol AccountPresentationLogic {
     func presentAlert(title: String, message: String)
     func presentUserAccountData(userAccount: UserAccount)
+    func reloadTableViewData()
 }
 
 class AccountPresenter: AccountPresentationLogic {
@@ -29,6 +30,10 @@ class AccountPresenter: AccountPresentationLogic {
     func presentUserAccountData(userAccount: UserAccount) {
         let userAccountFormatted = Account.UserAccountFormatted(name: userAccount.name, agencyBankAccount: formatAgencyBankAccount(agency: userAccount.agency, bankAccount: userAccount.bankAccount), saldo: parseSaldoToString(saldo: userAccount.balance))
         self.viewController?.displayUserAccount(userAccount: userAccountFormatted)
+    }
+    
+    func reloadTableViewData() {
+        self.viewController?.reloadData()
     }
     
     func formatAgencyBankAccount(agency: String, bankAccount: String) -> String {
