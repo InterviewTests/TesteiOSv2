@@ -19,7 +19,7 @@ class TableViewCell: UITableViewCell {
             self.title.text = statement.title
             self.desc.text = statement.desc
             self.date.text = statement.date
-            self.value.text = "R$ \(statement.value)"
+            self.value.text = String(format: "R$ %.02f", statement.value)
         }
     }
 }
