@@ -33,12 +33,14 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
                 self.presenter?.dismissLoadingIndicator(completion: {
                     if let user = response?.userAccount {
                         self.presenter?.route(userAccount: user)
+                        self.presenter?.erasePasswordTextField()
                     }
                 })
             }
         } else {
             self.presenter?.dismissLoadingIndicator(completion: {
                 self.presenter?.presentAlert(title: K.LoginScene.fail, message: K.LoginScene.wrongUserOrPassword)
+                self.presenter?.erasePasswordTextField()
             })
         }
     }

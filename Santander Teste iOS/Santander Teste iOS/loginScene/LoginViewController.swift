@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol LoginDisplayLogic: AnyObject {
+    func displayNoPassword()
     func displayAlert(alert: UIAlertController)
     func dismissAlert(completion: (() -> Void)?)
     func routeToAccountViewController(userAccount: UserAccount)
@@ -131,6 +132,10 @@ extension LoginViewController: ViewCode {
     
     func dismissAlert(completion: (() -> Void)?) {
         self.dismiss(animated: true, completion: completion)
+    }
+    
+    func displayNoPassword() {
+        self.textFieldPassword.text = ""
     }
     
     func routeToAccountViewController(userAccount: UserAccount) {

@@ -13,6 +13,7 @@ protocol LoginPresentationLogic {
     func presentAlert(title: String, message: String)
     func presentLoadingIndicator()
     func dismissLoadingIndicator(completion: (() -> Void)?)
+    func erasePasswordTextField()
     func route(userAccount: UserAccount)
 }
 
@@ -33,6 +34,10 @@ class LoginPresenter: LoginPresentationLogic {
         loadingIndicator.startAnimating()
         alertController.view.addSubview(loadingIndicator)
         self.viewController?.displayAlert(alert: alertController)
+    }
+    
+    func erasePasswordTextField() {
+        self.viewController?.displayNoPassword()
     }
     
     func dismissLoadingIndicator(completion: (() -> Void)?) {
