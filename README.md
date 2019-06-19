@@ -7,6 +7,7 @@ O projeto foi desenvolvido utilizando CocoaPods, então é necessário o comando
 * Quick e Nimble: desenvolvimento de testes unitários.
 * SnapKit: desenvolvimento do AutoLayout programaticamente.
 * Alamofire: requições em protocolos HTTP na API.
+* Material Design Cards: utilizado no layout das células de tabelas.
 
 # Show me the code
 
