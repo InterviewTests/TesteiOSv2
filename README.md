@@ -1,10 +1,7 @@
 # Lucas Conte Ferracioli
 
 ### INSTALAÇÃO:
-O projeto foi desenvolvido utilizando CocoaPods, então é necessário o comando  
-`
-pod install
-` para instalação dos frameworks.
+O projeto foi desenvolvido utilizando CocoaPods, então é necessário o comando  `pod install` para instalação dos frameworks.
 
 ### FRAMEWORKS:
 * Quick e Nimble: desenvolvimento de testes unitários.
