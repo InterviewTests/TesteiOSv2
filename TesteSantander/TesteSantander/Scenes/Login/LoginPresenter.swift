@@ -14,25 +14,30 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-  func presentSomething(response: Login.Fetch.Response?)
+    func presentLoginAttempt(response: Login.Fetch.Response?)
+    func presentSavedLogin(loginData: Login.Fetch.UserLoginData)
 }
 
 class LoginPresenter: LoginPresentationLogic
 {
-  weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Login.Fetch.Response?)
-  {
-    var viewModel = Login.Fetch.ViewModel(userAccount: nil, errorMessage: nil)
+    weak var viewController: LoginDisplayLogic?
     
-    if response == nil || response?.error?.message != nil{
-        viewModel.errorMessage = response?.error?.message ?? "Ocorreu um erro, por favor tente novamente"
-        viewController?.displayError(viewModel: viewModel)
-    }else{
-        viewModel.userAccount = response!.userAccount
-        viewController?.displaySuccess(viewModel: viewModel)
+    // MARK: Do something
+    
+    func presentLoginAttempt(response: Login.Fetch.Response?)
+    {
+        var viewModel = Login.Fetch.ViewModel(userAccount: nil, errorMessage: nil)
+        
+        if response == nil || response?.error?.message != nil{
+            viewModel.errorMessage = response?.error?.message ?? "Ocorreu um erro, por favor tente novamente"
+            viewController?.displayError(viewModel: viewModel)
+        }else{
+            viewModel.userAccount = response!.userAccount
+            viewController?.displaySuccess(viewModel: viewModel)
+        }
     }
-  }
+    
+    func presentSavedLogin(loginData: Login.Fetch.UserLoginData){
+        viewController?.displaySavedLogin(loginData: loginData)
+    }
 }

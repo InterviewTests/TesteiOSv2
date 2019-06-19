@@ -16,6 +16,7 @@ protocol LoginDisplayLogic: class
 {
     func displaySuccess(viewModel: Login.Fetch.ViewModel)
     func displayError(viewModel: Login.Fetch.ViewModel)
+    func displaySavedLogin(loginData: Login.Fetch.UserLoginData)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -81,6 +82,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     {
         super.viewDidLoad()
         configureTextFields()
+        checkSavedLogin()
+    }
+    
+    func checkSavedLogin(){
+        interactor?.checkSavedLogin()
     }
     
     func configureTextFields(){
@@ -110,5 +116,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func displaySavedLogin(loginData: Login.Fetch.UserLoginData){
+        userNameTextField.text = loginData.user
+        userPassTextField.text = loginData.password
     }
 }

@@ -46,5 +46,10 @@ enum Login
         var code: Int?
         var message: String?
     }
+    
+    struct UserLoginData{
+        var user: String?
+        var password: String?
+    }
   }
 }

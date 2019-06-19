@@ -35,6 +35,6 @@ class ExtractPresenter: ExtractPresentationLogic
   }
     
     func setUserData(userData: Login.Fetch.UserData){
-        viewController?.setUserData(userName: userData.name ?? "", userAccount: userData.bankAccount ?? "", userBalance: String(userData.balance ?? 0.0))
+        viewController?.setUserData(userName: userData.name ?? "", userAccount: userData.bankAccount ?? "", userBalance: "R$" + String(userData.balance ?? 0.0))
     }
 }

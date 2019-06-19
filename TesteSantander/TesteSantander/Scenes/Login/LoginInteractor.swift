@@ -15,6 +15,7 @@ import UIKit
 protocol LoginBusinessLogic
 {
     func logUserIn(request: Login.Fetch.Request)
+    func checkSavedLogin()
 }
 
 protocol LoginDataStore
@@ -27,6 +28,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
     var userData: Login.Fetch.UserData?
+    var userSavedData: Login.Fetch.UserLoginData?
     
     // MARK: Do something
     
@@ -38,14 +40,17 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         if let error = validateData(user: user, pass: password){
             var response = Login.Fetch.Response(userAccount: nil, error: nil)
             response.error = Login.Fetch.ErrorData(code: 0, message: error)
-            presenter?.presentSomething(response: response)
+            presenter?.presentLoginAttempt(response: response)
             return
         }
         
         worker = LoginWorker()
         worker?.login(user: user!, password: password!){ response in
             self.userData = response?.userAccount
-            self.presenter?.presentSomething(response: response)
+            self.presenter?.presentLoginAttempt(response: response)
+            if response != nil || response?.error?.message == nil{
+                _ = self.saveLoginData(loginData: Login.Fetch.UserLoginData(user: user, password: password))
+            }
         }
     }
     func validateData(user: String?, pass: String?) -> String?{
@@ -73,4 +78,27 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         
         return nil
     }
+    
+    func checkSavedLogin(){
+        let savedEmailItem = KeychainService.loadPassword(service: Constants.keyChainServiceName, account: Constants.savedEmail)
+        let savedPassItem = KeychainService.loadPassword(service: Constants.keyChainServiceName, account: Constants.savedPass)
+        
+        if savedEmailItem.1 == errSecSuccess && savedPassItem.1 == errSecSuccess{
+            presenter?.presentSavedLogin(loginData: Login.Fetch.UserLoginData(user: savedEmailItem.0, password: savedPassItem.0))
+        }
+    }
+    
+    func saveLoginData(loginData: Login.Fetch.UserLoginData) -> Bool{
+        var statusEmail = KeychainService.savePassword(service: Constants.keyChainServiceName, account: Constants.savedEmail, data: loginData.user ?? "")
+        if statusEmail == errSecDuplicateItem{
+            statusEmail = KeychainService.updatePassword(service: Constants.keyChainServiceName, account: Constants.savedEmail, data: loginData.user ?? "")
+        }
+        
+        var statusPass = KeychainService.savePassword(service: Constants.keyChainServiceName, account: Constants.savedPass, data: loginData.password ?? "")
+        if statusPass == errSecDuplicateItem{
+            statusPass = KeychainService.updatePassword(service: Constants.keyChainServiceName, account: Constants.savedPass, data: loginData.password ?? "")
+        }
+        return statusEmail == errSecSuccess && statusEmail == errSecSuccess
+    }
+    
 }
