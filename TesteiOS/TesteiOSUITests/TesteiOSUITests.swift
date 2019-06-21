@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import TesteiOS
 
 class TesteiOSUITests: XCTestCase {
     
@@ -30,11 +31,6 @@ class TesteiOSUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
     func testValidLogin() {
         let app = XCUIApplication()
@@ -44,7 +40,7 @@ class TesteiOSUITests: XCTestCase {
         userTextField.tap()
         userTextField.typeText(validCpf)
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(validPassword)
@@ -64,7 +60,7 @@ class TesteiOSUITests: XCTestCase {
         userTextField.tap()
         userTextField.typeText(invalidCpf)
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(invalidPassword)
@@ -82,8 +78,22 @@ class TesteiOSUITests: XCTestCase {
         invalidAlert.buttons["Try again"].tap()
     }
     
-
+    func testStatementList() {
+        
+        let app = XCUIApplication()
+        app/*@START_MENU_TOKEN@*/.textFields["userTextField"]/*[[".textFields[\"User\"]",".textFields[\"userTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.textFields["userTextField"]/*[[".textFields[\"User\"]",".textFields[\"userTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.typeText(validCpf)
+        app/*@START_MENU_TOKEN@*/.secureTextFields["passwordTextField"]/*[[".secureTextFields[\"Password\"]",".secureTextFields[\"passwordTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.secureTextFields["passwordTextField"]/*[[".secureTextFields[\"Password\"]",".secureTextFields[\"passwordTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.typeText(validPassword)
+        app.buttons["Login"].tap()
+        app.buttons["logout 2"].tap()
+        let table = app.tables.element(boundBy: 0)
+        app.tables.cells.allElementsBoundByIndex[1].tap()
+        XCTAssert(table.cells.count != 0)
+    }
 }
+
+
 
 extension XCUIElement {
     func forceTap() {
