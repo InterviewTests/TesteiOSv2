@@ -19,7 +19,7 @@ protocol LoginDisplayLogic: class
     func displaySavedLogin(loginData: Login.Fetch.UserLoginData)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
+class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDelegate
 {
     
     var interactor: LoginBusinessLogic?
@@ -94,10 +94,22 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         userNameTextField.layer.masksToBounds = true
         userNameTextField.layer.borderColor = borderColor.cgColor
         userNameTextField.layer.borderWidth = 1.0
+        userNameTextField.delegate = self
         
         userPassTextField.layer.masksToBounds = true
         userPassTextField.layer.borderColor = borderColor.cgColor
         userPassTextField.layer.borderWidth = 1.0
+        userPassTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userNameTextField{
+            _ = userPassTextField.becomeFirstResponder()
+        }else{
+            view.endEditing(true)
+        }
+        
+        return false
     }
     
     func login(){
