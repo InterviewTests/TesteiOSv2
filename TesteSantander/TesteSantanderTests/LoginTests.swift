@@ -13,12 +13,17 @@ class LoginTests: XCTestCase {
     
     var interactor: LoginInteractor!
     var worker: LoginWorker!
+    var viewController: LoginViewController!
+    var window: UIWindow!
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
+        window = UIWindow()
         interactor = LoginInteractor()
         worker = LoginWorker()
+        let bundle = Bundle.main
+        let storyboard = UIStoryboard(name: "Main", bundle: bundle)
+        viewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
     }
 
     override func tearDown() {
@@ -26,6 +31,8 @@ class LoginTests: XCTestCase {
         
         interactor = nil
         worker = nil
+        viewController = nil
+        window = nil
     }
     
     func testLoginInteractorValidationSuccess(){
@@ -70,11 +77,10 @@ class LoginTests: XCTestCase {
     
     func testLoginIteractorLogUserIn(){
         //Given
-        let user = ("user", "Test@1")
         let sut = LoginInteractor()
         sut.worker = LoginWorkerSpy()
         //When
-        sut.worker?.login(user: user.0, password: user.1){ response in}
+        sut.logUserIn(request: Login.Fetch.Request(data: ["user":"teste@test.com", "password":"1234A@"]))
         //Then
         XCTAssert(((sut.worker) as! LoginWorkerSpy ).loginWorkerCalled, "")
     }
@@ -153,18 +159,20 @@ class LoginTests: XCTestCase {
     func testLoginRouterRouteToExtractVC(){
         //Given
         let userData = Login.Fetch.UserData(userId: 10, name: "Teste", bankAccount: "00000", agency: "000", balance: 13.1)
-        let viewControler = LoginViewController()
-        let router = LoginRouterSpy()
-        let interactor = LoginInteractor()
-        interactor.userData = userData
-        router.dataStore = interactor
-        router.viewController = viewControler
-        viewControler.router = router
-        viewControler.interactor = interactor
-        //When
-        viewControler.displaySuccess(viewModel: Login.Fetch.ViewModel(userAccount: userData, errorMessage: nil))
+        let routerSpy = LoginRouterSpy()
         
-        XCTAssert(router.didCallRouteToExtractVC, "O metodo de transição de tela para ExtractViewController não foi chamado.")
+        viewController.interactor = interactor
+        viewController.router = routerSpy
+        routerSpy.viewController = viewController
+        routerSpy.dataStore = interactor
+        
+        
+        //When
+        window.addSubview(viewController.view)
+        RunLoop.current.run(until: Date())
+        viewController.displaySuccess(viewModel: Login.Fetch.ViewModel(userAccount: userData, errorMessage: nil))
+        
+        XCTAssert(routerSpy.didCallRouteToExtractVC, "O metodo de transição de tela para ExtractViewController não foi chamado.")
         
     }
     

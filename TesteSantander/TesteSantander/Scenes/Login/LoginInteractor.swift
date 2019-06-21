@@ -26,7 +26,7 @@ protocol LoginDataStore
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
     var presenter: LoginPresentationLogic?
-    var worker: LoginWorker?
+    var worker = LoginWorker()
     var userData: Login.Fetch.UserData?
     var userSavedData: Login.Fetch.UserLoginData?
     
@@ -44,8 +44,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
             return
         }
         
-        worker = LoginWorker()
-        worker?.login(user: user!, password: password!){ response in
+        worker.login(user: user!, password: password!){ response in
             self.userData = response?.userAccount
             self.presenter?.presentLoginAttempt(response: response)
             if response != nil || response?.error?.message == nil{

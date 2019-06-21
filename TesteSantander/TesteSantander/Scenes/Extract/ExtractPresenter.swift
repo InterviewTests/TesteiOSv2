@@ -14,25 +14,25 @@ import UIKit
 
 protocol ExtractPresentationLogic
 {
-  func presentSomething(response: Extract.Fetch.Response?)
+    func presentStatementList(response: Extract.Fetch.Response?)
     func setUserData(userData: Login.Fetch.UserData)
 }
 
 class ExtractPresenter: ExtractPresentationLogic
 {
-  weak var viewController: ExtractDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Extract.Fetch.Response?)
-  {
+    weak var viewController: ExtractDisplayLogic?
     
-    if let statementList = response?.statementList{
-        viewController?.displayStatementList(viewModel: Extract.Fetch.ViewModel(statementList: statementList))
-    }else{
-        viewController?.displayError(errorMessage: "Ocorreu um erro, por favor tente novamente")
+    // MARK: Do something
+    
+    func presentStatementList(response: Extract.Fetch.Response?)
+    {
+        
+        if let statementList = response?.statementList{
+            viewController?.displayStatementList(viewModel: Extract.Fetch.ViewModel(statementList: statementList))
+        }else{
+            viewController?.displayError(errorMessage: "Ocorreu um erro, por favor tente novamente")
+        }
     }
-  }
     
     func setUserData(userData: Login.Fetch.UserData){
         viewController?.setUserData(userName: userData.name ?? "", userAccount: userData.bankAccount ?? "", userBalance: "R$" + String(userData.balance ?? 0.0))

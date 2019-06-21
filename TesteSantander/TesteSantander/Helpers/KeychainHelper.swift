@@ -46,7 +46,7 @@ public class KeychainService: NSObject {
 //            }
             return status
         }
-        return OSStatus()
+        return OSStatus(-1)
     }
     
     class func loadPassword(service: String, account:String) -> (String, OSStatus) {

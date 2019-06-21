@@ -26,18 +26,17 @@ protocol ExtractDataStore
 class ExtractInteractor: ExtractBusinessLogic, ExtractDataStore
 {
     var presenter: ExtractPresentationLogic?
-    var worker: ExtractWorker?
+    var worker: ExtractWorker = ExtractWorker()
     var userData: Login.Fetch.UserData?
     
     // MARK: Do something
     
     func getStatementList()
     {
-        worker = ExtractWorker()
         
         if let idUser = userData?.userId{
-            worker?.getStatementList(idUser: String(idUser), handler: { (response) in
-                self.presenter?.presentSomething(response: response)
+            worker.getStatementList(idUser: String(idUser), handler: { (response) in
+                self.presenter?.presentStatementList(response: response)
             })
         }
         
