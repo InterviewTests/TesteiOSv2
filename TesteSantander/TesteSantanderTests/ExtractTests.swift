@@ -53,6 +53,24 @@ class ExtractTests: XCTestCase {
         XCTAssert(presenterSpy.didCallSetUserData, "O metodo setUserData no presenter nao foi chamado.")
     }
     
+    func testExtractWorkerCheckResult(){
+        //Given
+        let responseModel = Extract.Fetch.Response(statementList: [Extract.Fetch.StatementItem(title: "title", desc: "desc", date: "date", value: 0.1)])
+        let worker = ExtractWorker()
+        let jsonEncoder = JSONEncoder()
+        //When
+        do{
+            let jsonData = try jsonEncoder.encode(responseModel)
+            worker.checkResult(isSuccsess: true, data: jsonData) { response in
+                if response == nil{
+                    XCTFail("Falha na decodificação do JSON")
+                }
+            }
+        }catch{
+            XCTFail("Falha codificando o JSON de teste \(error)")
+        }
+    }
+    
     func testPresentStatementListSucces(){
         //Given
         let viewControllerSpy = ExtractViewControllerSpy()

@@ -18,22 +18,28 @@ class ExtractWorker
     func getStatementList(idUser: String, handler: @escaping( (_ response: Extract.Fetch.Response?) -> ()))
     {
         Alamofire.request(Constants.statementListURL + idUser).responseJSON { response in
-            switch response.result {
-            case .success:
-                if let data = response.data{
-                    do{
-                        let decoder = JSONDecoder()
-                        let response = try decoder.decode(Extract.Fetch.Response.self, from: data)
-                        handler(response)
-                    }catch{
-                        print(error)
-                        handler(nil)
-                    }
+            self.checkResult(isSuccsess: response.result.isSuccess, data: response.data, handler: handler)
+        }
+    }
+    
+    func checkResult(isSuccsess: Bool, data: Data?, handler: @escaping((_ response: Extract.Fetch.Response?) -> ())){
+        if isSuccsess{
+            if let responseData = data{
+                do{
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(Extract.Fetch.Response.self, from: responseData)
+                    handler(response)
+                }catch{
+                    print(error)
+                    handler(nil)
                 }
-            case .failure(let error):
-                print(error)
+            }else{
                 handler(nil)
             }
+        }else{
+            handler(nil)
         }
+        
+        
     }
 }

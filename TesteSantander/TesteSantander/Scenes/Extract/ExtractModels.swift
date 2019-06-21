@@ -22,7 +22,7 @@ enum Extract
     {
         let idUser: String?
     }
-    struct Response: Decodable
+    struct Response: Codable
     {
         let statementList: [StatementItem]?
     }
@@ -31,7 +31,7 @@ enum Extract
         let statementList: [StatementItem]?
     }
     
-    struct StatementItem: Decodable{
+    struct StatementItem: Codable{
         let title: String?
         let desc: String?
         let date: String?

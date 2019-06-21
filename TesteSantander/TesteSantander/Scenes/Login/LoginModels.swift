@@ -23,7 +23,7 @@ enum Login
         let data: [String: String]
         
     }
-    struct Response: Decodable
+    struct Response: Codable
     {
         var userAccount: UserData?
         var error: ErrorData?
@@ -34,7 +34,7 @@ enum Login
         var errorMessage: String?
     }
     
-    struct UserData: Decodable{
+    struct UserData: Codable{
         let userId: Int?
         let name: String?
         let bankAccount: String?
@@ -42,7 +42,7 @@ enum Login
         let balance: Float?
     }
     
-    struct ErrorData: Decodable{
+    struct ErrorData: Codable{
         var code: Int?
         var message: String?
     }

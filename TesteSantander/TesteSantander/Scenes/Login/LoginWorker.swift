@@ -21,22 +21,30 @@ class LoginWorker
         
         Alamofire.request(Constants.loginURL, method: .post, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
             
-            switch response.result {
-            case .success:
-                if let data = response.data{
-                    do{
-                        let decoder = JSONDecoder()
-                        let response = try decoder.decode(Login.Fetch.Response.self, from: data)
-                        handler(response)
-                    }catch{
-                        print(error)
-                        handler(nil)
-                    }
-                }
-            case .failure(let error):
-                print(error)
-                handler(nil)
-            }
+            self.checkResult(isSuccsess: response.result.isSuccess, data: response.data, handler: handler)
         }
     }
+    
+    func checkResult(isSuccsess: Bool, data: Data?, handler: @escaping((_ response: Login.Fetch.Response?) -> ())){
+        if isSuccsess{
+            if let responseData = data{
+                do{
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(Login.Fetch.Response.self, from: responseData)
+                    handler(response)
+                }catch{
+                    print(error)
+                    handler(nil)
+                }
+            }else{
+                handler(nil)
+            }
+        }else{
+            handler(nil)
+        }
+        
+        
+    }
+    
+    
 }

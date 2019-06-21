@@ -8,6 +8,8 @@
 
 import XCTest
 @testable import TesteSantander
+import Alamofire
+
 
 class LoginTests: XCTestCase {
     
@@ -83,6 +85,23 @@ class LoginTests: XCTestCase {
         sut.logUserIn(request: Login.Fetch.Request(data: ["user":"teste@test.com", "password":"1234A@"]))
         //Then
         XCTAssert(((sut.worker) as! LoginWorkerSpy ).loginWorkerCalled, "")
+    }
+    
+    func testLoginInteractorWorker(){
+        //Given
+        let responseModel = Login.Fetch.Response(userAccount: Login.Fetch.UserData(userId: 0, name: "name", bankAccount: "00000", agency: "00", balance: 0.1), error: nil)
+        let jsonEncoder = JSONEncoder()
+        //When
+        do{
+            let jsonData = try jsonEncoder.encode(responseModel)
+            worker.checkResult(isSuccsess: true, data: jsonData) { response in
+                if response == nil{
+                    XCTFail("Falha na decodificação do JSON")
+                }
+            }
+        }catch{
+            XCTFail("Falha codificando o JSON de teste \(error)")
+        }
     }
     
     func testLoginPresenterSuccess(){
