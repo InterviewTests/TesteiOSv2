@@ -132,10 +132,15 @@ class LoginViewController: UIViewController, LoginDisplayLogic
             return }
         
         let validation = ValidationsFields()
+        if validation.isValidEmail(emailStr: user) == false {
+            if user.isCPF == false {
+                EmptyTextField(text: "Verificar campo Username", message: "Entrar com email ou CPF validos")
+                return
+            }
+        }
+        
         if validation.isValidPassword(passID: pass) == false {
-            let alert = UIAlertController(title: "Verificar campo password", message: "A senha deve possuir letra maiuscula, um caracter especial e um caracter alfanumérico", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
+            EmptyTextField(text: "Verificar campo password", message: "A senha deve possuir letra maiuscula, um caracter especial e um caracter alfanumérico")
         }else{
             print("Clique do Login...")
             //Enviando paramentros para preeencher o request presente em model
