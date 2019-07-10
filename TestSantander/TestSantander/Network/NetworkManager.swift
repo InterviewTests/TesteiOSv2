@@ -62,7 +62,6 @@ class NetworkManager {
                 do {
                     let decoder = JSONDecoder()
                     let decodedStatements = try decoder.decode(Statement.self, from: data)
-                    print(decodedStatements.statementList[0].title)
                     
                     completionHandler(decodedStatements.statementList)
                 } catch let error {

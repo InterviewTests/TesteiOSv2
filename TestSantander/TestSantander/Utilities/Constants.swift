@@ -19,9 +19,6 @@ let URL_STATEMENTS = "\(BASE_URL)/statements/"
 // Segues
 let TO_CURRENCY = "toCurrency"
 
-
-// User Defaults
-
 //Headers
 let BEARER_HEADER = [
     "Content-Type": "application/x-www-form-urlencoded"

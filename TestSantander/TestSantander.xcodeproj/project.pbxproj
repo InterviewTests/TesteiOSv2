@@ -11,7 +11,6 @@
 		8013DF6C22AE8A14005AB5DD /* ValidationsFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8013DF6B22AE8A14005AB5DD /* ValidationsFields.swift */; };
 		8013DF6F22AE93FD005AB5DD /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8013DF6E22AE93FD005AB5DD /* RoundedButton.swift */; };
 		801474E622AA810A0094E65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801474E522AA810A0094E65C /* AppDelegate.swift */; };
-		801474E822AA810A0094E65C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801474E722AA810A0094E65C /* ViewController.swift */; };
 		801474EB22AA810A0094E65C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 801474E922AA810A0094E65C /* Main.storyboard */; };
 		801474EE22AA810A0094E65C /* TestSantander.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 801474EC22AA810A0094E65C /* TestSantander.xcdatamodeld */; };
 		801474F022AA810D0094E65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 801474EF22AA810D0094E65C /* Assets.xcassets */; };
@@ -19,7 +18,7 @@
 		801474FE22AA810D0094E65C /* TestSantanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801474FD22AA810D0094E65C /* TestSantanderTests.swift */; };
 		8014750922AA810D0094E65C /* TestSantanderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8014750822AA810D0094E65C /* TestSantanderUITests.swift */; };
 		8014752622AA844C0094E65C /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8014752522AA844C0094E65C /* Statement.swift */; };
-		8014752822AA85920094E65C /* NetworkManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8014752722AA85920094E65C /* NetworkManeger.swift */; };
+		8014752822AA85920094E65C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8014752722AA85920094E65C /* NetworkManager.swift */; };
 		8014753022AA887A0094E65C /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8014752A22AA887A0094E65C /* LoginPresenter.swift */; };
 		8014753122AA887A0094E65C /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8014752B22AA887A0094E65C /* LoginWorker.swift */; };
 		8014753222AA887A0094E65C /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8014752C22AA887A0094E65C /* LoginRouter.swift */; };
@@ -61,7 +60,6 @@
 		8013DF6E22AE93FD005AB5DD /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		801474E222AA810A0094E65C /* TestSantander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSantander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		801474E522AA810A0094E65C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		801474E722AA810A0094E65C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		801474EA22AA810A0094E65C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		801474ED22AA810A0094E65C /* TestSantander.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestSantander.xcdatamodel; sourceTree = "<group>"; };
 		801474EF22AA810D0094E65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,7 +72,7 @@
 		8014750822AA810D0094E65C /* TestSantanderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSantanderUITests.swift; sourceTree = "<group>"; };
 		8014750A22AA810D0094E65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8014752522AA844C0094E65C /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
-		8014752722AA85920094E65C /* NetworkManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManeger.swift; sourceTree = "<group>"; };
+		8014752722AA85920094E65C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8014752A22AA887A0094E65C /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		8014752B22AA887A0094E65C /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		8014752C22AA887A0094E65C /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				8014752322AA83F30094E65C /* Network */,
 				8014751622AA82B30094E65C /* Scenes */,
 				801474E522AA810A0094E65C /* AppDelegate.swift */,
-				801474E722AA810A0094E65C /* ViewController.swift */,
 				801474E922AA810A0094E65C /* Main.storyboard */,
 				801474EF22AA810D0094E65C /* Assets.xcassets */,
 				801474F122AA810D0094E65C /* LaunchScreen.storyboard */,
@@ -224,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				8014752422AA84060094E65C /* Model */,
-				8014752722AA85920094E65C /* NetworkManeger.swift */,
+				8014752722AA85920094E65C /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -462,7 +459,6 @@
 				8013DF6F22AE93FD005AB5DD /* RoundedButton.swift in Sources */,
 				8014752622AA844C0094E65C /* Statement.swift in Sources */,
 				8014753122AA887A0094E65C /* LoginWorker.swift in Sources */,
-				801474E822AA810A0094E65C /* ViewController.swift in Sources */,
 				80677FB122ACB7590016A945 /* StatementModels.swift in Sources */,
 				80D204FD22AAD37600A3E8E0 /* UserAccount.swift in Sources */,
 				80677FB022ACB7590016A945 /* StatementRouter.swift in Sources */,
@@ -474,7 +470,7 @@
 				80677FB222ACB7590016A945 /* StatementViewController.swift in Sources */,
 				8014753222AA887A0094E65C /* LoginRouter.swift in Sources */,
 				8014753422AA887A0094E65C /* LoginViewController.swift in Sources */,
-				8014752822AA85920094E65C /* NetworkManeger.swift in Sources */,
+				8014752822AA85920094E65C /* NetworkManager.swift in Sources */,
 				80677FAE22ACB7590016A945 /* StatementPresenter.swift in Sources */,
 				80D204FA22AAD25200A3E8E0 /* Constants.swift in Sources */,
 			);
