@@ -27,11 +27,11 @@ class LoginManager {
             switch response.result {
             case .success:
                 
-                if let errorModel =  Mapper<ErrorModel>().map(JSONObject:response.result.value), errorModel.code != 0  {
+                if let errorModel =  Mapper<ErrorModel>().map(JSONObject:response.result.value), errorModel.code != 0 {
                     let userInfo: [String : Any] =
                         [
-                            NSLocalizedDescriptionKey :  NSLocalizedString("Error", value: errorModel.message, comment: "") ,
-                            NSLocalizedFailureReasonErrorKey : NSLocalizedString("Error", value: errorModel.message, comment: "")
+                            NSLocalizedDescriptionKey :  NSLocalizedString(errorModel.message, value: errorModel.message, comment: "") ,
+                            NSLocalizedFailureReasonErrorKey : NSLocalizedString(errorModel.message, value: errorModel.message, comment: "")
                         ]
                     let error = NSError(domain: "br.com.thgdigital.teste", code: errorModel.code, userInfo: userInfo)
                     self.output?.error(error: error)

@@ -11,7 +11,7 @@ import ObjectMapper
 
 class ErrorModel: Mappable {
     var code: Int = 0
-    var message: String = ""
+    var message: String = "Error default do sistema"
     
     required init?(map: Map) {}
     

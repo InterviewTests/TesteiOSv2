@@ -44,7 +44,9 @@ class LoginPresenter: LoginPresenterInput {
 extension LoginPresenter: LoginInteractorOutput {
     
     func didError(message: String) {
-        
+        output?.cleanFields()
+        output?.stopLoading()
+        output?.showAlert(message: message)
     }
     
     

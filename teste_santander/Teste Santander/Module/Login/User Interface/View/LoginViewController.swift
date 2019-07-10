@@ -23,8 +23,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userTextField.delegate = self
-        passwordTextField.delegate = self
         setupField()
         setupButton()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -65,11 +63,19 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: UITextFieldDelegate {
-    
-}
-
 extension LoginViewController: LoginPresenterOutput {
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Opss Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (_) in
+         
+        }))
+        alert.addAction(UIAlertAction(title: "Tentar novamente", style: .default, handler: { (_) in
+            self.presenter?.send(user: self.userTextField.text, password: self.passwordTextField.text)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func loading() {
         loginbutton.isEnabled = false

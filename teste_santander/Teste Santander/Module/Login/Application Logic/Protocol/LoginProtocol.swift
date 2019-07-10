@@ -20,6 +20,7 @@ protocol LoginPresenterOutput: class {
     func didCloseKeyboard()
     func loading()
     func stopLoading()
+    func showAlert(message: String)
 }
 
 protocol LoginInteractorInput {
