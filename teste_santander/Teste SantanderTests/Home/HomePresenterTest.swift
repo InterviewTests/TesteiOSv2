@@ -17,7 +17,7 @@ class HomePresenterTest: QuickSpec {
         
         var homePresenter: HomePresenter!
         
-        describe("HomeBuilderTests") {
+        describe("HomePresenterTests") {
             beforeSuite {
                 let route = HomeWireframe()
                 homePresenter = HomePresenterBuilder.make(wireframe: route)
