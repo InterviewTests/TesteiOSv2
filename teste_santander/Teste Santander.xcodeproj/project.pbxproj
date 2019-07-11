@@ -30,6 +30,8 @@
 		AF636ABC22D7797B007A2611 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF636ABB22D7797B007A2611 /* Loader.swift */; };
 		AF636ABD22D77DD5007A2611 /* StatementList.json in Resources */ = {isa = PBXBuildFile; fileRef = AFC9DDFF22CC263D001EBD26 /* StatementList.json */; };
 		AF636ABF22D77E06007A2611 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = AF636ABE22D77E06007A2611 /* User.json */; };
+		AF636AC222D7A59B007A2611 /* HomePresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF636AC122D7A59B007A2611 /* HomePresenterTest.swift */; };
+		AF636AC422D7AC86007A2611 /* HomeInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF636AC322D7AC86007A2611 /* HomeInteractorTest.swift */; };
 		AF6D190422CD1420005DBBF8 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D190322CD1420005DBBF8 /* LoginEntity.swift */; };
 		AF6D190622CD1476005DBBF8 /* LoginEntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D190522CD1476005DBBF8 /* LoginEntityMapper.swift */; };
 		AF6D190922CE2CD7005DBBF8 /* RefreshableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D190822CE2CD6005DBBF8 /* RefreshableCollectionView.swift */; };
@@ -108,6 +110,8 @@
 		AF636AB822D6BEB9007A2611 /* LoginInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorTest.swift; sourceTree = "<group>"; };
 		AF636ABB22D7797B007A2611 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		AF636ABE22D77E06007A2611 /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
+		AF636AC122D7A59B007A2611 /* HomePresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTest.swift; sourceTree = "<group>"; };
+		AF636AC322D7AC86007A2611 /* HomeInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTest.swift; sourceTree = "<group>"; };
 		AF6D190322CD1420005DBBF8 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		AF6D190522CD1476005DBBF8 /* LoginEntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntityMapper.swift; sourceTree = "<group>"; };
 		AF6D190722CD1E00005DBBF8 /* Teste Santander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Teste Santander.entitlements"; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				AF1DD2DE22D510B80099FE02 /* StatementListModel.swift */,
 				AF1DD2E022D511190099FE02 /* StatementModel.swift */,
 				AF636AB122D67A5D007A2611 /* ErrorModel.swift */,
+				AFC9DE1D22CCE6F0001EBD26 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,6 +243,15 @@
 				AF636ABB22D7797B007A2611 /* Loader.swift */,
 			);
 			path = stubJson;
+			sourceTree = "<group>";
+		};
+		AF636AC022D7A56C007A2611 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AF636AC122D7A59B007A2611 /* HomePresenterTest.swift */,
+				AF636AC322D7AC86007A2611 /* HomeInteractorTest.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		AFC9DDAF22CBFE8F001EBD26 = {
@@ -278,9 +292,10 @@
 		AFC9DDCF22CBFE93001EBD26 /* Teste SantanderTests */ = {
 			isa = PBXGroup;
 			children = (
-				AF636ABA22D77940007A2611 /* stubJson */,
-				AF636AB322D6A876007A2611 /* Login */,
+				AF636AC022D7A56C007A2611 /* Home */,
 				AFC9DDD222CBFE93001EBD26 /* Info.plist */,
+				AF636AB322D6A876007A2611 /* Login */,
+				AF636ABA22D77940007A2611 /* stubJson */,
 			);
 			path = "Teste SantanderTests";
 			sourceTree = "<group>";
@@ -366,7 +381,6 @@
 			isa = PBXGroup;
 			children = (
 				AFC9DE0922CC2814001EBD26 /* LoginManager.swift */,
-				AFC9DE1D22CCE6F0001EBD26 /* UserModel.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -786,6 +800,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RNActivityView/RNActivityView.framework",
 				"${BUILT_PRODUCTS_DIR}/RNLoadingButton-Swift/RNLoadingButton_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
@@ -796,6 +811,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNActivityView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNLoadingButton_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
@@ -863,8 +879,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF636AC222D7A59B007A2611 /* HomePresenterTest.swift in Sources */,
 				AF636AB722D6B59A007A2611 /* LoginPresenterTest.swift in Sources */,
 				AF636AB922D6BEB9007A2611 /* LoginInteractorTest.swift in Sources */,
+				AF636AC422D7AC86007A2611 /* HomeInteractorTest.swift in Sources */,
 				AF636ABC22D7797B007A2611 /* Loader.swift in Sources */,
 				AF636AB522D6A8C9007A2611 /* LoginViewBuilderTest.swift in Sources */,
 			);
