@@ -33,11 +33,5 @@ class HomeInteractorTest: QuickSpec {
                 expect(interactor.manager).notTo(beNil())
             }
         }
-        
-        context("Manager Type") {
-            it("checking manager Type") {
-                expect(interactor.manager).to(beAKindOf(HomeManager.self))
-            }
-        }
     }
 }
