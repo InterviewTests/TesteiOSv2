@@ -31,6 +31,7 @@
 		80677FB122ACB7590016A945 /* StatementModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80677FAB22ACB7590016A945 /* StatementModels.swift */; };
 		80677FB222ACB7590016A945 /* StatementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80677FAC22ACB7590016A945 /* StatementViewController.swift */; };
 		80677FB322ACB7590016A945 /* StatementInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80677FAD22ACB7590016A945 /* StatementInteractor.swift */; };
+		8073E54822D7833B0065C394 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8073E54722D7833B0065C394 /* Currency.swift */; };
 		80D204FA22AAD25200A3E8E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D204F922AAD25200A3E8E0 /* Constants.swift */; };
 		80D204FD22AAD37600A3E8E0 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D204FC22AAD37600A3E8E0 /* UserAccount.swift */; };
 		80EC5ED722D62A9D00C7E9B6 /* Seeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EC5ED622D62A9D00C7E9B6 /* Seeds.swift */; };
@@ -89,6 +90,7 @@
 		80677FAB22ACB7590016A945 /* StatementModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementModels.swift; sourceTree = "<group>"; };
 		80677FAC22ACB7590016A945 /* StatementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementViewController.swift; sourceTree = "<group>"; };
 		80677FAD22ACB7590016A945 /* StatementInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementInteractor.swift; sourceTree = "<group>"; };
+		8073E54722D7833B0065C394 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		80D204F922AAD25200A3E8E0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		80D204FC22AAD37600A3E8E0 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		80EC5ED622D62A9D00C7E9B6 /* Seeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeds.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		801474E422AA810A0094E65C /* TestSantander */ = {
 			isa = PBXGroup;
 			children = (
+				8073E54622D7831F0065C394 /* Helper */,
 				8013DF6A22AE89BB005AB5DD /* Validation */,
 				80D204F822AAD11B00A3E8E0 /* Utilities */,
 				8014752322AA83F30094E65C /* Network */,
@@ -270,6 +273,14 @@
 				80677FAD22ACB7590016A945 /* StatementInteractor.swift */,
 			);
 			path = Statement;
+			sourceTree = "<group>";
+		};
+		8073E54622D7831F0065C394 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8073E54722D7833B0065C394 /* Currency.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		80D204F822AAD11B00A3E8E0 /* Utilities */ = {
@@ -509,6 +520,7 @@
 				8013DF6C22AE8A14005AB5DD /* ValidationsFields.swift in Sources */,
 				8013DF6F22AE93FD005AB5DD /* RoundedButton.swift in Sources */,
 				8014752622AA844C0094E65C /* Statement.swift in Sources */,
+				8073E54822D7833B0065C394 /* Currency.swift in Sources */,
 				8014753122AA887A0094E65C /* LoginWorker.swift in Sources */,
 				80677FB122ACB7590016A945 /* StatementModels.swift in Sources */,
 				80D204FD22AAD37600A3E8E0 /* UserAccount.swift in Sources */,

@@ -105,7 +105,7 @@ class StatementViewController: UIViewController, StatementDisplayLogic
         
         nameUserLbl.text = router?.dataStore?.name
         agencyLbl.text = "\(router!.dataStore!.bankAccount) / \(router!.dataStore!.agency)"
-        balanceLbl.text = "\(router!.dataStore!.balance)"
+        balanceLbl.text = "R$ \(router!.dataStore!.balance)"
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -141,7 +141,8 @@ extension StatementViewController: UITableViewDataSource,UITableViewDelegate {
             let resultDateString = inputFormatter.string(from: showDate!)
             
             cell.dateLbl.text = resultDateString
-            cell.valueLbl.text = "R$ \(Double(statement.value))"
+            
+            cell.valueLbl.text = (Decimal(statement.value).Currency)
             
             //cell.configureCell(statement: statement)
             return cell
