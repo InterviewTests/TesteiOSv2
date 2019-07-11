@@ -84,6 +84,21 @@ class TestSantanderTests: XCTestCase {
         XCTAssert(showLoginPresentationLogicSpy.presentUserAccounts, "Users() should ask presenter to format")
     }
     
+    func RequestFromWorker() {
+        let worker = LoginWorker()
+        let presenter = LoginPresenter()
+        let username = "teste_user"
+        let pass = "!QAZ2wsx"
+        let expectation = self.expectation(description: "Scaling")
+        worker.fetchUserID(user: username, pass: pass) { (useraccounts) in
+            let response = LoginScene.Login.Response(userAccounts: useraccounts)
+            print(useraccounts)
+            self.sut.presenter?.presentUserAccounts(response: response)
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
     func test_validatePassword()
     {
         var status = false
