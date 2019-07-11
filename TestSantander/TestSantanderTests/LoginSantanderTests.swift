@@ -9,7 +9,7 @@ import Alamofire
 import XCTest
 @testable import TestSantander
 
-class TestSantanderTests: XCTestCase {
+class LoginSantanderTests: XCTestCase {
     
     // MARK: - Subject under test
     
