@@ -103,8 +103,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         print("Account:")
         let mostra = arrayUserAccounts[0]
         print(mostra.name)
-        print(arrayUserAccounts)
-        //postView.tableView.reloadData()
+        
         
         //CALL STATEMENT AFTER CLIQUE BUTTON
         print("UserAccounts:")

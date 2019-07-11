@@ -14,10 +14,6 @@ class StatementAccountsCell: UITableViewCell {
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var valueLbl: UILabel!
-    //    @IBOutlet weak var titleLbl: UILabel!
-    //    @IBOutlet weak var descriptionLbl: UILabel!
-    //    @IBOutlet weak var dateLbl: UILabel!
-    //    @IBOutlet weak var valueLbl: UILabel!
     
     
     override func awakeFromNib() {

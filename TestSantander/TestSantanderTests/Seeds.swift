@@ -11,12 +11,8 @@ import XCTest
 
 struct Seeds
 {
-    struct Users
+    struct User
     {
-        let userId: Int
-        let name, bankAccount, agency: String
-        let balance: Double
-        static let amy = Users(userId: 1, name: "Jose da Silva Teste", bankAccount: "2050", agency: "012314564", balance: 3.3445)
-        
+        static let jose = UserAccountDate(userId: 1, name: "Jose da Silva Teste", bankAccount: "2050", agency: "012314564", balance: 3.3445)
     }
 }

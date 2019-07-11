@@ -36,7 +36,6 @@ class NetworkManager {
                     print(decodedUserAcconts.userAccount.userId)
                     
                     completionHandler([decodedUserAcconts.userAccount])
-                    print(completionHandler([decodedUserAcconts.userAccount]))
                 } catch let error {
                     print(error)
                     completionHandler(arrayUserAccounts)

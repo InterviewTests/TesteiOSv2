@@ -5,7 +5,7 @@
 //  Created by ely.assumpcao.ndiaye on 07/06/19.
 //  Copyright © 2019 ely.assumpcao.ndiaye. All rights reserved.
 //
-
+import Alamofire
 import XCTest
 @testable import TestSantander
 
@@ -13,10 +13,13 @@ class TestSantanderTests: XCTestCase {
     
     // MARK: - Subject under test
     
+    var sut: LoginInteractor!
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        setupLoginInteractor()
         test_validatePassword()
+        test_username_placeholder()
     }
     
     override func tearDown() {
@@ -35,6 +38,51 @@ class TestSantanderTests: XCTestCase {
         }
     }
     
+    // MARK: - Test setup
+    
+    func setupLoginInteractor()
+    {
+        sut = LoginInteractor()
+    }
+    
+    // MARK: - Test doubles
+    
+    class LoginPresentationLogicSpy: LoginPresentationLogic
+    {
+        // MARK: Method call expectations
+        var presentUserAccounts = false
+        
+        var presentStatementsCalled = false
+        
+        // MARK: Spied methods
+        func presentUserAccounts(response: LoginScene.Login.Response) {
+            print("Entrou")
+            presentUserAccounts = true
+        }
+        
+        func presentStatements(response: LoginScene.Statements.Response) {
+            presentStatementsCalled = true
+        }
+    }
+    
+    // MARK: - Tests
+    
+    func testGetUserShouldAskPresenterToFormatResult()
+    {
+        // Given
+        let showLoginPresentationLogicSpy = LoginPresentationLogicSpy()
+        sut.presenter = showLoginPresentationLogicSpy
+        
+        // When
+        let request = LoginScene.Login.Request(user: "test@test.com", pass: "!QAZ2wsx")
+        print(request)
+        sut.doLogin(request: request)
+        let response = LoginScene.Login.Response(userAccounts: [Seeds.User.jose])
+        sut.presenter?.presentUserAccounts(response: response)
+       
+        // Then
+        XCTAssert(showLoginPresentationLogicSpy.presentUserAccounts, "Users() should ask presenter to format")
+    }
     
     func test_validatePassword()
     {

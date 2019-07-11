@@ -27,7 +27,6 @@ enum LoginScene
     struct Response
     {
         let userAccounts: [UserAccountDate]
-       // let statements: [StatementList]
     }
     struct ViewModel
     {

@@ -102,7 +102,6 @@ class StatementViewController: UIViewController, StatementDisplayLogic
     {
         //nameTextField.text = viewModel.name
         arrayStatements = viewModel.statements
-        print(arrayStatements)
         
         nameUserLbl.text = router?.dataStore?.name
         agencyLbl.text = "\(router!.dataStore!.bankAccount) / \(router!.dataStore!.agency)"
