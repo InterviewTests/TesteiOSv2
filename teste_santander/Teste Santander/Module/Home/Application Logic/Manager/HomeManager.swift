@@ -23,8 +23,8 @@ class HomeManager: NSObject {
             case .success:
                 guard let listModel = Mapper<StatementListModel>().map(JSONObject:response.result.value) else { return }
                 self.output?.fecthed(entity: listModel.statementList.map({ StatementEntity.make(model: $0)}))
-            case .failure(_):
-                break
+            case .failure(let error):
+               self.output?.error(with: error)
             }
         }
     }

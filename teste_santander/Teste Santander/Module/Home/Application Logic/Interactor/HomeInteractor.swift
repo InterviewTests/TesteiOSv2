@@ -24,6 +24,11 @@ class HomeInteractor: HomeInteractorInput {
 }
 
 extension HomeInteractor: HomeManagerOutput {
+    
+    func error(with error: Error) {
+        output?.fetchError(message: error.localizedDescription)
+    }
+    
     func fecthed(entity: [StatementEntity]) {
         output?.fecthed(items: entity.map({ StatementItem.make(entity: $0)}))
     }

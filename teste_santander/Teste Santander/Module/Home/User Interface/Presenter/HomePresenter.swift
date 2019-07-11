@@ -25,9 +25,15 @@ class HomePresenter: HomePresenterInput {
     }
     
     func viewDidLoad() {
+       fetch()
+    }
+    
+    func fetch() {
         if let user = logggedInteractor.loggedUser() {
             output?.startLoading()
             interactor.fetch(userID: user.userID)
+        } else {
+            shoudLogout()
         }
     }
     
@@ -37,6 +43,14 @@ class HomePresenter: HomePresenterInput {
 }
 
 extension HomePresenter: HomeInteractorOutput, LoggedUserInteractorOutput {
+    
+    func fetchError(message: String) {
+        output?.stopLoading()
+    }
+    
+    func retry() {
+        fetch()
+    }
     
     func didLogout() {
        wireframe.showLogin()

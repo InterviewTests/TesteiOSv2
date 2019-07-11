@@ -11,6 +11,7 @@ import UIKit
 protocol HomePresenterInput {
     func viewDidLoad()
     func shoudLogout()
+    func retry()
 }
 
 
@@ -18,6 +19,7 @@ protocol HomePresenterOutput: class {
     func fetched(sections: [Section])
     func startLoading()
     func stopLoading()
+    func showAlert(with message: String)
 }
 
 protocol HomeInteractorInput {
@@ -25,9 +27,12 @@ protocol HomeInteractorInput {
 }
 
 protocol HomeInteractorOutput: class {
-     func fecthed(items: [StatementItem])
+    func fecthed(items: [StatementItem])
+    func fetchError(message: String)
+    
 }
 
 protocol HomeManagerOutput: class {
     func fecthed(entity: [StatementEntity])
+    func error(with error: Error)
 }

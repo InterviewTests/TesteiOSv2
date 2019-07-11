@@ -95,6 +95,18 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 extension HomeViewController: HomePresenterOutput, CollectionViewCellDelegate {
     
+    func showAlert(with message: String) {
+        let alert = UIAlertController(title: "Opss Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { (_) in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Tentar novamente", style: .default, handler: { (_) in
+            self.presenter?.retry()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func startLoading() {
         self.view.showActivityView()
     }
