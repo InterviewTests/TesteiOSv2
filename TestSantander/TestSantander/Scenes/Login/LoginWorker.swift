@@ -14,20 +14,12 @@ import UIKit
 
 class LoginWorker
 {
- 
-//    func fetchComments(postId: Int, completionHandler: @escaping ([Comment]) -> Void) {
-//        print("Passou no workerComment")
-//        NetworkManager.shared.getCommentsForPost(withPostId: "\(postId)") { (comments) in
-//            completionHandler(comments)
-//        }
-//    }
-    
     func fetchUserID(user: String, pass: String, completionHandler: @escaping ([UserAccountDate]) -> Void){
         print("ChamouFetchUserID")
         NetworkManager.shared.loginUser(user: user, pass: pass) { (useraccounts) in
-           completionHandler(useraccounts)
+            completionHandler(useraccounts)
         }
     }
 }
-    
+
 

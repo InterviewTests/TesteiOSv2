@@ -20,6 +20,7 @@ class TestSantanderTests: XCTestCase {
         setupLoginInteractor()
         test_validatePassword()
         test_username_placeholder()
+        RequestFromWorker()
     }
     
     override func tearDown() {
@@ -79,14 +80,13 @@ class TestSantanderTests: XCTestCase {
         sut.doLogin(request: request)
         let response = LoginScene.Login.Response(userAccounts: [Seeds.User.jose])
         sut.presenter?.presentUserAccounts(response: response)
-       
+        
         // Then
         XCTAssert(showLoginPresentationLogicSpy.presentUserAccounts, "Users() should ask presenter to format")
     }
     
     func RequestFromWorker() {
         let worker = LoginWorker()
-        let presenter = LoginPresenter()
         let username = "teste_user"
         let pass = "!QAZ2wsx"
         let expectation = self.expectation(description: "Scaling")
