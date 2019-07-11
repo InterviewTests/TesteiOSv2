@@ -14,6 +14,7 @@ import Nimble
 class LoginPresenterTest: QuickSpec {
 
     override func spec() {
+        
         var presenter: LoginPresenter!
         
         describe("LoginPresenterTests") {
