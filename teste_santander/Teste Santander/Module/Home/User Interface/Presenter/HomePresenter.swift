@@ -26,6 +26,7 @@ class HomePresenter: HomePresenterInput {
     
     func viewDidLoad() {
         if let user = logggedInteractor.loggedUser() {
+            output?.startLoading()
             interactor.fetch(userID: user.userID)
         }
     }
@@ -42,6 +43,7 @@ extension HomePresenter: HomeInteractorOutput, LoggedUserInteractorOutput {
     }
     
     func fecthed(items: [StatementItem]) {
+        output?.stopLoading()
         var sections: [Section] = [Section]()
         
         if let user = logggedInteractor.loggedUser() {

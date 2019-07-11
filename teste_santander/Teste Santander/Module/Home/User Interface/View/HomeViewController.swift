@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RNActivityView
 
 class HomeViewController: UICollectionViewController {
     
@@ -93,6 +94,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension HomeViewController: HomePresenterOutput, CollectionViewCellDelegate {
+    
+    func startLoading() {
+        self.view.showActivityView()
+    }
+    
+    func stopLoading() {
+        self.view.hideActivityView()
+    }
     
     func didTap() {
         presenter?.shoudLogout()

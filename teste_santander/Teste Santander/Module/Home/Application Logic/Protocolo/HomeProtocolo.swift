@@ -16,6 +16,8 @@ protocol HomePresenterInput {
 
 protocol HomePresenterOutput: class {
     func fetched(sections: [Section])
+    func startLoading()
+    func stopLoading()
 }
 
 protocol HomeInteractorInput {
