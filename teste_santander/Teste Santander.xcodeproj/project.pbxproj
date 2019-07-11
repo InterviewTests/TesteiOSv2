@@ -27,6 +27,9 @@
 		AF636AB522D6A8C9007A2611 /* LoginViewBuilderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF636AB422D6A8C9007A2611 /* LoginViewBuilderTest.swift */; };
 		AF636AB722D6B59A007A2611 /* LoginPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF636AB622D6B59A007A2611 /* LoginPresenterTest.swift */; };
 		AF636AB922D6BEB9007A2611 /* LoginInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF636AB822D6BEB9007A2611 /* LoginInteractorTest.swift */; };
+		AF636ABC22D7797B007A2611 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF636ABB22D7797B007A2611 /* Loader.swift */; };
+		AF636ABD22D77DD5007A2611 /* StatementList.json in Resources */ = {isa = PBXBuildFile; fileRef = AFC9DDFF22CC263D001EBD26 /* StatementList.json */; };
+		AF636ABF22D77E06007A2611 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = AF636ABE22D77E06007A2611 /* User.json */; };
 		AF6D190422CD1420005DBBF8 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D190322CD1420005DBBF8 /* LoginEntity.swift */; };
 		AF6D190622CD1476005DBBF8 /* LoginEntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D190522CD1476005DBBF8 /* LoginEntityMapper.swift */; };
 		AF6D190922CE2CD7005DBBF8 /* RefreshableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D190822CE2CD6005DBBF8 /* RefreshableCollectionView.swift */; };
@@ -43,7 +46,6 @@
 		AFC9DDF922CC07BE001EBD26 /* HomeInteractorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC9DDF822CC07BE001EBD26 /* HomeInteractorBuilder.swift */; };
 		AFC9DDFB22CC08C8001EBD26 /* HomePresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC9DDFA22CC08C8001EBD26 /* HomePresenterBuilder.swift */; };
 		AFC9DDFD22CC0AFA001EBD26 /* HomeViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC9DDFC22CC0AFA001EBD26 /* HomeViewControllerBuilder.swift */; };
-		AFC9DE0022CC263D001EBD26 /* StatementList.json in Resources */ = {isa = PBXBuildFile; fileRef = AFC9DDFF22CC263D001EBD26 /* StatementList.json */; };
 		AFC9DE0222CC276F001EBD26 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC9DE0122CC276F001EBD26 /* LoginViewController.swift */; };
 		AFC9DE0422CC277D001EBD26 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC9DE0322CC277D001EBD26 /* Login.storyboard */; };
 		AFC9DE0622CC27B0001EBD26 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC9DE0522CC27AF001EBD26 /* LoginPresenter.swift */; };
@@ -104,6 +106,8 @@
 		AF636AB422D6A8C9007A2611 /* LoginViewBuilderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewBuilderTest.swift; sourceTree = "<group>"; };
 		AF636AB622D6B59A007A2611 /* LoginPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTest.swift; sourceTree = "<group>"; };
 		AF636AB822D6BEB9007A2611 /* LoginInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorTest.swift; sourceTree = "<group>"; };
+		AF636ABB22D7797B007A2611 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		AF636ABE22D77E06007A2611 /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		AF6D190322CD1420005DBBF8 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		AF6D190522CD1476005DBBF8 /* LoginEntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntityMapper.swift; sourceTree = "<group>"; };
 		AF6D190722CD1E00005DBBF8 /* Teste Santander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Teste Santander.entitlements"; sourceTree = "<group>"; };
@@ -227,6 +231,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		AF636ABA22D77940007A2611 /* stubJson */ = {
+			isa = PBXGroup;
+			children = (
+				AFC9DDFE22CC260D001EBD26 /* mocks */,
+				AF636ABB22D7797B007A2611 /* Loader.swift */,
+			);
+			path = stubJson;
+			sourceTree = "<group>";
+		};
 		AFC9DDAF22CBFE8F001EBD26 = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +265,6 @@
 			children = (
 				AF6D190722CD1E00005DBBF8 /* Teste Santander.entitlements */,
 				AFC9DE1422CC4F6C001EBD26 /* Commom */,
-				AFC9DDFE22CC260D001EBD26 /* mocks */,
 				AFC9DDDE22CC01A1001EBD26 /* Module */,
 				AFC9DDBB22CBFE8F001EBD26 /* AppDelegate.swift */,
 				AFC9DDBF22CBFE8F001EBD26 /* Main.storyboard */,
@@ -266,6 +278,7 @@
 		AFC9DDCF22CBFE93001EBD26 /* Teste SantanderTests */ = {
 			isa = PBXGroup;
 			children = (
+				AF636ABA22D77940007A2611 /* stubJson */,
 				AF636AB322D6A876007A2611 /* Login */,
 				AFC9DDD222CBFE93001EBD26 /* Info.plist */,
 			);
@@ -447,6 +460,7 @@
 			isa = PBXGroup;
 			children = (
 				AFC9DDFF22CC263D001EBD26 /* StatementList.json */,
+				AF636ABE22D77E06007A2611 /* User.json */,
 			);
 			path = mocks;
 			sourceTree = "<group>";
@@ -676,7 +690,6 @@
 				AF1DD2EB22D519740099FE02 /* StatementViewCell.xib in Resources */,
 				AFC9DE0422CC277D001EBD26 /* Login.storyboard in Resources */,
 				AFCF0F4A22CE6A5E00B25595 /* Dispatch.storyboard in Resources */,
-				AFC9DE0022CC263D001EBD26 /* StatementList.json in Resources */,
 				AF1DD2DC22D4FF4C0099FE02 /* HeaderCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +698,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF636ABF22D77E06007A2611 /* User.json in Resources */,
+				AF636ABD22D77DD5007A2611 /* StatementList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,6 +865,7 @@
 			files = (
 				AF636AB722D6B59A007A2611 /* LoginPresenterTest.swift in Sources */,
 				AF636AB922D6BEB9007A2611 /* LoginInteractorTest.swift in Sources */,
+				AF636ABC22D7797B007A2611 /* Loader.swift in Sources */,
 				AF636AB522D6A8C9007A2611 /* LoginViewBuilderTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

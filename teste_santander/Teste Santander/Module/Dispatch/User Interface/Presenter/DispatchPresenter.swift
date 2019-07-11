@@ -20,10 +20,12 @@ class DispatchPresenter: DispatchPresenterInput {
     }
     
     func viewDidLoad() {
-        if interactor.loggedUser() == nil {
-            wireframe.showLogin()
-        } else {
-            wireframe.showDetail()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            if self.interactor.loggedUser() == nil {
+                self.wireframe.showLogin()
+            } else {
+                self.wireframe.showDetail()
+            }
         }
     }
 }

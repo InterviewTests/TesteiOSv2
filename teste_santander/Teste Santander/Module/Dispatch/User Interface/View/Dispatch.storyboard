@@ -17,7 +17,28 @@
                     <view key="view" contentMode="scaleToFill" id="gcs-kk-EZz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teste Santander" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZU-aC-WP6">
+                                <rect key="frame" x="51" y="312" width="273" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2018 Thiago Santos. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="YfO-Ic-JK1">
+                                <rect key="frame" x="20" y="606" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YfO-Ic-JK1" firstAttribute="leading" secondItem="gcs-kk-EZz" secondAttribute="leading" constant="20" id="0di-dh-KMD"/>
+                            <constraint firstItem="nAW-Zn-AG1" firstAttribute="bottom" secondItem="YfO-Ic-JK1" secondAttribute="bottom" constant="40" id="0gw-QE-PzV"/>
+                            <constraint firstAttribute="trailing" secondItem="YfO-Ic-JK1" secondAttribute="trailing" constant="20" id="UUY-Ou-5cs"/>
+                            <constraint firstItem="2ZU-aC-WP6" firstAttribute="centerX" secondItem="gcs-kk-EZz" secondAttribute="centerX" id="XKO-Lq-p36"/>
+                            <constraint firstItem="2ZU-aC-WP6" firstAttribute="centerY" secondItem="gcs-kk-EZz" secondAttribute="centerY" id="mb0-cW-X1X"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nAW-Zn-AG1"/>
                     </view>
                 </viewController>
