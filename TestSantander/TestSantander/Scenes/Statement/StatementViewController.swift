@@ -104,8 +104,8 @@ class StatementViewController: UIViewController, StatementDisplayLogic
         arrayStatements = viewModel.statements
         
         nameUserLbl.text = router?.dataStore?.name
-        agencyLbl.text = "\(router!.dataStore!.bankAccount) / \(router!.dataStore!.agency)"
-        balanceLbl.text = "R$ \(router!.dataStore!.balance)"
+        agencyLbl.text = "\(router!.dataStore!.bankAccount) / \((router!.dataStore!.agency).Agency)"
+        balanceLbl.text = Decimal(router!.dataStore!.balance).Currency
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
