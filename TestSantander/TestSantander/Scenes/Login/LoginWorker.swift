@@ -15,7 +15,6 @@ import UIKit
 class LoginWorker
 {
     func fetchUserID(user: String, pass: String, completionHandler: @escaping ([UserAccountDate]) -> Void){
-        print("ChamouFetchUserID")
         NetworkManager.shared.loginUser(user: user, pass: pass) { (useraccounts) in
             completionHandler(useraccounts)
         }

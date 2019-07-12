@@ -21,8 +21,6 @@ class NetworkManager {
             "password": pass
         ]
         
-        print("Entrou no loginUser")
-        
         let arrayUserAccounts = [UserAccountDate]()
         
         Alamofire.request(URL_LOGIN, method: .post, parameters: parameters, encoding:  URLEncoding.httpBody).responseJSON { (response:DataResponse<Any>) in
@@ -33,7 +31,6 @@ class NetworkManager {
                 do {
                     let decoder = JSONDecoder()
                     let decodedUserAcconts = try decoder.decode(UserAccount.self, from: data)
-                    print(decodedUserAcconts.userAccount.userId)
                     
                     completionHandler([decodedUserAcconts.userAccount])
                 } catch let error {
@@ -43,7 +40,6 @@ class NetworkManager {
                 }
                 
             } else {
-                //  completion(false)
                 debugPrint(response.result.error as Any)
             }
         }
@@ -69,7 +65,6 @@ class NetworkManager {
                     debugPrint(response.result.error as Any)
                 }
             } else {
-                //  completion(false)
                 debugPrint(response.result.error as Any)
             }
             

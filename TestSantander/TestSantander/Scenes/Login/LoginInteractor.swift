@@ -14,11 +14,9 @@ import UIKit
 
 protocol LoginBusinessLogic {
     func doLogin(request: LoginScene.Login.Request)
-    //Ao chamar o Statement a primeira coisa é registrar o protocolo
     func doLoadUserDatas(request: LoginScene.Statements.Request)
 }
 
-//Protocolo que implementa o interactor que é carregado pelo transporte de dados
 protocol LoginDataStore{
     //var name: String { get set }
     var userId: Int { get set }
@@ -45,7 +43,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     
     func doLogin(request: LoginScene.Login.Request){
         let user = request.user
-        print("User vindo do Model: \(user)")
         let pass = request.pass
         worker = LoginWorker()
         worker?.fetchUserID(user: user, pass: pass, completionHandler: { (useraccounts) in
@@ -61,11 +58,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         bankAccount = user.bankAccount
         agency = user.agency
         balance = user.balance
-        print ("UserID do Interactor")
-        print(userId)
-        print(name)
-        print(balance)
-        //Resposta da requisicao sendo enviada atraves do response
+        
         let response = LoginScene.Statements.Response()
         presenter?.presentStatements(response: response)
     }

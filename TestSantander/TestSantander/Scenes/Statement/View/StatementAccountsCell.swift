@@ -20,41 +20,30 @@ class StatementAccountsCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         layer.borderWidth = 1
-        layer.borderColor = #colorLiteral(red: 0.9568627451, green: 0.9647058824, blue: 0.968627451, alpha: 1)
+        layer.borderColor = #colorLiteral(red: 0.8509803922, green: 0.8862745098, blue: 0.9137254902, alpha: 1)
         layer.cornerRadius = 20
         layer.masksToBounds = true
         
     }
+    
+    override var frame: CGRect {
+        get {
+            return super.frame
+        }
+        set (newFrame) {
+            var frame =  newFrame
+            frame.origin.y += 4
+            frame.size.height -= 2 * 4
+            super.frame = frame
+        }
+    }
+
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }
-    
-    func configureCell(statement: StatementList){
-        //        let titleByStatement = statement.title ?? ""
-        //        print("titile da ceell:\(titleByStatement)")
-        //        titleLbl.text = titleByStatement
-        //
-        //        let descByStatement = statement.desc ?? ""
-        //        descriptionLbl.text = descByStatement
-        //
-        //        let dateByStatement = statement.date ?? ""
-        //        //Convert yy-MM-dd to dd/MM/yyyy
-        //        let inputFormatter = DateFormatter()
-        //        inputFormatter.dateFormat = "yyyy-MM-dd"
-        //        let showDate = inputFormatter.date(from: dateByStatement)
-        //        inputFormatter.dateFormat = "dd/MM/yyyy"
-        //        let resultDateString = inputFormatter.string(from: showDate!)
-        //
-        //        dateLbl.text = resultDateString
-        //        print(statement.date)
-        //
-        //        let valueByStatement = String(statement.value) ?? ""
-        //        valueLbl.text = "R$ \(valueByStatement)"
-        
-    }//func configureCell
     
 }
 

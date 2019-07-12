@@ -14,7 +14,6 @@ import UIKit
 
 class StatementWorker {
     func getDateStatements(userId: Int, completionHandler: @escaping ([StatementList]) -> Void) {
-        print("Passou no getDateStatements")
         NetworkManager.shared.getStatements(withUserId: "\(userId)") { (statementList) in
             completionHandler(statementList)
         }

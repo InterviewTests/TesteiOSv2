@@ -5,7 +5,6 @@
 //  Created by ely.assumpcao.ndiaye on 07/06/19.
 //  Copyright © 2019 ely.assumpcao.ndiaye. All rights reserved.
 //
-import Alamofire
 import XCTest
 @testable import TestSantander
 
@@ -20,24 +19,13 @@ class LoginSantanderTests: XCTestCase {
         setupLoginInteractor()
         test_validatePassword()
         test_username_placeholder()
-        RequestFromWorker()
+        test_requestFromWorker()
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
     
     // MARK: - Test setup
     
@@ -57,7 +45,6 @@ class LoginSantanderTests: XCTestCase {
         
         // MARK: Spied methods
         func presentUserAccounts(response: LoginScene.Login.Response) {
-            print("Entrou")
             presentUserAccounts = true
         }
         
@@ -76,7 +63,6 @@ class LoginSantanderTests: XCTestCase {
         
         // When
         let request = LoginScene.Login.Request(user: "test@test.com", pass: "!QAZ2wsx")
-        print(request)
         sut.doLogin(request: request)
         let response = LoginScene.Login.Response(userAccounts: [Seeds.User.jose])
         sut.presenter?.presentUserAccounts(response: response)
@@ -85,18 +71,17 @@ class LoginSantanderTests: XCTestCase {
         XCTAssert(showLoginPresentationLogicSpy.presentUserAccounts, "Users() should ask presenter to format")
     }
     
-    func RequestFromWorker() {
+    func test_requestFromWorker() {
         let worker = LoginWorker()
         let username = "teste_user"
         let pass = "!QAZ2wsx"
         let expectation = self.expectation(description: "Scaling")
         worker.fetchUserID(user: username, pass: pass) { (useraccounts) in
             let response = LoginScene.Login.Response(userAccounts: useraccounts)
-            print(useraccounts)
             self.sut.presenter?.presentUserAccounts(response: response)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func test_validatePassword()

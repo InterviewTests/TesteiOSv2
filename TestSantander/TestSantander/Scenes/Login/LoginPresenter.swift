@@ -26,14 +26,12 @@ class LoginPresenter: LoginPresentationLogic
     
     func presentUserAccounts(response: LoginScene.Login.Response)
     {
-        //Passamos a resposta com os dados do Usuario para a LoginViewController
         let viewModel = LoginScene.Login.ViewModel(userAccounts: response.userAccounts)
         viewController?.displayUserAccountData(viewModel: viewModel)
     }
     
     func presentStatements(response: LoginScene.Statements.Response) {
         let viewModel = LoginScene.Statements.ViewModel()
-        //Passamos a resposta com os dados do Usuario para a LoginViewController
         viewController?.displayStatement(viewModel: viewModel)
     }
 }

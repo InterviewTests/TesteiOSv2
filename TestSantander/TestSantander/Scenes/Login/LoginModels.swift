@@ -23,7 +23,6 @@ enum LoginScene
         let user: String
         let pass: String
     }
-    //Vamos utilizar esse response para enviarmos os Statements
     struct Response
     {
         let userAccounts: [UserAccountDate]

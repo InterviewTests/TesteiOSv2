@@ -15,7 +15,6 @@ import UIKit
 protocol LoginDisplayLogic: class
 {
     func displayUserAccountData(viewModel: LoginScene.Login.ViewModel)
-    //FUncao para exibir a tela
     func displayStatement(viewModel: LoginScene.Statements.ViewModel)
 }
 
@@ -27,10 +26,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     @IBOutlet weak var usernameTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
     
-    
-    // variavel q recebe informacao da displayStatementData
     var arrayUserAccounts = [UserAccountDate]()
-    // variavel q recebe informacao da displayStatementData
     var arrayStatements = [StatementList]()
     
     // MARK: Object lifecycle
@@ -80,39 +76,21 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        loadInitialData()
+       
     }
     
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func loadInitialData()
-    { //Acho que posso enviar o usuario e a senha por parametro dentro desse request aqui
-        //OU SE NAO NO PROPRIO MODELO ADICIONAMOS OS PARAMETROS PRA LOGIN E SENHA
-        //esse request essa funcao em sim é a chamada pro INTERACTOR e as ACOES FUTUREAS DEPOIS COLOCAR ELA DENTRO DE UM ACTION AO CLIQUE DO BOTAO
-        //    let request = LoginScene.Login.Request()
-        //    interactor?.doLogin(request: request)
-    }
     
     func displayUserAccountData(viewModel: LoginScene.Login.ViewModel)
     {
         //nameTextField.text = viewModel.name
         arrayUserAccounts = viewModel.userAccounts
-        //  arrayStatements = viewModel.statements
-        print("Account:")
-        let mostra = arrayUserAccounts[0]
-        print(mostra.name)
         
-        
-        //CALL STATEMENT AFTER CLIQUE BUTTON
-        print("UserAccounts:")
-        print(arrayUserAccounts[0].userId)
         let userAccount = arrayUserAccounts[0]
-        print("UserID: \(userAccount)")
-        //Chamamos a requisicao para enviar/preencher o userID
         let requestStatement = LoginScene.Statements.Request(userAccount: userAccount)
-        //Chamamos o interactor responsavel pelo NEGOCIO que ira carregar o Statement
         interactor?.doLoadUserDatas(request: requestStatement)
     }
     
@@ -141,8 +119,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         if validation.isValidPassword(passID: pass) == false {
             EmptyTextField(text: "Verificar campo password", message: "A senha deve possuir letra maiuscula, um caracter especial e um caracter alfanumérico")
         }else{
-            print("Clique do Login...")
-            //Enviando paramentros para preeencher o request presente em model
             let request = LoginScene.Login.Request(user: user, pass: pass)
             interactor?.doLogin(request: request)
         }

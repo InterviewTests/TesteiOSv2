@@ -78,9 +78,6 @@ class StatementViewController: UIViewController, StatementDisplayLogic
     {
         super.viewDidLoad()
         
-        print("Statement")
-        print(router?.dataStore?.userId)
-        
         loadStatementData()
         
         tableView.delegate = self 
