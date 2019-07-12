@@ -13,3 +13,28 @@ Viper é um padrão de design que implementa o paradigma da 'separação de preo
 * **WIREFRAME:**  faz o roteamento. Esculta o apresentador sobre qual tela apresentar e executa.
 
 * **Entidade:** Contém classes de modelo simples usadas pelo interator.
+
+* **Estrutura do Projeto:**
+
+```
+teste_santander/
+        |-> module/
+            |-> Home/
+                |-> User Interface/
+                    |-> Presenter/
+                        HomePresenter.swfit
+                    |-> View/
+                        HomeViewController.swfit
+                    |-> Wireframe/
+                        HomeWireframe.swfit
+                |-> Application Logic/
+                    |-> Protocol/
+                        HomeProtocol.swfit
+                    |-> Manager/
+                        HomeManager.swfit
+                    |-> View/
+                        HomeViewController.swfit
+                    |-> Interactor/
+                        HomeInteractor.swfit
+```
+
