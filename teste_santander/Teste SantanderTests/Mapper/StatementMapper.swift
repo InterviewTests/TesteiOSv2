@@ -38,12 +38,18 @@ class StatementMapper: QuickSpec {
                     expect(items.count).to(equal(9))
                 }
                 
-                it("Is Type StatementItem") {
+                it("Is Type StatementDisplay") {
                     let entitys = statementListModel.statementList.map({ StatementEntity.make(model: $0)})
                     let items = entitys.map({ StatementItem.make(entity: $0) })
-                    let display = items.map({ StatementDisplay.make(item: $0)})
+                    let displays = items.map({ StatementDisplay.make(item: $0)})
+                    expect(displays.count).to(equal(9))
                     
-                    expect(display.count).to(equal(9))
+                    if let display = displays.first {
+                        expect(display.value).to(equal("R$ -50,00"))
+                        expect(display.desc).to(equal("Conta de luz"))
+                        expect(display.type).to(equal("Pagamento"))
+                        expect(display.date).to(equal("15/08/2018"))
+                    }
                 }
             }
         }
