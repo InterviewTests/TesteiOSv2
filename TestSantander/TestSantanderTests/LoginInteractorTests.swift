@@ -8,7 +8,7 @@
 import XCTest
 @testable import TestSantander
 
-class LoginSantanderTests: XCTestCase {
+class LoginInteractorTests: XCTestCase {
     
     // MARK: - Subject under test
     
