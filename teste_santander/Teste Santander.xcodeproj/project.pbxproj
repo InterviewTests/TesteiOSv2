@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AF03CFEE22D7CCAF0086434D /* LoginViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03CFED22D7CCAF0086434D /* LoginViewControllerTest.swift */; };
 		AF03CFF022D7E2450086434D /* HomeViewControllerTeste.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03CFEF22D7E2450086434D /* HomeViewControllerTeste.swift */; };
+		AF03CFF322D8071C0086434D /* UserMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03CFF222D8071C0086434D /* UserMapperTest.swift */; };
+		AF03CFF522D8126D0086434D /* StatementMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03CFF422D8126D0086434D /* StatementMapper.swift */; };
 		AF1DD2CB22D4F4250099FE02 /* DispatchViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1DD2CA22D4F4250099FE02 /* DispatchViewControllerBuilder.swift */; };
 		AF1DD2CD22D4F5000099FE02 /* DispatchPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1DD2CC22D4F5000099FE02 /* DispatchPresenterBuilder.swift */; };
 		AF1DD2D122D4FCB30099FE02 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1DD2CF22D4FCB30099FE02 /* CollectionViewCell.swift */; };
@@ -94,6 +96,8 @@
 		9EB0919CBB5F845EE2FD1164 /* Pods-Teste SantanderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teste SantanderTests.debug.xcconfig"; path = "Target Support Files/Pods-Teste SantanderTests/Pods-Teste SantanderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF03CFED22D7CCAF0086434D /* LoginViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTest.swift; sourceTree = "<group>"; };
 		AF03CFEF22D7E2450086434D /* HomeViewControllerTeste.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTeste.swift; sourceTree = "<group>"; };
+		AF03CFF222D8071C0086434D /* UserMapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMapperTest.swift; sourceTree = "<group>"; };
+		AF03CFF422D8126D0086434D /* StatementMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementMapper.swift; sourceTree = "<group>"; };
 		AF1DD2CA22D4F4250099FE02 /* DispatchViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchViewControllerBuilder.swift; sourceTree = "<group>"; };
 		AF1DD2CC22D4F5000099FE02 /* DispatchPresenterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchPresenterBuilder.swift; sourceTree = "<group>"; };
 		AF1DD2CF22D4FCB30099FE02 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -194,6 +198,15 @@
 				65D7152D74A77B17A0A0286A /* Pods-Teste SantanderTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AF03CFF122D806EB0086434D /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				AF03CFF222D8071C0086434D /* UserMapperTest.swift */,
+				AF03CFF422D8126D0086434D /* StatementMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		AF1DD2CE22D4FC850099FE02 /* View */ = {
@@ -311,6 +324,7 @@
 		AFC9DDCF22CBFE93001EBD26 /* Teste SantanderTests */ = {
 			isa = PBXGroup;
 			children = (
+				AF03CFF122D806EB0086434D /* Mapper */,
 				AF636AC522D7B315007A2611 /* Managers */,
 				AF636AC022D7A56C007A2611 /* Home */,
 				AFC9DDD222CBFE93001EBD26 /* Info.plist */,
@@ -900,6 +914,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF636AC922D7BC62007A2611 /* HomeManagerTest.swift in Sources */,
+				AF03CFF322D8071C0086434D /* UserMapperTest.swift in Sources */,
 				AF03CFF022D7E2450086434D /* HomeViewControllerTeste.swift in Sources */,
 				AF636AC222D7A59B007A2611 /* HomePresenterTest.swift in Sources */,
 				AF636AB722D6B59A007A2611 /* LoginPresenterTest.swift in Sources */,
@@ -908,6 +923,7 @@
 				AF636AC422D7AC86007A2611 /* HomeInteractorTest.swift in Sources */,
 				AF636ABC22D7797B007A2611 /* Loader.swift in Sources */,
 				AF636AB522D6A8C9007A2611 /* LoginViewBuilderTest.swift in Sources */,
+				AF03CFF522D8126D0086434D /* StatementMapper.swift in Sources */,
 				AF636AC722D7B64E007A2611 /* LoginManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

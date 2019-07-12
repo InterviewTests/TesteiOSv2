@@ -15,10 +15,14 @@ class Loader {
     
     @discardableResult
     static func mock<T: Mappable>(file: String) -> T? {
-        guard let data = loadFile(with: file),
-            let result = Mapper<T>().map(JSONObject:data) else {
+        guard let data = loadFile(with: file)else {
                 return nil
         }
+        
+        let modelJson = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        
+        let result = Mapper<T>().map(JSONObject:modelJson)
+        
         return result
     }
     
