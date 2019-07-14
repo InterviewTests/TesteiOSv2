@@ -45,13 +45,13 @@ class LoginViewControllerTest: QuickSpec {
             }
             
             it("Testing send password invalid") {
-                viewController.presenter?.send(user: "teste", password: "teste" )
+                viewController.presenter?.send(user: "teste@teste.com", password: "teste" )
                 expect(viewController.errorPasswordLabel.isHidden).to(equal(false))
                 expect(viewController.errorPasswordLabel.text).to(contain("Sua senha não conferer com os criterios de validação"))
             }
             
             it("Testing send password and valid") {
-                viewController.presenter?.send(user: "teste", password: "Teste1999" )
+                viewController.presenter?.send(user: "teste@teste.com", password: "Teste1999" )
                 expect(viewController.errorPasswordLabel.text).toEventually(equal(""))
                 expect(viewController.errorUserLabel.text).toEventually(equal(""))
             }
