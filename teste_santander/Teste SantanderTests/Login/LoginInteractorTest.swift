@@ -46,5 +46,13 @@ class LoginInteractorTest: QuickSpec {
                 expect(!loginInteractor.validPassword(value: "Teste200o")).to(equal(false))
             }
         }
+        context("Valid USER") {
+            it("checkingUSERInvalid") {
+                expect(loginInteractor.validateEmail(enteredEmail: "teste@teste.com")).to(equal(true))
+                expect(loginInteractor.validateEmail(enteredEmail: "teste@teste")).to(equal(false))
+                expect(loginInteractor.validCpfEmail(text: "134.973.957-06")).to(equal(true))
+                expect(loginInteractor.removeSpecialCharsFromString(text: "134.973.957-06")).to(equal("13497395706"))
+            }
+        }
     }
 }

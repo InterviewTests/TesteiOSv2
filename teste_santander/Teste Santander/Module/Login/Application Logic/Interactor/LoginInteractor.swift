@@ -56,6 +56,20 @@ class LoginInteractor: LoginInteractorInput {
         
     }
     
+    func validCpfEmail(text: String) -> Bool {
+        
+        if validateEmail(enteredEmail: text) {
+            return true
+        }
+        
+        if BooleanValidator().validate(cpf: removeSpecialCharsFromString(text: text)) {
+            return true
+        }
+        
+        return false
+    }
+    
+    
     func validField(user: String?, password: String?) {
         output?.cleanFields()
         
@@ -75,7 +89,7 @@ class LoginInteractor: LoginInteractorInput {
         } else if password.isEmpty {
             output?.errorField(type: .password, valid: .empty)
         
-        } else if validateEmail(enteredEmail: user) || !BooleanValidator().validate(cpf: removeSpecialCharsFromString(text: user)) {
+        } else if !validCpfEmail(text: user) {
              output?.errorField(type: .user, valid: .cpfEmail)
             
         } else if !validPassword(value: password) {
