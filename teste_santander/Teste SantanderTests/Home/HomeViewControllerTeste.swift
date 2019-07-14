@@ -19,9 +19,10 @@ class HomeViewControllerTeste: QuickSpec {
         beforeSuite {
             viewController.beginAppearanceTransition(true, animated: false)
         }
+        // MARK: Para realizar este teste precisa esta logado
         
         describe("HomeViewControllerTest") {
-            context("Verify sections") {
+            context("Verify sections ") {
                 
                 it("Testing count Sections") {
                     expect(viewController.sections.count).toEventually(equal(10), timeout: 2.0)

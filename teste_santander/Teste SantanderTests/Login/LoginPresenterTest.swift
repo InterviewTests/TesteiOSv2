@@ -44,6 +44,7 @@ class LoginPresenterTest: QuickSpec {
         context("TitleMessagemValid") {
             it("CheckValidFieldMessage") {
                 expect(presenter.titleMessage(valid: .valid)).to(equal(("Sua senha não conferer com os criterios de validação")))
+                 expect(presenter.titleMessage(valid: .cpfEmail)).to(equal(("Por favor forneça um e-mail válido ou CPF válido")))
             }
         }
         
