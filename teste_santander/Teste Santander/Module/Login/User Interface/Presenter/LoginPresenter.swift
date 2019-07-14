@@ -33,6 +33,9 @@ class LoginPresenter: LoginPresenterInput {
             return "Erro existe dados em branco"
         case .valid:
             return "Sua senha não conferer com os criterios de validação"
+            
+        case .cpfEmail:
+            return "Por favor forneça um e-mail válido ou CPF válido"
         }
     }
     

@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import CPF_CNPJ_Validator
 
 enum ErrorField {
     case empty
     case valid
+    case cpfEmail
 }
 enum FieldType: Hashable {
     case user
     case password
-    
     
 }
 
@@ -38,6 +39,23 @@ class LoginInteractor: LoginInteractorInput {
         return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: value)
     }
     
+    func validateEmail(enteredEmail:String) -> Bool {
+        
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: enteredEmail)
+        
+    }
+    
+    func removeSpecialCharsFromString(text: String) -> String {
+        return text
+            .replacingOccurrences(of: ".", with: "")
+            .replacingOccurrences(of: "-", with: "")
+        .trimmingCharacters(in: .whitespaces)
+        
+        
+    }
+    
     func validField(user: String?, password: String?) {
         output?.cleanFields()
         
@@ -56,6 +74,9 @@ class LoginInteractor: LoginInteractorInput {
             
         } else if password.isEmpty {
             output?.errorField(type: .password, valid: .empty)
+        
+        } else if validateEmail(enteredEmail: user) || !BooleanValidator().validate(cpf: removeSpecialCharsFromString(text: user)) {
+             output?.errorField(type: .user, valid: .cpfEmail)
             
         } else if !validPassword(value: password) {
             output?.errorField(type: .password, valid: .valid)

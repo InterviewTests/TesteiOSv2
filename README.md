@@ -36,5 +36,6 @@ teste_santander/
                     HomeViewController.swfit
                 |-> Interactor/
                     HomeInteractor.swfit
+    |-> Teste SantanderTests
 ```
 
