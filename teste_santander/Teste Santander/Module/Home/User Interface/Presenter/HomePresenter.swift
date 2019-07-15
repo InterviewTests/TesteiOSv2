@@ -16,12 +16,12 @@ class HomePresenter: HomePresenterInput {
     
     var interactor: HomeInteractorInput
     
-    var logggedInteractor: LoggedUserInteractorInput
+    var loggedInteractor: LoggedUserInteractorInput
     
-    init(wireframe: HomeWireframe, interactor: HomeInteractorInput, logggedInteractor: LoggedUserInteractorInput) {
+    init(wireframe: HomeWireframe, interactor: HomeInteractorInput, loggedInteractor: LoggedUserInteractorInput) {
         self.wireframe = wireframe
         self.interactor = interactor
-        self.logggedInteractor = logggedInteractor
+        self.loggedInteractor = loggedInteractor
     }
     
     func viewDidLoad() {
@@ -29,7 +29,7 @@ class HomePresenter: HomePresenterInput {
     }
     
     func fetch() {
-        if let user = logggedInteractor.loggedUser() {
+        if let user = loggedInteractor.loggedUser() {
             output?.startLoading()
             interactor.fetch(userID: user.userID)
         } else {
@@ -38,7 +38,7 @@ class HomePresenter: HomePresenterInput {
     }
     
     func shoudLogout() {
-        logggedInteractor.logout()
+        loggedInteractor.logout()
     }
 }
 
@@ -46,6 +46,7 @@ extension HomePresenter: HomeInteractorOutput, LoggedUserInteractorOutput {
     
     func fetchError(message: String) {
         output?.stopLoading()
+        output?.showAlert(with: message)
     }
     
     func retry() {
@@ -60,7 +61,7 @@ extension HomePresenter: HomeInteractorOutput, LoggedUserInteractorOutput {
         output?.stopLoading()
         var sections: [Section] = [Section]()
         
-        if let user = logggedInteractor.loggedUser() {
+        if let user = loggedInteractor.loggedUser() {
             let sectionHeader = SectionHeader(item: user)
             sections.append(sectionHeader)
         }
