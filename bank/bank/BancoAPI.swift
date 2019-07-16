@@ -10,9 +10,11 @@ import Foundation
 import Alamofire
 
 protocol LoginService {
-     func login(user: String, password: String, completion:@escaping (Usuario) -> Void)
+    func login(user: String, password: String, completion:@escaping (Usuario) -> Void)
+    
 }
 class BancoAPI: LoginService {
+    
     func login(user: String, password: String, completion: @escaping (Usuario) -> Void) {
         let endpoint = "https://bank-app-test.herokuapp.com/api/login"
         let params: Parameters = [
@@ -27,5 +29,18 @@ class BancoAPI: LoginService {
             completion(model.usuario)
         }
     }
+        
+        func  status(userId:Int, completion: @escaping ([Status]) -> Void){
+            let endpoint = "https://bank-app-test.herokuapp.com/api/statements/\(userId)"
+            
+            AF.request(endpoint, method: .get).responseData.self{ response in
+                
+                let decoder = JSONDecoder()
+                let model = try! decoder.decode(StatusResponse.self, from: response.data!)
+                completion(model.status)
+            }
+        }
 }
+    
+
 

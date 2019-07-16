@@ -8,7 +8,10 @@
 
 import UIKit
 
-class DetalheUsuarioViewController: UIViewController {
+class DetalheUsuarioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    @IBOutlet weak var lista: UITableView!
     
     @IBOutlet weak var nome: UILabel!
     
@@ -17,21 +20,51 @@ class DetalheUsuarioViewController: UIViewController {
     @IBOutlet weak var saldo: UILabel!
     
     var usuario : Usuario?
+    var api = BancoAPI()
+    var Movimentacao : [Status]?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if let user = usuario {
             nome.text = user.name
             self.conta.text = "ag: \(user.agencia) cc: \(user.conta)"
             self.saldo.text = "Saldo: \(user.saldo)"
+            
+            api.status(userId: user.userId){ Movimentacao in
+                self.Movimentacao = Movimentacao
+                self.lista.delegate =  self
+                self.lista.dataSource =  self
+                self.lista.reloadData()
+               
+            }
         }
 
         // Do any additional setup after loading the view.
     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Movimentacao!.count
+        // quantidade de itens que tem dentro do diciionario
+        
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let tableViewController = tableView.dequeueReusableCell(withIdentifier: "TableViewController", for: indexPath) as? DetalhesCellTableViewCell{
+            
+        tableViewController.prepare(with: Movimentacao![indexPath.row])
+        return tableViewController
+        }
+        else{
+            fatalError()
+        }
+    }
 
+  
     /*
     // MARK: - Navigation
 
