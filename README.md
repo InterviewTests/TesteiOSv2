@@ -39,3 +39,7 @@ teste_santander/
     |-> Teste SantanderTests
 ```
 
+
+* [Medium](https://medium.com/@smalam119/viper-design-pattern-for-ios-application-development-7a9703902af6) - VIPER Design Pattern in Swift for iOS Application Development.
+* [Equinocios](http://equinocios.com/viper/2017/03/14/comecando-com-viper/) - Começando com VIPER
+* [UBER](https://eng.uber.com/new-rider-app/) - UBER
