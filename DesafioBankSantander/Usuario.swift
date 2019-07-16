@@ -22,7 +22,7 @@ struct Cliente: Codable {
     let conta: String
     let agencia: String
     let saldo: Double
-    
+    //enum trazer os dados do json e faz um merge com minhas variaveis da struct
     enum CodingKeys: String, CodingKey {
         case userId
         case name

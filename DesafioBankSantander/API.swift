@@ -15,6 +15,7 @@ protocol LoginApi {
 }
 
 class API: LoginApi {
+    // Request na API para retorno do usuario
     func login(user: String, password: String, completion: @escaping (Cliente) -> Void) {
         let endpoint = "https://bank-app-test.herokuapp.com/api/login"
         let params: Parameters = [
@@ -30,4 +31,18 @@ class API: LoginApi {
         }
     }
     
+    // Request na API para retorno do extrato
+    func requestLancamento(userId: Int, completion: @escaping
+        ([Movimentacoes])-> Void) {
+        let endpoint = "https://bank-app-test.herokuapp.com/api/statements/\(userId)"
+        
+        
+        AF.request(endpoint, method: .get).responseData { response in
+            
+            let decoder = JSONDecoder()
+            let model = try!
+                decoder.decode(statementList.self, from: response.data!)
+            completion(model.movimentacao)
+        }
+    }
 }
