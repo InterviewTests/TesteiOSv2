@@ -16,6 +16,9 @@ class DetalhesViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var lbconta: UILabel!
     @IBOutlet weak var lbsaldo: UILabel!
     @IBOutlet weak var tbView: UITableView!
+    @IBAction func bntSair(_ sender: UIButton) {
+        closeTelaDetalhes()
+    }
     
     
     var cliente:  Cliente?
@@ -52,4 +55,15 @@ class DetalhesViewController: UIViewController, UITableViewDelegate, UITableView
             fatalError()
         }
     }
+    
+    func closeTelaDetalhes() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = storyboard.instantiateViewController(withIdentifier:
+            "TelaLoginViewController") as? TelaLoginViewController {
+            
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
 }
+

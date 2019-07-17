@@ -8,5 +8,6 @@ target 'DesafioBankSantander' do
   # Pods for DesafioBankSantander
 
 pod 'Alamofire', '~> 5.0.0-beta.5'
-
+pod 'CPF-CNPJ-Validator'
 end
+

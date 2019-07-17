@@ -184,13 +184,17 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout " translatesAutoresizingMaskIntoConstraints="NO" id="nZX-19-FOK">
-                                <rect key="frame" x="335" y="40" width="27" height="27"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ix3-wX-wC1">
+                                <rect key="frame" x="314" y="47" width="27" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="27" id="WIa-ye-Zjv"/>
-                                    <constraint firstAttribute="height" constant="27" id="aNO-uq-YPk"/>
+                                    <constraint firstAttribute="width" constant="27" id="1Ov-8v-vUe"/>
+                                    <constraint firstAttribute="height" constant="27" id="V77-Ps-erK"/>
                                 </constraints>
-                            </imageView>
+                                <state key="normal" title="Button" backgroundImage="logout "/>
+                                <connections>
+                                    <action selector="bntSair:" destination="D14-JX-Axe" eventType="touchUpInside" id="fxR-x3-rou"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2428635955" green="0.28695213790000001" blue="0.89809077979999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -207,10 +211,10 @@
                             <constraint firstItem="QGD-IY-yrA" firstAttribute="trailing" secondItem="YHC-Th-oxc" secondAttribute="trailing" constant="310" id="YDy-DN-dPc"/>
                             <constraint firstItem="mO3-RL-Rpk" firstAttribute="leading" secondItem="QGD-IY-yrA" secondAttribute="leading" constant="18" id="b7H-sp-BbY"/>
                             <constraint firstItem="fPC-mR-Opg" firstAttribute="top" secondItem="QGD-IY-yrA" secondAttribute="top" constant="20" id="gCt-wu-3BX"/>
+                            <constraint firstItem="QGD-IY-yrA" firstAttribute="trailing" secondItem="Ix3-wX-wC1" secondAttribute="trailing" constant="34" id="gD9-Pq-LJQ"/>
                             <constraint firstItem="MLn-Xf-vRi" firstAttribute="top" secondItem="mO3-RL-Rpk" secondAttribute="bottom" constant="21" id="k5K-Zk-hM3"/>
                             <constraint firstItem="QGD-IY-yrA" firstAttribute="trailing" secondItem="tjZ-01-INF" secondAttribute="trailing" constant="173" id="liB-Ld-AT5"/>
-                            <constraint firstItem="QGD-IY-yrA" firstAttribute="trailing" secondItem="nZX-19-FOK" secondAttribute="trailing" constant="13" id="ltG-c4-oyy"/>
-                            <constraint firstItem="nZX-19-FOK" firstAttribute="top" secondItem="QGD-IY-yrA" secondAttribute="top" constant="20" id="pMf-Ol-mhd"/>
+                            <constraint firstItem="Ix3-wX-wC1" firstAttribute="top" secondItem="QGD-IY-yrA" secondAttribute="top" constant="27" id="qze-XZ-IFC"/>
                             <constraint firstItem="YHC-Th-oxc" firstAttribute="leading" secondItem="QGD-IY-yrA" secondAttribute="leading" constant="18" id="uTa-uA-h48"/>
                             <constraint firstItem="tjZ-01-INF" firstAttribute="top" secondItem="MLn-Xf-vRi" secondAttribute="bottom" constant="4.5" id="vuw-aX-SFE"/>
                             <constraint firstItem="o5u-2y-1yS" firstAttribute="trailing" secondItem="QGD-IY-yrA" secondAttribute="trailing" id="zE4-2Z-hht"/>
