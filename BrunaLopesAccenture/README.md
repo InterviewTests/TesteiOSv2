@@ -17,4 +17,5 @@
 \
 * Abra o arquivo que foi criado na pasta do projeto com extens\'e3o (.xcworkspace). \
 \
+* Na tela de login, o campo user aceita (CPF válido e e-mail). No password é necessário ter letra maiúscula, número e caracteres especiais.
 }

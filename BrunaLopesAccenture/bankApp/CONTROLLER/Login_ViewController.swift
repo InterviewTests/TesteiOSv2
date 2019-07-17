@@ -24,7 +24,7 @@ class Login_ViewController: UIViewController {
         if validaLogin(user: usuario, senha: senha) {
             login(user: usuario, senha: senha)
         } else {
-            let popUp = "Verificar e-mail/CPF digitados"
+            let popUp = "Verificar campos digitados"
             let titulo = "Atenção!"
             let alert = UIAlertController(title: titulo, message: popUp, preferredStyle: .alert)
             let botao = "Ok"
