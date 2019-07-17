@@ -47,7 +47,7 @@ class Login_ViewController: UIViewController {
     }
     
     func login(user: String, senha: String){
-        service.login(user: user, password: senha) { user in
+        service.fazLogin(user: user, password: senha) { user in
             self.vaiParaDetalhes(user: user)
         }
     }

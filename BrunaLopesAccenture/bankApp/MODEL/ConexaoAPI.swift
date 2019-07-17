@@ -11,13 +11,13 @@ import Alamofire
 
 protocol LoginService {
     
-    func login(user:String, password: String, completion:@escaping (Usuario) -> Void)
+    func fazLogin(user:String, password: String, completion:@escaping (Usuario) -> Void)
 
 }
 
 class ConexaAPI: LoginService {
-    
-    func login(user: String, password: String, completion: @escaping (Usuario) -> Void) {
+
+    func fazLogin(user: String, password: String, completion: @escaping (Usuario) -> Void) {
         
         let link = "https://bank-app-test.herokuapp.com/api/login"
         let parametros: Parameters = ["user" : "test_user",
@@ -28,6 +28,19 @@ class ConexaAPI: LoginService {
             let decoder = JSONDecoder()
             let model = try! decoder.decode(UsuarioResponse.self, from: response.data!)
             completion(model.usuario)
+            
+        }
+    }
+    
+    func buscaExtrato(userId: Int, completion: @escaping ([Extrato]) -> Void) {
+        
+        let link = "https://bank-app-test.herokuapp.com/api/statements/\(userId)"
+        
+        AF.request(link, method: .get).responseData { response in
+            
+            let decoder = JSONDecoder()
+            let model = try! decoder.decode(ExtratoRec.self, from: response.data!)
+            completion(model.informacoes)
             
         }
     }

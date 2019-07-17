@@ -3,6 +3,7 @@
 //  bankApp
 //
 //  Created by bruna.lopes.d.santos on 12/07/19.
+
 //  Copyright © 2019 bruna.lopes.d.santos. All rights reserved.
 //
 
@@ -24,6 +25,15 @@ class InformacoesAdicionais_TableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func relacionaLabelStruct (with ligacao: Extrato) {
+    
+    outTitulo.text = ligacao.titulo
+    outDescricao.text = ligacao.descricao
+    outData.text = ligacao.data
+    outValor.text = "R$ \(ligacao.valor)"
+        
     }
     
 }

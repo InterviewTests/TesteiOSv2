@@ -11,6 +11,9 @@ import UIKit
 class Detalhes_ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var usuario: Usuario?
+    var extratoLista: [Extrato]?
+    
+    var api = ConexaAPI()
     
     @IBOutlet weak var outNome: UILabel!
     
@@ -21,7 +24,7 @@ class Detalhes_ViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func atcSair(_ sender: UIButton) {
-        vaiParaPrincipal()
+        voltaParaPrincipal()
     }
 
     override func viewDidLoad() {
@@ -31,32 +34,43 @@ class Detalhes_ViewController: UIViewController, UITableViewDataSource, UITableV
             outNome.text = user.name
             self.outConta.text = "\(user.conta) / \(user.agencia)"
             self.outSaldo.text = "R$ \(user.saldo)"
+            
+            api.buscaExtrato(userId: user.userId) { extratoLista in
+                
+                self.extratoLista = extratoLista
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
+                self.tableView.reloadData()
+                
+            }
         }
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! InformacoesAdicionais_TableViewCell
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? InformacoesAdicionais_TableViewCell {
+            
+            cell.relacionaLabelStruct(with: extratoLista![indexPath.row])
+            return cell
+            
+        } else {
+            fatalError()
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-       let titulo = "Recentes"
-       return titulo
+        let titulo = "Recentes"
+        return titulo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return extratoLista!.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func vaiParaPrincipal(){
+    func voltaParaPrincipal(){
         navigationController?.popViewController(animated: true)
     }
 }

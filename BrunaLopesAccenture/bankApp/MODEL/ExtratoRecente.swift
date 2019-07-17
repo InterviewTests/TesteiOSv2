@@ -9,7 +9,7 @@
 import Foundation
 
 struct ExtratoRec: Codable {
-    let informacoes: Extrato
+    let informacoes: [Extrato]
     
     enum CodingKeys: String, CodingKey {
         case informacoes = "statementList"
@@ -17,10 +17,10 @@ struct ExtratoRec: Codable {
 }
 
 struct Extrato: Codable {
-    let titulo: String!
-    let descricao: String!
-    let data: String!
-    let valor: Double!
+    let titulo: String
+    let descricao: String
+    let data: String
+    let valor: Double
     
     enum CodingKeys: String, CodingKey {
         case titulo = "title"
