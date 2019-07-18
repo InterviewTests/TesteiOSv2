@@ -27,10 +27,8 @@ class tableViewCell: UITableViewCell {
         lblTitle.text = statement.title
         lblDescription.text = statement.description
         lblDate.text = statement.date
-        self.lblValue.text = "\(statement.value)"
+        lblValue.text = "R$ \(statement.value)"
         
     }
-    
-    
     
 }

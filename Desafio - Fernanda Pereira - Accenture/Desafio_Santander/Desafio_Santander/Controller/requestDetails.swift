@@ -10,12 +10,11 @@ import Foundation
 import Alamofire
 
     protocol DetailsService {
-        func showDetails(userId: Int, completion:@escaping ([(Transactions)]) -> Void)
+        func showDetails(userId: Int, completion:@escaping ([Transactions]) -> Void)
     }
     class requestDetails: DetailsService{
-        func showDetails(userId: Int, completion: @escaping ([(Transactions)]) -> Void) {
+        func showDetails(userId: Int, completion: @escaping ([Transactions]) -> Void) {
             let statementEndpoint = "https://bank-app-test.herokuapp.com/api/statements/\(userId)"
-            let statementParameters: Parameters = ["date": "date", "desc": "desc", "title": "title", "value": "value"]
             
             AF.request(statementEndpoint, method: .get).responseData{ response in
             

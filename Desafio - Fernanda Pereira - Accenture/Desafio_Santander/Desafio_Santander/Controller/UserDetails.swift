@@ -24,36 +24,48 @@ class UserDetails: UIViewController, UITableViewDataSource, UITableViewDelegate 
         goBack()
     }
     var userDetails: Usuario?
-    var userStatement: Transactions?
-//
+    var userStatement =  requestDetails()
+    var statementList: [Transactions]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tvUserStatement.delegate = self
-        tvUserStatement.dataSource = self
+        
+        
+        
         
         if let user = userDetails {
             lblNomeUser.text = user.name
             self.lblAgenciaConta.text = "\(user.agencia)/\(user.conta)"
             self.lblSaldo.text = "R$\(user.saldo)"
+            
+            userStatement.showDetails(userId: user.userId){ statementList in
+                self.statementList = statementList
+                self.tvUserStatement.delegate = self
+                self.tvUserStatement.dataSource = self
+                self.tvUserStatement.reloadData()
         }
+    }
+        
         
     }
     func tableView(_ tableViewStatement: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let statementCell = tableViewStatement.dequeueReusableCell(withIdentifier: "SCell", for: indexPath) as! tableViewCell
-//        statementCell.prepareOutlets(with: Transactions)
-//        statementCell.prepareOutlets(with: userStatement!)
-
+        if let statementCell = tableViewStatement.dequeueReusableCell(withIdentifier: "SCell", for: indexPath) as? tableViewCell{
+        
+        statementCell.prepareOutlets(with: statementList![indexPath.row])
         return statementCell
     }
-
-    func tableView(_ tvUserStatement: UITableView, titleForHeaderInSection section: Int) -> String {
+        else{
+         fatalError()
+    }
+}
+    func tableView(_ tvUserStatement: UITableView, titleForHeaderInSection section: Int) -> String? {
         let title = "Recentes"
         return title
     }
     func tableView(_ tvUserStatement: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return statementList!.count
     }
     
     func numbersOfSectionInTableView(tvUserStatement: UITableView) -> Int {
