@@ -9,8 +9,7 @@
 import UIKit
 
 class Movimenta_TableViewCell: UITableViewCell {
-    
-    
+
     @IBOutlet weak var outDesc: UILabel!
     @IBOutlet weak var outValue: UILabel!
     @IBOutlet weak var outDate: UILabel!
@@ -26,7 +25,6 @@ class Movimenta_TableViewCell: UITableViewCell {
 
     }
     
-    //vinculando as label com os dados do JSON que estao na struct
     func prepare(with extrato : Movimentacao)
     {
         outTitle.text! = extrato.tema

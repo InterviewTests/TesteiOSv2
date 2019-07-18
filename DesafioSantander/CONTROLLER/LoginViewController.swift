@@ -39,7 +39,6 @@ class LoginViewController: UIViewController {
     }
     
     func validar(user: String, senha: String) -> Bool {
-        //validado usando o Golden Path , q eh quando á condicao não eh atendida ela retorna falsa
         
         if user.isEmpty {
             return false
