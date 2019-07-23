@@ -8,36 +8,36 @@
 
 import UIKit
 
-class Detalhes_ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var usuario: Usuario?
-    var extratoLista: [Extrato]?
+    var user: User?
+    var extractList: [Extract]?
     
-    var api = ConexaAPI()
+    var api = ConnectionAPI()
     
-    @IBOutlet weak var outNome: UILabel!
+    @IBOutlet weak var outName: UILabel!
     
-    @IBOutlet weak var outConta: UILabel!
+    @IBOutlet weak var outCount: UILabel!
     
-    @IBOutlet weak var outSaldo: UILabel!
+    @IBOutlet weak var outBalance: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func atcSair(_ sender: UIButton) {
-        voltaParaPrincipal()
+        backToLogin()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let user = usuario {
-            outNome.text = user.name
-            self.outConta.text = "\(user.conta) / \(user.agencia)"
-            self.outSaldo.text = "R$ \(user.saldo)"
+        if let user = user {
+            outName.text = user.name
+            self.outCount.text = "\(user.count) / \(user.agency)"
+            self.outBalance.text = "R$ \(user.balance)"
             
-            api.buscaExtrato(userId: user.userId) { extratoLista in
+            api.searchExtract(userId: user.userId) { extractList in
                 
-                self.extratoLista = extratoLista
+                self.extractList = extractList
                 self.tableView.delegate = self
                 self.tableView.dataSource = self
                 self.tableView.reloadData()
@@ -47,9 +47,9 @@ class Detalhes_ViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? InformacoesAdicionais_TableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? AdditionalInformationTableViewCell {
             
-            cell.relacionaLabelStruct(with: extratoLista![indexPath.row])
+            cell.relacionaLabelStruct(with: extractList![indexPath.row])
             return cell
             
         } else {
@@ -58,19 +58,19 @@ class Detalhes_ViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let titulo = "Recentes"
-        return titulo
+        let title = "Recentes"
+        return title
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return extratoLista!.count
+        return extractList!.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func voltaParaPrincipal(){
+    func backToLogin(){
         navigationController?.popViewController(animated: true)
     }
 }

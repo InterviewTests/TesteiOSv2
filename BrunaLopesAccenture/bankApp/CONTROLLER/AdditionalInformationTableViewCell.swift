@@ -9,15 +9,15 @@
 
 import UIKit
 
-class InformacoesAdicionais_TableViewCell: UITableViewCell {
+class AdditionalInformationTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var outTitulo: UILabel!
+    @IBOutlet weak var outTitle: UILabel!
     
-    @IBOutlet weak var outDescricao: UILabel!
+    @IBOutlet weak var outDescription: UILabel!
     
-    @IBOutlet weak var outData: UILabel!
+    @IBOutlet weak var outDate: UILabel!
     
-    @IBOutlet weak var outValor: UILabel!
+    @IBOutlet weak var outValue: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,12 +27,12 @@ class InformacoesAdicionais_TableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func relacionaLabelStruct (with ligacao: Extrato) {
+    func relacionaLabelWithStruct (with link: Extract) {
     
-    outTitulo.text = ligacao.titulo
-    outDescricao.text = ligacao.descricao
-    outData.text = ligacao.data
-    outValor.text = "R$ \(ligacao.valor)"
+    outTitle.text = link.title
+    outDescription.text = link.description
+    outDate.text = link.date
+    outValue.text = "R$ \(link.value)"
         
     }
     

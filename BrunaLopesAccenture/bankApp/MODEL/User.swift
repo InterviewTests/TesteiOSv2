@@ -8,27 +8,27 @@
 
 import Foundation
 
-struct UsuarioResponse: Codable {
-    let usuario: Usuario
+struct UserResponse: Codable {
+    let user: User
     
     enum CodingKeys: String, CodingKey {
-        case usuario = "userAccount"
+        case user = "userAccount"
     }
 }
 
-struct Usuario: Codable {
+struct User: Codable {
     let userId: Int
     let name: String
-    let conta: String
-    let agencia: String
-    let saldo: Double
+    let count: String
+    let agency: String
+    let balance: Double
     
     enum CodingKeys: String, CodingKey {
         case userId
         case name
-        case conta = "bankAccount"
-        case agencia = "agency"
-        case saldo = "balance"
+        case count = "bankAccount"
+        case agency
+        case balance
     }
 }
 

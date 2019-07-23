@@ -11,36 +11,36 @@ import Alamofire
 
 protocol LoginService {
     
-    func fazLogin(user:String, password: String, completion:@escaping (Usuario) -> Void)
+    func doLogin(user:String, password: String, completion:@escaping (User) -> Void)
 
 }
 
-class ConexaAPI: LoginService {
+class ConnectionAPI: LoginService {
 
-    func fazLogin(user: String, password: String, completion: @escaping (Usuario) -> Void) {
+    func doLogin(user: String, password: String, completion: @escaping (User) -> Void) {
         
         let link = "https://bank-app-test.herokuapp.com/api/login"
-        let parametros: Parameters = ["user" : "test_user",
+        let parameters: Parameters = ["user" : "test_user",
                                       "password" : "Test@1"]
         
-        AF.request(link, method: .post, parameters: parametros).responseData { response in
+        AF.request(link, method: .post, parameters: parameters).responseData { response in
             
             let decoder = JSONDecoder()
-            let model = try! decoder.decode(UsuarioResponse.self, from: response.data!)
-            completion(model.usuario)
+            let model = try! decoder.decode(UserResponse.self, from: response.data!)
+            completion(model.user)
             
         }
     }
     
-    func buscaExtrato(userId: Int, completion: @escaping ([Extrato]) -> Void) {
+    func searchExtract(userId: Int, completion: @escaping ([Extract]) -> Void) {
         
         let link = "https://bank-app-test.herokuapp.com/api/statements/\(userId)"
         
         AF.request(link, method: .get).responseData { response in
             
             let decoder = JSONDecoder()
-            let model = try! decoder.decode(ExtratoRec.self, from: response.data!)
-            completion(model.informacoes)
+            let model = try! decoder.decode(ExtractRec.self, from: response.data!)
+            completion(model.information)
             
         }
     }

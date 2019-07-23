@@ -8,24 +8,24 @@
 
 import Foundation
 
-struct ExtratoRec: Codable {
-    let informacoes: [Extrato]
+struct ExtractRec: Codable {
+    let information: [Extract]
     
     enum CodingKeys: String, CodingKey {
-        case informacoes = "statementList"
+        case information = "statementList"
     }
 }
 
-struct Extrato: Codable {
-    let titulo: String
-    let descricao: String
-    let data: String
-    let valor: Double
+struct Extract: Codable {
+    let title: String
+    let description: String
+    let date: String
+    let value: Double
     
     enum CodingKeys: String, CodingKey {
-        case titulo = "title"
-        case descricao = "desc"
-        case data = "date"
-        case valor = "value"
+        case title
+        case description = "desc"
+        case date
+        case value
     }
 }

@@ -11,18 +11,18 @@ import CPF_CNPJ_Validator
 
 class LoginViewController: UIViewController {
 
-    let service: LoginService = ConexaAPI()
+    let service: LoginService = ConnectionAPI()
     
     @IBOutlet weak var outUser: UITextField!
     @IBOutlet weak var outPassword: UITextField!
     
     @IBAction func actLogin(_ sender: UIButton) {
         
-        let user = outUser.text!
-        let password = outPassword.text!
+        let inputUser = outUser.text!
+        let inputPassword = outPassword.text!
         
-        if validateLogin(user: user, password: password) {
-            login(user: user, password: password)
+        if validateLogin(user: inputUser, password: inputPassword) {
+            login(user: inputUser, password: inputPassword)
         } else {
             let popUp = "Verificar campos digitados"
             let title = "Atenção!"
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
         
         if user.isEmpty || password.isEmpty{
             return false
-        } else if validateEmail(test: user) || validateCPF(test: user){
+        } else if validateEmail(email: user) || validateCPF(cpf: user){
             if validatePassword(password: password){
                 return true
             }
@@ -47,22 +47,22 @@ class LoginViewController: UIViewController {
     }
     
     func login(user: String, password: String){
-        service.fazLogin(user: user, password: password) { user in
+        service.doLogin(user: user, password: password) { user in
             self.goToDetails(user: user)
         }
     }
     
-    func validateEmail(test: String) -> Bool{
-        let email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    func validateEmail(email: String) -> Bool{
+        let parametersEmail = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", email)
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", parametersEmail)
         
-        return emailTest.evaluate(with: test)
+        return emailTest.evaluate(with: email)
     }
     
-    func validateCPF(test: String) -> Bool{
+    func validateCPF(cpf: String) -> Bool{
         
-        let sucess = BooleanValidator().validate(cpf: test)
+        let sucess = BooleanValidator().validate(cpf: cpf)
         return sucess
     }
     
@@ -78,17 +78,18 @@ class LoginViewController: UIViewController {
         return false
     }
     
-    func goToDetails(user: Usuario){
+    func goToDetails(user: User){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = storyboard.instantiateViewController(withIdentifier: "Detalhes_ViewController")
-            as? Detalhes_ViewController {
-            controller.usuario = user
+        if let controller = storyboard.instantiateViewController(withIdentifier: "DetailsViewController")
+            as? DetailsViewController {
+            controller.user = user
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        outPassword.isSecureTextEntry = true
     }
 }
 

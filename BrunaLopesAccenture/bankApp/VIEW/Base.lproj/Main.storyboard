@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Login_ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="Login_ViewController" customModule="bankApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="bankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,12 +82,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="754" y="27"/>
+            <point key="canvasLocation" x="766" y="27"/>
         </scene>
-        <!--Detalhes View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="dUU-mY-HO9">
             <objects>
-                <viewController storyboardIdentifier="Detalhes_ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rDf-ow-vPD" customClass="Detalhes_ViewController" customModule="bankApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rDf-ow-vPD" customClass="DetailsViewController" customModule="bankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tnN-C2-kaT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,14 +153,14 @@
                                     <constraint firstAttribute="height" constant="435" id="Kgs-FJ-6ia"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="127" id="mb5-ao-pd4" customClass="InformacoesAdicionais_TableViewCell" customModule="bankApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="127" id="mb5-ao-pd4" customClass="AdditionalInformationTableViewCell" customModule="bankApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mb5-ao-pd4" id="yoG-Wa-UKN">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="126.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfz-rN-CWk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfz-rN-CWk" userLabel="Out Title">
                                                     <rect key="frame" x="25" y="31" width="42" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20.5" id="T4n-cb-2Dw"/>
@@ -211,10 +211,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="outData" destination="WoH-HE-Ox5" id="x36-7b-XVS"/>
-                                            <outlet property="outDescricao" destination="nyd-wy-3PK" id="dUU-r3-Xy1"/>
-                                            <outlet property="outTitulo" destination="vfz-rN-CWk" id="32h-SR-SuG"/>
-                                            <outlet property="outValor" destination="816-CG-2Bh" id="Frt-Wh-dWz"/>
+                                            <outlet property="outDate" destination="WoH-HE-Ox5" id="6XR-VL-hwg"/>
+                                            <outlet property="outDescription" destination="nyd-wy-3PK" id="Fgo-Hf-hFp"/>
+                                            <outlet property="outTitle" destination="vfz-rN-CWk" id="inZ-dU-Exp"/>
+                                            <outlet property="outValue" destination="816-CG-2Bh" id="tuV-03-aSU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -247,15 +247,15 @@
                         <viewLayoutGuide key="safeArea" id="VrK-Ig-ERn"/>
                     </view>
                     <connections>
-                        <outlet property="outConta" destination="Cq8-yn-bjd" id="xPH-xl-f2U"/>
-                        <outlet property="outNome" destination="09y-vf-Az2" id="q35-Eu-cwt"/>
-                        <outlet property="outSaldo" destination="Mh0-Wg-6Ha" id="dvb-ZZ-fum"/>
+                        <outlet property="outBalance" destination="Mh0-Wg-6Ha" id="I3g-o7-GmU"/>
+                        <outlet property="outCount" destination="Cq8-yn-bjd" id="ilh-C2-kB2"/>
+                        <outlet property="outName" destination="09y-vf-Az2" id="Iru-oj-BBj"/>
                         <outlet property="tableView" destination="zm4-CJ-XJR" id="Thi-X1-CEA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UaK-Fk-7vE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1460" y="27.436281859070466"/>
+            <point key="canvasLocation" x="1486" y="27"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UHw-aI-agi">
