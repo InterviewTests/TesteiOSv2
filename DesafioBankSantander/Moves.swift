@@ -9,14 +9,14 @@
 import Foundation
 /* statementList é uma chave que é dicionario, composta por um conjunto de de chaves e valores, extraida do SJON */
 struct statementList: Codable {
-    let movimentacao: [Movimentacoes]
+    let moves: [Moves]
     
     enum CodingKeys: String, CodingKey {
-        case movimentacao = "statementList"
+        case moves = "statementList"
     }
 }
 
-struct Movimentacoes: Codable{
+struct Moves: Codable{
     let title: String
     let desc: String
     let date: String

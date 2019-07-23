@@ -8,31 +8,30 @@
 
 import UIKit
 
-class DetalhesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     
     
-    @IBOutlet weak var lbnome: UILabel!
-    @IBOutlet weak var lbconta: UILabel!
-    @IBOutlet weak var lbsaldo: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var accountLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var tbView: UITableView!
-    @IBAction func bntSair(_ sender: UIButton) {
-        closeTelaDetalhes()
+    @IBAction func btnClose(_ sender: UIButton) {
+        closeScreenDetails()
     }
     
-    
-    var cliente:  Cliente?
-    var lacamento: [Movimentacoes]? //Armazenar a Lista de lancamento
-    var ArmazenaAPI = API()
+    var client:  Client?
+    var movesList: [Moves]? //Armazenar a Lista de lancamento
+    var storesAPI = API()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let user = cliente {
-            lbnome.text = user.name
-            self.lbconta.text = " ag: \(user.agencia) cc: \(user.conta)"
-            self.lbsaldo.text = "Saldo: \(user.saldo)"
-            ArmazenaAPI.requestLancamento(userId: user.userId) { response in
-                self.lacamento = response
+        if let user = client {
+            nameLabel.text = user.name
+            self.accountLabel.text = " ag: \(user.agency) cc: \(user.account)"
+            self.balanceLabel.text = "Balance: \(user.balance)"
+            storesAPI.requestLaunch(userId: user.userId) { response in
+                self.movesList = response
                 self.tbView.delegate = self
                 self.tbView.dataSource = self
                 self.tbView.reloadData()
@@ -43,12 +42,12 @@ class DetalhesViewController: UIViewController, UITableViewDelegate, UITableView
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lacamento!.count
+        return movesList!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let chamacell = tableView.dequeueReusableCell(withIdentifier: "extrato", for: indexPath) as? ExtratoTableViewCell{
-            chamacell.prepare(with: lacamento![indexPath.row])
+        if let chamacell = tableView.dequeueReusableCell(withIdentifier: "extract", for: indexPath) as? ExtractTableViewCell{
+            chamacell.prepare(with: movesList![indexPath.row])
             return chamacell 
         }
         else{
@@ -56,11 +55,10 @@ class DetalhesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func closeTelaDetalhes() {
+    func closeScreenDetails() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = storyboard.instantiateViewController(withIdentifier:
-            "TelaLoginViewController") as? TelaLoginViewController {
-            
+            "ScreenLoginViewController") as? ScreenLoginViewController {
             
             self.navigationController?.pushViewController(controller, animated: true)
         }

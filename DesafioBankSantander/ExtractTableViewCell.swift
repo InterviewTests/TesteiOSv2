@@ -8,20 +8,20 @@
 
 import UIKit
 
-class ExtratoTableViewCell: UITableViewCell {
+class ExtractTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var lbTitulo: UILabel!
-    @IBOutlet weak var lbValue: UILabel!
-    @IBOutlet weak var lbDate: UILabel!
-    @IBOutlet weak var lbDesc: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
-    func prepare (with extrato: Movimentacoes) {
+    func prepare (with extract: Moves) {
         //funcao p/ preparar label (atribuir valores)
-        lbTitulo.text = extrato.title
-        lbValue.text = "\(extrato.value)" //converte qualquer var p/ String
-        lbDate.text = extrato.date
-        lbDesc.text = extrato.desc
+        titleLabel.text = extract.title
+        valueLabel.text = "\(extract.value)" //converte qualquer var p/ String
+        dateLabel.text = extract.date
+        descriptionLabel.text = extract.desc
     }
 
     override func awakeFromNib() {

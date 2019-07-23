@@ -11,13 +11,13 @@ import Alamofire
 
 
 protocol LoginApi {
-    func login(user: String, password: String, completion:@escaping (Cliente) -> Void)
+    func login(user: String, password: String, completion:@escaping (Client) -> Void)
 
 }
 
 class API: LoginApi {
     // Request na API para retorno do usuario
-    func login(user: String, password: String, completion: @escaping (Cliente) -> Void) {
+    func login(user: String, password: String, completion: @escaping (Client) -> Void) {
         let endpoint = "https://bank-app-test.herokuapp.com/api/login"
         let params: Parameters = [
             "user": "test_user",
@@ -27,14 +27,14 @@ class API: LoginApi {
             
             let decoder = JSONDecoder()
             let model = try!
-                decoder.decode(UsuarioResponse.self, from: response.data!)
-            completion(model.usuario)
+                decoder.decode(UserResponse.self, from: response.data!)
+            completion(model.client)
         }
     }
     
     // Request na API para retorno do extrato
-    func requestLancamento(userId: Int, completion: @escaping
-        ([Movimentacoes])-> Void) {
+    func requestLaunch(userId: Int, completion: @escaping
+        ([Moves])-> Void) {
         let endpoint = "https://bank-app-test.herokuapp.com/api/statements/\(userId)"
         
         
@@ -43,7 +43,7 @@ class API: LoginApi {
             let decoder = JSONDecoder()
             let model = try!
                 decoder.decode(statementList.self, from: response.data!)
-            completion(model.movimentacao)
+            completion(model.moves)
         }
     }
 }
