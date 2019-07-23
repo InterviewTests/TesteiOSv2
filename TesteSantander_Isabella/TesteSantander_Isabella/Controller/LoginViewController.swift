@@ -13,78 +13,68 @@ import CPF_CNPJ_Validator
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var txtUser: UITextField!
-    @IBOutlet weak var txtSenha: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var lblError: UILabel!
     
-    @IBOutlet weak var lblErro: UILabel!
+    let service: LoginService = BankAPI()
     
-    let service: LoginService = BancoAPI()
-    
-    func validaEmail (user: String) -> Bool{
+    func isValidUser(user: String) -> Bool {
+        if (isCPF(user: user) || (isEmail(user: user))){
+            return true
+        }
+        return false
+    }
+   
+    func isEmail (user: String) -> Bool{
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        
         return emailPredicate.evaluate(with: user)
-
     }
-    func validaCPF(user:String) -> Bool{
-       let success = BooleanValidator().validate(cpf: user)
-        if success {
+    
+    func isCPF(user:String) -> Bool{
+        return BooleanValidator().validate(cpf: user)
+    }
+    
+    
+    func  isValidPassword(password:String) ->Bool {
+       
+        let number:NSCharacterSet = NSCharacterSet(charactersIn: "1234567890")
+        let capitalLetter: NSCharacterSet = NSCharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        let especialCharacter: NSCharacterSet = NSCharacterSet(charactersIn: "!@#$%ˆ&*()_-+=˜`|]}[{':;?/<>.,")
+        
+        if ((password.rangeOfCharacter(from: number as CharacterSet) != nil) && (password.rangeOfCharacter(from: capitalLetter as CharacterSet) != nil) && (password.rangeOfCharacter(from: especialCharacter as CharacterSet) != nil)) {
             return true
         }
+        
         return false
     }
     
-    func ValidaUser(user: String) -> Bool {
-        if (validaCPF(user: user)){
-            return true
-        }
-        if (validaEmail(user: user)){
-            return true
-        }
-        
-        return false
-    }
-    func ValidaSenha(senha:String) ->Bool {
-       
-        let num:NSCharacterSet = NSCharacterSet(charactersIn: "1234567890")
-        let letraMai: NSCharacterSet = NSCharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-        let especial: NSCharacterSet = NSCharacterSet(charactersIn: "!@#$%ˆ&*()_-+=˜`|]}[{':;?/<>.,")
-        
-        if ((senha.rangeOfCharacter(from: num as CharacterSet) != nil) && (senha.rangeOfCharacter(from: letraMai as CharacterSet) != nil) && (senha.rangeOfCharacter(from: especial as CharacterSet) != nil)) {
-            return true
-    }
-        
-        return false
-   
-    }
-    func navegaDados(user: Usuario){
+    func loadAccountDetails(user: User){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = storyboard.instantiateViewController(withIdentifier: "DadosViewController") as? DadosViewController {
+        if let controller = storyboard.instantiateViewController(withIdentifier: "AccountDetailsViewController") as? AccountDetailsViewController {
             
-            controller.usuario = user
+            controller.user = user
             
             
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
-    func login(user: String, senha: String){
-        service.login(user: user, password: senha) { user in
-            self.navegaDados(user: user)
+    func login(user: String, password: String){
+        service.login(user: user, password: password) { user in
+            self.loadAccountDetails(user: user)
         }
     }
     
     @IBAction func btnLogin(_ sender: UIButton) {
         let user = txtUser.text!
-        let senha = txtSenha.text!
+        let password = txtPassword.text!
         
-        if(ValidaUser(user: user)){
-            if(ValidaSenha(senha: senha)){
-                login(user: user, senha: senha)
-            }
-            else{
-                lblErro.text = "Senha inválida"
-            }
-        }else{
-            lblErro.text = "Usuário inválido"
+        if(isValidUser(user: user)) && isValidPassword(password: password){
+            login(user: user, password: password)
+        }
+        else{
+            lblError.text = "User or password not found"
         }
     }
     override func viewDidLoad() {

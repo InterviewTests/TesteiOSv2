@@ -87,8 +87,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="7X0-Jz-DcE"/>
                     <connections>
-                        <outlet property="lblErro" destination="Hdj-zx-GgF" id="8Te-M2-M03"/>
-                        <outlet property="txtSenha" destination="Vlq-sr-ogs" id="6yN-Q7-DFW"/>
+                        <outlet property="lblError" destination="Hdj-zx-GgF" id="yha-rG-aWW"/>
+                        <outlet property="txtPassword" destination="Vlq-sr-ogs" id="KNx-wg-Pck"/>
                         <outlet property="txtUser" destination="ks3-HS-2q3" id="STC-9e-aS6"/>
                     </connections>
                 </viewController>
@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="1069.5999999999999" y="-572.56371814092961"/>
         </scene>
-        <!--Dados View Controller-->
+        <!--Account Details View Controller-->
         <scene sceneID="IaX-dV-RjW">
             <objects>
-                <viewController storyboardIdentifier="DadosViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mbg-Ab-QfB" customClass="DadosViewController" customModule="TesteSantander_Isabella" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mbg-Ab-QfB" customClass="AccountDetailsViewController" customModule="TesteSantander_Isabella" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EKm-LX-Vbg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,7 +112,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="Logout"/>
                                 <connections>
-                                    <action selector="btnSair:" destination="mbg-Ab-QfB" eventType="touchUpInside" id="7cL-VX-Y6D"/>
+                                    <action selector="btnLogout:" destination="mbg-Ab-QfB" eventType="touchUpInside" id="3Pb-nf-FFm"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOME COMPLETO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qd5-hV-i6d">
@@ -172,7 +172,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="415"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="celula" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celula" rowHeight="106" id="lFr-gN-tRu" customClass="Lancamento_TableViewCell" customModule="TesteSantander_Isabella" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="statement" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="statementCell" rowHeight="106" id="lFr-gN-tRu" customClass="BankStatementTableViewCell" customModule="TesteSantander_Isabella" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="106"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lFr-gN-tRu" id="xDf-V4-Urp">
@@ -222,10 +222,10 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="lblData" destination="vZX-Ds-koa" id="BpG-VB-E1y"/>
-                                                    <outlet property="lblDesc" destination="dEM-hW-8kQ" id="sgY-Pa-F7f"/>
-                                                    <outlet property="lblTitle" destination="avi-H3-jsk" id="ahs-GT-k6c"/>
-                                                    <outlet property="lblValor" destination="Aqk-vg-9Jj" id="7VP-Kq-hHg"/>
+                                                    <outlet property="lblStatementDate" destination="vZX-Ds-koa" id="asd-H2-g04"/>
+                                                    <outlet property="lblStatementDescription" destination="dEM-hW-8kQ" id="pAv-rq-3CY"/>
+                                                    <outlet property="lblStatementTitle" destination="avi-H3-jsk" id="ZUn-kR-eBv"/>
+                                                    <outlet property="lblStatementValue" destination="Aqk-vg-9Jj" id="WmQ-Ad-PaA"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -270,10 +270,10 @@
                         <viewLayoutGuide key="safeArea" id="gU9-K3-FHi"/>
                     </view>
                     <connections>
-                        <outlet property="lblAgConta" destination="3gO-sm-afC" id="PN3-9k-AfM"/>
-                        <outlet property="lblNome" destination="Qd5-hV-i6d" id="zh1-sN-7Ba"/>
-                        <outlet property="lblSaldo" destination="lNJ-BI-zXV" id="wNK-Ca-ahW"/>
-                        <outlet property="tableView" destination="Djn-me-jmD" id="Vcr-Ek-HAL"/>
+                        <outlet property="lblUserAccount" destination="3gO-sm-afC" id="dMi-9h-89R"/>
+                        <outlet property="lblUserBalance" destination="lNJ-BI-zXV" id="bz0-el-WPR"/>
+                        <outlet property="lblUserName" destination="Qd5-hV-i6d" id="j3B-pv-m2x"/>
+                        <outlet property="tvStatementsList" destination="Djn-me-jmD" id="54I-2i-hnQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUe-hX-Jud" userLabel="First Responder" sceneMemberID="firstResponder"/>
