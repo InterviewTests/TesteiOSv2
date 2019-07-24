@@ -49,7 +49,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? AdditionalInformationTableViewCell {
             
-            cell.relacionaLabelStruct(with: extractList![indexPath.row])
+            cell.relacionaLabelWithStruct(with: extractList![indexPath.row])
             return cell
             
         } else {
