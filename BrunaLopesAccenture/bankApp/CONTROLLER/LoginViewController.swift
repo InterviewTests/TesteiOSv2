@@ -91,5 +91,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         outPassword.isSecureTextEntry = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        outUser.text = ""
+        outPassword.text = ""
+    }
 }
 
