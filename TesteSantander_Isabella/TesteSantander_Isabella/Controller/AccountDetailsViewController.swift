@@ -22,14 +22,7 @@ class AccountDetailsViewController: UIViewController, UITableViewDelegate, UITab
     var bankStatements: [BankStatements]?
     
     @IBAction func btnLogout(_ sender: UIButton) {
-        logout()
-    }
-    
-    func logout(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
-            self.navigationController?.pushViewController(controller, animated: true)
-        }
+        navigationController?.popToRootViewController(animated: true)
     }
     
     override func viewDidLoad() {
