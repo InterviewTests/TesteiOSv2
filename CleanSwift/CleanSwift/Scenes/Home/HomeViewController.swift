@@ -12,78 +12,66 @@
 
 import UIKit
 
-protocol HomeDisplayLogic: class
-{
+protocol HomeDisplayLogic: class {
   func displaySomething(viewModel: Home.Something.ViewModel)
 }
 
-class HomeViewController: UIViewController, HomeDisplayLogic
-{
-  var interactor: HomeBusinessLogic?
-  var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = HomeInteractor()
-    let presenter = HomePresenter()
-    let router = HomeRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+class HomeViewController: BaseViewController {
+    
+    var router: HomeRouter
+    private var interactor: HomeInteractor
+    private var presenter: HomePresenter
+    private var tableViewDataSource: HomeDataSource?
+    private lazy var realmWorker: RealmWorker = {
+        let manager = RealmWorker()
+        return manager
+    }()
+    
+    init(interactor: HomeInteractor, router: HomeRouter, presenter: HomePresenter) {
+        self.interactor = interactor
+        self.interactor.presenter = presenter
+        self.presenter = presenter
+        self.router = router
+        super.init()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Object lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+    }
+    
+    // MARK: Setup
+    private func setupView() {
+        presenter.viewController = self
+        
+//        HomeDataSource.setupHome(tableView: tableView)
+//        tableViewDataSource = HomeDataSource(presenter: presenter, delegate: self)
+//        tableView.dataSource = tableViewDataSource
+//        tableView.delegate = tableViewDataSource
+    }
+    
+  func doSomething() {
     let request = Home.Something.Request()
-    interactor?.doSomething(request: request)
+    interactor.doSomething(request: request)
   }
-  
-  func displaySomething(viewModel: Home.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+}
+
+extension HomeViewController: HomeDisplayLogic {
+    func displaySomething(viewModel: Home.Something.ViewModel) {
+        //nameTextField.text = viewModel.name
+    }
+}
+
+extension HomeViewController: HomeDataSourceDelegate {
+    func doLogout() {
+        if let user = realmWorker.getObj() {
+            realmWorker.deleteObj(obj: user)
+        }
+        router.routeToSomewhere(home: self)
+    }
 }

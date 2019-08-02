@@ -34,7 +34,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
 
     func routeToSomewhere(login: LoginViewController) {
         login.dismiss(animated: false, completion: nil)
-        let homeViewController = HomeViewController()
+        let homeViewController = HomeViewController(interactor: HomeInteractor(), router: HomeRouter(), presenter: HomePresenter())
         rootViewController.present(homeViewController, animated: false, completion: nil)
   }
 }
