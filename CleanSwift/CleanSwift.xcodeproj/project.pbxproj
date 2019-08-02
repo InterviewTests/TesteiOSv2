@@ -29,6 +29,11 @@
 		22F5BD3F22F3ED380015FC90 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5BD3922F3ED380015FC90 /* HomeInteractor.swift */; };
 		22F5BD4222F3EFB80015FC90 /* CSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5BD4122F3EFB80015FC90 /* CSNavigationController.swift */; };
 		22F5BD4422F3EFC30015FC90 /* CSNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5BD4322F3EFC30015FC90 /* CSNavigationBar.swift */; };
+		22F5BD4A22F3F49A0015FC90 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22F5BD4922F3F49A0015FC90 /* SplashViewController.xib */; };
+		22F5BD4C22F3F4A70015FC90 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5BD4B22F3F4A70015FC90 /* SplashViewController.swift */; };
+		22F5BD4E22F3F50F0015FC90 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5BD4D22F3F50F0015FC90 /* SplashRouter.swift */; };
+		22F5BD5022F3F5680015FC90 /* RealmWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5BD4F22F3F5680015FC90 /* RealmWorker.swift */; };
+		22F5BD5222F3F5890015FC90 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5BD5122F3F5890015FC90 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +82,11 @@
 		22F5BD3922F3ED380015FC90 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		22F5BD4122F3EFB80015FC90 /* CSNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSNavigationController.swift; sourceTree = "<group>"; };
 		22F5BD4322F3EFC30015FC90 /* CSNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSNavigationBar.swift; sourceTree = "<group>"; };
+		22F5BD4922F3F49A0015FC90 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		22F5BD4B22F3F4A70015FC90 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		22F5BD4D22F3F50F0015FC90 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
+		22F5BD4F22F3F5680015FC90 /* RealmWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWorker.swift; sourceTree = "<group>"; };
+		22F5BD5122F3F5890015FC90 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,8 +169,8 @@
 		22F5BD1E22F3DF160015FC90 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				22F5BD4722F3F47E0015FC90 /* Connection */,
 				22F5BD2922F3E0B60015FC90 /* App */,
-				22F5BD1F22F3DF260015FC90 /* Login */,
 				22F5BD3322F3ED220015FC90 /* Home */,
 			);
 			path = Scenes;
@@ -229,6 +239,7 @@
 		22F5BD2A22F3E91D0015FC90 /* Routers */ = {
 			isa = PBXGroup;
 			children = (
+				22F5BD4D22F3F50F0015FC90 /* SplashRouter.swift */,
 				22F5BD1422F3DCFA0015FC90 /* LoginRouter.swift */,
 			);
 			path = Routers;
@@ -239,6 +250,7 @@
 			children = (
 				22F5BD3122F3EAF80015FC90 /* APIWorker.swift */,
 				22F5BD1322F3DCFA0015FC90 /* LoginWorker.swift */,
+				22F5BD4F22F3F5680015FC90 /* RealmWorker.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -256,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				22F5BD1522F3DCFA0015FC90 /* LoginModels.swift */,
+				22F5BD5122F3F5890015FC90 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,6 +293,24 @@
 				22F5BD4322F3EFC30015FC90 /* CSNavigationBar.swift */,
 			);
 			path = CSViews;
+			sourceTree = "<group>";
+		};
+		22F5BD4722F3F47E0015FC90 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				22F5BD4822F3F4860015FC90 /* Splash */,
+				22F5BD1F22F3DF260015FC90 /* Login */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		22F5BD4822F3F4860015FC90 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				22F5BD4922F3F49A0015FC90 /* SplashViewController.xib */,
+				22F5BD4B22F3F4A70015FC90 /* SplashViewController.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,6 +420,7 @@
 				22B6588422F3D43F0072347D /* LaunchScreen.storyboard in Resources */,
 				22B6588122F3D43F0072347D /* Assets.xcassets in Resources */,
 				22F5BD2322F3DFE10015FC90 /* LoginViewController.xib in Resources */,
+				22F5BD4A22F3F49A0015FC90 /* SplashViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,8 +448,11 @@
 				22F5BD1C22F3DCFA0015FC90 /* LoginViewController.swift in Sources */,
 				22F5BD4222F3EFB80015FC90 /* CSNavigationController.swift in Sources */,
 				22F5BD3C22F3ED380015FC90 /* HomeRouter.swift in Sources */,
+				22F5BD4E22F3F50F0015FC90 /* SplashRouter.swift in Sources */,
+				22F5BD4C22F3F4A70015FC90 /* SplashViewController.swift in Sources */,
 				22F5BD1822F3DCFA0015FC90 /* LoginPresenter.swift in Sources */,
 				22F5BD3F22F3ED380015FC90 /* HomeInteractor.swift in Sources */,
+				22F5BD5022F3F5680015FC90 /* RealmWorker.swift in Sources */,
 				22B6587A22F3D43F0072347D /* AppDelegate.swift in Sources */,
 				22F5BD3A22F3ED380015FC90 /* HomePresenter.swift in Sources */,
 				22F5BD3E22F3ED380015FC90 /* HomeViewController.swift in Sources */,
@@ -430,6 +465,7 @@
 				22F5BD1A22F3DCFA0015FC90 /* LoginRouter.swift in Sources */,
 				22F5BD1922F3DCFA0015FC90 /* LoginWorker.swift in Sources */,
 				22F5BD3D22F3ED380015FC90 /* HomeModels.swift in Sources */,
+				22F5BD5222F3F5890015FC90 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
