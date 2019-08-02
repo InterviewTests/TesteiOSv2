@@ -70,6 +70,7 @@ extension LoginViewController: LoginDisplayLogic {
     }
     
     func displaySomething(viewModel: Login.ViewModel) {
-        //nameTextField.text = viewModel.name
+        stopLoading()
+        router.routeToSomewhere(login: self)
     }
 }

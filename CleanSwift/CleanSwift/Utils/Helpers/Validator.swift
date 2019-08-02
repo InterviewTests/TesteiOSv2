@@ -21,7 +21,7 @@ struct Validator {
     
     static func isValid(password: String) -> String? {
         if password.isEmpty { return CSError.mandatoryPassword.localizedDescription }
-        let passwordRegex = "^(?=.*[A-Z])(?=.*\\d)(?=.*[d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&#]"
+        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]{3,}"
         if !password.matchRegex(passwordRegex) { return CSError.invalidPassword.localizedDescription }
         return nil
     }
