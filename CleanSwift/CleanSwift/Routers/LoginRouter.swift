@@ -16,7 +16,12 @@ import UIKit
   func routeToSomewhere(login: LoginViewController)
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic {
+protocol LoginDataPassing {
+    var dataStore: LoginDataStore? { get }
+}
+
+class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
+    var dataStore: LoginDataStore?
     var rootViewController: UIViewController { return navigationController }
     
     //This is navigation controller and where will be import

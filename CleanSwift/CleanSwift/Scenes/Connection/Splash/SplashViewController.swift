@@ -7,7 +7,35 @@
 //
 
 import Foundation
+import UIKit
 
 class SplashViewController: BaseViewController {
+    @IBOutlet weak var loading: UIActivityIndicatorView!
+    private var router: SplashRouter
+    private var realmWorker: RealmWorker
     
+    init(router: SplashRouter, realmWorker: RealmWorker) {
+        self.router = router
+        self.realmWorker = realmWorker
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadLayout()
+    }
+    
+    private func loadLayout() {
+        loading.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.loading.stopAnimating()
+            let user = self.realmWorker.getObj()
+            self.router.routeToSomewhere(controller: self, user: user)
+        })
+    }
 }

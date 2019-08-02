@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import RealmSwift
+
+class User: Object {
+    @objc dynamic var username: String = ""
+    @objc dynamic var token: String = ""
+    
+    override static func primaryKey() -> String {
+        return "username"
+    }
+}

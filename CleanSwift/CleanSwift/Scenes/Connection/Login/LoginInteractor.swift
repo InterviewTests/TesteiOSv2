@@ -17,16 +17,15 @@ protocol LoginBusinessLogic {
 }
 
 protocol LoginDataStore {
-  var name: String { get set }
+  var user: User? { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
-  var presenter: LoginPresentationLogic
-  var worker: LoginWorker
-  var name: String = ""
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker
+    var user: User?
   
-    init(presenter: LoginPresentationLogic, worker: LoginWorker) {
-        self.presenter = presenter
+    init(worker: LoginWorker) {
         self.worker = worker
     }
     
@@ -36,6 +35,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     worker.doSomeWork(user: request)
     
     let response = Login.Response()
-    presenter.presentSomething(response: response)
+    presenter?.presentSomething(response: response)
   }
 }

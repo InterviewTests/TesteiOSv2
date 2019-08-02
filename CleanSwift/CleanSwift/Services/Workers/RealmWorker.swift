@@ -7,3 +7,25 @@
 //
 
 import Foundation
+import RealmSwift
+
+class RealmWorker {
+    let realm = try? Realm()
+    
+    func saveObjc(obj: Object) {
+        try? realm!.write {
+            realm?.add(obj, update: false)
+        }
+    }
+    
+    func deleteObj(obj: User) {
+        try? realm!.write {
+            realm!.delete(obj)
+        }
+    }
+    
+    func getObj() -> User? {
+        let obj = realm!.objects(User.self)
+        return obj.first
+    }
+}

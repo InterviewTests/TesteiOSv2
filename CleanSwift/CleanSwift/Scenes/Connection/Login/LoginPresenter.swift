@@ -13,7 +13,7 @@
 import UIKit
 
 protocol LoginPresentationLogic {
-  func presentSomething(response: Login.Response)
+    func presentSomething(response: Login.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic {

@@ -18,8 +18,8 @@ protocol LoginDisplayLogic: class {
 }
 
 class LoginViewController: BaseViewController {
+    var router: LoginRouter
     private var interactor: LoginInteractor
-    private var router: LoginRouter
     private var presenter: LoginPresenter
 
     init(interactor: LoginInteractor, router: LoginRouter, presenter: LoginPresenter) {
