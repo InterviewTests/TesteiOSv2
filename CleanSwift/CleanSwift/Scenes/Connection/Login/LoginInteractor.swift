@@ -32,6 +32,14 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
   // MARK: Do something
   
   func doSomething(request: Login.Request) {
+    if let emailError = Validator.isValid(username: request.username) {
+        presenter?.presentError(error: emailError)
+        return
+    }
+    if let passwordError = Validator.isValid(password: request.password) {
+        presenter?.presentError(error: passwordError)
+        return
+    }
     worker.doSomeWork(user: request)
     
     let response = Login.Response()

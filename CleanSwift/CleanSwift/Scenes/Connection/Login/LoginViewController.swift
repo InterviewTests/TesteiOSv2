@@ -14,10 +14,14 @@ import UIKit
 import Foundation
 
 protocol LoginDisplayLogic: class {
-  func displaySomething(viewModel: Login.ViewModel)
+    func displaySomething(viewModel: Login.ViewModel)
+    func showAlertError(error: String)
 }
 
 class LoginViewController: BaseViewController {
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     var router: LoginRouter
     private var interactor: LoginInteractor
     private var presenter: LoginPresenter
@@ -43,23 +47,28 @@ class LoginViewController: BaseViewController {
   // MARK: Setup
     private func setupView() {
         presenter.viewController = self
+        usernameTextField.text = router.dataStore?.user?.username ?? ""
     }
 
   // MARK: Do something
   
-  //@IBOutlet weak var nameTextField: UITextField!
+    @IBAction func actionLogin(_ sender: Any) {
+        let request = Login.Request(username: usernameTextField.text ?? "",
+                                    password: passwordTextField.text ?? "")
+        interactor.doSomething(request: request)
+    }
     
     func actionLogin() {
         router.routeToSomewhere(login: self)
     }
-  
-    func doSomething() {
-        let request = Login.Request(username: "", password: "")
-        interactor.doSomething(request: request)
-    }
 }
 
 extension LoginViewController: LoginDisplayLogic {
+    func showAlertError(error: String) {
+        stopLoading()
+        showError(err: error)
+    }
+    
     func displaySomething(viewModel: Login.ViewModel) {
         //nameTextField.text = viewModel.name
     }

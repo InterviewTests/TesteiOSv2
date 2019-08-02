@@ -13,6 +13,7 @@
 import UIKit
 
 protocol LoginPresentationLogic {
+    func presentError(error: String)
     func presentSomething(response: Login.Response)
 }
 
@@ -20,9 +21,13 @@ class LoginPresenter: LoginPresentationLogic {
   weak var viewController: LoginDisplayLogic?
   
   // MARK: Do something
-  
-  func presentSomething(response: Login.Response) {
-    let viewModel = Login.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    
+    func presentError(error: String) {
+        viewController?.showAlertError(error: error)
+    }
+    
+    func presentSomething(response: Login.Response) {
+        let viewModel = Login.ViewModel()
+        viewController?.displaySomething(viewModel: viewModel)
+    }
 }

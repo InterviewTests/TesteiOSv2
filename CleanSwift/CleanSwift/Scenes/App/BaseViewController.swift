@@ -6,8 +6,8 @@
 //  Copyright © 2019 Sam. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import SVProgressHUD
 
 ///In our basic viewController, we're gonna set up all methods that we're gonna need.
 class BaseViewController: UIViewController {
@@ -19,5 +19,17 @@ class BaseViewController: UIViewController {
     
     override public var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func showLoading() {
+        SVProgressHUD.show()
+    }
+    
+    func stopLoading() {
+        SVProgressHUD.dismiss()
+    }
+    
+    func showError(err: String) {
+        SVProgressHUD.showError(withStatus: err)
     }
 }

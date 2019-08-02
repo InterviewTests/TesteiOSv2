@@ -48,7 +48,7 @@ class SplashRouter: NSObject, SplashRoutingLogic {
         
         let login = LoginViewController(interactor: LoginInteractor(worker: LoginWorker()), router: LoginRouter(), presenter: LoginPresenter())
         login.router.dataStore?.user = user
-        navigationController.present(login, animated: true, completion: nil)
+        navigationController.present(login, animated: false, completion: nil)
     }
 
 }

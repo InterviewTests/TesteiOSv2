@@ -3,12 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0EA9DE9D1C86098203BFFA8C /* Pods_CleanSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BDCC660402889040D4F553 /* Pods_CleanSwift.framework */; };
 		226B63E622F3FC6500FC6857 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B63E522F3FC6500FC6857 /* UIColor.swift */; };
+		226B63E822F429C200FC6857 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B63E722F429C200FC6857 /* UIView.swift */; };
+		226B63EA22F42E5D00FC6857 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B63E922F42E5D00FC6857 /* UITextField.swift */; };
+		226B63EC22F4302C00FC6857 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B63EB22F4302C00FC6857 /* Validator.swift */; };
+		226B63EE22F4319D00FC6857 /* CSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B63ED22F4319D00FC6857 /* CSError.swift */; };
+		226B63F022F431A800FC6857 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B63EF22F431A800FC6857 /* Constants.swift */; };
+		226B63F322F4341600FC6857 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B63F222F4341600FC6857 /* String.swift */; };
 		22B6587A22F3D43F0072347D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6587922F3D43F0072347D /* AppDelegate.swift */; };
 		22B6588122F3D43F0072347D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B6588022F3D43F0072347D /* Assets.xcassets */; };
 		22B6588422F3D43F0072347D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B6588222F3D43F0072347D /* LaunchScreen.storyboard */; };
@@ -61,6 +67,12 @@
 		01AFAB5E342460E056842D92 /* Pods-CleanSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanSwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-CleanSwiftUITests/Pods-CleanSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		165C0DB3B12FA93CE0C721B0 /* Pods-CleanSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanSwiftTests.release.xcconfig"; path = "Target Support Files/Pods-CleanSwiftTests/Pods-CleanSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		226B63E522F3FC6500FC6857 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		226B63E722F429C200FC6857 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		226B63E922F42E5D00FC6857 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		226B63EB22F4302C00FC6857 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		226B63ED22F4319D00FC6857 /* CSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSError.swift; sourceTree = "<group>"; };
+		226B63EF22F431A800FC6857 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		226B63F222F4341600FC6857 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		22B6587622F3D43F0072347D /* CleanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B6587922F3D43F0072347D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22B6588022F3D43F0072347D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -135,8 +147,18 @@
 			isa = PBXGroup;
 			children = (
 				226B63E522F3FC6500FC6857 /* UIColor.swift */,
+				226B63E722F429C200FC6857 /* UIView.swift */,
+				226B63E922F42E5D00FC6857 /* UITextField.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		226B63F122F4340900FC6857 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				226B63F222F4341600FC6857 /* String.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		22B6586D22F3D43F0072347D = {
@@ -196,8 +218,8 @@
 		22F5BD1E22F3DF160015FC90 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				22F5BD4722F3F47E0015FC90 /* Connection */,
 				22F5BD2922F3E0B60015FC90 /* App */,
+				22F5BD4722F3F47E0015FC90 /* Connection */,
 				22F5BD3322F3ED220015FC90 /* Home */,
 			);
 			path = Scenes;
@@ -218,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				22B6587922F3D43F0072347D /* AppDelegate.swift */,
+				226B63ED22F4319D00FC6857 /* CSError.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -244,6 +267,8 @@
 		22F5BD2522F3E05A0015FC90 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				226B63EB22F4302C00FC6857 /* Validator.swift */,
+				226B63EF22F431A800FC6857 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -251,6 +276,7 @@
 		22F5BD2622F3E0620015FC90 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				226B63F122F4340900FC6857 /* Foundation */,
 				226B63E422F3FC5900FC6857 /* UIKit */,
 			);
 			path = Extensions;
@@ -361,7 +387,6 @@
 				01AFAB5E342460E056842D92 /* Pods-CleanSwiftUITests.debug.xcconfig */,
 				9D57D441A53E468229D50344 /* Pods-CleanSwiftUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -593,20 +618,26 @@
 				22F5BD4E22F3F50F0015FC90 /* SplashRouter.swift in Sources */,
 				22F5BD4C22F3F4A70015FC90 /* SplashViewController.swift in Sources */,
 				22F5BD1822F3DCFA0015FC90 /* LoginPresenter.swift in Sources */,
+				226B63EE22F4319D00FC6857 /* CSError.swift in Sources */,
 				22F5BD3F22F3ED380015FC90 /* HomeInteractor.swift in Sources */,
+				226B63E822F429C200FC6857 /* UIView.swift in Sources */,
 				226B63E622F3FC6500FC6857 /* UIColor.swift in Sources */,
 				22F5BD5022F3F5680015FC90 /* RealmWorker.swift in Sources */,
 				22B6587A22F3D43F0072347D /* AppDelegate.swift in Sources */,
+				226B63EA22F42E5D00FC6857 /* UITextField.swift in Sources */,
 				22F5BD3A22F3ED380015FC90 /* HomePresenter.swift in Sources */,
 				22F5BD3E22F3ED380015FC90 /* HomeViewController.swift in Sources */,
 				22F5BD3B22F3ED380015FC90 /* HomeWorker.swift in Sources */,
 				22F5BD1D22F3DCFA0015FC90 /* LoginInteractor.swift in Sources */,
 				22F5BD4422F3EFC30015FC90 /* CSNavigationBar.swift in Sources */,
+				226B63F322F4341600FC6857 /* String.swift in Sources */,
+				226B63F022F431A800FC6857 /* Constants.swift in Sources */,
 				22F5BD3222F3EAF80015FC90 /* APIWorker.swift in Sources */,
 				22F5BD1B22F3DCFA0015FC90 /* LoginModels.swift in Sources */,
 				22F5BD2822F3E0970015FC90 /* BaseViewController.swift in Sources */,
 				22F5BD1A22F3DCFA0015FC90 /* LoginRouter.swift in Sources */,
 				22F5BD1922F3DCFA0015FC90 /* LoginWorker.swift in Sources */,
+				226B63EC22F4302C00FC6857 /* Validator.swift in Sources */,
 				22F5BD3D22F3ED380015FC90 /* HomeModels.swift in Sources */,
 				22F5BD5222F3F5890015FC90 /* User.swift in Sources */,
 			);
