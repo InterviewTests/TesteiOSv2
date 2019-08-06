@@ -13,11 +13,12 @@
 import UIKit
 
 protocol HomeDisplayLogic: class {
-  func displaySomething(viewModel: Home.Something.ViewModel)
+  func displaySomething(viewModel: Home.ViewModel)
 }
 
 class HomeViewController: BaseViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     var router: HomeRouter
     private var interactor: HomeInteractor
     private var presenter: HomePresenter
@@ -49,20 +50,20 @@ class HomeViewController: BaseViewController {
     private func setupView() {
         presenter.viewController = self
         
-//        HomeDataSource.setupHome(tableView: tableView)
-//        tableViewDataSource = HomeDataSource(presenter: presenter, delegate: self)
-//        tableView.dataSource = tableViewDataSource
-//        tableView.delegate = tableViewDataSource
+        HomeDataSource.setupHome(tableView: tableView)
+        tableViewDataSource = HomeDataSource(presenter: presenter, delegate: self)
+        tableView.dataSource = tableViewDataSource
+        tableView.delegate = tableViewDataSource
     }
     
   func doSomething() {
-    let request = Home.Something.Request()
+    let request = Home.Request(userId: "")
     interactor.doSomething(request: request)
   }
 }
 
 extension HomeViewController: HomeDisplayLogic {
-    func displaySomething(viewModel: Home.Something.ViewModel) {
+    func displaySomething(viewModel: Home.ViewModel) {
         //nameTextField.text = viewModel.name
     }
 }

@@ -36,6 +36,5 @@ extension HomeDataSource: UITableViewDelegate, UITableViewDataSource {
 extension HomeDataSource {
     class func setupHome(tableView: UITableView?) {
         tableView?.registerNib(cellClass: InfoCell.self)
-        tableView?.registerNib(cellClass: TransactionCell.self)
     }
 }

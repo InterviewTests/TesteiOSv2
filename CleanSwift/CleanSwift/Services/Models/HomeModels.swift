@@ -15,17 +15,13 @@ import UIKit
 enum Home
 {
   // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
+    struct Request {
+        let userId: String
     }
-    struct Response
-    {
+    
+    struct Response {
     }
-    struct ViewModel
-    {
+    
+    struct ViewModel {
     }
-  }
 }

@@ -22,19 +22,12 @@ protocol LoginDataPassing {
 
 class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     var dataStore: LoginDataStore?
-    var rootViewController: UIViewController { return navigationController }
-    
-    //This is navigation controller and where will be import
-    //the navigationController's custom.
-    private lazy var navigationController: UINavigationController = {
-        let navigationController = CSNavigationController(rootController: nil)
-        return navigationController
-    }()
+
   // MARK: Routing and navigation
 
     func routeToSomewhere(login: LoginViewController) {
-        login.dismiss(animated: false, completion: nil)
+//        login.dismiss(animated: false, completion: nil)
         let homeViewController = HomeViewController(interactor: HomeInteractor(), router: HomeRouter(), presenter: HomePresenter())
-        rootViewController.present(homeViewController, animated: false, completion: nil)
+        login.show(homeViewController, sender: nil)
   }
 }
