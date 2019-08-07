@@ -12,16 +12,19 @@
 
 import UIKit
 
-enum Home
-{
+enum Home {
   // MARK: Use cases
     struct Request {
         let userId: String
     }
     
     struct Response {
+        let statementsList: StatementList?
+        let error: String?
     }
     
     struct ViewModel {
+        let user: UserRealm
+        let response: Response
     }
 }

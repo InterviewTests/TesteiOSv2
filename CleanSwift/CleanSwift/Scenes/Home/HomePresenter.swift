@@ -12,20 +12,26 @@
 
 import UIKit
 
-protocol HomePresentationLogic
-{
-  func presentSomething(response: Home.Response)
+protocol HomePresentationLogic {
+    func presentSomething(response: Home.Response)
 }
 
-class HomePresenter: HomePresentationLogic
-{
-  weak var viewController: HomeDisplayLogic?
-  
+class HomePresenter: HomePresentationLogic {
+    weak var viewController: HomeDisplayLogic?
+    var statements: [Statement] = []
+    var user: UserRealm?
+    private lazy var realmWorker: RealmWorker = {
+        let manager = RealmWorker()
+        return manager
+    }()
   // MARK: Do something
   
-  func presentSomething(response: Home.Response)
-  {
-    let viewModel = Home.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    func presentSomething(response: Home.Response) {
+        if let user = realmWorker.getObj() {
+            self.user = user
+            statements = response.statementsList?.statementList ?? []
+            let viewModel = Home.ViewModel(user: user, response: response)
+            viewController?.displaySomething(viewModel: viewModel)
+        }
+    }
 }

@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol SplashRoutingLogic {
-    func routeToSomewhere(controller: SplashViewController, user: User?)
+    func routeToSomewhere(controller: SplashViewController, user: UserRealm?)
 }
 
 class SplashRouter: NSObject, SplashRoutingLogic {
@@ -43,7 +43,7 @@ class SplashRouter: NSObject, SplashRoutingLogic {
         rootViewController.present(splash, animated: false, completion: nil)
     }
   
-    func routeToSomewhere(controller: SplashViewController, user: User?) {
+    func routeToSomewhere(controller: SplashViewController, user: UserRealm?) {
         controller.dismiss(animated: false, completion: nil)
         
         let login = LoginViewController(interactor: LoginInteractor(worker: LoginWorker()), router: LoginRouter(), presenter: LoginPresenter())

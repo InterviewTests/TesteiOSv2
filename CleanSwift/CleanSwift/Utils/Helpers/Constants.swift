@@ -9,7 +9,15 @@
 import Foundation
 
 struct Constants {
-    struct Service { }
+    struct Service {
+        static let login = "login"
+        static let home = "statements/"
+        static let user = "user"
+        static let password = "password"
+        
+        static let json = "application/x-www-form-urlencoded"
+        static let contentType = "Content-Type"
+    }
     
     struct Error {
         static let mandatoryUser = "User is mandatory"

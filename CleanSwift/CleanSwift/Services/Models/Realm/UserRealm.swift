@@ -9,11 +9,14 @@
 import Foundation
 import RealmSwift
 
-class User: Object {
+class UserRealm: Object {
     @objc dynamic var username: String = ""
-    @objc dynamic var token: String = ""
+    @objc dynamic var userId: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var account: String = ""
+    @objc dynamic var balance: String = ""
     
     override static func primaryKey() -> String {
-        return "username"
+        return "userId"
     }
 }

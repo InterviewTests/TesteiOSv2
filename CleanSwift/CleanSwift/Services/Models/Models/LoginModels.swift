@@ -1,5 +1,5 @@
 //
-//  LoginWorker.swift
+//  LoginModels.swift
 //  CleanSwift
 //
 //  Created by Samanta Clara Coutinho Rondon do Nascimento on 2019-08-01.
@@ -12,7 +12,17 @@
 
 import UIKit
 
-class LoginWorker {
-    func doSomeWork(user: Login.Request) {
-  }
+enum Login {
+  // MARK: Use cases
+    struct Request {
+        let username: String
+        let password: String
+    }
+    struct Response {
+        let user: User?
+    }
+    
+    struct ViewModel {
+        
+    }
 }

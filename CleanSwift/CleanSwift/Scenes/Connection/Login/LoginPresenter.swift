@@ -18,10 +18,10 @@ protocol LoginPresentationLogic {
 }
 
 class LoginPresenter: LoginPresentationLogic {
-  weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
+    weak var viewController: LoginDisplayLogic?
     
+  // MARK: Do something
+
     func presentError(error: String) {
         viewController?.showAlertError(error: error)
     }

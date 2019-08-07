@@ -9,27 +9,23 @@
 import Foundation
 import UIKit
 
-protocol HomeDataSourceDelegate: class {
-    func doLogout()
-}
-
 class HomeDataSource: NSObject {
     private var presenter: HomePresenter
-    private var delegate: HomeDataSourceDelegate?
     
-    init(presenter: HomePresenter, delegate: HomeDataSourceDelegate) {
+    init(presenter: HomePresenter) {
         self.presenter = presenter
-        self.delegate = delegate
     }
 }
 
 extension HomeDataSource: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return presenter.statements.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeue(cellClass: InfoCell.self, indexPath: indexPath)
+        cell.configure(statement: presenter.statements[indexPath.row])
+        return cell
     }
 }
 

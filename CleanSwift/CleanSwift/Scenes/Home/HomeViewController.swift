@@ -17,8 +17,11 @@ protocol HomeDisplayLogic: class {
 }
 
 class HomeViewController: BaseViewController {
-    
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userAccount: UILabel!
+    @IBOutlet weak var userBalance: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
     var router: HomeRouter
     private var interactor: HomeInteractor
     private var presenter: HomePresenter
@@ -51,28 +54,28 @@ class HomeViewController: BaseViewController {
         presenter.viewController = self
         
         HomeDataSource.setupHome(tableView: tableView)
-        tableViewDataSource = HomeDataSource(presenter: presenter, delegate: self)
+        tableViewDataSource = HomeDataSource(presenter: presenter)
         tableView.dataSource = tableViewDataSource
         tableView.delegate = tableViewDataSource
     }
     
-  func doSomething() {
-    let request = Home.Request(userId: "")
-    interactor.doSomething(request: request)
-  }
+    func doSomething() {
+        if let userId = presenter.user?.userId {
+            let request = Home.Request(userId: userId)
+            interactor.doSomething(request: request)
+        }
+    }
+    
+    @IBAction func actionLogout(_ sender: Any) {
+        router.routeToSomewhere(home: self)
+    }
 }
 
 extension HomeViewController: HomeDisplayLogic {
     func displaySomething(viewModel: Home.ViewModel) {
-        //nameTextField.text = viewModel.name
-    }
-}
-
-extension HomeViewController: HomeDataSourceDelegate {
-    func doLogout() {
-        if let user = realmWorker.getObj() {
-            realmWorker.deleteObj(obj: user)
-        }
-        router.routeToSomewhere(home: self)
+        userName.text = viewModel.user.name
+        userAccount.text = viewModel.user.account
+        userBalance.text = viewModel.user.balance
+        tableView.reloadData()
     }
 }

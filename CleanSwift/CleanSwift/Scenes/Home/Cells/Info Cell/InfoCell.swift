@@ -11,12 +11,16 @@ import UIKit
 
 class InfoCell: UITableViewCell {
     @IBOutlet weak var infoView: UIView!
-    @IBOutlet weak var paymentLabel: UILabel!
-    @IBOutlet weak var lightLabel: UILabel!
+    @IBOutlet weak var itemType: UILabel!
+    @IBOutlet weak var itemTittle: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    func configure() {
+    func configure(statement: Statement) {
+        itemType.text = statement.title
+        itemTittle.text = statement.desc
+        dateLabel.text = statement.date
+        priceLabel.text = "R$ \(statement.value)"
         infoView.addShadowInView()
     }
 }

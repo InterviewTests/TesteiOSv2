@@ -17,13 +17,17 @@ protocol LoginBusinessLogic {
 }
 
 protocol LoginDataStore {
-  var user: User? { get set }
+    var user: UserRealm? { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker
-    var user: User?
+    var user: UserRealm?
+    private lazy var realmWorker: RealmWorker = {
+        let manager = RealmWorker()
+        return manager
+    }()
   
     init(worker: LoginWorker) {
         self.worker = worker
@@ -31,18 +35,34 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
   // MARK: Do something
   
-  func doSomething(request: Login.Request) {
-    if let emailError = Validator.isValid(username: request.username) {
-        presenter?.presentError(error: emailError)
-        return
+    func doSomething(request: Login.Request) {
+        if let emailError = Validator.isValid(username: request.username) {
+            presenter?.presentError(error: emailError)
+            return
+        }
+        if let passwordError = Validator.isValid(password: request.password) {
+            presenter?.presentError(error: passwordError)
+            return
+        }
+        worker.doSomeWork(request: request) { [weak self] (result) in
+            switch result {
+            case .success(let value):
+                let response = Login.Response(user: value)
+                
+                let newUser = UserRealm()
+//                newUser.userId = value.userAccount.userId
+//                newUser.account = "\(value.userAccount.agency) / \(value.userAccount.bankAccount)"
+//                newUser.balance = "R$ \(value.userAccount.balance)"
+//                newUser.name = value.userAccount.name
+                newUser.username = self?.user?.username ?? ""
+                if let user = self?.user {
+                    self?.realmWorker.deleteObj(obj: user)
+                }
+                self?.realmWorker.saveObjc(obj: newUser)
+                self?.presenter?.presentSomething(response: response)
+            case .failure(let error):
+                self?.presenter?.presentError(error: error.localizedDescription)
+            }
+        }
     }
-    if let passwordError = Validator.isValid(password: request.password) {
-        presenter?.presentError(error: passwordError)
-        return
-    }
-    worker.doSomeWork(user: request)
-    
-    let response = Login.Response()
-    presenter?.presentSomething(response: response)
-  }
 }

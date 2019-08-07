@@ -13,6 +13,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="CleanSwift" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="gWP-Ce-JSG" id="lFZ-mg-fXM"/>
+                <outlet property="userAccount" destination="s9y-3K-AeS" id="fa6-c2-lFE"/>
+                <outlet property="userBalance" destination="hwL-Zo-ez6" id="884-Hy-XIo"/>
+                <outlet property="userName" destination="cDq-4r-Z5f" id="q1L-hi-j8H"/>
                 <outlet property="view" destination="iN0-l3-epB" id="h8a-CP-GM6"/>
             </connections>
         </placeholder>
@@ -35,6 +38,9 @@
                                 <constraint firstAttribute="height" constant="27" id="ROw-MG-nar"/>
                             </constraints>
                             <state key="normal" image="logout"/>
+                            <connections>
+                                <action selector="actionLogout:" destination="-1" eventType="touchUpInside" id="SHD-ad-W2s"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDq-4r-Z5f">
                             <rect key="frame" x="18" y="10" width="59" height="30"/>
@@ -42,8 +48,8 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdM-7A-6Dd">
-                            <rect key="frame" x="18" y="68" width="30" height="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdM-7A-6Dd">
+                            <rect key="frame" x="18" y="68" width="32.5" height="14"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -54,8 +60,8 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v7-IO-L8z">
-                            <rect key="frame" x="18" y="139" width="30" height="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v7-IO-L8z">
+                            <rect key="frame" x="18" y="139" width="31" height="14"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>

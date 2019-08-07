@@ -53,6 +53,7 @@ class LoginViewController: BaseViewController {
   // MARK: Do something
   
     @IBAction func actionLogin(_ sender: Any) {
+        showLoading()
         let request = Login.Request(username: usernameTextField.text ?? "",
                                     password: passwordTextField.text ?? "")
         interactor.doSomething(request: request)

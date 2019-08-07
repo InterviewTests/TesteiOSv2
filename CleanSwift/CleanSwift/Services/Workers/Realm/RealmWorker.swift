@@ -13,19 +13,19 @@ class RealmWorker {
     let realm = try? Realm()
     
     func saveObjc(obj: Object) {
-        try? realm!.write {
-            realm?.add(obj, update: false)
+        try? realm?.write {
+            realm?.add(obj)
         }
     }
     
-    func deleteObj(obj: User) {
-        try? realm!.write {
+    func deleteObj(obj: UserRealm) {
+        try? realm?.write {
             realm!.delete(obj)
         }
     }
     
-    func getObj() -> User? {
-        let obj = realm!.objects(User.self)
-        return obj.first
+    func getObj() -> UserRealm? {
+        let obj = realm?.objects(UserRealm.self)
+        return obj?.first
     }
 }

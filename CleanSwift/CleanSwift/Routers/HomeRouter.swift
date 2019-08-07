@@ -18,7 +18,6 @@ import UIKit
 
 class HomeRouter: NSObject, HomeRoutingLogic {
     var rootViewController: UIViewController { return navigationController }
-    
     //This is navigation controller and where will be import
     //the navigationController's custom.
     private lazy var navigationController: UINavigationController = {

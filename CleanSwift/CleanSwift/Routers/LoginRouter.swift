@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol LoginRoutingLogic {
-  func routeToSomewhere(login: LoginViewController)
+    func routeToSomewhere(login: LoginViewController)
 }
 
 protocol LoginDataPassing {
