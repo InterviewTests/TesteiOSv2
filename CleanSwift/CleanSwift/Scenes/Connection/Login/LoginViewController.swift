@@ -14,6 +14,7 @@ import UIKit
 import Foundation
 
 protocol LoginDisplayLogic: class {
+    func setupScreen(user: UserRealm)
     func displaySomething(viewModel: Login.ViewModel)
     func showAlertError(error: String)
 }
@@ -47,7 +48,7 @@ class LoginViewController: BaseViewController {
   // MARK: Setup
     private func setupView() {
         presenter.viewController = self
-        usernameTextField.text = router.dataStore?.user?.username ?? ""
+        interactor.getLastUser()
     }
 
   // MARK: Do something
@@ -73,5 +74,9 @@ extension LoginViewController: LoginDisplayLogic {
     func displaySomething(viewModel: Login.ViewModel) {
         stopLoading()
         router.routeToSomewhere(login: self)
+    }
+    
+    func setupScreen(user: UserRealm) {
+        usernameTextField.text = user.username
     }
 }

@@ -13,6 +13,7 @@
 import UIKit
 
 protocol LoginPresentationLogic {
+    func presentLastUser(user: UserRealm)
     func presentError(error: String)
     func presentSomething(response: Login.Response)
 }
@@ -22,6 +23,10 @@ class LoginPresenter: LoginPresentationLogic {
     
   // MARK: Do something
 
+    func presentLastUser(user: UserRealm) {
+        viewController?.setupScreen(user: user)
+    }
+    
     func presentError(error: String) {
         viewController?.showAlertError(error: error)
     }

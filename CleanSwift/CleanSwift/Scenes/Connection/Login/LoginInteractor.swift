@@ -13,7 +13,8 @@
 import UIKit
 
 protocol LoginBusinessLogic {
-  func doSomething(request: Login.Request)
+    func getLastUser()
+    func doSomething(request: Login.Request)
 }
 
 protocol LoginDataStore {
@@ -33,6 +34,14 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         self.worker = worker
     }
     
+    func getLastUser() {
+        guard let user = realmWorker.getObj() else {
+            return
+        }
+        self.user = user
+        presenter?.presentLastUser(user: user)
+    }
+    
   // MARK: Do something
   
     func doSomething(request: Login.Request) {
@@ -48,14 +57,14 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             switch result {
             case .success(let value):
                 let response = Login.Response(user: value)
-                self?.setupResponse(response: response)
+                self?.setupResponse(response: response, username: request.username)
             case .failure(let error):
                 self?.presenter?.presentError(error: error.localizedDescription)
             }
         }
     }
     
-    private func setupResponse(response: Login.Response) {
+    private func setupResponse(response: Login.Response, username: String) {
         if let error = response.user?.error.message {
             presenter?.presentError(error: error)
             return
@@ -65,7 +74,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         newUser.account = "\(response.user?.userAccount.agency ?? "") / \(response.user?.userAccount.bankAccount ?? "")"
         newUser.balance = "R$ \(response.user?.userAccount.balance ?? 0)"
         newUser.name = response.user?.userAccount.name ?? ""
-        newUser.username = self.user?.username ?? ""
+        newUser.username = username
         if let user = self.user {
             realmWorker.deleteObj(obj: user)
         }
