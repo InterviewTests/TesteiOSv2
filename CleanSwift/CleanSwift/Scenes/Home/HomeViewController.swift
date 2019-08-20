@@ -61,13 +61,12 @@ class HomeViewController: BaseViewController {
     }
     
     func doSomething() {
-        if let userId = interactor.user?.userId {
-            let request = Home.Request(userId: userId)
-            interactor.doSomething(request: request)
-        }
+        let request = Home.Request(userId: interactor.user.userId)
+        interactor.doSomething(request: request)
     }
     
     @IBAction func actionLogout(_ sender: Any) {
+        interactor.removeUser()
         router.routeToSomewhere(home: self)
     }
 }

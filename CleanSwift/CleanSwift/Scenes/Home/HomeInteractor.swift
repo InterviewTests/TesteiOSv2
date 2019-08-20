@@ -16,18 +16,27 @@ protocol HomeBusinessLogic {
   func doSomething(request: Home.Request)
 }
 
-protocol HomeDataStore {
-    var user: UserRealm? { get set }
-}
-
-class HomeInteractor: HomeBusinessLogic, HomeDataStore {
+class HomeInteractor: HomeBusinessLogic {
     var presenter: HomePresentationLogic?
     var worker: HomeWorker?
-    var user: UserRealm?
+    var user: UserRealm
+    
+    private lazy var realmWorker: RealmWorker = {
+        let manager = RealmWorker()
+        return manager
+    }()
+    
+    init(worker: HomeWorker, user: UserRealm) {
+        self.worker = worker
+        self.user = user
+    }
+    
+    func removeUser() {
+        realmWorker.deleteObj(obj: user)
+    }
   // MARK: Do something
   
     func doSomething(request: Home.Request) {
-        worker = HomeWorker()
         worker?.doSomeWork(request: request) { [weak self] result in
             switch result {
             case .success(let value):

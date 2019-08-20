@@ -24,6 +24,7 @@ class SplashRouter: NSObject, SplashRoutingLogic {
     //the navigationController's custom.
     private lazy var navigationController: UINavigationController = {
         let navigationController = CSNavigationController(rootController: nil)
+        navigationController.setNavigationBarHidden(true, animated: false)
         return navigationController
     }()
     
@@ -33,6 +34,7 @@ class SplashRouter: NSObject, SplashRoutingLogic {
     //The initialization of our window.
     public init(window: UIWindow?) {
         self.window = window
+        self.window?.backgroundColor = .navColor
     }
 
     public func start() {
@@ -46,8 +48,7 @@ class SplashRouter: NSObject, SplashRoutingLogic {
     func routeToSomewhere(controller: SplashViewController) {
         controller.dismiss(animated: false, completion: nil)
         
-        let login = LoginViewController(interactor: LoginInteractor(worker: LoginWorker()), router: LoginRouter(), presenter: LoginPresenter())
+        let login = LoginViewController(interactor: LoginInteractor(worker: LoginWorker()), router: LoginRouter(navigationController: rootViewController), presenter: LoginPresenter())
         navigationController.present(login, animated: false, completion: nil)
     }
-
 }

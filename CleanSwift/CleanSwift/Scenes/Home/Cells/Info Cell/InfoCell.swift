@@ -19,8 +19,9 @@ class InfoCell: UITableViewCell {
     func configure(statement: Statement) {
         itemType.text = statement.title
         itemTittle.text = statement.desc
-        dateLabel.text = statement.date
-        priceLabel.text = "R$ \(statement.value)"
+        dateLabel.text = DateHelper.formatDate(string: statement.date)
+        priceLabel.textColor = statement.value > 0 ? .plus : .less
+        priceLabel.text = PriceFormatter.formatPrice(price: statement.value)
         infoView.addShadowInView()
     }
 }

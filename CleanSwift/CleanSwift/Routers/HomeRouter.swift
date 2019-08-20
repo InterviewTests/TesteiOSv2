@@ -16,26 +16,19 @@ import UIKit
   func routeToSomewhere(home: HomeViewController)
 }
 
-protocol HomeDataPassing {
-    var dataStore: HomeDataStore? { get }
-}
-
-class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
-    var dataStore: HomeDataStore?
+class HomeRouter: NSObject, HomeRoutingLogic {
     
-    var rootViewController: UIViewController { return navigationController }
-    //This is navigation controller and where will be import
-    //the navigationController's custom.
-    private lazy var navigationController: UINavigationController = {
-        let navigationController = CSNavigationController(rootController: nil)
-        return navigationController
-    }()
+    var navigationController: UIViewController
+    
+    init(navigationController: UIViewController) {
+        self.navigationController = navigationController
+    }
 
   // MARK: Routing
     func routeToSomewhere(home: HomeViewController) {
-        home.dismiss(animated: true, completion: nil)
+        home.dismiss(animated: false, completion: nil)
         
-        let login = LoginViewController(interactor: LoginInteractor(worker: LoginWorker()), router: LoginRouter(), presenter: LoginPresenter())
-        navigationController.present(login, animated: true, completion: nil)
+        let login = LoginViewController(interactor: LoginInteractor(worker: LoginWorker()), router: LoginRouter(navigationController: navigationController), presenter: LoginPresenter())
+        navigationController.present(login, animated: false, completion: nil)
     }
 }

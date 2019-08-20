@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol LoginRoutingLogic {
-    func routeToSomewhere(login: LoginViewController)
+    func routeToSomewhere(login: LoginViewController, user: UserRealm)
 }
 
 protocol LoginDataPassing {
@@ -23,11 +23,16 @@ protocol LoginDataPassing {
 class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     var dataStore: LoginDataStore?
 
+    var navigationController: UIViewController
+
+    init(navigationController: UIViewController) {
+        self.navigationController = navigationController
+    }
   // MARK: Routing and navigation
 
-    func routeToSomewhere(login: LoginViewController) {
-//        login.dismiss(animated: false, completion: nil)
-        let homeViewController = HomeViewController(interactor: HomeInteractor(), router: HomeRouter(), presenter: HomePresenter())
-        login.show(homeViewController, sender: nil)
+    func routeToSomewhere(login: LoginViewController, user: UserRealm) {
+        login.dismiss(animated: false, completion: nil)
+        let homeViewController = HomeViewController(interactor: HomeInteractor(worker: HomeWorker(), user: user), router: HomeRouter(navigationController: navigationController), presenter: HomePresenter())
+        navigationController.present(homeViewController, animated: false, completion: nil)
   }
 }

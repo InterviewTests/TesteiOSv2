@@ -20,7 +20,7 @@ class CSNavigationBar: UINavigationBar {
     }
     
     private func setupAppNavigationBar() {
-        barTintColor = .black
+        barTintColor = .navColor
         titleTextAttributes = [.foregroundColor: UIColor.white]
     }
 }

@@ -18,6 +18,12 @@ class RealmWorker {
         }
     }
     
+    func updateObj(obj: UserRealm) {
+        try? realm?.write {
+            realm?.add(obj, update: .modified)
+        }
+    }
+    
     func deleteObj(obj: UserRealm) {
         try? realm?.write {
             realm!.delete(obj)

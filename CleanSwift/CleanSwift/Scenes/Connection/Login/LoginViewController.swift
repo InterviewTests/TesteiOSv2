@@ -61,7 +61,9 @@ class LoginViewController: BaseViewController {
     }
     
     func actionLogin() {
-        router.routeToSomewhere(login: self)
+        if let user = interactor.user {
+            router.routeToSomewhere(login: self, user: user)
+        }
     }
 }
 
@@ -73,7 +75,9 @@ extension LoginViewController: LoginDisplayLogic {
     
     func displaySomething(viewModel: Login.ViewModel) {
         stopLoading()
-        router.routeToSomewhere(login: self)
+        if let user = interactor.user {
+            router.routeToSomewhere(login: self, user: user)
+        }
     }
     
     func setupScreen(user: UserRealm) {
