@@ -20,11 +20,11 @@ enum Home {
     
     struct Response {
         let statementsList: StatementList?
+        let user: UserRealm?
         let error: String?
     }
     
     struct ViewModel {
-        let user: UserRealm
         let response: Response
     }
 }

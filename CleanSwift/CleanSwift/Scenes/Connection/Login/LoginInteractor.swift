@@ -48,21 +48,28 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             switch result {
             case .success(let value):
                 let response = Login.Response(user: value)
-                
-                let newUser = UserRealm()
-//                newUser.userId = value.userAccount.userId
-//                newUser.account = "\(value.userAccount.agency) / \(value.userAccount.bankAccount)"
-//                newUser.balance = "R$ \(value.userAccount.balance)"
-//                newUser.name = value.userAccount.name
-                newUser.username = self?.user?.username ?? ""
-                if let user = self?.user {
-                    self?.realmWorker.deleteObj(obj: user)
-                }
-                self?.realmWorker.saveObjc(obj: newUser)
-                self?.presenter?.presentSomething(response: response)
+                self?.setupResponse(response: response)
             case .failure(let error):
                 self?.presenter?.presentError(error: error.localizedDescription)
             }
         }
+    }
+    
+    private func setupResponse(response: Login.Response) {
+        if let error = response.user?.error.message {
+            presenter?.presentError(error: error)
+            return
+        }
+        let newUser = UserRealm()
+        newUser.userId = "\(response.user?.userAccount.userId ?? 0)"
+        newUser.account = "\(response.user?.userAccount.agency ?? "") / \(response.user?.userAccount.bankAccount ?? "")"
+        newUser.balance = "R$ \(response.user?.userAccount.balance ?? 0)"
+        newUser.name = response.user?.userAccount.name ?? ""
+        newUser.username = self.user?.username ?? ""
+        if let user = self.user {
+            realmWorker.deleteObj(obj: user)
+        }
+        realmWorker.saveObjc(obj: newUser)
+        presenter?.presentSomething(response: response)
     }
 }

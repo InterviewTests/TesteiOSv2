@@ -16,7 +16,13 @@ import UIKit
   func routeToSomewhere(home: HomeViewController)
 }
 
-class HomeRouter: NSObject, HomeRoutingLogic {
+protocol HomeDataPassing {
+    var dataStore: HomeDataStore? { get }
+}
+
+class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
+    var dataStore: HomeDataStore?
+    
     var rootViewController: UIViewController { return navigationController }
     //This is navigation controller and where will be import
     //the navigationController's custom.

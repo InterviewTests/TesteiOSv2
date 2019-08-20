@@ -26,11 +26,7 @@ class HomeViewController: BaseViewController {
     private var interactor: HomeInteractor
     private var presenter: HomePresenter
     private var tableViewDataSource: HomeDataSource?
-    private lazy var realmWorker: RealmWorker = {
-        let manager = RealmWorker()
-        return manager
-    }()
-    
+
     init(interactor: HomeInteractor, router: HomeRouter, presenter: HomePresenter) {
         self.interactor = interactor
         self.interactor.presenter = presenter
@@ -44,9 +40,14 @@ class HomeViewController: BaseViewController {
     }
     
     // MARK: Object lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        doSomething()
     }
     
     // MARK: Setup
@@ -60,7 +61,7 @@ class HomeViewController: BaseViewController {
     }
     
     func doSomething() {
-        if let userId = presenter.user?.userId {
+        if let userId = interactor.user?.userId {
             let request = Home.Request(userId: userId)
             interactor.doSomething(request: request)
         }
@@ -73,9 +74,9 @@ class HomeViewController: BaseViewController {
 
 extension HomeViewController: HomeDisplayLogic {
     func displaySomething(viewModel: Home.ViewModel) {
-        userName.text = viewModel.user.name
-        userAccount.text = viewModel.user.account
-        userBalance.text = viewModel.user.balance
+        userName.text = viewModel.response.user?.name
+        userAccount.text = viewModel.response.user?.account
+        userBalance.text = viewModel.response.user?.balance
         tableView.reloadData()
     }
 }

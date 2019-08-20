@@ -16,10 +16,14 @@ protocol HomeBusinessLogic {
   func doSomething(request: Home.Request)
 }
 
-class HomeInteractor: HomeBusinessLogic {
+protocol HomeDataStore {
+    var user: UserRealm? { get set }
+}
+
+class HomeInteractor: HomeBusinessLogic, HomeDataStore {
     var presenter: HomePresentationLogic?
     var worker: HomeWorker?
-  
+    var user: UserRealm?
   // MARK: Do something
   
     func doSomething(request: Home.Request) {
@@ -27,10 +31,10 @@ class HomeInteractor: HomeBusinessLogic {
         worker?.doSomeWork(request: request) { [weak self] result in
             switch result {
             case .success(let value):
-                let response = Home.Response(statementsList: value, error: nil)
+                let response = Home.Response(statementsList: value, user: self?.user, error: nil)
                 self?.presenter?.presentSomething(response: response)
             case .failure(let error):
-                let response = Home.Response(statementsList: nil,
+                let response = Home.Response(statementsList: nil, user: self?.user,
                                              error: error.localizedDescription)
                 self?.presenter?.presentSomething(response: response)
             }

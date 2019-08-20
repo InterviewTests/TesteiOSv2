@@ -14,14 +14,14 @@ struct User: Codable {
 }
 
 struct UserInfo: Codable {
-    let userId: Double
-    let name: String
-    let bankAccount: String
-    let agency: String
-    let balance: Double
+    let userId: Double?
+    let name: String?
+    let bankAccount: String?
+    let agency: String?
+    let balance: Double?
 }
 
 struct ErrorResponse: Codable {
-    let code: Int
-    let message: String
+    let code: Int?
+    let message: String?
 }

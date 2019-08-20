@@ -35,6 +35,7 @@ class SplashViewController: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.loading.stopAnimating()
             let user = self.realmWorker.getObj()
+            
             self.router.routeToSomewhere(controller: self, user: user)
         })
     }
