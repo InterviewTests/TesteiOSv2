@@ -18,7 +18,7 @@ protocol HomeBusinessLogic {
 
 class HomeInteractor: HomeBusinessLogic {
     var presenter: HomePresentationLogic?
-    var worker: HomeWorker?
+    var worker: HomeWorkerProtocol?
     var user: UserRealm
     
     private lazy var realmWorker: RealmWorker = {
@@ -26,7 +26,7 @@ class HomeInteractor: HomeBusinessLogic {
         return manager
     }()
     
-    init(worker: HomeWorker, user: UserRealm) {
+    init(worker: HomeWorkerProtocol = HomeWorker.shared, user: UserRealm) {
         self.worker = worker
         self.user = user
     }
@@ -37,7 +37,12 @@ class HomeInteractor: HomeBusinessLogic {
   // MARK: Do something
   
     func doSomething(request: Home.Request) {
-        worker?.doSomeWork(request: request) { [weak self] result in
+        guard let worker = worker else {
+            let response = Home.Response(statementsList: nil, user: self.user, error: "no worker")
+            self.presenter?.presentSomething(response: response)
+            return
+        }
+        worker.doSomeWork(request: request) { [weak self] result in
             switch result {
             case .success(let value):
                 let response = Home.Response(statementsList: value, user: self?.user, error: nil)

@@ -12,8 +12,12 @@
 
 import Alamofire
 
-class HomeWorker {
+protocol HomeWorkerProtocol {
+    func doSomeWork(request: Home.Request, completion:@escaping (Result<StatementList>) -> Void)
+}
 
+class HomeWorker: HomeWorkerProtocol {
+    static let shared = HomeWorker()
     private lazy var apiWorker: APIWorker = {
         let manager = APIWorker()
         return manager

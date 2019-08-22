@@ -19,10 +19,7 @@ protocol HomePresentationLogic {
 class HomePresenter: HomePresentationLogic {
     weak var viewController: HomeDisplayLogic?
     var statements: [Statement] = []
-    private lazy var realmWorker: RealmWorker = {
-        let manager = RealmWorker()
-        return manager
-    }()
+
   // MARK: Do something
     func presentSomething(response: Home.Response) {
         statements = response.statementsList?.statementList ?? []

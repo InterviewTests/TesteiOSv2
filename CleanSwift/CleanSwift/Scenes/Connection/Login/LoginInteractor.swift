@@ -23,14 +23,14 @@ protocol LoginDataStore {
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
-    var worker: LoginWorker
+    var worker: LoginWorkerProtocol?
     var user: UserRealm?
     private lazy var realmWorker: RealmWorker = {
         let manager = RealmWorker()
         return manager
     }()
   
-    init(worker: LoginWorker) {
+     init(worker: LoginWorkerProtocol = LoginWorker.shared) {
         self.worker = worker
     }
     
@@ -51,6 +51,11 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         }
         if let passwordError = Validator.isValid(password: request.password) {
             presenter?.presentError(error: passwordError)
+            return
+        }
+        
+        guard let worker = worker else {
+            self.presenter?.presentError(error: "Error")
             return
         }
         worker.doSomeWork(request: request) { [weak self] (result) in

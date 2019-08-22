@@ -13,7 +13,12 @@
 import Foundation
 import Alamofire
 
-class LoginWorker {
+protocol LoginWorkerProtocol {
+    func doSomeWork(request: Login.Request, completion:@escaping (Result<User>) -> Void) 
+}
+
+class LoginWorker: LoginWorkerProtocol {
+    static let shared = LoginWorker()
     private lazy var apiWorker: APIWorker = {
         let manager = APIWorker()
         return manager
