@@ -19,6 +19,8 @@
 		23C2A7BF232F08FA00FFFA03 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7BE232F08FA00FFFA03 /* LoginRouter.swift */; };
 		23C2A7C1232F090700FFFA03 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7C0232F090700FFFA03 /* LoginInteractor.swift */; };
 		23C2A7C4232F0BDA00FFFA03 /* BankColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7C3232F0BDA00FFFA03 /* BankColors.swift */; };
+		23C2A7C8232F0EC900FFFA03 /* StatementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7C6232F0EC900FFFA03 /* StatementsViewController.swift */; };
+		23C2A7C9232F0EC900FFFA03 /* StatementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A7C7232F0EC900FFFA03 /* StatementsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		23C2A7BE232F08FA00FFFA03 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		23C2A7C0232F090700FFFA03 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		23C2A7C3232F0BDA00FFFA03 /* BankColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankColors.swift; sourceTree = "<group>"; };
+		23C2A7C6232F0EC900FFFA03 /* StatementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsViewController.swift; sourceTree = "<group>"; };
+		23C2A7C7232F0EC900FFFA03 /* StatementsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 		23C2A7B4232F089200FFFA03 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				23C2A7C5232F0EB300FFFA03 /* Statements */,
 				23C2A7B5232F089B00FFFA03 /* Login */,
 			);
 			path = Scenes;
@@ -152,6 +157,31 @@
 				23C2A7C3232F0BDA00FFFA03 /* BankColors.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		23C2A7C5232F0EB300FFFA03 /* Statements */ = {
+			isa = PBXGroup;
+			children = (
+				23C2A7CB232F0EE300FFFA03 /* View */,
+			);
+			path = Statements;
+			sourceTree = "<group>";
+		};
+		23C2A7CA232F0ED700FFFA03 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				23C2A7C7232F0EC900FFFA03 /* StatementsViewController.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		23C2A7CB232F0EE300FFFA03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				23C2A7C6232F0EC900FFFA03 /* StatementsViewController.swift */,
+				23C2A7CA232F0ED700FFFA03 /* Resources */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23C2A7B9232F08C100FFFA03 /* LoginViewController.xib in Resources */,
+				23C2A7C9232F0EC900FFFA03 /* StatementsViewController.xib in Resources */,
 				23C2A79F232F064D00FFFA03 /* LaunchScreen.storyboard in Resources */,
 				23C2A79C232F064D00FFFA03 /* Assets.xcassets in Resources */,
 				23C2A79A232F064800FFFA03 /* Main.storyboard in Resources */,
@@ -256,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C2A7C8232F0EC900FFFA03 /* StatementsViewController.swift in Sources */,
 				23C2A7C4232F0BDA00FFFA03 /* BankColors.swift in Sources */,
 				23C2A7BD232F08EF00FFFA03 /* LoginPresenter.swift in Sources */,
 				23C2A7B8232F08C100FFFA03 /* LoginViewController.swift in Sources */,
