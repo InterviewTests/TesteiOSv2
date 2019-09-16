@@ -13,6 +13,12 @@
 		23C2A79C232F064D00FFFA03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A79B232F064D00FFFA03 /* Assets.xcassets */; };
 		23C2A79F232F064D00FFFA03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A79D232F064D00FFFA03 /* LaunchScreen.storyboard */; };
 		23C2A7AA232F064D00FFFA03 /* Bank_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7A9232F064D00FFFA03 /* Bank_appTests.swift */; };
+		23C2A7B8232F08C100FFFA03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7B6232F08C100FFFA03 /* LoginViewController.swift */; };
+		23C2A7B9232F08C100FFFA03 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A7B7232F08C100FFFA03 /* LoginViewController.xib */; };
+		23C2A7BD232F08EF00FFFA03 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7BC232F08EF00FFFA03 /* LoginPresenter.swift */; };
+		23C2A7BF232F08FA00FFFA03 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7BE232F08FA00FFFA03 /* LoginRouter.swift */; };
+		23C2A7C1232F090700FFFA03 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7C0232F090700FFFA03 /* LoginInteractor.swift */; };
+		23C2A7C4232F0BDA00FFFA03 /* BankColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7C3232F0BDA00FFFA03 /* BankColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,12 @@
 		23C2A7A5232F064D00FFFA03 /* Bank-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bank-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23C2A7A9232F064D00FFFA03 /* Bank_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank_appTests.swift; sourceTree = "<group>"; };
 		23C2A7AB232F064D00FFFA03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23C2A7B6232F08C100FFFA03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		23C2A7B7232F08C100FFFA03 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		23C2A7BC232F08EF00FFFA03 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		23C2A7BE232F08FA00FFFA03 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		23C2A7C0232F090700FFFA03 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		23C2A7C3232F0BDA00FFFA03 /* BankColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +89,8 @@
 		23C2A793232F064800FFFA03 /* Bank-app */ = {
 			isa = PBXGroup;
 			children = (
+				23C2A7C2232F0BC500FFFA03 /* App */,
+				23C2A7B4232F089200FFFA03 /* Scenes */,
 				23C2A794232F064800FFFA03 /* AppDelegate.swift */,
 				23C2A796232F064800FFFA03 /* ViewController.swift */,
 				23C2A798232F064800FFFA03 /* Main.storyboard */,
@@ -94,6 +108,50 @@
 				23C2A7AB232F064D00FFFA03 /* Info.plist */,
 			);
 			path = "Bank-appTests";
+			sourceTree = "<group>";
+		};
+		23C2A7B4232F089200FFFA03 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				23C2A7B5232F089B00FFFA03 /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		23C2A7B5232F089B00FFFA03 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				23C2A7BC232F08EF00FFFA03 /* LoginPresenter.swift */,
+				23C2A7BE232F08FA00FFFA03 /* LoginRouter.swift */,
+				23C2A7C0232F090700FFFA03 /* LoginInteractor.swift */,
+				23C2A7BA232F08CA00FFFA03 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		23C2A7BA232F08CA00FFFA03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				23C2A7B6232F08C100FFFA03 /* LoginViewController.swift */,
+				23C2A7BB232F08D800FFFA03 /* Resources */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		23C2A7BB232F08D800FFFA03 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				23C2A7B7232F08C100FFFA03 /* LoginViewController.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		23C2A7C2232F0BC500FFFA03 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				23C2A7C3232F0BDA00FFFA03 /* BankColors.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C2A7B9232F08C100FFFA03 /* LoginViewController.xib in Resources */,
 				23C2A79F232F064D00FFFA03 /* LaunchScreen.storyboard in Resources */,
 				23C2A79C232F064D00FFFA03 /* Assets.xcassets in Resources */,
 				23C2A79A232F064800FFFA03 /* Main.storyboard in Resources */,
@@ -197,7 +256,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C2A7C4232F0BDA00FFFA03 /* BankColors.swift in Sources */,
+				23C2A7BD232F08EF00FFFA03 /* LoginPresenter.swift in Sources */,
+				23C2A7B8232F08C100FFFA03 /* LoginViewController.swift in Sources */,
+				23C2A7C1232F090700FFFA03 /* LoginInteractor.swift in Sources */,
 				23C2A797232F064800FFFA03 /* ViewController.swift in Sources */,
+				23C2A7BF232F08FA00FFFA03 /* LoginRouter.swift in Sources */,
 				23C2A795232F064800FFFA03 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

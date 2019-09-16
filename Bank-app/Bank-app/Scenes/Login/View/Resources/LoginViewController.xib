@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Bank_app" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="xHr-Vr-fb2">
+                    <rect key="frame" x="125" y="56" width="125" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="125" id="D0I-lq-h9g"/>
+                        <constraint firstAttribute="height" constant="70" id="ogR-bH-pE1"/>
+                    </constraints>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZe-0N-ueK">
+                    <rect key="frame" x="16" y="231" width="343" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="QRz-6c-Zdx"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" textContentType="email"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhh-Bj-5fn">
+                    <rect key="frame" x="86.5" y="572" width="202" height="62"/>
+                    <color key="backgroundColor" red="0.23137254901960785" green="0.28235294117647058" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="202" id="UxG-pR-HMa"/>
+                        <constraint firstAttribute="height" constant="62" id="VTX-Q6-lj5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <state key="normal" title="Login">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rrt-z0-IZT">
+                    <rect key="frame" x="16" y="302" width="343" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="p1m-Wh-3PF"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" textContentType="password"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="BZe-0N-ueK" firstAttribute="top" secondItem="xHr-Vr-fb2" secondAttribute="bottom" constant="105" id="7f5-8b-1wy"/>
+                <constraint firstItem="rrt-z0-IZT" firstAttribute="top" secondItem="BZe-0N-ueK" secondAttribute="bottom" constant="21" id="QBX-Fw-i8y"/>
+                <constraint firstItem="xHr-Vr-fb2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="36" id="UoD-hy-8e6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hhh-Bj-5fn" secondAttribute="bottom" constant="33" id="gpw-m1-b4f"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rrt-z0-IZT" secondAttribute="trailing" constant="16" id="mfu-sc-pba"/>
+                <constraint firstItem="hhh-Bj-5fn" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="nfs-rL-oLP"/>
+                <constraint firstItem="BZe-0N-ueK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="oVM-YX-fOX"/>
+                <constraint firstItem="xHr-Vr-fb2" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="xTU-db-qTf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BZe-0N-ueK" secondAttribute="trailing" constant="16" id="yfr-bp-6FR"/>
+                <constraint firstItem="rrt-z0-IZT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="zhd-d7-dkO"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Logo" width="125" height="70"/>
+    </resources>
+</document>
