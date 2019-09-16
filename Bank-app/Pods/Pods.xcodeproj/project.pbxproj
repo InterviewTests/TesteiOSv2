@@ -1,0 +1,981 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		075E5F02078645547158A1D741E92CF3 /* HeroModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03F4F33965EF9E3284F2A34076B876 /* HeroModifier.swift */; };
+		08C515108CFE6C7126F3E9C2A5113F9F /* Pods-Bank-appTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 36B980418C8D59BFC813176E4FE49631 /* Pods-Bank-appTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		098B30612ABF09F5EE608C75C94B9DB5 /* HeroProgressRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D27063195FF240F891ED618D0F3D2C /* HeroProgressRunner.swift */; };
+		0DDFF29E4A7A30E8B2DA3B7CB8CF5AE1 /* HeroDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8549CD49AAC508E35D980C38682292E0 /* HeroDebugView.swift */; };
+		1ED41DFB18FE68D25B399F7AA41BAE02 /* HeroStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BC42B57F6AD735EAB03A5DC53B387 /* HeroStringConvertible.swift */; };
+		208EC9D838C3E20D3EBB5594C7B67085 /* HeroTransition+Interactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716C2605C961CC76716CEF5257D5F74 /* HeroTransition+Interactive.swift */; };
+		2325E00B63C70CB4BBB847F4676A7414 /* HeroTransition+UITabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779CCD3AC93C341A1C76C433CE189E80 /* HeroTransition+UITabBarControllerDelegate.swift */; };
+		275484D4B870338DA11DD35F344EF555 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1D74E3C4961FEAF6AD652409D0ABF9 /* Lexer.swift */; };
+		278F1AE1C3CE29C2C8D53092130D95E5 /* HeroDefaultAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB792DC4F7D584570CA7595FEEB733 /* HeroDefaultAnimator.swift */; };
+		29CBF185CE2DBF7D0F3E70D978CF6457 /* Pods-Bank-appTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F32BCC78F01B94FF68837099F3BDF10 /* Pods-Bank-appTests-dummy.m */; };
+		3B830E8A0A941AD9DC8D03C3BC0711BE /* HeroTransition+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946FBDA4D3B1AFF42780F89FB40E1BC /* HeroTransition+Animate.swift */; };
+		3E4CF23E719CF4EB9F9C5A2FAAE6EF2C /* HeroTransition+Complete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADBDDB5913C3E18B7E77295931DB4F /* HeroTransition+Complete.swift */; };
+		4EE2D2C3FF4EADB063328A29DFBBC027 /* HeroTransition+CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A833C4F773CD12C678F561FC829E2790 /* HeroTransition+CustomTransition.swift */; };
+		51872181E9D8716A2D6023F0F04FCF87 /* BasePreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EECB270E858F39B97393A80191F86A /* BasePreprocessor.swift */; };
+		52B4A6307ED022AB1D2E2202FE6FC94A /* SourcePreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C5F11099C05C0522CC09144B4A050 /* SourcePreprocessor.swift */; };
+		5F48913075CEE0045236BE723EE4F96A /* Hero-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E721181E03FA44AB2C96195AAB9A136 /* Hero-dummy.m */; };
+		63CB7785BF4C6960177D016D1A854BAB /* DispatchQueue+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF422C61994919C6096402BB851E002 /* DispatchQueue+Hero.swift */; };
+		68027C5005186FF06138273AE7BDF474 /* UIView+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA6C7D52D783EBB48F4B70F44D03AC /* UIView+Hero.swift */; };
+		78D7125277D85B6D35E650F384F0B2B6 /* CALayer+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE43F6951009B8FCCCC8FC37E77C5B9 /* CALayer+Hero.swift */; };
+		7EF63F279EDAC84A03213B02406DD3A0 /* HeroDebugPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6D8EA85C437D64B660EE62F01E6F8A /* HeroDebugPlugin.swift */; };
+		80379AFA3333AA7A786E5AFF945A4687 /* HeroCoreAnimationViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996FE8A5AE47D1047F14AEB2798B34F6 /* HeroCoreAnimationViewContext.swift */; };
+		815EC31183427E149EB06F9FBA1C256B /* HeroModifier+HeroStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B01CBA5F0C16CB674338E58B89242 /* HeroModifier+HeroStringConvertible.swift */; };
+		8D2A00E060A1AA7387327CCB6CF74231 /* CG+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = A342D855CFE27F54D68D4295AE42E7E1 /* CG+Hero.swift */; };
+		8DF75CD2DFC346B106B7C1B9BB3F72C1 /* CascadePreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EDC8BBD063A055EBC1C1665A3DED6D /* CascadePreprocessor.swift */; };
+		94836E56A504699F5AE2B292A10FEFFE /* MatchPreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8274FDB27196CC952DB44B862744BCA /* MatchPreprocessor.swift */; };
+		94A6C471DA44619C2C880DCBD3CCC1B3 /* Pods-Bank-app-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C35DF502DD78548AD04D3AA7F35D9C1A /* Pods-Bank-app-dummy.m */; };
+		94BF1A54226F98BDB77A3947ADDA37F4 /* Pods-Bank-app-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 698A89EC11D5CB28B7F95B02D674498C /* Pods-Bank-app-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98A5E903BD3907A891A3C55496DA79FF /* HeroTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D168236373B41E87574464896ACE53AC /* HeroTypes.swift */; };
+		9A446D59771619CADF996E3FB77001EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		9A90BBB6B0CA33FFF5590E447E049956 /* CAMediaTimingFunction+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9027B9C93841E05E1187259267000B87 /* CAMediaTimingFunction+Hero.swift */; };
+		9E79180BE27DEAA340199E99DCCBAA90 /* ConditionalPreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC7DC77E62EF7EA8EF7D2D304DDF47F /* ConditionalPreprocessor.swift */; };
+		A40B8808652DCB329E8D0F3078FE5817 /* HeroAnimatorViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA6AF3A4C52916EF676B25F2E75A2E /* HeroAnimatorViewContext.swift */; };
+		A5843C82FF9ACE79DDBC357FE61C08CC /* Hero-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C4DBF5AB3B1A21DEC708E4A220A4B0A9 /* Hero-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A83870CF6DB898BCEF6478B7950CC5F5 /* HeroContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444FC89529BD2580F550EFC57B0A5E7C /* HeroContext.swift */; };
+		B17587CE0D8E5BC704C056F2FB48A5A7 /* Nodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D983E1652FBC2B57452179217666C4F9 /* Nodes.swift */; };
+		B3D5D1B320D28500E66A10EB765C02F0 /* UIKit+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1EA22695BC0FFADD20AD6E8CDFBF5 /* UIKit+Hero.swift */; };
+		B3F3E00D4A617C9FFA07B7CFA4A5253F /* HeroPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0137AE366828085C80BEE6089E6437 /* HeroPlugin.swift */; };
+		B74CE1E9712BAFEB6822376C20052EE8 /* HeroTransition+UINavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42806C7AF52AD24C3B2D028D089062D7 /* HeroTransition+UINavigationControllerDelegate.swift */; };
+		BA0F554A0454E29248BFC36F85ECD1E2 /* HeroTargetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA266EDAE8BA20FCD6FC08FD8779332 /* HeroTargetState.swift */; };
+		BB935F333173778E9A1CDC244B992902 /* HeroViewPropertyViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F354D36BE8B65528E767A781ED2B1 /* HeroViewPropertyViewContext.swift */; };
+		BBF394939C0B6E7D5E5189509A3227FB /* HeroTransition+UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BB50FB5DECD1B09BD0858A24689BFA /* HeroTransition+UIViewControllerTransitioningDelegate.swift */; };
+		C4ECD00B451115CE380BAF557FB9808F /* HeroViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29DE5425B07A80DA86C40A893DB87D2 /* HeroViewControllerDelegate.swift */; };
+		C5E6B7CB3C9B587148590203CBAF09AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		C8E5332C472EEED368DE187F01907EE6 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB062AA93E330CFE676F6F4ABA3E6B /* Parser.swift */; };
+		C9F1F2362E8F14EDB88EAD07A38FBECD /* HeroCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115DC02E8DB10E239D5C388744D5781C /* HeroCompatible.swift */; };
+		CF1A1B1B2A987F6FD178EA0536C52906 /* HeroModifier+Advanced.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF2042657E0F23CFF69B14019A6331 /* HeroModifier+Advanced.swift */; };
+		D53A944755A600AFE5E4F5A2880CA389 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDF37DD1E4F0D4EE01F44B04ABDEEB /* Regex.swift */; };
+		DD413D8ADBD639CF4FD922F675ACF1EE /* HeroTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FEDE2432F8CB2EC2A6FF64D081EEF8 /* HeroTransition.swift */; };
+		DEBD1EEA0A5CACFBDA814C38F94282E5 /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C754FE11B2F075A83EC2ED203A5B407F /* SwiftSupport.swift */; };
+		DF3D9FA95B616E53088F20AF07258151 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		E3C1A77ACD0CBD2D86AA43F6D9EA5A81 /* HeroTransitionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20C1590F67C58A944B511F7B0E28275 /* HeroTransitionState.swift */; };
+		E7D4460A0024A237DBD0238CF0BA7A83 /* DefaultAnimationPreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33660916B5A2AE40294E3DCA1A196BF0 /* DefaultAnimationPreprocessor.swift */; };
+		EDA2039AA1766842F4F541BC45A47F5D /* HeroTransition+Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2128E19DF08E95E55FED6D565D396C /* HeroTransition+Start.swift */; };
+		F37A71B06EEFF6D96FA6CEC616734061 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
+		FA06D41AF48DA76E82325EC39E3DF0D2 /* UIViewController+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B03CB129B674CFA41A92D5D891F8B9 /* UIViewController+Hero.swift */; };
+		FA857EBB6C02189BABD48F86911381E0 /* Array+HeroModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C197BC7D8070286D0AA13BE7D88C84F2 /* Array+HeroModifier.swift */; };
+		FA989AC0136DE8782381E9D677199A91 /* IgnoreSubviewModifiersPreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999B2C97EC00D50A053457CD0086E85 /* IgnoreSubviewModifiersPreprocessor.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		08EA613DD9A74C4DB98F6F82E894D618 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B5406EF9FACEA3DD5D7B514A0D1A179;
+			remoteInfo = Hero;
+		};
+		5DF1101EC655305029990DB6D4FDC17F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCCC177638AA32ECA0D68C885A9BCBBD;
+			remoteInfo = "Pods-Bank-app";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02BAF071C494A69BF08E5982A4870A84 /* Pods-Bank-app-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Bank-app-acknowledgements.markdown"; sourceTree = "<group>"; };
+		092B01CBA5F0C16CB674338E58B89242 /* HeroModifier+HeroStringConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroModifier+HeroStringConvertible.swift"; path = "Sources/HeroModifier+HeroStringConvertible.swift"; sourceTree = "<group>"; };
+		0A6C5F11099C05C0522CC09144B4A050 /* SourcePreprocessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourcePreprocessor.swift; path = Sources/Preprocessors/SourcePreprocessor.swift; sourceTree = "<group>"; };
+		0D3BC42B57F6AD735EAB03A5DC53B387 /* HeroStringConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroStringConvertible.swift; path = Sources/Parser/HeroStringConvertible.swift; sourceTree = "<group>"; };
+		0D3C936ED86DC5FB4CB165BA95A775A6 /* Pods-Bank-appTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Bank-appTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		0E721181E03FA44AB2C96195AAB9A136 /* Hero-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Hero-dummy.m"; sourceTree = "<group>"; };
+		0EBA6AF3A4C52916EF676B25F2E75A2E /* HeroAnimatorViewContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroAnimatorViewContext.swift; path = Sources/Animator/HeroAnimatorViewContext.swift; sourceTree = "<group>"; };
+		0F32BCC78F01B94FF68837099F3BDF10 /* Pods-Bank-appTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Bank-appTests-dummy.m"; sourceTree = "<group>"; };
+		0F6C9009C9F50C598F407A4FBDD06DCF /* Pods-Bank-appTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Bank-appTests.modulemap"; sourceTree = "<group>"; };
+		1107F8ACADA9250038B3C4FB51F9D114 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		115DC02E8DB10E239D5C388744D5781C /* HeroCompatible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroCompatible.swift; path = Sources/HeroCompatible.swift; sourceTree = "<group>"; };
+		1B2B33E47F329FD8DE0A0E1AFC2D9BC8 /* Pods-Bank-appTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Bank-appTests-resources.sh"; sourceTree = "<group>"; };
+		1CCA6C7D52D783EBB48F4B70F44D03AC /* UIView+Hero.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Hero.swift"; path = "Sources/Extensions/UIView+Hero.swift"; sourceTree = "<group>"; };
+		22BC9085C6CD50BE6099738AAB54A4EA /* Pods-Bank-app-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Bank-app-acknowledgements.plist"; sourceTree = "<group>"; };
+		24390EFD555DD124430DFF9724065945 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		29EDF37DD1E4F0D4EE01F44B04ABDEEB /* Regex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Regex.swift; path = Sources/Parser/Regex.swift; sourceTree = "<group>"; };
+		2FAE1434771750FABE8B03914EA539A2 /* Pods-Bank-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Bank-app.release.xcconfig"; sourceTree = "<group>"; };
+		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		33660916B5A2AE40294E3DCA1A196BF0 /* DefaultAnimationPreprocessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultAnimationPreprocessor.swift; path = Sources/Preprocessors/DefaultAnimationPreprocessor.swift; sourceTree = "<group>"; };
+		362DD3D87F5522ABB0E3A9B16271CF6C /* Pods-Bank-appTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Bank-appTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		36B980418C8D59BFC813176E4FE49631 /* Pods-Bank-appTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Bank-appTests-umbrella.h"; sourceTree = "<group>"; };
+		3716C2605C961CC76716CEF5257D5F74 /* HeroTransition+Interactive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroTransition+Interactive.swift"; path = "Sources/Transition/HeroTransition+Interactive.swift"; sourceTree = "<group>"; };
+		37A44FB1951C641C759BA051B0A8B231 /* Pods_Bank_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Bank_app.framework; path = "Pods-Bank-app.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37ADBDDB5913C3E18B7E77295931DB4F /* HeroTransition+Complete.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroTransition+Complete.swift"; path = "Sources/Transition/HeroTransition+Complete.swift"; sourceTree = "<group>"; };
+		39FEDE2432F8CB2EC2A6FF64D081EEF8 /* HeroTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroTransition.swift; path = Sources/Transition/HeroTransition.swift; sourceTree = "<group>"; };
+		3A6D8EA85C437D64B660EE62F01E6F8A /* HeroDebugPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroDebugPlugin.swift; path = "Sources/Debug Plugin/HeroDebugPlugin.swift"; sourceTree = "<group>"; };
+		3CA266EDAE8BA20FCD6FC08FD8779332 /* HeroTargetState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroTargetState.swift; path = Sources/HeroTargetState.swift; sourceTree = "<group>"; };
+		41B03CB129B674CFA41A92D5D891F8B9 /* UIViewController+Hero.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Hero.swift"; path = "Sources/Extensions/UIViewController+Hero.swift"; sourceTree = "<group>"; };
+		42806C7AF52AD24C3B2D028D089062D7 /* HeroTransition+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroTransition+UINavigationControllerDelegate.swift"; path = "Sources/Transition/HeroTransition+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
+		42EDC8BBD063A055EBC1C1665A3DED6D /* CascadePreprocessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CascadePreprocessor.swift; path = Sources/Preprocessors/CascadePreprocessor.swift; sourceTree = "<group>"; };
+		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		444FC89529BD2580F550EFC57B0A5E7C /* HeroContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroContext.swift; path = Sources/HeroContext.swift; sourceTree = "<group>"; };
+		4946FBDA4D3B1AFF42780F89FB40E1BC /* HeroTransition+Animate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroTransition+Animate.swift"; path = "Sources/Transition/HeroTransition+Animate.swift"; sourceTree = "<group>"; };
+		65CB062AA93E330CFE676F6F4ABA3E6B /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Sources/Parser/Parser.swift; sourceTree = "<group>"; };
+		67E17A73E1EB2E5FFE37B657F62AE665 /* Hero.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Hero.xcconfig; sourceTree = "<group>"; };
+		698A89EC11D5CB28B7F95B02D674498C /* Pods-Bank-app-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Bank-app-umbrella.h"; sourceTree = "<group>"; };
+		6AF422C61994919C6096402BB851E002 /* DispatchQueue+Hero.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Hero.swift"; path = "Sources/Extensions/DispatchQueue+Hero.swift"; sourceTree = "<group>"; };
+		6F0137AE366828085C80BEE6089E6437 /* HeroPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroPlugin.swift; path = Sources/HeroPlugin.swift; sourceTree = "<group>"; };
+		72D794ABB91311C229E9A8955756080B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		779CCD3AC93C341A1C76C433CE189E80 /* HeroTransition+UITabBarControllerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroTransition+UITabBarControllerDelegate.swift"; path = "Sources/Transition/HeroTransition+UITabBarControllerDelegate.swift"; sourceTree = "<group>"; };
+		798D29B3A0212412D87DDDB12F0C19CB /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Hero.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80A16CECB4C94D93DEC112DEBEEA5C59 /* Pods-Bank-app-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Bank-app-resources.sh"; sourceTree = "<group>"; };
+		8549CD49AAC508E35D980C38682292E0 /* HeroDebugView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroDebugView.swift; path = "Sources/Debug Plugin/HeroDebugView.swift"; sourceTree = "<group>"; };
+		8667C99D4E713E5E837C968FAE42D424 /* Pods-Bank-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Bank-appTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8A2128E19DF08E95E55FED6D565D396C /* HeroTransition+Start.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroTransition+Start.swift"; path = "Sources/Transition/HeroTransition+Start.swift"; sourceTree = "<group>"; };
+		9027B9C93841E05E1187259267000B87 /* CAMediaTimingFunction+Hero.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CAMediaTimingFunction+Hero.swift"; path = "Sources/Extensions/CAMediaTimingFunction+Hero.swift"; sourceTree = "<group>"; };
+		94AF2042657E0F23CFF69B14019A6331 /* HeroModifier+Advanced.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroModifier+Advanced.swift"; path = "Sources/HeroModifier+Advanced.swift"; sourceTree = "<group>"; };
+		95FB792DC4F7D584570CA7595FEEB733 /* HeroDefaultAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroDefaultAnimator.swift; path = Sources/Animator/HeroDefaultAnimator.swift; sourceTree = "<group>"; };
+		996FE8A5AE47D1047F14AEB2798B34F6 /* HeroCoreAnimationViewContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroCoreAnimationViewContext.swift; path = Sources/Animator/HeroCoreAnimationViewContext.swift; sourceTree = "<group>"; };
+		99BEBED2BF8F0792FBAB6B318C9FBDD5 /* Hero.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Hero.modulemap; sourceTree = "<group>"; };
+		9E03F4F33965EF9E3284F2A34076B876 /* HeroModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroModifier.swift; path = Sources/HeroModifier.swift; sourceTree = "<group>"; };
+		A342D855CFE27F54D68D4295AE42E7E1 /* CG+Hero.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CG+Hero.swift"; path = "Sources/Extensions/CG+Hero.swift"; sourceTree = "<group>"; };
+		A833C4F773CD12C678F561FC829E2790 /* HeroTransition+CustomTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroTransition+CustomTransition.swift"; path = "Sources/Transition/HeroTransition+CustomTransition.swift"; sourceTree = "<group>"; };
+		AEE43F6951009B8FCCCC8FC37E77C5B9 /* CALayer+Hero.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CALayer+Hero.swift"; path = "Sources/Extensions/CALayer+Hero.swift"; sourceTree = "<group>"; };
+		B3BB50FB5DECD1B09BD0858A24689BFA /* HeroTransition+UIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroTransition+UIViewControllerTransitioningDelegate.swift"; path = "Sources/Transition/HeroTransition+UIViewControllerTransitioningDelegate.swift"; sourceTree = "<group>"; };
+		B999B2C97EC00D50A053457CD0086E85 /* IgnoreSubviewModifiersPreprocessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IgnoreSubviewModifiersPreprocessor.swift; path = Sources/Preprocessors/IgnoreSubviewModifiersPreprocessor.swift; sourceTree = "<group>"; };
+		BAFF4CA2F3D1D4AAA4A678ED54BCEC10 /* Pods_Bank_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Bank_appTests.framework; path = "Pods-Bank-appTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C197BC7D8070286D0AA13BE7D88C84F2 /* Array+HeroModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+HeroModifier.swift"; path = "Sources/Extensions/Array+HeroModifier.swift"; sourceTree = "<group>"; };
+		C2EECB270E858F39B97393A80191F86A /* BasePreprocessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BasePreprocessor.swift; path = Sources/Preprocessors/BasePreprocessor.swift; sourceTree = "<group>"; };
+		C35DF502DD78548AD04D3AA7F35D9C1A /* Pods-Bank-app-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Bank-app-dummy.m"; sourceTree = "<group>"; };
+		C3D27063195FF240F891ED618D0F3D2C /* HeroProgressRunner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroProgressRunner.swift; path = Sources/Transition/HeroProgressRunner.swift; sourceTree = "<group>"; };
+		C4DBF5AB3B1A21DEC708E4A220A4B0A9 /* Hero-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Hero-umbrella.h"; sourceTree = "<group>"; };
+		C754FE11B2F075A83EC2ED203A5B407F /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = Sources/SwiftSupport.swift; sourceTree = "<group>"; };
+		D11F354D36BE8B65528E767A781ED2B1 /* HeroViewPropertyViewContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroViewPropertyViewContext.swift; path = Sources/Animator/HeroViewPropertyViewContext.swift; sourceTree = "<group>"; };
+		D168236373B41E87574464896ACE53AC /* HeroTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroTypes.swift; path = Sources/HeroTypes.swift; sourceTree = "<group>"; };
+		D20C1590F67C58A944B511F7B0E28275 /* HeroTransitionState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroTransitionState.swift; path = Sources/Transition/HeroTransitionState.swift; sourceTree = "<group>"; };
+		D29DE5425B07A80DA86C40A893DB87D2 /* HeroViewControllerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroViewControllerDelegate.swift; path = Sources/HeroViewControllerDelegate.swift; sourceTree = "<group>"; };
+		D7781A6704BEB5ADAA0E3362D53415D0 /* Pods-Bank-appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Bank-appTests.release.xcconfig"; sourceTree = "<group>"; };
+		D983E1652FBC2B57452179217666C4F9 /* Nodes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Nodes.swift; path = Sources/Parser/Nodes.swift; sourceTree = "<group>"; };
+		DDD619DAE7541975874898D2C0B0F985 /* Pods-Bank-app-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Bank-app-frameworks.sh"; sourceTree = "<group>"; };
+		DDDA99CD57B1497C6EC14F7FCFFDD1CF /* Pods-Bank-app.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Bank-app.modulemap"; sourceTree = "<group>"; };
+		E0BC2C2840FC1E1BAD3E0050A3C1A494 /* Pods-Bank-appTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Bank-appTests-frameworks.sh"; sourceTree = "<group>"; };
+		E78967B1F980524A82FA47C82E59CCC0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8274FDB27196CC952DB44B862744BCA /* MatchPreprocessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatchPreprocessor.swift; path = Sources/Preprocessors/MatchPreprocessor.swift; sourceTree = "<group>"; };
+		EAC53D38249517C175F242493DFDDEE3 /* Hero-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Hero-prefix.pch"; sourceTree = "<group>"; };
+		EAC7DC77E62EF7EA8EF7D2D304DDF47F /* ConditionalPreprocessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConditionalPreprocessor.swift; path = Sources/Preprocessors/ConditionalPreprocessor.swift; sourceTree = "<group>"; };
+		ED1D74E3C4961FEAF6AD652409D0ABF9 /* Lexer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Lexer.swift; path = Sources/Parser/Lexer.swift; sourceTree = "<group>"; };
+		F0B1EA22695BC0FFADD20AD6E8CDFBF5 /* UIKit+Hero.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIKit+Hero.swift"; path = "Sources/Extensions/UIKit+Hero.swift"; sourceTree = "<group>"; };
+		F6EF67441E158E8243354A8A0CBF072E /* Pods-Bank-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Bank-app.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		006DE60F1E10D3323F0C1B5CCD73565E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF3D9FA95B616E53088F20AF07258151 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33B2D197B447EF6DA884398A3A926F0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5E6B7CB3C9B587148590203CBAF09AE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB6BD99F2DE70F4FDA67AE5E0C9FF8AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A446D59771619CADF996E3FB77001EA /* Foundation.framework in Frameworks */,
+				F37A71B06EEFF6D96FA6CEC616734061 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A6D4CC55CD1D6DC2244295EBC9D6678 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ADA89FFE8FCE5C6953D71E5CDAB281C7 /* Pods-Bank-app */,
+				7F946C383420150B40ECA41A6C8644CA /* Pods-Bank-appTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		0B0BFE9D0905C185F5B0D43E16CDC335 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				798D29B3A0212412D87DDDB12F0C19CB /* Hero.framework */,
+				37A44FB1951C641C759BA051B0A8B231 /* Pods_Bank_app.framework */,
+				BAFF4CA2F3D1D4AAA4A678ED54BCEC10 /* Pods_Bank_appTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2983683FD097A93297E2F5D4E382B36 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		19A2E4B69186AFC37952F0E43203CB51 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				99BEBED2BF8F0792FBAB6B318C9FBDD5 /* Hero.modulemap */,
+				67E17A73E1EB2E5FFE37B657F62AE665 /* Hero.xcconfig */,
+				0E721181E03FA44AB2C96195AAB9A136 /* Hero-dummy.m */,
+				EAC53D38249517C175F242493DFDDEE3 /* Hero-prefix.pch */,
+				C4DBF5AB3B1A21DEC708E4A220A4B0A9 /* Hero-umbrella.h */,
+				E78967B1F980524A82FA47C82E59CCC0 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Hero";
+			sourceTree = "<group>";
+		};
+		3A2FE64191BF709745110154FDFA8C77 /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				C197BC7D8070286D0AA13BE7D88C84F2 /* Array+HeroModifier.swift */,
+				C2EECB270E858F39B97393A80191F86A /* BasePreprocessor.swift */,
+				AEE43F6951009B8FCCCC8FC37E77C5B9 /* CALayer+Hero.swift */,
+				9027B9C93841E05E1187259267000B87 /* CAMediaTimingFunction+Hero.swift */,
+				42EDC8BBD063A055EBC1C1665A3DED6D /* CascadePreprocessor.swift */,
+				A342D855CFE27F54D68D4295AE42E7E1 /* CG+Hero.swift */,
+				EAC7DC77E62EF7EA8EF7D2D304DDF47F /* ConditionalPreprocessor.swift */,
+				33660916B5A2AE40294E3DCA1A196BF0 /* DefaultAnimationPreprocessor.swift */,
+				6AF422C61994919C6096402BB851E002 /* DispatchQueue+Hero.swift */,
+				0EBA6AF3A4C52916EF676B25F2E75A2E /* HeroAnimatorViewContext.swift */,
+				115DC02E8DB10E239D5C388744D5781C /* HeroCompatible.swift */,
+				444FC89529BD2580F550EFC57B0A5E7C /* HeroContext.swift */,
+				996FE8A5AE47D1047F14AEB2798B34F6 /* HeroCoreAnimationViewContext.swift */,
+				3A6D8EA85C437D64B660EE62F01E6F8A /* HeroDebugPlugin.swift */,
+				8549CD49AAC508E35D980C38682292E0 /* HeroDebugView.swift */,
+				95FB792DC4F7D584570CA7595FEEB733 /* HeroDefaultAnimator.swift */,
+				9E03F4F33965EF9E3284F2A34076B876 /* HeroModifier.swift */,
+				94AF2042657E0F23CFF69B14019A6331 /* HeroModifier+Advanced.swift */,
+				092B01CBA5F0C16CB674338E58B89242 /* HeroModifier+HeroStringConvertible.swift */,
+				6F0137AE366828085C80BEE6089E6437 /* HeroPlugin.swift */,
+				C3D27063195FF240F891ED618D0F3D2C /* HeroProgressRunner.swift */,
+				0D3BC42B57F6AD735EAB03A5DC53B387 /* HeroStringConvertible.swift */,
+				3CA266EDAE8BA20FCD6FC08FD8779332 /* HeroTargetState.swift */,
+				39FEDE2432F8CB2EC2A6FF64D081EEF8 /* HeroTransition.swift */,
+				4946FBDA4D3B1AFF42780F89FB40E1BC /* HeroTransition+Animate.swift */,
+				37ADBDDB5913C3E18B7E77295931DB4F /* HeroTransition+Complete.swift */,
+				A833C4F773CD12C678F561FC829E2790 /* HeroTransition+CustomTransition.swift */,
+				3716C2605C961CC76716CEF5257D5F74 /* HeroTransition+Interactive.swift */,
+				8A2128E19DF08E95E55FED6D565D396C /* HeroTransition+Start.swift */,
+				42806C7AF52AD24C3B2D028D089062D7 /* HeroTransition+UINavigationControllerDelegate.swift */,
+				779CCD3AC93C341A1C76C433CE189E80 /* HeroTransition+UITabBarControllerDelegate.swift */,
+				B3BB50FB5DECD1B09BD0858A24689BFA /* HeroTransition+UIViewControllerTransitioningDelegate.swift */,
+				D20C1590F67C58A944B511F7B0E28275 /* HeroTransitionState.swift */,
+				D168236373B41E87574464896ACE53AC /* HeroTypes.swift */,
+				D29DE5425B07A80DA86C40A893DB87D2 /* HeroViewControllerDelegate.swift */,
+				D11F354D36BE8B65528E767A781ED2B1 /* HeroViewPropertyViewContext.swift */,
+				B999B2C97EC00D50A053457CD0086E85 /* IgnoreSubviewModifiersPreprocessor.swift */,
+				ED1D74E3C4961FEAF6AD652409D0ABF9 /* Lexer.swift */,
+				E8274FDB27196CC952DB44B862744BCA /* MatchPreprocessor.swift */,
+				D983E1652FBC2B57452179217666C4F9 /* Nodes.swift */,
+				65CB062AA93E330CFE676F6F4ABA3E6B /* Parser.swift */,
+				29EDF37DD1E4F0D4EE01F44B04ABDEEB /* Regex.swift */,
+				0A6C5F11099C05C0522CC09144B4A050 /* SourcePreprocessor.swift */,
+				C754FE11B2F075A83EC2ED203A5B407F /* SwiftSupport.swift */,
+				F0B1EA22695BC0FFADD20AD6E8CDFBF5 /* UIKit+Hero.swift */,
+				1CCA6C7D52D783EBB48F4B70F44D03AC /* UIView+Hero.swift */,
+				41B03CB129B674CFA41A92D5D891F8B9 /* UIViewController+Hero.swift */,
+				19A2E4B69186AFC37952F0E43203CB51 /* Support Files */,
+			);
+			name = Hero;
+			path = Hero;
+			sourceTree = "<group>";
+		};
+		43E2E73FB79D90C23AB848189076520E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A2FE64191BF709745110154FDFA8C77 /* Hero */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7F946C383420150B40ECA41A6C8644CA /* Pods-Bank-appTests */ = {
+			isa = PBXGroup;
+			children = (
+				72D794ABB91311C229E9A8955756080B /* Info.plist */,
+				0F6C9009C9F50C598F407A4FBDD06DCF /* Pods-Bank-appTests.modulemap */,
+				362DD3D87F5522ABB0E3A9B16271CF6C /* Pods-Bank-appTests-acknowledgements.markdown */,
+				0D3C936ED86DC5FB4CB165BA95A775A6 /* Pods-Bank-appTests-acknowledgements.plist */,
+				0F32BCC78F01B94FF68837099F3BDF10 /* Pods-Bank-appTests-dummy.m */,
+				E0BC2C2840FC1E1BAD3E0050A3C1A494 /* Pods-Bank-appTests-frameworks.sh */,
+				1B2B33E47F329FD8DE0A0E1AFC2D9BC8 /* Pods-Bank-appTests-resources.sh */,
+				36B980418C8D59BFC813176E4FE49631 /* Pods-Bank-appTests-umbrella.h */,
+				8667C99D4E713E5E837C968FAE42D424 /* Pods-Bank-appTests.debug.xcconfig */,
+				D7781A6704BEB5ADAA0E3362D53415D0 /* Pods-Bank-appTests.release.xcconfig */,
+			);
+			name = "Pods-Bank-appTests";
+			path = "Target Support Files/Pods-Bank-appTests";
+			sourceTree = "<group>";
+		};
+		ADA89FFE8FCE5C6953D71E5CDAB281C7 /* Pods-Bank-app */ = {
+			isa = PBXGroup;
+			children = (
+				1107F8ACADA9250038B3C4FB51F9D114 /* Info.plist */,
+				DDDA99CD57B1497C6EC14F7FCFFDD1CF /* Pods-Bank-app.modulemap */,
+				02BAF071C494A69BF08E5982A4870A84 /* Pods-Bank-app-acknowledgements.markdown */,
+				22BC9085C6CD50BE6099738AAB54A4EA /* Pods-Bank-app-acknowledgements.plist */,
+				C35DF502DD78548AD04D3AA7F35D9C1A /* Pods-Bank-app-dummy.m */,
+				DDD619DAE7541975874898D2C0B0F985 /* Pods-Bank-app-frameworks.sh */,
+				80A16CECB4C94D93DEC112DEBEEA5C59 /* Pods-Bank-app-resources.sh */,
+				698A89EC11D5CB28B7F95B02D674498C /* Pods-Bank-app-umbrella.h */,
+				F6EF67441E158E8243354A8A0CBF072E /* Pods-Bank-app.debug.xcconfig */,
+				2FAE1434771750FABE8B03914EA539A2 /* Pods-Bank-app.release.xcconfig */,
+			);
+			name = "Pods-Bank-app";
+			path = "Target Support Files/Pods-Bank-app";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				24390EFD555DD124430DFF9724065945 /* Podfile */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				43E2E73FB79D90C23AB848189076520E /* Pods */,
+				0B0BFE9D0905C185F5B0D43E16CDC335 /* Products */,
+				0A6D4CC55CD1D6DC2244295EBC9D6678 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		E2983683FD097A93297E2F5D4E382B36 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */,
+				312B988EF117AE4DE76A268D970131FE /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2EC2BF3845F1B0FA13A87585C711B14A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08C515108CFE6C7126F3E9C2A5113F9F /* Pods-Bank-appTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B970B31E0D0B17690A82EB2EA5E412C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5843C82FF9ACE79DDBC357FE61C08CC /* Hero-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C439A7931E0BD22EA579523FEEE504E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94BF1A54226F98BDB77A3947ADDA37F4 /* Pods-Bank-app-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0B5406EF9FACEA3DD5D7B514A0D1A179 /* Hero */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8A3F00AAB425AED86EEBC6CFA0C1825 /* Build configuration list for PBXNativeTarget "Hero" */;
+			buildPhases = (
+				6B970B31E0D0B17690A82EB2EA5E412C /* Headers */,
+				71D9D8AFB8988F43916D09B2EA59DF87 /* Sources */,
+				AB6BD99F2DE70F4FDA67AE5E0C9FF8AC /* Frameworks */,
+				96FB5C5368881DFB690E50E64B80D5BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hero;
+			productName = Hero;
+			productReference = 798D29B3A0212412D87DDDB12F0C19CB /* Hero.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		24C6E141EE123B1B500E193EECF7B946 /* Pods-Bank-appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4C998044B1EADBE22BFC37633F58865 /* Build configuration list for PBXNativeTarget "Pods-Bank-appTests" */;
+			buildPhases = (
+				2EC2BF3845F1B0FA13A87585C711B14A /* Headers */,
+				ABF31BF712DC699506F1CDEE97A16558 /* Sources */,
+				33B2D197B447EF6DA884398A3A926F0A /* Frameworks */,
+				263A796C98FFD916731E21593D1C263F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5ED298E1D2987A20DA65087874666FB4 /* PBXTargetDependency */,
+			);
+			name = "Pods-Bank-appTests";
+			productName = "Pods-Bank-appTests";
+			productReference = BAFF4CA2F3D1D4AAA4A678ED54BCEC10 /* Pods_Bank_appTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FCCC177638AA32ECA0D68C885A9BCBBD /* Pods-Bank-app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 567B22D078107FF745E12CF083FEB8BC /* Build configuration list for PBXNativeTarget "Pods-Bank-app" */;
+			buildPhases = (
+				8C439A7931E0BD22EA579523FEEE504E /* Headers */,
+				4E75DAD04D33A00D10252DF9B5EA0AE6 /* Sources */,
+				006DE60F1E10D3323F0C1B5CCD73565E /* Frameworks */,
+				9C4D5E9A20C84B404F1761A161673E2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				642AF969ED26A72E74B8386867C317FD /* PBXTargetDependency */,
+			);
+			name = "Pods-Bank-app";
+			productName = "Pods-Bank-app";
+			productReference = 37A44FB1951C641C759BA051B0A8B231 /* Pods_Bank_app.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 0B0BFE9D0905C185F5B0D43E16CDC335 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0B5406EF9FACEA3DD5D7B514A0D1A179 /* Hero */,
+				FCCC177638AA32ECA0D68C885A9BCBBD /* Pods-Bank-app */,
+				24C6E141EE123B1B500E193EECF7B946 /* Pods-Bank-appTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		263A796C98FFD916731E21593D1C263F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96FB5C5368881DFB690E50E64B80D5BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C4D5E9A20C84B404F1761A161673E2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4E75DAD04D33A00D10252DF9B5EA0AE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94A6C471DA44619C2C880DCBD3CCC1B3 /* Pods-Bank-app-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71D9D8AFB8988F43916D09B2EA59DF87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA857EBB6C02189BABD48F86911381E0 /* Array+HeroModifier.swift in Sources */,
+				51872181E9D8716A2D6023F0F04FCF87 /* BasePreprocessor.swift in Sources */,
+				78D7125277D85B6D35E650F384F0B2B6 /* CALayer+Hero.swift in Sources */,
+				9A90BBB6B0CA33FFF5590E447E049956 /* CAMediaTimingFunction+Hero.swift in Sources */,
+				8DF75CD2DFC346B106B7C1B9BB3F72C1 /* CascadePreprocessor.swift in Sources */,
+				8D2A00E060A1AA7387327CCB6CF74231 /* CG+Hero.swift in Sources */,
+				9E79180BE27DEAA340199E99DCCBAA90 /* ConditionalPreprocessor.swift in Sources */,
+				E7D4460A0024A237DBD0238CF0BA7A83 /* DefaultAnimationPreprocessor.swift in Sources */,
+				63CB7785BF4C6960177D016D1A854BAB /* DispatchQueue+Hero.swift in Sources */,
+				5F48913075CEE0045236BE723EE4F96A /* Hero-dummy.m in Sources */,
+				A40B8808652DCB329E8D0F3078FE5817 /* HeroAnimatorViewContext.swift in Sources */,
+				C9F1F2362E8F14EDB88EAD07A38FBECD /* HeroCompatible.swift in Sources */,
+				A83870CF6DB898BCEF6478B7950CC5F5 /* HeroContext.swift in Sources */,
+				80379AFA3333AA7A786E5AFF945A4687 /* HeroCoreAnimationViewContext.swift in Sources */,
+				7EF63F279EDAC84A03213B02406DD3A0 /* HeroDebugPlugin.swift in Sources */,
+				0DDFF29E4A7A30E8B2DA3B7CB8CF5AE1 /* HeroDebugView.swift in Sources */,
+				278F1AE1C3CE29C2C8D53092130D95E5 /* HeroDefaultAnimator.swift in Sources */,
+				CF1A1B1B2A987F6FD178EA0536C52906 /* HeroModifier+Advanced.swift in Sources */,
+				815EC31183427E149EB06F9FBA1C256B /* HeroModifier+HeroStringConvertible.swift in Sources */,
+				075E5F02078645547158A1D741E92CF3 /* HeroModifier.swift in Sources */,
+				B3F3E00D4A617C9FFA07B7CFA4A5253F /* HeroPlugin.swift in Sources */,
+				098B30612ABF09F5EE608C75C94B9DB5 /* HeroProgressRunner.swift in Sources */,
+				1ED41DFB18FE68D25B399F7AA41BAE02 /* HeroStringConvertible.swift in Sources */,
+				BA0F554A0454E29248BFC36F85ECD1E2 /* HeroTargetState.swift in Sources */,
+				3B830E8A0A941AD9DC8D03C3BC0711BE /* HeroTransition+Animate.swift in Sources */,
+				3E4CF23E719CF4EB9F9C5A2FAAE6EF2C /* HeroTransition+Complete.swift in Sources */,
+				4EE2D2C3FF4EADB063328A29DFBBC027 /* HeroTransition+CustomTransition.swift in Sources */,
+				208EC9D838C3E20D3EBB5594C7B67085 /* HeroTransition+Interactive.swift in Sources */,
+				EDA2039AA1766842F4F541BC45A47F5D /* HeroTransition+Start.swift in Sources */,
+				B74CE1E9712BAFEB6822376C20052EE8 /* HeroTransition+UINavigationControllerDelegate.swift in Sources */,
+				2325E00B63C70CB4BBB847F4676A7414 /* HeroTransition+UITabBarControllerDelegate.swift in Sources */,
+				BBF394939C0B6E7D5E5189509A3227FB /* HeroTransition+UIViewControllerTransitioningDelegate.swift in Sources */,
+				DD413D8ADBD639CF4FD922F675ACF1EE /* HeroTransition.swift in Sources */,
+				E3C1A77ACD0CBD2D86AA43F6D9EA5A81 /* HeroTransitionState.swift in Sources */,
+				98A5E903BD3907A891A3C55496DA79FF /* HeroTypes.swift in Sources */,
+				C4ECD00B451115CE380BAF557FB9808F /* HeroViewControllerDelegate.swift in Sources */,
+				BB935F333173778E9A1CDC244B992902 /* HeroViewPropertyViewContext.swift in Sources */,
+				FA989AC0136DE8782381E9D677199A91 /* IgnoreSubviewModifiersPreprocessor.swift in Sources */,
+				275484D4B870338DA11DD35F344EF555 /* Lexer.swift in Sources */,
+				94836E56A504699F5AE2B292A10FEFFE /* MatchPreprocessor.swift in Sources */,
+				B17587CE0D8E5BC704C056F2FB48A5A7 /* Nodes.swift in Sources */,
+				C8E5332C472EEED368DE187F01907EE6 /* Parser.swift in Sources */,
+				D53A944755A600AFE5E4F5A2880CA389 /* Regex.swift in Sources */,
+				52B4A6307ED022AB1D2E2202FE6FC94A /* SourcePreprocessor.swift in Sources */,
+				DEBD1EEA0A5CACFBDA814C38F94282E5 /* SwiftSupport.swift in Sources */,
+				B3D5D1B320D28500E66A10EB765C02F0 /* UIKit+Hero.swift in Sources */,
+				68027C5005186FF06138273AE7BDF474 /* UIView+Hero.swift in Sources */,
+				FA06D41AF48DA76E82325EC39E3DF0D2 /* UIViewController+Hero.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABF31BF712DC699506F1CDEE97A16558 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29CBF185CE2DBF7D0F3E70D978CF6457 /* Pods-Bank-appTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5ED298E1D2987A20DA65087874666FB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Bank-app";
+			target = FCCC177638AA32ECA0D68C885A9BCBBD /* Pods-Bank-app */;
+			targetProxy = 5DF1101EC655305029990DB6D4FDC17F /* PBXContainerItemProxy */;
+		};
+		642AF969ED26A72E74B8386867C317FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Hero;
+			target = 0B5406EF9FACEA3DD5D7B514A0D1A179 /* Hero */;
+			targetProxy = 08EA613DD9A74C4DB98F6F82E894D618 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1F5EC94EDCB41FDC32F395155D4D60E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		23A6A9A0EF7AE09D4424A7066A60EA30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		3E0D831B21DB661EA99C086659D8CE1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7781A6704BEB5ADAA0E3362D53415D0 /* Pods-Bank-appTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Bank-appTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Bank-appTests/Pods-Bank-appTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5D24860CA4F019295183DD5DB49FA4A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67E17A73E1EB2E5FFE37B657F62AE665 /* Hero.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Hero/Hero-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Hero/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Hero/Hero.modulemap";
+				PRODUCT_MODULE_NAME = Hero;
+				PRODUCT_NAME = Hero;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		61DD0720AFB67E4688ADCB9863806048 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8667C99D4E713E5E837C968FAE42D424 /* Pods-Bank-appTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Bank-appTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Bank-appTests/Pods-Bank-appTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8012C487BDB68336FC841DC1E33E332A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FAE1434771750FABE8B03914EA539A2 /* Pods-Bank-app.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Bank-app/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Bank-app/Pods-Bank-app.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		94448B4A93D61CAB43A6D7DB68926BAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6EF67441E158E8243354A8A0CBF072E /* Pods-Bank-app.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Bank-app/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Bank-app/Pods-Bank-app.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9EB09347402621E89893396578BA31AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67E17A73E1EB2E5FFE37B657F62AE665 /* Hero.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Hero/Hero-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Hero/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Hero/Hero.modulemap";
+				PRODUCT_MODULE_NAME = Hero;
+				PRODUCT_NAME = Hero;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F5EC94EDCB41FDC32F395155D4D60E2 /* Debug */,
+				23A6A9A0EF7AE09D4424A7066A60EA30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		567B22D078107FF745E12CF083FEB8BC /* Build configuration list for PBXNativeTarget "Pods-Bank-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94448B4A93D61CAB43A6D7DB68926BAD /* Debug */,
+				8012C487BDB68336FC841DC1E33E332A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4C998044B1EADBE22BFC37633F58865 /* Build configuration list for PBXNativeTarget "Pods-Bank-appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61DD0720AFB67E4688ADCB9863806048 /* Debug */,
+				3E0D831B21DB661EA99C086659D8CE1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8A3F00AAB425AED86EEBC6CFA0C1825 /* Build configuration list for PBXNativeTarget "Hero" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EB09347402621E89893396578BA31AD /* Debug */,
+				5D24860CA4F019295183DD5DB49FA4A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
