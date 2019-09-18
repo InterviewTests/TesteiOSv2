@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		02268314E5CB91980A0D4438 /* Pods_Bank_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBB77F92740BBA2610192C3 /* Pods_Bank_app.framework */; };
+		23ACC746232F21F80003FB10 /* BankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ACC745232F21F80003FB10 /* BankAPI.swift */; };
+		23ACC748232F49540003FB10 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ACC747232F49540003FB10 /* UserAccount.swift */; };
 		23C2A795232F064800FFFA03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A794232F064800FFFA03 /* AppDelegate.swift */; };
-		23C2A797232F064800FFFA03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A796232F064800FFFA03 /* ViewController.swift */; };
 		23C2A79A232F064800FFFA03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A798232F064800FFFA03 /* Main.storyboard */; };
 		23C2A79C232F064D00FFFA03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A79B232F064D00FFFA03 /* Assets.xcassets */; };
 		23C2A79F232F064D00FFFA03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A79D232F064D00FFFA03 /* LaunchScreen.storyboard */; };
@@ -23,6 +24,10 @@
 		23C2A7C8232F0EC900FFFA03 /* StatementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A7C6232F0EC900FFFA03 /* StatementsViewController.swift */; };
 		23C2A7C9232F0EC900FFFA03 /* StatementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A7C7232F0EC900FFFA03 /* StatementsViewController.xib */; };
 		23E61A61232F17C6005EC6B7 /* BankConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E61A60232F17C6005EC6B7 /* BankConstants.swift */; };
+		23E61A64232F1C64005EC6B7 /* LoginViewController+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E61A63232F1C64005EC6B7 /* LoginViewController+Protocol.swift */; };
+		23E61A67232F1CD1005EC6B7 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E61A66232F1CD1005EC6B7 /* LoginRepository.swift */; };
+		23E61A69232F1E7C005EC6B7 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E61A68232F1E7C005EC6B7 /* LoginModel.swift */; };
+		23E61A6B232F20A3005EC6B7 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E61A6A232F20A3005EC6B7 /* LoginRequest.swift */; };
 		35832CC9841250773B19A2D3 /* Pods_Bank_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDAB4A48BD87DCF849B05AE /* Pods_Bank_appTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,9 +44,10 @@
 /* Begin PBXFileReference section */
 		0EDAB4A48BD87DCF849B05AE /* Pods_Bank_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bank_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC1FEA60E5025A088C82739 /* Pods-Bank-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank-appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bank-appTests/Pods-Bank-appTests.debug.xcconfig"; sourceTree = "<group>"; };
+		23ACC745232F21F80003FB10 /* BankAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAPI.swift; sourceTree = "<group>"; };
+		23ACC747232F49540003FB10 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		23C2A791232F064800FFFA03 /* Bank-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bank-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23C2A794232F064800FFFA03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		23C2A796232F064800FFFA03 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		23C2A799232F064800FFFA03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23C2A79B232F064D00FFFA03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23C2A79E232F064D00FFFA03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +64,10 @@
 		23C2A7C6232F0EC900FFFA03 /* StatementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsViewController.swift; sourceTree = "<group>"; };
 		23C2A7C7232F0EC900FFFA03 /* StatementsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementsViewController.xib; sourceTree = "<group>"; };
 		23E61A60232F17C6005EC6B7 /* BankConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankConstants.swift; sourceTree = "<group>"; };
+		23E61A63232F1C64005EC6B7 /* LoginViewController+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Protocol.swift"; sourceTree = "<group>"; };
+		23E61A66232F1CD1005EC6B7 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		23E61A68232F1E7C005EC6B7 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		23E61A6A232F20A3005EC6B7 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		2FBB77F92740BBA2610192C3 /* Pods_Bank_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bank_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6CCFEABBCD1BAC3EBCBE63 /* Pods-Bank-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bank-app/Pods-Bank-app.debug.xcconfig"; sourceTree = "<group>"; };
 		4A3055D47F0FE982436FB5B1 /* Pods-Bank-appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank-appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bank-appTests/Pods-Bank-appTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,7 +120,6 @@
 				23C2A7C2232F0BC500FFFA03 /* App */,
 				23C2A7B4232F089200FFFA03 /* Scenes */,
 				23C2A794232F064800FFFA03 /* AppDelegate.swift */,
-				23C2A796232F064800FFFA03 /* ViewController.swift */,
 				23C2A798232F064800FFFA03 /* Main.storyboard */,
 				23C2A79B232F064D00FFFA03 /* Assets.xcassets */,
 				23C2A79D232F064D00FFFA03 /* LaunchScreen.storyboard */,
@@ -140,10 +149,14 @@
 		23C2A7B5232F089B00FFFA03 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				23ACC747232F49540003FB10 /* UserAccount.swift */,
+				23E61A68232F1E7C005EC6B7 /* LoginModel.swift */,
 				23C2A7BC232F08EF00FFFA03 /* LoginPresenter.swift */,
 				23C2A7BE232F08FA00FFFA03 /* LoginRouter.swift */,
 				23C2A7C0232F090700FFFA03 /* LoginInteractor.swift */,
+				23E61A65232F1CB3005EC6B7 /* Repository */,
 				23C2A7BA232F08CA00FFFA03 /* View */,
+				23E61A62232F1C4C005EC6B7 /* ViewExtensions */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -170,6 +183,7 @@
 			children = (
 				23C2A7C3232F0BDA00FFFA03 /* BankColors.swift */,
 				23E61A60232F17C6005EC6B7 /* BankConstants.swift */,
+				23ACC745232F21F80003FB10 /* BankAPI.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -197,6 +211,23 @@
 				23C2A7CA232F0ED700FFFA03 /* Resources */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		23E61A62232F1C4C005EC6B7 /* ViewExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				23E61A63232F1C64005EC6B7 /* LoginViewController+Protocol.swift */,
+			);
+			path = ViewExtensions;
+			sourceTree = "<group>";
+		};
+		23E61A65232F1CB3005EC6B7 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				23E61A66232F1CD1005EC6B7 /* LoginRepository.swift */,
+				23E61A6A232F20A3005EC6B7 /* LoginRequest.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		2FB87EFB35C8576F3B2A773F /* Frameworks */ = {
@@ -352,12 +383,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Bank-app/Pods-Bank-app-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,12 +428,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				23C2A7C8232F0EC900FFFA03 /* StatementsViewController.swift in Sources */,
+				23ACC746232F21F80003FB10 /* BankAPI.swift in Sources */,
+				23E61A64232F1C64005EC6B7 /* LoginViewController+Protocol.swift in Sources */,
 				23C2A7C4232F0BDA00FFFA03 /* BankColors.swift in Sources */,
+				23E61A6B232F20A3005EC6B7 /* LoginRequest.swift in Sources */,
+				23E61A69232F1E7C005EC6B7 /* LoginModel.swift in Sources */,
+				23ACC748232F49540003FB10 /* UserAccount.swift in Sources */,
 				23E61A61232F17C6005EC6B7 /* BankConstants.swift in Sources */,
 				23C2A7BD232F08EF00FFFA03 /* LoginPresenter.swift in Sources */,
+				23E61A67232F1CD1005EC6B7 /* LoginRepository.swift in Sources */,
 				23C2A7B8232F08C100FFFA03 /* LoginViewController.swift in Sources */,
 				23C2A7C1232F090700FFFA03 /* LoginInteractor.swift in Sources */,
-				23C2A797232F064800FFFA03 /* ViewController.swift in Sources */,
 				23C2A7BF232F08FA00FFFA03 /* LoginRouter.swift in Sources */,
 				23C2A795232F064800FFFA03 /* AppDelegate.swift in Sources */,
 			);

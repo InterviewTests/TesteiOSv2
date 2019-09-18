@@ -9,23 +9,45 @@
 import UIKit
 import Hero
 
+protocol LoginViewControllerProtocol {
+    
+}
+
 class LoginViewController: UIViewController {
     
     // MARK: Outlets
+    @IBOutlet weak var userTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-
+    
+    // MARK: Properties
+    var interactor: LoginInteractorProtocol?
+    let router = LoginRouter()
+    
     // MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigation()
         setupLayout()
+        setup()
+    }
+    
+    private func setup() {
+        let viewController = self
+        let interactor = LoginInteractor()
+        let presenter = LoginPresenter()
+        viewController.interactor = interactor
+        interactor.presenter = presenter
+        presenter.viewController = viewController
     }
     
     // MARK: Actions
     @IBAction func didTapLoginButton(_ sender: Any) {
-        let statements = StatementsViewController(nibName: "StatementsViewController", bundle: nil)
-        navigationController?.pushViewController(statements, animated: true)
+        let info = LoginModel.loginInfo(user: userTextfield.text ?? "",
+                                        password: passwordTextfield.text ?? "")
+        
+        interactor?.performUserLogin(with: info)
     }
     
     // MARK: Navigation

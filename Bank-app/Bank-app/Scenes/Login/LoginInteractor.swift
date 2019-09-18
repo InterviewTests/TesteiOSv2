@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+protocol LoginInteractorProtocol {
+    func performUserLogin(with data: LoginModel.loginInfo)
+}
+
+class LoginInteractor: LoginInteractorProtocol {
+    
+    // MARK: Properties
+    var presenter: LoginPresenterProtocol?
+    var repository: LoginRepositoryProtocol = LoginRepository()
+    
+    // MARK: Implementation
+    func performUserLogin(with data: LoginModel.loginInfo) {
+        
+        repository.fetchUserInfo(with: data, success: { response in
+            //
+        }, failure: {
+            //
+        })
+        
+    }
+}

@@ -1,5 +1,5 @@
 //
-//  LoginRouter.swift
+//  LoginViewController+Protocol.swift
 //  Bank-app
 //
 //  Created by Leonardo Coutinho Santos on 15/09/19.
@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol LoginRouterProtocol {
-    
-}
-
-class LoginRouter: LoginRouterProtocol {
+extension LoginViewController: LoginViewControllerProtocol {
     
 }

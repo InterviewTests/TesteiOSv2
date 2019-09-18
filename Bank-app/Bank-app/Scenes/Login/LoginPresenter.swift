@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol LoginPresenterProtocol {
+}
+
+class LoginPresenter: LoginPresenterProtocol {
+    
+    var viewController: LoginViewControllerProtocol?
+}
