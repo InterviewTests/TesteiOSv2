@@ -7,11 +7,17 @@
 //
 
 import Foundation
+import UIKit
+import Hero
 
 protocol LoginRouterProtocol {
-    
+    func navigateToStatementScreen(controller: UIViewController, data: UserAccount)
 }
 
 class LoginRouter: LoginRouterProtocol {
     
+    func navigateToStatementScreen(controller: UIViewController, data: UserAccount) {
+        let statementList = StatementsViewController(nibName: "StatementsViewController", bundle: nil)
+        controller.navigationController?.present(statementList, animated: true, completion: nil)
+    }
 }

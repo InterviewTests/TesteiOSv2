@@ -10,7 +10,7 @@ import UIKit
 import Hero
 
 protocol LoginViewControllerProtocol {
-    
+    func displayStatementScreen(with data: UserAccount)
 }
 
 class LoginViewController: UIViewController {
@@ -27,7 +27,6 @@ class LoginViewController: UIViewController {
     // MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNavigation()
         setupLayout()
         setup()

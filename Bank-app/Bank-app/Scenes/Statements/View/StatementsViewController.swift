@@ -17,15 +17,17 @@ class StatementsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-
-        // Do any additional setup after loading the view.
+        
     }
 
+    // MARK: Setup Navigation
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
+    // MARK: Layout
     private func setupLayout() {
         statementsHeader.hero.id = BankConstants.loginButtonId
+        hero.isEnabled = true
     }
 }

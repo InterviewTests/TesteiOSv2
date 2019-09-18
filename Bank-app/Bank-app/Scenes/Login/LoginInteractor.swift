@@ -22,7 +22,7 @@ class LoginInteractor: LoginInteractorProtocol {
     func performUserLogin(with data: LoginModel.loginInfo) {
         
         repository.fetchUserInfo(with: data, success: { response in
-            //
+            self.presenter?.presentStatementScreen(data: response)
         }, failure: {
             //
         })

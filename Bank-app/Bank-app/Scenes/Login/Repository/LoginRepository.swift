@@ -11,21 +11,22 @@ import Alamofire
 
 protocol LoginRepositoryProtocol {
     func fetchUserInfo(with data: LoginModel.loginInfo,
-                       success: @escaping (UserAccount?) -> (),
+                       success: @escaping (UserAccount) -> (),
                        failure: @escaping () -> ())
 }
 
 class LoginRepository: LoginRepositoryProtocol {
     
     func fetchUserInfo(with data: LoginModel.loginInfo,
-                       success: @escaping (UserAccount?) -> (),
+                       success: @escaping (UserAccount) -> (),
                        failure: @escaping () -> ()) {
         
         let loginRequest = LoginRequest(data: data)
         BankAPI.requestObject(object: loginRequest, success: { (response: UserAccount) in
-            print(response.userAccount.name)
+            let result = response
+            success(result)
         }) { failure in
-            print(failure)
+            //
         }
     }
 }

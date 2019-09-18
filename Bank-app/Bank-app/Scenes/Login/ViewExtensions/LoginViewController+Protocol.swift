@@ -10,4 +10,7 @@ import Foundation
 
 extension LoginViewController: LoginViewControllerProtocol {
     
+    func displayStatementScreen(with data: UserAccount) {
+       router.navigateToStatementScreen(controller: self, data: data)
+    }
 }

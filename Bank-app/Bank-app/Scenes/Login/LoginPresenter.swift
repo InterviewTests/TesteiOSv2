@@ -9,9 +9,16 @@
 import Foundation
 
 protocol LoginPresenterProtocol {
+    func presentStatementScreen(data: UserAccount)
 }
 
 class LoginPresenter: LoginPresenterProtocol {
     
+    // MARK: Properties
     var viewController: LoginViewControllerProtocol?
+    
+    // MARK: Implementation
+    func presentStatementScreen(data: UserAccount) {
+        viewController?.displayStatementScreen(with: data)
+    }
 }
