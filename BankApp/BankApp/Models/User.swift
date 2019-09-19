@@ -10,8 +10,6 @@ import Foundation
 
 struct User: Decodable {
     var userId: Int
-    var login: String? //Digitado pelo usuario
-    var password: String? //Digitado pelo usuario
     var name: String
     var bankAccount: String
     var agency: String

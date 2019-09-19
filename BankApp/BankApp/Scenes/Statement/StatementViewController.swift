@@ -69,18 +69,18 @@ class StatementViewController: UIViewController, StatementDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    //doSomething()
   }
   
   // MARK: Do something
   
   //@IBOutlet weak var nameTextField: UITextField!
   
-  func doSomething()
-  {
-    let request = Statement.Something.Request()
-    interactor?.doSomething(request: request)
-  }
+//  func doSomething()
+//  {
+//    let request = Statement.Something.Request()
+//    interactor?.doSomething(request: request)
+//  }
   
   func displaySomething(viewModel: Statement.Something.ViewModel)
   {

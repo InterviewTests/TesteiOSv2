@@ -14,7 +14,7 @@ import UIKit
 
 protocol StatementBusinessLogic
 {
-  func doSomething(request: Statement.Something.Request)
+    func doSomething(request: Statement.Something.Request)
 }
 
 protocol StatementDataStore

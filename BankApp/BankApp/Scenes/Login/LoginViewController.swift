@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    func displaySomething(viewModel: Login.Something.ViewModel)
+    func showStatement()
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -73,22 +73,12 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        doSomething()
     }
   
-    // MARK: Do something
-  
-    //@IBOutlet weak var nameTextField: UITextField!
-  
-    func doSomething()
-    {
-        let request = Login.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-  
-    func displaySomething(viewModel: Login.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
+    // MARK: showStatement
+    
+    func showStatement() {
+        performSegue(withIdentifier: "Statement", sender: nil)
     }
     
     func showAlert(message: String)
@@ -136,9 +126,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         }
         
         //Faz a chamada para a API
-        //let request = Login.RequestUser.Request(user: login, password: password)
-        //LoginInteractor.
-        
-        print("Campo válido")
+        let request = Login.RequestUser.Request(user: login, password: password)
+        interactor?.login(request: request)
     }
 }

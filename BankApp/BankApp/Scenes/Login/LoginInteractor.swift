@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+    func login(request: Login.RequestUser.Request)
 }
 
 protocol LoginDataStore
@@ -36,15 +36,14 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     //Para fazer a chamada da API de login
     func login(request: Login.RequestUser.Request)
     {
-        
-    }
-  
-    func doSomething(request: Login.Something.Request)
-    {
-        worker = LoginWorker()
-        worker?.doSomeWork()
-    
-        let response = Login.Something.Response()
-        presenter?.presentSomething(response: response)
+        worker = LoginWorker(LoginService())
+        worker?.login(request.user, password: request.password) { (response: User?) in
+            self.user = response
+            
+            self.presenter?.presentLogin()
+        }
+
+//        let response = Login.RequestUser.Response()
+//        presenter?.presentSomething(response: response)
     }
 }

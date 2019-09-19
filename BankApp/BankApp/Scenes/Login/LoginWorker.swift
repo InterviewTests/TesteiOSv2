@@ -14,5 +14,17 @@ import UIKit
 
 class LoginWorker
 {
+    var loginProt: LoginProtocol
     
+    init(_ loginProt: LoginProtocol) {
+        self.loginProt = loginProt
+    }
+    
+    func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void) {
+        loginProt.login(login, password: password, completionHandler: completionHandler)
+    }
+}
+
+protocol LoginProtocol {
+    func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void)
 }

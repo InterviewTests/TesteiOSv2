@@ -14,21 +14,7 @@ import UIKit
 
 enum Login
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
-    
+    // MARK: Use cases
     enum RequestUser {
         struct Request {
             var user: String
@@ -36,11 +22,11 @@ enum Login
         }
         
         struct Response {
-            var user: User?
+            var user: User
         }
         
         struct ViewModel {
-            var user: User?
+            var user: User
         }
     }
 }
