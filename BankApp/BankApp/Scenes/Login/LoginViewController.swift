@@ -15,6 +15,8 @@ import UIKit
 protocol LoginDisplayLogic: class
 {
   func displaySomething(viewModel: Login.Something.ViewModel)
+    
+    //chame a 
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic{
@@ -83,13 +85,29 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
   
   func doSomething()
   {
-    let request = Login.Something.Request()
-    interactor?.doSomething(request: request)
+    
+    //set parametros
+    var request2 = Login.Something.Request()
+    request2.user = userInput.text
+    request2.password = passwordInput.text
+    
+    //chama o interactor
+    //let request = Login.Something.Request()
+    interactor?.doSomething(request: request2)
   }
   
   func displaySomething(viewModel: Login.Something.ViewModel)
   {
     //nameTextField.text = viewModel.name
+    
+    
+    
+    
+    
+    
+    
+    
+    
   }
     
     
@@ -135,6 +153,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
                 
                 }else{
                     // chame o Interactor
+                    
+                    
+                    
                     doSomething() // chama o Interactor
                 }
               

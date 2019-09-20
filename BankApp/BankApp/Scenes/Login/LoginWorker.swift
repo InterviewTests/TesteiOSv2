@@ -11,10 +11,83 @@
 //
 
 import UIKit
+import Foundation
 
 class LoginWorker
 {
-  func doSomeWork()
+    
+   
+
+    
+  func doSomeWork(request: Login.Something.Request)
   {
+    
+    
+    //pega dados do login
+    let loginInput : String = request.user!
+    let passwordInput : String = request.password!
+        //seta a URL da API
+    var request = URLRequest(url: URL(string: "https://bank-app-test.herokuapp.com/api/login")!)
+    //set httpMethod 2 post
+    request.httpMethod = "POST"
+    //coloca no header
+    request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+    
+    //coloca dados do login no body
+    let bodyData = "user=\(loginInput))&password=\(passwordInput))"
+    request.httpBody = bodyData.data(using: .utf8)
+    
+    //chama API
+    let session = URLSession.shared
+    
+    
+    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+
+        do {
+            print(request)
+
+
+            //verify response
+            if let httpResponse = response as? HTTPURLResponse
+            {
+                if httpResponse.statusCode == 200{ //Verifica se a consulta deu certo
+                    guard let data = data else {return}
+                    do {
+                        
+                        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        {
+                            
+                            if let user = json["userAccount"] as? [String: Any] {
+                                let userData = try JSONSerialization.data(withJSONObject: user, options: [])
+                                let decoder = JSONDecoder()
+                               //pega o dado decodificao
+                                
+                             
+                                let dadosJSON = try decoder.decode(Login.Something.User.self, from: userData)
+
+                                print(dadosJSON)
+                                
+                                var resultado = Login.Something.Response()
+                                resultado.result = dadosJSON
+                                
+                                print(resultado.result as Any)
+                                //completionHandler(dadosJSON)
+                            }
+                        }
+                    } catch let jsonErr {
+                        print("Error serializing json", jsonErr)
+                    }
+                }
+            }
+        }
+
+
+    }).resume()
+    
+    //task.resume()
+    
+    
+    
+    }
   }
-}
+

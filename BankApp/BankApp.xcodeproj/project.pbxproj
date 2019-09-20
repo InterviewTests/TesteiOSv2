@@ -27,6 +27,7 @@
 		27BAA06523339BE400D5ED5C /* StatementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA05F23339BE400D5ED5C /* StatementsViewController.swift */; };
 		27BAA06623339BE400D5ED5C /* StatementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA06023339BE400D5ED5C /* StatementsInteractor.swift */; };
 		27BAA0A32333BCCA00D5ED5C /* Autenticacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA0A22333BCCA00D5ED5C /* Autenticacao.swift */; };
+		27BAA0A62333F2D500D5ED5C /* services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA0A52333F2D500D5ED5C /* services.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		27BAA05F23339BE400D5ED5C /* StatementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsViewController.swift; sourceTree = "<group>"; };
 		27BAA06023339BE400D5ED5C /* StatementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractor.swift; sourceTree = "<group>"; };
 		27BAA0A22333BCCA00D5ED5C /* Autenticacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autenticacao.swift; sourceTree = "<group>"; };
+		27BAA0A52333F2D500D5ED5C /* services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = services.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 		2731F18E23338FBF0011BA86 /* BankApp */ = {
 			isa = PBXGroup;
 			children = (
+				27BAA0A42333F2BD00D5ED5C /* Services */,
 				27BAA0A12333BC8400D5ED5C /* Shared */,
 				27BAA04C23339B4200D5ED5C /* Scenes */,
 				2731F18F23338FBF0011BA86 /* AppDelegate.swift */,
@@ -194,6 +197,14 @@
 				27BAA0A22333BCCA00D5ED5C /* Autenticacao.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		27BAA0A42333F2BD00D5ED5C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				27BAA0A52333F2D500D5ED5C /* services.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +351,7 @@
 				27BAA06423339BE400D5ED5C /* StatementsModels.swift in Sources */,
 				27BAA0A32333BCCA00D5ED5C /* Autenticacao.swift in Sources */,
 				27BAA05723339BD100D5ED5C /* LoginRouter.swift in Sources */,
+				27BAA0A62333F2D500D5ED5C /* services.swift in Sources */,
 				27BAA05623339BD100D5ED5C /* LoginWorker.swift in Sources */,
 				27BAA06523339BE400D5ED5C /* StatementsViewController.swift in Sources */,
 			);

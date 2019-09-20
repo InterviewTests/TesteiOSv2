@@ -18,6 +18,20 @@ enum Login
   
   enum Something
   {
+    
+    struct User: Decodable{
+        let userId: Int
+        let name: String
+        let bankAccount: String
+        let agency: String
+        let balance: Double
+        
+    }
+    
+    
+    
+   
+    
     struct Request
     {
         var user:String?
@@ -25,10 +39,13 @@ enum Login
     }
     struct Response
     {
-        var result:String?
+        var result:User?
     }
     struct ViewModel
     {
+        
     }
   }
 }
+
+

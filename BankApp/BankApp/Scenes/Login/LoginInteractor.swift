@@ -32,10 +32,41 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
   
   func doSomething(request: Login.Something.Request)
   {
-    worker = LoginWorker()
-    worker?.doSomeWork()
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+//    worker = LoginWorker(LoginService())
+//    worker?.login(request.user, password: request.password) { (response: User?) in
+//        self.user = response
+//
+//        self.presenter?.presentLogin()
+//    }
+    
+    
+    
+    
+    worker = LoginWorker()
+    worker?.doSomeWork(request: request)
+    
+    print("debugger")
+//    let response = Login.Something.Response()
+//
+//    let dadosRetornados = response.result
+//    print(dadosRetornados!)
+//
+//    //call presenter
+//    presenter?.presentSomething(response: response)
+
+    
+
+
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    }
 }
