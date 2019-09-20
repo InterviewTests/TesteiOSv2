@@ -121,4 +121,7 @@ class StatementViewController: UIViewController, UITableViewDataSource, UITableV
         return celula
     }
     
+    @IBAction func actionLogout(_ sender: Any) {
+        performSegue(withIdentifier: "Login", sender: nil)
+    }
 }

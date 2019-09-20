@@ -17,7 +17,7 @@ protocol LoginDisplayLogic: class
     func showStatement()
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
+class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLogic
 {
     
     @IBOutlet weak var txt_user: UITextField!
@@ -73,8 +73,28 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        txt_password.delegate = self
+        txt_user.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
-  
+    
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.returnKeyType == .next {
+            txt_user.resignFirstResponder()
+            txt_password.becomeFirstResponder()
+        } else if textField.returnKeyType == .go {
+            txt_password.resignFirstResponder()
+            self.doLogin()
+        }
+        return true
+    }
+    
     // MARK: showStatement
     
     func showStatement() {
@@ -90,6 +110,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     //Ação do Botão LOGIN
     @IBAction func btnLogin(_ sender: Any)
+    {
+        self.doLogin()
+    }
+    
+    func doLogin()
     {
         let login = txt_user.text!
         let password = txt_password.text!
