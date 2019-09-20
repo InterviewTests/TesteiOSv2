@@ -12,6 +12,10 @@
 
 import UIKit
 
+protocol LoginProtocol {
+    func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void)
+}
+
 class LoginWorker
 {
     var loginProt: LoginProtocol
@@ -23,8 +27,4 @@ class LoginWorker
     func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void) {
         loginProt.login(login, password: password, completionHandler: completionHandler)
     }
-}
-
-protocol LoginProtocol {
-    func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void)
 }

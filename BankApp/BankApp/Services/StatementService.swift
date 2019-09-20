@@ -1,39 +1,39 @@
 //
-//  LoginService.swift
+//  StatementService.swift
 //  BankApp
 //
-//  Created by Marcus Titton on 19/09/19.
+//  Created by Marcus Titton on 20/09/19.
 //  Copyright © 2019 Marcus Titton. All rights reserved.
 //
 
 import Foundation
 
-class LoginService: LoginProtocol {
+class StatementService: StatementDataProtocol {
     
-    //Faz a chamada para a API de login
-    func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void) {
-    
-        var request = URLRequest(url: URL(string: "https://bank-app-test.herokuapp.com/api/login")!)
-        request.httpMethod = "POST"
+    //Faz a chamada para a API de captura de extrato
+    func getStatements(_ id: Int, completionHandler: @escaping ([StatementUser]) -> Void) {
+        var request = URLRequest(url: URL(string: "https://bank-app-test.herokuapp.com/api/statements/\(id)")!)
+        request.httpMethod = "GET"
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
-        let bodyData = "user=\(login)&password=\(password)"
-        request.httpBody = bodyData.data(using: .utf8)
-        
+  
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
-                //verify response
+                print(request)
+                
+                //Verifica o response
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200{ //Verifica se a consulta deu certo
+                        
+                        print("Entrou aqui")
                         guard let data = data else {return}
                         do {
                             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                                if let user = json["userAccount"] as? [String: Any] {
-                                    let userReturn = try JSONSerialization.data(withJSONObject: user, options: [])
+                                if let statementList = json["statementList"] as? [[String: Any]] {
+                                    let statementReturn = try JSONSerialization.data(withJSONObject: statementList, options: [])
                                     let decoder = JSONDecoder()
-                                    let retorno = try decoder.decode(User.self, from: userReturn)
-                                    
+                                    let retorno = try decoder.decode([StatementUser].self, from: statementReturn)
+
                                     DispatchQueue.main.async {
                                         completionHandler(retorno)
                                     }
@@ -46,7 +46,7 @@ class LoginService: LoginProtocol {
                 }
             }
         })
-
+        
         task.resume()
     }
 }

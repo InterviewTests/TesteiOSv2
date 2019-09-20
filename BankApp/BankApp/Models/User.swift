@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Campos que voltam da API / userAccount
 struct User: Decodable {
     var userId: Int
     var name: String

@@ -42,8 +42,5 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
             
             self.presenter?.presentLogin()
         }
-
-//        let response = Login.RequestUser.Response()
-//        presenter?.presentSomething(response: response)
     }
 }

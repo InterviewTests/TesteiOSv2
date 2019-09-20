@@ -14,7 +14,7 @@ import UIKit
 
 protocol StatementBusinessLogic
 {
-    func doSomething(request: Statement.Something.Request)
+    func getStatement(request: Statement.StatementApi.Request)
 }
 
 protocol StatementDataStore
@@ -26,19 +26,19 @@ protocol StatementDataStore
 class StatementInteractor: StatementBusinessLogic, StatementDataStore
 {
     var user: User!
-    
     var presenter: StatementPresentationLogic?
     var worker: StatementWorker?
     //var name: String = ""
   
     // MARK: Do something
-  
-    func doSomething(request: Statement.Something.Request)
+    func getStatement(request: Statement.StatementApi.Request)
     {
-        worker = StatementWorker()
-        worker?.doSomeWork()
-    
-        let response = Statement.Something.Response()
-        presenter?.presentSomething(response: response)
+        worker = StatementWorker(StatementService())
+        worker?.getStatement(request.userId) { (response: [StatementUser]) in
+            let response = Statement.StatementApi.Response(statement: response)
+            DispatchQueue.main.async {
+                self.presenter?.presentStatement(response)
+            }
+        }
     }
 }
