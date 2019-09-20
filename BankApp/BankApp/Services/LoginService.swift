@@ -28,7 +28,7 @@ class LoginService: LoginProtocol {
                 
                 //verify response
                 if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode == 200{
+                    if httpResponse.statusCode == 200{ //Verifica se a consulta deu certo
                         guard let data = data else {return}
                         do {
                             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
@@ -37,7 +37,9 @@ class LoginService: LoginProtocol {
                                     let decoder = JSONDecoder()
                                     let userAux = try decoder.decode(User.self, from: userData)
                                     
-                                    completionHandler(userAux)
+                                    DispatchQueue.main.async {
+                                        completionHandler(userAux)
+                                    }
                                 }
                             }
                         } catch let jsonErr {
