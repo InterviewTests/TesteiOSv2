@@ -40,7 +40,23 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         worker?.login(request.user, password: request.password) { (response: User?) in
             self.user = response
             
-            self.presenter?.presentLogin()
+            self.saveUser(request: request)
         }
+    }
+    
+    private func saveUser(request: Login.RequestUser.Request) {
+        
+        let usuario = request.user
+        let senha = request.password
+        
+        //Remove usuario e senha se já tiver algum
+        KeychainService.removePassword(service: "MyUser", account: "BankApp")
+        KeychainService.removePassword(service: "MyPass", account: "BankApp")
+        
+        //Acrescenta um novo usuario e senha
+        KeychainService.savePassword(service: "MyUser", account: "BankApp", data: usuario)
+        KeychainService.savePassword(service: "MyPass", account: "BankApp", data: senha)
+        
+        self.presenter?.presentLogin()
     }
 }

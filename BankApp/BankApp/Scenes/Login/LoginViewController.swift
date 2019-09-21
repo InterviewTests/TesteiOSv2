@@ -74,10 +74,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
     {
         super.viewDidLoad()
         
+        self.getUser()
+        
         txt_password.delegate = self
         txt_user.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    func getUser() {
+        if let usuario = KeychainService.loadPassword(service: "MyUser" , account: "BankApp"), let senha = KeychainService.loadPassword(service: "MyPass", account: "BankApp"){
+            
+            self.txt_user.text = usuario
+            self.txt_password.text = senha
+        }
     }
     
     @objc func dismissKeyboard(){
