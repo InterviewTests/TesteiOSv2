@@ -12,61 +12,55 @@
 
 import UIKit
 
+var usuarioID : Int = 0
+var usuarioNome: String = ""
+var usuarioConta: String = ""
+var usuarioAgencia: String = ""
+var usuarioSaldo : Double = 0.0
+
+
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+    func login(request: Login.Something.Request)
 }
 
 protocol LoginDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
+    var user: Login.Something.User! {get set}
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
+    var user: Login.Something.User!
     
-//    worker = LoginWorker(LoginService())
-//    worker?.login(request.user, password: request.password) { (response: User?) in
-//        self.user = response
-//
-//        self.presenter?.presentLogin()
-//    }
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
+    //var name: String = ""
     
+    // MARK: Do something
     
-    
-    
-    worker = LoginWorker()
-    worker?.doSomeWork(request: request)
-    
-    print("debugger")
-//    let response = Login.Something.Response()
-//
-//    let dadosRetornados = response.result
-//    print(dadosRetornados!)
-//
-//    //call presenter
-//    presenter?.presentSomething(response: response)
-
-    
-
-
-    
-  
-    
-    
-    
-    
-    
-    
-    
-    
+    //Para fazer a chamada da API de login
+    func login(request: Login.Something.Request)
+    {
+        worker = LoginWorker(LoginService())
+        
+        
+        // importante esta chamada utiliza o completion handler para aguardar retornar da chamada da API
+        // no retorno coloca os dados do login na estrutura User dentro do Login.Something.User
+        //somente depois é que chama o presenter para chamar a tela do extrato
+        // chama o Login Worker para chamar a funcao login e retornar o response da API
+        worker?.login(request.user!, password: request.password!) { (response: Login.Something.User?) in
+            self.user = response
+            //guarde o valor do iD do  usuário para a chamada do extrato
+            usuarioID = response!.userId
+            usuarioNome = response!.name
+            usuarioConta = response!.bankAccount
+            usuarioSaldo = response!.balance
+            usuarioAgencia = response!.agency
+            
+            self.presenter?.presentLogin()
+        }
     }
 }
+

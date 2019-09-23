@@ -14,12 +14,18 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-  func displaySomething(viewModel: Login.Something.ViewModel)
+  func showStatement()
     
-    //chame a 
+ 
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic{
+    
+    
+    //call a tela Statement
+    func showStatement() {
+        performSegue(withIdentifier: "Statement", sender: nil)
+    }
     
     
     //mark Campos input
@@ -79,164 +85,111 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
     //doSomething()
   }
   
-  // MARK: Do something
+  // MARK: Call interactor
   
   //@IBOutlet weak var nameTextField: UITextField!
   
-  func doSomething()
+  //Clean-Swift template func doSomething()
+    //call a função doSomething() do LoginInteractor.swift 
+  func callInteractor()
+        
   {
     
-    //set parametros
+    //set parametros no stuct Request no LoginModels.swift
     var request2 = Login.Something.Request()
     request2.user = userInput.text
     request2.password = passwordInput.text
     
-    //chama o interactor
+    //chama o interactor passando a estrutura do Request
     //let request = Login.Something.Request()
-    interactor?.doSomething(request: request2)
+    interactor?.login(request: request2)
   }
   
+    
+    
+    
   func displaySomething(viewModel: Login.Something.ViewModel)
   {
     //nameTextField.text = viewModel.name
     
-    
-    
-    
-    
-    
-    
+    // Aqui você irá mostrar o que vem do LoginPresenter se for o caso.
     
     
   }
     
     
-    @IBAction func loginButton(_ sender: Any) {
+    //monte um Alert Controller
+    func showAlert(message: String)
+    {
+        let alert = UIAlertController(title: "Atenção", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        showDetailViewController(alert, sender: nil)
+    }
+    
+    @IBAction func loginButton(_ sender: Any){
+        //call login
+        self.executeLogin()
+    }
+    
+    
+    
+    func executeLogin()
+    {
+        let usuario = userInput.text!
+        let senha = passwordInput.text!
+        
+        
         
         // valida campos
-        //verifica se campo usuário vazio
+        //verifica se campos vazios
         
-        let senha = passwordInput.text!
-        let usuario = userInput.text!
-        
-        if (usuario.count > 0) {
-           //campo user nao está vazio...valide se CPF ou email
-            
-            
-            //valide se email
-            
-            let emailValidado: Bool = (userInput.text?.isValidEmail())!
-            
-            if emailValidado
-            {
-                //print ( "email validado")
-                
-                //é e-mail verifique a senha
-               
-                // valide o campo senha
-                let validaResult: String = Autenticacao().validatePassword(password : senha)!
-                
-               
-                if validaResult != "Senha é Válida" {
-                
-                    //imprima mensagem de erro
-                    let alertController = UIAlertController(title: "Atenção...", message:
-                        validaResult, preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                    
-                    
-                    //coloque o foco no campo user
-                    self.userInput.becomeFirstResponder()
-                    
-                
-                }else{
-                    // chame o Interactor
-                    
-                    
-                    
-                    doSomething() // chama o Interactor
-                }
-              
-               
-            }
-            else{
-                //valide CPF
-                
-                let login = usuario
-                
-                //remove pontos e traços
-                var cpf = login.replacingOccurrences(of: ".", with: "")
-                cpf = cpf.replacingOccurrences(of: "-", with: "")
-                
-          
-                
-                if (cpf.isNumber() && cpf.count == 11)
-                {
-                    ///é CPF e tem 11 caracteres...verifique a senha
-                    let validaResult2: String = Autenticacao().validatePassword(password : senha)!
-                    
-                    if validaResult2 != "Senha é Válida" {
-                        //imprima mensagem de erro
-                        let alertController = UIAlertController(title: "Atenção...", message:
-                            validaResult2, preferredStyle: .alert)
-                        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                        
-                        self.present(alertController, animated: true, completion: nil)
-                        
-                        
-                        //coloque o foco no campo password
-                        self.passwordInput.becomeFirstResponder()
-                    }else{
-                         doSomething() // chama o Interactor
-                    }
-                    
-                    
-                }else{
-                    let alertController = UIAlertController(title: "Atenção...", message:
-                        "CPF tem que ser numerico e com 11 caracteres", preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .default))
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                    
-                    
-                    //coloque o foco no campo user
-                    self.userInput.becomeFirstResponder()
-                }
-            }
-            
-            
-            
-            
-        } else {
-           // print("text field empty")
-            let alertController = UIAlertController(title: "Atenção...", message:
-                "O campo User não pode ser vazio!", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default))
-            
-            self.present(alertController, animated: true, completion: nil)
-            
-        
-            //coloque o foco no campo user
+        //verifica se Campo User é vazio
+        if usuario.isEmpty
+        {
+            showAlert(message: "O campo User não pode ser vazio")
             self.userInput.becomeFirstResponder()
+            return
         }
-    }
-    
-    
-}
-
-extension String {
-            func isValidEmail() -> Bool {
-                // here, `try!` will always succeed because the pattern is valid
-                let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
-                return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+        
+        //verifica se campo Pasword é vazio
+        if  senha.isEmpty
+        {
+            showAlert(message: "O campo Password não pode ser vazio")
+            self.passwordInput.becomeFirstResponder()
+            return
+        }
+        
+        //valida campo User
+        if !(usuario.contains("@") && usuario.contains("."))
+        {
+            //Não é e-mail, verifica se é CPF
+            var cpf = usuario.replacingOccurrences(of: ".", with: "")
+            cpf = cpf.replacingOccurrences(of: "-", with: "")
+            
+            if !(cpf.isNumber() && cpf.count == 11)
+            {
+                //Não é CPF também, exibe mensagem para usuário
+                showAlert(message: "E-mail ou CPF inválido, favor tentar novamente.")
+                return
             }
-
-    
-//verifica se é numerico
-func isNumber() -> Bool {
-        let numberCharacters = NSCharacterSet.decimalDigits.inverted
-        return !self.isEmpty && self.rangeOfCharacter(from: numberCharacters) == nil
+        }
+        
+        
+        
+        //Faz a validação da senha
+        if !senha.validaSenha()
+        {
+            //A senha não está no padrão. Exibe mensagem para o usuário
+            showAlert(message: "A senha deve conter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.")
+            return
+        }
+        
+        //chamae o Interactor passando a estrutura do request
+        callInteractor()
+        
     }
+    
+    
 }
+
+

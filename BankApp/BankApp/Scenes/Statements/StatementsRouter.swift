@@ -14,19 +14,51 @@ import UIKit
 
 @objc protocol StatementsRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToLogin(segue: UIStoryboardSegue?)
 }
 
 protocol StatementsDataPassing
 {
-  var dataStore: StatementsDataStore? { get }
+    var dataStore: StatementsDataStore? { get }
 }
 
 class StatementsRouter: NSObject, StatementsRoutingLogic, StatementsDataPassing
 {
-  weak var viewController: StatementsViewController?
-  var dataStore: StatementsDataStore?
-  
+    weak var viewController: StatementsViewController?
+    var dataStore: StatementsDataStore?
+    
+    func routeToLogin(segue: UIStoryboardSegue?) {
+        if let segue = segue {
+            let destinationVC = segue.destination as! LoginViewController
+            var destinationDS = destinationVC.router!.dataStore!
+            passDataToStatement(source: dataStore!, destination: &destinationDS)
+        }
+    }
+    
+    func passDataToStatement(source: StatementsDataStore, destination: inout LoginDataStore) {
+        destination.user = source.user
+    }
+}
+
+
+
+//import UIKit
+//
+//@objc protocol StatementsRoutingLogic
+//{
+//  //func routeToSomewhere(segue: UIStoryboardSegue?)
+//}
+//
+//protocol StatementsDataPassing
+//{
+//  var dataStore: StatementsDataStore? { get }
+//}
+//
+//class StatementsRouter: NSObject, StatementsRoutingLogic, StatementsDataPassing
+//{
+//  weak var viewController: StatementsViewController?
+//  var dataStore: StatementsDataStore?
+
   // MARK: Routing
   
   //func routeToSomewhere(segue: UIStoryboardSegue?)
@@ -57,4 +89,4 @@ class StatementsRouter: NSObject, StatementsRoutingLogic, StatementsDataPassing
   //{
   //  destination.name = source.name
   //}
-}
+

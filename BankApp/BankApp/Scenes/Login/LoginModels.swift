@@ -11,6 +11,9 @@
 //
 
 import UIKit
+import Foundation
+
+
 
 enum Login
 {
@@ -19,18 +22,28 @@ enum Login
   enum Something
   {
     
+    
     struct User: Decodable{
-        let userId: Int
-        let name: String
-        let bankAccount: String
-        let agency: String
-        let balance: Double
+        var userId: Int
+        var name: String
+        var bankAccount: String
+        var agency: String
+        var balance: Double
         
     }
     
+
+    
+    //Campos que voltam da API / statementList
+    struct StatementUser: Decodable {
+        var title: String
+        var desc: String
+        var date: String
+        var value: Double
+    }
+
     
     
-   
     
     struct Request
     {

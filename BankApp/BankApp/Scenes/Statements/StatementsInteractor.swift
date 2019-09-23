@@ -10,32 +10,36 @@
 //  see http://clean-swift.com
 //
 
+
 import UIKit
 
 protocol StatementsBusinessLogic
 {
-  func doSomething(request: Statements.Something.Request)
+    func getStatement(request: Statement.StatementApi.Request)
 }
 
 protocol StatementsDataStore
 {
-  //var name: String { get set }
+    var user: Login.Something.User! { get set }
+    //var name: String { get set }
 }
 
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
 {
-  var presenter: StatementsPresentationLogic?
-  var worker: StatementsWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Statements.Something.Request)
-  {
-    worker = StatementsWorker()
-    worker?.doSomeWork()
+    var user: Login.Something.User!
+    var presenter: StatementsPresentationLogic?
+    var worker: StatementsWorker?
+   
     
-    let response = Statements.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    func getStatement(request: Statement.StatementApi.Request)
+    {
+        worker = StatementsWorker(StatementsService())
+        worker?.getStatement(request.userId) { (response: [Login.Something.StatementUser]) in
+            let response = Statement.StatementApi.Response(statement: response)
+            DispatchQueue.main.async {
+                self.presenter?.presentStatement(response)
+            }
+        }
+    }
 }

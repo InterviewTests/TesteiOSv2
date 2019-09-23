@@ -12,9 +12,20 @@
 
 import UIKit
 
+
+protocol StatementsDataProtocol {
+    func getStatements(_ id: Int, completionHandler: @escaping ([Login.Something.StatementUser]) -> Void)
+}
+
 class StatementsWorker
 {
-  func doSomeWork()
-  {
-  }
+    var statementsData: StatementsDataProtocol
+    
+    init(_ statementsData: StatementsDataProtocol) {
+        self.statementsData = statementsData
+    }
+    
+    func getStatement(_ id: Int, completionHandler: @escaping ([Login.Something.StatementUser]) -> Void) {
+        statementsData.getStatements(id, completionHandler: completionHandler)
+    }
 }

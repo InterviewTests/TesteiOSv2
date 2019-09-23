@@ -11,14 +11,87 @@
 //
 
 import UIKit
+import Foundation
 
 protocol StatementsDisplayLogic: class
 {
-  func displaySomething(viewModel: Statements.Something.ViewModel)
+    func showStatement(statements: Statement.StatementApi.Response)
 }
 
-class StatementsViewController: UIViewController, StatementsDisplayLogic
+class StatementsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,  StatementsDisplayLogic
 {
+    
+   // Estrutura com o response do extrato
+      var listStatements: [Login.Something.StatementUser] = []
+    
+    //Mark
+    //campos do usuario
+    
+    
+    @IBOutlet weak var nomeUsuarioLabel: UILabel!
+    @IBOutlet weak var contaUsuarioLabel: UILabel!
+    @IBOutlet weak var saldoUsuarioLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    func showStatement(statements: Statement.StatementApi.Response) {
+        listStatements = statements.statement
+        
+        tableView.reloadData()
+    }
+    
+    
+    
+    
+    func getStatement()
+    {
+        
+        let idUsuario = usuarioID
+        
+        let request = Statement.StatementApi.Request(userId:(idUsuario))
+        interactor?.getStatement(request: request)
+    }
+    
+    //instancia dados do extrato
+  
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listStatements.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+   
+    //implementa o registro e loop da celula
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //crie uma variavel com o identificador da celula
+        
+        let extrato = listStatements[indexPath.row]
+        
+        
+        let celulaID = "celulaID"
+        
+        //executa o loop da Table View para a celula = celulaID
+        //let celula = tableView.dequeueReusableCell(withIdentifier: celulaID, for: indexPath) as! statementCell
+        
+        let celula = tableView.dequeueReusableCell(withIdentifier: celulaID, for: indexPath) as! StatementCell
+        
+        
+        //coloca os valores dos campos na celula
+        
+        celula.dataLabel.text = extrato.date.formataData()
+        celula.pagamentoLabel.text = extrato.title
+        celula.tipoContaLabel.text = extrato.desc
+        celula.valorLabel.text = extrato.value.formataMoeda()
+        
+        
+       
+        
+        
+        return celula
+    }
+    
   var interactor: StatementsBusinessLogic?
   var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
 
@@ -70,20 +143,36 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
   {
     super.viewDidLoad()
     //doSomething()
+    
+    
+    //insere os dados do cliente logado na View
+    
+
+    // ******* Isto não está funcionando
+    if let user =  router?.dataStore?.user{
+      nomeUsuarioLabel.text = user.name
+      contaUsuarioLabel.text = "\(user.bankAccount) / \(user.agency)"
+      saldoUsuarioLabel.text = user.balance.formataMoeda()
+    }
+    
+    nomeUsuarioLabel.text = usuarioNome
+    contaUsuarioLabel.text = "\(usuarioConta) / \(usuarioAgencia)"
+    saldoUsuarioLabel.text = usuarioSaldo.formataMoeda()
+    
+    
+    
+    tableView.separatorStyle = .none
+    tableView.reloadData()
+    
+    //Call API do extrato
+    getStatement()
+  
+    
   }
   
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Statements.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Statements.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    @IBAction func logoutButton(_ sender: Any) {
+        performSegue(withIdentifier: "Segue2Login", sender: nil)
+        
+    }
+    
 }
