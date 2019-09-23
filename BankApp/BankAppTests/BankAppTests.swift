@@ -19,10 +19,30 @@ class BankAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    // valida com senha correta
+    func testValidaSenhaCorreta(){
+        let senha = "Ta@3245235" // senha correta
+        XCTAssertEqual(senha.validaSenha(),true)
     }
+    
+    func testValidaSenhaNoMaiuscula(){
+        let senha = "ta@3245235" // senha sem maiscula
+        XCTAssertEqual(senha.validaSenha(),false)
+    }
+    
+    func testisNumber(){
+        let numero = "2134986" // senha sem maiscula
+        XCTAssertEqual(numero.isNumber(),true)
+    }
+    
+    
+    func testisNotNumber(){
+        let numero = "A2347678" // senha sem maiscula
+        XCTAssertEqual(numero.isNumber(),false)
+    }
+    
+    
+    
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

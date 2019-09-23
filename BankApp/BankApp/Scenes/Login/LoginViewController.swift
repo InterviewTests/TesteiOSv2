@@ -24,7 +24,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
     
     //call a tela Statement
     func showStatement() {
-        performSegue(withIdentifier: "Statement", sender: nil)
+        performSegue(withIdentifier: "Statements", sender: nil)
     }
     
     
@@ -83,7 +83,32 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
   {
     super.viewDidLoad()
     //doSomething()
+    
+    //pega ultimo usuario logado
+    getUsuario()
+    
+    
+    
+    
   }
+    
+    
+   //keep me logged
+    func getUsuario() {
+        //Verifica se tem usuario e senha já no arquivo de keychain
+        if let usuario = KeychainService.loadPassword(service: "MyUser" , account: "BankApp"), let senha = KeychainService.loadPassword(service: "MyPass", account: "BankApp"){
+            
+            //Atribui o usuario e senha salvos (do ultimo usuario logado) aos campos na tela
+            self.userInput.text = usuario
+            self.passwordInput.text = senha
+        }
+    }
+    
+    
+    
+    
+    
+    
   
   // MARK: Call interactor
   

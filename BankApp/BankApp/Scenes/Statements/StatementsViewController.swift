@@ -46,9 +46,9 @@ class StatementsViewController: UIViewController, UITableViewDataSource,UITableV
     func getStatement()
     {
         
-        let idUsuario = usuarioID
+       // let idUsuario = usuarioID
         
-        let request = Statement.StatementApi.Request(userId:(idUsuario))
+        let request = Statement.StatementApi.Request(userId: (router?.dataStore?.user.userId)!)
         interactor?.getStatement(request: request)
     }
     
@@ -147,18 +147,17 @@ class StatementsViewController: UIViewController, UITableViewDataSource,UITableV
     
     //insere os dados do cliente logado na View
     
-
-    // ******* Isto não está funcionando
+   
     if let user =  router?.dataStore?.user{
       nomeUsuarioLabel.text = user.name
       contaUsuarioLabel.text = "\(user.bankAccount) / \(user.agency)"
       saldoUsuarioLabel.text = user.balance.formataMoeda()
     }
     
-    nomeUsuarioLabel.text = usuarioNome
-    contaUsuarioLabel.text = "\(usuarioConta) / \(usuarioAgencia)"
-    saldoUsuarioLabel.text = usuarioSaldo.formataMoeda()
-    
+//    nomeUsuarioLabel.text = usuarioNome
+//    contaUsuarioLabel.text = "\(usuarioConta) / \(usuarioAgencia)"
+//    saldoUsuarioLabel.text = usuarioSaldo.formataMoeda()
+//
     
     
     tableView.separatorStyle = .none

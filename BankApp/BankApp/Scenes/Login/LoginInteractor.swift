@@ -12,11 +12,12 @@
 
 import UIKit
 
-var usuarioID : Int = 0
-var usuarioNome: String = ""
-var usuarioConta: String = ""
-var usuarioAgencia: String = ""
-var usuarioSaldo : Double = 0.0
+// Para teste
+//var usuarioID : Int = 0
+//var usuarioNome: String = ""
+//var usuarioConta: String = ""
+//var usuarioAgencia: String = ""
+//var usuarioSaldo : Double = 0.0
 
 
 protocol LoginBusinessLogic
@@ -52,15 +53,41 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         // chama o Login Worker para chamar a funcao login e retornar o response da API
         worker?.login(request.user!, password: request.password!) { (response: Login.Something.User?) in
             self.user = response
-            //guarde o valor do iD do  usuário para a chamada do extrato
-            usuarioID = response!.userId
-            usuarioNome = response!.name
-            usuarioConta = response!.bankAccount
-            usuarioSaldo = response!.balance
-            usuarioAgencia = response!.agency
             
-            self.presenter?.presentLogin()
+            self.saveUser(request: request)
+            
+            //guarde o valor do iD do  usuário para a chamada do extrato
+//            usuarioID = response!.userId
+//            usuarioNome = response!.name
+//            usuarioConta = response!.bankAccount
+//            usuarioSaldo = response!.balance
+//            usuarioAgencia = response!.agency
+//
+            //transferido para a função saveUser
+            //self.presenter?.presentLogin()
         }
     }
+    
+    
+    
+    //Função para salvar (de forma segura) o ultimo usuario logado
+    private func saveUser(request: Login.Something.Request) {
+        
+        //Inicializa as variaveis de usuario e senha
+        let usuario = request.user
+        let senha = request.password
+        
+        //Remove usuario e senha se já tiver algum
+        KeychainService.removePassword(service: "MyUser", account: "BankApp")
+        KeychainService.removePassword(service: "MyPass", account: "BankApp")
+        
+        //Acrescenta um novo usuario e senha
+        KeychainService.savePassword(service: "MyUser", account: "BankApp", data: usuario!)
+        KeychainService.savePassword(service: "MyPass", account: "BankApp", data: senha!)
+        
+        //Envia para o presenter (para chamar a view novamente e chamar a função com a segue com o direcionamento)
+        self.presenter?.presentLogin()
+    
 }
 
+}
