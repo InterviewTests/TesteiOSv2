@@ -20,23 +20,26 @@ protocol StatementBusinessLogic
 protocol StatementDataStore
 {
     var user: User! { get set }
-    //var name: String { get set }
 }
 
 class StatementInteractor: StatementBusinessLogic, StatementDataStore
 {
+    //Inicialização de variaveis
     var user: User!
     var presenter: StatementPresentationLogic?
     var worker: StatementWorker?
-    //var name: String = ""
   
-    // MARK: Do something
+    // Função que manda para o worker (e service, para a chamada da API/GET)
     func getStatement(request: Statement.StatementApi.Request)
     {
+        //Inicializa o worker com base no StatementService (onde utilizamos o protocol para fazer a chamada na API)
         worker = StatementWorker(StatementService())
+        //Chama a função de captura de extrato (com base no id do usuario logado) e configura o response como varivel de retorno
         worker?.getStatement(request.userId) { (response: [StatementUser]) in
+            //Captura o response (e salva no StatementApi.Response)
             let response = Statement.StatementApi.Response(statement: response)
             DispatchQueue.main.async {
+                //Manda para o presenter exibir em tela
                 self.presenter?.presentStatement(response)
             }
         }

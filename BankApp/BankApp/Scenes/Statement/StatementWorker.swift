@@ -12,18 +12,22 @@
 
 import UIKit
 
+//Criação de protocolo
 protocol StatementDataProtocol {
     func getStatements(_ id: Int, completionHandler: @escaping ([StatementUser]) -> Void)
 }
 
 class StatementWorker
 {
+    //Inicialização de variavel com o protocolo
     var statementData: StatementDataProtocol
     
+    //Inicialização do protocolo
     init(_ statementData: StatementDataProtocol) {
         self.statementData = statementData
     }
     
+    //Função de captura de extrato (que fará a requisição para o serviço da API)
     func getStatement(_ id: Int, completionHandler: @escaping ([StatementUser]) -> Void) {
         statementData.getStatements(id, completionHandler: completionHandler)
     }

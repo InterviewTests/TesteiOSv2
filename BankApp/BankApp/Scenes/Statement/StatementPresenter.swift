@@ -21,6 +21,7 @@ class StatementPresenter: StatementPresentationLogic
 {
     weak var viewController: StatementDisplayLogic?
   
+    //Chama a função na view que exibe o conteúdo retornado de extrato
     func presentStatement(_ response: Statement.StatementApi.Response) {
         viewController?.showStatement(statements: response)
     }

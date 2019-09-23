@@ -14,7 +14,7 @@ import UIKit
 
 enum Statement
 {
-    // MARK: Use cases
+    //Casos de uso
     enum StatementApi
     {
         struct Request

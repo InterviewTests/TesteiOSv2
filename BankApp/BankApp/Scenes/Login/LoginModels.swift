@@ -14,7 +14,7 @@ import UIKit
 
 enum Login
 {
-    // MARK: Use cases
+    //Casos de uso
     enum RequestUser {
         struct Request {
             var user: String

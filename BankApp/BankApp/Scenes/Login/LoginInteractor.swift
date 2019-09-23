@@ -19,33 +19,35 @@ protocol LoginBusinessLogic
 
 protocol LoginDataStore
 {
-  //var name: String { get set }
     var user: User! {get set}
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
+    //Inicialização de variaveis
     var user: User!
-    
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
-    //var name: String = ""
   
-    // MARK: Do something
-    
     //Para fazer a chamada da API de login
     func login(request: Login.RequestUser.Request)
     {
+        //Inicializa o worker com base no LoginService (onde utilizamos o protocol para fazer a chamada na API)
         worker = LoginWorker(LoginService())
+        //Chama a função de login (com os dados de acesso) e configura o response como varivel de retorno
         worker?.login(request.user, password: request.password) { (response: User?) in
+            //Atribui o retorno na variavel que foi definida fora (com base no model)
             self.user = response
             
+            //Chama a função de salvar o ultimo usuario logado
             self.saveUser(request: request)
         }
     }
     
+    //Função para salvar (de forma segura) o ultimo usuario logado
     private func saveUser(request: Login.RequestUser.Request) {
         
+        //Inicializa as variaveis de usuario e senha
         let usuario = request.user
         let senha = request.password
         
@@ -57,6 +59,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         KeychainService.savePassword(service: "MyUser", account: "BankApp", data: usuario)
         KeychainService.savePassword(service: "MyPass", account: "BankApp", data: senha)
         
+        //Envia para o presenter (para chamar a view novamente e chamar a função com a segue com o direcionamento)
         self.presenter?.presentLogin()
     }
 }

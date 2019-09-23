@@ -14,20 +14,20 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
+    //Função para ir para a tela de extrato
     func showStatement()
 }
 
 class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLogic
 {
-    
+    //Inicialização dos campos (do storyboard)
     @IBOutlet weak var txt_user: UITextField!
     @IBOutlet weak var txt_password: UITextField!
     
+    //Inicialização de variaveis
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
 
-    // MARK: Object lifecycle
-  
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -40,8 +40,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
         setup()
     }
   
-    // MARK: Setup
-  
+    //Setup dos arquivos e variaveis de login
     private func setup()
     {
         let viewController = self
@@ -56,8 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
         router.dataStore = interactor
     }
   
-    // MARK: Routing
-  
+    //É o preparador da segue, aqui ele chama o Router para a mudança de tela.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let scene = segue.identifier {
@@ -68,49 +66,61 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
         }
     }
   
-    // MARK: View lifecycle
-  
+    //Inicio da tela
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        //Chama a função para captura do último usuario logado
         self.getUser()
         
+        //Delegate dos campos da tela
         txt_password.delegate = self
         txt_user.delegate = self
+        
+        //Ocultar o teclado quando toca fora do campo
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
+    //Função para capturar o ultimo usuario logado
     func getUser() {
+        //Verifica se tem usuario e senha já no arquivo de keychain
         if let usuario = KeychainService.loadPassword(service: "MyUser" , account: "BankApp"), let senha = KeychainService.loadPassword(service: "MyPass", account: "BankApp"){
             
+            //Atribui o usuario e senha salvos (do ultimo usuario logado) aos campos na tela
             self.txt_user.text = usuario
             self.txt_password.text = senha
         }
     }
     
+    //Função para ocultar o teclado
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
     
+    //Função de configuração do retorno do teclado
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //Se a tecla de retorno for do tipo "Proximo"
         if textField.returnKeyType == .next {
+            //Considera que o campo que estava vigente é o de login e passa o cursor para o campo de senha
             txt_user.resignFirstResponder()
             txt_password.becomeFirstResponder()
+        //Se a tecla de retorno for do tipo "Ir"
         } else if textField.returnKeyType == .go {
+            //Considera que o campo que estava vigente é o de senha e manda para a função de fazer o login
             txt_password.resignFirstResponder()
             self.doLogin()
         }
         return true
     }
     
-    // MARK: showStatement
-    
+    //Função com a segue para ir para a tela de extrato
     func showStatement() {
         performSegue(withIdentifier: "Statement", sender: nil)
     }
     
+    //Função genérica para exibição de alerts na tela conforme a mensagem por parametro
     func showAlert(message: String)
     {
         let alert = UIAlertController(title: "Atenção", message: message, preferredStyle: .alert)
@@ -121,11 +131,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
     //Ação do Botão LOGIN
     @IBAction func btnLogin(_ sender: Any)
     {
+        //Manda para a função de fazer login
         self.doLogin()
     }
     
+    //Função que faz o login
     func doLogin()
     {
+        //Inicializa as variaveis
         let login = txt_user.text!
         let password = txt_password.text!
         
@@ -141,9 +154,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
         if !(login.contains("@") && login.contains("."))
         {
             //Não é e-mail, verifica se é CPF
+            //Retira qualquer . ou - da string
             var cpf = login.replacingOccurrences(of: ".", with: "")
             cpf = cpf.replacingOccurrences(of: "-", with: "")
             
+            //Verifica se os digitos são numeros, e se contem 11 caracteres
             if !(cpf.isNumber() && cpf.count == 11)
             {
                 //Não é CPF também, exibe mensagem para usuário
@@ -152,7 +167,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
             }
         }
         
-        //Faz a validação da senha
+        //Faz a validação da senha (com base no que está configurado no Helper/Extension
         if !password.validaSenha()
         {
             //A senha não está no padrão. Exibe mensagem para o usuário
@@ -162,6 +177,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
         
         //Faz a chamada para a API
         let request = Login.RequestUser.Request(user: login, password: password)
+        //Manda para o interactor (chamar o worker e fazer a requisição na API)
         interactor?.login(request: request)
     }
 }

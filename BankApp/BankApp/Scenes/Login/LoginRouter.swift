@@ -27,11 +27,10 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
     weak var viewController: LoginViewController?
     var dataStore: LoginDataStore?
   
-    // MARK: Routing
-    
+    //Esse é o roteador para enviar para a proxima view (a de extrato)
     func routeToStatement(segue: UIStoryboardSegue?) {
         if let segue = segue {
-            let destinationVC = segue.destination as! StatementViewController
+            let destinationVC = segue.destination as! StatementViewController //Definição de destino da segue
             var destinationDS = destinationVC.router!.dataStore!
             passDataToStatement(source: dataStore!, destination: &destinationDS)
         }

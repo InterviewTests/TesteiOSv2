@@ -21,7 +21,7 @@ class LoginPresenter: LoginPresentationLogic
 {
     weak var viewController: LoginDisplayLogic?
   
-    // MARK: presentLogin
+    //Chama a função na view que envia para a tela de extrato
     func presentLogin() {
         viewController?.showStatement()
     }

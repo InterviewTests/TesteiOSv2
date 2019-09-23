@@ -13,11 +13,12 @@ extension String {
     //Função para formatar a data
     func formataData() -> String{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd" // This formate is input formated .
+        dateFormatter.dateFormat = "yyyy-MM-dd" //Definição do formato padrão de entrada da data
         
         let formateDate = dateFormatter.date(from: self)!
-        dateFormatter.dateFormat = "dd/MM/yyyy" // Output Formated
+        dateFormatter.dateFormat = "dd/MM/yyyy" //Definição do formato padrão de saída da data
         
+        //Retorno da data no formato string
         return dateFormatter.string(from: formateDate)
     }
     
@@ -28,29 +29,39 @@ extension String {
     }
     
     //Função para validar a senha
+    //Critérios:
     //Uma letra maiuscula
     //Um numero
     //Um caracter especial
     func validaSenha() -> Bool {
+        //Inicialização de varivel se senha é valida ou não (inicializada como VALIDA)
         var valid = true
+        
+        //Verificação de letras maiusculas
         let capitalLetter  = ".*[A-Z]+.*"
         let texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetter)
+        //Verifica se encontrou alguma letra maiuscula (se não encontrou ele define o retorno como false)
         if !texttest.evaluate(with: self) {
             valid = false
         }
         
+        //Verificação de numeros
         let number  = ".*[0-9]+.*"
         let texttest1 = NSPredicate(format:"SELF MATCHES %@", number)
+        //Verifica se encontrou algum numero (se não encontrou ele define o retorno como false)
         if !texttest1.evaluate(with: self) {
             valid = false
         }
         
+        //Definição de caracteres especiais
         let specialCharacter  = ".*[!&^%$#@()/_*+-]+.*"
         let texttest2 = NSPredicate(format:"SELF MATCHES %@", specialCharacter)
+        //Verifica se encontrou algum caracter especial (se não encontrou ele define o retorno como false)
         if !texttest2.evaluate(with: self) {
             valid = false
         }
         
+        //Retorna se a senha é valida ou não (booleano true ou false)
         return valid
     }
 }

@@ -19,7 +19,7 @@ import UIKit
 
 protocol StatementDataPassing
 {
-  var dataStore: StatementDataStore? { get }
+    var dataStore: StatementDataStore? { get }
 }
 
 class StatementRouter: NSObject, StatementRoutingLogic, StatementDataPassing
@@ -27,9 +27,10 @@ class StatementRouter: NSObject, StatementRoutingLogic, StatementDataPassing
     weak var viewController: StatementViewController?
     var dataStore: StatementDataStore?
     
+    //Esse é o roteador para enviar para a proxima view (a de login / caso de logout)
     func routeToLogin(segue: UIStoryboardSegue?) {
         if let segue = segue {
-            let destinationVC = segue.destination as! LoginViewController
+            let destinationVC = segue.destination as! LoginViewController //Definição do destino da segue
             var destinationDS = destinationVC.router!.dataStore!
             passDataToStatement(source: dataStore!, destination: &destinationDS)
         }

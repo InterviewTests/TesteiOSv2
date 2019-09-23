@@ -12,18 +12,22 @@
 
 import UIKit
 
+//Criação de protocolo
 protocol LoginProtocol {
     func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void)
 }
 
 class LoginWorker
 {
+    //Inicialização de variavel com o protocolo
     var loginProt: LoginProtocol
     
+    //Inicialização do protocolo
     init(_ loginProt: LoginProtocol) {
         self.loginProt = loginProt
     }
     
+    //Função de login (que fará a requisição para o serviço da API)
     func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void) {
         loginProt.login(login, password: password, completionHandler: completionHandler)
     }
