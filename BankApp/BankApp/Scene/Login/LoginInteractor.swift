@@ -14,12 +14,13 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+  func doLogin(request: Login.Something.Request)
 }
 
 protocol LoginDataStore
 {
   //var name: String { get set }
+    var userAccount: Login.Something.UserAccount! { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
@@ -27,15 +28,27 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
   var presenter: LoginPresentationLogic?
   var worker: LoginWorker?
   //var name: String = ""
-  
+    var userAccount: Login.Something.UserAccount!
   // MARK: Do something
   
-  func doSomething(request: Login.Something.Request)
+  func doLogin(request: Login.Something.Request)
   {
     worker = LoginWorker()
-    worker?.doSomeWork()
+//    worker?.doLoginWork(user: request.user ?? "", password: request.password ?? "")
+    worker?.doLoginWork(user: request.user ?? "", password: request.password ?? "", completion: { (response) in
+//        self.userAccount = response.userAccount
+//        if response.error
+        if let error = response.error?.code {
+            return
+        }
+        else {
+            self.userAccount = response.userAccount
+//            self.presenter?.presentSomething(response: response)
+            self.presenter?.presentLogin()
+        }
+    })
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
+//    let response = Login.Something.Response()
+//    presenter?.presentSomething(response: response)
   }
 }

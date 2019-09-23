@@ -14,14 +14,25 @@ import UIKit
 
 protocol ExtratoDisplayLogic: class
 {
-  func displaySomething(viewModel: Extrato.Something.ViewModel)
+  func displayStatementList(responseExtrato: Extrato.Something.Response)
 }
 
 class ExtratoViewController: UIViewController, ExtratoDisplayLogic
 {
-  var interactor: ExtratoBusinessLogic?
+    @IBOutlet weak var nomeLabel: UILabel!
+    @IBOutlet weak var contaLabel: UILabel!
+    @IBOutlet weak var saldoLabel: UILabel!
+    @IBOutlet weak var extratoTableView: UITableView!
+    
+    var interactor: ExtratoBusinessLogic?
   var router: (NSObjectProtocol & ExtratoRoutingLogic & ExtratoDataPassing)?
-
+    var statementList: [Extrato.Something.Statement]?
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
   // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -69,21 +80,80 @@ class ExtratoViewController: UIViewController, ExtratoDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    if let userAccount = router?.dataStore?.userAccount {
+        nomeLabel.text = userAccount.name ?? ""
+        contaLabel.text = "\(userAccount.bankAccount ?? "") / \(userAccount.agency ?? "")"
+        saldoLabel.text = "R$ \(userAccount.balance ?? 0)"
+    }
+    doExtrato()
+    extratoTableView.register(UINib(nibName: "ExtratoCell", bundle: nil), forCellReuseIdentifier: "ExtratoCell")
+    
+    
   }
-  
   // MARK: Do something
   
   //@IBOutlet weak var nameTextField: UITextField!
   
-  func doSomething()
+  func doExtrato()
   {
     let request = Extrato.Something.Request()
-    interactor?.doSomething(request: request)
+    interactor?.doExtrato(request: request)
   }
   
-  func displaySomething(viewModel: Extrato.Something.ViewModel)
+  func displayStatementList(responseExtrato: Extrato.Something.Response)
   {
     //nameTextField.text = viewModel.name
+    
+    statementList = responseExtrato.statementList
+    extratoTableView.reloadData()
   }
+    
+    @IBAction func logoutAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ExtratoViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statementList?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 96
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Recentes"
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = extratoTableView.dequeueReusableCell(withIdentifier: "ExtratoCell", for: indexPath) as! ExtratoTableViewCell
+        cell.contentView.backgroundColor = UIColor.white
+        cell.mainView.clipsToBounds = true
+        cell.mainView.layer.masksToBounds = false
+        cell.mainView.layer.cornerRadius = 5
+        cell.mainView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        cell.mainView.layer.shadowRadius = 2
+        cell.mainView.layer.shadowOpacity = 0.25
+        
+        cell.titleLabel.text = statementList?[indexPath.row].title ?? ""
+        cell.dateLabel.text = statementList?[indexPath.row].date ?? ""
+        cell.descLabel.text = statementList?[indexPath.row].desc ?? ""
+        
+        var value = statementList?[indexPath.row].value ?? 0
+        var valueString = String(format: "R$%.02f", value)        
+        
+        if value < 0 {
+            cell.valueLabel.textColor = .red
+        }
+        cell.valueLabel.text = valueString
+        
+        return cell
+    }
+    
+    
 }

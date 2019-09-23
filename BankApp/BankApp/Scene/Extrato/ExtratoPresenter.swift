@@ -25,7 +25,7 @@ class ExtratoPresenter: ExtratoPresentationLogic
   
   func presentSomething(response: Extrato.Something.Response)
   {
-    let viewModel = Extrato.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+//    let statementList = response
+    viewController?.displayStatementList(responseExtrato: response)
   }
 }

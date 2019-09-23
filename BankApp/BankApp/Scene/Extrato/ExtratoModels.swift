@@ -18,14 +18,31 @@ enum Extrato
   
   enum Something
   {
-    struct Request
-    {
+    struct Request: Decodable {
+        
     }
-    struct Response
-    {
+    
+    struct Response: Decodable {
+        var statementList: [Statement]?
     }
-    struct ViewModel
-    {
+    
+    struct ViewModel {
+        struct Statement {
+            var title: String
+            var desc: String
+            var date: String
+            var value: Float
+        }
+        
+//        var displayedStatement: DisplayedStatement!
+//        var error: Error
+    }
+    
+    struct Statement: Decodable {
+        var title: String
+        var desc: String
+        var date: String
+        var value: Float
     }
   }
 }

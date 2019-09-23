@@ -14,7 +14,35 @@ import UIKit
 
 class LoginWorker
 {
-  func doSomeWork()
+    func doLoginWork(user: String, password: String, completion: @escaping((Login.Something.Response) -> Void))
   {
+    let parameters = ["user": user, "password": password]
+    let url = URL(string: "https://bank-app-test.herokuapp.com/api/login")
+//    guard let url = URL(string: "https://bank-app-test.herokuapp.com/api/login") else {
+//        return
+//    }
+    var request = URLRequest(url: url!)
+    request.httpMethod = "POST"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+//    guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
+//        return
+//    }
+    request.httpBody = httpBody
+    
+    let session = URLSession.shared
+    session.dataTask(with: request) { (data, response, error) in
+        if let data = data {
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Login.Something.Response.self, from: data)
+                DispatchQueue.main.async {
+                    completion(response)
+                }
+            } catch {
+                print(error)
+            }
+        }
+        }.resume()
   }
 }

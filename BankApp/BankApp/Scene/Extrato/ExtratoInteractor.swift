@@ -14,12 +14,13 @@ import UIKit
 
 protocol ExtratoBusinessLogic
 {
-  func doSomething(request: Extrato.Something.Request)
+  func doExtrato(request: Extrato.Something.Request)
 }
 
 protocol ExtratoDataStore
 {
   //var name: String { get set }
+    var userAccount: Login.Something.UserAccount! { get set }
 }
 
 class ExtratoInteractor: ExtratoBusinessLogic, ExtratoDataStore
@@ -27,15 +28,18 @@ class ExtratoInteractor: ExtratoBusinessLogic, ExtratoDataStore
   var presenter: ExtratoPresentationLogic?
   var worker: ExtratoWorker?
   //var name: String = ""
+    var userAccount: Login.Something.UserAccount!
   
   // MARK: Do something
   
-  func doSomething(request: Extrato.Something.Request)
+  func doExtrato(request: Extrato.Something.Request)
   {
     worker = ExtratoWorker()
-    worker?.doSomeWork()
+    worker?.doExtratoWork(completion: { (response) in
+        
+        self.presenter?.presentSomething(response: response)
+    })
     
-    let response = Extrato.Something.Response()
-    presenter?.presentSomething(response: response)
+//    let response = Extrato.Something.Response()
   }
 }
