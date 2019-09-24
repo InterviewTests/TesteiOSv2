@@ -1,3 +1,15 @@
+
+#BankApp
+O aplicativo foi desenvolvido sem o uso de Pods, tentando utilizar ao máximo as funcionalidades disponíveis no iOS.
+
+* Desenvolvido com Siwft 5 e xCode Version 10.3
+* Utilizado ao Autolayout
+* Testes unitários básicos realizados com o próprio xCode.
+* Arquitetura utilizada: Clean - Swift
+* Git utilizado para o versionamento
+* O app deve funcionar no iOS 9. O aplicativo não foi feito para funcionar no iOS9 devido a chamadas que fiz nas funções de KeyChain para a persistência do ultimo usuário logado.
+
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
