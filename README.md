@@ -8,7 +8,7 @@ O aplicativo foi desenvolvido sem o uso de Pods, tentando utilizar ao máximo as
 * Testes unitários básicos realizados com o próprio xCode. Realizei alguns testes básicos no xCode, pois é o que estamos utilizando em nosso Squad.
 * Arquitetura utilizada: Clean - Swift a partir dos templates fornecidos no CleanSwift_template.zip
 * Git utilizado para o versionamento
-* O app deve funcionar no iOS 9. O aplicativo não foi feito para funcionar no iOS9 devido a chamadas nas funções de KeyChain para a persistência do ultimo usuário logado.
+* O aplicativo foi feito para funcionar a partir do iOS 11 devido a chamadas nas funções de KeyChain para a persistência do ultimo usuário logado e rotinas do Swift 4.
 
 
 # Show me the code
