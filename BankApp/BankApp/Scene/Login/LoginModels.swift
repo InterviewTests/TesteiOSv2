@@ -14,44 +14,31 @@ import UIKit
 
 enum Login
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request: Decodable {
-        var user: String?
-        var password: String?
-    }
+    // MARK: Use cases
     
-    struct Response: Decodable {
-        var userAccount: UserAccount?
-        var error: Error?
+    enum Something
+    {
+        struct Request: Decodable {
+            var user: String?
+            var password: String?
+        }
+        
+        struct Response: Decodable {
+            var userAccount: UserAccount?
+            var error: Error?
+        }
+        
+        struct UserAccount: Decodable {
+            var userId: Int?
+            var name: String?
+            var bankAccount: String?
+            var agency: String?
+            var balance: Double?
+        }
+        
+        struct Error: Decodable {
+            var code: Int?
+            var message: String?
+        }
     }
-    
-//    struct ViewModel {
-//        struct DisplayedUserAccount {
-//            var userId: Int
-//            var name: String
-//            var bankAccount: String
-//            var agency: String
-//            var balance: Double
-//        }
-//        
-////        var displayedStatement: DisplayedUserAccount!
-////        var error: Error
-//    }
-    
-    struct UserAccount: Decodable {
-        var userId: Int?
-        var name: String?
-        var bankAccount: String?
-        var agency: String?
-        var balance: Double?
-    }
-    
-    struct Error: Decodable {
-        var code: Int?
-        var message: String?
-    }
-  }
 }

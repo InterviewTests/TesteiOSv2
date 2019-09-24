@@ -14,18 +14,14 @@ import UIKit
 
 protocol ExtratoDisplayLogic: class
 {
-  func displayStatementList(responseExtrato: Extrato.Something.Response)
+    func displayStatementList(responseExtrato: Extrato.Something.Response)
 }
 
 class ExtratoViewController: UIViewController, ExtratoDisplayLogic
 {
-    @IBOutlet weak var nomeLabel: UILabel!
-    @IBOutlet weak var contaLabel: UILabel!
-    @IBOutlet weak var saldoLabel: UILabel!
-    @IBOutlet weak var extratoTableView: UITableView!
     
     var interactor: ExtratoBusinessLogic?
-  var router: (NSObjectProtocol & ExtratoRoutingLogic & ExtratoDataPassing)?
+    var router: (NSObjectProtocol & ExtratoRoutingLogic & ExtratoDataPassing)?
     var statementList: [Extrato.Something.Statement]?
     
     
@@ -33,80 +29,87 @@ class ExtratoViewController: UIViewController, ExtratoDisplayLogic
         return .lightContent
     }
     
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = ExtratoInteractor()
-    let presenter = ExtratoPresenter()
-    let router = ExtratoRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    if let userAccount = router?.dataStore?.userAccount {
-        nomeLabel.text = userAccount.name ?? ""
-        contaLabel.text = "\(userAccount.bankAccount ?? "") / \(userAccount.agency ?? "")"
-        saldoLabel.text = "R$ \(userAccount.balance ?? 0)"
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
     }
-    doExtrato()
-    extratoTableView.register(UINib(nibName: "ExtratoCell", bundle: nil), forCellReuseIdentifier: "ExtratoCell")
     
+    // MARK: Setup
     
-  }
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doExtrato()
-  {
-    let request = Extrato.Something.Request()
-    interactor?.doExtrato(request: request)
-  }
-  
-  func displayStatementList(responseExtrato: Extrato.Something.Response)
-  {
-    //nameTextField.text = viewModel.name
+    private func setup()
+    {
+        let viewController = self
+        let interactor = ExtratoInteractor()
+        let presenter = ExtratoPresenter()
+        let router = ExtratoRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
     
-    statementList = responseExtrato.statementList
-    extratoTableView.reloadData()
-  }
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        if let userAccount = router?.dataStore?.userAccount {
+            nomeLabel.text = userAccount.name ?? ""
+            contaLabel.text = "\(userAccount.bankAccount ?? "") / \(userAccount.agency?.separarDigito() ?? "")"
+            let saldo = userAccount.balance ?? 0.0
+            if saldo < 0.0 {
+                saldoLabel.textColor = .orange
+            }
+            saldoLabel.text = saldo.formataMoeda()
+        }
+        
+        doExtrato()
+        
+        extratoTableView.register(UINib(nibName: "ExtratoCell", bundle: nil), forCellReuseIdentifier: "ExtratoCell")
+        
+    }
+    // MARK: Do something
+    
+    @IBOutlet weak var nomeLabel: UILabel!
+    @IBOutlet weak var contaLabel: UILabel!
+    @IBOutlet weak var saldoLabel: UILabel!
+    @IBOutlet weak var extratoTableView: UITableView!
+    
+    func doExtrato()
+    {
+        let request = Extrato.Something.Request()
+        interactor?.doExtrato(request: request)
+    }
+    
+    func displayStatementList(responseExtrato: Extrato.Something.Response)
+    {
+        statementList = responseExtrato.statementList
+        extratoTableView.reloadData()
+    }
     
     @IBAction func logoutAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -132,28 +135,22 @@ extension ExtratoViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = extratoTableView.dequeueReusableCell(withIdentifier: "ExtratoCell", for: indexPath) as! ExtratoTableViewCell
-        cell.contentView.backgroundColor = UIColor.white
-        cell.mainView.clipsToBounds = true
-        cell.mainView.layer.masksToBounds = false
-        cell.mainView.layer.cornerRadius = 5
-        cell.mainView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        cell.mainView.layer.shadowRadius = 2
-        cell.mainView.layer.shadowOpacity = 0.25
+        
         
         cell.titleLabel.text = statementList?[indexPath.row].title ?? ""
-        cell.dateLabel.text = statementList?[indexPath.row].date ?? ""
+        
+        let date = statementList?[indexPath.row].date ?? ""
+        cell.dateLabel.text = date.formataData()
+        
         cell.descLabel.text = statementList?[indexPath.row].desc ?? ""
         
-        var value = statementList?[indexPath.row].value ?? 0
-        var valueString = String(format: "R$%.02f", value)        
+        let value = statementList?[indexPath.row].value ?? 0.0
         
         if value < 0 {
             cell.valueLabel.textColor = .red
         }
-        cell.valueLabel.text = valueString
+        cell.valueLabel.text = value.formataMoeda()
         
         return cell
-    }
-    
-    
+    }    
 }

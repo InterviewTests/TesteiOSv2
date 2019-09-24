@@ -14,32 +14,32 @@ import UIKit
 
 protocol ExtratoBusinessLogic
 {
-  func doExtrato(request: Extrato.Something.Request)
+    func doExtrato(request: Extrato.Something.Request)
 }
 
 protocol ExtratoDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
     var userAccount: Login.Something.UserAccount! { get set }
 }
 
 class ExtratoInteractor: ExtratoBusinessLogic, ExtratoDataStore
 {
-  var presenter: ExtratoPresentationLogic?
-  var worker: ExtratoWorker?
-  //var name: String = ""
+    var presenter: ExtratoPresentationLogic?
+    var worker: ExtratoWorker?
+    //var name: String = ""
     var userAccount: Login.Something.UserAccount!
-  
-  // MARK: Do something
-  
-  func doExtrato(request: Extrato.Something.Request)
-  {
-    worker = ExtratoWorker()
-    worker?.doExtratoWork(completion: { (response) in
-        
-        self.presenter?.presentSomething(response: response)
-    })
     
-//    let response = Extrato.Something.Response()
-  }
+    // MARK: Do something
+    
+    func doExtrato(request: Extrato.Something.Request)
+    {
+        worker = ExtratoWorker()
+        worker?.doExtratoWork(completion: { (response) in
+            
+            self.presenter?.presentSomething(response: response)
+        })
+        
+        //    let response = Extrato.Something.Response()
+    }
 }

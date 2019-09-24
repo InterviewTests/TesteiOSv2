@@ -14,35 +14,29 @@ import UIKit
 
 enum Extrato
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request: Decodable {
-        
-    }
+    // MARK: Use cases
     
-    struct Response: Decodable {
-        var statementList: [Statement]?
-    }
-    
-    struct ViewModel {
-        struct Statement {
-            var title: String
-            var desc: String
-            var date: String
-            var value: Float
+    enum Something
+    {
+        struct Request: Decodable {
+            
         }
         
-//        var displayedStatement: DisplayedStatement!
-//        var error: Error
+        struct Response: Decodable {
+            var statementList: [Statement]?
+            var error: Error?
+        }
+        
+        struct Statement: Decodable {
+            var title: String?
+            var desc: String?
+            var date: String?
+            var value: Double?
+        }
+        
+        struct Error: Decodable {
+            var code: Int?
+            var message: String?
+        }
     }
-    
-    struct Statement: Decodable {
-        var title: String
-        var desc: String
-        var date: String
-        var value: Float
-    }
-  }
 }

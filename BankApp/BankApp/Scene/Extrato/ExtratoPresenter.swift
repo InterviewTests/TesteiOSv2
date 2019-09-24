@@ -14,18 +14,17 @@ import UIKit
 
 protocol ExtratoPresentationLogic
 {
-  func presentSomething(response: Extrato.Something.Response)
+    func presentSomething(response: Extrato.Something.Response)
 }
 
 class ExtratoPresenter: ExtratoPresentationLogic
 {
-  weak var viewController: ExtratoDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Extrato.Something.Response)
-  {
-//    let statementList = response
-    viewController?.displayStatementList(responseExtrato: response)
-  }
+    weak var viewController: ExtratoDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentSomething(response: Extrato.Something.Response)
+    {
+        viewController?.displayStatementList(responseExtrato: response)
+    }
 }

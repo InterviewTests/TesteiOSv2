@@ -14,41 +14,35 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doLogin(request: Login.Something.Request)
+    func doLogin(request: Login.Something.Request)
 }
 
 protocol LoginDataStore
 {
-  //var name: String { get set }
     var userAccount: Login.Something.UserAccount! { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
     var userAccount: Login.Something.UserAccount!
-  // MARK: Do something
-  
-  func doLogin(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-//    worker?.doLoginWork(user: request.user ?? "", password: request.password ?? "")
-    worker?.doLoginWork(user: request.user ?? "", password: request.password ?? "", completion: { (response) in
-//        self.userAccount = response.userAccount
-//        if response.error
-        if let error = response.error?.code {
-            return
-        }
-        else {
-            self.userAccount = response.userAccount
-//            self.presenter?.presentSomething(response: response)
-            self.presenter?.presentLogin()
-        }
-    })
     
-//    let response = Login.Something.Response()
-//    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func doLogin(request: Login.Something.Request)
+    {
+        worker = LoginWorker()
+        worker?.doLoginWork(user: request.user ?? "", password: request.password ?? "", completion: { (response) in
+            
+            if let error = response.error?.code {
+                return
+            }
+            else {
+                self.userAccount = response.userAccount
+                self.presenter?.presentLogin()
+            }
+            
+        })
+    }
 }

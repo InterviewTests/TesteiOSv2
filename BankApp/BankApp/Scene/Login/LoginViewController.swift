@@ -14,14 +14,11 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-//    func displaySomething(viewModel: Login.Something.ViewModel)
     func presentExtrato()
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
-    
-    
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
@@ -55,6 +52,13 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         router.dataStore = interactor
     }
     
+    func createErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Atenção ⚠", message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(alertAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: Routing
     
     func presentExtrato() {
@@ -77,30 +81,51 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        buttonLogin.clipsToBounds = true
+        buttonLogin.layer.cornerRadius = 5
     }
     
     // MARK: Do something
     
-    //@IBOutlet weak var nameTextField: UITextField!
-    
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var buttonLogin: UIButton!
     
-    func doSomething()
+    func executeLogin()
     {
+        let user = userTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        if user.isEmpty {
+            createErrorAlert(message: "Usuário vazio!")
+            userTextField.becomeFirstResponder()
+            return
+        }
+        else if password.isEmpty  {
+            createErrorAlert(message: "Senha vazia!")
+            passwordTextField.becomeFirstResponder()
+            return
+        }
+        else if !(user.contains(".") && user.contains("@")) {
+            var cpf = user.replacingOccurrences(of: ".", with: "")
+            cpf = cpf.replacingOccurrences(of: "-", with: "")
+            if !(cpf.isNumber() && cpf.count == 11) {
+                createErrorAlert(message: "E-mail ou CPF Inválido!")
+                userTextField.becomeFirstResponder()
+                return
+            }
+        }
+        else if !password.validaSenha() {
+            passwordTextField.becomeFirstResponder()
+            return
+        }
         var request = Login.Something.Request()
         request.user = userTextField.text ?? ""
         request.password = passwordTextField.text ?? ""
         interactor?.doLogin(request: request)
     }
     
-//    func displaySomething(viewModel: Login.Something.ViewModel)
-//    {
-//        //nameTextField.text = viewModel.name
-//    }
-    
     @IBAction func loginAction(_ sender: Any) {
-        doSomething()
-        
+        executeLogin()
     }
 }
