@@ -3,9 +3,9 @@
 
 O aplicativo foi desenvolvido sem o uso de Pods, tentando utilizar ao máximo as funcionalidades disponíveis no iOS.
 
-* Desenvolvido com Siwft 5 e xCode Version 10.3
-* Utilizado ao Autolayout
-* Testes unitários básicos realizados com o próprio xCode.
+* Desenvolvido com Swift 5 e xCode Version 10.3
+* Utilizado o Autolayout do xCode
+* Testes unitários básicos realizados com o próprio xCode. Realizei alguns testes básicos no xCode, pois é o que estamos utilizando em nosso Squad.
 * Arquitetura utilizada: Clean - Swift a partir dos templates fornecidos no CleanSwift_template.zip
 * Git utilizado para o versionamento
 * O app deve funcionar no iOS 9. O aplicativo não foi feito para funcionar no iOS9 devido a chamadas nas funções de KeyChain para a persistência do ultimo usuário logado.
