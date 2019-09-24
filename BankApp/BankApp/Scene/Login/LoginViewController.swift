@@ -106,16 +106,13 @@ class LoginViewController: UIViewController, LoginDisplayLogic
             passwordTextField.becomeFirstResponder()
             return
         }
-        else if !(user.contains(".") && user.contains("@")) {
-            var cpf = user.replacingOccurrences(of: ".", with: "")
-            cpf = cpf.replacingOccurrences(of: "-", with: "")
-            if !(cpf.isNumber() && cpf.count == 11) {
-                createErrorAlert(message: "E-mail ou CPF Inválido!")
-                userTextField.becomeFirstResponder()
-                return
-            }
+        else if !(user.isEmail()) && !(user.isCPF()) {
+            createErrorAlert(message: "E-mail ou CPF inválido!")
+            userTextField.becomeFirstResponder()
+            return
         }
         else if !password.validaSenha() {
+            createErrorAlert(message: "Senha inválida!")
             passwordTextField.becomeFirstResponder()
             return
         }
@@ -123,6 +120,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         request.user = userTextField.text ?? ""
         request.password = passwordTextField.text ?? ""
         interactor?.doLogin(request: request)
+        print(interactor)
     }
     
     @IBAction func loginAction(_ sender: Any) {

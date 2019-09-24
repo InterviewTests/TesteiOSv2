@@ -64,6 +64,24 @@ extension String {
         str.insert("-", at: str.index(str.endIndex, offsetBy: -1))
         return str
     }
+    
+    //Função para verificar se é e-mail válido
+    func isEmail() -> Bool {
+        if self.contains(".") && self.contains("@") {
+            return true
+        }
+        return false
+    }
+    
+    //Função para verificar se é CPF válido
+    func isCPF() -> Bool {
+        var cpf = self.replacingOccurrences(of: ".", with: "")
+        cpf = cpf.replacingOccurrences(of: "-", with: "")
+        if cpf.isNumber() && cpf.count == 11 {
+            return true
+        }
+        return false
+    }
 }
 
 extension Double {
