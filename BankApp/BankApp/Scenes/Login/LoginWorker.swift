@@ -15,6 +15,7 @@ import UIKit
 //Criação de protocolo
 protocol LoginProtocol {
     func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void)
+    func mockLogin(_ login: String, password: String, completionHandler: @escaping (User?) -> Void)
 }
 
 class LoginWorker
@@ -30,5 +31,10 @@ class LoginWorker
     //Função de login (que fará a requisição para o serviço da API)
     func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void) {
         loginProt.login(login, password: password, completionHandler: completionHandler)
+    }
+    
+    //Função MOCKADA de login (que fará a requisição para o serviço da API)
+    func mockLogin(_ login: String, password: String, completionHandler: @escaping (User?) -> Void) {
+        loginProt.mockLogin(login, password: password, completionHandler: completionHandler)
     }
 }

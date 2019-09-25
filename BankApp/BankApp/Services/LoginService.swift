@@ -9,6 +9,11 @@
 import Foundation
 
 class LoginService: LoginProtocol {
+    //Faz um MOCK para a requisição de login
+    func mockLogin(_ login: String, password: String, completionHandler: @escaping (User?) -> Void) {
+        let user = User.init(userId: 1, name: "Teste Mockado", bankAccount: "Banco Mockado", agency: "Agencia Mockada", balance: 200)
+        completionHandler(user)
+    }
     
     //Faz a chamada para a API de login
     func login(_ login: String, password: String, completionHandler: @escaping (User?) -> Void) {

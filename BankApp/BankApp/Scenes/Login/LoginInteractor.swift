@@ -28,6 +28,21 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     var user: User!
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
+    
+    //Para fazer a chamada da API de login
+    func mockLogin(request: Login.RequestUser.Request)
+    {
+        //Inicializa o worker com base no LoginService (onde utilizamos o protocol para fazer a chamada na API)
+        worker = LoginWorker(LoginService())
+        //Chama a função de login (com os dados de acesso) e configura o response como varivel de retorno
+        worker?.mockLogin(request.user, password: request.password) { (response: User?) in
+            //Atribui o retorno na variavel que foi definida fora (com base no model)
+            self.user = response
+            
+            //Chama a função de salvar o ultimo usuario logado
+            self.presenter?.presentLogin()
+        }
+    }
   
     //Para fazer a chamada da API de login
     func login(request: Login.RequestUser.Request)
