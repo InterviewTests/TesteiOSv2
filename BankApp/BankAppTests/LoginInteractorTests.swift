@@ -39,10 +39,11 @@ class LoginInteractorTests: XCTestCase {
         let spy = LoginPresentationLogicSpy()
         sut.presenter = spy
         
-        let request = Login.RequestUser.Request(user: "teste@teste.com.br", password: "Teste@2")
-        
         // When
+        let request = Login.RequestUser.Request(user: "teste@teste.com.br", password: "Teste@2")
         sut.mockLogin(request: request)
+        
+        //Then
         XCTAssertTrue(spy.presentLoginCalled, "A função de retorno do login na view foi chamada")
     }
 }

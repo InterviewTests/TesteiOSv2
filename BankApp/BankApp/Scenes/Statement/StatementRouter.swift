@@ -19,7 +19,7 @@ import UIKit
 
 protocol StatementDataPassing
 {
-    var dataStore: StatementDataStore? { get }
+    var dataStore: StatementDataStore? {get set}
 }
 
 class StatementRouter: NSObject, StatementRoutingLogic, StatementDataPassing

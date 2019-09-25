@@ -19,7 +19,7 @@ import UIKit
 
 protocol LoginDataPassing
 {
-    var dataStore: LoginDataStore? { get }
+    var dataStore: LoginDataStore? {get set}
 }
 
 class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
