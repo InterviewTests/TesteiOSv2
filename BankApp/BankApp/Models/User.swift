@@ -15,4 +15,12 @@ struct User: Decodable {
     var bankAccount: String
     var agency: String
     var balance: Double
+    
+    init(userId: Int, name: String, bankAccount: String, agency: String, balance: Double) {
+        self.userId = userId
+        self.name = name
+        self.bankAccount = bankAccount
+        self.agency = agency
+        self.balance = balance
+    }
 }

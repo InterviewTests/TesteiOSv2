@@ -14,4 +14,11 @@ struct StatementUser: Decodable {
     var desc: String
     var date: String
     var value: Double
+    
+    init(title: String, desc: String, date: String, value: Double) {
+        self.title = title
+        self.desc = desc
+        self.date = date
+        self.value = value
+    }
 }
