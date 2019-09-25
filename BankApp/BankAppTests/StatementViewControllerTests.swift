@@ -10,13 +10,13 @@ import XCTest
 @testable import BankApp
 
 class StatementViewControllerTests: XCTestCase {
-
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
     }
-
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
     }
 
     func getViewController(loading: Bool) -> StatementViewController? {
@@ -32,7 +32,7 @@ class StatementViewControllerTests: XCTestCase {
             
             vc.router?.dataStore?.user = user
             
-            let _ = vc.view // so it will call viewDidLoad() 😉
+            let _ = vc.view // Isso vai chamar o viewDidLoad
         }
         
         return vc
@@ -42,5 +42,25 @@ class StatementViewControllerTests: XCTestCase {
         guard let vc = getViewController(loading: true) else { fail() ; return }
 
         XCTAssertNotNil(vc)
+    }
+    
+    func testTableViewDataSource() {
+        guard let vc = getViewController(loading: true) else { fail() ; return }
+        
+        let sections = vc.numberOfSections(in: vc.tableView)
+        
+        XCTAssert(sections == 1,
+                  "Há apenas uma sessão")
+        
+        let statementTest1 = StatementUser.init(title: "Teste 1", desc: "Teste 1", date: "Teste 1", value: 01.2)
+        let statementTest2 = StatementUser.init(title: "Teste 2", desc: "Teste 2", date: "Teste 2", value: 02.3)
+        
+        let statements = [statementTest1, statementTest2]
+        vc.listStatements = statements
+
+        let rows = vc.tableView(vc.tableView, numberOfRowsInSection: 0)
+
+        XCTAssert(rows == vc.listStatements.count,
+                  "Deve ser igual ao listStatements.count")
     }
 }
