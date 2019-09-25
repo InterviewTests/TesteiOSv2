@@ -40,5 +40,31 @@ class LoginWorkerTests: XCTestCase {
                       "É o retorno que está configurado para o Balance na função mockLogin do LoginService")
         }
     }
-
+    
+    func testKeychain() {
+        //Inicializa o worker com base no LoginService (onde utilizamos o protocol para fazer a chamada na API)
+        var worker: LoginWorker?
+        worker = LoginWorker(LoginService())
+        
+        //Chama a função de login (com os dados de acesso) e configura o response como varivel de retorno
+        worker?.mockLogin("teste@teste.com.br", password: "Teste1@") { (response: User?) in
+            
+            //Remove usuario e senha se já tiver algum
+            KeychainService.removePassword(service: "MyUser", account: "BankApp")
+            KeychainService.removePassword(service: "MyPass", account: "BankApp")
+            
+            KeychainService.savePassword(service: "MyUser", account: "BankApp", data: "teste@teste.com.br")
+            KeychainService.savePassword(service: "MyPass", account: "BankApp", data: "Teste1@")
+            
+            if let usuario = KeychainService.loadPassword(service: "MyUser" , account: "BankApp"), let senha = KeychainService.loadPassword(service: "MyPass", account: "BankApp"){
+                
+                XCTAssert(usuario == "teste@teste.com.br",
+                          "Retorno do email utilizado para logar")
+                
+                XCTAssert(senha == "Teste1@",
+                          "Retorno da senha utilizada para logar")
+                
+            }
+        }
+    }
 }
