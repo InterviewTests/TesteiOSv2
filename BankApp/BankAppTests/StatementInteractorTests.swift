@@ -9,6 +9,15 @@
 import XCTest
 @testable import BankApp
 
+//Inicialização de classe para mock
+class StatementPresentationLogicSpy: StatementPresentationLogic {
+    var presentStatementCalled = false
+    
+    func presentStatement(_ response: Statement.StatementApi.Response) {
+        presentStatementCalled = true
+    }
+}
+
 class StatementInteractorTests: XCTestCase {
 
     //Inicializa o interactor utilizado no statement
@@ -25,14 +34,7 @@ class StatementInteractorTests: XCTestCase {
         super.tearDown()
     }
     
-    class StatementPresentationLogicSpy: StatementPresentationLogic {
-        var presentStatementCalled = false
-        
-        func presentStatement(_ response: Statement.StatementApi.Response) {
-            presentStatementCalled = true
-        }
-    }
-    
+    //Teste que verifica se o extrato deu sucesso (com dados mockados)
     func testSuccessfullStatement() {
         // Given
         let spy = StatementPresentationLogicSpy()

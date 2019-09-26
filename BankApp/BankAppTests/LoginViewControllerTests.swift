@@ -19,6 +19,7 @@ class LoginViewControllerTests: XCTestCase {
         super.tearDown()
     }
 
+    //Função para capturar a viewController que está sendo usada e suas propriedades
     func getViewController(loading: Bool) -> LoginViewController? {
         
         guard let vc = UIStoryboard(name: "Main", bundle: nil)
@@ -28,12 +29,13 @@ class LoginViewControllerTests: XCTestCase {
         }
         
         if loading {
-            let _ = vc.view // so it will call viewDidLoad() 😉
+            let _ = vc.view //Chamou a view
         }
         
         return vc
     }
     
+    //Função para testar se a tela está sendo chamada corretamente (com os campos)
     func testLoading() {
         guard let vc = getViewController(loading: true) else { fail() ; return }
         

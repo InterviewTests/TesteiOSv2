@@ -9,6 +9,15 @@
 import XCTest
 @testable import BankApp
 
+//Inicialização de classe para mock
+class LoginPresentationLogicSpy: LoginPresentationLogic {
+    var presentLoginCalled = false
+    
+    func presentLogin() {
+        presentLoginCalled = true
+    }
+}
+
 //Função para validar chamadas do interactor e serviços
 class LoginInteractorTests: XCTestCase {
     
@@ -26,14 +35,7 @@ class LoginInteractorTests: XCTestCase {
         super.tearDown()
     }
     
-    class LoginPresentationLogicSpy: LoginPresentationLogic {
-        var presentLoginCalled = false
-        
-        func presentLogin() {
-            presentLoginCalled = true
-        }
-    }
-    
+    //Teste que verifica se o login deu sucesso (com dados mockados)
     func testSuccessfullLogin() {
         // Given
         let spy = LoginPresentationLogicSpy()

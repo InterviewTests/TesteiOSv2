@@ -19,6 +19,7 @@ class LoginWorkerTests: XCTestCase {
         super.tearDown()
     }
 
+    //Função que testa o response do worker/service
     func testCompletionHandler() {
         //Inicializa o worker com base no LoginService (onde utilizamos o protocol para fazer a chamada na API)
         var worker: LoginWorker?
@@ -41,6 +42,7 @@ class LoginWorkerTests: XCTestCase {
         }
     }
     
+    //Função que testa se o keychain está funcionando
     func testKeychain() {
         //Inicializa o worker com base no LoginService (onde utilizamos o protocol para fazer a chamada na API)
         var worker: LoginWorker?
