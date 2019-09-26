@@ -16,6 +16,7 @@
 		A969E0FA233CD48000F7C819 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A969E0F9233CD48000F7C819 /* LoginPresenterTests.swift */; };
 		A969E0FC233CE36F00F7C819 /* StatementWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A969E0FB233CE36F00F7C819 /* StatementWorkerTests.swift */; };
 		A969E0FE233CE61800F7C819 /* StatementPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A969E0FD233CE61800F7C819 /* StatementPresenterTests.swift */; };
+		A969E100233CEDAD00F7C819 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A969E0FF233CEDAD00F7C819 /* Extension.swift */; };
 		A98982BB2333909100D2B8C3 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98982B52333909100D2B8C3 /* LoginPresenter.swift */; };
 		A98982BC2333909100D2B8C3 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98982B62333909100D2B8C3 /* LoginWorker.swift */; };
 		A98982BD2333909100D2B8C3 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98982B72333909100D2B8C3 /* LoginRouter.swift */; };
@@ -61,6 +62,7 @@
 		A969E0F9233CD48000F7C819 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
 		A969E0FB233CE36F00F7C819 /* StatementWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementWorkerTests.swift; sourceTree = "<group>"; };
 		A969E0FD233CE61800F7C819 /* StatementPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementPresenterTests.swift; sourceTree = "<group>"; };
+		A969E0FF233CEDAD00F7C819 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A98982B52333909100D2B8C3 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		A98982B62333909100D2B8C3 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		A98982B72333909100D2B8C3 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
@@ -108,6 +110,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A969E101233CF25600F7C819 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A967F9CF233B9017009ED21A /* LoginInteractorTests.swift */,
+				A969E0F9233CD48000F7C819 /* LoginPresenterTests.swift */,
+				A969E0EF233BBB4200F7C819 /* LoginViewControllerTests.swift */,
+				A969E0F3233BD39000F7C819 /* LoginWorkerTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A969E102233CF26300F7C819 /* Statement */ = {
+			isa = PBXGroup;
+			children = (
+				A969E0F7233CCEB400F7C819 /* StatementInteractorTests.swift */,
+				A969E0F1233BBD4900F7C819 /* StatementViewControllerTests.swift */,
+				A969E0FB233CE36F00F7C819 /* StatementWorkerTests.swift */,
+				A969E0FD233CE61800F7C819 /* StatementPresenterTests.swift */,
+			);
+			path = Statement;
+			sourceTree = "<group>";
+		};
 		A98982B22333906300D2B8C3 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,15 +171,10 @@
 			isa = PBXGroup;
 			children = (
 				A98982F42338E60300D2B8C3 /* BankAppTests.swift */,
+				A969E0FF233CEDAD00F7C819 /* Extension.swift */,
 				A98982F62338E60300D2B8C3 /* Info.plist */,
-				A967F9CF233B9017009ED21A /* LoginInteractorTests.swift */,
-				A969E0F9233CD48000F7C819 /* LoginPresenterTests.swift */,
-				A969E0EF233BBB4200F7C819 /* LoginViewControllerTests.swift */,
-				A969E0F3233BD39000F7C819 /* LoginWorkerTests.swift */,
-				A969E0F7233CCEB400F7C819 /* StatementInteractorTests.swift */,
-				A969E0F1233BBD4900F7C819 /* StatementViewControllerTests.swift */,
-				A969E0FB233CE36F00F7C819 /* StatementWorkerTests.swift */,
-				A969E0FD233CE61800F7C819 /* StatementPresenterTests.swift */,
+				A969E101233CF25600F7C819 /* Login */,
+				A969E102233CF26300F7C819 /* Statement */,
 			);
 			path = BankAppTests;
 			sourceTree = "<group>";
@@ -328,6 +347,7 @@
 				A969E0FA233CD48000F7C819 /* LoginPresenterTests.swift in Sources */,
 				A969E0F2233BBD4900F7C819 /* StatementViewControllerTests.swift in Sources */,
 				A969E0F0233BBB4200F7C819 /* LoginViewControllerTests.swift in Sources */,
+				A969E100233CEDAD00F7C819 /* Extension.swift in Sources */,
 				A967F9D0233B9017009ED21A /* LoginInteractorTests.swift in Sources */,
 				A969E0F4233BD39000F7C819 /* LoginWorkerTests.swift in Sources */,
 				A98982F52338E60300D2B8C3 /* BankAppTests.swift in Sources */,

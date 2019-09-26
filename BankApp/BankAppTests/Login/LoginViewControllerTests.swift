@@ -45,11 +45,3 @@ class LoginViewControllerTests: XCTestCase {
                   "Campo de senha criado")
     }
 }
-
-extension XCTestCase {
-    
-    func fail() {
-        XCTAssert(false, "Falha!")
-    }
-    
-}
