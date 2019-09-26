@@ -35,6 +35,16 @@ class LoginViewControllerTests: XCTestCase {
         return vc
     }
     
+    //Função para a função de login (clique do botão)
+    func testLoginAction() {
+        guard let vc = getViewController(loading: true) else { fail() ; return }
+        
+        vc.txt_user.text = "teste@teste.com.br"
+        vc.txt_password.text = "Teste1@"
+        
+        XCTAssertNotNil(vc.doLogin())
+    }
+    
     //Função para testar se a tela está sendo chamada corretamente (com os campos)
     func testLoading() {
         guard let vc = getViewController(loading: true) else { fail() ; return }
