@@ -15,6 +15,7 @@ import UIKit
 //Criação de protocolo
 protocol StatementDataProtocol {
     func getStatements(_ id: Int, completionHandler: @escaping ([StatementUser]) -> Void)
+    func mockStatements(_ id: Int, completionHandler: @escaping ([StatementUser]) -> Void)
 }
 
 class StatementWorker
@@ -30,6 +31,11 @@ class StatementWorker
     //Função de captura de extrato (que fará a requisição para o serviço da API)
     func getStatement(_ id: Int, completionHandler: @escaping ([StatementUser]) -> Void) {
         statementData.getStatements(id, completionHandler: completionHandler)
+    }
+    
+    //Função de captura de extrato (que fará a requisição para o serviço da API)
+    func mockStatement(_ id: Int, completionHandler: @escaping ([StatementUser]) -> Void) {
+        statementData.mockStatements(id, completionHandler: completionHandler)
     }
 }
 

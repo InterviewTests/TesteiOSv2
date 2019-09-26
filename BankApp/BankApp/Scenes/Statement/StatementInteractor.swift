@@ -28,6 +28,20 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore
     var user: User!
     var presenter: StatementPresentationLogic?
     var worker: StatementWorker?
+    
+    // Função que manda para o worker (e service, para a chamada da API/GET)
+    func mockStatement(request: Statement.StatementApi.Request)
+    {
+        //Inicializa o worker com base no StatementService (onde utilizamos o protocol para fazer a chamada na API)
+        worker = StatementWorker(StatementService())
+        //Chama a função de captura de extrato (com base no id do usuario logado) e configura o response como varivel de retorno
+        worker?.mockStatement(request.userId) { (response: [StatementUser]) in
+            //Captura o response (e salva no StatementApi.Response)
+            let response = Statement.StatementApi.Response(statement: response)
+            
+            self.presenter?.presentStatement(response)
+        }
+    }
   
     // Função que manda para o worker (e service, para a chamada da API/GET)
     func getStatement(request: Statement.StatementApi.Request)

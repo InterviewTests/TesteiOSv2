@@ -9,6 +9,11 @@
 import Foundation
 
 class StatementService: StatementDataProtocol {
+    func mockStatements(_ id: Int, completionHandler: @escaping ([StatementUser]) -> Void) {
+        let statement = StatementUser.init(title: "Pagamento", desc: "Descrição", date: "26/09/2019", value: 123)
+        completionHandler([statement])
+    }
+    
     
     //Faz a chamada para a API de captura de extrato
     func getStatements(_ id: Int, completionHandler: @escaping ([StatementUser]) -> Void) {
