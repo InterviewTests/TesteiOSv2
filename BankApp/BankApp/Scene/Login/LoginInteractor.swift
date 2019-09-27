@@ -25,17 +25,16 @@ protocol LoginDataStore
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
     var presenter: LoginPresentationLogic?
-    var worker: LoginWorker?
+    var worker: LoginWorker? = LoginWorker()
     var userAccount: Login.Something.UserAccount!
     
     // MARK: Do something
     
     func doLogin(request: Login.Something.Request)
     {
-        worker = LoginWorker()
         worker?.doLoginWork(user: request.user ?? "", password: request.password ?? "", completion: { (response) in
             
-            if let error = response.error?.code {
+            if (response.error?.code) != nil {
                 return
             }
             else {

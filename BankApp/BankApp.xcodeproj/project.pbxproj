@@ -13,7 +13,6 @@
 		9C1BF6D42335615300C2A746 /* BankApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BF6D22335615300C2A746 /* BankApp.xcdatamodeld */; };
 		9C1BF6D62335615300C2A746 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1BF6D52335615300C2A746 /* Assets.xcassets */; };
 		9C1BF6D92335615300C2A746 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1BF6D72335615300C2A746 /* LaunchScreen.storyboard */; };
-		9C1BF6E42335615300C2A746 /* BankAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BF6E32335615300C2A746 /* BankAppTests.swift */; };
 		9C1BF6EF2335615300C2A746 /* BankAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BF6EE2335615300C2A746 /* BankAppUITests.swift */; };
 		9C1BF7042335617300C2A746 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BF6FE2335617300C2A746 /* LoginPresenter.swift */; };
 		9C1BF7052335617300C2A746 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BF6FF2335617300C2A746 /* LoginWorker.swift */; };
@@ -30,6 +29,8 @@
 		9C1BF71A2335625200C2A746 /* ExtratoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1BF7182335625200C2A746 /* ExtratoCell.xib */; };
 		9C1BF71B2335625200C2A746 /* ExtratoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BF7192335625200C2A746 /* ExtratoTableViewCell.swift */; };
 		9C8E9A7A233A55EB0070398D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E9A79233A55EB0070398D /* Extension.swift */; };
+		9C97B0F7233CE14D003D90F0 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97B0F6233CE14D003D90F0 /* ExtensionTests.swift */; };
+		9C97B0F9233CE8D4003D90F0 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97B0F8233CE8D4003D90F0 /* LoginTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +60,6 @@
 		9C1BF6D82335615300C2A746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1BF6DA2335615300C2A746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C1BF6DF2335615300C2A746 /* BankAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C1BF6E32335615300C2A746 /* BankAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAppTests.swift; sourceTree = "<group>"; };
 		9C1BF6E52335615300C2A746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C1BF6EA2335615300C2A746 /* BankAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1BF6EE2335615300C2A746 /* BankAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAppUITests.swift; sourceTree = "<group>"; };
@@ -79,6 +79,8 @@
 		9C1BF7182335625200C2A746 /* ExtratoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtratoCell.xib; sourceTree = "<group>"; };
 		9C1BF7192335625200C2A746 /* ExtratoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtratoTableViewCell.swift; sourceTree = "<group>"; };
 		9C8E9A79233A55EB0070398D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		9C97B0F6233CE14D003D90F0 /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
+		9C97B0F8233CE8D4003D90F0 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +147,8 @@
 		9C1BF6E22335615300C2A746 /* BankAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				9C1BF6E32335615300C2A746 /* BankAppTests.swift */,
+				9C97B0F6233CE14D003D90F0 /* ExtensionTests.swift */,
+				9C97B0F8233CE8D4003D90F0 /* LoginTests.swift */,
 				9C1BF6E52335615300C2A746 /* Info.plist */,
 			);
 			path = BankAppTests;
@@ -369,7 +372,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C1BF6E42335615300C2A746 /* BankAppTests.swift in Sources */,
+				9C97B0F9233CE8D4003D90F0 /* LoginTests.swift in Sources */,
+				9C97B0F7233CE14D003D90F0 /* ExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

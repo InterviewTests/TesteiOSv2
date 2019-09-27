@@ -120,7 +120,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         request.user = userTextField.text ?? ""
         request.password = passwordTextField.text ?? ""
         interactor?.doLogin(request: request)
-        print(interactor)
     }
     
     @IBAction func loginAction(_ sender: Any) {
