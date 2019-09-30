@@ -26,7 +26,7 @@ protocol ExtratoDataStore
 class ExtratoInteractor: ExtratoBusinessLogic, ExtratoDataStore
 {
     var presenter: ExtratoPresentationLogic?
-    var worker: ExtratoWorker?
+    var worker: ExtratoWorker? = ExtratoWorker()
     //var name: String = ""
     var userAccount: Login.Something.UserAccount!
     
@@ -34,7 +34,6 @@ class ExtratoInteractor: ExtratoBusinessLogic, ExtratoDataStore
     
     func doExtrato(request: Extrato.Something.Request)
     {
-        worker = ExtratoWorker()
         worker?.doExtratoWork(completion: { (response) in
             
             self.presenter?.presentSomething(response: response)

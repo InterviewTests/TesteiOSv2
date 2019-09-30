@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9C1BF6CC2335615300C2A746 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BF6CB2335615300C2A746 /* AppDelegate.swift */; };
-		9C1BF6CE2335615300C2A746 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BF6CD2335615300C2A746 /* ViewController.swift */; };
 		9C1BF6D12335615300C2A746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1BF6CF2335615300C2A746 /* Main.storyboard */; };
 		9C1BF6D42335615300C2A746 /* BankApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BF6D22335615300C2A746 /* BankApp.xcdatamodeld */; };
 		9C1BF6D62335615300C2A746 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1BF6D52335615300C2A746 /* Assets.xcassets */; };
@@ -31,6 +30,7 @@
 		9C8E9A7A233A55EB0070398D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E9A79233A55EB0070398D /* Extension.swift */; };
 		9C97B0F7233CE14D003D90F0 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97B0F6233CE14D003D90F0 /* ExtensionTests.swift */; };
 		9C97B0F9233CE8D4003D90F0 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97B0F8233CE8D4003D90F0 /* LoginTests.swift */; };
+		D458E9CA23422C0200802A24 /* ExtratoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D458E9C923422C0200802A24 /* ExtratoTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,6 @@
 /* Begin PBXFileReference section */
 		9C1BF6C82335615300C2A746 /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1BF6CB2335615300C2A746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9C1BF6CD2335615300C2A746 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9C1BF6D02335615300C2A746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C1BF6D32335615300C2A746 /* BankApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BankApp.xcdatamodel; sourceTree = "<group>"; };
 		9C1BF6D52335615300C2A746 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		9C8E9A79233A55EB0070398D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9C97B0F6233CE14D003D90F0 /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
 		9C97B0F8233CE8D4003D90F0 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
+		D458E9C923422C0200802A24 /* ExtratoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtratoTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +134,6 @@
 				9C8E9A78233A55B70070398D /* Extension */,
 				9C1BF6FC2335615D00C2A746 /* Scene */,
 				9C1BF6CB2335615300C2A746 /* AppDelegate.swift */,
-				9C1BF6CD2335615300C2A746 /* ViewController.swift */,
 				9C1BF6CF2335615300C2A746 /* Main.storyboard */,
 				9C1BF6D52335615300C2A746 /* Assets.xcassets */,
 				9C1BF6D72335615300C2A746 /* LaunchScreen.storyboard */,
@@ -149,6 +148,7 @@
 			children = (
 				9C97B0F6233CE14D003D90F0 /* ExtensionTests.swift */,
 				9C97B0F8233CE8D4003D90F0 /* LoginTests.swift */,
+				D458E9C923422C0200802A24 /* ExtratoTests.swift */,
 				9C1BF6E52335615300C2A746 /* Info.plist */,
 			);
 			path = BankAppTests;
@@ -361,7 +361,6 @@
 				9C8E9A7A233A55EB0070398D /* Extension.swift in Sources */,
 				9C1BF714233561A000C2A746 /* ExtratoModels.swift in Sources */,
 				9C1BF715233561A000C2A746 /* ExtratoViewController.swift in Sources */,
-				9C1BF6CE2335615300C2A746 /* ViewController.swift in Sources */,
 				9C1BF6CC2335615300C2A746 /* AppDelegate.swift in Sources */,
 				9C1BF7092335617300C2A746 /* LoginInteractor.swift in Sources */,
 				9C1BF71B2335625200C2A746 /* ExtratoTableViewCell.swift in Sources */,
@@ -372,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D458E9CA23422C0200802A24 /* ExtratoTests.swift in Sources */,
 				9C97B0F9233CE8D4003D90F0 /* LoginTests.swift in Sources */,
 				9C97B0F7233CE14D003D90F0 /* ExtensionTests.swift in Sources */,
 			);

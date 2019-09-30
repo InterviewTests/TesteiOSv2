@@ -1,31 +1,30 @@
 //
-//  LoginTests.swift
+//  ExtratoTests.swift
 //  BankAppTests
 //
-//  Created by Victor Lisboa on 26/09/19.
+//  Created by Victor Hugo Martins Lisboa on 30/09/19.
 //  Copyright © 2019 Victor Lisboa. All rights reserved.
 //
 
 import XCTest
 @testable import BankApp
 
-class MockLoginWorker: LoginWorker {
+class MockExtratoWorker: ExtratoWorker {
     
-    var isLoginCalled = false
-    var response: Login.Something.Response?
+    var isExtratoCalled = false
+    var response: Extrato.Something.Response?
     
-    override func doLoginWork(user: String, password: String, completion: @escaping((Login.Something.Response) -> Void)) {
-        isLoginCalled = true
-
-        let userAccount = Login.Something.UserAccount(userId: 1, name: "José da Silva", bankAccount: "1234", agency: "567890", balance: 4.15)
+    override func doExtratoWork(completion: @escaping((Extrato.Something.Response) -> Void)) {
+        isExtratoCalled = true
         
-        response = Login.Something.Response(userAccount: userAccount, error: nil)
+        let statements = [Extrato.Something.Statement(title: "Pagamento", desc: "Luz", date: "2019-09-17", value: -130.54), Extrato.Something.Statement(title: "Pagamento", desc: "Faculdade", date: "2019-09-10", value: -500.0),Extrato.Something.Statement(title: "Pagamento", desc: "Internet", date: "2019-09-23", value: -89.90)]
+        response = Extrato.Something.Response(statementList: statements, error: nil)
         
         completion(response!)
     }
 }
 
-class LoginTests: XCTestCase {
+class ExtratoTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -46,37 +45,30 @@ class LoginTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
-
-    let user = "Test@clean.swift"
-    let password = "Test@1"
-    var worker = LoginWorker()
-    let interactor = LoginInteractor()
-    let presenter = LoginPresenter()
-    let viewController = LoginViewController()
-    let router = LoginRouter()
+    
+    let worker = ExtratoWorker()
+    let interactor = ExtratoInteractor()
+    let presenter = ExtratoPresenter()
+    let viewController = ExtratoViewController()
+    let router = ExtratoRouter()
     
     func testWorker() {
         let expectation = XCTestExpectation(description: "HTTP Request")
-        worker.doLoginWork(user: user, password: password) { (response) in
+        worker.doExtratoWork { (response) in
             XCTAssertNotNil(response)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
     }
-    
-    func testInteractor() {
 
-        let mockWorker = MockLoginWorker()
-        var request = Login.Something.Request()
-        
-        request.user = user
-        request.password = password
+    func testInteractor() {
+        let mockWorker = MockExtratoWorker()
+        let request = Extrato.Something.Request()
         
         interactor.worker = mockWorker
-        interactor.doLogin(request: request)
+        interactor.doExtrato(request: request)
         
-        XCTAssert(mockWorker.isLoginCalled)
+        XCTAssert(mockWorker.isExtratoCalled)
         
         XCTAssertNotNil(mockWorker.response)
     }
@@ -88,10 +80,4 @@ class LoginTests: XCTestCase {
     func testViewController() {
         
     }
-    
-    func testRouter() {
-        
-    }
 }
-
-
