@@ -25,10 +25,39 @@ class MockLoginWorker: LoginWorker {
     }
 }
 
-class LoginTests: XCTestCase {
+class MockLoginPresentationLogic: LoginPresentationLogic {
+    var isLoginCalled = false
+    func presentLogin() {
+        isLoginCalled = true
+    }
+}
 
+class MockLoginDisplayLogic: LoginDisplayLogic {
+    var isDisplayCalled = false
+    func presentExtrato() {
+        isDisplayCalled = true
+    }
+}
+
+class LoginTests: XCTestCase {
+    
+    var user: String?
+    var password: String?
+    var worker: LoginWorker?
+    var interactor: LoginInteractor?
+    var presenter: LoginPresenter?
+    var viewController: LoginViewController?
+    var router: LoginRouter?
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        user = "Test@clean.swift"
+        password = "Test@1"
+        worker = LoginWorker()
+        interactor = LoginInteractor()
+        presenter = LoginPresenter()
+        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+        router = LoginRouter()
     }
 
     override func tearDown() {
@@ -46,19 +75,10 @@ class LoginTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
-
-    let user = "Test@clean.swift"
-    let password = "Test@1"
-    var worker = LoginWorker()
-    let interactor = LoginInteractor()
-    let presenter = LoginPresenter()
-    let viewController = LoginViewController()
-    let router = LoginRouter()
     
     func testWorker() {
         let expectation = XCTestExpectation(description: "HTTP Request")
-        worker.doLoginWork(user: user, password: password) { (response) in
+        worker?.doLoginWork(user: user ?? "", password: password ?? "") { (response) in
             XCTAssertNotNil(response)
             expectation.fulfill()
         }
@@ -68,13 +88,17 @@ class LoginTests: XCTestCase {
     func testInteractor() {
 
         let mockWorker = MockLoginWorker()
+        let mockPresentationLogic = MockLoginPresentationLogic()
         var request = Login.Something.Request()
-        
+
         request.user = user
         request.password = password
-        
-        interactor.worker = mockWorker
-        interactor.doLogin(request: request)
+
+        interactor?.worker = mockWorker
+        interactor?.presenter = mockPresentationLogic
+        interactor?.doLogin(request: request)
+
+        XCTAssert(mockPresentationLogic.isLoginCalled)
         
         XCTAssert(mockWorker.isLoginCalled)
         
@@ -82,11 +106,21 @@ class LoginTests: XCTestCase {
     }
     
     func testPresenter() {
+        let mockDisplayLogic =  MockLoginDisplayLogic()
+        presenter?.viewController = mockDisplayLogic
+        presenter?.presentLogin()
         
+        XCTAssert(mockDisplayLogic.isDisplayCalled)
     }
     
     func testViewController() {
+        viewController?.userTextField = UITextField()
+        viewController?.passwordTextField = UITextField()
         
+        viewController?.userTextField.text = user
+        viewController?.passwordTextField.text = password
+        
+        XCTAssertNotNil(viewController?.executeLogin())
     }
     
     func testRouter() {

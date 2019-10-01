@@ -24,10 +24,36 @@ class MockExtratoWorker: ExtratoWorker {
     }
 }
 
+class MockExtratoPresentationLogic: ExtratoPresentationLogic {
+    var isExtratoCalled = false
+    
+    func presentSomething(response: Extrato.Something.Response) {
+        isExtratoCalled = true
+    }
+}
+
+class MockExtratoDisplayLogic: ExtratoDisplayLogic {
+    var isDisplayCalled = false
+    func displayStatementList(responseExtrato: Extrato.Something.Response) {
+        isDisplayCalled = true
+    }
+}
+
 class ExtratoTests: XCTestCase {
 
+    var worker: ExtratoWorker?
+    var interactor: ExtratoInteractor?
+    var presenter: ExtratoPresenter?
+    var viewController: ExtratoViewController?
+    var router: ExtratoRouter?
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        worker = ExtratoWorker()
+        interactor = ExtratoInteractor()
+        presenter = ExtratoPresenter()
+        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ExtratiViewController") as? ExtratoViewController
+        router = ExtratoRouter()
     }
 
     override func tearDown() {
@@ -46,15 +72,9 @@ class ExtratoTests: XCTestCase {
         }
     }
     
-    let worker = ExtratoWorker()
-    let interactor = ExtratoInteractor()
-    let presenter = ExtratoPresenter()
-    let viewController = ExtratoViewController()
-    let router = ExtratoRouter()
-    
     func testWorker() {
         let expectation = XCTestExpectation(description: "HTTP Request")
-        worker.doExtratoWork { (response) in
+        worker?.doExtratoWork { (response) in
             XCTAssertNotNil(response)
             expectation.fulfill()
         }
@@ -62,11 +82,16 @@ class ExtratoTests: XCTestCase {
     }
 
     func testInteractor() {
+        
         let mockWorker = MockExtratoWorker()
         let request = Extrato.Something.Request()
+        let mockPresentationLogic = MockExtratoPresentationLogic()
         
-        interactor.worker = mockWorker
-        interactor.doExtrato(request: request)
+        interactor?.worker = mockWorker
+        interactor?.presenter = mockPresentationLogic
+        interactor?.doExtrato(request: request)
+        
+        XCTAssert(mockWorker.isExtratoCalled)
         
         XCTAssert(mockWorker.isExtratoCalled)
         
@@ -75,6 +100,16 @@ class ExtratoTests: XCTestCase {
     
     func testPresenter() {
         
+        let mockDisplayLogic =  MockExtratoDisplayLogic()
+        
+        let statements = [Extrato.Something.Statement(title: "Pagamento", desc: "Luz", date: "2019-09-17", value: -130.54), Extrato.Something.Statement(title: "Pagamento", desc: "Faculdade", date: "2019-09-10", value: -500.0),Extrato.Something.Statement(title: "Pagamento", desc: "Internet", date: "2019-09-23", value: -89.90)]
+        
+        let response = Extrato.Something.Response(statementList: statements, error: nil)
+        
+        presenter?.viewController = mockDisplayLogic
+        presenter?.presentSomething(response: response)
+        
+        XCTAssert(mockDisplayLogic.isDisplayCalled)
     }
     
     func testViewController() {
