@@ -31,13 +31,13 @@ class BankAppTests: XCTestCase {
     }
     
     func testisNumber(){
-        let numero = "2134986" // senha sem maiscula
+        let numero = "2134986" // teste se numero
         XCTAssertEqual(numero.isNumber(),true)
     }
     
     
     func testisNotNumber(){
-        let numero = "A2347678" // senha sem maiscula
+        let numero = "A2347678" // teste nao é mnumero
         XCTAssertEqual(numero.isNumber(),false)
     }
     
@@ -50,5 +50,31 @@ class BankAppTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    
+    func testMockLoginResponse(){
+        
+        tester = true
+            
+        let mockLogin = LoginInteractor()
+        
+        let dadosUser = Login.Something.Request.init(user: "tester@test.com", password: "Tada@test")
+        
+        mockLogin.login(request: dadosUser)
+        
+        
+        
+       
+        
+        // colocar aqui o resultado do teste com um flag que mostra que passou por lá...
+            
+            
+        }
+        
+      
+        
+        
+        
+    
 
 }

@@ -12,9 +12,7 @@ import UIKit
 class StatementCell: UITableViewCell{
     
     @IBOutlet weak var dataLabel: UILabel!
-    
     @IBOutlet weak var pagamentoLabel: UILabel!
-    
     @IBOutlet weak var tipoContaLabel: UILabel!
     @IBOutlet weak var valorLabel: UILabel!
 }

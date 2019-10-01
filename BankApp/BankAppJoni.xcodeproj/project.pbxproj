@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270FBBD4233D335E00B8F753 /* BankAppAPIProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270FBBD3233D335E00B8F753 /* BankAppAPIProtocols.swift */; };
+		270FBBD9233E5AF700B8F753 /* MockLoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270FBBD5233D35FA00B8F753 /* MockLoginServices.swift */; };
+		270FBBDA233E739C00B8F753 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2731F19123338FBF0011BA86 /* ViewController.swift */; };
 		271AE8092338FC8D00D8D2EF /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271AE8082338FC8D00D8D2EF /* KeychainService.swift */; };
 		2731F19023338FBF0011BA86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2731F18F23338FBF0011BA86 /* AppDelegate.swift */; };
-		2731F19223338FBF0011BA86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2731F19123338FBF0011BA86 /* ViewController.swift */; };
 		2731F19523338FBF0011BA86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2731F19323338FBF0011BA86 /* Main.storyboard */; };
 		2731F19723338FBF0011BA86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2731F19623338FBF0011BA86 /* Assets.xcassets */; };
 		2731F19A23338FBF0011BA86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2731F19823338FBF0011BA86 /* LaunchScreen.storyboard */; };
@@ -29,6 +31,7 @@
 		27BAA06623339BE400D5ED5C /* StatementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA06023339BE400D5ED5C /* StatementsInteractor.swift */; };
 		27BAA0A32333BCCA00D5ED5C /* Autenticacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA0A22333BCCA00D5ED5C /* Autenticacao.swift */; };
 		27BAA0A62333F2D500D5ED5C /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAA0A52333F2D500D5ED5C /* LoginService.swift */; };
+		27F18CF3233A9B6000D2BC95 /* testeAcesso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F18CF2233A9B6000D2BC95 /* testeAcesso.swift */; };
 		27F3CE8123355507001DD209 /* StatementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CE8023355507001DD209 /* StatementCell.swift */; };
 		9CA017662337C1B1008CB4E1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA017652337C1B1008CB4E1 /* Extension.swift */; };
 		9CA017692337DB6C008CB4E1 /* StatementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA017682337DB6C008CB4E1 /* StatementsService.swift */; };
@@ -52,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		270FBBD3233D335E00B8F753 /* BankAppAPIProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAppAPIProtocols.swift; sourceTree = "<group>"; };
+		270FBBD5233D35FA00B8F753 /* MockLoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginServices.swift; sourceTree = "<group>"; };
 		271AE8082338FC8D00D8D2EF /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		2731F18C23338FBF0011BA86 /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2731F18F23338FBF0011BA86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +85,7 @@
 		27BAA06023339BE400D5ED5C /* StatementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractor.swift; sourceTree = "<group>"; };
 		27BAA0A22333BCCA00D5ED5C /* Autenticacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autenticacao.swift; sourceTree = "<group>"; };
 		27BAA0A52333F2D500D5ED5C /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		27F18CF2233A9B6000D2BC95 /* testeAcesso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testeAcesso.swift; sourceTree = "<group>"; };
 		27F3CE8023355507001DD209 /* StatementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCell.swift; sourceTree = "<group>"; };
 		9CA017652337C1B1008CB4E1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9CA017682337DB6C008CB4E1 /* StatementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsService.swift; sourceTree = "<group>"; };
@@ -110,6 +116,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		270FBBD7233D361200B8F753 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		2731F18323338FBF0011BA86 = {
 			isa = PBXGroup;
 			children = (
@@ -138,11 +151,12 @@
 				2731F19623338FBF0011BA86 /* Assets.xcassets */,
 				2731F18F23338FBF0011BA86 /* AppDelegate.swift */,
 				2731F19823338FBF0011BA86 /* LaunchScreen.storyboard */,
+				270FBBD3233D335E00B8F753 /* BankAppAPIProtocols.swift */,
+				2731F19123338FBF0011BA86 /* ViewController.swift */,
 				27BAA04C23339B4200D5ED5C /* Scenes */,
 				9CA017642337C196008CB4E1 /* Extensions */,
 				27BAA0A42333F2BD00D5ED5C /* Services */,
 				27BAA0A12333BC8400D5ED5C /* Shared */,
-				2731F19123338FBF0011BA86 /* ViewController.swift */,
 				2731F19B23338FBF0011BA86 /* Info.plist */,
 			);
 			path = BankApp;
@@ -151,6 +165,7 @@
 		2731F1A323338FBF0011BA86 /* BankAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				270FBBD7233D361200B8F753 /* Mocks */,
 				2731F1A423338FBF0011BA86 /* BankAppTests.swift */,
 				2731F1A623338FBF0011BA86 /* Info.plist */,
 			);
@@ -198,6 +213,7 @@
 				27BAA05F23339BE400D5ED5C /* StatementsViewController.swift */,
 				27BAA06023339BE400D5ED5C /* StatementsInteractor.swift */,
 				27F3CE8023355507001DD209 /* StatementCell.swift */,
+				27F18CF2233A9B6000D2BC95 /* testeAcesso.swift */,
 			);
 			path = Statements;
 			sourceTree = "<group>";
@@ -214,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				27BAA0A52333F2D500D5ED5C /* LoginService.swift */,
+				270FBBD5233D35FA00B8F753 /* MockLoginServices.swift */,
 				9CA017682337DB6C008CB4E1 /* StatementsService.swift */,
 				271AE8082338FC8D00D8D2EF /* KeychainService.swift */,
 			);
@@ -371,9 +388,10 @@
 				27F3CE8123355507001DD209 /* StatementCell.swift in Sources */,
 				27BAA06223339BE400D5ED5C /* StatementsWorker.swift in Sources */,
 				27BAA05523339BD100D5ED5C /* LoginPresenter.swift in Sources */,
-				2731F19223338FBF0011BA86 /* ViewController.swift in Sources */,
 				27BAA06323339BE400D5ED5C /* StatementsRouter.swift in Sources */,
 				2731F19023338FBF0011BA86 /* AppDelegate.swift in Sources */,
+				270FBBDA233E739C00B8F753 /* ViewController.swift in Sources */,
+				270FBBD4233D335E00B8F753 /* BankAppAPIProtocols.swift in Sources */,
 				27BAA05A23339BD100D5ED5C /* LoginInteractor.swift in Sources */,
 				9CA017662337C1B1008CB4E1 /* Extension.swift in Sources */,
 				27BAA06123339BE400D5ED5C /* StatementsPresenter.swift in Sources */,
@@ -382,10 +400,12 @@
 				271AE8092338FC8D00D8D2EF /* KeychainService.swift in Sources */,
 				9CA017692337DB6C008CB4E1 /* StatementsService.swift in Sources */,
 				27BAA0A32333BCCA00D5ED5C /* Autenticacao.swift in Sources */,
+				27F18CF3233A9B6000D2BC95 /* testeAcesso.swift in Sources */,
 				27BAA05723339BD100D5ED5C /* LoginRouter.swift in Sources */,
 				27BAA0A62333F2D500D5ED5C /* LoginService.swift in Sources */,
 				27BAA05623339BD100D5ED5C /* LoginWorker.swift in Sources */,
 				27BAA06523339BE400D5ED5C /* StatementsViewController.swift in Sources */,
+				270FBBD9233E5AF700B8F753 /* MockLoginServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +583,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BankApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -581,6 +602,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BankApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

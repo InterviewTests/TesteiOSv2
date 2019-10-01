@@ -13,23 +13,26 @@
 import UIKit
 import Foundation
 
-protocol LoginProtocol {
-    func login(_ login: String, password: String, completionHandler: @escaping (Login.Something.User?) -> Void)
-}
+
 
 class LoginWorker
 {
     var loginProt: LoginProtocol
     
+    //inicializa
     init(_ loginProt: LoginProtocol) {
         self.loginProt = loginProt
     }
     
     
     //chama aqui a rotina de login com o completionhandler para aguardar a volta dos dados...a rotina retorna para o Login Interactor
-    func login(_ login: String, password: String, completionHandler: @escaping (Login.Something.User?) -> Void) {
+    func login(_ login: String, password: String, completionHandler: @escaping (Login.Something.User?) -> Void)
+    
+    {
         loginProt.login(login, password: password, completionHandler: completionHandler)
     }
 }
+
+
 
     

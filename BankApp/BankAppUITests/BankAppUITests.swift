@@ -30,5 +30,29 @@ class BankAppUITests: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    
+    func testUserLogin(){
+        
+        
+        let app = XCUIApplication()
+        let userTextField = app.textFields["  User"]
+        userTextField.tap()
+        userTextField.swipeLeft()
+        
+        let passwordSecureTextField = app.secureTextFields["  Password"]
+        passwordSecureTextField.swipeLeft()
+        passwordSecureTextField.swipeLeft()
+        userTextField.tap()
+        userTextField.tap()
+        passwordSecureTextField.tap()
+        
+        let loginButton = app.buttons["Login"]
+        loginButton.tap()
+        loginButton.tap()
+                
+        
+    }
+    
 
 }

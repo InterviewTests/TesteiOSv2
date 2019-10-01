@@ -18,6 +18,9 @@ protocol StatementsDisplayLogic: class
     func showStatement(statements: Statement.StatementApi.Response)
 }
 
+
+
+
 class StatementsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,  StatementsDisplayLogic
 {
     
@@ -146,6 +149,7 @@ class StatementsViewController: UIViewController, UITableViewDataSource,UITableV
     
     
     //insere os dados do cliente logado na View
+   
     
    
     if let user =  router?.dataStore?.user{

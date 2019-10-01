@@ -44,34 +44,54 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     //Para fazer a chamada da API de login
     func login(request: Login.Something.Request)
     {
-        worker = LoginWorker(LoginService())
+        
+        if tester {
+        
+        let mockLogin = MockLoginServices()
         
         
-        // importante esta chamada utiliza o completion handler para aguardar retornar da chamada da API
-        // no retorno coloca os dados do login na estrutura User dentro do Login.Something.User
-        //somente depois é que chama o presenter para chamar a tela do extrato
-        // chama o Login Worker para chamar a funcao login e retornar o response da API
-        worker?.login(request.user!, password: request.password!) { (response: Login.Something.User?) in
+        mockLogin.login(request.user!, password: request.password!) { (response: Login.Something.User?) in
+            
             self.user = response
             
-            self.saveUser(request: request)
-            
-            //guarde o valor do iD do  usuário para a chamada do extrato
-//            usuarioID = response!.userId
-//            usuarioNome = response!.name
-//            usuarioConta = response!.bankAccount
-//            usuarioSaldo = response!.balance
-//            usuarioAgencia = response!.agency
-//
-            //transferido para a função saveUser
-            //self.presenter?.presentLogin()
+            self.presenter?.presentLogin()
         }
+
+        }else{
+            worker = LoginWorker(LoginService())
+            
+            // importante esta chamada utiliza o completion handler para aguardar retornar da chamada da API
+            // no retorno coloca os dados do login na estrutura User dentro do Login.Something.User
+            //somente depois é que chama o presenter para chamar a tela do extrato
+            // chama o Login Worker para chamar a funcao login e retornar o response da API
+            worker?.login(request.user!, password: request.password!)
+            { (response: Login.Something.User?) in
+                self.user = response
+                
+                self.saveUser(request: request)
+                
+            }
+        }
+        
+        
+        
+        
+       
+        
+    
+        
+        
+        
+        
     }
     
     
     
     //Função para salvar (de forma segura) o ultimo usuario logado
     private func saveUser(request: Login.Something.Request) {
+        
+        
+    
         
         //Inicializa as variaveis de usuario e senha
         let usuario = request.user

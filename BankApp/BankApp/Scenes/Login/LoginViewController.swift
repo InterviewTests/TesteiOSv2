@@ -12,6 +12,12 @@
 
 import UIKit
 
+
+
+// tester flag
+var tester = false
+
+
 protocol LoginDisplayLogic: class
 {
   func showStatement()
@@ -84,6 +90,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
     super.viewDidLoad()
     //doSomething()
     
+    
+  
+    
     //pega ultimo usuario logado
     getUsuario()
     
@@ -152,12 +161,13 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
     }
     
     @IBAction func loginButton(_ sender: Any){
-        //call login
+        //botao Login foi apertado
+        // Chame a rotina de validação de login
         self.executeLogin()
     }
     
     
-    
+    // executa a vlidação dos camnpos
     func executeLogin()
     {
         let usuario = userInput.text!
@@ -209,6 +219,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic{
             return
         }
         
+        //Campos foram Call Login API
         //chamae o Interactor passando a estrutura do request
         callInteractor()
         
