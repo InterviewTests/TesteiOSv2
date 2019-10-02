@@ -1,8 +1,8 @@
 //
-//  LoginTests.swift
+//  LoginInteractorTest.swift
 //  BankAppTests
 //
-//  Created by Victor Lisboa on 26/09/19.
+//  Created by Victor Hugo Martins Lisboa on 02/10/19.
 //  Copyright © 2019 Victor Lisboa. All rights reserved.
 //
 
@@ -32,60 +32,26 @@ class MockLoginPresentationLogic: LoginPresentationLogic {
     }
 }
 
-class MockLoginDisplayLogic: LoginDisplayLogic {
-    var isDisplayCalled = false
-    func presentExtrato() {
-        isDisplayCalled = true
-    }
-}
+class LoginInteractorTests: XCTestCase {
 
-class LoginTests: XCTestCase {
-    
     var user: String?
     var password: String?
-    var worker: LoginWorker?
     var interactor: LoginInteractor?
-    var presenter: LoginPresenter?
-    var viewController: LoginViewController?
-    var router: LoginRouter?
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         user = "Test@clean.swift"
         password = "Test@1"
-        worker = LoginWorker()
         interactor = LoginInteractor()
-        presenter = LoginPresenter()
-        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
-        router = LoginRouter()
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
+    func testInteractor() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
-    func testWorker() {
-        let expectation = XCTestExpectation(description: "HTTP Request")
-        worker?.doLoginWork(user: user ?? "", password: password ?? "") { (response) in
-            XCTAssertNotNil(response)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 10.0)
-    }
-    
-    func testInteractor() {
 
         let mockWorker = MockLoginWorker()
         let mockPresentationLogic = MockLoginPresentationLogic()
@@ -104,28 +70,13 @@ class LoginTests: XCTestCase {
         
         XCTAssertNotNil(mockWorker.response)
     }
-    
-    func testPresenter() {
-        let mockDisplayLogic =  MockLoginDisplayLogic()
-        presenter?.viewController = mockDisplayLogic
-        presenter?.presentLogin()
-        
-        XCTAssert(mockDisplayLogic.isDisplayCalled)
+
+
+    func testPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+        }
     }
-    
-    func testViewController() {
-        viewController?.userTextField = UITextField()
-        viewController?.passwordTextField = UITextField()
-        
-        viewController?.userTextField.text = user
-        viewController?.passwordTextField.text = password
-        
-        XCTAssertNotNil(viewController?.executeLogin())
-    }
-    
-    func testRouter() {
-        
-    }
+
 }
-
-

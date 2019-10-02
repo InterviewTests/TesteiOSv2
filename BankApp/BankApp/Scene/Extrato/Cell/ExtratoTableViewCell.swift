@@ -26,9 +26,4 @@ class ExtratoTableViewCell: UITableViewCell {
         self.mainView.layer.shadowRadius = 2
         self.mainView.layer.shadowOpacity = 0.25
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
 }
