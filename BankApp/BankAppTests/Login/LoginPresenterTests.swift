@@ -9,7 +9,7 @@
 import XCTest
 @testable import BankApp
 
-class MockLoginDisplayLogic: LoginDisplayLogic {
+class LoginDisplayLogicSpy: LoginDisplayLogic {
     var isDisplayCalled = false
     func presentExtrato() {
         isDisplayCalled = true
@@ -18,12 +18,12 @@ class MockLoginDisplayLogic: LoginDisplayLogic {
 
 class LoginPresenterTests: XCTestCase {
     
-    var presenter: LoginPresenter?
+    var sut: LoginPresenter?
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        presenter = LoginPresenter()
+        sut = LoginPresenter()
     }
 
     override func tearDown() {
@@ -33,11 +33,11 @@ class LoginPresenterTests: XCTestCase {
     func testPresenter() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        let mockDisplayLogic =  MockLoginDisplayLogic()
-        presenter?.viewController = mockDisplayLogic
-        presenter?.presentLogin()
+        let spy =  LoginDisplayLogicSpy()
+        sut?.viewController = spy
+        sut?.presentLogin()
         
-        XCTAssert(mockDisplayLogic.isDisplayCalled)
+        XCTAssert(spy.isDisplayCalled)
     }
 
     func testPerformanceExample() {

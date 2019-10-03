@@ -11,11 +11,9 @@ import XCTest
 
 class MockExtratoWorker: ExtratoWorker {
     
-    var isExtratoCalled = false
     var response: Extrato.Something.Response?
     
     override func doExtratoWork(completion: @escaping((Extrato.Something.Response) -> Void)) {
-        isExtratoCalled = true
         
         let statements = [Extrato.Something.Statement(title: "Pagamento", desc: "Luz", date: "2019-09-17", value: -130.54), Extrato.Something.Statement(title: "Pagamento", desc: "Faculdade", date: "2019-09-10", value: 500.0)]
         response = Extrato.Something.Response(statementList: statements, error: nil)
@@ -24,7 +22,7 @@ class MockExtratoWorker: ExtratoWorker {
     }
 }
 
-class MockExtratoPresentationLogic: ExtratoPresentationLogic {
+class ExtratoPresentationLogicSpy: ExtratoPresentationLogic {
     var isExtratoCalled = false
     
     func presentSomething(response: Extrato.Something.Response) {
@@ -34,11 +32,11 @@ class MockExtratoPresentationLogic: ExtratoPresentationLogic {
 
 class ExtratoInteractorTests: XCTestCase {
     
-    var interactor: ExtratoInteractor?
+    var sut: ExtratoInteractor?
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        interactor = ExtratoInteractor()
+        sut = ExtratoInteractor()
     }
 
     override func tearDown() {
@@ -50,16 +48,14 @@ class ExtratoInteractorTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.let mockWorker = MockExtratoWorker()
         let mockWorker = MockExtratoWorker()
         let request = Extrato.Something.Request()
-        let mockPresentationLogic = MockExtratoPresentationLogic()
+        let spy = ExtratoPresentationLogicSpy()
         
-        interactor?.worker = mockWorker
-        interactor?.presenter = mockPresentationLogic
-        interactor?.doExtrato(request: request)
+        sut?.worker = mockWorker
+        sut?.presenter = spy
+        sut?.doExtrato(request: request)
         
-        XCTAssert(mockPresentationLogic.isExtratoCalled)
-        
-        XCTAssert(mockWorker.isExtratoCalled)
-        
+        XCTAssert(spy.isExtratoCalled)
+                
         XCTAssertNotNil(mockWorker.response)
     }
 

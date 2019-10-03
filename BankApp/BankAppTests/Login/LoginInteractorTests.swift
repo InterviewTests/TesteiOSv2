@@ -25,7 +25,7 @@ class MockLoginWorker: LoginWorker {
     }
 }
 
-class MockLoginPresentationLogic: LoginPresentationLogic {
+class LoginPresentationLogicSpy: LoginPresentationLogic {
     var isLoginCalled = false
     func presentLogin() {
         isLoginCalled = true
@@ -36,13 +36,13 @@ class LoginInteractorTests: XCTestCase {
 
     var user: String?
     var password: String?
-    var interactor: LoginInteractor?
+    var sut: LoginInteractor?
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         user = "Test@clean.swift"
         password = "Test@1"
-        interactor = LoginInteractor()
+        sut = LoginInteractor()
     }
 
     override func tearDown() {
@@ -54,17 +54,17 @@ class LoginInteractorTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
 
         let mockWorker = MockLoginWorker()
-        let mockPresentationLogic = MockLoginPresentationLogic()
+        let spy = LoginPresentationLogicSpy()
         var request = Login.Something.Request()
 
         request.user = user
         request.password = password
 
-        interactor?.worker = mockWorker
-        interactor?.presenter = mockPresentationLogic
-        interactor?.doLogin(request: request)
+        sut?.worker = mockWorker
+        sut?.presenter = spy
+        sut?.doLogin(request: request)
 
-        XCTAssert(mockPresentationLogic.isLoginCalled)
+        XCTAssert(spy.isLoginCalled)
         
         XCTAssert(mockWorker.isLoginCalled)
         

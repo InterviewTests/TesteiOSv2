@@ -18,12 +18,5 @@ class ExtratoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.backgroundColor = UIColor.white
-        self.mainView.clipsToBounds = true
-        self.mainView.layer.masksToBounds = false
-        self.mainView.layer.cornerRadius = 5
-        self.mainView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        self.mainView.layer.shadowRadius = 2
-        self.mainView.layer.shadowOpacity = 0.25
     }
 }

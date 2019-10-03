@@ -81,8 +81,12 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        buttonLogin.clipsToBounds = true
-        buttonLogin.layer.cornerRadius = 5
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userTextField.text = ""
+        passwordTextField.text = ""
     }
     
     // MARK: Do something

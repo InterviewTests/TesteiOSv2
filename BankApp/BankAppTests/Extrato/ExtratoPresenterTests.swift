@@ -9,7 +9,7 @@
 import XCTest
 @testable import BankApp
 
-class MockExtratoDisplayLogic: ExtratoDisplayLogic {
+class ExtratoDisplayLogicSpy: ExtratoDisplayLogic {
     var isDisplayCalled = false
     func displayStatementList(responseExtrato: Extrato.Something.Response) {
         isDisplayCalled = true
@@ -32,17 +32,17 @@ class ExtratoPresenterTests: XCTestCase {
     func testPresenter() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.let
-        let mockDisplayLogic = MockExtratoDisplayLogic()
+        let spy = ExtratoDisplayLogicSpy()
         
         let statements = [Extrato.Something.Statement(title: "Pagamento", desc: "Luz", date: "2019-09-17", value: -130.54), Extrato.Something.Statement(title: "Pagamento", desc: "Faculdade", date: "2019-09-10", value: 500.0)]
         
         let response = Extrato.Something.Response(statementList: statements, error: nil)
         
         
-        presenter?.viewController = mockDisplayLogic
+        presenter?.viewController = spy
         presenter?.presentSomething(response: response)
         
-        XCTAssert(mockDisplayLogic.isDisplayCalled)
+        XCTAssert(spy.isDisplayCalled)
     }
 
     func testPerformanceExample() {
