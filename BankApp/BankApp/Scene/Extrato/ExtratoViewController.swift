@@ -76,7 +76,14 @@ class ExtratoViewController: UIViewController, ExtratoDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        preencheCamposHeader()
         
+        doExtrato()
+        
+        extratoTableView.register(UINib(nibName: "ExtratoCell", bundle: nil), forCellReuseIdentifier: "ExtratoCell")
+    }
+    
+    func preencheCamposHeader() {        
         if let userAccount = router?.dataStore?.userAccount {
             nomeLabel.text = userAccount.name ?? ""
             contaLabel.text = "\(userAccount.bankAccount ?? "") / \(userAccount.agency?.separarDigito() ?? "")"
@@ -86,12 +93,8 @@ class ExtratoViewController: UIViewController, ExtratoDisplayLogic
             }
             saldoLabel.text = saldo.formataMoeda()
         }
-        
-        doExtrato()
-        
-        extratoTableView.register(UINib(nibName: "ExtratoCell", bundle: nil), forCellReuseIdentifier: "ExtratoCell")
-        
     }
+    
     // MARK: Do something
     
     @IBOutlet weak var nomeLabel: UILabel!
@@ -108,7 +111,10 @@ class ExtratoViewController: UIViewController, ExtratoDisplayLogic
     func displayStatementList(responseExtrato: Extrato.Something.Response)
     {
         statementList = responseExtrato.statementList
-        extratoTableView.reloadData()
+        
+        if !(statementList?.isEmpty ?? false) {
+            extratoTableView.reloadData()
+        }
     }
     
     @IBAction func logoutAction(_ sender: Any) {
