@@ -11,16 +11,20 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 protocol LoginDisplayLogic: class
 {
-  func displaySomething(viewModel: Login.Something.ViewModel)
+  func displayLogin(viewModel: LoginModel.LoginRequestModel.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
-  var interactor: LoginBusinessLogic?
-  var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    var interactor: LoginBusinessLogic?
+    var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    
+    let hud = JGProgressHUD(style: .dark)
+    let loginSegue = "Statement"
 
   // MARK: Object lifecycle
   
@@ -69,21 +73,68 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    setupProgressHUD()
+    
+    usernameTextField.text = "test@gmail.com"
+    passwordTextField.text = "Test@1"
+    
+    usernameTextField.returnKeyType = .next
+    passwordTextField.returnKeyType = .go
+    
+    let gesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+    self.view.addGestureRecognizer(gesture)
   }
   
-  // MARK: Do something
+  // MARK: Interface
   
   //@IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginBtnOutlet: UIButton!
+    
+    // MARK: Function
+    
+    func setupProgressHUD() {
+        hud.textLabel.text = "Loading"
+    }
+    
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        usernameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
+    func login(username: String, password: String)
+    {
+        hud.show(in: self.view, animated: true)
+        let request = LoginModel.LoginRequestModel.Request(username: username, password: password )
+        interactor?.loginRequest(request: request)
+    }
   
-  func doSomething()
+  func displayLogin(viewModel: LoginModel.LoginRequestModel.ViewModel)
   {
-    let request = Login.Something.Request()
-    interactor?.doSomething(request: request)
+    if !viewModel.data.isEmpty {
+        hud.dismiss(afterDelay: 1.0, animated: true)
+        performSegue(withIdentifier: loginSegue, sender: nil)
+    }
+    
   }
-  
-  func displaySomething(viewModel: Login.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    
+    // MARK: Function
+    @IBAction func loginButton(_ sender: UIButton) {
+        
+        login(username: usernameTextField.text!, password: passwordTextField.text!)
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
 }

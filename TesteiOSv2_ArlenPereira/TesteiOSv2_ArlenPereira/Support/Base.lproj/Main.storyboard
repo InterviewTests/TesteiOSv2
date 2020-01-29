@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TesteiOSv2_ArlenPereira" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="TesteiOSv2_ArlenPereira" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,6 +33,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="hvK-gb-Lmq"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gEo-Ev-QVe">
                                         <rect key="frame" x="0.0" y="71" width="343" height="50"/>
@@ -41,6 +44,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="mam-eh-73d"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -55,6 +61,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rx9-hG-0dj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,15 +79,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="loginBtnOutlet" destination="xR4-ZK-EFk" id="FzZ-dx-jEe"/>
+                        <outlet property="passwordTextField" destination="gEo-Ev-QVe" id="tIT-Af-dwG"/>
+                        <outlet property="usernameTextField" destination="oYP-dq-1gD" id="uXj-62-PCD"/>
+                        <segue destination="Hk4-Ki-y2S" kind="presentation" identifier="Statement" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Bxq-WO-Tx2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--Statement View Controller-->
         <scene sceneID="YUp-EK-aLe">
             <objects>
-                <viewController id="Hk4-Ki-y2S" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatementViewController" id="Hk4-Ki-y2S" customClass="StatementViewController" customModule="TesteiOSv2_ArlenPereira" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6FT-WZ-sFR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,6 +119,9 @@
                                                             <constraint firstAttribute="width" constant="30" id="dk5-kN-cKr"/>
                                                         </constraints>
                                                         <state key="normal" image="logout 2"/>
+                                                        <connections>
+                                                            <action selector="backButton:" destination="Hk4-Ki-y2S" eventType="touchUpInside" id="3gh-5c-2Li"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -170,19 +188,25 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstItem="ujf-rV-96u" firstAttribute="leading" secondItem="eq1-eS-ivs" secondAttribute="leading" constant="8" id="LWw-ij-MCj"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ujf-rV-96u" secondAttribute="trailing" constant="20" symbolic="YES" id="MDm-QS-7ck"/>
                                         <constraint firstItem="ujf-rV-96u" firstAttribute="centerY" secondItem="eq1-eS-ivs" secondAttribute="centerY" id="PAe-KY-EEX"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="GoL-bY-q8c">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="StatementTableViewViewCell" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="statementCell" rowHeight="100" id="GoL-bY-q8c" customClass="StatementTableViewViewCell" customModule="TesteiOSv2_ArlenPereira" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GoL-bY-q8c" id="ecm-zG-WjB">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <viewLayoutGuide key="safeArea" id="Xgu-jU-BOe"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Hk4-Ki-y2S" id="BCB-Jo-c4P"/>
+                                    <outlet property="delegate" destination="Hk4-Ki-y2S" id="ka5-B2-PQd"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -197,6 +221,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PIo-2s-ouX"/>
                     </view>
+                    <connections>
+                        <outlet property="balanceLabel" destination="gS5-vN-sBY" id="hLf-8h-wj2"/>
+                        <outlet property="bankAccountLabel" destination="aBP-Aj-RxB" id="hTY-en-VIt"/>
+                        <outlet property="tableViewFrame" destination="hae-t7-5mG" id="dzF-f7-E7B"/>
+                        <outlet property="userNameLabel" destination="rFQ-ZJ-rdg" id="7Y9-iB-pWU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F0j-3C-itn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

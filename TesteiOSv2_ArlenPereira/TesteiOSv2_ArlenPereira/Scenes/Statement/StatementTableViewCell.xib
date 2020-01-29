@@ -10,14 +10,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="StatementCollectionViewCell" customModule="TesteiOSv2_ArlenPereira" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="statementCell" id="gTV-IL-0wX" customClass="StatementTableViewViewCell" customModule="TesteiOSv2_ArlenPereira" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lur-KH-J9U">
+                    <view clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Lur-KH-J9U">
                         <rect key="frame" x="8" y="8" width="359" height="80"/>
                         <subviews>
                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="y9Z-6m-aj9">
@@ -92,7 +92,13 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="537" height="128"/>
-            <point key="canvasLocation" x="484.78260869565219" y="179.46428571428569"/>
+            <connections>
+                <outlet property="dateLabel" destination="ggY-cD-5bp" id="P2V-Jk-1st"/>
+                <outlet property="descriptionLabel" destination="twT-zi-Jii" id="etU-3a-6rr"/>
+                <outlet property="titleLabel" destination="knM-vE-HRM" id="2C5-hU-9VX"/>
+                <outlet property="valueLabel" destination="bzI-1k-Uez" id="UQV-h2-YBl"/>
+            </connections>
+            <point key="canvasLocation" x="-25" y="82"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -14,28 +14,29 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+  func loginRequest(request: LoginModel.LoginRequestModel.Request)
 }
 
-protocol LoginDataStore
-{
-  //var name: String { get set }
+protocol LoginDataStore {
+    var userInfo: LoginAPIModel? { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
+    var userInfo: LoginAPIModel?
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
+  var presenter: LoginPresentationLogic?
+    var worker = LoginWorkers(loginStore: LoginRestAPI())
+  
+  // MARK: Function
+  
+  func loginRequest(request: LoginModel.LoginRequestModel.Request)
+  {
+    worker.loginRequest(username: request.username, password: request.password) { (loginResponse) -> Void in
+        self.userInfo = loginResponse
+        let response = LoginModel.LoginRequestModel.Response(loginResponse: loginResponse)
+        
+        self.presenter?.presentLogin(response: response)
+    }
   }
 }

@@ -14,13 +14,15 @@ import UIKit
 
 protocol StatementDisplayLogic: class
 {
-  func displaySomething(viewModel: Statement.Something.ViewModel)
+  func displayStatements(viewModel: StatementsModel.UserInfoModel.ViewModel)
 }
 
 class StatementViewController: UIViewController, StatementDisplayLogic
 {
   var interactor: StatementBusinessLogic?
   var router: (NSObjectProtocol & StatementRoutingLogic & StatementDataPassing)?
+    
+    var tableViewCellId = "statementCell"
 
   // MARK: Object lifecycle
   
@@ -42,7 +44,7 @@ class StatementViewController: UIViewController, StatementDisplayLogic
   {
     let viewController = self
     let interactor = StatementInteractor()
-    let presenter = StatementPresenter()
+    let presenter = StatementsPresenter()
     let router = StatementRouter()
     viewController.interactor = interactor
     viewController.router = router
@@ -69,21 +71,55 @@ class StatementViewController: UIViewController, StatementDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    fetchUserInfo()
+    
+    let nib = UINib.init(nibName: "StatementTableViewCell", bundle: nil)
+    self.tableViewFrame.register(nib, forCellReuseIdentifier: tableViewCellId)
+    self.tableViewFrame.rowHeight = 100
   }
   
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
+  // MARK: Interface
+    @IBOutlet weak var tableViewFrame: UITableView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var bankAccountLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
+    
+  // MARK: Function
+    
+  func fetchUserInfo()
   {
-    let request = Statement.Something.Request()
-    interactor?.doSomething(request: request)
+    let request = StatementsModel.UserInfoModel.Request()
+    interactor?.requestUserInfo(request: request)
   }
   
-  func displaySomething(viewModel: Statement.Something.ViewModel)
+  func displayStatements(viewModel: StatementsModel.UserInfoModel.ViewModel)
   {
-    //nameTextField.text = viewModel.name
+    print(viewModel)
+    
+    userNameLabel.text = viewModel.name!
+    bankAccountLabel.text = "\(viewModel.bankAccount!) / \(viewModel.agency!)"
+    balanceLabel.text = "R$ \(String(format:"%.2f", viewModel.balance!))"
   }
+    
+    // MARK: Button
+    @IBAction func backButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension StatementViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewFrame.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as! StatementTableViewViewCell
+        cell.titleLabel.text = "Pagamento"
+        cell.dateLabel.text = "10/01/2020"
+        cell.descriptionLabel.text = "Conta de Luz"
+        cell.valueLabel.text = "R$ 1.000,00"
+
+        return cell
+    }
 }
