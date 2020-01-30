@@ -14,56 +14,47 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-  func presentLogin(response: LoginModel.LoginRequestModel.Response)
+    func presentLogin(response: LoginModel.LoginRequestModel.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
 {
-  weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentLogin(response: LoginModel.LoginRequestModel.Response)
-  {
-    var dataResult: [LoginModel.LoginRequestModel.ViewModel.DisplayLogin] = []
-    var codeResult: String = ""
-    var msgResult: String = ""
-    
-    if !response.loginResponse.data!.isEmpty {
-        for item in response.loginResponse.data! {
-            dataResult.append(LoginModel.LoginRequestModel.ViewModel.DisplayLogin(userId: item.userId,
-                                                                                  name: item.name,
-                                                                                  bankAccount: item.bankAccount!,
-                                                                                  balance: item.balance,
-                                                                                  code: item.code,
-                                                                                  message: item.message)
-            )
+    weak var viewController: LoginDisplayLogic?
+
+    // MARK: Do something
+
+    func presentLogin(response: LoginModel.LoginRequestModel.Response)
+    {
+        var dataResult: [LoginModel.LoginRequestModel.ViewModel.DisplayLogin] = []
+        var codeResult: String = ""
+        var msgResult: String = ""
+
+        if !response.loginResponse.data!.isEmpty {
+            for item in response.loginResponse.data! {
+                dataResult.append(LoginModel.LoginRequestModel.ViewModel.DisplayLogin(userId: item.userId,
+                                                                                      name: item.name,
+                                                                                      bankAccount: item.bankAccount!,
+                                                                                      balance: item.balance,
+                                                                                      code: item.code,
+                                                                                      message: item.message)
+            )}
         }
-    }
     
-    if response.loginResponse.code != nil || response.loginResponse.message != nil {
-        codeResult = response.loginResponse.code!
-        msgResult = response.loginResponse.message!
-        
-        switch codeResult {
-        case "-1003":
-            msgResult = "Não foi possivel conectar com o servidor, tente mais tarde..."
-            break
+        if response.loginResponse.code != nil || response.loginResponse.message != nil {
+            codeResult = response.loginResponse.code!
+            msgResult = response.loginResponse.message!
             
-        case "-1202":
-            msgResult = "Certificado Invalido."
-            break
-            
-        case "4":
-            msgResult = "Certificado Invalido."
-            break
-            
-        default:
-            break
+            switch codeResult {
+            case "-1003":
+                msgResult = "Não foi possivel conectar com o servidor, tente mais tarde..."
+                break
+                
+            default:
+                break
+            }
         }
+
+        let viewModel = LoginModel.LoginRequestModel.ViewModel(data: dataResult, message: msgResult, code: codeResult)
+        viewController?.displayLogin(viewModel: viewModel)
     }
-    
-    let viewModel = LoginModel.LoginRequestModel.ViewModel(data: dataResult, message: msgResult, code: codeResult)
-    viewController?.displayLogin(viewModel: viewModel)
-  }
 }

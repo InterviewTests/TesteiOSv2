@@ -41,6 +41,22 @@ class LoginAPIRequest: NSObject {
     }
 }
 
-class StatementAPIModel: NSObject {
+class StatementsAPIModel: NSObject {
+    var data: StatementsAPIRequest?
+    var message: String?
+    var code: String?
     
+    init(data: StatementsAPIRequest?, message: String?, code: String?) {
+        self.data = data
+        self.message = message
+        self.code = code
+    }
+}
+
+class StatementsAPIRequest: NSObject {
+    var statementList: [JSON]?
+    
+    init(statements: [JSON]?) {
+        self.statementList = statements
+    }
 }

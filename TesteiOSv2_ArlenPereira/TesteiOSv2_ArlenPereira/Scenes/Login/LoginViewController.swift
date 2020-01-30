@@ -15,7 +15,7 @@ import JGProgressHUD
 
 protocol LoginDisplayLogic: class
 {
-  func displayLogin(viewModel: LoginModel.LoginRequestModel.ViewModel)
+    func displayLogin(viewModel: LoginModel.LoginRequestModel.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -116,7 +116,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         hud.dismiss(afterDelay: 1.0, animated: true)
         performSegue(withIdentifier: loginSegue, sender: nil)
     }
-    
+
   }
     
     // MARK: Function

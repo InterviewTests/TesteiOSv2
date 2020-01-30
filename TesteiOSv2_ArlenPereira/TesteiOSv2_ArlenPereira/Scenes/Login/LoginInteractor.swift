@@ -26,7 +26,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     var userInfo: LoginAPIModel?
     
   var presenter: LoginPresentationLogic?
-    var worker = LoginWorkers(loginStore: LoginRestAPI())
+    var worker = ServiceWorkers(serviceStore: ServiceRestAPI())
   
   // MARK: Function
   

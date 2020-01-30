@@ -39,7 +39,7 @@ enum StatementsModel
     
     struct Response
     {
-        var statementsResponse: StatementAPIModel
+        var statementsResponse: StatementsAPIModel
     }
     
     struct ViewModel
@@ -48,7 +48,7 @@ enum StatementsModel
             var title: String?
             var desc: String?
             var date: String?
-            var value: Int?
+            var value: Double?
         }
         
         var data: [DisplayStatements]

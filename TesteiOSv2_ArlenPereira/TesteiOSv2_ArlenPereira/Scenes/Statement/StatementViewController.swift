@@ -11,18 +11,23 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 protocol StatementDisplayLogic: class
 {
-  func displayStatements(viewModel: StatementsModel.UserInfoModel.ViewModel)
+    func displayUserInfo(viewModel: StatementsModel.UserInfoModel.ViewModel)
+    func displayStatements(viewModel: StatementsModel.StatementsRequestModel.ViewModel)
 }
 
 class StatementViewController: UIViewController, StatementDisplayLogic
 {
-  var interactor: StatementBusinessLogic?
-  var router: (NSObjectProtocol & StatementRoutingLogic & StatementDataPassing)?
     
+    var interactor: StatementBusinessLogic?
+    var router: (NSObjectProtocol & StatementRoutingLogic & StatementDataPassing)?
+    
+    let hud = JGProgressHUD(style: .dark)
     var tableViewCellId = "statementCell"
+    var displayStatements: [StatementsModel.StatementsRequestModel.ViewModel.DisplayStatements] = []
 
   // MARK: Object lifecycle
   
@@ -71,11 +76,13 @@ class StatementViewController: UIViewController, StatementDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    fetchUserInfo()
-    
+    setupProgressHUD()
     let nib = UINib.init(nibName: "StatementTableViewCell", bundle: nil)
     self.tableViewFrame.register(nib, forCellReuseIdentifier: tableViewCellId)
-    self.tableViewFrame.rowHeight = 100
+    self.tableViewFrame.rowHeight = 95
+    
+    fetchUserInfo()
+    fetchStatements()
   }
   
   // MARK: Interface
@@ -86,40 +93,66 @@ class StatementViewController: UIViewController, StatementDisplayLogic
     
   // MARK: Function
     
-  func fetchUserInfo()
-  {
-    let request = StatementsModel.UserInfoModel.Request()
-    interactor?.requestUserInfo(request: request)
-  }
-  
-  func displayStatements(viewModel: StatementsModel.UserInfoModel.ViewModel)
-  {
-    print(viewModel)
+    func setupProgressHUD() {
+        hud.textLabel.text = "Loading"
+    }
     
-    userNameLabel.text = viewModel.name!
-    bankAccountLabel.text = "\(viewModel.bankAccount!) / \(viewModel.agency!)"
-    balanceLabel.text = "R$ \(String(format:"%.2f", viewModel.balance!))"
-  }
+    func fetchUserInfo()
+    {
+        let request = StatementsModel.UserInfoModel.Request()
+        interactor?.requestUserInfo(request: request)
+    }
+
+    func fetchStatements()
+    {
+        hud.show(in: self.view, animated: true)
+        let request = StatementsModel.StatementsRequestModel.Request()
+        interactor?.requestStatements(request: request)
+    }
+
+    func displayUserInfo(viewModel: StatementsModel.UserInfoModel.ViewModel)
+    {
+        userNameLabel.text = viewModel.name ?? ""
+        bankAccountLabel.text = "\(viewModel.bankAccount ?? "") / \(viewModel.agency ?? "")"
+        balanceLabel.text = "R$ \(String(format:"%.2f", viewModel.balance ?? 0))"
+    }
     
+    func displayStatements(viewModel: StatementsModel.StatementsRequestModel.ViewModel)
+    {
+        if !viewModel.message.isEmpty {
+            hud.dismiss(afterDelay: 1.0, animated: true)
+            self.alert(message: viewModel.message)
+        } else if !viewModel.data.isEmpty {
+            displayStatements.removeAll()
+            for item in viewModel.data {
+                displayStatements.append(item)
+            }
+            tableViewFrame.reloadData()
+        }
+        hud.dismiss(afterDelay: 1.0, animated: true)
+    }
+
     // MARK: Button
-    @IBAction func backButton(_ sender: UIButton) {
+    @IBAction func backButton(_ sender: UIButton)
+    {
         self.dismiss(animated: true, completion: nil)
     }
 }
 
-extension StatementViewController: UITableViewDataSource, UITableViewDelegate {
+extension StatementViewController: UITableViewDataSource, UITableViewDelegate
+{
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return displayStatements.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let cell = tableViewFrame.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as! StatementTableViewViewCell
-        cell.titleLabel.text = "Pagamento"
-        cell.dateLabel.text = "10/01/2020"
-        cell.descriptionLabel.text = "Conta de Luz"
-        cell.valueLabel.text = "R$ 1.000,00"
-
+        
+        let statementsResult = displayStatements[indexPath.row]
+        cell.statementCell = statementsResult
         return cell
     }
 }
