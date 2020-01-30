@@ -15,6 +15,7 @@ import UIKit
 protocol LoginPresentationLogic
 {
     func presentLogin(response: LoginModel.LoginRequestModel.Response)
+    func presentValidationLogin(response: LoginModel.ValidationLoginModel.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
@@ -56,5 +57,59 @@ class LoginPresenter: LoginPresentationLogic
 
         let viewModel = LoginModel.LoginRequestModel.ViewModel(data: dataResult, message: msgResult, code: codeResult)
         viewController?.displayLogin(viewModel: viewModel)
+    }
+    
+    func presentValidationLogin(response: LoginModel.ValidationLoginModel.Response) {
+        let viewModel = LoginModel.ValidationLoginModel.ViewModel(isUsernameValid: false, isPasswordValid: false, errorMessage: "")
+        viewController?.displayValidationLogin(viewModel: viewModel)
+    }
+    
+    private func validateCPF(username: String) -> Bool {
+        let cpfRegEx = username.filter { "0123456789".contains($0) }
+        if cpfRegEx.count == 11 {
+            let digitTen: Int = ((cpfRegEx.index(of: cpfRegEx[cpfRegEx.index(cpfRegEx.startIndex, offsetBy: 9)]))?.encodedOffset) ?? 0
+            let digitEleven: Int = ((cpfRegEx.index(of: cpfRegEx[cpfRegEx.index(cpfRegEx.startIndex, offsetBy: 11)]))?.encodedOffset) ?? 0
+            
+            var resultModuleOne: Int = 0, resultModuleTwo: Int = 0, realValue: Int = 0
+            var i: Int = 0, j: Int = 11
+            for index in 0..<cpfRegEx.count - 1 {
+                realValue = ((cpfRegEx.index(of: cpfRegEx[cpfRegEx.index(cpfRegEx.startIndex, offsetBy: index)]))?.encodedOffset) ?? 0
+                resultModuleTwo += (realValue * j)
+                
+                if (i > 0) {
+                        realValue = ((cpfRegEx.index(of: cpfRegEx[cpfRegEx.index(cpfRegEx.startIndex, offsetBy: index-1)]))!.encodedOffset) ?? 0
+                        resultModuleOne += (realValue * j)
+                    }
+                
+                    i += 1; j -= 1;
+            }
+            
+            resultModuleOne %= 11
+            resultModuleOne = resultModuleOne < 2 ? 0 : resultModuleOne-11
+            
+            resultModuleTwo %= 11
+            resultModuleTwo = resultModuleTwo < 2 ? 0 : resultModuleTwo-11
+
+            if (resultModuleOne == digitTen && resultModuleTwo == digitEleven) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    private func validateEmail(username: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let trimmedString = username.trimmingCharacters(in: .whitespaces)
+        let validateEmail = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        let isValidadeEmail = validateEmail.evaluate(with: trimmedString)
+        return isValidadeEmail
+    }
+    
+    private func validatePassword(password: String) -> Bool {
+        let passRegEx = "^(?=.*[A-Z])(?=.*[0-9])(?!=.*[A-Za-z0-9])"
+        let trimmedString = password.trimmingCharacters(in: .whitespaces)
+        let validatePassord = NSPredicate(format:"SELF MATCHES %@", passRegEx)
+        let isvalidatePass = validatePassord.evaluate(with: trimmedString)
+        return isvalidatePass
     }
 }

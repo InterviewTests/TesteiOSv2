@@ -16,6 +16,7 @@ import JGProgressHUD
 protocol LoginDisplayLogic: class
 {
     func displayLogin(viewModel: LoginModel.LoginRequestModel.ViewModel)
+    func displayValidationLogin(viewModel: LoginModel.ValidationLoginModel.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -94,13 +95,22 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     // MARK: Function
     
-    func setupProgressHUD() {
+    func setupProgressHUD()
+    {
         hud.textLabel.text = "Loading"
     }
     
-    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer)
+    {
         usernameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
+    }
+    
+    func validationLogin(username: String, password: String)
+    {
+        hud.show(in: self.view, animated: true)
+        let request = LoginModel.ValidationLoginModel.Request(username: username, password: password)
+        interactor?.validationLoginRequest(request: request)
     }
     
     func login(username: String, password: String)
@@ -110,14 +120,18 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         interactor?.loginRequest(request: request)
     }
   
-  func displayLogin(viewModel: LoginModel.LoginRequestModel.ViewModel)
-  {
-    if !viewModel.data.isEmpty {
-        hud.dismiss(afterDelay: 1.0, animated: true)
-        performSegue(withIdentifier: loginSegue, sender: nil)
+    func displayLogin(viewModel: LoginModel.LoginRequestModel.ViewModel)
+    {
+        if !viewModel.data.isEmpty {
+            hud.dismiss(afterDelay: 1.0, animated: true)
+            performSegue(withIdentifier: loginSegue, sender: nil)
+        }
     }
-
-  }
+    
+    func displayValidationLogin(viewModel: LoginModel.ValidationLoginModel.ViewModel)
+    {
+        print(viewModel)
+    }
     
     // MARK: Function
     @IBAction func loginButton(_ sender: UIButton) {
@@ -126,8 +140,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     }
 }
 
-extension LoginViewController: UITextFieldDelegate {
-    
+extension LoginViewController: UITextFieldDelegate
+{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == usernameTextField {
             textField.resignFirstResponder()

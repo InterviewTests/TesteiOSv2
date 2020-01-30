@@ -15,7 +15,29 @@ import UIKit
 enum LoginModel
 {
   // MARK: Use cases
-  
+    
+    enum ValidationLoginModel
+    {
+        struct Request
+        {
+            var username: String
+            var password: String
+        }
+        
+        struct Response
+        {
+            var username: String
+            var password: String
+        }
+        
+        struct ViewModel
+        {
+            var isUsernameValid: Bool
+            var isPasswordValid: Bool
+            var errorMessage: String
+        }
+    }
+    
   enum LoginRequestModel
   {
     struct Request

@@ -14,7 +14,8 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func loginRequest(request: LoginModel.LoginRequestModel.Request)
+    func loginRequest(request: LoginModel.LoginRequestModel.Request)
+    func validationLoginRequest(request: LoginModel.ValidationLoginModel.Request)
 }
 
 protocol LoginDataStore {
@@ -25,18 +26,24 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
     var userInfo: LoginAPIModel?
     
-  var presenter: LoginPresentationLogic?
+    var presenter: LoginPresentationLogic?
     var worker = ServiceWorkers(serviceStore: ServiceRestAPI())
   
-  // MARK: Function
+    // MARK: Function
   
-  func loginRequest(request: LoginModel.LoginRequestModel.Request)
-  {
-    worker.loginRequest(username: request.username, password: request.password) { (loginResponse) -> Void in
-        self.userInfo = loginResponse
-        let response = LoginModel.LoginRequestModel.Response(loginResponse: loginResponse)
+    func loginRequest(request: LoginModel.LoginRequestModel.Request)
+    {
+        worker.loginRequest(username: request.username, password: request.password) { (loginResponse) -> Void in
+            self.userInfo = loginResponse
+            let response = LoginModel.LoginRequestModel.Response(loginResponse: loginResponse)
         
-        self.presenter?.presentLogin(response: response)
+            self.presenter?.presentLogin(response: response)
+        }
     }
-  }
+    
+    func validationLoginRequest(request: LoginModel.ValidationLoginModel.Request) {
+        
+        let response = LoginModel.ValidationLoginModel.Response(username: request.username, password: request.password)
+        self.presenter?.presentValidationLogin(response: response)
+    }
 }
