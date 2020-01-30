@@ -31,9 +31,14 @@ class LoginInteractorTests: XCTestCase {
         
         // MARK: Method call expectations
         var responseLoginIsCalled = false
+        var responseValidationLoginIsCalled = false
         
         func presentLogin(response: LoginModel.LoginRequestModel.Response) {
             responseLoginIsCalled = true
+        }
+        
+        func presentValidationLogin(response: LoginModel.ValidationLoginModel.Response) {
+            responseValidationLoginIsCalled = true
         }
     }
         

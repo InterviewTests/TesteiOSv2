@@ -76,15 +76,16 @@ class StatementViewController: UIViewController, StatementDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    
     setupProgressHUD()
-    let nib = UINib.init(nibName: "StatementTableViewCell", bundle: nil)
+    let nib = UINib.init(nibName: "Statament2TableViewCell", bundle: nil)
     self.tableViewFrame.register(nib, forCellReuseIdentifier: tableViewCellId)
     self.tableViewFrame.rowHeight = 95
     
     fetchUserInfo()
     fetchStatements()
   }
-  
+
   // MARK: Interface
     @IBOutlet weak var tableViewFrame: UITableView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -149,10 +150,11 @@ extension StatementViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableViewFrame.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as! StatementTableViewViewCell
-        
-        let statementsResult = displayStatements[indexPath.row]
-        cell.statementCell = statementsResult
-        return cell
+        if let cell = tableViewFrame.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as? Statement2TableViewCell {
+            let statementsResult = displayStatements[indexPath.row]
+            cell.statementCell = statementsResult
+            return cell
+        }
+        return UITableViewCell()
     }
 }

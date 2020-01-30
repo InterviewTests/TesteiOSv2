@@ -48,12 +48,19 @@ class LoginViewControllerTests: XCTestCase {
         
         // MARK: Method call expectations
         var loginIsCalled = false
+        var validationLoginIsCalled = false
         
         var requestLogin: LoginModel.LoginRequestModel.Request!
+        var requestValidationLogin: LoginModel.ValidationLoginModel.Request!
         
         func loginRequest(request: LoginModel.LoginRequestModel.Request) {
             loginIsCalled = true
             self.requestLogin = request
+        }
+        
+        func validationLoginRequest(request: LoginModel.ValidationLoginModel.Request) {
+            validationLoginIsCalled = true
+            self.requestValidationLogin = request
         }
     }
     

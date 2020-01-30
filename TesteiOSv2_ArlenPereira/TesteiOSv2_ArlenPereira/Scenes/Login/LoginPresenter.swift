@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import CPF_CNPJ_Validator
 
 protocol LoginPresentationLogic
 {
@@ -60,44 +61,40 @@ class LoginPresenter: LoginPresentationLogic
     }
     
     func presentValidationLogin(response: LoginModel.ValidationLoginModel.Response) {
-        let viewModel = LoginModel.ValidationLoginModel.ViewModel(isUsernameValid: false, isPasswordValid: false, errorMessage: "")
+        
+        var isUsernameValid = false
+        var isPasswordValid = false
+        var errorMessageString: String = ""
+        if !response.username.isEmpty {
+            let usernameString = response.username
+            if validateCPF(username: usernameString) || validateEmail(username: usernameString) {
+                isUsernameValid = true
+            } else {
+                errorMessageString = "User Invalido, por favor informe o Email ou CFP no user."
+            }
+        }
+        
+        if !response.password.isEmpty {
+            let passwordString = response.password
+            if validatePassword(password: passwordString) {
+                isPasswordValid = true
+            } else {
+                errorMessageString = "Password Invalido, por favor informe uma letra maiuscula, um numero e um caracter especial na senha."
+            }
+        }
+
+        let viewModel = LoginModel.ValidationLoginModel.ViewModel(isUsernameValid: isUsernameValid, isPasswordValid: isPasswordValid, errorMessage: errorMessageString)
         viewController?.displayValidationLogin(viewModel: viewModel)
     }
     
-    private func validateCPF(username: String) -> Bool {
-        let cpfRegEx = username.filter { "0123456789".contains($0) }
-        if cpfRegEx.count == 11 {
-            let digitTen: Int = ((cpfRegEx.index(of: cpfRegEx[cpfRegEx.index(cpfRegEx.startIndex, offsetBy: 9)]))?.encodedOffset) ?? 0
-            let digitEleven: Int = ((cpfRegEx.index(of: cpfRegEx[cpfRegEx.index(cpfRegEx.startIndex, offsetBy: 11)]))?.encodedOffset) ?? 0
-            
-            var resultModuleOne: Int = 0, resultModuleTwo: Int = 0, realValue: Int = 0
-            var i: Int = 0, j: Int = 11
-            for index in 0..<cpfRegEx.count - 1 {
-                realValue = ((cpfRegEx.index(of: cpfRegEx[cpfRegEx.index(cpfRegEx.startIndex, offsetBy: index)]))?.encodedOffset) ?? 0
-                resultModuleTwo += (realValue * j)
-                
-                if (i > 0) {
-                        realValue = ((cpfRegEx.index(of: cpfRegEx[cpfRegEx.index(cpfRegEx.startIndex, offsetBy: index-1)]))!.encodedOffset) ?? 0
-                        resultModuleOne += (realValue * j)
-                    }
-                
-                    i += 1; j -= 1;
-            }
-            
-            resultModuleOne %= 11
-            resultModuleOne = resultModuleOne < 2 ? 0 : resultModuleOne-11
-            
-            resultModuleTwo %= 11
-            resultModuleTwo = resultModuleTwo < 2 ? 0 : resultModuleTwo-11
-
-            if (resultModuleOne == digitTen && resultModuleTwo == digitEleven) {
-                return true
-            }
-        }
-        return false
+    public func validateCPF(username: String) -> Bool {
+        
+        let isValidCPF = BooleanValidator().validate(cpf: username)
+        
+        return isValidCPF
     }
     
-    private func validateEmail(username: String) -> Bool {
+    public func validateEmail(username: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let trimmedString = username.trimmingCharacters(in: .whitespaces)
         let validateEmail = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
@@ -105,11 +102,20 @@ class LoginPresenter: LoginPresentationLogic
         return isValidadeEmail
     }
     
-    private func validatePassword(password: String) -> Bool {
-        let passRegEx = "^(?=.*[A-Z])(?=.*[0-9])(?!=.*[A-Za-z0-9])"
+    public func validatePassword(password: String) -> Bool {
+        let passUppercaseRegEx = ".*[A-Z]+.*"
         let trimmedString = password.trimmingCharacters(in: .whitespaces)
-        let validatePassord = NSPredicate(format:"SELF MATCHES %@", passRegEx)
-        let isvalidatePass = validatePassord.evaluate(with: trimmedString)
-        return isvalidatePass
+        let validateUppercasePassword = NSPredicate(format:"SELF MATCHES %@", passUppercaseRegEx)
+        let isvalidateUppercasePass = validateUppercasePassword.evaluate(with: trimmedString)
+        
+        let passAlphanumericRegEx = ".*[0-9]+.*"
+        let validateAlphanumericPassword = NSPredicate(format:"SELF MATCHES %@", passAlphanumericRegEx)
+        let isvalidateAlphanumericPass = validateAlphanumericPassword.evaluate(with: trimmedString)
+        
+        let passSpecialCharRegEx = ".*[.*&^%$#@()/]+.*"
+        let validateSpecialCharPassword = NSPredicate(format:"SELF MATCHES %@", passSpecialCharRegEx)
+        let isvalidateSpecialCharPass = validateSpecialCharPassword.evaluate(with: trimmedString)
+
+        return isvalidateUppercasePass && isvalidateAlphanumericPass && isvalidateSpecialCharPass
     }
 }

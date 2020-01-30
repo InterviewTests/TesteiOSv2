@@ -1,25 +1,32 @@
 //
-//  StatementTableViewViewCell.swift
+//  Statament2TableViewCell.swift
 //  TesteiOSv2_ArlenPereira
 //
-//  Created by Arlen Ricardo Pereira on 28/01/20.
+//  Created by Arlen Ricardo Pereira on 30/01/20.
 //  Copyright © 2020 Arlen Ricardo Pereira. All rights reserved.
 //
 
 import UIKit
-import Foundation
 
-class StatementTableViewViewCell: UITableViewCell {
-    
-    // MARK: Interface Cell
+class Statement2TableViewCell: UITableViewCell {
+
+    @IBOutlet weak var backgroungFrame: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
-    // MARK: Life Cycle Cell
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroungFrame.layer.cornerRadius = 5
+        backgroungFrame.layer.borderWidth = 1
+        backgroungFrame.layer.borderColor = UIColor.clear.cgColor
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
     // MARK: Variables Cell
@@ -42,4 +49,5 @@ class StatementTableViewViewCell: UITableViewCell {
             }
         }
     }
+    
 }

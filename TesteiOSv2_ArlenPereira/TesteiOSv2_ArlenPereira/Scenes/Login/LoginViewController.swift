@@ -75,15 +75,13 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   {
     super.viewDidLoad()
     setupProgressHUD()
-    
     usernameTextField.text = "test@gmail.com"
     passwordTextField.text = "Test@1"
     
-    usernameTextField.returnKeyType = .next
-    passwordTextField.returnKeyType = .go
-    
     let gesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
     self.view.addGestureRecognizer(gesture)
+    
+    loginBtnOutlet.layer.cornerRadius = 5
   }
   
   // MARK: Interface
@@ -130,13 +128,19 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     func displayValidationLogin(viewModel: LoginModel.ValidationLoginModel.ViewModel)
     {
-        print(viewModel)
+        hud.dismiss(afterDelay: 1.0, animated: true)
+        if !viewModel.isUsernameValid {
+            self.alert(message: viewModel.errorMessage)
+        } else if !viewModel.isPasswordValid {
+            self.alert(message: viewModel.errorMessage)
+        } else {
+            login(username: usernameTextField.text!, password: passwordTextField.text!)
+        }
     }
     
     // MARK: Function
     @IBAction func loginButton(_ sender: UIButton) {
-        
-        login(username: usernameTextField.text!, password: passwordTextField.text!)
+        validationLogin(username: usernameTextField.text!, password: passwordTextField.text!)
     }
 }
 
