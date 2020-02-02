@@ -29,7 +29,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     var presenter: LoginPresentationLogic?
     var worker = ServiceWorkers(serviceStore: ServiceRestAPI())
   
-    // MARK: Function
+    // MARK: - Function
   
     func loginRequest(request: LoginModel.LoginRequestModel.Request)
     {

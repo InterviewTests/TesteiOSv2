@@ -24,7 +24,7 @@ class StatementsPresenter: StatementsPresentationLogic
     
   weak var viewController: StatementDisplayLogic?
   
-  // MARK: Function
+  // MARK: - Function
   
     func presentUserInfo(response: StatementsModel.UserInfoModel.Response)
     {

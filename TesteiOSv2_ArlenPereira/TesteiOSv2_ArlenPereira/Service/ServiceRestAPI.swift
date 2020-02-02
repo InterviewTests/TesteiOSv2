@@ -12,12 +12,10 @@ import SwiftyJSON
 
 class ServiceRestAPI: ServiceStoreProtocol {
 
-    let errorMessage = "message"
-    let urlBase = "https://bank-app-test.herokuapp.com/api"
 
     func loginRequest(username: String, password: String, completionHandler: @escaping (() throws -> LoginAPIModel) -> Void) {
         
-        let urlLogin = "\(urlBase)/login"
+        let urlLogin = "\(APIService.urlBase)/login"
         let headers: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
         
         var parameters = [String: Any]()
@@ -39,9 +37,9 @@ class ServiceRestAPI: ServiceStoreProtocol {
             
             if responseData.result.value != nil {
                 let swiftyJsonVar = JSON(responseData.result.value!)
-                if !swiftyJsonVar[self.errorMessage].exists() {
+                if !swiftyJsonVar[APIService.errorMessage].exists() {
                     errorCode = ""
-                    errorMsg = swiftyJsonVar[self.errorMessage].stringValue
+                    errorMsg = swiftyJsonVar[APIService.errorMessage].stringValue
                 }
                 
                  data.append(LoginAPIRequest(json: swiftyJsonVar))
@@ -52,9 +50,9 @@ class ServiceRestAPI: ServiceStoreProtocol {
         }
     }
     
-    func statementsRequest(completionHandler: @escaping (() throws -> StatementsAPIModel) -> Void) {
+    func statementsRequest(userId: Int, completionHandler: @escaping (() throws -> StatementsAPIModel) -> Void) {
         
-        let urlStatements = "\(urlBase)/statements/1"
+        let urlStatements = "\(APIService.urlBase)/statements/\(userId)"
         
         Alamofire.request(urlStatements, method: .get, encoding: URLEncoding.default).responseJSON { (responseData) in
             var errorCode: String = ""
@@ -69,9 +67,9 @@ class ServiceRestAPI: ServiceStoreProtocol {
             
             if responseData.result.value != nil {
                 let swiftyJsonVar = JSON(responseData.result.value!)
-                if !swiftyJsonVar[self.errorMessage].exists() {
+                if !swiftyJsonVar[APIService.errorMessage].exists() {
                     errorCode = ""
-                    errorMsg = swiftyJsonVar[self.errorMessage].stringValue
+                    errorMsg = swiftyJsonVar[APIService.errorMessage].stringValue
                 }
                 
                 var dataResultStatements: [JSON] = []

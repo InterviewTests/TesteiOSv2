@@ -31,8 +31,8 @@ class ServiceWorkers {
         }
     }
 
-    func statementsRequest(completionHandler: @escaping (StatementsAPIModel) -> Void) {
-        serviceStore.statementsRequest { (statementsModel: () throws -> StatementsAPIModel) -> Void in
+    func statementsRequest(userId: Int, completionHandler: @escaping (StatementsAPIModel) -> Void) {
+        serviceStore.statementsRequest(userId: userId) { (statementsModel: () throws -> StatementsAPIModel) -> Void in
             do {
                 let statement = try statementsModel()
                 DispatchQueue.main.async {
@@ -52,5 +52,5 @@ protocol ServiceStoreProtocol {
     func loginRequest(username: String, password: String, completionHandler: @escaping (() throws -> LoginAPIModel) -> Void)
     
     // MARK: - Statements
-    func statementsRequest(completionHandler: @escaping (() throws -> StatementsAPIModel) -> Void)
+    func statementsRequest(userId: Int, completionHandler: @escaping (() throws -> StatementsAPIModel) -> Void)
 }

@@ -21,9 +21,10 @@ protocol LoginPresentationLogic
 
 class LoginPresenter: LoginPresentationLogic
 {
+    
     weak var viewController: LoginDisplayLogic?
 
-    // MARK: Do something
+    // MARK: - Function
 
     func presentLogin(response: LoginModel.LoginRequestModel.Response)
     {
@@ -35,7 +36,7 @@ class LoginPresenter: LoginPresentationLogic
             for item in response.loginResponse.data! {
                 dataResult.append(LoginModel.LoginRequestModel.ViewModel.DisplayLogin(userId: item.userId,
                                                                                       name: item.name,
-                                                                                      bankAccount: item.bankAccount!,
+                                                                                      bankAccount: item.bankAccount,
                                                                                       balance: item.balance,
                                                                                       code: item.code,
                                                                                       message: item.message)

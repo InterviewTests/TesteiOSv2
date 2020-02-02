@@ -14,7 +14,7 @@ import UIKit
 
 enum StatementsModel
 {
-  // MARK: Use cases
+  // MARK: - Use cases
     
     enum UserInfoModel
     {
@@ -35,7 +35,9 @@ enum StatementsModel
   
   enum StatementsRequestModel
   {
-    struct Request { }
+    struct Request {
+        var userId: Int?
+    }
     
     struct Response
     {

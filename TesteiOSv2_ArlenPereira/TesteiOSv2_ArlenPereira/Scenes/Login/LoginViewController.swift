@@ -12,6 +12,7 @@
 
 import UIKit
 import JGProgressHUD
+import KeychainSwift
 
 protocol LoginDisplayLogic: class
 {
@@ -21,13 +22,18 @@ protocol LoginDisplayLogic: class
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
+    
+    // MARK: - Variable
+    
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
     let hud = JGProgressHUD(style: .dark)
     let loginSegue = "Statement"
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.prefix)
 
-  // MARK: Object lifecycle
+  // MARK: - Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
   {
@@ -41,7 +47,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     setup()
   }
   
-  // MARK: Setup
+  // MARK: - Setup
   
   private func setup()
   {
@@ -57,7 +63,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     router.dataStore = interactor
   }
   
-  // MARK: Routing
+  // MARK: - Routing
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?)
   {
@@ -69,29 +75,31 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     }
   }
   
-  // MARK: View lifecycle
+  // MARK: - View lifecycle
   
   override func viewDidLoad()
   {
     super.viewDidLoad()
     setupProgressHUD()
-    usernameTextField.text = "test@gmail.com"
-    passwordTextField.text = "Test@1"
     
     let gesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
     self.view.addGestureRecognizer(gesture)
     
     loginBtnOutlet.layer.cornerRadius = 5
+    
+    if let userNameIsSave = keychain.get(Keys.username) {
+        usernameTextField.text = userNameIsSave
+    }
   }
   
-  // MARK: Interface
+  // MARK: - Interface
   
   //@IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginBtnOutlet: UIButton!
     
-    // MARK: Function
+    // MARK: - Function
     
     func setupProgressHUD()
     {
@@ -118,14 +126,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         interactor?.loginRequest(request: request)
     }
   
-    func displayLogin(viewModel: LoginModel.LoginRequestModel.ViewModel)
-    {
-        if !viewModel.data.isEmpty {
-            hud.dismiss(afterDelay: 1.0, animated: true)
-            performSegue(withIdentifier: loginSegue, sender: nil)
-        }
-    }
-    
     func displayValidationLogin(viewModel: LoginModel.ValidationLoginModel.ViewModel)
     {
         hud.dismiss(afterDelay: 1.0, animated: true)
@@ -134,16 +134,40 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         } else if !viewModel.isPasswordValid {
             self.alert(message: viewModel.errorMessage)
         } else {
-            login(username: usernameTextField.text!, password: passwordTextField.text!)
+            view.endEditing(true)
+            
+            if usernameTextField.text != "", passwordTextField.text != "" {
+                guard let username = usernameTextField.text else { return }
+                keychain.set(username, forKey: Keys.username, withAccess: .accessibleWhenUnlocked)
+                guard let password = passwordTextField.text else { return }
+                
+                login(username: username, password: password)
+            }
         }
     }
     
-    // MARK: Function
+    func displayLogin(viewModel: LoginModel.LoginRequestModel.ViewModel)
+    {
+        if !viewModel.data.isEmpty {
+            passwordTextField.text?.removeAll()
+            hud.dismiss(afterDelay: 1.0, animated: true)
+            performSegue(withIdentifier: loginSegue, sender: nil)
+        }
+    }
+    
+    // MARK: - Button
     @IBAction func loginButton(_ sender: UIButton) {
-        validationLogin(username: usernameTextField.text!, password: passwordTextField.text!)
+        view.endEditing(true)
+        if usernameTextField.text != "", passwordTextField.text != "" {
+            guard let username = usernameTextField.text else { return }
+            guard let password = passwordTextField.text else { return }
+            
+            validationLogin(username: username, password: password)
+        }
     }
 }
 
+// MARK: - Extension
 extension LoginViewController: UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -152,6 +176,9 @@ extension LoginViewController: UITextFieldDelegate
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
             textField.resignFirstResponder()
+            if usernameTextField.text != "", passwordTextField.text != "" {
+                validationLogin(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
+            }
         }
         return true
     }

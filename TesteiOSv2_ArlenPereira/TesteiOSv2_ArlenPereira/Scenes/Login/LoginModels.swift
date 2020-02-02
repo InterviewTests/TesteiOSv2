@@ -14,7 +14,7 @@ import UIKit
 
 enum LoginModel
 {
-  // MARK: Use cases
+  // MARK: - Use cases (Login)
     
     enum ValidationLoginModel
     {

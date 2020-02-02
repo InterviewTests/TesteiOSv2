@@ -15,7 +15,7 @@ import UIKit
 protocol StatementBusinessLogic
 {
     func requestUserInfo(request: StatementsModel.UserInfoModel.Request)
-    func requestStatements(request: StatementsModel.StatementsRequestModel.Request)
+    func requestStatements(userId: Int?, request: StatementsModel.StatementsRequestModel.Request)
 }
 
 protocol StatementDataStore
@@ -29,18 +29,18 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore
     var serviceWorker = ServiceWorkers(serviceStore: ServiceRestAPI())
     var userInfo: LoginAPIModel?
   
-    // MARK: Function
+    // MARK: - Function
 
     func requestUserInfo(request: StatementsModel.UserInfoModel.Request)
     {
-
+        
         let response = StatementsModel.UserInfoModel.Response(userInfoResponse: userInfo!)
         presenter?.presentUserInfo(response: response)
     }
     
-    func requestStatements(request: StatementsModel.StatementsRequestModel.Request)
+    func requestStatements(userId: Int?, request: StatementsModel.StatementsRequestModel.Request)
     {
-        serviceWorker.statementsRequest() { (responseData) in
+        serviceWorker.statementsRequest(userId: userId ?? 0) { (responseData) in
             let response = StatementsModel.StatementsRequestModel.Response(statementsResponse: responseData)
             self.presenter?.presentStatements(response: response)
         }
