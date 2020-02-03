@@ -90,7 +90,16 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     if let userNameIsSave = keychain.get(Keys.username) {
         usernameTextField.text = userNameIsSave
     }
+    
   }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let userNameIsSave = keychain.get(Keys.username), let passwordIsSave = keychain.get(Keys.password) {
+            login(username: userNameIsSave, password: passwordIsSave)
+        }
+    }
   
   // MARK: - Interface
   
@@ -138,8 +147,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic
             
             if usernameTextField.text != "", passwordTextField.text != "" {
                 guard let username = usernameTextField.text else { return }
-                keychain.set(username, forKey: Keys.username, withAccess: .accessibleWhenUnlocked)
+                keychain.set(username, forKey: Keys.username, withAccess: .accessibleWhenPasscodeSetThisDeviceOnly)
                 guard let password = passwordTextField.text else { return }
+                keychain.set(password, forKey: Keys.password, withAccess: .accessibleWhenPasscodeSetThisDeviceOnly)
                 
                 login(username: username, password: password)
             }

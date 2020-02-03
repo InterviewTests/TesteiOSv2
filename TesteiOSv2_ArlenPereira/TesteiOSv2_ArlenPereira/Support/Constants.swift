@@ -11,6 +11,7 @@ import Foundation
 struct Keys {
     static let prefix: String = "santandeKeys_"
     static let username: String = "username"
+    static let password: String = "password"
 }
 
 struct APIService {

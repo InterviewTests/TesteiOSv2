@@ -33,8 +33,8 @@ class StatementInteractor: StatementBusinessLogic, StatementDataStore
 
     func requestUserInfo(request: StatementsModel.UserInfoModel.Request)
     {
-        
-        let response = StatementsModel.UserInfoModel.Response(userInfoResponse: userInfo!)
+        guard let user = userInfo else { return }
+        let response = StatementsModel.UserInfoModel.Response(userInfoResponse: user)
         presenter?.presentUserInfo(response: response)
     }
     

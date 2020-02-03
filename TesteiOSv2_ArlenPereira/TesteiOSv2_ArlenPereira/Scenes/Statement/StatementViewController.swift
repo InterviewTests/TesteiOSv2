@@ -146,7 +146,7 @@ class StatementViewController: UIViewController, StatementDisplayLogic
     // MARK: - Button
     @IBAction func backButton(_ sender: UIButton)
     {
-        keychain.delete(Keys.username)
+        keychain.delete(Keys.password)
         self.dismiss(animated: true, completion: nil)
     }
 }
