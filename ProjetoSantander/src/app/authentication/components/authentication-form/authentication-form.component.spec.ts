@@ -4,6 +4,9 @@ import { AuthenticationFormComponent } from './authentication-form.component';
 import { FormBuilder } from '@angular/forms';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { DataLogin } from 'src/app/model/login-data.model';
+import { UserAccount } from 'src/app/model/user-account.model';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HomeComponent } from 'src/app/home/home.component';
 
 describe('AuthenticationFormComponent', () => {
   let component: AuthenticationFormComponent;
@@ -12,7 +15,11 @@ describe('AuthenticationFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([
+          { path: 'Home', component: HomeComponent}
+      ])],
       declarations: [ AuthenticationFormComponent ],
       providers: [
         HttpClientTestingModule,
@@ -53,6 +60,7 @@ describe('AuthenticationFormComponent', () => {
       user:"thiago",
       password:"Hf$13579"
     }
+    
     spyOn(component, 'logIn').and.callThrough();
     component.logIn(dataLogin);
     expect( component.logIn).toHaveBeenCalled();
@@ -64,4 +72,20 @@ describe('AuthenticationFormComponent', () => {
     expect(component.submitForm).toHaveBeenCalled();
     expect(component.submitted).toEqual(true);
   }));
+
+  it("deve retornar os dados do usuário autenticado", async(() => {
+    let loginReturn:any = {
+      userAccount: {
+          userId: 1,
+          name: "Jose da Silva Teste",
+          bankAccount: "2050",
+          agency: "012314564",
+          balance: 3.3445
+      },
+      error: {}
+    }
+    expect(component.mockLogin()).toEqual(loginReturn);
+  }));
+
+
 });
