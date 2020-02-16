@@ -5,7 +5,6 @@ import { UserAccount } from '../model/user-account.model';
   providedIn: 'root'
 })
 export class UserService {
-
   userAccount:UserAccount = null;
   userAuthenticated:boolean = false;
   constructor() { }

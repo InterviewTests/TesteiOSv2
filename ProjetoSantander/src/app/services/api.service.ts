@@ -32,7 +32,7 @@ export class ApiService {
       return of(false)
     }));
   }
-  getUserStatements(userID:string):Observable<Statement[]>{
+  getUserStatements(userID:number):Observable<Statement[]>{
     return this.http.get<any>(this.apiConfig.url + "statements/" + userID).pipe(
       retry(3), catchError(()=>{
         return EMPTY
