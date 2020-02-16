@@ -1,1 +1,45 @@
-<p>home works!</p>
+<div class="main-container">
+
+    <header>
+        <div class="header-center-content">
+            <div class="card-double-column">
+                <div class="card-simple-column">José Da Silva Teste</div>
+                <input class="button-image" type="image" src="../../assets/icons/exit-icon.png" alt="Saír">
+            </div>
+        </div>
+
+    </header>
+    
+    <section class="main-container-big-card">
+        <div class="big-card-content">
+
+            <div class="card-simple-column">
+                <div class="card-simple-label">Conta</div>
+                <div>2050/01.111.222-4</div>
+            </div>
+            <div class="card-simple-column">
+                <div class="card-simple-label">Saldo</div>
+                <div>R$ 1.000,00</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-card-data">
+        <div class="container-card-data-content">
+            <div class="container-card-title">Recentes</div>
+            <div class="card-grid">
+                <div class="card-container" *ngFor="let item of data">
+                    <div class="card-content">
+                        <div class="card-content-grid">
+                            <div class="content-grid-label">Pagamento</div>
+                            <div class="content-grid-label-small right-text">12/02/2018</div>
+                            <div class="content-grid-content">Conta de Luz</div>
+                            <div class="content-grid-content-big right-text">R$ 1.000,00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

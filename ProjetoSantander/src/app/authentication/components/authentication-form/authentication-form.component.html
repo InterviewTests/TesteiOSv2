@@ -1,0 +1,21 @@
+<form [formGroup]="loginForm">
+    <section class="main-authentication-form">
+        <div class="authentication-form-container">
+            <div class="authentication-form-container-child">
+                <input formControlName="username" class="authentication-input" type="text" placeholder="Usuário ou CPF" aria-label="Nome de usuário ou CPF" name="usuario" autocomplete="off" [ngClass]="{'invalid-input-alert': submitted && this.loginForm.controls.username.errors}">
+                <div *ngIf="submitted && this.loginForm.controls.username.errors" class="invalid-fild-alert">
+                    <div *ngIf="this.loginForm.controls.username.errors.required">É necessário informar seu nome de usuário ou CPF para fazer login</div>
+                </div>
+            </div>
+            <div class="authentication-form-container-child">
+                <input formControlName="password" class="authentication-input" type="password" placeholder="Password" aria-label="Senha" name="senha" autocomplete="off" [ngClass]="{'invalid-input-alert': submitted && this.loginForm.controls.password.errors}">
+                <div *ngIf="submitted && this.loginForm.controls.password.errors" class="invalid-fild-alert">
+                    <div *ngIf="this.loginForm.controls.password.errors.required || loginForm.get('password').hasError('pattern')">Informe sua senha segura, lembre-se, ela possui ao menos um número, uma letra maiúscula, uma letra minuscula e um caractere especial!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="main-authentication-action">
+        <button type="button" aria-label="Botão Login" class="primary-action-button" (click)="submitForm()">Login</button>
+    </section>
+</form>
