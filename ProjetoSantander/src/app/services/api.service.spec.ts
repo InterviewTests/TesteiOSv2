@@ -24,7 +24,6 @@ describe('ApiService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
   it('deve chamar o método de autenticação do usuáro', ()=>{
     let dataLogin:DataLogin = {
       user:"thiago",
@@ -45,16 +44,15 @@ describe('ApiService', () => {
     service.authentication(dataLogin);
     expect(service.authentication).toHaveBeenCalledWith(dataLogin);
   });
-
   it('deve chamar o método de busca de extrato bancário do usuáro', ()=>{
-    let idUser:string = "1";
+    let idUser:number = 1;
     service.getUserStatements(idUser);
     spyOn(service,'getUserStatements');
     service.getUserStatements(idUser);
     expect(service.getUserStatements).toHaveBeenCalled();
   });
   it('deve chamar o método de busca de extrato bancário e verificar se usuáro esta correto', ()=>{
-    let idUser:string = "1";
+    let idUser:number = 1;
     service.getUserStatements(idUser);
     spyOn(service,'getUserStatements');
     service.getUserStatements(idUser);

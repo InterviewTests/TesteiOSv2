@@ -28,7 +28,6 @@ export class UtilService {
       console.log(e);
     }
   }
-
   public getBrowserName() {
     const agent = window.navigator.userAgent.toLowerCase()
     switch (true) {

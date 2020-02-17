@@ -87,5 +87,9 @@ describe('AuthenticationFormComponent', () => {
     expect(component.mockLogin()).toEqual(loginReturn);
   }));
 
-
+  it('deve limpar os dados salvos do usuário na sessão anterior', () => {
+    spyOn(component, 'clearStorageAccount').and.callThrough();
+    component.clearStorageAccount();
+    expect(component.clearStorageAccount).toHaveBeenCalled();
+  });
 });

@@ -13,4 +13,9 @@ describe('UserService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('deve alterar o status de autenticação do usuário', () => {
+    service.userAuthenticated = true;
+    expect(service.userAuthenticated).toBeTrue();
+  });
 });

@@ -36,10 +36,7 @@ export class LocalStorageService {
     localStorage.clear();
     this.deleteCookie("data");
   }
-
-
-
-  private getCookie(name: string) {
+  getCookie(name: string) {
     try {
       let ca: Array<string> = document.cookie.split(';');
       let caLen: number = ca.length;
@@ -58,7 +55,7 @@ export class LocalStorageService {
 
     return undefined;
   }
-  private setCookie(name: string, value: string, expireDays: number, path: string = '') {
+   setCookie(name: string, value: string, expireDays: number, path: string = '') {
     try {
       let d:Date = new Date();
       d.setTime(d.getTime() + expireDays * 24 * 60 * 60 * 1000);
@@ -70,7 +67,7 @@ export class LocalStorageService {
     }
 
   }
-  private deleteCookie(name) {
+   deleteCookie(name) {
     try {
       this.setCookie(name, '', -1);
     } catch (error) {

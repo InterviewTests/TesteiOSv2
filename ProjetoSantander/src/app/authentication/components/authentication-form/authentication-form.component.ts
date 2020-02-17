@@ -62,7 +62,6 @@ export class AuthenticationFormComponent implements OnInit {
     }
   }
   logIn(dataLogin:DataLogin):void{
-
     //######################################################
     //Simulação de recebimento dos dados após a autenticação, será retirado na versão final
     let simulatedData:any = this.mockLogin();
@@ -111,5 +110,8 @@ export class AuthenticationFormComponent implements OnInit {
     this.loginForm.controls['username'].setValue("");
     this.userService.userAccount = null;
   }
+
+
+  
 
 }
