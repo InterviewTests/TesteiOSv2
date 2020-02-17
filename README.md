@@ -25,5 +25,12 @@ Ao concluir a instalação execute o comando
 
 Isso executará a aplicação e à abrirá em uma guia do navegador.
 
+Se faz necessário liberar o acesso a API para aplicações externas e configurar o cabeçalho da requisição de acordo com a politica, saiba mais no link abaixo 
+
+https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Controle_Acesso_CORS
+
+Outra alternativa é hospedar a aplicação no mesmo domínio da API, assim a politica é Intrínseca, não se fazendo necessário configurações adicionais.
+
+
 
 
