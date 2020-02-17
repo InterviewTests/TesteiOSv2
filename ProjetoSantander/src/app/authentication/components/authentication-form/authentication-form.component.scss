@@ -6,7 +6,6 @@
 .authentication-form-container{
     padding: 0 1rem 0 1rem;
     display: grid;
-    grid-row-gap: 1.31rem;
 }
 .authentication-form-container-child{
     display: grid;
@@ -19,12 +18,11 @@
 }
 .authentication-input{
     background: #FFFFFF;
-    border: 1px solid #DCE2EE;
+    border: 0;
     height: 1.13rem;
-    padding: 1rem;
-    border-radius: .2rem;
     color: #A8B4C4;
     outline: none;
+    width: 100%;
 }
 .primary-action-button{
     background: #3B48EE;
@@ -73,4 +71,13 @@
 .login-error-alert{
     width: 100%;
     text-align: center;
+}
+.authentication-input-wrapper{
+    display: block;
+    border: 1px solid #DCE2EE;
+    padding: 1rem;
+    border-radius: 0.2rem;
+}
+.form-container-child{
+    margin-bottom: 1.31rem;
 }
