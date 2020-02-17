@@ -13,7 +13,7 @@
             </ng-container>
             <div class="authentication-form-container-child form-container-child" *ngIf="storageAccount === null">
                 <div class="authentication-input-wrapper">
-                    <input formControlName="username" class="authentication-input" type="text" placeholder="Usuário ou CPF" aria-label="Nome de usuário ou CPF" name="usuario" autocomplete="off" [ngClass]="{'invalid-input-alert': submitted && this.loginForm.controls.username.errors}">
+                    <input formControlName="username" class="authentication-input" type="text" placeholder="E-mail ou CPF" aria-label="Nome de usuário ou CPF" name="usuario" autocomplete="off" [ngClass]="{'invalid-input-alert': submitted && this.loginForm.controls.username.errors}">
                 </div>
                 <div *ngIf="submitted && this.loginForm.controls.username.errors" class="invalid-fild-alert">
                     <div *ngIf="this.loginForm.controls.username.errors.required">É necessário informar seu nome de usuário ou CPF para fazer login</div>
