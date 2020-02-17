@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
   getData(){
     this.searchStatus = true;
     //######################################################
-    let dataMock = this.mockStatement();
-    this.statementArr = dataMock.statementList;
+/*     let dataMock = this.mockStatement();
+    this.statementArr = dataMock.statementList; */
     //######################################################
     this.apiService.getUserStatements(this.userService.userAccount.userId).subscribe((data:any)=>{
       if(data){

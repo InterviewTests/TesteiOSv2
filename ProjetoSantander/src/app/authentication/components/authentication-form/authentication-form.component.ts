@@ -64,11 +64,11 @@ export class AuthenticationFormComponent implements OnInit {
   logIn(dataLogin:DataLogin):void{
     //######################################################
     //Simulação de recebimento dos dados após a autenticação, será retirado na versão final
-    let simulatedData:any = this.mockLogin();
+/*     let simulatedData:any = this.mockLogin();
     this.userService.userAccount = simulatedData.userAccount;
     this.localStorageService.saveData("data", this.utilService.encryptData({data:dataLogin.user, userFullName:this.userService.userAccount.name}));
     this.userService.userAuthenticated = true;
-    this.router.navigate(['/Home']);
+    this.router.navigate(['/Home']); */
     //######################################################
 
     this.apiService.authentication(dataLogin).subscribe((data:any)=>{
