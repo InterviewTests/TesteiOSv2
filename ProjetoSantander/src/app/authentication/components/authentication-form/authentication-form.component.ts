@@ -21,6 +21,7 @@ export class AuthenticationFormComponent implements OnInit {
   errorServer:boolean = false;
   sucessAuthentication:boolean = false;
   storageAccount:StorageAccount = null;
+  showProgressbar:boolean = false;
 
   constructor(
     private utilService:UtilService,
@@ -70,8 +71,9 @@ export class AuthenticationFormComponent implements OnInit {
     this.userService.userAuthenticated = true;
     this.router.navigate(['/Home']); */
     //######################################################
-
+    this.showProgressbar = true;
     this.apiService.authentication(dataLogin).subscribe((data:any)=>{
+      this.showProgressbar = false;
       if(data){
         try {
           this.userService.userAccount = data.userAccount;
@@ -84,10 +86,12 @@ export class AuthenticationFormComponent implements OnInit {
           this.errorServer = true;
         }
       }else{
+        this.showProgressbar = false;
         this.sucessAuthentication = false;
         this.errorServer = true;
       }
     }, error=>{
+      this.showProgressbar = false;
       this.errorServer = true;
     });
   }
