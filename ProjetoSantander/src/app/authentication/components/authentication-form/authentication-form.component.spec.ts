@@ -92,4 +92,48 @@ describe('AuthenticationFormComponent', () => {
     component.clearStorageAccount();
     expect(component.clearStorageAccount).toHaveBeenCalled();
   });
+
+
+
+  it("deve verificar um cpf válido", async(() => {
+    expect(component.isValidCpf("37210456880")).toEqual(true);
+  }));
+  it("deve verificar um cpf INválido", async(() => {
+    expect(component.isValidCpf("17210456880")).toEqual(false);
+  }));
+  it("deve verificar um email válido", async(() => {
+    expect(component.validateEmail("contato@everis.com")).toEqual(true);
+  }));
+  it("deve verificar um email inválido", async(() => {
+    expect(component.validateEmail("contatoeveris")).toEqual(false);
+  }));
+
+  it("deve verificar se o usuário contém letras minusculas", async(() => {
+    let username = component.loginForm.controls["username"];
+    let password = component.loginForm.controls["password"];
+    username.setValue("joao");
+    password.setValue("Uj#132456");
+    expect(component.validateString()).toEqual(true);
+  }));
+  it("deve verificar se o usuário contém letras maiusculas", async(() => {
+    let username = component.loginForm.controls["username"];
+    let password = component.loginForm.controls["password"];
+    username.setValue("Joao");
+    password.setValue("Uj#132456");
+    expect(component.validateString()).toEqual(true);
+  }));
+  it("deve verificar se o usuário contém letras caracteres especiais", async(() => {
+    let username = component.loginForm.controls["username"];
+    let password = component.loginForm.controls["password"];
+    username.setValue("joao$");
+    password.setValue("Uj#132456");
+    expect(component.validateString()).toEqual(true);
+  }));
+  it("deve verificar se o usuário não contém letras amiusculas ou minusculas nem caracteres especiais", async(() => {
+    let username = component.loginForm.controls["username"];
+    let password = component.loginForm.controls["password"];
+    username.setValue("12312412");
+    password.setValue("Uj#132456");
+    expect(component.validateString()).toEqual(false);
+  }));
 });
