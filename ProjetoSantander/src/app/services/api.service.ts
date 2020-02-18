@@ -29,6 +29,7 @@ export class ApiService {
          return EMPTY
        })
     ).pipe(catchError(err=>{
+      this.handleError(err);
       return of(false)
     }));
   }
@@ -38,7 +39,20 @@ export class ApiService {
         return EMPTY
       })
     ).pipe(catchError(err=>{
+      this.handleError(err);
       return of(false)
     }));
+  }
+
+
+  private handleError(err:HttpErrorResponse){
+    let errorMessage = '';
+    if(err.error instanceof ErrorEvent){
+      errorMessage =  `Houve um erro : ${err.error.message}`;
+    }else{
+      errorMessage =  `O servidor retornou o código : ${err.status}, mensagem de erro é : ${err.message}`; 
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 }
