@@ -33,7 +33,7 @@ export class AuthenticationFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService:UserService,
     private localStorageService: LocalStorageService
-  ) { 
+  ) {
     if(this.userService.userAuthenticated){
       router.navigate(['/Home']);
     }
@@ -44,6 +44,11 @@ export class AuthenticationFormComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W+).*$/)]]
     });
+
+
+  }
+
+  ngAfterContentInit(){
     let storageData:any = null;
     try {
       storageData = this.localStorageService.get("data");
@@ -52,10 +57,13 @@ export class AuthenticationFormComponent implements OnInit {
     if(storageData != undefined && storageData != null) {
       this.storageAccount = this.utilService.decryptData(storageData);
       this.loginForm.controls['username'].setValue(this.storageAccount.data);
+      this.checkEmailOrCPF();
     }
 
   }
+
   submitForm():void{
+    console.log("SubmitForm : " + this.loginForm.valid);
     this.submitted = true;
     if(this.loginForm.valid){
       let dataLogin:DataLogin ={
@@ -66,7 +74,8 @@ export class AuthenticationFormComponent implements OnInit {
     }
   }
   logIn(dataLogin:DataLogin):void{
-
+    console.log("validCPF : " + JSON.stringify(dataLogin));
+    console.log("validEmail : " + this.validEmail);
     if(this.validCPF == true || this.validEmail == true){
 
 
@@ -152,7 +161,7 @@ export class AuthenticationFormComponent implements OnInit {
       //E-MAIL
       console.log("EMAIL");
       console.log("EMAIL VALIDO : " + this.validateEmail(this.loginForm.get('username').value));
-    
+
       if(this.validateEmail(this.loginForm.get('username').value)){
         this.validCPF = false;
         this.validEmail = true;
@@ -177,10 +186,10 @@ export class AuthenticationFormComponent implements OnInit {
       //Verifica a existência de caracteres especiais
       if(this.loginForm.get('username').value.match(/(?=.*\W+).*$/).length > 0) return true;
     } catch (error) {}
-    
+
     return false;
   }
-  isValidCpf(strCPF) {
+  isValidCpf(strCPF:string) {
 
     if(strCPF.length > 11) return false;
 
@@ -190,21 +199,21 @@ export class AuthenticationFormComponent implements OnInit {
     Soma = 0;
 
     if (strCPF == "00000000000") return false;
-     
+
     for (let i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
     Resto = (Soma * 10) % 11;
-    
+
       if ((Resto == 10) || (Resto == 11))  Resto = 0;
       if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
-    
+
     Soma = 0;
       for (let i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
       Resto = (Soma * 10) % 11;
-    
+
       if ((Resto == 10) || (Resto == 11))  Resto = 0;
       if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
       return true;
-    
+
   }
   validateEmail(email:string){
     try {
