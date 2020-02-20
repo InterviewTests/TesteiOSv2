@@ -124,6 +124,46 @@
           }
         }
       }
+    },
+    "SantanderLib": {
+      "projectType": "library",
+      "root": "projects/santander-lib",
+      "sourceRoot": "projects/santander-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/santander-lib/tsconfig.lib.json",
+            "project": "projects/santander-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/santander-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/santander-lib/src/test.ts",
+            "tsConfig": "projects/santander-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/santander-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/santander-lib/tsconfig.lib.json",
+              "projects/santander-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ProjetoSantander",

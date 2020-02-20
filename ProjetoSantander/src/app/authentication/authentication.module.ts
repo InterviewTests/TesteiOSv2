@@ -5,7 +5,8 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { AuthenticationComponent } from './authentication.component';
 import { AuthenticationFormComponent } from './components/authentication-form/authentication-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import { SantanderLibModule } from 'projects/santander-lib/src/public-api';
 
 @NgModule({
   declarations: [AuthenticationComponent, AuthenticationFormComponent],
@@ -14,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
     AuthenticationRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SantanderLibModule
   ],
   exports:[AuthenticationFormComponent]
 })

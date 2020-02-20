@@ -8,11 +8,11 @@
                     <button class="button-link" (click)="clearStorageAccount()">
                         Entrar com outra conta!
                     </button>
-                    
+
                 </div>
             </ng-container>
             <div class="authentication-form-container-child form-container-child" *ngIf="storageAccount === null">
-                
+
                 <div class="valid-input-form-label-error" *ngIf="bindInputUser == true && this.validCPF == false && this.validEmail == false">Você precisa informar um CPF ou um E-mail válido para prosseguir!</div>
                 <div class="valid-input-form-label" *ngIf="bindInputUser == true && this.validCPF == true">Fazendo Login com CPF</div>
                 <div class="valid-input-form-label" *ngIf="bindInputUser == true && this.validEmail == true">Fazendo Login com E-mail</div>
@@ -46,7 +46,6 @@
         </div>
     </div>
     <section class="main-authentication-action">
-
-        <button type="button" aria-label="Botão Login" class="primary-action-button" (click)="submitForm()">Login</button>
+      <lib-primary-button class="align-center-content" (click)='submitForm()' buttonText='Login'></lib-primary-button>
     </section>
 </form>
