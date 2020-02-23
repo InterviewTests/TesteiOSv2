@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C171E9D2402D7620034D470 /* statementList.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C171E9B2402D7620034D470 /* statementList.json */; };
+		0C171E9E2402D7620034D470 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C171E9C2402D7620034D470 /* login.json */; };
+		0C171EA12402E92C0034D470 /* Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C171EA02402E92C0034D470 /* Extras.swift */; };
 		0CE1D15623F43800000639A5 /* UsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE1D15523F43800000639A5 /* UsuarioViewController.swift */; };
 		0CFE296323F33C7100C06C95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE296223F33C7100C06C95 /* AppDelegate.swift */; };
 		0CFE296523F33C7100C06C95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE296423F33C7100C06C95 /* SceneDelegate.swift */; };
@@ -43,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C171E9B2402D7620034D470 /* statementList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = statementList.json; sourceTree = "<group>"; };
+		0C171E9C2402D7620034D470 /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
+		0C171EA02402E92C0034D470 /* Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extras.swift; sourceTree = "<group>"; };
 		0CE1D15523F43800000639A5 /* UsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioViewController.swift; sourceTree = "<group>"; };
 		0CFE295F23F33C7100C06C95 /* SANTANDER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SANTANDER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE296223F33C7100C06C95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,9 +98,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C171E9F2402E9100034D470 /* extras */ = {
+			isa = PBXGroup;
+			children = (
+				0C171EA02402E92C0034D470 /* Extras.swift */,
+			);
+			path = extras;
+			sourceTree = "<group>";
+		};
 		0CE1D15123F42C7B000639A5 /* ViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0C171E9F2402E9100034D470 /* extras */,
 				0CFE299623F3449000C06C95 /* LoginTableViewCell.swift */,
 				0CFE299723F3449000C06C95 /* LoginTableViewCell.xib */,
 				0CFE299A23F36A1400C06C95 /* DadosUsuarioTableViewCell.swift */,
@@ -197,6 +212,8 @@
 		0CFE29A223F38B2300C06C95 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0C171E9C2402D7620034D470 /* login.json */,
+				0C171E9B2402D7620034D470 /* statementList.json */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -307,6 +324,8 @@
 			files = (
 				0CFE29A123F3799200C06C95 /* LancamentosUsuarioTableViewCell.xib in Resources */,
 				0CFE297223F33C7300C06C95 /* LaunchScreen.storyboard in Resources */,
+				0C171E9D2402D7620034D470 /* statementList.json in Resources */,
+				0C171E9E2402D7620034D470 /* login.json in Resources */,
 				0CFE296F23F33C7300C06C95 /* Assets.xcassets in Resources */,
 				0CFE299D23F36A1400C06C95 /* DadosUsuarioTableViewCell.xib in Resources */,
 				0CFE296A23F33C7100C06C95 /* Main.storyboard in Resources */,
@@ -342,6 +361,7 @@
 				0CFE296523F33C7100C06C95 /* SceneDelegate.swift in Sources */,
 				0CE1D15623F43800000639A5 /* UsuarioViewController.swift in Sources */,
 				0CFE299C23F36A1400C06C95 /* DadosUsuarioTableViewCell.swift in Sources */,
+				0C171EA12402E92C0034D470 /* Extras.swift in Sources */,
 				0CFE299823F3449000C06C95 /* LoginTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

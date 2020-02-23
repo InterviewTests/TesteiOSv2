@@ -12,9 +12,10 @@ import Foundation
 class LoginViewController: UIViewController {
 
     
+    
     @IBOutlet weak var loginTableView: UITableView!
     
-    
+    var login = LoginTableViewCell()
     
     
     override func viewDidLoad() {
@@ -43,7 +44,8 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let receberCell = tableView.dequeueReusableCell(withIdentifier: "LoginTableViewCell", for: indexPath) as? LoginTableViewCell {
-                    
+            
+            
            
 //            receberCell.layer.borderColor = UIColor.label.cgColor
             
