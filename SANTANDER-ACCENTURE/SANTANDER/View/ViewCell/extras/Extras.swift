@@ -7,15 +7,15 @@
 //
 
 import Foundation
+import CPF_CNPJ_Validator
 
 extension String {
     
     
     static func validarCPf(cpf: String) -> Bool {
-       let cpfRegEx = "[0-9]"
-       let cpfTest = NSPredicate(format:"SELF MATCHES %@", cpfRegEx)
-
-       return cpfTest.evaluate(with: cpf)
+       let success = BooleanValidator().validate(cpf: cpf)
+     
+        return success
         
 }
     
