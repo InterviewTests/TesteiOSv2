@@ -10,6 +10,9 @@
 		0C171E9D2402D7620034D470 /* statementList.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C171E9B2402D7620034D470 /* statementList.json */; };
 		0C171E9E2402D7620034D470 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C171E9C2402D7620034D470 /* login.json */; };
 		0C171EA12402E92C0034D470 /* Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C171EA02402E92C0034D470 /* Extras.swift */; };
+		0C21412B240360C80033E85B /* StatementListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C21412A240360C80033E85B /* StatementListModel.swift */; };
+		0C21412D240361360033E85B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C21412C240361360033E85B /* LoginModel.swift */; };
+		0C55D1D9240416B7007A7635 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55D1D8240416B7007A7635 /* CoreDataManager.swift */; };
 		0CE1D15623F43800000639A5 /* UsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE1D15523F43800000639A5 /* UsuarioViewController.swift */; };
 		0CFE296323F33C7100C06C95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE296223F33C7100C06C95 /* AppDelegate.swift */; };
 		0CFE296523F33C7100C06C95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE296423F33C7100C06C95 /* SceneDelegate.swift */; };
@@ -49,6 +52,9 @@
 		0C171E9B2402D7620034D470 /* statementList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = statementList.json; sourceTree = "<group>"; };
 		0C171E9C2402D7620034D470 /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		0C171EA02402E92C0034D470 /* Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extras.swift; sourceTree = "<group>"; };
+		0C21412A240360C80033E85B /* StatementListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementListModel.swift; sourceTree = "<group>"; };
+		0C21412C240361360033E85B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		0C55D1D8240416B7007A7635 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0CE1D15523F43800000639A5 /* UsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioViewController.swift; sourceTree = "<group>"; };
 		0CFE295F23F33C7100C06C95 /* SANTANDER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SANTANDER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE296223F33C7100C06C95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +145,8 @@
 		0CE1D15423F42CE2000639A5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0C21412A240360C80033E85B /* StatementListModel.swift */,
+				0C21412C240361360033E85B /* LoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 			children = (
 				0C171E9C2402D7620034D470 /* login.json */,
 				0C171E9B2402D7620034D470 /* statementList.json */,
+				0C55D1D8240416B7007A7635 /* CoreDataManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -358,10 +367,13 @@
 				0CFE296723F33C7100C06C95 /* LoginViewController.swift in Sources */,
 				0CFE296323F33C7100C06C95 /* AppDelegate.swift in Sources */,
 				0CFE296D23F33C7100C06C95 /* SANTANDER.xcdatamodeld in Sources */,
+				0C55D1D9240416B7007A7635 /* CoreDataManager.swift in Sources */,
 				0CFE296523F33C7100C06C95 /* SceneDelegate.swift in Sources */,
+				0C21412B240360C80033E85B /* StatementListModel.swift in Sources */,
 				0CE1D15623F43800000639A5 /* UsuarioViewController.swift in Sources */,
 				0CFE299C23F36A1400C06C95 /* DadosUsuarioTableViewCell.swift in Sources */,
 				0C171EA12402E92C0034D470 /* Extras.swift in Sources */,
+				0C21412D240361360033E85B /* LoginModel.swift in Sources */,
 				0CFE299823F3449000C06C95 /* LoginTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

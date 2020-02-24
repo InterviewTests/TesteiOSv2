@@ -15,6 +15,7 @@ protocol PerformLoginDelegate: class {
 class LoginTableViewCell: UITableViewCell {
 
     
+    
     @IBOutlet weak var logoBancoImageView: UIImageView!
     
     @IBOutlet weak var nomeUsuarioTextField: UITextField!{
@@ -62,6 +63,8 @@ class LoginTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    
    
     @IBAction func loginTappedButton(_ sender: Any) {
        
@@ -75,6 +78,7 @@ class LoginTableViewCell: UITableViewCell {
             nomeUsuarioTextField.layer.borderColor = UIColor.red.cgColor
             senhaUsuarioTextField.layer.borderColor = UIColor.red.cgColor
         }
+        
     }
     
    
@@ -146,6 +150,8 @@ extension LoginTableViewCell: UITextFieldDelegate{
         }
         return true
     }
+    
+    
 }
 
 
