@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		0C21412D240361360033E85B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C21412C240361360033E85B /* LoginModel.swift */; };
 		0C55D1D9240416B7007A7635 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55D1D8240416B7007A7635 /* CoreDataManager.swift */; };
 		0CE1D15623F43800000639A5 /* UsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE1D15523F43800000639A5 /* UsuarioViewController.swift */; };
+		0CFD2E90240599690089E66D /* LoginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFD2E8F240599690089E66D /* LoginProvider.swift */; };
+		0CFD2E9224059C2D0089E66D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFD2E9124059C2D0089E66D /* LoginController.swift */; };
 		0CFE296323F33C7100C06C95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE296223F33C7100C06C95 /* AppDelegate.swift */; };
 		0CFE296523F33C7100C06C95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE296423F33C7100C06C95 /* SceneDelegate.swift */; };
 		0CFE296723F33C7100C06C95 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE296623F33C7100C06C95 /* LoginViewController.swift */; };
@@ -60,6 +62,8 @@
 		0C21412C240361360033E85B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		0C55D1D8240416B7007A7635 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0CE1D15523F43800000639A5 /* UsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioViewController.swift; sourceTree = "<group>"; };
+		0CFD2E8F240599690089E66D /* LoginProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProvider.swift; sourceTree = "<group>"; };
+		0CFD2E9124059C2D0089E66D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0CFE295F23F33C7100C06C95 /* SANTANDER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SANTANDER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE296223F33C7100C06C95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CFE296423F33C7100C06C95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 		0CE1D15323F42CBD000639A5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0CFD2E9124059C2D0089E66D /* LoginController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				0C171E9C2402D7620034D470 /* login.json */,
 				0C171E9B2402D7620034D470 /* statementList.json */,
 				0C55D1D8240416B7007A7635 /* CoreDataManager.swift */,
+				0CFD2E8F240599690089E66D /* LoginProvider.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -264,7 +270,6 @@
 				FF35E819C142CBE85CFC3759 /* Pods-SANTANDERTests.debug.xcconfig */,
 				6610CF7C2B454EBD810F2DEC /* Pods-SANTANDERTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -513,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CFE29A023F3799200C06C95 /* LancamentosUsuarioTableViewCell.swift in Sources */,
+				0CFD2E90240599690089E66D /* LoginProvider.swift in Sources */,
 				0CFE296723F33C7100C06C95 /* LoginViewController.swift in Sources */,
 				0CFE296323F33C7100C06C95 /* AppDelegate.swift in Sources */,
 				0CFE296D23F33C7100C06C95 /* SANTANDER.xcdatamodeld in Sources */,
@@ -524,6 +530,7 @@
 				0C171EA12402E92C0034D470 /* Extras.swift in Sources */,
 				0C21412D240361360033E85B /* LoginModel.swift in Sources */,
 				0CFE299823F3449000C06C95 /* LoginTableViewCell.swift in Sources */,
+				0CFD2E9224059C2D0089E66D /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

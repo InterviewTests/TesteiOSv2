@@ -29,3 +29,5 @@ struct UserAccount: Codable {
         case name, bankAccount, agency, balance
     }
 }
+
+typealias User = [UserAccount]

@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol LogoutBtnDelegate: class {
+    func logoutBtnTapped()
+}
+
+
 class DadosUsuarioTableViewCell: UITableViewCell {
 
     
@@ -17,17 +22,25 @@ class DadosUsuarioTableViewCell: UITableViewCell {
     
     @IBOutlet weak var saldoLabel: UILabel!
     
-
+    weak var delegate: LogoutBtnDelegate?
        
        override func awakeFromNib() {
            super.awakeFromNib()
        }
        
-//
-//
-       
-    
-    @IBAction func logoutButton(_ sender: UIButton) {
+    @IBAction func logoutTapped(_ sender: Any) {
+         delegate?.logoutBtnTapped()
         
     }
+    
+    func setupCell(value: UserAccount?) {
+           
+        self.nomeLabel.text = value?.name
+        
+        if let agency = value?.agency, let bank = value?.bankAccount {
+            self.dadosContaLabel.text = "\(agency)/\(bank)"
+        }
+        self.saldoLabel.text = String(value?.balance ?? 0.00)
+     
+}
 }

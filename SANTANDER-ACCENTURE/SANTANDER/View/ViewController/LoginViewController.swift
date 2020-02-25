@@ -64,3 +64,17 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
 
+extension LoginViewController: UserControllerDelegate{
+    
+    func successLoadUsers() {
+        self.loginTableView.reloadData()
+    }
+    
+    func errorLoadUsers(error: Error?) {
+        
+    }
+    
+    
+    
+    
+}

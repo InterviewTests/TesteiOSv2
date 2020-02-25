@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class UsuarioViewController: UIViewController {
 
     
+    
     @IBOutlet weak var usuarioTableView: UITableView!
     
+    var controller: LoginController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +27,11 @@ class UsuarioViewController: UIViewController {
         
         self.usuarioTableView.delegate = self
         self.usuarioTableView.dataSource = self
-
+        
+        self.controller = LoginController()
+        self.controller?.delegate = self
+        
+        self.controller?.loadMovies()
         
     }
    
@@ -53,6 +61,9 @@ extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
         } else {
             
             if let dadosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "DadosUsuarioTableViewCell", for: indexPath) as? DadosUsuarioTableViewCell {
+                
+                dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
+                
                 return dadosUsuarioCell
             }
         }
@@ -63,4 +74,15 @@ extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-
+extension UsuarioViewController: UserControllerDelegate{
+    func successLoadUsers() {
+        self.usuarioTableView.reloadData()
+    }
+    
+    func errorLoadUsers(error: Error?) {
+        
+    }
+    
+    
+    
+}
