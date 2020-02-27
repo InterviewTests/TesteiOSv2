@@ -31,17 +31,20 @@ class LancamentosUsuarioTableViewCell: UITableViewCell {
         celulaView.layer.shadowRadius = 5
        }
        
-//       func set(statement: StatementListScene.GetStatements.ViewModel.Statements) {
-//           self.tituloLabel.text = statement.title
-//           self.descricaoLabel.text = statement.description
-//           self.dataLabel.text = String.dateFromCustomString(customString: statement.date)
-//
-//           if statement.value < 0 {
-//               valorLabel.textColor = UIColor.red
-//           } else {
-//               valorLabel.textColor = UIColor.darkGray
-//           }
-//
-//           valorLabel.text = String.formatCurrencyLabel(value: statement.value)
-//       }
+       func set(list: StatementList) {
+           
+        self.tituloLabel.text = list.title
+        self.descricaoLabel.text = list.desc
+        self.dataLabel.text = list.date
+
+        if list.value < 0 {
+               valorLabel.textColor = UIColor.red
+           } else {
+               valorLabel.textColor = UIColor.darkGray
+           }
+
+        valorLabel.text = String(list.value)
+       }
 }
+
+

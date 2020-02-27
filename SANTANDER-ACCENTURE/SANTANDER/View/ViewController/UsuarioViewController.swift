@@ -12,7 +12,7 @@ import Alamofire
 
 class UsuarioViewController: UIViewController {
 
-    
+    let statement: StatementsController = StatementsController()
     
     @IBOutlet weak var usuarioTableView: UITableView!
     
@@ -48,14 +48,21 @@ extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
             return 1
         }
         
-        return 6
+//        return statement.arrayList?.count ?? 0
+        return 20
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+//
+        
         if indexPath.section == 1 {
             
             if let lancamentosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "LancamentosUsuarioTableViewCell", for: indexPath) as? LancamentosUsuarioTableViewCell {
+                
+//                lancamentosUsuarioCell.set(list: statement.arrayList![indexPath.row])
+                
                 return lancamentosUsuarioCell
             }
         } else {
@@ -73,6 +80,8 @@ extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
         
     
 }
+
+
 
 extension UsuarioViewController: UserControllerDelegate{
     

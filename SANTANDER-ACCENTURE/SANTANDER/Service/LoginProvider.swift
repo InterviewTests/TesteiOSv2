@@ -16,7 +16,7 @@ protocol UserProviderDelegate: class {
     func errorLoadUsers(error: Error?)
 }
 
-class UserProvider {
+class LoginProvider {
     
     weak var delegate: UserProviderDelegate?
     

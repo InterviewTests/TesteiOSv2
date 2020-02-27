@@ -23,3 +23,5 @@ struct StatementList: Codable {
     let title, desc, date: String
     let value: Double
 }
+
+typealias List = [StatementList] 

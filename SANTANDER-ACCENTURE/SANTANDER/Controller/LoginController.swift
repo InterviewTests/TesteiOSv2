@@ -18,12 +18,12 @@ class LoginController {
     
     weak var delegate: UserControllerDelegate?
     
-    var provider: UserProvider?
+    var provider: LoginProvider?
     
     private var arrayUsers: User = []
     
     func setupController(){
-        self.provider = UserProvider()
+        self.provider = LoginProvider()
         self.provider?.delegate = self
     }
     
