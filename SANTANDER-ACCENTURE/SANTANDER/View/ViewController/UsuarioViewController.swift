@@ -62,7 +62,7 @@ extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
             
             if let dadosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "DadosUsuarioTableViewCell", for: indexPath) as? DadosUsuarioTableViewCell {
                 
-                dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
+//                dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
                 
                 return dadosUsuarioCell
             }
@@ -75,6 +75,7 @@ extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 extension UsuarioViewController: UserControllerDelegate{
+    
     func successLoadUsers() {
         self.usuarioTableView.reloadData()
     }

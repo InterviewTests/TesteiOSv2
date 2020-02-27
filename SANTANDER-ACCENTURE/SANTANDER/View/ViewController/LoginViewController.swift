@@ -9,9 +9,11 @@
 import UIKit
 import Foundation
 
-class LoginViewController: UIViewController {
-
+class LoginViewController: UIViewController, SomeUIViewDelegate {
     
+    func loginBtnTapped(name: String, passwd: String) {
+        
+    }
     
     @IBOutlet weak var loginTableView: UITableView!
     
@@ -26,12 +28,27 @@ class LoginViewController: UIViewController {
         self.loginTableView.delegate = self
         self.loginTableView.dataSource = self
         
+        loginTableView.delegate = self
         loginTableView.reloadData()
+        
+       
         
     }
 
+    func segueFunction() {
+        
+//        self.performSegue(withIdentifier: "SegueLoginUsuario", sender: self)
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "UsuarioViewController") as! UsuarioViewController
+
+        self.present(resultViewController, animated:true, completion:nil)
+    }
+    
 }
+
+
 
 extension LoginViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -45,7 +62,7 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate {
         
         if let receberCell = tableView.dequeueReusableCell(withIdentifier: "LoginTableViewCell", for: indexPath) as? LoginTableViewCell {
             
-            
+            receberCell.delegateSegue = self
            
 //            receberCell.layer.borderColor = UIColor.label.cgColor
             
@@ -59,9 +76,10 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
            return tableView.frame.height
        }
+  
     
+}
    
-    }
     
 
 extension LoginViewController: UserControllerDelegate{

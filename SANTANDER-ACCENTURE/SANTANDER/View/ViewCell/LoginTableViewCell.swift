@@ -12,9 +12,15 @@ protocol PerformLoginDelegate: class {
     func loginBtnTapped(name: String, passwd:String)
 }
 
+protocol SomeUIViewDelegate {
+    func segueFunction() 
+}
+
 class LoginTableViewCell: UITableViewCell {
 
+    var loginTela: LoginViewController?
     
+    var delegateSegue: SomeUIViewDelegate?
     
     @IBOutlet weak var logoBancoImageView: UIImageView!
     
@@ -66,7 +72,7 @@ class LoginTableViewCell: UITableViewCell {
     
     
    
-    @IBAction func loginTappedButton(_ sender: Any) {
+    @IBAction func loginButton(_ sender: Any) {
        
         guard let user = nomeUsuarioTextField.text , let password = senhaUsuarioTextField.text else {
             return
@@ -78,6 +84,10 @@ class LoginTableViewCell: UITableViewCell {
             nomeUsuarioTextField.layer.borderColor = UIColor.red.cgColor
             senhaUsuarioTextField.layer.borderColor = UIColor.red.cgColor
         }
+       
+        self.delegateSegue?.segueFunction()
+        
+       
         
     }
     
@@ -99,8 +109,8 @@ class LoginTableViewCell: UITableViewCell {
     func setupDefaultValuesOnDismiss(){
            userValid = true
            pswdValid = false
-//           nomeUsuarioTextField.placeholder = "User"
-//           senhaUsuarioTextField.placeholder = "Password"
+           nomeUsuarioTextField.placeholder = "User"
+           senhaUsuarioTextField.placeholder = "Password"
            senhaUsuarioTextField.text = ""
            loginButton.isEnabled = false
            loginButton.alpha = 0.5

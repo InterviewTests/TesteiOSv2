@@ -23,17 +23,22 @@ class UserProvider {
     
     func loadUsers() {
         
+        let parameters = [
+          "username": "test_user",
+          "password": "Test@1"
+        ]
+        
         let urlString: String = "https://bank-app-test.herokuapp.com/api/login"
         
         if let url:URL = URL(string: urlString) {
            
-            Alamofire.request(url, method: .get).responseJSON { (response) in
+            Alamofire.request(url, method: .post, parameters: parameters).responseJSON { (response) in
                 
                 if response.response?.statusCode == 200 {
                     
                     do {
                         
-                        let model:User = try JSONDecoder().decode([UserAccount].self, from:  response.data ?? Data())
+                        let model:User = try JSONDecoder().decode(User.self, from:  response.data ?? Data())
                         
                         print(model)
                         self.delegate?.successLoadUsers(users: model)
@@ -44,7 +49,7 @@ class UserProvider {
                     }
                 }else {
                     print("=========error")
-                    print(response.error)
+                    print(response.error ?? "")
                     self.delegate?.errorLoadUsers(error: response.error)
                 }
             }
@@ -54,4 +59,5 @@ class UserProvider {
     }
 
 }
+
 

@@ -36,10 +36,10 @@ class LoginController {
         return self.arrayUsers.count
     }
     
-    func loadCurrentUser(indexPath: IndexPath) -> UserAccount {
-        
-        return self.arrayUsers[indexPath.row]
-    }
+//    func loadCurrentUser(indexPath: IndexPath) -> UserAccount {
+//        
+//        return self.arrayUsers[indexPath.row]
+//    }
 }
 
 extension LoginController: UserProviderDelegate {
