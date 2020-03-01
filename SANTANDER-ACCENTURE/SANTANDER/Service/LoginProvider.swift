@@ -23,10 +23,8 @@ class LoginProvider {
     
     func loadUsers() {
         
-        let parameters = [
-          "username": "test_user",
-          "password": "Test@1"
-        ]
+        
+        let parameters: Parameters = ["user": "test_user", "password" : "Test@1"]
         
         let urlString: String = "https://bank-app-test.herokuapp.com/api/login"
         
@@ -45,12 +43,12 @@ class LoginProvider {
                         
                     } catch  let error{
                         print( error)
-                        self.delegate?.errorLoadUsers(error: error)
+                        self.delegate?.errorLoadUsers(error: error as? Error)
                     }
                 }else {
                     print("=========error")
                     print(response.error ?? "")
-                    self.delegate?.errorLoadUsers(error: response.error)
+                    self.delegate?.errorLoadUsers(error: response.error as! Error)
                 }
             }
                 

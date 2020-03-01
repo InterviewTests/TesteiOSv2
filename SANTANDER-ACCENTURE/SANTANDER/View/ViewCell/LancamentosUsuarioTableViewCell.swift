@@ -37,14 +37,17 @@ class LancamentosUsuarioTableViewCell: UITableViewCell {
         self.descricaoLabel.text = list.desc
         self.dataLabel.text = list.date
 
-        if list.value < 0 {
+        
+        
+        if Int(list.value ?? 0) < 0 {
                valorLabel.textColor = UIColor.red
            } else {
                valorLabel.textColor = UIColor.darkGray
            }
+        
+        valorLabel.text = String(format:"%.2f", list.value ?? "")
+       
 
-        valorLabel.text = String(list.value)
-       }
 }
-
+}
 

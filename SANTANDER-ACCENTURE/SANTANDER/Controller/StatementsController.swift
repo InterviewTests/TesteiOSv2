@@ -7,56 +7,22 @@
 //
 import Foundation
 
-protocol StatementsControllerDelegate: class {
-    
-    func successLoadStatements()
-    func errorLoadStatements(error: Error?)
+protocol StatementsControllerProtocol: class {
+    func didFinishRequest(array: [StatementList])
 }
 
 class StatementsController {
-    
-    weak var delegate: StatementsControllerDelegate?
-    
-    var provider: StatementsProvider?
-    
-    var arrayList: List?
-    
-    func setupController(){
-        self.provider = StatementsProvider()
-        self.provider?.delegateStatements = self
-    }
+
+    var provider: Provider = Provider()
+    weak var delegate: StatementsControllerProtocol?
     
     func loadList() {
-        self.setupController()
-        self.provider?.loadStatements()
-    }
-    
-    func numberOfRowsInSection() -> Int {
-        return self.arrayList?.count ?? 0
-    }
-    
-    func loadCurrentMovie(indexPath: IndexPath) -> StatementList {
-        
-        return (self.arrayList?[indexPath.row])!
-    }
-}
-
-extension StatementsController: StatementsProviderDelegate {
-    
-   
-    
-    func successLoadStatements(lists: List) {
-        guard self.arrayList != nil else {
-        self.arrayList = lists
-         self.delegate?.successLoadStatements()
-        return
+        provider.getDataFromHeroKu { (array) in
+            if let arrayStatement = array {
+                self.delegate?.didFinishRequest(array: arrayStatement)
+            }
         }
-        self.arrayList?.append(contentsOf: lists)
+        return
     }
-    
-    func errorLoadStatements(error: Error?) {
-           self.delegate?.errorLoadStatements(error: error)
-       }
-    
 }
 

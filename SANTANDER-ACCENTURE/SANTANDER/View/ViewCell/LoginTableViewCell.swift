@@ -60,7 +60,9 @@ class LoginTableViewCell: UITableViewCell {
         
         nomeUsuarioTextField.delegate = self
         senhaUsuarioTextField.delegate = self
-        
+        nomeUsuarioTextField.text = "25200886805"
+        senhaUsuarioTextField.text = "Cd@2"
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -74,6 +76,8 @@ class LoginTableViewCell: UITableViewCell {
    
     @IBAction func loginButton(_ sender: Any) {
        
+        
+        
         guard let user = nomeUsuarioTextField.text , let password = senhaUsuarioTextField.text else {
             return
         }
@@ -86,8 +90,6 @@ class LoginTableViewCell: UITableViewCell {
         }
        
         self.delegateSegue?.segueFunction()
-        
-       
         
     }
     

@@ -21,25 +21,24 @@ class LoginController {
     var provider: LoginProvider?
     
     private var arrayUsers: User = []
+
     
     func setupController(){
         self.provider = LoginProvider()
         self.provider?.delegate = self
     }
     
-    func loadMovies() {
+    func loadList() {
         self.setupController()
         self.provider?.loadUsers()
     }
     
-    func numberOfRowsInSection() -> Int {
-        return self.arrayUsers.count
-    }
     
-//    func loadCurrentUser(indexPath: IndexPath) -> UserAccount {
-//        
-//        return self.arrayUsers[indexPath.row]
-//    }
+    func loadCurrentUser(indexPath: IndexPath) -> UserAccount {
+        
+        return self.arrayUsers[indexPath.row]
+       
+    }
 }
 
 extension LoginController: UserProviderDelegate {

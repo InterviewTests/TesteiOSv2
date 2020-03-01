@@ -37,12 +37,11 @@ class LoginViewController: UIViewController, SomeUIViewDelegate {
 
     func segueFunction() {
         
-//        self.performSegue(withIdentifier: "SegueLoginUsuario", sender: self)
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "UsuarioViewController") as! UsuarioViewController
-
+        resultViewController.modalPresentationStyle = .fullScreen
         self.present(resultViewController, animated:true, completion:nil)
     }
     
@@ -64,7 +63,7 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate {
             
             receberCell.delegateSegue = self
            
-//            receberCell.layer.borderColor = UIColor.label.cgColor
+            receberCell.layer.borderColor = UIColor.label.cgColor
             
                    
                    return receberCell

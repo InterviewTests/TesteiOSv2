@@ -13,8 +13,8 @@ import Foundation
 //    let userAccount: UserAccount
 //    let error: Error
 //}
-//
-//// MARK: - Error
+////
+////// MARK: - Error
 //struct Error: Codable {
 //}
 

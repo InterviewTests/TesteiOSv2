@@ -9,19 +9,20 @@
 import Foundation
 
 //// MARK: - Welcome
-//struct Welcome: Codable {
-//    let statementList: [StatementList]
-//    let error: Error
-//}
+struct MarvelHeader: Codable {
+    let statementList: [StatementList]?
+    let error: Error?
+}
 //
 //// MARK: - Error
-//struct Error: Codable {
-//}
+struct Error: Codable {
+}
 
 // MARK: - StatementList
 struct StatementList: Codable {
-    let title, desc, date: String
-    let value: Double
+    let title, desc, date: String?
+    let value: Double?
 }
 
-typealias List = [StatementList] 
+
+

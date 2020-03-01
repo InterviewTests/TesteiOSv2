@@ -7,16 +7,18 @@
 //
 
 import UIKit
-import Alamofire
+
 
 
 class UsuarioViewController: UIViewController {
-
-    let statement: StatementsController = StatementsController()
     
     @IBOutlet weak var usuarioTableView: UITableView!
     
+    
+    
     var controller: LoginController?
+    let statement: StatementsController = StatementsController()
+    var arrayWelcome: [StatementList] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +33,17 @@ class UsuarioViewController: UIViewController {
         self.controller = LoginController()
         self.controller?.delegate = self
         
-        self.controller?.loadMovies()
+        self.controller?.loadList()
+        
+        self.statement.delegate = self
+        statement.loadList()
         
     }
-   
+    
 }
 
 extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
-   
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -48,36 +53,35 @@ extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
             return 1
         }
         
-//        return statement.arrayList?.count ?? 0
-        return 20
+        return arrayWelcome.count
+        
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//
         
-        if indexPath.section == 1 {
-            
-            if let lancamentosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "LancamentosUsuarioTableViewCell", for: indexPath) as? LancamentosUsuarioTableViewCell {
-                
-//                lancamentosUsuarioCell.set(list: statement.arrayList![indexPath.row])
-                
-                return lancamentosUsuarioCell
-            }
-        } else {
+        if indexPath.section == 0 {
             
             if let dadosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "DadosUsuarioTableViewCell", for: indexPath) as? DadosUsuarioTableViewCell {
                 
-//                dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
+//                    dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
                 
                 return dadosUsuarioCell
+            }
+        } else {
+            if let lancamentosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "LancamentosUsuarioTableViewCell", for: indexPath) as? LancamentosUsuarioTableViewCell {
+                
+                lancamentosUsuarioCell.set(list: arrayWelcome[indexPath.row])
+               
+                
+                return lancamentosUsuarioCell
             }
         }
         return UITableViewCell()
         
-        }
-        
+    }
+    
     
 }
 
@@ -95,4 +99,11 @@ extension UsuarioViewController: UserControllerDelegate{
     
     
     
+}
+
+extension UsuarioViewController: StatementsControllerProtocol {
+    func didFinishRequest(array: [StatementList]) {
+        arrayWelcome = array
+        self.usuarioTableView.reloadData()
+    }
 }
