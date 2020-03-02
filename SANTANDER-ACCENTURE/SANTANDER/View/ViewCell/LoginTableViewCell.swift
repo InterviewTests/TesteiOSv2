@@ -22,6 +22,7 @@ class LoginTableViewCell: UITableViewCell {
     
     var delegateSegue: SomeUIViewDelegate?
     
+    
     @IBOutlet weak var logoBancoImageView: UIImageView!
     
     @IBOutlet weak var nomeUsuarioTextField: UITextField!{

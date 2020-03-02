@@ -38,6 +38,8 @@ class UsuarioViewController: UIViewController {
         self.statement.delegate = self
         statement.loadList()
         
+        
+        
     }
     
 }
@@ -65,6 +67,8 @@ extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
             
             if let dadosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "DadosUsuarioTableViewCell", for: indexPath) as? DadosUsuarioTableViewCell {
                 
+                dadosUsuarioCell.delegate = self
+               
 //                    dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
                 
                 return dadosUsuarioCell
@@ -107,3 +111,16 @@ extension UsuarioViewController: StatementsControllerProtocol {
         self.usuarioTableView.reloadData()
     }
 }
+
+extension UsuarioViewController: LogoutBtnDelegate{
+
+    func logoutBtnTapped() {
+        self.dismiss(animated: true, completion: nil)
+//
+//        let vc = storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController ?? UIViewController()
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true, completion: nil)
+
+}
+}
+

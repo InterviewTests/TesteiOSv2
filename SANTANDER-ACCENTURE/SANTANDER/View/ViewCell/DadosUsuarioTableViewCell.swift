@@ -29,7 +29,7 @@ class DadosUsuarioTableViewCell: UITableViewCell {
        }
        
     @IBAction func logoutTapped(_ sender: Any) {
-         delegate?.logoutBtnTapped()
+        self.delegate?.logoutBtnTapped()
         
     }
     

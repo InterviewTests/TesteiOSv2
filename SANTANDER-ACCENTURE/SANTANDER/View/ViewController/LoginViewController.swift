@@ -37,7 +37,6 @@ class LoginViewController: UIViewController, SomeUIViewDelegate {
 
     func segueFunction() {
         
-        
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "UsuarioViewController") as! UsuarioViewController

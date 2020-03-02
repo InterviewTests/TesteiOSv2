@@ -35,10 +35,8 @@ class LancamentosUsuarioTableViewCell: UITableViewCell {
            
         self.tituloLabel.text = list.title
         self.descricaoLabel.text = list.desc
-        self.dataLabel.text = list.date
+        self.dataLabel.text = String.dateFromCustomString(customString: list.date ?? "")
 
-        
-        
         if Int(list.value ?? 0) < 0 {
                valorLabel.textColor = UIColor.red
            } else {
@@ -50,4 +48,3 @@ class LancamentosUsuarioTableViewCell: UITableViewCell {
 
 }
 }
-

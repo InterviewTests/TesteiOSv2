@@ -33,6 +33,16 @@ extension String {
         return passwordTest.evaluate(with: password)
     }
     
+    static func dateFromCustomString(customString: String) -> String{
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = "yyyy-MM-dd"
+           let date = dateFormatter.date(from: customString) 
+           dateFormatter.dateFormat = "dd/MM/yyyy"
+           let now = dateFormatter.string(from: date!)
+           
+           return now
+       }
+    
 }
 
 
