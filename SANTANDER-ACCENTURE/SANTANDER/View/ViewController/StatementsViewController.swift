@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class UsuarioViewController: UIViewController {
+class StatementsViewController: UIViewController {
     
     @IBOutlet weak var usuarioTableView: UITableView!
     
@@ -44,7 +44,7 @@ class UsuarioViewController: UIViewController {
     
 }
 
-extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
+extension StatementsViewController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -91,7 +91,7 @@ extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
 
 
 
-extension UsuarioViewController: UserControllerDelegate{
+extension StatementsViewController: UserControllerDelegate{
     
     func successLoadUsers() {
         self.usuarioTableView.reloadData()
@@ -105,14 +105,14 @@ extension UsuarioViewController: UserControllerDelegate{
     
 }
 
-extension UsuarioViewController: StatementsControllerProtocol {
+extension StatementsViewController: StatementsControllerProtocol {
     func didFinishRequest(array: [StatementList]) {
         arrayWelcome = array
         self.usuarioTableView.reloadData()
     }
 }
 
-extension UsuarioViewController: LogoutBtnDelegate{
+extension StatementsViewController: LogoutBtnDelegate{
 
     func logoutBtnTapped() {
         self.dismiss(animated: true, completion: nil)

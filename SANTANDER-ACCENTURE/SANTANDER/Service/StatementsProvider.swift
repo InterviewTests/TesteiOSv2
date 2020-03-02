@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class Provider {
+class StatementsProvider {
         
     func getDataFromHeroKu(completion: @escaping ([StatementList]?) -> Void) {
         
@@ -34,33 +34,6 @@ class Provider {
         
     }
     
-    let base_url2 = "https://bank-app-test.herokuapp.com/api/login"
-    
-    func postUser(completion: @escaping (Any) -> Void) {
-        
-        let parameters: Parameters = ["user": "test_user", "password" : "Test@1"]
-        
-        Alamofire.request(URL.init(string: base_url2)!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-            
-            switch response.result {
-                
-            case .success(_):
-                if let json = response.value
-                {
-                    //print(json)
-                    completion(json)
-                    
-                }
-                break
-            case .failure(let error):
-                print(error)
-                
-                break
-            }
-            
-        }
-        
-    }
     
 }
 

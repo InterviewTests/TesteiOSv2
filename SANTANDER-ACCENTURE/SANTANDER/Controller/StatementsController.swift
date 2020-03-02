@@ -13,7 +13,7 @@ protocol StatementsControllerProtocol: class {
 
 class StatementsController {
 
-    var provider: Provider = Provider()
+    var provider: StatementsProvider = StatementsProvider()
     weak var delegate: StatementsControllerProtocol?
     
     func loadList() {

@@ -12,6 +12,10 @@ protocol PerformLoginDelegate: class {
     func loginBtnTapped(name: String, passwd:String)
 }
 
+protocol SaveCoreDataDelegate: class {
+    func loadInformation()
+}
+
 protocol SomeUIViewDelegate {
     func segueFunction() 
 }
@@ -21,6 +25,9 @@ class LoginTableViewCell: UITableViewCell {
     var loginTela: LoginViewController?
     
     var delegateSegue: SomeUIViewDelegate?
+    
+    var delegateCoreData: SaveCoreDataDelegate?
+    
     
     
     @IBOutlet weak var logoBancoImageView: UIImageView!
@@ -74,9 +81,7 @@ class LoginTableViewCell: UITableViewCell {
     
    
     @IBAction func loginButton(_ sender: Any) {
-       
-        
-        
+      
         guard let user = nomeUsuarioTextField.text , let password = senhaUsuarioTextField.text else {
             return
         }
@@ -89,6 +94,7 @@ class LoginTableViewCell: UITableViewCell {
         }
        
         self.delegateSegue?.segueFunction()
+        self.delegateCoreData?.loadInformation()
         
     }
     
@@ -116,6 +122,7 @@ class LoginTableViewCell: UITableViewCell {
            loginButton.isEnabled = false
            loginButton.alpha = 0.5
        }
+    
 }
 
 

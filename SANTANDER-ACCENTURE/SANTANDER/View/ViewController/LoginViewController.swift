@@ -9,7 +9,10 @@
 import UIKit
 import Foundation
 
-class LoginViewController: UIViewController, SomeUIViewDelegate {
+class LoginViewController: UIViewController, SomeUIViewDelegate, SaveCoreDataDelegate {
+    
+   var coreData: CoreDataManager?
+var arrayPerson:[Person] = []
     
     func loginBtnTapped(name: String, passwd: String) {
         
@@ -17,7 +20,7 @@ class LoginViewController: UIViewController, SomeUIViewDelegate {
     
     @IBOutlet weak var loginTableView: UITableView!
     
-    var login = LoginTableViewCell()
+    var login: LoginTableViewCell?
     
     
     override func viewDidLoad() {
@@ -39,10 +42,18 @@ class LoginViewController: UIViewController, SomeUIViewDelegate {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
-        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "UsuarioViewController") as! UsuarioViewController
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "UsuarioViewController") as! StatementsViewController
         resultViewController.modalPresentationStyle = .fullScreen
         self.present(resultViewController, animated:true, completion:nil)
     }
+    
+    func loadInformation() {
+        coreData?.loadInformation { (arrayPerson) in
+            self.arrayPerson = arrayPerson
+            
+        }
+    }
+    
     
 }
 
@@ -61,6 +72,7 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate {
         if let receberCell = tableView.dequeueReusableCell(withIdentifier: "LoginTableViewCell", for: indexPath) as? LoginTableViewCell {
             
             receberCell.delegateSegue = self
+            receberCell.delegateCoreData = self
            
             receberCell.layer.borderColor = UIColor.label.cgColor
             
