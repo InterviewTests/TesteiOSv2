@@ -12,7 +12,7 @@ import Alamofire
 
 protocol UserProviderDelegate: class {
     
-    func successLoadUsers(users: User)
+    func successLoadUsers(users: Account)
     func errorLoadUsers(error: Error?)
 }
 
@@ -36,7 +36,7 @@ class LoginProvider {
                     
                     do {
                         
-                        let model:User = try JSONDecoder().decode(User.self, from:  response.data ?? Data())
+                        let model:Account = try JSONDecoder().decode(Account.self, from:  response.data ?? Data())
                         
                         print(model)
                         self.delegate?.successLoadUsers(users: model)

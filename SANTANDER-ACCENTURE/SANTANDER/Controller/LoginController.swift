@@ -20,7 +20,7 @@ class LoginController {
     
     var provider: LoginProvider?
     
-    private var arrayUsers: User = []
+    private var user: Account?
 
     
     func setupController(){
@@ -36,14 +36,15 @@ class LoginController {
     
     func loadCurrentUser(indexPath: IndexPath) -> UserAccount {
         
-        return self.arrayUsers[indexPath.row]
-       
+//        return self.arrayUsers[indexPath.row]
+        return user?.userAccount ?? UserAccount(userID: 0, name: "", bankAccount: "", agency: "", balance: 0.0)
+        
     }
 }
 
 extension LoginController: UserProviderDelegate {
-    func successLoadUsers(users: User) {
-         self.arrayUsers = users
+    func successLoadUsers(users: Account) {
+        self.user = users
         self.delegate?.successLoadUsers()
     }
     

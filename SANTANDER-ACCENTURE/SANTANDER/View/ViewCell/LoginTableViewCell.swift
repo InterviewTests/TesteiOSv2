@@ -61,8 +61,6 @@ class LoginTableViewCell: UITableViewCell {
         
         nomeUsuarioTextField.delegate = self
         senhaUsuarioTextField.delegate = self
-        nomeUsuarioTextField.text = "25200886805"
-        senhaUsuarioTextField.text = "Cd@2"
 
     }
 

@@ -69,7 +69,7 @@ extension UsuarioViewController: UITableViewDelegate, UITableViewDataSource{
                 
                 dadosUsuarioCell.delegate = self
                
-//                    dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
+                    dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
                 
                 return dadosUsuarioCell
             }
@@ -116,10 +116,6 @@ extension UsuarioViewController: LogoutBtnDelegate{
 
     func logoutBtnTapped() {
         self.dismiss(animated: true, completion: nil)
-//
-//        let vc = storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController ?? UIViewController()
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: true, completion: nil)
 
 }
 }

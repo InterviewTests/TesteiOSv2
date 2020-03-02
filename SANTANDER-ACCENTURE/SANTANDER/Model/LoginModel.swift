@@ -19,15 +19,23 @@ import Foundation
 //}
 
 // MARK: - UserAccount
+struct Account: Codable {
+    let userAccount: UserAccount?
+    let error: ErrorAccount?
+}
+
+// MARK: - Error
+struct ErrorAccount: Codable {
+}
+
+// MARK: - UserAccount
 struct UserAccount: Codable {
-    let userID: Int
-    let name, bankAccount, agency: String
-    let balance: Double
+    let userID: Int?
+    let name, bankAccount, agency: String?
+    let balance: Double?
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
         case name, bankAccount, agency, balance
     }
 }
-
-typealias User = [UserAccount]

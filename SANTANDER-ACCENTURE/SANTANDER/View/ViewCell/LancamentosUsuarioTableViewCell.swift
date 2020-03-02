@@ -43,7 +43,7 @@ class LancamentosUsuarioTableViewCell: UITableViewCell {
                valorLabel.textColor = UIColor.darkGray
            }
         
-        valorLabel.text = String(format:"%.2f", list.value ?? "")
+        valorLabel.text = "R$" + " " + String(format:"%.2f", list.value ?? "")
        
 
 }
