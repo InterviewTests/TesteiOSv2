@@ -7,27 +7,27 @@
 //
 
 import XCTest
+@testable import BankTest
 
 class EmailValidateTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testCheckAnEmailIsValid() {
+        assert("luan.vna@me.com".isValidEmail(), "E-mail validado com sucesso")
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testCheckEmailWithoutDomain() {
+        assert(!"luan.vna@".isValidEmail(), "E-mail sem dominio validado com o incorreteo")
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCheckEmailWithShortDomain() {
+        assert("luan.vna@dd.dd".isValidEmail(), "E-mail sem dominio validado com o incorreteo")
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testEmailStartWithNumber() {
+        assert("1luan.vna@me.com".isValidEmail(), "E-mail iniciado com número validado com sucesso")
     }
 
+    func testEmailWithOneSpace() {
+        assert(!"1lu an.vna@me.com".isValidEmail(), "E-mail com espaço validado com sucesso")
+    }
 }
