@@ -42,35 +42,41 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yFy-M4-A4e">
-                    <rect key="frame" x="20" y="308" width="374" height="120"/>
+                    <rect key="frame" x="20" y="258" width="374" height="120"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="39648264805" placeholder="Usuário" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NVD-ww-FeM" customClass="BTTextField" customModule="BankTest" customModuleProvider="target">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Usuário" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NVD-ww-FeM" customClass="BTTextField" customModule="BankTest" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="YOq-h1-eFz"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showBorder" value="YES"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="qJX-vH-q6e"/>
+                            </connections>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zjV-Vr-sBf" customClass="BTTextField" customModule="BankTest" customModuleProvider="target">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zjV-Vr-sBf" customClass="BTTextField" customModule="BankTest" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="70" width="374" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="jO4-Wg-huB"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showBorder" value="YES"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="hh0-Z0-9wj"/>
+                            </connections>
                         </textField>
                     </subviews>
                 </stackView>
@@ -90,10 +96,10 @@
                 <constraint firstItem="yFy-M4-A4e" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Exy-pb-eDx"/>
                 <constraint firstItem="jyN-FT-83E" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XQk-nd-8pj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="utf-Ic-zM1" secondAttribute="bottom" constant="50" id="Zj9-de-VrF"/>
-                <constraint firstItem="yFy-M4-A4e" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sJb-4S-UaP"/>
+                <constraint firstItem="yFy-M4-A4e" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-50" id="sJb-4S-UaP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="137.68115942028987" y="143.47826086956522"/>
+            <point key="canvasLocation" x="-223" y="135"/>
         </view>
     </objects>
     <resources>

@@ -42,6 +42,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic, ErrorDisplayLogi
         router.viewController = viewController
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @IBAction func performLogin() {
         let loginRequest = Login.Request(user: self.userTextField.text,
                                          password: self.passwordTextField.text)
@@ -50,5 +54,15 @@ class LoginViewController: UIViewController, LoginDisplayLogic, ErrorDisplayLogi
 
     func routeToDashboard(source: LoginDataStore) {
         router?.routeToDashboard(source: source)
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userTextField {
+            return passwordTextField.becomeFirstResponder()
+        }
+        return view.endEditing(true)
     }
 }

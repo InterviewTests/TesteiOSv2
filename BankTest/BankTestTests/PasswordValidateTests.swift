@@ -12,24 +12,22 @@ import XCTest
 class PasswordValidateTests: XCTestCase {
 
     func testPasswordCorrect() {
-//        o campo password deve validar se a senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.
         let isValid = "M@12".isValidPassword()
         assert(isValid, "Senha nos padrões")
     }
 
-    func testCheckEmailWithoutDomain() {
-        assert(!"luan.vna@".isValidEmail(), "E-mail sem dominio validado com o incorreteo")
+    func testPasswordIncorrect() {
+        let isValid = "nome".isValidPassword()
+        assert(!isValid, "Senha não tem caracter especial, numeros ou letra maiuscula")
     }
 
-    func testCheckEmailWithShortDomain() {
-        assert("luan.vna@dd.dd".isValidEmail(), "E-mail sem dominio validado com o incorreteo")
+    func testPasswordCorrectWithNumber() {
+        let isValid = "1dsadsa".isValidPassword()
+        assert(!isValid, "Senha com numero e sem caracter especial e letra maiuscula")
     }
 
-    func testEmailStartWithNumber() {
-        assert("1luan.vna@me.com".isValidEmail(), "E-mail iniciado com número validado com sucesso")
-    }
-
-    func testEmailWithOneSpace() {
-        assert(!"1lu an.vna@me.com".isValidEmail(), "E-mail com espaço validado com sucesso")
+    func testPasswordCorrectWithSpecialCharacter() {
+        let isValid = "@dsadsa".isValidPassword()
+        assert(!isValid, "Senha com caracter especial e sem caracter numero e letra maiuscula")
     }
 }

@@ -9,8 +9,7 @@
 import Foundation
 
 enum Localizable: String {
-    case Email = "INVALID_EMAIL"
-    case CPF = "INVALID_CPF"
+    case User = "INVALID_USER"
     case Password = "INVALID_PASSWORD"
     case Recent = "RECENT"
 

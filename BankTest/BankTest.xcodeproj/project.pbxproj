@@ -30,7 +30,6 @@
 		906A00F7240ED5BA0059515A /* AccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A00F6240ED5BA0059515A /* AccountRouter.swift */; };
 		906A00FA240EDD770059515A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 906A00FC240EDD770059515A /* Localizable.strings */; };
 		90A986D8240E8A8B009E2E4D /* Data+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A986D7240E8A8B009E2E4D /* Data+JSON.swift */; };
-		90A986DC240E951C009E2E4D /* FieldValidateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A986DB240E951C009E2E4D /* FieldValidateTests.swift */; };
 		90DAD9E7240D3AD800F03C7E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9E1240D3AD800F03C7E /* LoginPresenter.swift */; };
 		90DAD9E8240D3AD800F03C7E /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9E2240D3AD800F03C7E /* LoginWorker.swift */; };
 		90DAD9E9240D3AD800F03C7E /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9E3240D3AD800F03C7E /* LoginRouter.swift */; };
@@ -93,7 +92,6 @@
 		906A00FB240EDD770059515A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		906A00FD240EDD7D0059515A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		90A986D7240E8A8B009E2E4D /* Data+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JSON.swift"; sourceTree = "<group>"; };
-		90A986DB240E951C009E2E4D /* FieldValidateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValidateTests.swift; sourceTree = "<group>"; };
 		90DAD9E1240D3AD800F03C7E /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		90DAD9E2240D3AD800F03C7E /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		90DAD9E3240D3AD800F03C7E /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
@@ -170,10 +168,6 @@
 				90DAD9DE240D3AB200F03C7E /* Scenes */,
 				90DAD9F1240D3D3000F03C7E /* Common */,
 				90DADA09240D7DCC00F03C7E /* Assets */,
-				90560C76240D374D00C54921 /* AppDelegate.swift */,
-				90560C7F240D375B00C54921 /* Assets.xcassets */,
-				90560C81240D375B00C54921 /* LaunchScreen.storyboard */,
-				90560C84240D375B00C54921 /* Info.plist */,
 			);
 			path = BankTest;
 			sourceTree = "<group>";
@@ -184,7 +178,6 @@
 				906A00CE240EA3DF0059515A /* EmailValidateTests.swift */,
 				906A00D0240EA5170059515A /* PasswordValidateTests.swift */,
 				90560C8D240D375C00C54921 /* BankTestTests.swift */,
-				90A986DB240E951C009E2E4D /* FieldValidateTests.swift */,
 				90560C8F240D375C00C54921 /* Info.plist */,
 			);
 			path = BankTestTests;
@@ -304,6 +297,10 @@
 		90DADA09240D7DCC00F03C7E /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				90560C76240D374D00C54921 /* AppDelegate.swift */,
+				90560C7F240D375B00C54921 /* Assets.xcassets */,
+				90560C81240D375B00C54921 /* LaunchScreen.storyboard */,
+				90560C84240D375B00C54921 /* Info.plist */,
 				906A00FC240EDD770059515A /* Localizable.strings */,
 			);
 			path = Assets;
@@ -537,7 +534,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A986DC240E951C009E2E4D /* FieldValidateTests.swift in Sources */,
 				90560C8E240D375C00C54921 /* BankTestTests.swift in Sources */,
 				906A00D1240EA5170059515A /* PasswordValidateTests.swift in Sources */,
 				906A00CF240EA3DF0059515A /* EmailValidateTests.swift in Sources */,
@@ -698,7 +694,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RTEAX6HAKN;
-				INFOPLIST_FILE = BankTest/Info.plist;
+				INFOPLIST_FILE = BankTest/Assets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -717,7 +713,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RTEAX6HAKN;
-				INFOPLIST_FILE = BankTest/Info.plist;
+				INFOPLIST_FILE = BankTest/Assets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

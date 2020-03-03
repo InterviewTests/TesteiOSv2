@@ -37,26 +37,29 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
 extension LoginInteractor {
 
     func checkFields(request: Login.Request) -> Bool {
-        guard checkCPF(request: request) else {
+        var fieldsValidates = false
+        if let user = request.user {
+            if user.isCPF() {
+                fieldsValidates = checkCPF(request: request)
+            } else if checkEmail(request: request) {
+                fieldsValidates = true
+            }
+            fieldsValidates = checkPassword(request: request)
+        }
+        return fieldsValidates
+    }
+
+    func checkCPF(request: Login.Request) -> Bool {
+        if let user = request.user, !user.isValidCPF() {
+            presenter?.showError(message: Localizable.User.localize())
             return false
         }
         return true
     }
 
-    func checkCPF(request: Login.Request) -> Bool {
-        if let user = request.user, user.isCPF() {
-            let result = user.isValidCPF()
-            if !result {
-                presenter?.showError(message: Localizable.CPF.localize())
-                return false
-            }
-        }
-        return true
-    }
-
     func checkEmail(request: Login.Request) -> Bool {
-        if let user = request.user, user.isValidEmail() {
-            presenter?.showError(message: Localizable.Email.localize())
+        if let user = request.user, !user.isValidEmail() {
+            presenter?.showError(message: Localizable.User.localize())
             return false
         }
         return true
@@ -64,7 +67,7 @@ extension LoginInteractor {
 
     func checkPassword(request: Login.Request) -> Bool {
         if let password = request.password, !password.isValidPassword() {
-            presenter?.showError(message: Localizable.Email.localize())
+            presenter?.showError(message: Localizable.Password.localize())
             return false
         }
         return true

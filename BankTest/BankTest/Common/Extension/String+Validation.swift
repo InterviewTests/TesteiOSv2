@@ -11,7 +11,8 @@ import Foundation
 extension String {
 
     func isCPF() -> Bool {
-        return true
+        let digits = self.compactMap({ $0.wholeNumberValue })
+        return digits.count == 11
     }
 
     func isValidEmail() -> Bool {
@@ -42,8 +43,22 @@ extension String {
     }
 
     func isValidPassword() -> Bool {
+        //Verifica se tem números
+        let containsNumbers = self.compactMap({ $0.wholeNumberValue })
+        if containsNumbers.isEmpty {
+            return false
+        }
+        //Verifica se tem letra maiuscula
+        let regex = "(?s)[^A-Z]*[A-Z].*"
+        let containsUppercaseLetters = NSPredicate(format:"SELF MATCHES %@", regex).evaluate(with: self)
+        if !containsUppercaseLetters {
+            return false
+        }
+        //Verifica se tem caracter especial
+        let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+        if self.rangeOfCharacter(from: characterset.inverted) == nil {
+            return false
+        }
         return true
-//        let regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]"
-//        return NSPredicate(format:"SELF MATCHES %@", regex).evaluate(with: self)
     }
 }
