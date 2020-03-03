@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,25 @@
 		90560C80240D375B00C54921 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90560C7F240D375B00C54921 /* Assets.xcassets */; };
 		90560C83240D375B00C54921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90560C81240D375B00C54921 /* LaunchScreen.storyboard */; };
 		90560C8E240D375C00C54921 /* BankTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90560C8D240D375C00C54921 /* BankTestTests.swift */; };
+		9095D660240DB10C005BA5FA /* ValidatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9095D65F240DB10C005BA5FA /* ValidatorProtocol.swift */; };
+		90A986D8240E8A8B009E2E4D /* Data+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A986D7240E8A8B009E2E4D /* Data+JSON.swift */; };
+		90DAD9E7240D3AD800F03C7E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9E1240D3AD800F03C7E /* LoginPresenter.swift */; };
+		90DAD9E8240D3AD800F03C7E /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9E2240D3AD800F03C7E /* LoginWorker.swift */; };
+		90DAD9E9240D3AD800F03C7E /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9E3240D3AD800F03C7E /* LoginRouter.swift */; };
+		90DAD9EA240D3AD800F03C7E /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9E4240D3AD800F03C7E /* LoginModels.swift */; };
+		90DAD9EB240D3AD800F03C7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9E5240D3AD800F03C7E /* LoginViewController.swift */; };
+		90DAD9EC240D3AD800F03C7E /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9E6240D3AD800F03C7E /* LoginInteractor.swift */; };
+		90DAD9EE240D3CE100F03C7E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90DAD9ED240D3CE100F03C7E /* LoginViewController.xib */; };
+		90DAD9F4240D3D6200F03C7E /* BTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9F3240D3D6200F03C7E /* BTButton.swift */; };
+		90DAD9F6240D418500F03C7E /* BTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9F5240D418500F03C7E /* BTTextField.swift */; };
+		90DAD9F9240D489200F03C7E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9F8240D489200F03C7E /* UIColor+Extension.swift */; };
+		90DAD9FC240D4E0500F03C7E /* ErrorDisplayLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9FB240D4E0500F03C7E /* ErrorDisplayLogic.swift */; };
+		90DAD9FF240D571700F03C7E /* LoginTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAD9FE240D571700F03C7E /* LoginTarget.swift */; };
+		90DADA01240D573800F03C7E /* BaseTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DADA00240D573800F03C7E /* BaseTarget.swift */; };
+		90DADA04240D78B600F03C7E /* StorageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DADA03240D78B600F03C7E /* StorageWorker.swift */; };
+		90DADA06240D7BC600F03C7E /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DADA05240D7BC600F03C7E /* String+Validation.swift */; };
+		90DADA08240D7DAF00F03C7E /* String+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DADA07240D7DAF00F03C7E /* String+Localize.swift */; };
+		90DADA0C240D7F5600F03C7E /* l18n.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90DADA0E240D7F5600F03C7E /* l18n.strings */; };
 		DB8BA5B27F3ECD62F9F39CA9 /* Pods_BankTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268BBA4E8FEAB3599CCAB783 /* Pods_BankTest.framework */; };
 		E8F0C9FA3A80B4AEAABF3FDC /* Pods_BankTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B66E5074EDF07C31BBA5C7 /* Pods_BankTestTests.framework */; };
 /* End PBXBuildFile section */
@@ -37,6 +56,26 @@
 		90560C89240D375C00C54921 /* BankTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90560C8D240D375C00C54921 /* BankTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTestTests.swift; sourceTree = "<group>"; };
 		90560C8F240D375C00C54921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9095D65F240DB10C005BA5FA /* ValidatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorProtocol.swift; sourceTree = "<group>"; };
+		90A986D7240E8A8B009E2E4D /* Data+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JSON.swift"; sourceTree = "<group>"; };
+		90DAD9E1240D3AD800F03C7E /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		90DAD9E2240D3AD800F03C7E /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		90DAD9E3240D3AD800F03C7E /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		90DAD9E4240D3AD800F03C7E /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
+		90DAD9E5240D3AD800F03C7E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		90DAD9E6240D3AD800F03C7E /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		90DAD9ED240D3CE100F03C7E /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		90DAD9F3240D3D6200F03C7E /* BTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTButton.swift; sourceTree = "<group>"; };
+		90DAD9F5240D418500F03C7E /* BTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTTextField.swift; sourceTree = "<group>"; };
+		90DAD9F8240D489200F03C7E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		90DAD9FB240D4E0500F03C7E /* ErrorDisplayLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDisplayLogic.swift; sourceTree = "<group>"; };
+		90DAD9FE240D571700F03C7E /* LoginTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTarget.swift; sourceTree = "<group>"; };
+		90DADA00240D573800F03C7E /* BaseTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTarget.swift; sourceTree = "<group>"; };
+		90DADA03240D78B600F03C7E /* StorageWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWorker.swift; sourceTree = "<group>"; };
+		90DADA05240D7BC600F03C7E /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
+		90DADA07240D7DAF00F03C7E /* String+Localize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localize.swift"; sourceTree = "<group>"; };
+		90DADA0D240D7F5600F03C7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/l18n.strings; sourceTree = "<group>"; };
+		90DADA0F240D7F7200F03C7E /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/l18n.strings"; sourceTree = "<group>"; };
 		918C1DF7F77527DDEAE207AE /* Pods-BankTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankTestTests.release.xcconfig"; path = "Target Support Files/Pods-BankTestTests/Pods-BankTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		9565E960E897319E52D66FEC /* Pods-BankTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankTest.release.xcconfig"; path = "Target Support Files/Pods-BankTest/Pods-BankTest.release.xcconfig"; sourceTree = "<group>"; };
 		F4B66E5074EDF07C31BBA5C7 /* Pods_BankTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +133,9 @@
 		90560C75240D374D00C54921 /* BankTest */ = {
 			isa = PBXGroup;
 			children = (
+				90DAD9DE240D3AB200F03C7E /* Scenes */,
+				90DAD9F1240D3D3000F03C7E /* Common */,
+				90DADA09240D7DCC00F03C7E /* Assets */,
 				90560C76240D374D00C54921 /* AppDelegate.swift */,
 				90560C7F240D375B00C54921 /* Assets.xcassets */,
 				90560C81240D375B00C54921 /* LaunchScreen.storyboard */,
@@ -111,6 +153,102 @@
 			path = BankTestTests;
 			sourceTree = "<group>";
 		};
+		90DAD9DE240D3AB200F03C7E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				90DAD9DF240D3ABA00F03C7E /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		90DAD9DF240D3ABA00F03C7E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				90DAD9E1240D3AD800F03C7E /* LoginPresenter.swift */,
+				90DAD9E2240D3AD800F03C7E /* LoginWorker.swift */,
+				90DAD9E3240D3AD800F03C7E /* LoginRouter.swift */,
+				90DAD9E6240D3AD800F03C7E /* LoginInteractor.swift */,
+				90DAD9E4240D3AD800F03C7E /* LoginModels.swift */,
+				90DAD9E5240D3AD800F03C7E /* LoginViewController.swift */,
+				90DAD9ED240D3CE100F03C7E /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		90DAD9F1240D3D3000F03C7E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				90DADA10240D814E00F03C7E /* Validation */,
+				90DADA02240D789E00F03C7E /* Worker */,
+				90DAD9FD240D54CA00F03C7E /* Services */,
+				90DAD9F7240D487C00F03C7E /* Extension */,
+				90DAD9F2240D3D3A00F03C7E /* UIComponents */,
+				90DAD9FA240D4DED00F03C7E /* Protocols */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		90DAD9F2240D3D3A00F03C7E /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				90DAD9F3240D3D6200F03C7E /* BTButton.swift */,
+				90DAD9F5240D418500F03C7E /* BTTextField.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		90DAD9F7240D487C00F03C7E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				90DAD9F8240D489200F03C7E /* UIColor+Extension.swift */,
+				90DADA05240D7BC600F03C7E /* String+Validation.swift */,
+				90A986D7240E8A8B009E2E4D /* Data+JSON.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		90DAD9FA240D4DED00F03C7E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				90DAD9FB240D4E0500F03C7E /* ErrorDisplayLogic.swift */,
+				9095D65F240DB10C005BA5FA /* ValidatorProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		90DAD9FD240D54CA00F03C7E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				90DAD9FE240D571700F03C7E /* LoginTarget.swift */,
+				90DADA00240D573800F03C7E /* BaseTarget.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		90DADA02240D789E00F03C7E /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				90DADA03240D78B600F03C7E /* StorageWorker.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		90DADA09240D7DCC00F03C7E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				90DADA0E240D7F5600F03C7E /* l18n.strings */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		90DADA10240D814E00F03C7E /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				90DADA07240D7DAF00F03C7E /* String+Localize.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
 		F2D4B261CDD2EF3AAE52AFAA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,7 +257,6 @@
 				79E737E72F1C1C7617DF4922 /* Pods-BankTestTests.debug.xcconfig */,
 				918C1DF7F77527DDEAE207AE /* Pods-BankTestTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -134,6 +271,7 @@
 				90560C6F240D374D00C54921 /* Sources */,
 				90560C70240D374D00C54921 /* Frameworks */,
 				90560C71240D374D00C54921 /* Resources */,
+				CF5CB165F7FD97A492BEBBD6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,6 +327,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 90560C6A240D374D00C54921;
 			productRefGroup = 90560C74240D374D00C54921 /* Products */;
@@ -208,6 +347,8 @@
 			files = (
 				90560C83240D375B00C54921 /* LaunchScreen.storyboard in Resources */,
 				90560C80240D375B00C54921 /* Assets.xcassets in Resources */,
+				90DAD9EE240D3CE100F03C7E /* LoginViewController.xib in Resources */,
+				90DADA0C240D7F5600F03C7E /* l18n.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +406,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CF5CB165F7FD97A492BEBBD6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BankTest/Pods-BankTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BankTest/Pods-BankTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BankTest/Pods-BankTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -272,7 +430,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90DAD9FF240D571700F03C7E /* LoginTarget.swift in Sources */,
+				9095D660240DB10C005BA5FA /* ValidatorProtocol.swift in Sources */,
+				90DAD9EB240D3AD800F03C7E /* LoginViewController.swift in Sources */,
+				90DAD9F6240D418500F03C7E /* BTTextField.swift in Sources */,
+				90DAD9E7240D3AD800F03C7E /* LoginPresenter.swift in Sources */,
+				90DAD9EC240D3AD800F03C7E /* LoginInteractor.swift in Sources */,
+				90DADA08240D7DAF00F03C7E /* String+Localize.swift in Sources */,
+				90DADA01240D573800F03C7E /* BaseTarget.swift in Sources */,
+				90DAD9F4240D3D6200F03C7E /* BTButton.swift in Sources */,
+				90DAD9EA240D3AD800F03C7E /* LoginModels.swift in Sources */,
 				90560C77240D374D00C54921 /* AppDelegate.swift in Sources */,
+				90DADA04240D78B600F03C7E /* StorageWorker.swift in Sources */,
+				90DAD9FC240D4E0500F03C7E /* ErrorDisplayLogic.swift in Sources */,
+				90A986D8240E8A8B009E2E4D /* Data+JSON.swift in Sources */,
+				90DAD9E9240D3AD800F03C7E /* LoginRouter.swift in Sources */,
+				90DAD9E8240D3AD800F03C7E /* LoginWorker.swift in Sources */,
+				90DADA06240D7BC600F03C7E /* String+Validation.swift in Sources */,
+				90DAD9F9240D489200F03C7E /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +478,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		90DADA0E240D7F5600F03C7E /* l18n.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				90DADA0D240D7F5600F03C7E /* en */,
+				90DADA0F240D7F7200F03C7E /* pt-BR */,
+			);
+			name = l18n.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -310,6 +494,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -370,6 +555,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
