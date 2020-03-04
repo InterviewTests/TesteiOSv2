@@ -11,15 +11,15 @@ import Moya
 
 enum AccountTarget: BaseTarget {
 
-    case statements(Account.Request)
+    case statements
 }
 
 extension AccountTarget {
 
     var path: String {
         switch self {
-        case .statements(let request):
-            return "statements/\(request.accountId)"
+        case .statements:
+            return "statements/1"
         }
     }
 

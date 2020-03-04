@@ -10,11 +10,10 @@ import Moya
 
 class AccountWorker {
 
-    func statements(request: Account.Request,
-                    success: @escaping ((_ response: Account.Response) -> Void),
+    func statements(success: @escaping ((_ response: Account.Response) -> Void),
                     failure: @escaping ((_ error: MoyaError) -> Void)) {
         let provider = MoyaProvider<AccountTarget>()
-        provider.request(.statements(request)) { (result) in
+        provider.request(.statements) { (result) in
             switch result {
                 case .success(let item):
                     guard let parsed = item.data.parse(to: Account.Response.self) else {

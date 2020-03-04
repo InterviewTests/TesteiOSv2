@@ -56,10 +56,7 @@ class AccountViewController: UIViewController, AccountDisplayLogic, LoginDataSto
     }
 
     private func loadStatements() {
-        guard let login = loginResponse else {
-            return
-        }
-        interactor?.statements(login: login)
+        interactor?.statements()
     }
 
     private func setupView() {
@@ -83,12 +80,12 @@ class AccountViewController: UIViewController, AccountDisplayLogic, LoginDataSto
 extension AccountViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return interactor?.statements.count ?? 0
+        return interactor?.statementsItems.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: StatementTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-        if let statement = interactor?.statements[indexPath.row] {
+        if let statement = interactor?.statementsItems[indexPath.row] {
             let viewModel = Account.ViewModel(statement: statement)
             cell.set(viewModel: viewModel)
         }

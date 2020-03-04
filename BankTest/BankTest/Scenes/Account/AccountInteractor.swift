@@ -9,16 +9,16 @@ import UIKit
 
 protocol AccountBusinessLogic {
 
-    func statements(login: Login.Response)
+    func statements()
 }
 
 protocol AccountDataStore {
-    var statements: [Statement] { get set }
+    var statementsItems: [Statement] { get set }
 }
 
 class AccountInteractor: AccountBusinessLogic, AccountDataStore {
 
-    var statements: [Statement] = []
+    var statementsItems: [Statement] = []
     var presenter: AccountPresentationLogic?
     var worker: AccountWorker?
 
@@ -26,10 +26,9 @@ class AccountInteractor: AccountBusinessLogic, AccountDataStore {
         self.worker = worker
     }
 
-    func statements(login: Login.Response) {
-        let request = Account.Request(accountId: login.userAccount.userId)
-        worker?.statements(request: request, success: { [weak self] (response) in
-            self?.statements = response.statementList
+    func statements() {
+        worker?.statements(success: { [weak self] (response) in
+            self?.statementsItems = response.statementList
             self?.presenter?.showStatements()
         }, failure: { (error) in
 
