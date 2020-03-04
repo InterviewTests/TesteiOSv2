@@ -10,7 +10,8 @@
 		90560C77240D374D00C54921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90560C76240D374D00C54921 /* AppDelegate.swift */; };
 		90560C80240D375B00C54921 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90560C7F240D375B00C54921 /* Assets.xcassets */; };
 		90560C83240D375B00C54921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90560C81240D375B00C54921 /* LaunchScreen.storyboard */; };
-		90560C8E240D375C00C54921 /* BankTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90560C8D240D375C00C54921 /* BankTestTests.swift */; };
+		905A21E024101E26004A19A3 /* LoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905A21DF24101E26004A19A3 /* LoginInteractorTests.swift */; };
+		9061C616241020DF00994ACB /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9061C615241020DF00994ACB /* LoginWorkerTests.swift */; };
 		906A00CF240EA3DF0059515A /* EmailValidateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A00CE240EA3DF0059515A /* EmailValidateTests.swift */; };
 		906A00D1240EA5170059515A /* PasswordValidateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A00D0240EA5170059515A /* PasswordValidateTests.swift */; };
 		906A00D9240EA7500059515A /* AccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A00D3240EA7500059515A /* AccountPresenter.swift */; };
@@ -70,8 +71,9 @@
 		90560C82240D375B00C54921 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90560C84240D375B00C54921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90560C89240D375C00C54921 /* BankTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		90560C8D240D375C00C54921 /* BankTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTestTests.swift; sourceTree = "<group>"; };
 		90560C8F240D375C00C54921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		905A21DF24101E26004A19A3 /* LoginInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorTests.swift; sourceTree = "<group>"; };
+		9061C615241020DF00994ACB /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
 		906A00CE240EA3DF0059515A /* EmailValidateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidateTests.swift; sourceTree = "<group>"; };
 		906A00D0240EA5170059515A /* PasswordValidateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidateTests.swift; sourceTree = "<group>"; };
 		906A00D3240EA7500059515A /* AccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPresenter.swift; sourceTree = "<group>"; };
@@ -175,12 +177,20 @@
 		90560C8C240D375C00C54921 /* BankTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				906A00CE240EA3DF0059515A /* EmailValidateTests.swift */,
-				906A00D0240EA5170059515A /* PasswordValidateTests.swift */,
-				90560C8D240D375C00C54921 /* BankTestTests.swift */,
+				9061C6172410261E00994ACB /* Validations */,
+				906A00FE240EECF50059515A /* Login */,
 				90560C8F240D375C00C54921 /* Info.plist */,
 			);
 			path = BankTestTests;
+			sourceTree = "<group>";
+		};
+		9061C6172410261E00994ACB /* Validations */ = {
+			isa = PBXGroup;
+			children = (
+				906A00CE240EA3DF0059515A /* EmailValidateTests.swift */,
+				906A00D0240EA5170059515A /* PasswordValidateTests.swift */,
+			);
+			path = Validations;
 			sourceTree = "<group>";
 		};
 		906A00D2240EA6FA0059515A /* Account */ = {
@@ -206,6 +216,15 @@
 			);
 			name = View;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		906A00FE240EECF50059515A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				905A21DF24101E26004A19A3 /* LoginInteractorTests.swift */,
+				9061C615241020DF00994ACB /* LoginWorkerTests.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		90DAD9DE240D3AB200F03C7E /* Scenes */ = {
@@ -355,6 +374,7 @@
 				90560C85240D375C00C54921 /* Sources */,
 				90560C86240D375C00C54921 /* Frameworks */,
 				90560C87240D375C00C54921 /* Resources */,
+				A134AEA8213C359A9A210496 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -451,6 +471,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A134AEA8213C359A9A210496 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BankTestTests/Pods-BankTestTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BankTestTests/Pods-BankTestTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BankTestTests/Pods-BankTestTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B21900E60F0ABD9C2FD9B7A5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -534,8 +571,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90560C8E240D375C00C54921 /* BankTestTests.swift in Sources */,
 				906A00D1240EA5170059515A /* PasswordValidateTests.swift in Sources */,
+				905A21E024101E26004A19A3 /* LoginInteractorTests.swift in Sources */,
+				9061C616241020DF00994ACB /* LoginWorkerTests.swift in Sources */,
 				906A00CF240EA3DF0059515A /* EmailValidateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
