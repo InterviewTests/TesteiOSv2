@@ -8,6 +8,13 @@
 import UIKit
 import Moya
 
+protocol LoginWorkerLogic {
+
+    func performLogin(request: Login.Request,
+                      success: @escaping ((_ response: Login.Response) -> Void),
+                      failure: @escaping ((_ error: MoyaError) -> Void))
+}
+
 class LoginWorker {
 
     func performLogin(request: Login.Request,
