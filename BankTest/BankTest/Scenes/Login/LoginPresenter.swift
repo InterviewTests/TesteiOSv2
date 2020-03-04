@@ -8,7 +8,8 @@
 import UIKit
 
 protocol LoginPresentationLogic: class {
-  func logged(source: LoginDataStore)
+    func logged(source: LoginDataStore)
+    func showSession(session: Login.Request)
 }
 
 class LoginPresenter: LoginPresentationLogic, ErrorDisplayLogic {
@@ -17,6 +18,10 @@ class LoginPresenter: LoginPresentationLogic, ErrorDisplayLogic {
 
     func logged(source: LoginDataStore) {
         viewController?.routeToDashboard(source: source)
+    }
+
+    func showSession(session: Login.Request) {
+        viewController?.showSession(session: session)
     }
 
     func showError(message: String) {

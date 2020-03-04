@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginBusinessLogic: class {
     func performLogin(request: Login.Request)
+    func fetchSession()
 }
 
 protocol LoginDataStore: class {
@@ -18,6 +19,7 @@ protocol LoginDataStore: class {
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: (LoginPresentationLogic & ErrorDisplayLogic)?
     var worker: LoginWorker?
+    var sessionWorker: SessionWorker?
     var loginResponse: Login.Response?
 
     func performLogin(request: Login.Request) {
@@ -28,9 +30,18 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         worker?.performLogin(request: request, success: { [unowned self] response in
             self.loginResponse = response
             self.presenter?.logged(source: self)
+            self.sessionWorker?.save(session: request)
             }, failure: { error in
 
         })
+    }
+
+    func fetchSession() {
+        sessionWorker = SessionWorker()
+        guard let session = sessionWorker?.session() else {
+            return
+        }
+        self.presenter?.showSession(session: session)
     }
 }
 

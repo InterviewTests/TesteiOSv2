@@ -10,10 +10,10 @@ import UIKit
 protocol LoginDisplayLogic: class
 {
     func routeToDashboard(source: LoginDataStore)
+    func showSession(session: Login.Request)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic, ErrorDisplayLogic {
-
     @IBOutlet private var userTextField: BTTextField!
     @IBOutlet private var passwordTextField: BTTextField!
 
@@ -28,6 +28,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic, ErrorDisplayLogi
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        interactor?.fetchSession()
     }
 
     private func setup() {
@@ -50,6 +55,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic, ErrorDisplayLogi
         let loginRequest = Login.Request(user: self.userTextField.text,
                                          password: self.passwordTextField.text)
         interactor?.performLogin(request: loginRequest)
+    }
+
+    func showSession(session: Login.Request) {
+        userTextField.text = session.user
+        passwordTextField.text = session.password
     }
 
     func routeToDashboard(source: LoginDataStore) {
