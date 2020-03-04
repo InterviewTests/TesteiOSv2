@@ -8,7 +8,13 @@
 import UIKit
 import Moya
 
-class AccountWorker {
+protocol AccountWorkerLogic {
+
+    func statements(success: @escaping ((_ response: Account.Response) -> Void),
+                    failure: @escaping ((_ error: MoyaError) -> Void))
+}
+
+class AccountWorker: AccountWorkerLogic {
 
     func statements(success: @escaping ((_ response: Account.Response) -> Void),
                     failure: @escaping ((_ error: MoyaError) -> Void)) {
