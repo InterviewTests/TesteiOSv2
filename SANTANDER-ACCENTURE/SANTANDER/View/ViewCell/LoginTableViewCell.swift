@@ -78,6 +78,7 @@ class LoginTableViewCell: UITableViewCell {
     
     func setup(person: Person) {
         nomeUsuarioTextField.text = person.user ?? ""
+        email = person.user ?? ""
     }
     
     @IBAction func loginButton(_ sender: Any) {
