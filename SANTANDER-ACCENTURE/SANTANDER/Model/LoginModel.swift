@@ -8,15 +8,6 @@
 
 import Foundation
 
-//// MARK: - Empty
-//struct Empty: Codable {
-//    let userAccount: UserAccount
-//    let error: Error
-//}
-////
-////// MARK: - Error
-//struct Error: Codable {
-//}
 
 // MARK: - UserAccount
 struct Account: Codable {
@@ -33,7 +24,7 @@ struct UserAccount: Codable {
     let userID: Int?
     let name, bankAccount, agency: String?
     let balance: Double?
-
+    
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
         case name, bankAccount, agency, balance

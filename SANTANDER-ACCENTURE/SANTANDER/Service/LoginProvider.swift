@@ -26,10 +26,10 @@ class LoginProvider {
         
         let parameters: Parameters = ["user": "test_user", "password" : "Test@1"]
         
-        let urlString: String = "https://bank-app-test.herokuapp.com/api/login"
+        let urlString = API.baseURL + API.login
         
         if let url:URL = URL(string: urlString) {
-           
+            
             Alamofire.request(url, method: .post, parameters: parameters).responseJSON { (response) in
                 
                 if response.response?.statusCode == 200 {
@@ -48,14 +48,14 @@ class LoginProvider {
                 }else {
                     print("=========error")
                     print(response.error ?? "")
-                    self.delegate?.errorLoadUsers(error: response.error as! Error)
+                    self.delegate?.errorLoadUsers(error: response.error as? Error)
                 }
             }
-                
-            }
+            
+        }
         
     }
-
+    
 }
 
 

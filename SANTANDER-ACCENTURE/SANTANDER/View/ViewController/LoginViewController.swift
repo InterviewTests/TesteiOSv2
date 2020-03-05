@@ -9,10 +9,10 @@
 import UIKit
 import Foundation
 
-class LoginViewController: UIViewController, SomeUIViewDelegate, SaveCoreDataDelegate {
-    
-   var coreData: CoreDataManager?
-var arrayPerson:[Person] = []
+class LoginViewController: UIViewController, SomeUIViewDelegate, CoreDataDelegate {
+   
+    var coreData: CoreDataManager = CoreDataManager()
+    var arrayPerson:[Person] = []
     
     func loginBtnTapped(name: String, passwd: String) {
         
@@ -25,34 +25,37 @@ var arrayPerson:[Person] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         self.loginTableView.register(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: "LoginTableViewCell")
         
         self.loginTableView.delegate = self
         self.loginTableView.dataSource = self
-        
         loginTableView.delegate = self
+        loadUser()
         loginTableView.reloadData()
         
-       
-        
     }
-
+    
     func segueFunction() {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-
+        
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "UsuarioViewController") as! StatementsViewController
         resultViewController.modalPresentationStyle = .fullScreen
         self.present(resultViewController, animated:true, completion:nil)
     }
     
-    func loadInformation() {
-        coreData?.loadInformation { (arrayPerson) in
+    func loadUser() {
+        coreData.loadInformation { (arrayPerson) in
             self.arrayPerson = arrayPerson
-            
+            self.loginTableView.reloadData()
         }
     }
+    
+    func saveInformation(user: String, password: String) {
+        coreData.saveInformation(user: user, password: password)
+    }
+    
     
     
 }
@@ -73,24 +76,30 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate {
             
             receberCell.delegateSegue = self
             receberCell.delegateCoreData = self
-           
+            
             receberCell.layer.borderColor = UIColor.label.cgColor
             
-                   
-                   return receberCell
-               }
+            if arrayPerson.count > 0 {
+                if let lastPerson = self.arrayPerson.last {
+                    receberCell.setup(person: lastPerson)
+                }
+            }
+            
+            
+            return receberCell
+        }
         
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           return tableView.frame.height
-       }
-  
+        return tableView.frame.height
+    }
+    
     
 }
-   
-    
+
+
 
 extension LoginViewController: UserControllerDelegate{
     

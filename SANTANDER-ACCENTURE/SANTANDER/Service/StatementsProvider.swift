@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class StatementsProvider {
-        
+    
     func getDataFromHeroKu(completion: @escaping ([StatementList]?) -> Void) {
         
         let url = API.baseURL + API.statement

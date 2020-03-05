@@ -14,8 +14,6 @@ class StatementsViewController: UIViewController {
     
     @IBOutlet weak var usuarioTableView: UITableView!
     
-    
-    
     var controller: LoginController?
     let statement: StatementsController = StatementsController()
     var arrayWelcome: [StatementList] = []
@@ -23,23 +21,33 @@ class StatementsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerCell()
+        setupTableView()
+        configureLoginController()
+        configureStatement()
+    }
+    
+    func configureLoginController() {
+        self.controller = LoginController()
+        self.controller?.delegate = self
+        self.controller?.loadList()
+    }
+    
+    func configureStatement() {
+        self.statement.delegate = self
+        statement.loadList()
+    }
+    
+    func registerCell() {
         self.usuarioTableView.register(UINib(nibName: "DadosUsuarioTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "DadosUsuarioTableViewCell")
         
         self.usuarioTableView.register(UINib(nibName: "LancamentosUsuarioTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "LancamentosUsuarioTableViewCell")
-        
+    }
+    
+    func setupTableView() {
         self.usuarioTableView.delegate = self
         self.usuarioTableView.dataSource = self
-        
-        self.controller = LoginController()
-        self.controller?.delegate = self
-        
-        self.controller?.loadList()
-        
-        self.statement.delegate = self
-        statement.loadList()
-        
-        
-        
+        self.usuarioTableView.tableFooterView = UIView()
     }
     
 }
@@ -68,8 +76,7 @@ extension StatementsViewController: UITableViewDelegate, UITableViewDataSource{
             if let dadosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "DadosUsuarioTableViewCell", for: indexPath) as? DadosUsuarioTableViewCell {
                 
                 dadosUsuarioCell.delegate = self
-               
-                    dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
+                dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
                 
                 return dadosUsuarioCell
             }
@@ -77,7 +84,7 @@ extension StatementsViewController: UITableViewDelegate, UITableViewDataSource{
             if let lancamentosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "LancamentosUsuarioTableViewCell", for: indexPath) as? LancamentosUsuarioTableViewCell {
                 
                 lancamentosUsuarioCell.set(list: arrayWelcome[indexPath.row])
-               
+                
                 
                 return lancamentosUsuarioCell
             }
@@ -113,10 +120,10 @@ extension StatementsViewController: StatementsControllerProtocol {
 }
 
 extension StatementsViewController: LogoutBtnDelegate{
-
+    
     func logoutBtnTapped() {
         self.dismiss(animated: true, completion: nil)
-
-}
+        
+    }
 }
 

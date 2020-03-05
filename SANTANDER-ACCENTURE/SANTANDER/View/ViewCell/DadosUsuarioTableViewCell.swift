@@ -14,7 +14,7 @@ protocol LogoutBtnDelegate: class {
 
 
 class DadosUsuarioTableViewCell: UITableViewCell {
-
+    
     
     @IBOutlet weak var nomeLabel: UILabel!
     
@@ -23,26 +23,31 @@ class DadosUsuarioTableViewCell: UITableViewCell {
     @IBOutlet weak var saldoLabel: UILabel!
     
     weak var delegate: LogoutBtnDelegate?
-       
-       override func awakeFromNib() {
-           super.awakeFromNib()
-       }
-       
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        dadosContaLabel.text = ""
+        nomeLabel.text = ""
+        saldoLabel.text = ""
+        
+    }
+    
     @IBAction func logoutTapped(_ sender: Any) {
         self.delegate?.logoutBtnTapped()
         
     }
     
     func setupCell(value: UserAccount?) {
-           
+        
         self.nomeLabel.text = value?.name
         
         if let agency = value?.agency, let bank = value?.bankAccount {
             self.dadosContaLabel.text = "\(agency)/\(bank)"
         }
         self.saldoLabel.text = "R$" + " " + (String(format: "%.2f", value?.balance ?? 0.00))
-     
-}
+        
+    }
 }
 
 

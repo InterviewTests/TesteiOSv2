@@ -21,7 +21,7 @@ class LoginController {
     var provider: LoginProvider?
     
     private var user: Account?
-
+    
     
     func setupController(){
         self.provider = LoginProvider()
@@ -35,8 +35,6 @@ class LoginController {
     
     
     func loadCurrentUser(indexPath: IndexPath) -> UserAccount {
-        
-//        return self.arrayUsers[indexPath.row]
         return user?.userAccount ?? UserAccount(userID: 0, name: "", bankAccount: "", agency: "", balance: 0.0)
         
     }
