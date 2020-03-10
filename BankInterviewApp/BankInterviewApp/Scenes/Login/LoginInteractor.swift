@@ -14,28 +14,39 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+  func doLogin(request: Login.Something.Request)
 }
 
 protocol LoginDataStore
 {
-  //var name: String { get set }
+    var user: String { get }
+    var password: String { get }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker = LoginWorker()
+    var userWorker: UserWorker = UserWorker(store: UserAPI())
+  
+    var user: String = ""
+    var password: String = ""
+    
+  // MARK: Do login
+  
+  func doLogin(request: Login.Something.Request)
+  {
+    user = request.user
+    password = request.password
+    
+    if worker.validateUser(user: user) {
+        userWorker.doLogin(user: user, password: password)
+        //TODO: Efetuar request
+//        let response = Login.Something.Response()
+//        presenter?.presentSomething(response: response)
+    } else {
+        //TODO: apresentar erro
+    }
   }
 }

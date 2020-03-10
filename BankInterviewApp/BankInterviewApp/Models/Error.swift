@@ -10,7 +10,7 @@ import Foundation
 
 struct Error: Codable {
     
-    var code: Int
-    var message: String
+    var code: Int?
+    var message: String?
     
 }

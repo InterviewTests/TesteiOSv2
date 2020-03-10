@@ -14,11 +14,12 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-  func displaySomething(viewModel: Login.Something.ViewModel)
+    //TODO: criar metodo
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
+    
   var interactor: LoginBusinessLogic?
   var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
 
@@ -69,21 +70,32 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    addCpfMask(field: user)
   }
+    
+    func addCpfMask(field: UITextField)
+    {
+        user.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField)
+    {
+        guard let text = textField.text, !text.isEmpty else { return }
+        if let isNumber = textField.text?.first?.isNumber, isNumber, !text.contains("@") {
+            textField.text = text.applyPatternOnNumbers(pattern: "###.###.###-##", replacmentCharacter: "#")
+        }
+    }
   
-  // MARK: Do something
+  // MARK: User & Password
   
-  //@IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var user: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
+ // MARK: Login
   
-  func doSomething()
+  @IBAction func login()
   {
-    let request = Login.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Login.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
+    let request = Login.Something.Request(user: user.text!, password: password.text!)
+    interactor?.doLogin(request: request)
   }
 }

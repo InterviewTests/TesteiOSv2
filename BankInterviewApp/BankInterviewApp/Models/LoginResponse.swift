@@ -17,11 +17,11 @@ struct LoginResponse: Codable {
 
 struct User: Codable {
     
-    var userId: String
-    var name: String
-    var bankAccount: String
-    var agency: String
-    var balance: String
+    var userId: Int?
+    var name: String?
+    var bankAccount: String?
+    var agency: String?
+    var balance: Float?
     
 }
 

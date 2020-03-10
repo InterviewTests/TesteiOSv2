@@ -53,10 +53,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="V15-WL-nQg" kind="show" id="oAn-5N-cr8"/>
+                                    <action selector="login" destination="YEf-iG-X6N" eventType="touchUpInside" id="znv-l9-82l"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="4HI-uH-PkI">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BankLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4HI-uH-PkI">
                                 <rect key="frame" x="144.5" y="100" width="125" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="N8y-hR-Lau"/>
@@ -77,6 +77,11 @@
                         <viewLayoutGuide key="safeArea" id="zxq-co-TmZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="1s2-qs-d5k"/>
+                    <connections>
+                        <outlet property="password" destination="VHT-G8-NmE" id="6yY-wx-RNE"/>
+                        <outlet property="user" destination="seK-tE-AO8" id="XbZ-Yn-vXx"/>
+                        <segue destination="V15-WL-nQg" kind="show" id="phc-Q4-9XP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHO-0L-kWJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,7 +185,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npm-yb-hef">
+                                                <view contentMode="scaleToFill" restorationIdentifier="statementsCell" translatesAutoresizingMaskIntoConstraints="NO" id="npm-yb-hef">
                                                     <rect key="frame" x="16" y="8" width="382" height="81"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Pagamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9XM-LG-8c5">
@@ -274,7 +279,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="41.5" height="23"/>
+        <image name="BankLogo" width="41.5" height="23"/>
         <image name="logout 2" width="9" height="9"/>
     </resources>
 </document>
