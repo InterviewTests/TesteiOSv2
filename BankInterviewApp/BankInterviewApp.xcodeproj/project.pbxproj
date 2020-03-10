@@ -18,6 +18,12 @@
 		9CEAB6692417D39800ED7A5C /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6632417D39800ED7A5C /* LoginModels.swift */; };
 		9CEAB66A2417D39800ED7A5C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6642417D39800ED7A5C /* LoginViewController.swift */; };
 		9CEAB66B2417D39800ED7A5C /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6652417D39800ED7A5C /* LoginInteractor.swift */; };
+		9CEAB6732417DFE400ED7A5C /* StatementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB66D2417DFE400ED7A5C /* StatementsPresenter.swift */; };
+		9CEAB6742417DFE400ED7A5C /* StatementsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB66E2417DFE400ED7A5C /* StatementsWorker.swift */; };
+		9CEAB6752417DFE400ED7A5C /* StatementsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB66F2417DFE400ED7A5C /* StatementsRouter.swift */; };
+		9CEAB6762417DFE400ED7A5C /* StatementsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6702417DFE400ED7A5C /* StatementsModels.swift */; };
+		9CEAB6772417DFE400ED7A5C /* StatementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6712417DFE400ED7A5C /* StatementsViewController.swift */; };
+		9CEAB6782417DFE400ED7A5C /* StatementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6722417DFE400ED7A5C /* StatementsInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +52,12 @@
 		9CEAB6632417D39800ED7A5C /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
 		9CEAB6642417D39800ED7A5C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CEAB6652417D39800ED7A5C /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		9CEAB66D2417DFE400ED7A5C /* StatementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsPresenter.swift; sourceTree = "<group>"; };
+		9CEAB66E2417DFE400ED7A5C /* StatementsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsWorker.swift; sourceTree = "<group>"; };
+		9CEAB66F2417DFE400ED7A5C /* StatementsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsRouter.swift; sourceTree = "<group>"; };
+		9CEAB6702417DFE400ED7A5C /* StatementsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsModels.swift; sourceTree = "<group>"; };
+		9CEAB6712417DFE400ED7A5C /* StatementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsViewController.swift; sourceTree = "<group>"; };
+		9CEAB6722417DFE400ED7A5C /* StatementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +138,7 @@
 		9CEAB6512417D2DB00ED7A5C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9CEAB66C2417DFD000ED7A5C /* Statements */,
 				9CEAB65F2417D35900ED7A5C /* Login */,
 			);
 			path = Scenes;
@@ -149,6 +162,19 @@
 				9CEAB6652417D39800ED7A5C /* LoginInteractor.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		9CEAB66C2417DFD000ED7A5C /* Statements */ = {
+			isa = PBXGroup;
+			children = (
+				9CEAB66D2417DFE400ED7A5C /* StatementsPresenter.swift */,
+				9CEAB66E2417DFE400ED7A5C /* StatementsWorker.swift */,
+				9CEAB66F2417DFE400ED7A5C /* StatementsRouter.swift */,
+				9CEAB6702417DFE400ED7A5C /* StatementsModels.swift */,
+				9CEAB6712417DFE400ED7A5C /* StatementsViewController.swift */,
+				9CEAB6722417DFE400ED7A5C /* StatementsInteractor.swift */,
+			);
+			path = Statements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,12 +278,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEAB6772417DFE400ED7A5C /* StatementsViewController.swift in Sources */,
 				9CEAB66A2417D39800ED7A5C /* LoginViewController.swift in Sources */,
 				9CEAB6662417D39800ED7A5C /* LoginPresenter.swift in Sources */,
 				9CEAB6222417D20500ED7A5C /* AppDelegate.swift in Sources */,
 				9CEAB66B2417D39800ED7A5C /* LoginInteractor.swift in Sources */,
+				9CEAB6732417DFE400ED7A5C /* StatementsPresenter.swift in Sources */,
+				9CEAB6742417DFE400ED7A5C /* StatementsWorker.swift in Sources */,
+				9CEAB6782417DFE400ED7A5C /* StatementsInteractor.swift in Sources */,
+				9CEAB6762417DFE400ED7A5C /* StatementsModels.swift in Sources */,
 				9CEAB6692417D39800ED7A5C /* LoginModels.swift in Sources */,
 				9CEAB6682417D39800ED7A5C /* LoginRouter.swift in Sources */,
+				9CEAB6752417DFE400ED7A5C /* StatementsRouter.swift in Sources */,
 				9CEAB6672417D39800ED7A5C /* LoginWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
