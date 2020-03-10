@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9CEAB6222417D20500ED7A5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6212417D20500ED7A5C /* AppDelegate.swift */; };
-		9CEAB6242417D20500ED7A5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6232417D20500ED7A5C /* SceneDelegate.swift */; };
 		9CEAB6292417D20500ED7A5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CEAB6272417D20500ED7A5C /* Main.storyboard */; };
 		9CEAB62B2417D20800ED7A5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CEAB62A2417D20800ED7A5C /* Assets.xcassets */; };
 		9CEAB62E2417D20800ED7A5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CEAB62C2417D20800ED7A5C /* LaunchScreen.storyboard */; };
@@ -34,7 +33,6 @@
 /* Begin PBXFileReference section */
 		9CEAB61E2417D20400ED7A5C /* BankInterviewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankInterviewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CEAB6212417D20500ED7A5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9CEAB6232417D20500ED7A5C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9CEAB6282417D20500ED7A5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CEAB62A2417D20800ED7A5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CEAB62D2417D20800ED7A5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 				9CEAB6502417D2CE00ED7A5C /* Services */,
 				9CEAB64F2417D2BD00ED7A5C /* Models */,
 				9CEAB6212417D20500ED7A5C /* AppDelegate.swift */,
-				9CEAB6232417D20500ED7A5C /* SceneDelegate.swift */,
 				9CEAB6272417D20500ED7A5C /* Main.storyboard */,
 				9CEAB62A2417D20800ED7A5C /* Assets.xcassets */,
 				9CEAB62C2417D20800ED7A5C /* LaunchScreen.storyboard */,
@@ -258,7 +255,6 @@
 				9CEAB66A2417D39800ED7A5C /* LoginViewController.swift in Sources */,
 				9CEAB6662417D39800ED7A5C /* LoginPresenter.swift in Sources */,
 				9CEAB6222417D20500ED7A5C /* AppDelegate.swift in Sources */,
-				9CEAB6242417D20500ED7A5C /* SceneDelegate.swift in Sources */,
 				9CEAB66B2417D39800ED7A5C /* LoginInteractor.swift in Sources */,
 				9CEAB6692417D39800ED7A5C /* LoginModels.swift in Sources */,
 				9CEAB6682417D39800ED7A5C /* LoginRouter.swift in Sources */,
@@ -425,6 +421,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9H8MD98J98;
 				INFOPLIST_FILE = BankInterviewApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,7 +429,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.osias.bank.BankInterviewApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -443,6 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9H8MD98J98;
 				INFOPLIST_FILE = BankInterviewApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -450,7 +448,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.osias.bank.BankInterviewApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
