@@ -28,8 +28,8 @@ class LoginRouter: NSObject, LoginDataPassing, LoginRoutingLogic
 {
     private let statementsSegue = "LoginViewControllerSegue"
     private let selector: Selector
-  weak var viewController: LoginViewController?
-  var dataStore: LoginDataStore?
+    weak var viewController: LoginViewController?
+    internal var dataStore: LoginDataStore?
   
     override init()
     {
@@ -58,7 +58,7 @@ class LoginRouter: NSObject, LoginDataPassing, LoginRoutingLogic
   
   // MARK: Passing data
   
-  func passDataToStatements(source: LoginDataStore, destination: inout StatementsDataStore)
+  private func passDataToStatements(source: LoginDataStore, destination: inout StatementsDataStore)
   {
     guard let response = source.response else { return }
     destination.userData = Statements.UserData.ViewModel(id: response.id,
