@@ -13,16 +13,16 @@
 import UIKit
 import JGProgressHUD
 
-protocol LoginDisplayLogic: class
-{
-//    func displaySomething(viewModel: Login.Something.ViewModel)
+protocol LoginDisplayLogic: class {
     func showAlertErrorMessage(message: String)
     func showLoadingView()
     func hideLoadingView()
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
-{
+class LoginViewController: UIViewController, LoginDisplayLogic {
+    
+    // MARK: - Variables
+    
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     let loadingView = JGProgressHUD(style: .dark)
@@ -32,28 +32,23 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-
-    
-    
-    
     // MARK: - Object lifecycle
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
+        self.setup()
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
+        self.setup()
     }
     
     // MARK: - Setup
     
-    private func setup()
-    {
+    private func setup() {
+        
         let viewController = self
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
@@ -63,13 +58,13 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
-        router.dataStore = interactor
+//        router.dataStore = interactor
     }
     
     // MARK: - Routing
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
             if let router = router, router.responds(to: selector) {
@@ -80,25 +75,27 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     // MARK: - View lifecycle
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.userTextField.delegate = self
         self.passwordTextField.delegate = self
+        self.setupObservers()
+        self.setupLoadingView()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func setupLoadingView() {
+        self.loadingView.textLabel.text = "Carregando..."
+    }
+    
+    private func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        self.loadingView.textLabel.text = "Carregando..."
-        
     }
     
-    // MARK: - Do something
-    func showAlertErrorMessage(message: String) {
-        let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height - 100
@@ -106,10 +103,18 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         }
     }
 
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc private func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
+    }
+    
+    // MARK: - Protocol LoginDisplayLogic
+    
+    func showAlertErrorMessage(message: String) {
+        let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showLoadingView() {
@@ -139,19 +144,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic
                                     password: password)
         self.interactor?.tryLogin(request)
     }
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething()
-    {
-//        let request = Login.Something.Request()
-    }
-    
-//    func displaySomething(viewModel: Login.Something.ViewModel)
-//    {
-//        //nameTextField.text = viewModel.name
-//    }
 }
+
+//MARK: - UITextFieldDelegate
 
 extension LoginViewController: UITextFieldDelegate {
     
@@ -162,6 +157,5 @@ extension LoginViewController: UITextFieldDelegate {
            self.view.endEditing(true)
         }
         return true
-        
     }
 }

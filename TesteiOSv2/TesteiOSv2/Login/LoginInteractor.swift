@@ -20,15 +20,14 @@ protocol LoginBusinessLogic {
     
 }
 
-protocol LoginDataStore {
-    //var name: String { get set }
-}
+class LoginInteractor: LoginBusinessLogic {
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore {
-
+    // MARK: - Variables
     
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker? = LoginWorker()
+    
+    //MARK: - Protocol LoginBusinessLogic
     
     func validateUser(_ user: String) -> Bool {
         
@@ -53,7 +52,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     func tryLogin(_ request: Login.Request) {
         
-//        self.worker = LoginWorker()
         self.presenter?.showLoadingView()
         self.worker?.tryLogin(user: request.user, password: request.password, success: { (user) in
             print("nome do usuario é \(user.name)")
@@ -64,19 +62,5 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
                 self.presenter?.showLoginError(with: message)
             }
         })
-        
     }
-    
-    //var name: String = ""
-    
-    // MARK: Do something
-    
-//    func doSomething(request: Login.Something.Request)
-//    {
-//        worker = LoginWorker()
-//        worker?.doSomeWork()
-//        
-//        let response = Login.Something.Response()
-//        presenter?.presentSomething(response: response)
-//    }
 }

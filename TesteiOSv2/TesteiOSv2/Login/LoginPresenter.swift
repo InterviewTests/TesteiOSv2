@@ -14,7 +14,6 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-    
     func showInvalidUser()
     func showInvalidPassword()
     func showLoginError(with message: String)
@@ -25,15 +24,11 @@ protocol LoginPresentationLogic
 
 class LoginPresenter: LoginPresentationLogic
 {
+    // MARK: - Variables
+    
     weak var viewController: LoginDisplayLogic?
     
-    // MARK: Do something
-    
-//    func presentSomething(response: Login.Something.Response)
-//    {
-//        let viewModel = Login.Something.ViewModel()
-//        viewController?.displaySomething(viewModel: viewModel)
-//    }
+    // MARK: - Protocol LoginPresentationLogic
     
     func showInvalidUser() {
         self.viewController?.showAlertErrorMessage(message: "O usuário deve ser um email ou cpf")
