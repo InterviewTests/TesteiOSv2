@@ -12,17 +12,13 @@
 
 import UIKit
 
-@objc protocol LoginRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-}
 
 protocol LoginDataPassing
 {
   var dataStore: LoginDataStore? { get }
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
+class LoginRouter: NSObject, LoginDataPassing
 {
   weak var viewController: LoginViewController?
   var dataStore: LoginDataStore?

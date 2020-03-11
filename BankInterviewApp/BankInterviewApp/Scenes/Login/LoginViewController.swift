@@ -14,8 +14,8 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    func error()
-    func loginSucess()
+    func loginError(error: Login.Error)
+    func loginSucess(user: Login.Response)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -91,12 +91,26 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var error: UILabel!
     
  // MARK: Login
   
-  @IBAction func login()
-  {
-    let request = Login.Request(user: user.text!, password: password.text!)
-    interactor?.doLogin(request: request)
-  }
+    @IBAction func login()
+    {
+        error.text = ""
+        let request = Login.Request(user: user.text!, password: password.text!)
+        interactor?.doLogin(request: request)
+    }
+    
+    func loginSucess(user: Login.Response)
+    {
+//        router.
+    }
+    
+    func loginError(error: Login.Error)
+    {
+        self.error.text = error.message
+    }
+    
 }
+

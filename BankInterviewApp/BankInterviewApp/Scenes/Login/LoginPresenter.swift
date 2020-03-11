@@ -26,11 +26,11 @@ class LoginPresenter: LoginPresentationLogic
   
     func loginSucess(response: Login.Response)
     {
-        
+        viewController?.loginSucess(user: response)
     }
     
     func error(error: Login.Error)
     {
-        
+        viewController?.loginError(error: error)
     }
 }

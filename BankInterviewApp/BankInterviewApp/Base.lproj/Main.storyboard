@@ -63,14 +63,22 @@
                                     <constraint firstAttribute="width" secondItem="4HI-uH-PkI" secondAttribute="height" multiplier="41:23" id="P76-5o-gRC"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFB-XY-MEM">
+                                <rect key="frame" x="207" y="494" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="aFB-XY-MEM" firstAttribute="top" secondItem="1R8-3b-oN6" secondAttribute="bottom" constant="8" id="7hc-LU-lIr"/>
                             <constraint firstItem="zxq-co-TmZ" firstAttribute="bottom" secondItem="Fpz-Wb-ikp" secondAttribute="bottom" constant="33" id="CJ0-Pr-dLX"/>
                             <constraint firstItem="1R8-3b-oN6" firstAttribute="leading" secondItem="zxq-co-TmZ" secondAttribute="leading" constant="16" id="FrY-mq-IY8"/>
                             <constraint firstItem="4HI-uH-PkI" firstAttribute="top" secondItem="zxq-co-TmZ" secondAttribute="top" constant="56" id="QY7-TL-1Um"/>
                             <constraint firstItem="1R8-3b-oN6" firstAttribute="centerY" secondItem="TDC-tK-TP7" secondAttribute="centerY" id="a6k-Iy-aSQ"/>
                             <constraint firstItem="Fpz-Wb-ikp" firstAttribute="centerX" secondItem="TDC-tK-TP7" secondAttribute="centerX" id="bDf-RU-yMh"/>
+                            <constraint firstItem="aFB-XY-MEM" firstAttribute="centerX" secondItem="TDC-tK-TP7" secondAttribute="centerX" id="i2b-jC-s3a"/>
                             <constraint firstItem="zxq-co-TmZ" firstAttribute="trailing" secondItem="1R8-3b-oN6" secondAttribute="trailing" constant="16" id="tWj-lG-M8j"/>
                             <constraint firstItem="4HI-uH-PkI" firstAttribute="centerX" secondItem="TDC-tK-TP7" secondAttribute="centerX" id="td1-Rc-1pD"/>
                         </constraints>
@@ -78,6 +86,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1s2-qs-d5k"/>
                     <connections>
+                        <outlet property="error" destination="aFB-XY-MEM" id="klR-Bh-nTf"/>
                         <outlet property="password" destination="VHT-G8-NmE" id="6yY-wx-RNE"/>
                         <outlet property="user" destination="seK-tE-AO8" id="XbZ-Yn-vXx"/>
                         <segue destination="V15-WL-nQg" kind="show" id="phc-Q4-9XP"/>
