@@ -16,10 +16,8 @@ class UserWorker {
         self.userStore = store
     }
     
-    func doLogin(user: String, password: String) {
-        userStore.doLogin(user: user, password: password, completionHandler: { _ in
-            
-        })
+    func doLogin(user: String, password: String, completion: @escaping (LoginResponse) -> ()) {
+        userStore.doLogin(user: user, password: password, completionHandler: completion)
     }
     
 }

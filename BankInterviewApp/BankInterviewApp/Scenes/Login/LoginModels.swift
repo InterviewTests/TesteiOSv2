@@ -15,13 +15,14 @@ import UIKit
 enum Login
 {
   // MARK: Use cases
-  
-  enum Something
-  {
     struct Request
     {
         var user: String
         var password: String
+    }
+    struct Error
+    {
+        var message: String
     }
     struct Response
     {
@@ -29,10 +30,9 @@ enum Login
         var name: String
         var agency: String
         var account: String
-        var balance: String
+        var balance: Float
     }
     struct ViewModel
     {
     }
-  }
 }

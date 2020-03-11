@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doLogin(request: Login.Something.Request)
+  func doLogin(request: Login.Request)
 }
 
 protocol LoginDataStore
@@ -35,18 +35,27 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     
   // MARK: Do login
   
-  func doLogin(request: Login.Something.Request)
+  func doLogin(request: Login.Request)
   {
     user = request.user
     password = request.password
     
     if worker.validateUser(user: user) {
-        userWorker.doLogin(user: user, password: password)
-        //TODO: Efetuar request
-//        let response = Login.Something.Response()
-//        presenter?.presentSomething(response: response)
+        userWorker.doLogin(user: user, password: password, completion: { [weak self] response in
+            guard let _ = response.userAccount.userId,
+                  let _ = response.error.message else {
+                self?.presenter?.error(error: Login.Error(message: response.error.message!))
+                return
+            }
+            let response = Login.Response(id: response.userAccount.userId!,
+                                          name: response.userAccount.name!,
+                                          agency: response.userAccount.agency!,
+                                          account: response.userAccount.bankAccount!,
+                                          balance: response.userAccount.balance!)
+            self?.presenter?.loginSucess(response: response)
+        })
     } else {
-        //TODO: apresentar erro
+        self.presenter?.error(error: Login.Error(message: "Invalid user/password"))
     }
   }
 }

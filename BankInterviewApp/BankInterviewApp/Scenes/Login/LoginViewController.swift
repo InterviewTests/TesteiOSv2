@@ -14,7 +14,8 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    //TODO: criar metodo
+    func error()
+    func loginSucess()
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -95,7 +96,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   
   @IBAction func login()
   {
-    let request = Login.Something.Request(user: user.text!, password: password.text!)
+    let request = Login.Request(user: user.text!, password: password.text!)
     interactor?.doLogin(request: request)
   }
 }

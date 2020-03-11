@@ -14,32 +14,22 @@ import UIKit
 
 class LoginWorker
 {
-    /**
-     //tentando validar como CPF
-     if(validateCPF(originalCpf: user)) {
-         return true
-     }
-     //Tentando validar como email
-     else if(validateEmail(email: user)) {
-         return true
-     }
-     //Caso todos falhem, nao eh valido
-     return false
-     */
     
     func validateUser(user: String) -> Bool
     {
         return validateCPF(originalCpf: user) || validateEmail(email: user)
     }
     
-    private func validateEmail(email: String) -> Bool {
+    private func validateEmail(email: String) -> Bool
+    {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
     
-    private func validateCPF(originalCpf: String) -> Bool {
+    private func validateCPF(originalCpf: String) -> Bool
+    {
         let cpf = self.onlyNumbers(originalCpf)
         guard cpf.count == 11 else { return false }
 
@@ -70,7 +60,8 @@ class LoginWorker
         return temp1 == d1 && temp2 == d2
     }
     
-    private func onlyNumbers(_ cpf: String) -> String {
+    private func onlyNumbers(_ cpf: String) -> String
+    {
         guard !cpf.isEmpty else { return "" }
         return cpf.replacingOccurrences(of: "\\D",
                                     with: "",

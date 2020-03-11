@@ -14,17 +14,23 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-  func presentSomething(response: Login.Something.Response)
+    func loginSucess(response: Login.Response)
+    func error(error: Login.Error)
 }
 
 class LoginPresenter: LoginPresentationLogic
 {
-  weak var viewController: LoginDisplayLogic?
+    weak var viewController: LoginDisplayLogic?
   
-  // MARK: Do something
+    // MARK: Do something
   
-  func presentSomething(response: Login.Something.Response)
-  {
+    func loginSucess(response: Login.Response)
+    {
+        
+    }
     
-  }
+    func error(error: Login.Error)
+    {
+        
+    }
 }
