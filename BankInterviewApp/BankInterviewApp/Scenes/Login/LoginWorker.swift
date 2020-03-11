@@ -15,9 +15,17 @@ import UIKit
 class LoginWorker
 {
     
-    func validateUser(user: String) -> Bool
+    private let regexPassword = "^(?=.*[a-zA-Z0-9])(?=.*[A-Z])(?=.*[^A-Za-z0-9])"
+    
+    func validateUser(_ user: String) -> Bool
     {
+        //Valida CPF e Email, invalido se nenhuma das duas validacoes passar
         return validateCPF(originalCpf: user) || validateEmail(email: user)
+    }
+    
+    func validatePassword(_ password: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: regexPassword)
+        return regex.firstMatch(in: password, options: [], range: NSRange(location: 0, length: password.count)) != nil
     }
     
     private func validateEmail(email: String) -> Bool

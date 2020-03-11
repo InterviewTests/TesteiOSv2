@@ -34,5 +34,10 @@ enum Login
     }
     struct ViewModel
     {
+        var id: Int
+        var name: String
+        var agency: String
+        var account: String
+        var balance: Float
     }
 }

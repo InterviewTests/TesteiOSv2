@@ -26,7 +26,8 @@ class LoginPresenter: LoginPresentationLogic
   
     func loginSucess(response: Login.Response)
     {
-        viewController?.loginSucess(user: response)
+        let model = Login.ViewModel(id: response.id, name: response.name, agency: response.agency, account: response.account, balance: response.balance)
+        viewController?.loginSucess(user: model)
     }
     
     func error(error: Login.Error)

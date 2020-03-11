@@ -15,14 +15,14 @@ import UIKit
 protocol LoginDisplayLogic: class
 {
     func loginError(error: Login.Error)
-    func loginSucess(user: Login.Response)
+    func loginSucess(user: Login.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
     
   var interactor: LoginBusinessLogic?
-  var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+  var router: (NSObjectProtocol & LoginDataPassing)?
 
   // MARK: Object lifecycle
   
@@ -48,13 +48,14 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     let router = LoginRouter()
     viewController.interactor = interactor
     viewController.router = router
-    interactor.presenter = presenter
     presenter.viewController = viewController
+    interactor.presenter = presenter
     router.viewController = viewController
     router.dataStore = interactor
   }
   
   // MARK: Routing
+    //TODO: melhorar o roteamento
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?)
   {
@@ -72,6 +73,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   {
     super.viewDidLoad()
     addCpfMask(field: user)
+    //Recupera o usuario caso tenha feito o login corretamente
+    user.text = interactor?.fetchUser()
   }
     
     func addCpfMask(field: UITextField)
@@ -102,9 +105,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         interactor?.doLogin(request: request)
     }
     
-    func loginSucess(user: Login.Response)
+    func loginSucess(user: Login.ViewModel)
     {
-//        router.
+        print("Login com sucesso!!")
     }
     
     func loginError(error: Login.Error)

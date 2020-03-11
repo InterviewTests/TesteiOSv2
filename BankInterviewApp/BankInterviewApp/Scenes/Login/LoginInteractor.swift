@@ -15,6 +15,7 @@ import UIKit
 protocol LoginBusinessLogic
 {
   func doLogin(request: Login.Request)
+  func fetchUser() -> String?
 }
 
 protocol LoginDataStore
@@ -28,7 +29,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker = LoginWorker()
-    var userWorker: UserWorker = UserWorker(store: UserAPI())
+    var userWorker: UserWorker = UserWorker(store: UserAPI(), localStore: KeychainUserStore())
   
     var user: String = ""
     var password: String = ""
@@ -40,22 +41,27 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     user = request.user
     password = request.password
     
-    if worker.validateUser(user: user) {
+    if worker.validateUser(user), worker.validatePassword(password) {
         userWorker.doLogin(user: user, password: password, completion: { [weak self] response in
-            guard let _ = response.userAccount.userId,
-                  let _ = response.error.message else {
-                self?.presenter?.error(error: Login.Error(message: response.error.message!))
+            guard let userId = response.userAccount.userId,
+                  let name = response.userAccount.name,
+                  let agency = response.userAccount.agency,
+                  let account = response.userAccount.bankAccount,
+                  let balance = response.userAccount.balance else {
+                let error = Login.Error(message: response.error.message ?? "There was an error in login, please try again")
+                self?.presenter?.error(error: error)
                 return
             }
-            let response = Login.Response(id: response.userAccount.userId!,
-                                          name: response.userAccount.name!,
-                                          agency: response.userAccount.agency!,
-                                          account: response.userAccount.bankAccount!,
-                                          balance: response.userAccount.balance!)
+            let response = Login.Response(id: userId, name: name, agency: agency, account: account, balance: balance)
+            self?.userWorker.storeUsername(user: self?.user ?? "")
             self?.presenter?.loginSucess(response: response)
         })
     } else {
         self.presenter?.error(error: Login.Error(message: "Invalid user/password"))
     }
+  }
+    
+  func fetchUser() -> String? {
+    return userWorker.getUser()
   }
 }
