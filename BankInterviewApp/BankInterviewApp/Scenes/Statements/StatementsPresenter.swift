@@ -14,7 +14,7 @@ import UIKit
 
 protocol StatementsPresentationLogic
 {
-  func presentSomething(response: Statements.Something.Response)
+  func presentSomething(response: Statements.UserData.Response)
 }
 
 class StatementsPresenter: StatementsPresentationLogic
@@ -23,9 +23,9 @@ class StatementsPresenter: StatementsPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: Statements.Something.Response)
+  func presentSomething(response: Statements.UserData.Response)
   {
-    let viewModel = Statements.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+//    let viewModel = Statements.UserData.ViewModel()
+//    viewController?.displaySomething(viewModel: viewModel)
   }
 }

@@ -14,7 +14,7 @@ import UIKit
 
 protocol StatementsDisplayLogic: class
 {
-  func displaySomething(viewModel: Statements.Something.ViewModel)
+  func displaySomething(viewModel: Statements.UserData.ViewModel)
 }
 
 class StatementsViewController: UIViewController, StatementsDisplayLogic
@@ -78,11 +78,11 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
   
   func doSomething()
   {
-    let request = Statements.Something.Request()
+    let request = Statements.UserData.Request()
     interactor?.doSomething(request: request)
   }
   
-  func displaySomething(viewModel: Statements.Something.ViewModel)
+  func displaySomething(viewModel: Statements.UserData.ViewModel)
   {
     //nameTextField.text = viewModel.name
   }

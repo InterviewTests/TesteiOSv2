@@ -20,8 +20,7 @@ protocol LoginBusinessLogic
 
 protocol LoginDataStore
 {
-    var user: String { get }
-    var password: String { get }
+    var response: Login.Response? { get }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
@@ -33,6 +32,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
   
     var user: String = ""
     var password: String = ""
+    var response: Login.Response?
     
   // MARK: Do login
   
@@ -54,6 +54,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
             }
             let response = Login.Response(id: userId, name: name, agency: agency, account: account, balance: balance)
             self?.userWorker.storeUsername(user: self?.user ?? "")
+            self?.response = response
             self?.presenter?.loginSucess(response: response)
         })
     } else {

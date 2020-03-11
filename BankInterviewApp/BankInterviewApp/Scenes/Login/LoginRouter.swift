@@ -18,39 +18,53 @@ protocol LoginDataPassing
   var dataStore: LoginDataStore? { get }
 }
 
-class LoginRouter: NSObject, LoginDataPassing
+protocol LoginRoutingLogic
 {
+    func routeToStatements()
+    func routeToSomewhere(segue: UIStoryboardSegue)
+}
+
+class LoginRouter: NSObject, LoginDataPassing, LoginRoutingLogic
+{
+    private let statementsSegue = "LoginViewControllerSegue"
+    private let selector: Selector
   weak var viewController: LoginViewController?
   var dataStore: LoginDataStore?
   
+    override init()
+    {
+        selector = NSSelectorFromString("routeTo\(statementsSegue)WithSegue:")
+        super.init()
+    }
+    
   // MARK: Routing
   
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
-  // MARK: Navigation
+  func routeToSomewhere(segue: UIStoryboardSegue)
+  {
+      let destinationVC = segue.destination as! StatementsViewController
+      var destinationDS = destinationVC.router!.dataStore!
+      passDataToStatements(source: dataStore!, destination: &destinationDS)
+  }
   
-  //func navigateToSomewhere(source: LoginViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+    // MARK: Navigation
+    
+    func routeToStatements() {
+        viewController?.performSegue(withIdentifier: statementsSegue, sender: nil)
+    }
+    
+    override func responds(to aSelector: Selector!) -> Bool {
+        return aSelector == selector
+    }
   
   // MARK: Passing data
   
-  //func passDataToSomewhere(source: LoginDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+  func passDataToStatements(source: LoginDataStore, destination: inout StatementsDataStore)
+  {
+    guard let response = source.response else { return }
+    destination.userData = Statements.UserData.ViewModel(id: response.id,
+                                                         name: response.name,
+                                                         agency: response.agency,
+                                                         account: response.account,
+                                                         balance: response.balance)
+  }
 }

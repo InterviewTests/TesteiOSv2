@@ -14,28 +14,28 @@ import UIKit
 
 protocol StatementsBusinessLogic
 {
-  func doSomething(request: Statements.Something.Request)
+  func doSomething(request: Statements.UserData.Request)
 }
 
 protocol StatementsDataStore
 {
-  //var name: String { get set }
+    var userData: Statements.UserData.ViewModel? { get set }
 }
 
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
 {
   var presenter: StatementsPresentationLogic?
   var worker: StatementsWorker?
-  //var name: String = ""
+  var userData: Statements.UserData.ViewModel?
   
   // MARK: Do something
   
-  func doSomething(request: Statements.Something.Request)
+  func doSomething(request: Statements.UserData.Request)
   {
     worker = StatementsWorker()
     worker?.doSomeWork()
     
-    let response = Statements.Something.Response()
+    let response = Statements.UserData.Response()
     presenter?.presentSomething(response: response)
   }
 }

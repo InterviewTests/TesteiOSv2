@@ -16,7 +16,7 @@ enum Statements
 {
   // MARK: Use cases
   
-  enum Something
+  enum UserData
   {
     struct Request
     {
@@ -26,6 +26,11 @@ enum Statements
     }
     struct ViewModel
     {
+        var id: Int
+        var name: String
+        var agency: String
+        var account: String
+        var balance: Float
     }
   }
 }
