@@ -6,8 +6,6 @@
 //  Copyright © 2020 Osias Carneiro. All rights reserved.
 //
 
-import Foundation
-
 extension String {
     
     func applyPatternOnNumbers(pattern: String, replacmentCharacter: Character) -> String {

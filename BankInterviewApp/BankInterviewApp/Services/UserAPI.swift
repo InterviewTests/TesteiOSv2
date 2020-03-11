@@ -14,7 +14,7 @@ class UserAPI: UserStoreProtocol {
     
     func doLogin(user: String, password: String, completionHandler: @escaping (LoginResponse) -> ()) {
         let path = Endpoints.Login.doLogin.url
-        Alamofire.request(path, method: .post, parameters: ["user":user,"password":password], encoding: JSONEncoding.default, headers: nil).responseData(completionHandler: { response in
+        Alamofire.request(path, method: .post, parameters: ["user":user,"password":password], encoding: JSONEncoding.default).responseData(completionHandler: { response in
             if let value = response.result.value {
                 let response = try! JSONDecoder().decode(LoginResponse.self, from: value)
                 completionHandler(response)

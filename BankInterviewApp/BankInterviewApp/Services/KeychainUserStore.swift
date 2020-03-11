@@ -6,8 +6,6 @@
 //  Copyright © 2020 Osias Carneiro. All rights reserved.
 //
 
-import Foundation
-
 class KeychainUserStore: LocalUserStore {
     
     private let userKey = "usernameStoreKey"
@@ -17,7 +15,7 @@ class KeychainUserStore: LocalUserStore {
     }
     
     func storeUser(user: String) {
-        print(KeychainWrapper.standard.set(user, forKey: userKey))
+        KeychainWrapper.standard.set(user, forKey: userKey)
     }
     
 }

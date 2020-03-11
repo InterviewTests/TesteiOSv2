@@ -6,8 +6,6 @@
 //  Copyright © 2020 Osias Carneiro. All rights reserved.
 //
 
-import Foundation
-
 struct LoginResponse: Codable {
     
     var userAccount: User

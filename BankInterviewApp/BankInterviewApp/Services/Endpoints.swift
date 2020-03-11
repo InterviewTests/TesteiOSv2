@@ -6,8 +6,6 @@
 //  Copyright © 2020 Osias Carneiro. All rights reserved.
 //
 
-import Foundation
-
 struct API {
     static let baseUrl = "https://bank-app-test.herokuapp.com/api"
 }

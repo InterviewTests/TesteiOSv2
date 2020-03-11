@@ -10,8 +10,6 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 protocol LoginBusinessLogic
 {
   func doLogin(request: Login.Request)
