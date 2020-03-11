@@ -14,11 +14,12 @@ import UIKit
 
 protocol StatementsDisplayLogic: class
 {
-  func displaySomething(viewModel: Statements.UserData.ViewModel)
+  func displayFetchedStatements(viewModel: Statements.StatementList.ViewModel)
 }
 
-class StatementsViewController: UIViewController, StatementsDisplayLogic
+class StatementsViewController: UIViewController, UITableViewDataSource, StatementsDisplayLogic
 {
+    
   var interactor: StatementsBusinessLogic?
   var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
 
@@ -51,6 +52,22 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     router.viewController = viewController
     router.dataStore = interactor
   }
+    
+    //MARK: TableView
+    
+    var statements: Statements.StatementList.ViewModel = Statements.StatementList.ViewModel(statements: [])
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statements.statements.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "statementViewCell") as? StatementViewCell {
+            cell.configure(model: statements.statements[indexPath.row])
+            return cell
+        }
+        return UITableViewCell()
+    }
   
   // MARK: Routing
   
@@ -69,21 +86,48 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    fillUserData()
+    getStatements()
   }
   
-  // MARK: Do something
+    //MARK: IBOutlets
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var agengyAccount: UILabel!
+    @IBOutlet weak var balance: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: Logout
+    
+    @IBAction func logout(_ sender: Any) {
+        
+    }
+    
+    //MARK: Get statements
+    
+    //Starting with an invalid ID (is filled in fillUserData)
+    var userId = -1
+    
+    func getStatements() {
+        let request = Statements.StatementList.Request(userId: userId)
+        interactor?.fetchStatements(request: request)
+    }
   
-  //@IBOutlet weak var nameTextField: UITextField!
+    // MARK: Fill user data
+    
+    func fillUserData()
+    {
+        if let userData = router?.dataStore?.userData {
+            name.text = userData.name
+            balance.text = userData.balance.formatToCoin()
+            agengyAccount.text = "\(userData.account) / \(userData.agency)"
+            userId = userData.id
+        }
+    }
   
-  func doSomething()
+  func displayFetchedStatements(viewModel: Statements.StatementList.ViewModel)
   {
-    let request = Statements.UserData.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Statements.UserData.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
+    statements = viewModel
+    tableView.reloadData()
   }
 }

@@ -14,18 +14,17 @@ import UIKit
 
 protocol StatementsPresentationLogic
 {
-  func presentSomething(response: Statements.UserData.Response)
+  func presentFetchedStatements(response: Statements.StatementList.ViewModel)
 }
 
 class StatementsPresenter: StatementsPresentationLogic
 {
   weak var viewController: StatementsDisplayLogic?
   
-  // MARK: Do something
+  // MARK: Present fetched statements
   
-  func presentSomething(response: Statements.UserData.Response)
+  func presentFetchedStatements(response: Statements.StatementList.ViewModel)
   {
-//    let viewModel = Statements.UserData.ViewModel()
-//    viewController?.displaySomething(viewModel: viewModel)
+    viewController?.displayFetchedStatements(viewModel: response)
   }
 }

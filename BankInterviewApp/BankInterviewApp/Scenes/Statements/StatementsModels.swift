@@ -18,12 +18,6 @@ enum Statements
   
   enum UserData
   {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
     struct ViewModel
     {
         var id: Int
@@ -33,4 +27,24 @@ enum Statements
         var balance: Float
     }
   }
+    
+    enum StatementList {
+        struct Request
+        {
+            var userId: Int
+        }
+        
+        struct ViewModel
+        {
+            var statements: [StatementList.Statement]
+        }
+        
+        struct Statement
+        {
+            var transaction: String
+            var description: String
+            var date: String
+            var value: String
+        }
+    }
 }

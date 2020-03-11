@@ -14,7 +14,7 @@ import UIKit
 
 protocol StatementsBusinessLogic
 {
-  func doSomething(request: Statements.UserData.Request)
+  func fetchStatements(request: Statements.StatementList.Request)
 }
 
 protocol StatementsDataStore
@@ -26,16 +26,22 @@ class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
 {
   var presenter: StatementsPresentationLogic?
   var worker: StatementsWorker?
+  var statementsWorker: FetchStatementsWorker = FetchStatementsWorker(store: StatementAPI())
   var userData: Statements.UserData.ViewModel?
   
   // MARK: Do something
   
-  func doSomething(request: Statements.UserData.Request)
+  func fetchStatements(request: Statements.StatementList.Request)
   {
-    worker = StatementsWorker()
-    worker?.doSomeWork()
-    
-    let response = Statements.UserData.Response()
-    presenter?.presentSomething(response: response)
+    statementsWorker.fetchStatements(userId: request.userId, completionHandler: { [weak self] response in
+        if !response.statementList.isEmpty {
+            var model = Statements.StatementList.ViewModel(statements: [])
+            let transformed = response.statementList.map({
+                Statements.StatementList.Statement(transaction: $0.title, description: $0.desc, date: $0.date, value: $0.value.formatToCoin())
+            })
+            model.statements.append(contentsOf: transformed)
+            self?.presenter?.presentFetchedStatements(response: model)
+        }
+    })
   }
 }

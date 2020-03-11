@@ -35,6 +35,11 @@
 		9CEAB68D2419112400ED7A5C /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB68C2419112400ED7A5C /* KeychainWrapper.swift */; };
 		9CEAB68F2419114E00ED7A5C /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB68E2419114E00ED7A5C /* KeychainItemAccessibility.swift */; };
 		9CEAB691241911B700ED7A5C /* KeychainUserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB690241911B700ED7A5C /* KeychainUserStore.swift */; };
+		9CEAB6932419587500ED7A5C /* StatementViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6922419587500ED7A5C /* StatementViewCell.swift */; };
+		9CEAB69524195AA900ED7A5C /* Float+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB69424195AA900ED7A5C /* Float+Currency.swift */; };
+		9CEAB69724195ED300ED7A5C /* StatementAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB69624195ED300ED7A5C /* StatementAPI.swift */; };
+		9CEAB6992419605100ED7A5C /* FetchStatementsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6982419605100ED7A5C /* FetchStatementsWorker.swift */; };
+		9CEAB69B24196E4F00ED7A5C /* Layer+ShadowColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB69A24196E4F00ED7A5C /* Layer+ShadowColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +85,11 @@
 		9CEAB68C2419112400ED7A5C /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		9CEAB68E2419114E00ED7A5C /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		9CEAB690241911B700ED7A5C /* KeychainUserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUserStore.swift; sourceTree = "<group>"; };
+		9CEAB6922419587500ED7A5C /* StatementViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementViewCell.swift; sourceTree = "<group>"; };
+		9CEAB69424195AA900ED7A5C /* Float+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Currency.swift"; sourceTree = "<group>"; };
+		9CEAB69624195ED300ED7A5C /* StatementAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementAPI.swift; sourceTree = "<group>"; };
+		9CEAB6982419605100ED7A5C /* FetchStatementsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchStatementsWorker.swift; sourceTree = "<group>"; };
+		9CEAB69A24196E4F00ED7A5C /* Layer+ShadowColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layer+ShadowColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +172,7 @@
 				9CEAB68524180BDB00ED7A5C /* UserAPI.swift */,
 				9CEAB68724180BE700ED7A5C /* Endpoints.swift */,
 				9CEAB690241911B700ED7A5C /* KeychainUserStore.swift */,
+				9CEAB69624195ED300ED7A5C /* StatementAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -179,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				9CEAB68924185C6600ED7A5C /* UserWorker.swift */,
+				9CEAB6982419605100ED7A5C /* FetchStatementsWorker.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -205,6 +217,7 @@
 				9CEAB6702417DFE400ED7A5C /* StatementsModels.swift */,
 				9CEAB6712417DFE400ED7A5C /* StatementsViewController.swift */,
 				9CEAB6722417DFE400ED7A5C /* StatementsInteractor.swift */,
+				9CEAB6922419587500ED7A5C /* StatementViewCell.swift */,
 			);
 			path = Statements;
 			sourceTree = "<group>";
@@ -215,6 +228,8 @@
 				9CEAB68324180AF900ED7A5C /* String+Pattern.swift */,
 				9CEAB68C2419112400ED7A5C /* KeychainWrapper.swift */,
 				9CEAB68E2419114E00ED7A5C /* KeychainItemAccessibility.swift */,
+				9CEAB69424195AA900ED7A5C /* Float+Currency.swift */,
+				9CEAB69A24196E4F00ED7A5C /* Layer+ShadowColor.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -328,9 +343,12 @@
 			files = (
 				9CEAB6772417DFE400ED7A5C /* StatementsViewController.swift in Sources */,
 				9CEAB66A2417D39800ED7A5C /* LoginViewController.swift in Sources */,
+				9CEAB69524195AA900ED7A5C /* Float+Currency.swift in Sources */,
 				9CEAB6662417D39800ED7A5C /* LoginPresenter.swift in Sources */,
 				9CEAB691241911B700ED7A5C /* KeychainUserStore.swift in Sources */,
 				9CEAB68D2419112400ED7A5C /* KeychainWrapper.swift in Sources */,
+				9CEAB69724195ED300ED7A5C /* StatementAPI.swift in Sources */,
+				9CEAB69B24196E4F00ED7A5C /* Layer+ShadowColor.swift in Sources */,
 				9CEAB6222417D20500ED7A5C /* AppDelegate.swift in Sources */,
 				9CEAB66B2417D39800ED7A5C /* LoginInteractor.swift in Sources */,
 				9CEAB6732417DFE400ED7A5C /* StatementsPresenter.swift in Sources */,
@@ -342,8 +360,10 @@
 				9CEAB6762417DFE400ED7A5C /* StatementsModels.swift in Sources */,
 				9CEAB68A24185C6600ED7A5C /* UserWorker.swift in Sources */,
 				9CEAB6692417D39800ED7A5C /* LoginModels.swift in Sources */,
+				9CEAB6992419605100ED7A5C /* FetchStatementsWorker.swift in Sources */,
 				9CEAB6682417D39800ED7A5C /* LoginRouter.swift in Sources */,
 				9CEAB68824180BE700ED7A5C /* Endpoints.swift in Sources */,
+				9CEAB6932419587500ED7A5C /* StatementViewCell.swift in Sources */,
 				9CEAB6752417DFE400ED7A5C /* StatementsRouter.swift in Sources */,
 				9CEAB67C2417F6E700ED7A5C /* Error.swift in Sources */,
 				9CEAB6672417D39800ED7A5C /* LoginWorker.swift in Sources */,
