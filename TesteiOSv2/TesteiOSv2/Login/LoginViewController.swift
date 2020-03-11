@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    func displaySomething(viewModel: Login.Something.ViewModel)
+//    func displaySomething(viewModel: Login.Something.ViewModel)
     func showAlertErrorMessage(message: String)
 }
 
@@ -92,33 +92,34 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     //MARK: - IBAction
     
     @IBAction func didTouchLoginButton(_ sender: UIButton) {
-        guard let interactor = self.interactor else {return}
+        guard let interactor = self.interactor,
+              let user = self.userTextField.text,
+              let password = self.passwordTextField.text else {return}
         
-        if interactor.validateUser(self.userTextField.text ?? "") {
-            print("É valido")
-        } else {
-            print("Deu ruim")
+        if !interactor.validateUser(user) {
+            return
         }
         
-        if interactor.validatePassword(self.passwordTextField.text ?? "") {
-            print("É valido")
-        } else {
-            print("Deu ruim")
+        if !interactor.validatePassword(password) {
+            return
         }
         
+        let request = Login.Request(user: user,
+                                    password: password)
+        self.interactor?.tryLogin(request)
     }
     
     //@IBOutlet weak var nameTextField: UITextField!
     
     func doSomething()
     {
-        let request = Login.Something.Request()
+//        let request = Login.Something.Request()
     }
     
-    func displaySomething(viewModel: Login.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
-    }
+//    func displaySomething(viewModel: Login.Something.ViewModel)
+//    {
+//        //nameTextField.text = viewModel.name
+//    }
 }
 
 extension LoginViewController: UITextFieldDelegate {

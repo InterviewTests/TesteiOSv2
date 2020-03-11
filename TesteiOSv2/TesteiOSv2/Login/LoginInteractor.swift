@@ -16,6 +16,7 @@ protocol LoginBusinessLogic {
     
     func validateUser(_ user: String) -> Bool
     func validatePassword(_ password: String) -> Bool
+    func tryLogin(_ request: Login.Request)
     
 }
 
@@ -27,7 +28,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
 
     
     var presenter: LoginPresentationLogic?
-    var worker: LoginWorker?
+    var worker: LoginWorker? = LoginWorker()
     
     func validateUser(_ user: String) -> Bool {
         
@@ -48,6 +49,19 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             return false
         }
       
+    }
+    
+    func tryLogin(_ request: Login.Request) {
+        
+//        self.worker = LoginWorker()
+        self.worker?.tryLogin(user: request.user, password: request.password, success: { (user) in
+            print("nome do usuario é \(user.name)")
+        }, failure: { (error) in
+            if let message = error.message {
+                self.presenter?.showLoginError(with: message)
+            }
+        })
+        
     }
     
     //var name: String = ""

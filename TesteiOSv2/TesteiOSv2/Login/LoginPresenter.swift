@@ -14,9 +14,10 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-    func presentSomething(response: Login.Something.Response)
+    
     func showInvalidUser()
     func showInvalidPassword()
+    func showLoginError(with message: String)
     
 }
 
@@ -26,17 +27,22 @@ class LoginPresenter: LoginPresentationLogic
     
     // MARK: Do something
     
-    func presentSomething(response: Login.Something.Response)
-    {
-        let viewModel = Login.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
-    }
+//    func presentSomething(response: Login.Something.Response)
+//    {
+//        let viewModel = Login.Something.ViewModel()
+//        viewController?.displaySomething(viewModel: viewModel)
+//    }
     
     func showInvalidUser() {
         self.viewController?.showAlertErrorMessage(message: "O usuário deve ser um email ou cpf")
     }
     func showInvalidPassword() {
         self.viewController?.showAlertErrorMessage(message: "A senha deve ter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico")
+    }
+    
+    func showLoginError(with message: String) {
+        
+        self.viewController?.showAlertErrorMessage(message: message)
         
     }
     

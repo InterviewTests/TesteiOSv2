@@ -14,18 +14,32 @@ import UIKit
 
 enum Login
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
+    // MARK: Use cases
+    struct Request {
+        let user: String
+        let password: String
     }
-    struct Response
-    {
+    struct Response: Codable{
+     
     }
-    struct ViewModel
-    {
+    struct ViewModel{
     }
-  }
+}
+
+struct LoginResponse: Codable {
+    var userAccount: User?
+    var error: Error?
+}
+
+struct User: Codable {
+    var userId: Int?
+    var name: String?
+    var bankAccount: String?
+    var agency: String?
+    var balance: Double?
+}
+
+struct Error: Codable {
+    var code: Int?
+    var message: String?
 }

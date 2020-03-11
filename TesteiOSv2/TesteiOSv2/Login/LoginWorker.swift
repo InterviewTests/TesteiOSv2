@@ -12,9 +12,31 @@
 
 import UIKit
 
-class LoginWorker
-{
-  func doSomeWork()
-  {
-  }
+class LoginWorker{
+    
+    func tryLogin(user: String, password: String, success: @escaping (User) -> Void, failure: @escaping (Error) -> Void) {
+        let parameters = ["user":user,"password":password]
+        
+        APIService().APIRequest(urlString: "https://bank-app-test.herokuapp.com/api/login", method: .post, parameters: parameters) { response in
+            
+            debugPrint(response)
+            print(response)
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                let response = try decoder.decode(LoginResponse.self, from: response.value!)
+                if let user = response.userAccount, let _ = user.userId {
+                    success(user)
+                }else if let error = response.error, let message = response.error?.message, message.count > 0 {
+                    failure(error)
+                }
+                
+            } catch {
+                print(error.localizedDescription)
+                let error = Error(code: 99, message: "Tivemos um erro desconhecido")
+                failure(error)
+            }
+        }
+    }
 }
