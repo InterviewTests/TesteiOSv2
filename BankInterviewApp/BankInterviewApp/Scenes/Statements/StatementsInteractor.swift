@@ -26,10 +26,9 @@ protocol StatementsDataStore
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
 {
   var presenter: StatementsPresentationLogic?
-  var worker: StatementsWorker?
   var statementsWorker: FetchStatementsWorker = FetchStatementsWorker(store: StatementAPI())
-    var localUserStore: LocalUserStore = KeychainUserStore()
-  var userData: Statements.UserData.ViewModel?
+  var localUserStore: LocalUserStore = KeychainUserStore()
+  internal var userData: Statements.UserData.ViewModel?
   
     let dateFormatterFrom: DateFormatter = {
        let formatter = DateFormatter()
