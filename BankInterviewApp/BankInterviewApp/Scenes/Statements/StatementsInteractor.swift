@@ -15,6 +15,7 @@ import UIKit
 protocol StatementsBusinessLogic
 {
   func fetchStatements(request: Statements.StatementList.Request)
+  func doLogout()
 }
 
 protocol StatementsDataStore
@@ -27,6 +28,7 @@ class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
   var presenter: StatementsPresentationLogic?
   var worker: StatementsWorker?
   var statementsWorker: FetchStatementsWorker = FetchStatementsWorker(store: StatementAPI())
+    var localUserStore: LocalUserStore = KeychainUserStore()
   var userData: Statements.UserData.ViewModel?
   
     let dateFormatterFrom: DateFormatter = {
@@ -61,4 +63,9 @@ class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
         }
     })
   }
+    
+    func doLogout()
+    {
+        localUserStore.storeUser(user: "")
+    }
 }

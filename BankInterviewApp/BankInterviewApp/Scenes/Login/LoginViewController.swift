@@ -73,9 +73,15 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   {
     super.viewDidLoad()
     addCpfMask(field: user)
-    //Recupera o usuario caso tenha feito o login corretamente
-    user.text = interactor?.fetchUser()
   }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        //Get user if has any
+        user.text = interactor?.fetchUser()
+        //clean password field
+        password.text = ""
+    }
     
     func addCpfMask(field: UITextField)
     {

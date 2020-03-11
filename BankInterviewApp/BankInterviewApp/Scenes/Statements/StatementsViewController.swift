@@ -99,8 +99,10 @@ class StatementsViewController: UIViewController, UITableViewDataSource, Stateme
     
     //MARK: Logout
     
-    @IBAction func logout(_ sender: Any) {
-        
+    @IBAction func logout(_ sender: Any)
+    {
+        interactor?.doLogout()
+        router?.backToLogin(source: self)
     }
     
     //MARK: Get statements
