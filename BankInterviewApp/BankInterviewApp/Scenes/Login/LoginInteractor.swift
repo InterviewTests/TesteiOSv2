@@ -25,12 +25,12 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
     
     var presenter: LoginPresentationLogic?
-    var worker: LoginWorker = LoginWorker()
+    private let worker: LoginWorker = LoginWorker()
     var userWorker: UserWorker = UserWorker(store: UserAPI(), localStore: KeychainUserStore())
   
-    var user: String = ""
-    var password: String = ""
-    var response: Login.Response?
+    private var user: String = ""
+    private var password: String = ""
+    internal var response: Login.Response?
     
   // MARK: Do login
   

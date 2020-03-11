@@ -12,7 +12,7 @@
 
 enum Login
 {
-  // MARK: Use cases
+  // MARK: Do login
     struct Request
     {
         var user: String
