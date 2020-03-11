@@ -76,6 +76,8 @@
 		9CEAB6C92419904000ED7A5C /* StatementsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6C82419904000ED7A5C /* StatementsInteractorTests.swift */; };
 		9CEAB6CB241990DB00ED7A5C /* StatementAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6CA241990DB00ED7A5C /* StatementAPIMock.swift */; };
 		9CEAB6CD241991AB00ED7A5C /* StatementsPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6CC241991AB00ED7A5C /* StatementsPresenterSpy.swift */; };
+		9CEAB6CF241997C700ED7A5C /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6CE241997C700ED7A5C /* LoginPresenterTests.swift */; };
+		9CEAB6D12419980800ED7A5C /* LoginDisplayLogicSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAB6D02419980800ED7A5C /* LoginDisplayLogicSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +134,8 @@
 		9CEAB6C82419904000ED7A5C /* StatementsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractorTests.swift; sourceTree = "<group>"; };
 		9CEAB6CA241990DB00ED7A5C /* StatementAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementAPIMock.swift; sourceTree = "<group>"; };
 		9CEAB6CC241991AB00ED7A5C /* StatementsPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsPresenterSpy.swift; sourceTree = "<group>"; };
+		9CEAB6CE241997C700ED7A5C /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
+		9CEAB6D02419980800ED7A5C /* LoginDisplayLogicSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDisplayLogicSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				9CEAB69F241976F300ED7A5C /* LoginInteractorTests.swift */,
+				9CEAB6CE241997C700ED7A5C /* LoginPresenterTests.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -316,10 +321,27 @@
 		9CEAB6C52419897A00ED7A5C /* Spys */ = {
 			isa = PBXGroup;
 			children = (
-				9CEAB6C62419898B00ED7A5C /* LoginPresenterSpy.swift */,
-				9CEAB6CC241991AB00ED7A5C /* StatementsPresenterSpy.swift */,
+				9CEAB6D32419981200ED7A5C /* Statements */,
+				9CEAB6D22419980C00ED7A5C /* Login */,
 			);
 			path = Spys;
+			sourceTree = "<group>";
+		};
+		9CEAB6D22419980C00ED7A5C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9CEAB6C62419898B00ED7A5C /* LoginPresenterSpy.swift */,
+				9CEAB6D02419980800ED7A5C /* LoginDisplayLogicSpy.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9CEAB6D32419981200ED7A5C /* Statements */ = {
+			isa = PBXGroup;
+			children = (
+				9CEAB6CC241991AB00ED7A5C /* StatementsPresenterSpy.swift */,
+			);
+			path = Statements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,6 +516,8 @@
 				9CEAB6BA2419791800ED7A5C /* StatementAPI.swift in Sources */,
 				9CEAB6A6241978C000ED7A5C /* LoginResponse.swift in Sources */,
 				9CEAB6AB241978CE00ED7A5C /* StatementsPresenter.swift in Sources */,
+				9CEAB6D12419980800ED7A5C /* LoginDisplayLogicSpy.swift in Sources */,
+				9CEAB6CF241997C700ED7A5C /* LoginPresenterTests.swift in Sources */,
 				9CEAB6B0241978DB00ED7A5C /* StatementsInteractor.swift in Sources */,
 				9CEAB6AE241978D500ED7A5C /* StatementsModels.swift in Sources */,
 				9CEAB6CD241991AB00ED7A5C /* StatementsPresenterSpy.swift in Sources */,
