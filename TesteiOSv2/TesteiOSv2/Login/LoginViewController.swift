@@ -11,22 +11,28 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 protocol LoginDisplayLogic: class
 {
 //    func displaySomething(viewModel: Login.Something.ViewModel)
     func showAlertErrorMessage(message: String)
+    func showLoadingView()
+    func hideLoadingView()
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
 {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    let loadingView = JGProgressHUD(style: .dark)
     
     // MARK: - IBOutlets
     
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+
     
     
     
@@ -79,8 +85,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         super.viewDidLoad()
         self.userTextField.delegate = self
         self.passwordTextField.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.loadingView.textLabel.text = "Carregando..."
         
-        doSomething()
     }
     
     // MARK: - Do something
@@ -89,6 +97,29 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height - 100
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    func showLoadingView() {
+        self.loadingView.show(in: self.view)
+    }
+    
+    func hideLoadingView() {
+        self.loadingView.dismiss()
+    }
+    
     //MARK: - IBAction
     
     @IBAction func didTouchLoginButton(_ sender: UIButton) {
@@ -125,6 +156,12 @@ class LoginViewController: UIViewController, LoginDisplayLogic
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        if textField.isEqual(self.userTextField) {
+            self.passwordTextField.becomeFirstResponder()
+        } else {
+           self.view.endEditing(true)
+        }
+        return true
+        
     }
 }

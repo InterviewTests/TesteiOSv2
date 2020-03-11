@@ -18,6 +18,8 @@ protocol LoginPresentationLogic
     func showInvalidUser()
     func showInvalidPassword()
     func showLoginError(with message: String)
+    func hideLoadingView()
+    func showLoadingView()
     
 }
 
@@ -46,5 +48,13 @@ class LoginPresenter: LoginPresentationLogic
         
     }
     
+    func hideLoadingView() {
+        self.viewController?.hideLoadingView()
+        
+    }
     
+    func showLoadingView() {
+        self.viewController?.showLoadingView()
+        
+    }
 }

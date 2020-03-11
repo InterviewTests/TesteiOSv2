@@ -54,9 +54,12 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     func tryLogin(_ request: Login.Request) {
         
 //        self.worker = LoginWorker()
+        self.presenter?.showLoadingView()
         self.worker?.tryLogin(user: request.user, password: request.password, success: { (user) in
             print("nome do usuario é \(user.name)")
+            self.presenter?.hideLoadingView()
         }, failure: { (error) in
+            self.presenter?.hideLoadingView()
             if let message = error.message {
                 self.presenter?.showLoginError(with: message)
             }
