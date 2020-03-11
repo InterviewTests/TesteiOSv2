@@ -122,7 +122,7 @@ class StatementsViewController: UIViewController, UITableViewDataSource, Stateme
         if let userData = router?.dataStore?.userData {
             name.text = userData.name
             balance.text = userData.balance.formatToCoin()
-            agengyAccount.text = "\(userData.account) / \(userData.agency)"
+            agengyAccount.text = "\(userData.account) / \(userData.agency.applyPatternOnNumbers(pattern: "##.######-#", replacmentCharacter: "#"))"
             userId = userData.id
         }
     }
