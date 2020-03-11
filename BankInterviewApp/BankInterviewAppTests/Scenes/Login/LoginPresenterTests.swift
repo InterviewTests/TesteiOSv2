@@ -10,16 +10,8 @@ import XCTest
 
 class LoginPresenterTests: XCTestCase {
     
-    /**
-     protocol LoginPresentationLogic
-     {
-         func loginSucess(response: Login.Response)
-         func error(error: Login.Error)
-     }
-     */
-    
-    var presenter = LoginPresenter()
-    var spy = LoginDisplayLogicSpy()
+    let presenter = LoginPresenter()
+    let spy = LoginDisplayLogicSpy()
     
     override func setUp() {
         presenter.viewController = spy
