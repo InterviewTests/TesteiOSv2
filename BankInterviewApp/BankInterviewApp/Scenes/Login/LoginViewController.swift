@@ -26,12 +26,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic
 
   // MARK: Object lifecycle
   
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
   required init?(coder aDecoder: NSCoder)
   {
     super.init(coder: aDecoder)
@@ -55,7 +49,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   }
   
   // MARK: Routing
-    //TODO: melhorar o roteamento
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?)
   {
