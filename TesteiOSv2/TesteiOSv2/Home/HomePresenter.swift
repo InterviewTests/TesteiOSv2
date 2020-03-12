@@ -15,11 +15,15 @@ import UIKit
 protocol HomePresentationLogic
 {
     func presentUserInfos(with user: User)
+    func didFetchedUserStatements()
+    func hideLoadingView()
+    func showLoadingView()
 }
 
 class HomePresenter: HomePresentationLogic
 {
     weak var viewController: HomeDisplayLogic?
+    var statements: [Statements]?
     
     // MARK: Do something
     func presentUserInfos(with user: User) {
@@ -37,4 +41,19 @@ class HomePresenter: HomePresentationLogic
         viewController?.displayUser(viewModel: viewModel)
         
     }
+    
+    func hideLoadingView() {
+        self.viewController?.hideLoadingView()
+        
+    }
+    
+    func showLoadingView() {
+        self.viewController?.showLoadingView()
+        
+    }
+    
+    func didFetchedUserStatements() {
+        self.viewController?.loadTableView()
+    }
+    
 }

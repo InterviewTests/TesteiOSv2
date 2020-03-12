@@ -31,3 +31,15 @@ enum Home
     }
   }
 }
+
+struct StatementsResponse: Codable {
+    var statementList: [Statements]?
+    var error: Error?
+}
+
+struct Statements: Codable {
+    var title: String?
+    var desc: String?
+    var date: String?
+    var valuu: Double?
+}

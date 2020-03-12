@@ -15,8 +15,9 @@ import UIKit
 protocol HomeBusinessLogic
 {
     var user: User? { get set }
-    func doSomething(request: Home.Something.Request)
+    var statements: [Statements]? { get }
     func getUserInfo()
+    func fetchUserStatements()
 }
 
 protocol HomeDataStore
@@ -27,21 +28,13 @@ protocol HomeDataStore
 class HomeInteractor: HomeBusinessLogic, HomeDataStore
 {
     var presenter: HomePresentationLogic?
-    var worker: HomeWorker?
+    var worker: HomeWorker? = HomeWorker()
     var user: User?
+    var statements: [Statements]?
     
     //var name: String = ""
     
     // MARK: Do something
-    
-    func doSomething(request: Home.Something.Request)
-    {
-        worker = HomeWorker()
-        worker?.doSomeWork()
-        
-        let response = Home.Something.Response()
-//        presenter?.presentSomething(response: response)
-    }
     
     func getUserInfo() {
         guard let user = self.user else {
@@ -49,5 +42,17 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore
         }
         
         self.presenter?.presentUserInfos(with: user)
+    }
+    
+    func fetchUserStatements() {
+        
+        self.presenter?.showLoadingView()
+        self.worker?.fetchUserStatements(success: { (statements) in
+            self.presenter?.hideLoadingView()
+            self.statements = statements
+            self.presenter?.didFetchedUserStatements()
+        }, failure: { (error) in
+            self.presenter?.hideLoadingView()
+        })
     }
 }

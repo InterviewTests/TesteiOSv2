@@ -11,16 +11,21 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 protocol HomeDisplayLogic: class
 {
     func displayUser(viewModel: Home.Something.ViewModel)
+    func loadTableView()
+    func showLoadingView()
+    func hideLoadingView()
 }
 
 class HomeViewController: UIViewController, HomeDisplayLogic
 {
     var interactor: HomeBusinessLogic?
     var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
+    var loadingView = JGProgressHUD()
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var contaLabel: UILabel!
@@ -74,17 +79,18 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     {
         super.viewDidLoad()
         self.interactor?.getUserInfo()
+        self.setupLoadingView()
+        self.interactor?.fetchUserStatements()
+    }
+    
+    
+    private func setupLoadingView() {
+        self.loadingView.textLabel.text = "Carregando..."
     }
     
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething()
-    {
-        let request = Home.Something.Request()
-        interactor?.doSomething(request: request)
-    }
     
     func displayUser(viewModel: Home.Something.ViewModel) {
         self.nameLabel.text = viewModel.name
@@ -92,4 +98,15 @@ class HomeViewController: UIViewController, HomeDisplayLogic
         self.saldoLabel.text = viewModel.balance
     }
     
+    func showLoadingView() {
+        self.loadingView.show(in: self.view)
+    }
+    
+    func hideLoadingView() {
+        self.loadingView.dismiss()
+    }
+    
+    func loadTableView() {
+        print(self.interactor?.statements)
+    }
 }

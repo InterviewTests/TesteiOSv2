@@ -14,7 +14,27 @@ import UIKit
 
 class HomeWorker
 {
-  func doSomeWork()
-  {
-  }
+    func fetchUserStatements(success: @escaping ([Statements]) -> Void, failure: @escaping (Error) -> Void) {
+        
+        APIService().APIRequest(urlString: "https://bank-app-test.herokuapp.com/api/statements/1", method: .get, parameters: nil) { response in
+            
+            debugPrint(response)
+            print(response)
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                let response = try decoder.decode(StatementsResponse.self, from: response.value!)
+                if let statementList = response.statementList, statementList.count > 0 {
+                    success(statementList)
+                }else if let error = response.error, let message = response.error?.message, message.count > 0 {
+                    failure(error)
+                }
+            } catch {
+                print(error.localizedDescription)
+                let error = Error(code: 99, message: "Tivemos um erro desconhecido")
+                failure(error)
+            }
+        }
+    }
 }
