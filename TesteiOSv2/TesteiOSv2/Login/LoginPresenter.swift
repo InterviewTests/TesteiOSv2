@@ -19,11 +19,14 @@ protocol LoginPresentationLogic
     func showLoginError(with message: String)
     func hideLoadingView()
     func showLoadingView()
+    func didLoginSucced(user: User)
     
 }
 
 class LoginPresenter: LoginPresentationLogic
 {
+
+    
     // MARK: - Variables
     
     weak var viewController: LoginDisplayLogic?
@@ -51,5 +54,9 @@ class LoginPresenter: LoginPresentationLogic
     func showLoadingView() {
         self.viewController?.showLoadingView()
         
+    }
+    
+    func didLoginSucced(user: User) {
+        self.viewController?.showHome(with: user)
     }
 }

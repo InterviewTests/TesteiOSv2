@@ -54,8 +54,8 @@ class LoginInteractor: LoginBusinessLogic {
         
         self.presenter?.showLoadingView()
         self.worker?.tryLogin(user: request.user, password: request.password, success: { (user) in
-            print("nome do usuario é \(user.name)")
             self.presenter?.hideLoadingView()
+            self.presenter?.didLoginSucced(user: user)
         }, failure: { (error) in
             self.presenter?.hideLoadingView()
             if let message = error.message {

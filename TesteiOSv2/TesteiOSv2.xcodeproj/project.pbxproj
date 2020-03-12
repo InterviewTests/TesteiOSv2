@@ -23,6 +23,12 @@
 		BE256D58241864BA0036DAE2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE256D57241864BA0036DAE2 /* StringExtension.swift */; };
 		BE256D5E2418789E0036DAE2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BE256D5D2418789E0036DAE2 /* Podfile */; };
 		BEEB7C162418805700FF6104 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB7C152418805700FF6104 /* ApiService.swift */; };
+		BEEB7C192419A51900FF6104 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB7C182419A51900FF6104 /* HomeViewController.swift */; };
+		BEEB7C1B2419A52900FF6104 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB7C1A2419A52900FF6104 /* HomeInteractor.swift */; };
+		BEEB7C1D2419A53500FF6104 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB7C1C2419A53500FF6104 /* HomePresenter.swift */; };
+		BEEB7C1F2419A54400FF6104 /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB7C1E2419A54400FF6104 /* HomeModels.swift */; };
+		BEEB7C212419A55400FF6104 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB7C202419A55400FF6104 /* HomeWorker.swift */; };
+		BEEB7C232419A56200FF6104 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB7C222419A56200FF6104 /* HomeRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +73,12 @@
 		BE256D57241864BA0036DAE2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		BE256D5D2418789E0036DAE2 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BEEB7C152418805700FF6104 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		BEEB7C182419A51900FF6104 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BEEB7C1A2419A52900FF6104 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		BEEB7C1C2419A53500FF6104 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		BEEB7C1E2419A54400FF6104 /* HomeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModels.swift; sourceTree = "<group>"; };
+		BEEB7C202419A55400FF6104 /* HomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
+		BEEB7C222419A56200FF6104 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +149,7 @@
 		BE256D172418528C0036DAE2 /* TesteiOSv2 */ = {
 			isa = PBXGroup;
 			children = (
+				BEEB7C172419A4B500FF6104 /* Home */,
 				BEEB7C142418803F00FF6104 /* Services */,
 				BE256D552418648A0036DAE2 /* Utils */,
 				BE256D48241854300036DAE2 /* Login */,
@@ -203,6 +216,19 @@
 				BEEB7C152418805700FF6104 /* ApiService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		BEEB7C172419A4B500FF6104 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BEEB7C182419A51900FF6104 /* HomeViewController.swift */,
+				BEEB7C1A2419A52900FF6104 /* HomeInteractor.swift */,
+				BEEB7C1C2419A53500FF6104 /* HomePresenter.swift */,
+				BEEB7C1E2419A54400FF6104 /* HomeModels.swift */,
+				BEEB7C202419A55400FF6104 /* HomeWorker.swift */,
+				BEEB7C222419A56200FF6104 /* HomeRouter.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,14 +408,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE256D4E241854A10036DAE2 /* LoginPresenter.swift in Sources */,
+				BEEB7C1B2419A52900FF6104 /* HomeInteractor.swift in Sources */,
 				BE256D4A2418547D0036DAE2 /* LoginViewController.swift in Sources */,
+				BEEB7C1D2419A53500FF6104 /* HomePresenter.swift in Sources */,
+				BEEB7C232419A56200FF6104 /* HomeRouter.swift in Sources */,
 				BE256D192418528C0036DAE2 /* AppDelegate.swift in Sources */,
 				BE256D50241854C90036DAE2 /* LoginModels.swift in Sources */,
 				BE256D58241864BA0036DAE2 /* StringExtension.swift in Sources */,
+				BEEB7C192419A51900FF6104 /* HomeViewController.swift in Sources */,
+				BEEB7C212419A55400FF6104 /* HomeWorker.swift in Sources */,
 				BEEB7C162418805700FF6104 /* ApiService.swift in Sources */,
 				BE256D54241854E10036DAE2 /* LoginRouter.swift in Sources */,
 				BE256D4C241854910036DAE2 /* LoginInteractor.swift in Sources */,
 				BE256D52241854D40036DAE2 /* LoginWorker.swift in Sources */,
+				BEEB7C1F2419A54400FF6104 /* HomeModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

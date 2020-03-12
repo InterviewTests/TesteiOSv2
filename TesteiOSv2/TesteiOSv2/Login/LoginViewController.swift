@@ -17,9 +17,11 @@ protocol LoginDisplayLogic: class {
     func showAlertErrorMessage(message: String)
     func showLoadingView()
     func hideLoadingView()
+    func showHome(with user: User)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
+    
     
     // MARK: - Variables
     
@@ -123,6 +125,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     func hideLoadingView() {
         self.loadingView.dismiss()
+    }
+    
+    func showHome(with user: User) {
+        self.router?.showHome(with: user)
     }
     
     //MARK: - IBAction
