@@ -14,17 +14,17 @@ class LoginRouterTests: XCTestCase {
     private func createLoginVC() -> LoginViewController {
         let bundle = Bundle(for: type(of: self))
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-        let createOrderViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        _ = createOrderViewController.view
-        return createOrderViewController
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        _ = loginViewController.view
+        return loginViewController
     }
     
     private func createStatementsVC() -> StatementsViewController {
         let bundle = Bundle(for: type(of: self))
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-        let createOrderViewController = storyboard.instantiateViewController(withIdentifier: "StatementsViewController") as! StatementsViewController
-        _ = createOrderViewController.view
-        return createOrderViewController
+        let statementsViewController = storyboard.instantiateViewController(withIdentifier: "StatementsViewController") as! StatementsViewController
+        _ = statementsViewController.view
+        return statementsViewController
     }
     
     override func setUp() {
