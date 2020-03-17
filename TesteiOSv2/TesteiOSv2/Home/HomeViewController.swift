@@ -26,10 +26,12 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     var interactor: HomeBusinessLogic?
     var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
     var loadingView = JGProgressHUD()
+    var arrayStatements: [Statements] = []
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var contaLabel: UILabel!
     @IBOutlet weak var saldoLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     // MARK: Object lifecycle
     
@@ -81,6 +83,11 @@ class HomeViewController: UIViewController, HomeDisplayLogic
         self.interactor?.getUserInfo()
         self.setupLoadingView()
         self.interactor?.fetchUserStatements()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.tableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        
     }
     
     
@@ -107,6 +114,27 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     }
     
     func loadTableView() {
-        print(self.interactor?.statements)
+//        self.interactor?.fetchUserStatements()
     }
+    
+}
+
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return arrayStatements.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell: HomeTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? HomeTableViewCell
+        
+        cell?.setupCell(value: arrayStatements[indexPath.row])
+      
+            
+        return cell ?? UITableViewCell()
+    }
+    
+    
 }

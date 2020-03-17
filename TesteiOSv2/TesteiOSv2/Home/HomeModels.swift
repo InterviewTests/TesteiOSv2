@@ -41,5 +41,5 @@ struct Statements: Codable {
     var title: String?
     var desc: String?
     var date: String?
-    var valuu: Double?
+    var value: Double?
 }
