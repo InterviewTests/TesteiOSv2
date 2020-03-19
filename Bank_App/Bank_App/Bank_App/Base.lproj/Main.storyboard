@@ -10,19 +10,101 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bank_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Bank_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="34H-2K-m0v">
+                                <rect key="frame" x="144.66666666666666" y="76" width="124.99999999999997" height="70.666666666666686"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="34H-2K-m0v" secondAttribute="height" multiplier="62:35" id="40V-CS-Uua"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="User" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="jL3-UQ-4LG">
+                                <rect key="frame" x="16" y="246.66666666666663" width="382" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ns4-FG-tuD"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="5"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.23137254901960785" green="0.28235294117647058" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="4dW-sG-nsF"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="zDJ-Uq-WYU">
+                                <rect key="frame" x="16" y="317.66666666666669" width="382" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="k8y-Bx-Nne"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="6mu-Rd-60W"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLP-ZV-8t8">
+                                <rect key="frame" x="86" y="643" width="242" height="60"/>
+                                <color key="backgroundColor" red="0.23137254901960785" green="0.28235294117647058" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="J48-Sz-jaf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="34H-2K-m0v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0aN-Gx-PiF"/>
+                            <constraint firstItem="jL3-UQ-4LG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="9Os-Df-OE2"/>
+                            <constraint firstItem="zDJ-Uq-WYU" firstAttribute="top" secondItem="jL3-UQ-4LG" secondAttribute="bottom" constant="21" id="Cad-9D-ow4"/>
+                            <constraint firstItem="jL3-UQ-4LG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GnP-PM-KdN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vLP-ZV-8t8" secondAttribute="trailing" constant="86" id="Hye-Rz-bOq"/>
+                            <constraint firstItem="vLP-ZV-8t8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N1v-cl-u0q"/>
+                            <constraint firstItem="jL3-UQ-4LG" firstAttribute="top" secondItem="34H-2K-m0v" secondAttribute="bottom" constant="100" id="O3X-uI-gp5"/>
+                            <constraint firstItem="vLP-ZV-8t8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zDJ-Uq-WYU" secondAttribute="bottom" constant="16" id="RHm-en-n7l"/>
+                            <constraint firstItem="zDJ-Uq-WYU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="akb-Jz-Lay"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jL3-UQ-4LG" secondAttribute="trailing" constant="16" id="ccg-s4-2mg"/>
+                            <constraint firstItem="34H-2K-m0v" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="jMn-qA-DNx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zDJ-Uq-WYU" secondAttribute="trailing" constant="16" id="paB-3c-N59"/>
+                            <constraint firstItem="vLP-ZV-8t8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="86" id="ttb-RV-x3E"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vLP-ZV-8t8" secondAttribute="bottom" constant="33" id="u7C-6Y-WqA"/>
+                            <constraint firstItem="zDJ-Uq-WYU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wtQ-Wn-MNg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="zDJ-Uq-WYU" id="Xdg-5h-MhR"/>
+                        <outlet property="userTextField" destination="jL3-UQ-4LG" id="p4S-ay-PrT"/>
+                        <outletCollection property="textFields" destination="jL3-UQ-4LG" collectionClass="NSMutableArray" id="6Fo-3s-UNb"/>
+                        <outletCollection property="textFields" destination="zDJ-Uq-WYU" collectionClass="NSMutableArray" id="maf-r9-u4g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="125" height="70"/>
+    </resources>
 </document>
