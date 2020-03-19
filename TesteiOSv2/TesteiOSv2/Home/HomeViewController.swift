@@ -114,7 +114,14 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     }
     
     func loadTableView() {
-//        self.interactor?.fetchUserStatements()
+        guard let statements = self.interactor?.statements else {
+            return
+        }
+        self.arrayStatements = statements
+        self.tableView.reloadData()
+        
+        
+        
     }
     
 }
@@ -136,5 +143,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell ?? UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return "Recentes"
+        
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 114
+        
+    }
 }

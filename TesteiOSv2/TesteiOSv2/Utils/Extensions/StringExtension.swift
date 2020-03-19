@@ -35,8 +35,21 @@ extension StringProtocol {
     var isValidPassword: Bool {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%]).{6,20})")
         return passwordTest.evaluate(with: self)
-        
-        
     }
+    
+}
+
+extension String {
+    
+    func toDate(withFormat format: String = "yyyy-MM-dd")-> Date?{
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+
+        return date
+    }
+    
     
 }

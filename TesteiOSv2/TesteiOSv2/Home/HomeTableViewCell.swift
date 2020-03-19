@@ -10,6 +10,7 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -29,11 +30,22 @@ class HomeTableViewCell: UITableViewCell {
     
     func setupCell(value: Statements?) {
         
-        if let _value = value {
+        self.containerView.layer.masksToBounds = false
+        self.containerView.layer.shadowColor = UIColor.lightGray.cgColor
+        self.containerView.layer.shadowOpacity = 0.1
+        self.containerView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        self.containerView.layer.shadowRadius = 1
+
+        self.containerView.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.containerView.layer.shouldRasterize = true
+        self.containerView.layer.rasterizationScale = 1
+        
+       
+        if let _value = value, let date = _value.date?.toDate() {
             self.titleLabel.text = _value.title
             self.descLabel.text = _value.desc
-            self.dateLabel.text = _value.date
-         //   self.valueLabel.text= _value.value
+            self.dateLabel.text = date.toString()
+            self.valueLabel.text = "R$\(_value.value ?? 0)"
             
         }
         
