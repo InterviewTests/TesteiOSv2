@@ -11,10 +11,20 @@
 //
 
 import UIKit
+import Alamofire
 
-class LoginWorker
-{
-  func doSomeWork()
-  {
+class LoginWorker {
+  
+  func doLogin(request: Login.Request, completion: @escaping (LoginResponse) -> ()) {
+    let path = "https://bank-app-test.herokuapp.com/api/login"
+    let headers: [String: String] = ["Content-Type": "application/x-www-form-urlencoded"]
+    let parameters: [String: String] = ["user":request.user,"password":request.password]
+    Alamofire.request(path, method: .post, parameters: parameters, headers: headers).responseData(completionHandler: { response in
+      if let value = response.result.value {
+        let response = try! JSONDecoder().decode(LoginResponse.self, from: value)
+        completion(response)
+      }
+    })
   }
+  
 }

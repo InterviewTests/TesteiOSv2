@@ -12,30 +12,47 @@
 
 import UIKit
 
-protocol LoginBusinessLogic
-{
-  func doSomething(request: Login.Something.Request)
+protocol LoginBusinessLogic {
+  func doLogin(request: Login.Request)
+  func emptyField(_ user: String?, _ password: String?) -> Bool
 }
 
-protocol LoginDataStore
-{
+protocol LoginDataStore {
   //var name: String { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
+class LoginInteractor: LoginBusinessLogic, LoginDataStore {
   var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
+  var worker: LoginWorker? = LoginWorker()
   
-  // MARK: Do something
+  var user: UserAccount?
+  var error: String = ""
   
-  func doSomething(request: Login.Something.Request)
-  {
+  func emptyField(_ user: String?, _ password: String?) -> Bool {
+    if let user = user, let password = password,
+      user.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || password.isEmpty {
+      return true
+    }
+    return false
+  }
+  
+  // MARK: Do login
+  
+  func doLogin(request: Login.Request) {
     worker = LoginWorker()
-    worker?.doSomeWork()
+    worker?.doLogin(request: request, completion: { (result: LoginResponse) in
+      
+      guard let _ = result.userAccount?.userId else {
+        self.error = result.error?.message ?? "Erro ao efetuar login"
+        self.presenter?.presentError(error: self.error)
+        return
+      }
+      
+      self.user = result.userAccount
+      let response = Login.Response(userAccount: result.userAccount, error: result.error?.message)
+      self.presenter?.presentSucess(response: response)
+    })
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
+    
   }
 }

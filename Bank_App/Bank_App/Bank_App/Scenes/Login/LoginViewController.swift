@@ -13,7 +13,8 @@
 import UIKit
 
 protocol LoginDisplayLogic: class {
-  func displaySomething(viewModel: Login.Something.ViewModel)
+  func displayStatementsList(viewModel: Login.ViewModel)
+  func displayError(_ message: String?)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDelegate {
@@ -62,7 +63,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    doSomething()
+//    showUserSaved()
   }
     
   @IBOutlet var textFields: [UITextField]!
@@ -83,20 +84,21 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
   @IBOutlet weak var userTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
   
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Login.Something.Request()
-    interactor?.doSomething(request: request)
+  @IBAction func loginTapped(_ sender: Any) {
+    if let _ = interactor, interactor!.emptyField(userTextField.text, passwordTextField.text) {
+      showAlertErrorMessage(message: "Todos os campos devem ser preenchidos")
+    } else {
+      let request = Login.Request(user: userTextField.text ?? "", password: passwordTextField.text ?? "")
+      interactor?.doLogin(request: request)
+    }
   }
   
-  func displaySomething(viewModel: Login.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
+  func displayStatementsList(viewModel: Login.ViewModel) {
+    router?.routeToStatementsList()
   }
-    
-    
+  
+  func displayError(_ message: String?) {
+    showAlertErrorMessage(message: message ?? "Erro ao efetuar login")
+  }
+  
 }

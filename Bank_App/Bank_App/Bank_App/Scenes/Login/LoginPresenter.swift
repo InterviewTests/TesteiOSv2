@@ -12,20 +12,24 @@
 
 import UIKit
 
-protocol LoginPresentationLogic
-{
-  func presentSomething(response: Login.Something.Response)
+protocol LoginPresentationLogic {
+  func presentSucess(response: Login.Response)
+  func presentError(error: String)
 }
 
-class LoginPresenter: LoginPresentationLogic
-{
+class LoginPresenter: LoginPresentationLogic {
+  
   weak var viewController: LoginDisplayLogic?
   
-  // MARK: Do something
+  // MARK: LoginPresentationLogic
   
-  func presentSomething(response: Login.Something.Response)
-  {
-    let viewModel = Login.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+  func presentSucess(response: Login.Response) {
+    let viewModel = Login.ViewModel(userAccount: response.userAccount)
+    viewController?.displayStatementsList(viewModel: viewModel)
   }
+  
+  func presentError(error: String) {
+    viewController?.displayError(error)
+  }
+  
 }

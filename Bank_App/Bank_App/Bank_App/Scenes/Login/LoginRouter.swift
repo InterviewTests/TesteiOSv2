@@ -12,18 +12,18 @@
 
 import UIKit
 
-@objc protocol LoginRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol LoginRoutingLogic {
+  func routeToStatementsList()
 }
 
-protocol LoginDataPassing
-{
+protocol LoginDataPassing {
   var dataStore: LoginDataStore? { get }
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
-{
+class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
+  
+  let identifier = "StatementsListsSegue"
+  
   weak var viewController: LoginViewController?
   var dataStore: LoginDataStore?
   
@@ -46,6 +46,10 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
 
   // MARK: Navigation
   
+  func routeToStatementsList() {
+    viewController?.performSegue(withIdentifier: identifier, sender: nil)
+  }
+  
   //func navigateToSomewhere(source: LoginViewController, destination: SomewhereViewController)
   //{
   //  source.show(destination, sender: nil)
@@ -53,8 +57,8 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
   
   // MARK: Passing data
   
-  //func passDataToSomewhere(source: LoginDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+//  func passDataToStatementsList(source: LoginDataStore, destination: inout StatementListDataStore)
+//  {
+//    destination.name = source.name
+//  }
 }
