@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Bank_App
+@testable import BankApp
 
 class Bank_AppTests: XCTestCase {
 

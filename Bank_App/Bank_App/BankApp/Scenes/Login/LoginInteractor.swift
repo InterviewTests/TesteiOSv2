@@ -15,6 +15,8 @@ import UIKit
 protocol LoginBusinessLogic {
   func doLogin(request: Login.Request)
   func emptyField(_ user: String?, _ password: String?) -> Bool
+  func isValidUser(_ user: String) -> Bool
+  func isValidPassword(_ password: String) -> Bool
 }
 
 protocol LoginDataStore {
@@ -36,21 +38,43 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     return false
   }
   
+  func isValidUser(_ user: String) -> Bool {
+    //Retorna true se CPF ou Email válido
+    if user.isValidCPF || user.isValidEmail {
+      return true
+    } else {
+      presenter?.presentError(error: "Preencha com CPF ou E-mail")
+      return false
+    }
+  }
+  
+  func isValidPassword(_ password: String) -> Bool {
+    if password.isValidPassword {
+      return true
+    } else {
+      presenter?.presentError(error: "Utilize pelo menos uma letra maiúscula, um caracter especial e um caracter alfanumérico")
+      return false
+    }
+  }
+  
   // MARK: Do login
   
   func doLogin(request: Login.Request) {
-    worker = LoginWorker()
-    worker?.doLogin(request: request, completion: { (result: LoginResponse) in
-      
-      guard let _ = result.userAccount?.userId else {
-        self.error = result.error?.message ?? "Erro ao efetuar login"
-        self.presenter?.presentError(error: self.error)
-        return
-      }
-      
-      self.userInfo = result.userAccount
-      let response = Login.Response(userAccount: result.userAccount, error: result.error?.message)
-      self.presenter?.presentSucess(response: response)
-    })
+    if isValidUser(request.user), isValidPassword(request.password) {
+      worker = LoginWorker()
+      worker?.doLogin(request: request, completion: { (result: LoginResponse) in
+        
+        guard let _ = result.userAccount?.userId else {
+          self.error = result.error?.message ?? "Erro ao efetuar login"
+          self.presenter?.presentError(error: self.error)
+          return
+        }
+        
+        self.userInfo = result.userAccount
+        let response = Login.Response(userAccount: result.userAccount, error: result.error?.message)
+        self.presenter?.presentSucess(response: response)
+      })
+    }
   }
+  
 }
