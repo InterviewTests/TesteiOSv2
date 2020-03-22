@@ -64,6 +64,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
   override func viewDidLoad() {
     super.viewDidLoad()
 //    showUserSaved()
+    hideActivityIndicator()
   }
     
   @IBOutlet var textFields: [UITextField]!
@@ -89,16 +90,31 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
       showAlertErrorMessage(message: "Todos os campos devem ser preenchidos")
     } else {
       let request = Login.Request(user: userTextField.text ?? "", password: passwordTextField.text ?? "")
+      showActivityIndicator()
       interactor?.doLogin(request: request)
     }
   }
   
   func displayStatementsList(viewModel: Login.ViewModel) {
     router?.routeToStatementsList()
+    hideActivityIndicator()
   }
   
   func displayError(_ message: String?) {
+    hideActivityIndicator()
     showAlertErrorMessage(message: message ?? "Erro ao efetuar login")
+  }
+  
+  func showActivityIndicator() {
+    let activityIndicator:LoadingView = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+    activityIndicator.tag = 10000
+    self.view.addSubview(activityIndicator)
+  }
+  
+  func hideActivityIndicator() {
+    if let activityIndicator = self.view.viewWithTag(10000) {
+      activityIndicator.removeFromSuperview()
+    }
   }
   
 }
