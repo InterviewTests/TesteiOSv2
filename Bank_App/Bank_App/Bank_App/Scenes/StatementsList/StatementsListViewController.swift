@@ -12,34 +12,30 @@
 
 import UIKit
 
-protocol StatementsListDisplayLogic: class
-{
-  func displaySomething(viewModel: StatementsList.Something.ViewModel)
+protocol StatementsListDisplayLogic: class {
+  func displayError(_ message: String?)
 }
 
-class StatementsListViewController: UIViewController, StatementsListDisplayLogic
-{
+class StatementsListViewController: UIViewController, StatementsListDisplayLogic {
+  
   var interactor: StatementsListBusinessLogic?
   var router: (NSObjectProtocol & StatementsListRoutingLogic & StatementsListDataPassing)?
 
   // MARK: Object lifecycle
   
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     setup()
   }
   
-  required init?(coder aDecoder: NSCoder)
-  {
+  required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     setup()
   }
   
   // MARK: Setup
   
-  private func setup()
-  {
+  private func setup() {
     let viewController = self
     let interactor = StatementsListInteractor()
     let presenter = StatementsListPresenter()
@@ -54,8 +50,7 @@ class StatementsListViewController: UIViewController, StatementsListDisplayLogic
   
   // MARK: Routing
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let scene = segue.identifier {
       let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
       if let router = router, router.responds(to: selector) {
@@ -66,24 +61,39 @@ class StatementsListViewController: UIViewController, StatementsListDisplayLogic
   
   // MARK: View lifecycle
   
-  override func viewDidLoad()
-  {
+  override func viewDidLoad() {
     super.viewDidLoad()
-    doSomething()
+    preencherDados()
   }
   
-  // MARK: Do something
+  // MARK: Preencher Dados
   
-  //@IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var nomeLabel: UILabel!
+  @IBOutlet weak var contaLabel: UILabel!
+  @IBOutlet weak var saldoLabel: UILabel!
   
-  func doSomething()
-  {
-    let request = StatementsList.Something.Request()
-    interactor?.doSomething(request: request)
+  func preencherDados() {
+    if let dataStore = self.router?.dataStore, let userData = dataStore.userInfo {
+      nomeLabel.text = userData.name
+      saldoLabel.text = userData.balance?.formatCurrency(valor: userData.balance! as NSNumber)
+      contaLabel.text = (userData.bankAccount ?? "") + " / " + (userData.agency ?? "")
+    }
   }
   
-  func displaySomething(viewModel: StatementsList.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
+  func displayError(_ message: String?) {
+    hideActivityIndicator()
+    showAlertErrorMessage(message: message ?? "Erro ao carregar lista")
+  }
+  
+  func showActivityIndicator() {
+    let activityIndicator:LoadingView = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+    activityIndicator.tag = 10000
+    self.view.addSubview(activityIndicator)
+  }
+  
+  func hideActivityIndicator() {
+    if let activityIndicator = self.view.viewWithTag(10000) {
+      activityIndicator.removeFromSuperview()
+    }
   }
 }

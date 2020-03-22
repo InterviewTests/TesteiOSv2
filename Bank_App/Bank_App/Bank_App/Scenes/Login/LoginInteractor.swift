@@ -18,14 +18,14 @@ protocol LoginBusinessLogic {
 }
 
 protocol LoginDataStore {
-  //var name: String { get set }
+  var userInfo: UserAccount? { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
   var presenter: LoginPresentationLogic?
   var worker: LoginWorker? = LoginWorker()
   
-  var user: UserAccount?
+  var userInfo: UserAccount?
   var error: String = ""
   
   func emptyField(_ user: String?, _ password: String?) -> Bool {
@@ -48,11 +48,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         return
       }
       
-      self.user = result.userAccount
+      self.userInfo = result.userAccount
       let response = Login.Response(userAccount: result.userAccount, error: result.error?.message)
       self.presenter?.presentSucess(response: response)
     })
-    
-    
   }
 }

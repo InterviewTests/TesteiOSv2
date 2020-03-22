@@ -12,13 +12,11 @@
 
 import UIKit
 
-@objc protocol StatementsListRoutingLogic
-{
+@objc protocol StatementsListRoutingLogic {
   //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol StatementsListDataPassing
-{
+protocol StatementsListDataPassing {
   var dataStore: StatementsListDataStore? { get }
 }
 

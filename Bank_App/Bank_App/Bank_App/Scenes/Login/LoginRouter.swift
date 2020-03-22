@@ -14,6 +14,7 @@ import UIKit
 
 @objc protocol LoginRoutingLogic {
   func routeToStatementsList()
+  func passData(destination: StatementsListViewController)
 }
 
 protocol LoginDataPassing {
@@ -29,20 +30,10 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
   
   // MARK: Routing
   
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+  func passData(destination: StatementsListViewController) {
+    var destinationDS = destination.router!.dataStore!
+    passDataToNext(source: dataStore!, destination: &destinationDS)
+  }
 
   // MARK: Navigation
   
@@ -50,15 +41,10 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     viewController?.performSegue(withIdentifier: identifier, sender: nil)
   }
   
-  //func navigateToSomewhere(source: LoginViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
   // MARK: Passing data
   
-//  func passDataToStatementsList(source: LoginDataStore, destination: inout StatementListDataStore)
-//  {
-//    destination.name = source.name
-//  }
+  func passDataToNext(source: LoginDataStore, destination: inout StatementsListDataStore) {
+    destination.userInfo = source.userInfo
+  }
+  
 }

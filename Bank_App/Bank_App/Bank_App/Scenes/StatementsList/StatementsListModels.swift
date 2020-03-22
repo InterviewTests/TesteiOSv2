@@ -12,20 +12,29 @@
 
 import UIKit
 
-enum StatementsList
-{
+enum StatementsList {
+  
   // MARK: Use cases
   
-  enum Something
-  {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
+  struct Request {
   }
+  
+  struct Response {
+  }
+  
+  struct ViewModel {
+  }
+  
+}
+
+struct StatementsResponse: Codable {
+  var statementList: [Statements]?
+  var error: Error?
+}
+
+struct Statements: Codable {
+  var title: String?
+  var desc: String?
+  var date: String?
+  var value: Double?
 }

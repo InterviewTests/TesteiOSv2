@@ -111,7 +111,7 @@
         <!--Statements List View Controller-->
         <scene sceneID="3Li-pB-Tj0">
             <objects>
-                <viewController id="YAD-lB-2Xi" customClass="StatementsListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatementsListsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YAD-lB-2Xi" customClass="StatementsListViewController" customModule="Bank_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xbb-UW-z7B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,6 +260,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tP0-Ya-VHv"/>
                     </view>
+                    <connections>
+                        <outlet property="contaLabel" destination="lmN-sB-kEZ" id="ADq-Nf-UKC"/>
+                        <outlet property="nomeLabel" destination="RO7-1P-QhC" id="5DK-Se-oW4"/>
+                        <outlet property="saldoLabel" destination="ZYn-mo-qY0" id="SiN-jo-lgU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBd-7A-I29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

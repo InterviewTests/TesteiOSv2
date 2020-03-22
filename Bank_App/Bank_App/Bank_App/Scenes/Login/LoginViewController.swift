@@ -18,6 +18,7 @@ protocol LoginDisplayLogic: class {
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDelegate {
+  
   var interactor: LoginBusinessLogic?
   var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
 
@@ -52,6 +53,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let scene = segue.identifier {
+      let destinationVC = segue.destination as! StatementsListViewController
+      router?.passData(destination: destinationVC)
+      
       let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
       if let router = router, router.responds(to: selector) {
         router.perform(selector, with: segue)

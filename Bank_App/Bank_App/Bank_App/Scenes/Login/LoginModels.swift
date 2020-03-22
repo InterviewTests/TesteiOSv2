@@ -41,7 +41,7 @@ struct UserAccount: Codable {
   let name: String?
   let bankAccount: String?
   let agency: String?
-  let balance: Double?
+  let balance: Float?
 }
 
 struct Error: Codable {
