@@ -13,65 +13,70 @@
 @testable import BankApp
 import XCTest
 
-class LoginPresenterTests: XCTestCase
-{
+class LoginPresenterTests: XCTestCase {
+  
   // MARK: Subject under test
   
   var sut: LoginPresenter!
   
   // MARK: Test lifecycle
   
-  override func setUp()
-  {
+  override func setUp() {
     super.setUp()
     setupLoginPresenter()
   }
   
-  override func tearDown()
-  {
+  override func tearDown() {
     super.tearDown()
   }
   
   // MARK: Test setup
   
-  func setupLoginPresenter()
-  {
+  func setupLoginPresenter() {
     sut = LoginPresenter()
   }
   
   // MARK: Test doubles
   
-  class LoginDisplayLogicSpy: LoginDisplayLogic
-  {
+  class LoginDisplayLogicSpy: LoginDisplayLogic {
+    
+    var error: String?
+    var user: Login.Response?
+    
     func displayStatementsList(viewModel: Login.ViewModel) {
-      
+      user = Login.Response(userAccount: viewModel.userAccount, error: "")
     }
     
     func displayError(_ message: String?) {
-      
+      error = message
     }
     
-    var displaySomethingCalled = false
-    
-    func displaySomething(viewModel: Login.ViewModel)
-    {
-      displaySomethingCalled = true
-    }
   }
   
   // MARK: Tests
-  /*
-  func testPresentSomething()
-  {
+  
+  func testPresentErrorMessage() {
     // Given
     let spy = LoginDisplayLogicSpy()
     sut.viewController = spy
-    let response = Login.Response()
     
     // When
-    sut.presentSomething(response: response)
+    sut.presentError(error: "Erro ao exibir tela")
     
     // Then
-    XCTAssertTrue(spy.displaySomethingCalled, "presentSomething(response:) should ask the view controller to display the result")
-  }*/
+    XCTAssertTrue(spy.error == "Erro ao exibir tela")
+  }
+  
+  func testPresentSucess() {
+    // Given
+    let spy = LoginDisplayLogicSpy()
+    sut.viewController = spy
+    
+    // When
+    sut.presentSucess(response: Login.Response(userAccount: UserAccount(userId: 1, name: "João Testes", bankAccount: "1234567", agency: "3040", balance: 6.90), error: ""))
+    
+    // Then
+    XCTAssertNotNil(spy.user)
+  }
+  
 }

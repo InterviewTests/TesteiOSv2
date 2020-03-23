@@ -61,4 +61,16 @@ class LoginViewControllerTests: XCTestCase {
     
     XCTAssert(sut.passwordTextField.text == "")
   }
+  
+  func testChangeInUserTextFieldValidEmail() {
+    sut.userTextField.insertText("teste@ios.com")
+    
+    XCTAssert(sut.userTextField.text?.isValidEmail == true)
+  }
+  
+  func testChangeInUserTextFieldValidCPF() {
+    sut.userTextField.insertText("12345678909")
+    
+    XCTAssert(sut.userTextField.text?.isValidCPF == true)
+  }
 }

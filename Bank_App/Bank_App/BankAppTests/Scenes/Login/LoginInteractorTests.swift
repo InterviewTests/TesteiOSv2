@@ -13,65 +13,44 @@
 @testable import BankApp
 import XCTest
 
-class LoginInteractorTests: XCTestCase
-{
+class LoginInteractorTests: XCTestCase {
+  
   // MARK: Subject under test
   
   var sut: LoginInteractor!
   
   // MARK: Test lifecycle
   
-  override func setUp()
-  {
+  override func setUp() {
     super.setUp()
     setupLoginInteractor()
   }
   
-  override func tearDown()
-  {
+  override func tearDown() {
     super.tearDown()
   }
   
   // MARK: Test setup
   
-  func setupLoginInteractor()
-  {
+  func setupLoginInteractor() {
     sut = LoginInteractor()
   }
   
   // MARK: Test doubles
   
-  class LoginPresentationLogicSpy: LoginPresentationLogic
-  {
+  class LoginPresentationLogicSpy: LoginPresentationLogic {
+    
+    var user: Login.Response?
+    var errorMessage: String?
+    
     func presentSucess(response: Login.Response) {
-      
+      user = Login.Response(userAccount: response.userAccount, error: "")
     }
     
     func presentError(error: String) {
-      
+      errorMessage = error
     }
     
-    var presentSomethingCalled = false
-    
-    func presentSomething(response: Login.Response)
-    {
-      presentSomethingCalled = true
-    }
   }
   
-  // MARK: Tests
-  /*
-  func testDoSomething()
-  {
-    // Given
-    let spy = LoginPresentationLogicSpy()
-    sut.presenter = spy
-    let request = Login.Request()
-    
-    // When
-    sut.doSomething(request: request)
-    
-    // Then
-    XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
-  }*/
 }
