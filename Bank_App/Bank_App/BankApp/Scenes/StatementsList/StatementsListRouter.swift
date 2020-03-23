@@ -13,19 +13,23 @@
 import UIKit
 
 @objc protocol StatementsListRoutingLogic {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+  func routeToLoginScreen(vc: StatementsListViewController)
 }
 
 protocol StatementsListDataPassing {
   var dataStore: StatementsListDataStore? { get }
 }
 
-class StatementsListRouter: NSObject, StatementsListRoutingLogic, StatementsListDataPassing
-{
+class StatementsListRouter: NSObject, StatementsListRoutingLogic, StatementsListDataPassing {
+  
   weak var viewController: StatementsListViewController?
   var dataStore: StatementsListDataStore?
   
   // MARK: Routing
+  
+  func routeToLoginScreen(vc: StatementsListViewController) {
+    vc.navigationController?.popToRootViewController(animated: true)
+  }
   
   //func routeToSomewhere(segue: UIStoryboardSegue?)
   //{

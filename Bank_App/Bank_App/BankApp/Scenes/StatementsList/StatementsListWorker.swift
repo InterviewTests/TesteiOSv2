@@ -11,10 +11,19 @@
 //
 
 import UIKit
+import Alamofire
 
-class StatementsListWorker
-{
-  func doSomeWork()
-  {
+class StatementsListWorker {
+  
+  func getList(request: StatementsList.Request, completion: @escaping (StatementsResponse) -> ()) {
+    let userId = String(request.userId)
+    let path = "https://bank-app-test.herokuapp.com/api/statements/" + userId
+    let headers: [String: String] = ["Content-Type": "application/x-www-form-urlencoded"]
+    Alamofire.request(path, method: .get, headers: headers).responseData(completionHandler: { response in
+      if let value = response.result.value {
+        let response = try! JSONDecoder().decode(StatementsResponse.self, from: value)
+        completion(response)
+      }
+    })
   }
 }

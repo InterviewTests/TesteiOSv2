@@ -13,10 +13,11 @@
 import UIKit
 
 protocol StatementsListDisplayLogic: class {
+  func displayStatementsList(viewModel: StatementsList.ViewModel)
   func displayError(_ message: String?)
 }
 
-class StatementsListViewController: UIViewController, StatementsListDisplayLogic {
+class StatementsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StatementsListDisplayLogic {
   
   var interactor: StatementsListBusinessLogic?
   var router: (NSObjectProtocol & StatementsListRoutingLogic & StatementsListDataPassing)?
@@ -64,6 +65,32 @@ class StatementsListViewController: UIViewController, StatementsListDisplayLogic
   override func viewDidLoad() {
     super.viewDidLoad()
     preencherDados()
+    preencherLista()
+    self.tableView.delegate = self
+    self.tableView.dataSource = self
+    self.tableView.register(UINib(nibName: "StatementsTableViewCell", bundle: nil), forCellReuseIdentifier: "statementsTableViewCell")
+  }
+  
+  //MARK: TableView
+  
+  @IBOutlet weak var tableView: UITableView!
+  
+  var statementsList: StatementsList.ViewModel = StatementsList.ViewModel(statementsList: [])
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return statementsList.statementsList?.count ?? 0
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: "statementsTableViewCell") as? StatementsTableViewCell {
+      cell.configureCell(cellInfo: statementsList.statementsList?[indexPath.row])
+      return cell
+    }
+    return UITableViewCell()
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 104
   }
   
   // MARK: Preencher Dados
@@ -80,9 +107,21 @@ class StatementsListViewController: UIViewController, StatementsListDisplayLogic
     }
   }
   
+  func preencherLista() {
+    let userId = self.router?.dataStore?.userInfo?.userId
+    let request = StatementsList.Request(userId: userId ?? -1)
+    interactor?.getList(request)
+  }
+  
   @IBAction func logoutTapped(_ sender: Any) {
-    Keychain.removeValue(forKey: "userLogin")
-    self.navigationController?.popToRootViewController(animated: true)
+    interactor?.logout()
+    router?.routeToLoginScreen(vc: self)
+  }
+  
+  func displayStatementsList(viewModel: StatementsList.ViewModel) {
+    statementsList = viewModel
+    tableView.reloadData()
+    hideActivityIndicator()
   }
   
   func displayError(_ message: String?) {

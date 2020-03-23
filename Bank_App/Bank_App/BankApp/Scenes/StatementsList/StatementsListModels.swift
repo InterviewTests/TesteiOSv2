@@ -17,12 +17,14 @@ enum StatementsList {
   // MARK: Use cases
   
   struct Request {
+    var userId: Int
   }
   
   struct Response {
   }
   
   struct ViewModel {
+    var statementsList: [Statements]?
   }
   
 }
@@ -36,5 +38,5 @@ struct Statements: Codable {
   var title: String?
   var desc: String?
   var date: String?
-  var value: Double?
+  var value: Float?
 }

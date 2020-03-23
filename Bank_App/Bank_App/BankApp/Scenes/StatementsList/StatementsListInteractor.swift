@@ -12,30 +12,42 @@
 
 import UIKit
 
-protocol StatementsListBusinessLogic
-{
-  func doSomething(request: StatementsList.Request)
+protocol StatementsListBusinessLogic {
+  func logout()
+  func getList(_ request: StatementsList.Request)
 }
 
 protocol StatementsListDataStore {
   var userInfo: UserAccount? { get set }
 }
 
-class StatementsListInteractor: StatementsListBusinessLogic, StatementsListDataStore
-{
+class StatementsListInteractor: StatementsListBusinessLogic, StatementsListDataStore {
+  
   var presenter: StatementsListPresentationLogic?
   var worker: StatementsListWorker?
   
   var userInfo: UserAccount?
+  var error: String = ""
+  var statementsList: StatementsList.ViewModel?
   
   // MARK: Do something
   
-  func doSomething(request: StatementsList.Request)
-  {
+  func logout() {
+    Keychain.removeValue(forKey: "userLogin")
+  }
+  
+  func getList(_ request: StatementsList.Request) {
     worker = StatementsListWorker()
-    worker?.doSomeWork()
-    
-    let response = StatementsList.Response()
-    presenter?.presentSomething(response: response)
+    worker?.getList(request: request, completion: { (result: StatementsResponse) in
+      guard let _ = result.statementList else {
+        self.error = result.error?.message ?? "Erro ao carregar lista"
+        self.presenter?.presentError(error: self.error)
+        return
+      }
+      
+      let response = StatementsList.ViewModel(statementsList: result.statementList)
+      self.statementsList = response
+      self.presenter?.presentSucess(response: response)
+    })
   }
 }

@@ -245,7 +245,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recentes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xP1-qe-vYR">
                                         <rect key="frame" x="16" y="0.0" width="382" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.28235294117647058" green="0.32941176470588235" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -258,9 +258,14 @@
                                     <constraint firstAttribute="trailing" secondItem="xP1-qe-vYR" secondAttribute="trailing" constant="16" id="qbO-8p-Bsn"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GCZ-wq-bHK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GCZ-wq-bHK">
                                 <rect key="frame" x="0.0" y="301" width="414" height="435"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="YAD-lB-2Xi" id="pu1-lm-FYt"/>
+                                    <outlet property="delegate" destination="YAD-lB-2Xi" id="L7j-lw-ca3"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -282,6 +287,7 @@
                         <outlet property="contaLabel" destination="lmN-sB-kEZ" id="ADq-Nf-UKC"/>
                         <outlet property="nomeLabel" destination="RO7-1P-QhC" id="5DK-Se-oW4"/>
                         <outlet property="saldoLabel" destination="ZYn-mo-qY0" id="SiN-jo-lgU"/>
+                        <outlet property="tableView" destination="GCZ-wq-bHK" id="4eZ-Eb-hYa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBd-7A-I29" userLabel="First Responder" sceneMemberID="firstResponder"/>
