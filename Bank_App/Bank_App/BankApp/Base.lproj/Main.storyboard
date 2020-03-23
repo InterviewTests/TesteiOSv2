@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5hk-iG-Tyi">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="iTD-A3-qUT">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="5hk-iG-Tyi" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ovu-ZM-9SA">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="XyJ-0E-BMT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="59W-SD-NGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1139" y="318"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Bank_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,6 +110,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="EV8-FW-ML0"/>
                     <connections>
                         <outlet property="passwordTextField" destination="zDJ-Uq-WYU" id="Xdg-5h-MhR"/>
                         <outlet property="userTextField" destination="jL3-UQ-4LG" id="p4S-ay-PrT"/>
@@ -111,7 +126,7 @@
         <!--Statements List View Controller-->
         <scene sceneID="3Li-pB-Tj0">
             <objects>
-                <viewController storyboardIdentifier="StatementsListsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YAD-lB-2Xi" customClass="StatementsListViewController" customModule="Bank_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatementsListsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YAD-lB-2Xi" customClass="StatementsListViewController" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xbb-UW-z7B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,6 +154,9 @@
                                                         <state key="normal" image="logout 2"/>
                                                         <state key="selected" image="logout 2"/>
                                                         <state key="highlighted" image="logout 2"/>
+                                                        <connections>
+                                                            <action selector="logoutTapped:" destination="YAD-lB-2Xi" eventType="touchUpInside" id="a9V-RV-yxg"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>

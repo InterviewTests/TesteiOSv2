@@ -17,6 +17,7 @@ protocol LoginBusinessLogic {
   func emptyField(_ user: String?, _ password: String?) -> Bool
   func isValidUser(_ user: String) -> Bool
   func isValidPassword(_ password: String) -> Bool
+  func carragarUsuario() -> String?
 }
 
 protocol LoginDataStore {
@@ -71,10 +72,15 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         }
         
         self.userInfo = result.userAccount
+        Keychain.set(request.user, forKey: "userLogin")
         let response = Login.Response(userAccount: result.userAccount, error: result.error?.message)
         self.presenter?.presentSucess(response: response)
       })
     }
+  }
+  
+  func carragarUsuario() -> String? {
+    return Keychain.value(forKey: "userLogin")
   }
   
 }

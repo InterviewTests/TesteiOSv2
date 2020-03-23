@@ -80,6 +80,11 @@ class StatementsListViewController: UIViewController, StatementsListDisplayLogic
     }
   }
   
+  @IBAction func logoutTapped(_ sender: Any) {
+    Keychain.removeValue(forKey: "userLogin")
+    self.navigationController?.popToRootViewController(animated: true)
+  }
+  
   func displayError(_ message: String?) {
     hideActivityIndicator()
     showAlertErrorMessage(message: message ?? "Erro ao carregar lista")

@@ -53,6 +53,7 @@
 		18B377F32427F97F006B782D /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B377EF2427F97F006B782D /* LoginPresenterTests.swift */; };
 		18B377F42427FEA9006B782D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181A6FFE242295EB00289C53 /* Main.storyboard */; };
 		18B377F52427FEAA006B782D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181A6FFE242295EB00289C53 /* Main.storyboard */; };
+		18B377F824283884006B782D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B377F724283884006B782D /* Keychain.swift */; };
 		18C140D824269F31006AA491 /* StatementsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C140D224269F31006AA491 /* StatementsListPresenter.swift */; };
 		18C140D924269F31006AA491 /* StatementsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C140D224269F31006AA491 /* StatementsListPresenter.swift */; };
 		18C140DA24269F31006AA491 /* StatementsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C140D224269F31006AA491 /* StatementsListPresenter.swift */; };
@@ -121,6 +122,7 @@
 		18B377ED2427F97F006B782D /* LoginInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorTests.swift; sourceTree = "<group>"; };
 		18B377EE2427F97F006B782D /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
 		18B377EF2427F97F006B782D /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
+		18B377F724283884006B782D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		18C140D224269F31006AA491 /* StatementsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsListPresenter.swift; sourceTree = "<group>"; };
 		18C140D324269F31006AA491 /* StatementsListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsListWorker.swift; sourceTree = "<group>"; };
 		18C140D424269F31006AA491 /* StatementsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsListRouter.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		181A6FF9242295EB00289C53 /* BankApp */ = {
 			isa = PBXGroup;
 			children = (
+				18B377F62428382D006B782D /* Common */,
 				18B377BC24275C1F006B782D /* View */,
 				188FE86E24254EBB0044E2FF /* Utils */,
 				181A70282422A85500289C53 /* Scenes */,
@@ -293,6 +296,14 @@
 				18B377EF2427F97F006B782D /* LoginPresenterTests.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		18B377F62428382D006B782D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				18B377F724283884006B782D /* Keychain.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		18C140D124269EF7006AA491 /* StatementsList */ = {
@@ -568,6 +579,7 @@
 				18B377CA2427ADD6006B782D /* FloatExtension.swift in Sources */,
 				181A70302422A9D300289C53 /* LoginPresenter.swift in Sources */,
 				18C140E124269F31006AA491 /* StatementsListModels.swift in Sources */,
+				18B377F824283884006B782D /* Keychain.swift in Sources */,
 				18C140E424269F31006AA491 /* StatementsListViewController.swift in Sources */,
 				18C140D824269F31006AA491 /* StatementsListPresenter.swift in Sources */,
 				188FE87124254F890044E2FF /* ViewControlerExtension.swift in Sources */,

@@ -67,8 +67,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    showUserSaved()
     hideActivityIndicator()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    showUserSaved()
   }
     
   @IBOutlet var textFields: [UITextField]!
@@ -84,6 +87,15 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
       }
     }
     return true
+  }
+  
+  func showUserSaved() {
+    if let field = interactor?.carragarUsuario() {
+      userTextField.text = field
+    } else {
+      userTextField.text = ""
+    }
+    passwordTextField.text = ""
   }
   
   @IBOutlet weak var userTextField: UITextField!
