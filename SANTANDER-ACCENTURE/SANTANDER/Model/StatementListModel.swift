@@ -9,7 +9,9 @@
 import Foundation
 
 //// MARK: - Welcome
-struct MarvelHeader: Codable {
+struct ApiResponse: Codable {
+    
+  
     let statementList: [StatementList]?
     let error: Error?
 }

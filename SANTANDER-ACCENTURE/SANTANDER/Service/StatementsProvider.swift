@@ -21,7 +21,7 @@ class StatementsProvider {
                     return
                 }
                 do {
-                    let result = try JSONDecoder().decode(MarvelHeader.self, from: data)
+                    let result = try JSONDecoder().decode(ApiResponse.self, from: data)
                     completion(result.statementList)
                 }catch {
                     completion(nil)
