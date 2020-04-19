@@ -25,7 +25,7 @@ class LancamentosUsuarioTableViewCellTests: XCTestCase {
             return XCTFail()
         }
         
-        let statement = StatementList(title: "TED", desc: "Aluguel", date: "2020/04/20", value: 5025.00)
+        let statement = StatementList(title: "TED", desc: "Aluguel", date: "2020-04-20", value: 5025.00)
 
     cell.set(list: statement)
         
