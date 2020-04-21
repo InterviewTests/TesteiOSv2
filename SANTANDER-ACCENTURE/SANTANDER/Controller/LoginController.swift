@@ -33,12 +33,11 @@ class LoginController {
         self.provider?.loadUsers()
     }
     
-    
     func loadCurrentUser(indexPath: IndexPath) -> UserAccount {
         return user?.userAccount ?? UserAccount(userID: 0, name: "", bankAccount: "", agency: "", balance: 0.0)
-        
     }
 }
+
 
 extension LoginController: UserProviderDelegate {
     func successLoadUsers(users: Account) {
@@ -49,6 +48,5 @@ extension LoginController: UserProviderDelegate {
     func errorLoadUsers(error: Error?) {
         self.delegate?.errorLoadUsers(error: error)
     }
-    
 }
 

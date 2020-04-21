@@ -46,7 +46,6 @@ class DadosUsuarioTableViewCell: UITableViewCell {
             self.dadosContaLabel.text = "\(agency)/\(bank)"
         }
         self.saldoLabel.text = "R$" + " " + (String(format: "%.2f", value?.balance ?? 0.00))
-        
     }
 }
 

@@ -21,14 +21,14 @@ protocol SomeUIViewDelegate {
 }
 
 class LoginTableViewCell: UITableViewCell {
-        
+    
     var email = ""
     var password = ""
     
     var delegateSegue: SomeUIViewDelegate?
     
     var delegateCoreData: CoreDataDelegate?
-        
+    
     @IBOutlet weak var logoBancoImageView: UIImageView!
     
     @IBOutlet weak var nomeUsuarioTextField: UITextField!{
@@ -75,7 +75,6 @@ class LoginTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
     func setup(person: Person) {
         nomeUsuarioTextField.text = person.user ?? ""
         email = person.user ?? ""
@@ -97,8 +96,6 @@ class LoginTableViewCell: UITableViewCell {
         self.delegateSegue?.segueFunction()
         self.delegateCoreData?.saveInformation(user: user, password: password)
     }
-    
-    
     
     func verifyIfValidFields() -> Bool {
         guard let user = nomeUsuarioTextField.text , let password = senhaUsuarioTextField.text else {
@@ -140,7 +137,7 @@ class LoginTableViewCell: UITableViewCell {
         } else {
             enableButton(button: loginButton, enabled: false)
         }
-
+        
     }
     
     func enableButton(button: UIButton, enabled: Bool) {
@@ -154,7 +151,6 @@ class LoginTableViewCell: UITableViewCell {
     }
     
 }
-
 
 
 extension LoginTableViewCell: UITextFieldDelegate{

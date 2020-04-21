@@ -21,7 +21,6 @@ class CoreDataManager {
         return container
     }()
     
-    
     func saveInformation(user: String, password: String) {
         let context = persistentContainer.viewContext
         let person = Person(context: context)

@@ -9,7 +9,6 @@
 class StatementsControllerProtocolTest: StatementsControllerProtocol {
     
     func didFinishRequest(array: [StatementList]) {
-        
     }
     
     func loadList(completion: (Bool) -> Void) {

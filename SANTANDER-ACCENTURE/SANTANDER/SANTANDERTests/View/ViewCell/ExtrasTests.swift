@@ -16,7 +16,7 @@ class ExtrasTests: XCTestCase {
         let success = String.validarCPf(cpf: cpf)
         XCTAssertTrue(success)
     }
-
+    
     func test_validarEmail(){
         let email = "mairapreto@me.com"
         let succees = String.validarEmail(email: email)
@@ -29,7 +29,6 @@ class ExtrasTests: XCTestCase {
         let success = String.validarPassword(password)
         XCTAssertTrue(success)
     }
-    
     
     func test_dateFromCustomString(){
         let str = String.dateFromCustomString(customString: "2020-04-20")

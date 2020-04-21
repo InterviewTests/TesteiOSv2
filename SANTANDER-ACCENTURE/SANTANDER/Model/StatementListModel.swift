@@ -11,7 +11,7 @@ import Foundation
 //// MARK: - Welcome
 struct ApiResponse: Codable {
     
-  
+    
     let statementList: [StatementList]?
     let error: Error?
 }

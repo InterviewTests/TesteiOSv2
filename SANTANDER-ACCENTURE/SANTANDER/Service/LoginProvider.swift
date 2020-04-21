@@ -20,12 +20,9 @@ class LoginProvider {
     
     weak var delegate: UserProviderDelegate?
     
-    
     func loadUsers() {
         
-        
         let parameters: Parameters = ["user": "test_user", "password" : "Test@1"]
-        
         let urlString = API.baseURL + API.login
         
         if let url:URL = URL(string: urlString) {

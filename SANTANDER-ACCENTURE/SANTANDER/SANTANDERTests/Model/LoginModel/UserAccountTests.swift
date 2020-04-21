@@ -10,7 +10,7 @@ import XCTest
 @testable import SANTANDER
 
 class UserAccountTests: XCTestCase {
-
+    
     func testeInit_UserID(){
         let user = UserAccount(userID: 10, name: "", bankAccount: "", agency: "", balance: 0)
         XCTAssertEqual(user.userID, 10)
@@ -36,6 +36,6 @@ class UserAccountTests: XCTestCase {
         XCTAssertEqual(user.balance, 5525)
     }
     
-   
+    
     
 }

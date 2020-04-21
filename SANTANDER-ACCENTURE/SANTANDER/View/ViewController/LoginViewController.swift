@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class LoginViewController: UIViewController, SomeUIViewDelegate, CoreDataDelegate {
-   
+    
     let coreData: CoreDataManager = CoreDataManager()
     var arrayPerson:[Person] = []
     
@@ -21,7 +21,6 @@ class LoginViewController: UIViewController, SomeUIViewDelegate, CoreDataDelegat
     @IBOutlet weak var loginTableView: UITableView!
     
     var login: LoginTableViewCell?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +35,7 @@ class LoginViewController: UIViewController, SomeUIViewDelegate, CoreDataDelegat
     func configureTableView() {
         self.loginTableView.delegate = self
         self.loginTableView.dataSource = self
-
+        
     }
     
     func segueFunction() {
@@ -58,15 +57,10 @@ class LoginViewController: UIViewController, SomeUIViewDelegate, CoreDataDelegat
     func saveInformation(user: String, password: String) {
         coreData.saveInformation(user: user, password: password)
     }
-    
-    
-    
 }
 
 
-
 extension LoginViewController: UITableViewDataSource, UITableViewDelegate {
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -103,7 +97,6 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-
 extension LoginViewController: UserControllerDelegate{
     
     func successLoadUsers() {
@@ -113,8 +106,4 @@ extension LoginViewController: UserControllerDelegate{
     func errorLoadUsers(error: Error?) {
         
     }
-    
-    
-    
-    
 }

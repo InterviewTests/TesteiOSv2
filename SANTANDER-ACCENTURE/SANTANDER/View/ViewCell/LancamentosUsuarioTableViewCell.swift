@@ -10,7 +10,6 @@ import UIKit
 
 class LancamentosUsuarioTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var tituloLabel: UILabel!
     
     @IBOutlet weak var descricaoLabel: UILabel!
@@ -20,7 +19,6 @@ class LancamentosUsuarioTableViewCell: UITableViewCell {
     @IBOutlet weak var valorLabel: UILabel!
     
     @IBOutlet weak var celulaView: UIView!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

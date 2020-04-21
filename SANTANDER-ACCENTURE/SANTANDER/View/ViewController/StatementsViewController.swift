@@ -49,8 +49,8 @@ class StatementsViewController: UIViewController {
         self.usuarioTableView.dataSource = self
         self.usuarioTableView.tableFooterView = UIView()
     }
-    
 }
+
 
 extension StatementsViewController: UITableViewDelegate, UITableViewDataSource{
     
@@ -62,10 +62,7 @@ extension StatementsViewController: UITableViewDelegate, UITableViewDataSource{
         if section == 0 {
             return 1
         }
-        
         return arrayWelcome.count
-        
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,28 +71,19 @@ extension StatementsViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.section == 0 {
             
             if let dadosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "DadosUsuarioTableViewCell", for: indexPath) as? DadosUsuarioTableViewCell {
-                
                 dadosUsuarioCell.delegate = self
                 dadosUsuarioCell.setupCell(value: self.controller?.loadCurrentUser(indexPath: indexPath))
-                
                 return dadosUsuarioCell
             }
         } else {
             if let lancamentosUsuarioCell = tableView.dequeueReusableCell(withIdentifier: "LancamentosUsuarioTableViewCell", for: indexPath) as? LancamentosUsuarioTableViewCell {
-                
                 lancamentosUsuarioCell.set(list: arrayWelcome[indexPath.row])
-                
-                
                 return lancamentosUsuarioCell
             }
         }
         return UITableViewCell()
-        
     }
-    
-    
 }
-
 
 
 extension StatementsViewController: UserControllerDelegate{
@@ -107,10 +95,8 @@ extension StatementsViewController: UserControllerDelegate{
     func errorLoadUsers(error: Error?) {
         
     }
-    
-    
-    
 }
+
 
 extension StatementsViewController: StatementsControllerProtocol {
     func loadList(completion: (Bool) -> Void) {
@@ -123,11 +109,11 @@ extension StatementsViewController: StatementsControllerProtocol {
     }
 }
 
+
 extension StatementsViewController: LogoutBtnDelegate{
     
     func logoutBtnTapped() {
         self.dismiss(animated: true, completion: nil)
-        
     }
 }
 
