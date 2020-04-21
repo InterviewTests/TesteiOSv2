@@ -35,7 +35,7 @@ class StatementsViewController: UIViewController {
     
     func configureStatement() {
         self.statement.delegate = self
-        statement.loadList()
+        statement.loadList { _ in }
     }
     
     func registerCell() {
@@ -113,6 +113,10 @@ extension StatementsViewController: UserControllerDelegate{
 }
 
 extension StatementsViewController: StatementsControllerProtocol {
+    func loadList(completion: (Bool) -> Void) {
+        
+    }
+    
     func didFinishRequest(array: [StatementList]) {
         arrayWelcome = array
         self.usuarioTableView.reloadData()

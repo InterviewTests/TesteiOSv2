@@ -8,6 +8,7 @@
 import Foundation
 
 protocol StatementsControllerProtocol: class {
+    func loadList(completion: (Bool) -> Void)
     func didFinishRequest(array: [StatementList])
 }
 
@@ -16,10 +17,11 @@ class StatementsController {
     var provider: StatementsProvider = StatementsProvider()
     weak var delegate: StatementsControllerProtocol?
     
-    func loadList() {
-        provider.getDataFromHeroKu { (array) in
+    func loadList(completion: @escaping (Bool) -> Void) {
+        provider.getDataFromHeroKu { [weak self] array in 
             if let arrayStatement = array {
-                self.delegate?.didFinishRequest(array: arrayStatement)
+                self?.delegate?.didFinishRequest(array: arrayStatement)
+                completion(true)
             }
         }
         return

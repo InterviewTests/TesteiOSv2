@@ -20,4 +20,13 @@ class StatetementsTests: XCTestCase {
            XCTAssertEqual(statement.date, "2020-04-20")
            XCTAssertEqual(statement.value, 5025)
        }
+    
+    func testProtocol() {
+        let statmentTest = StatementsControllerProtocolTest()
+        statmentTest.loadList { (success) in
+            XCTAssertEqual(success, true)
+
+        }
+        
+    }
 }

@@ -11,7 +11,7 @@ import Foundation
 
 class LoginViewController: UIViewController, SomeUIViewDelegate, CoreDataDelegate {
    
-    var coreData: CoreDataManager = CoreDataManager()
+    let coreData: CoreDataManager = CoreDataManager()
     var arrayPerson:[Person] = []
     
     func loginBtnTapped(name: String, passwd: String) {
@@ -28,12 +28,15 @@ class LoginViewController: UIViewController, SomeUIViewDelegate, CoreDataDelegat
         
         self.loginTableView.register(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: "LoginTableViewCell")
         
-        self.loginTableView.delegate = self
-        self.loginTableView.dataSource = self
-        loginTableView.delegate = self
+        configureTableView()
         loadUser()
         loginTableView.reloadData()
-        
+    }
+    
+    func configureTableView() {
+        self.loginTableView.delegate = self
+        self.loginTableView.dataSource = self
+
     }
     
     func segueFunction() {
@@ -46,9 +49,9 @@ class LoginViewController: UIViewController, SomeUIViewDelegate, CoreDataDelegat
     }
     
     func loadUser() {
-        coreData.loadInformation { (arrayPerson) in
-            self.arrayPerson = arrayPerson
-            self.loginTableView.reloadData()
+        coreData.loadInformation { [weak self] arrayPerson in
+            self?.arrayPerson = arrayPerson
+            self?.loginTableView.reloadData()
         }
     }
     
