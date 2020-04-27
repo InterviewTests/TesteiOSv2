@@ -7,7 +7,6 @@
 //
 
 import Foundation
-@testable import TataSantanderBankTest
 
 class UserServiceMock: UserStoreProtocol {
     
