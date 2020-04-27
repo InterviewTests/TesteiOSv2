@@ -61,6 +61,14 @@
 		2F20D70B2456D07D00C65B30 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7032456D07C00C65B30 /* LoginPresenterTests.swift */; };
 		2F20D70D2456D08B00C65B30 /* UserServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D70C2456D08B00C65B30 /* UserServiceMock.swift */; };
 		2F20D70E2456D08B00C65B30 /* UserServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D70C2456D08B00C65B30 /* UserServiceMock.swift */; };
+		2F20D7102456D14E00C65B30 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D70F2456D14E00C65B30 /* HomeResponse.swift */; };
+		2F20D7112456D14E00C65B30 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D70F2456D14E00C65B30 /* HomeResponse.swift */; };
+		2F20D7132456D15D00C65B30 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7122456D15D00C65B30 /* HomeService.swift */; };
+		2F20D7142456D15D00C65B30 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7122456D15D00C65B30 /* HomeService.swift */; };
+		2F20D7162456D16A00C65B30 /* StatementsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7152456D16A00C65B30 /* StatementsWorker.swift */; };
+		2F20D7172456D16A00C65B30 /* StatementsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7152456D16A00C65B30 /* StatementsWorker.swift */; };
+		2F20D7192456D2D200C65B30 /* StatementItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7182456D2D200C65B30 /* StatementItemTableViewCell.swift */; };
+		2F20D71A2456D2D200C65B30 /* StatementItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7182456D2D200C65B30 /* StatementItemTableViewCell.swift */; };
 		78455FBCAE5CBD584138D282 /* Pods_TataSantanderBankTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20C1FFAA87D29732C77A2C1 /* Pods_TataSantanderBankTestTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +123,10 @@
 		2F20D7022456D07C00C65B30 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		2F20D7032456D07C00C65B30 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
 		2F20D70C2456D08B00C65B30 /* UserServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServiceMock.swift; sourceTree = "<group>"; };
+		2F20D70F2456D14E00C65B30 /* HomeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
+		2F20D7122456D15D00C65B30 /* HomeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		2F20D7152456D16A00C65B30 /* StatementsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatementsWorker.swift; sourceTree = "<group>"; };
+		2F20D7182456D2D200C65B30 /* StatementItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatementItemTableViewCell.swift; sourceTree = "<group>"; };
 		976B845E29D72BA0DD15EF33 /* Pods-TataSantanderBankTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TataSantanderBankTestTests.debug.xcconfig"; path = "Target Support Files/Pods-TataSantanderBankTestTests/Pods-TataSantanderBankTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FF4193BAEE76D0B3056400E /* Pods-TataSantanderBankTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TataSantanderBankTestTests.release.xcconfig"; path = "Target Support Files/Pods-TataSantanderBankTestTests/Pods-TataSantanderBankTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		E20C1FFAA87D29732C77A2C1 /* Pods_TataSantanderBankTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TataSantanderBankTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +257,7 @@
 				2F20D6DC2456CDF100C65B30 /* HomeModels.swift */,
 				2F20D6DD2456CDF100C65B30 /* HomeViewController.swift */,
 				2F20D6DE2456CDF100C65B30 /* HomeInteractor.swift */,
+				2F20D7182456D2D200C65B30 /* StatementItemTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -254,6 +267,7 @@
 			children = (
 				2F20D6EF2456CEF300C65B30 /* Error.swift */,
 				2F20D6EE2456CEF300C65B30 /* LoginResponse.swift */,
+				2F20D70F2456D14E00C65B30 /* HomeResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -263,6 +277,7 @@
 			children = (
 				2F20D6F52456CF3000C65B30 /* API.swift */,
 				2F20D6F42456CF3000C65B30 /* UserService.swift */,
+				2F20D7122456D15D00C65B30 /* HomeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -271,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				2F20D6FA2456CF4200C65B30 /* UserWorker.swift */,
+				2F20D7152456D16A00C65B30 /* StatementsWorker.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -486,12 +502,16 @@
 				2F20D6F22456CEF300C65B30 /* Error.swift in Sources */,
 				2F20D69A2456C5EA00C65B30 /* ViewController.swift in Sources */,
 				2F20D6FB2456CF4200C65B30 /* UserWorker.swift in Sources */,
+				2F20D7102456D14E00C65B30 /* HomeResponse.swift in Sources */,
 				2F20D6D12456CDDB00C65B30 /* LoginRouter.swift in Sources */,
 				2F20D6C12456CCB600C65B30 /* String+Extension.swift in Sources */,
 				2F20D6962456C5EA00C65B30 /* AppDelegate.swift in Sources */,
+				2F20D7192456D2D200C65B30 /* StatementItemTableViewCell.swift in Sources */,
 				2F20D6E92456CDF100C65B30 /* HomeInteractor.swift in Sources */,
 				2F20D6E12456CDF100C65B30 /* HomeWorker.swift in Sources */,
+				2F20D7162456D16A00C65B30 /* StatementsWorker.swift in Sources */,
 				2F20D6E32456CDF100C65B30 /* HomeRouter.swift in Sources */,
+				2F20D7132456D15D00C65B30 /* HomeService.swift in Sources */,
 				2F20D6BE2456CCB600C65B30 /* Application+Extension.swift in Sources */,
 				2F20D6CD2456CDDB00C65B30 /* LoginPresenter.swift in Sources */,
 				2F20D6E52456CDF100C65B30 /* HomeModels.swift in Sources */,
@@ -516,6 +536,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F20D6FC2456CF4200C65B30 /* UserWorker.swift in Sources */,
+				2F20D7172456D16A00C65B30 /* StatementsWorker.swift in Sources */,
+				2F20D71A2456D2D200C65B30 /* StatementItemTableViewCell.swift in Sources */,
 				2F20D6D62456CDDB00C65B30 /* LoginViewController.swift in Sources */,
 				2F20D6E22456CDF100C65B30 /* HomeWorker.swift in Sources */,
 				2F20D7092456D07D00C65B30 /* LoginViewControllerTests.swift in Sources */,
@@ -528,6 +550,8 @@
 				2F20D70E2456D08B00C65B30 /* UserServiceMock.swift in Sources */,
 				2F20D6F12456CEF300C65B30 /* LoginResponse.swift in Sources */,
 				2F20D6D22456CDDB00C65B30 /* LoginRouter.swift in Sources */,
+				2F20D7112456D14E00C65B30 /* HomeResponse.swift in Sources */,
+				2F20D7142456D15D00C65B30 /* HomeService.swift in Sources */,
 				2F20D6EA2456CDF100C65B30 /* HomeInteractor.swift in Sources */,
 				2F20D6D02456CDDB00C65B30 /* LoginWorker.swift in Sources */,
 				2F20D6E02456CDF100C65B30 /* HomePresenter.swift in Sources */,
