@@ -74,7 +74,14 @@ class HomeViewController: UIViewController, HomeDisplayLogic
   
   // MARK: Do something
   
-  //@IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var lblUserName: UILabel!
+  @IBOutlet weak var lblAccountNumber: UILabel!
+  @IBOutlet weak var lblBalance: UILabel!
+  @IBOutlet weak var tblStatment: UITableView!
+  @IBOutlet weak var actLoadingStatements: UIActivityIndicatorView!
+  
+  @IBAction func actionLogout(_ sender: Any) {
+  }
   
   func doSomething()
   {
