@@ -55,6 +55,12 @@
 		2F20D6F92456CF3000C65B30 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D6F52456CF3000C65B30 /* API.swift */; };
 		2F20D6FB2456CF4200C65B30 /* UserWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D6FA2456CF4200C65B30 /* UserWorker.swift */; };
 		2F20D6FC2456CF4200C65B30 /* UserWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D6FA2456CF4200C65B30 /* UserWorker.swift */; };
+		2F20D7052456D07D00C65B30 /* LoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7002456D07C00C65B30 /* LoginInteractorTests.swift */; };
+		2F20D7072456D07D00C65B30 /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7012456D07C00C65B30 /* LoginWorkerTests.swift */; };
+		2F20D7092456D07D00C65B30 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7022456D07C00C65B30 /* LoginViewControllerTests.swift */; };
+		2F20D70B2456D07D00C65B30 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D7032456D07C00C65B30 /* LoginPresenterTests.swift */; };
+		2F20D70D2456D08B00C65B30 /* UserServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D70C2456D08B00C65B30 /* UserServiceMock.swift */; };
+		2F20D70E2456D08B00C65B30 /* UserServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20D70C2456D08B00C65B30 /* UserServiceMock.swift */; };
 		78455FBCAE5CBD584138D282 /* Pods_TataSantanderBankTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20C1FFAA87D29732C77A2C1 /* Pods_TataSantanderBankTestTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +110,11 @@
 		2F20D6F42456CF3000C65B30 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		2F20D6F52456CF3000C65B30 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		2F20D6FA2456CF4200C65B30 /* UserWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorker.swift; sourceTree = "<group>"; };
+		2F20D7002456D07C00C65B30 /* LoginInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorTests.swift; sourceTree = "<group>"; };
+		2F20D7012456D07C00C65B30 /* LoginWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
+		2F20D7022456D07C00C65B30 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		2F20D7032456D07C00C65B30 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
+		2F20D70C2456D08B00C65B30 /* UserServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServiceMock.swift; sourceTree = "<group>"; };
 		976B845E29D72BA0DD15EF33 /* Pods-TataSantanderBankTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TataSantanderBankTestTests.debug.xcconfig"; path = "Target Support Files/Pods-TataSantanderBankTestTests/Pods-TataSantanderBankTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FF4193BAEE76D0B3056400E /* Pods-TataSantanderBankTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TataSantanderBankTestTests.release.xcconfig"; path = "Target Support Files/Pods-TataSantanderBankTestTests/Pods-TataSantanderBankTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		E20C1FFAA87D29732C77A2C1 /* Pods_TataSantanderBankTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TataSantanderBankTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +193,8 @@
 		2F20D6AB2456C5F200C65B30 /* TataSantanderBankTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				2F20D6FE2456D05A00C65B30 /* Mocks */,
+				2F20D6FD2456D04D00C65B30 /* Scenes */,
 				2F20D6AC2456C5F200C65B30 /* TataSantanderBankTestTests.swift */,
 				2F20D6AE2456C5F200C65B30 /* Info.plist */,
 			);
@@ -260,6 +273,33 @@
 				2F20D6FA2456CF4200C65B30 /* UserWorker.swift */,
 			);
 			path = Workers;
+			sourceTree = "<group>";
+		};
+		2F20D6FD2456D04D00C65B30 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2F20D6FF2456D06B00C65B30 /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2F20D6FE2456D05A00C65B30 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2F20D70C2456D08B00C65B30 /* UserServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		2F20D6FF2456D06B00C65B30 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2F20D7002456D07C00C65B30 /* LoginInteractorTests.swift */,
+				2F20D7032456D07C00C65B30 /* LoginPresenterTests.swift */,
+				2F20D7022456D07C00C65B30 /* LoginViewControllerTests.swift */,
+				2F20D7012456D07C00C65B30 /* LoginWorkerTests.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		A7C5C0B4571BEFE8DFFE36F9 /* Pods */ = {
@@ -465,6 +505,7 @@
 				2F20D6C22456CCB600C65B30 /* Float+Extension.swift in Sources */,
 				2F20D6F62456CF3000C65B30 /* UserService.swift in Sources */,
 				2F20D6BF2456CCB600C65B30 /* TextField+Extension.swift in Sources */,
+				2F20D70D2456D08B00C65B30 /* UserServiceMock.swift in Sources */,
 				2F20D6F02456CEF300C65B30 /* LoginResponse.swift in Sources */,
 				2F20D6DF2456CDF100C65B30 /* HomePresenter.swift in Sources */,
 			);
@@ -477,16 +518,21 @@
 				2F20D6FC2456CF4200C65B30 /* UserWorker.swift in Sources */,
 				2F20D6D62456CDDB00C65B30 /* LoginViewController.swift in Sources */,
 				2F20D6E22456CDF100C65B30 /* HomeWorker.swift in Sources */,
+				2F20D7092456D07D00C65B30 /* LoginViewControllerTests.swift in Sources */,
+				2F20D7072456D07D00C65B30 /* LoginWorkerTests.swift in Sources */,
 				2F20D6CE2456CDDB00C65B30 /* LoginPresenter.swift in Sources */,
 				2F20D6D82456CDDB00C65B30 /* LoginInteractor.swift in Sources */,
 				2F20D6D42456CDDB00C65B30 /* LoginModels.swift in Sources */,
+				2F20D70B2456D07D00C65B30 /* LoginPresenterTests.swift in Sources */,
 				2F20D6AD2456C5F200C65B30 /* TataSantanderBankTestTests.swift in Sources */,
+				2F20D70E2456D08B00C65B30 /* UserServiceMock.swift in Sources */,
 				2F20D6F12456CEF300C65B30 /* LoginResponse.swift in Sources */,
 				2F20D6D22456CDDB00C65B30 /* LoginRouter.swift in Sources */,
 				2F20D6EA2456CDF100C65B30 /* HomeInteractor.swift in Sources */,
 				2F20D6D02456CDDB00C65B30 /* LoginWorker.swift in Sources */,
 				2F20D6E02456CDF100C65B30 /* HomePresenter.swift in Sources */,
 				2F20D6E42456CDF100C65B30 /* HomeRouter.swift in Sources */,
+				2F20D7052456D07D00C65B30 /* LoginInteractorTests.swift in Sources */,
 				2F20D6F72456CF3000C65B30 /* UserService.swift in Sources */,
 				2F20D6E62456CDF100C65B30 /* HomeModels.swift in Sources */,
 				2F20D6F32456CEF300C65B30 /* Error.swift in Sources */,
