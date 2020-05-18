@@ -36,8 +36,21 @@ final class LoginPresenter: BasePresenter<LoginView, LoginRouterProtocol, LoginI
         //Interactor call
         if let username =  self.view?.usernameTextfield.text, let password =  self.view?.passwordTextfield.text {
             self.view?.showLoader()
-            self.interactor?.performLogin(username: username, password: password, completion: {(loginInteractorModel : LoginInteractorModel) -> Void in
-                //TODO
+            self.interactor?.performLogin(username: username, password: password, completion: {(loginModelEntity : LoginInteractorModel?, _ error: LoginInteractorError?) -> Void in
+                if let error = error {
+                    switch error {
+                    case .noValidPasswordError:
+                        self.view?.hideLoader()
+                        self.view?.passwordTextfield.setState(state: false)
+                        break
+                    default:
+                        "Found error \(error)".errorLog()
+                        self.view?.hideLoader()
+                        self.view?.handleDefaultError()
+                        break
+                    }
+                }
+                //TODO: handle sucesss and navigate to next screen 
             })
         }
     }

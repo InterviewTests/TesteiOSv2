@@ -159,4 +159,31 @@ extension String {
                 blue: CGFloat(rgbValue & 0x0000FF) / 255.0)
     }
     
+    func hasSpecialCharacters() -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z0-9].*", options: .caseInsensitive)
+            if let _ = regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions.reportCompletion, range: NSMakeRange(0, self.count)) {
+                return true
+            }
+
+        } catch {
+            return false
+        }
+
+        return false
+    }
+    
+    func hasNumberCharacters() -> Bool{
+        let numberRegEx  = ".*[0-9]+.*"
+        let testCase = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        guard testCase.evaluate(with: self) else { return false }
+        return true
+    }
+    
+    func hasUperCaseCharacters() -> Bool {
+        let capitalLetterRegEx  = ".*[A-Z]+.*"
+        let testCase = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        guard testCase.evaluate(with: self) else { return false }
+        return true
+    }
 }

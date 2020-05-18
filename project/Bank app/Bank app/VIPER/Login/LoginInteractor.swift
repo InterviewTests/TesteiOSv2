@@ -13,7 +13,7 @@ protocol LoginInteractorProtocol: AnyObject {
     var loginInteractorModel : LoginInteractorModel? {get set}
     var loginDTO: LoginDTO? {get set}
     
-    func performLogin(username: String, password: String, completion: @escaping(_ loginModelEntity : LoginInteractorModel) -> Void)
+    func performLogin(username: String, password: String, completion: @escaping(_ loginModelEntity : LoginInteractorModel?, _ error: LoginInteractorError?) -> Void)
     
     func cleanup()
 }
@@ -27,11 +27,21 @@ final class LoginInteractor: BaseInteractor<LoginPresenterProtocol>, LoginIntera
         }
     }
     
-    func performLogin(username: String, password: String, completion: @escaping(_ loginModelEntity : LoginInteractorModel) -> Void){
-        //TODO
+    func performLogin(username: String, password: String, completion: @escaping(_ loginModelEntity : LoginInteractorModel?, _ error: LoginInteractorError?) -> Void){
+        if (password.hasNumberCharacters() && password.hasSpecialCharacters() && password.hasUperCaseCharacters()){
+            
+        }else{
+            completion(nil, LoginInteractorError.noValidPasswordError)
+        }
     }
     
     func cleanup(){
         //TODO: add the cleanup to all subscriptions here
     }
+}
+
+
+enum LoginInteractorError{
+    case noValidPasswordError
+    case defaultError
 }

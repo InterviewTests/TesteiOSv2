@@ -12,7 +12,6 @@ import UIKit
 //class that represents the interactor data
 class LoginInteractorModel {
     var idLogin: String?
-    
     init() {
         //TODO
     }
