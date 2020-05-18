@@ -13,6 +13,11 @@ class LoginView: BaseView<LoginPresenterProtocol> {
 
     let screenName = "Login"
     
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var usernameTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initializeUI()
