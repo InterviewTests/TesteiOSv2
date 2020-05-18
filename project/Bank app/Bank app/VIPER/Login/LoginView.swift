@@ -34,6 +34,7 @@ class LoginView: BaseView<LoginPresenterProtocol> {
         self.presenter?.cleanup()
     }
     
+    
 }
 
 // MARK: Extensions declaration of all extension and implementations of protocols 
@@ -50,7 +51,15 @@ extension LoginView: BaseViewControllerRefresh {
     }
     
     func initializeUI() {
-        //TODO: implement all UI Setups
+        self.usernameTextfield.delegate = self
+        self.passwordTextfield.delegate = self
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))))
 
     }
+}
+
+
+extension LoginView : UITextFieldDelegate {
+    //TODO
 }
