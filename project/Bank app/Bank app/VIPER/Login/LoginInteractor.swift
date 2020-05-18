@@ -12,8 +12,9 @@ import UIKit
 protocol LoginInteractorProtocol: AnyObject {
     var loginInteractorModel : LoginInteractorModel? {get set}
     var loginDTO: LoginDTO? {get set}
-
-    func getLoginData(completion: @escaping(_ loginModelEntity : LoginInteractorModel) -> Void)
+    
+    func performLogin(username: String, password: String, completion: @escaping(_ loginModelEntity : LoginInteractorModel) -> Void)
+    
     func cleanup()
 }
 
@@ -26,15 +27,9 @@ final class LoginInteractor: BaseInteractor<LoginPresenterProtocol>, LoginIntera
         }
     }
     
-    func getLoginData(completion: @escaping(_ loginModelEntity : LoginInteractorModel) -> Void) {
-        //TODO: Get data and send response to completion
-        /* example code
-         if let loginInteractorModel = loginInteractorModel {
-            completion(loginInteractorModel)
-         }
-         */
+    func performLogin(username: String, password: String, completion: @escaping(_ loginModelEntity : LoginInteractorModel) -> Void){
+        //TODO
     }
-    
     
     func cleanup(){
         //TODO: add the cleanup to all subscriptions here

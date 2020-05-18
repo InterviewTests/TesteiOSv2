@@ -20,10 +20,13 @@ class LoginView: BaseView<LoginPresenterProtocol> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.initializeUI()
         self.i18N()
-        
-        self.presenter?.loginViewDidLoad()
+    }
+    
+    @IBAction func loginButtonAction(_ sender: Any) {
+        self.presenter?.performLogin()
     }
     
     deinit {
