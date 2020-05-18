@@ -12,20 +12,19 @@
 
 import UIKit
 
-enum AccountDetails
-{
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
+enum AccountDetailsModel {
+    
+    struct AccountDetails: Decodable {
+         var title: String?
+         var desc : String?
+         var date : String?
+         var value : Float?
     }
-    struct Response
-    {
+
+
+    struct RequestAccountDetails: Decodable {
+        let accountDetails: [AccountDetails]?
     }
-    struct ViewModel
-    {
-    }
-  }
+    
+    
 }

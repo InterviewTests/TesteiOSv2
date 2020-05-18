@@ -14,20 +14,24 @@ import UIKit
 
 @objc protocol LoginRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+  func routeToAccountDetails(segue: UIStoryboardSegue?)
 }
 
 protocol LoginDataPassing
 {
-  var dataStore: LoginDataStore? { get }
+    var dataStore: LoginModel.UserModel? { get }
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
+class LoginRouter: NSObject, LoginRoutingLogic
 {
   weak var viewController: LoginViewController?
-  var dataStore: LoginDataStore?
+  var dataStore: LoginModel.UserModel?
   
   // MARK: Routing
+    
+    func routeToAccountDetails(segue: UIStoryboardSegue?) {
+        
+    }
   
   //func routeToSomewhere(segue: UIStoryboardSegue?)
   //{

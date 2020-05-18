@@ -12,9 +12,36 @@
 
 import UIKit
 
-class AccountDetailsWorker
-{
-  func doSomeWork()
-  {
-  }
+protocol AccountDetailsWorkerLogic {
+    func requestStatement(userId: Int, completionSuccess: @escaping ([AccountDetailsModel.AccountDetails]) -> Void, completionError: @escaping (Error) -> Void)
+}
+
+class AccountDetailsWorker : AccountDetailsWorkerLogic{
+
+    func requestStatement(userId: Int, completionSuccess: @escaping ([AccountDetailsModel.AccountDetails]) -> Void, completionError: @escaping (Error) -> Void) {
+         let urlBase = "https://bank-app-test.herokuapp.com/api/statements/\(userId)"
+         guard let url = URL(string: urlBase) else { return }
+         
+         URLSession.shared.dataTask(with: url) { (data, response, error) in
+             if let error = error {
+                 DispatchQueue.main.async {
+                     completionError(error)
+                 }
+             }
+             
+             if let data = data {
+                 do{
+                     let decoder = JSONDecoder()
+                    let decodeData = try decoder.decode(AccountDetailsModel.RequestAccountDetails.self, from: data)
+                     DispatchQueue.main.async {
+                         completionSuccess((decodeData.accountDetails)!)
+                     }
+                 } catch {
+                     print(error)
+                 }
+             }
+         }.resume()
+     }   
+    
+    
 }

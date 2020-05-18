@@ -10,32 +10,91 @@
 //  see http://clean-swift.com
 //
 
+import Foundation
 import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+    func login(user: String, password: String)
 }
 
-protocol LoginDataStore
-{
-  //var name: String { get set }
-}
-
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
+class LoginInteractor: LoginBusinessLogic  {
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorkerLogic?
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    func login(user: String,  password: String) {
+        
+        var error = ""
+        
+        if user.isEmpty {
+            error = "Campo Usuário não pode ser vazio"
+            presenter?.errorMessage(error)
+            return
+        }
+        
+        if password.isEmpty {
+            error = "Campo password não pode ser vazio"
+            presenter?.errorMessage(error)
+            return
+        }
+        
+        if !isValidPassword(password) {
+            error = "Campo Password inválido. Necessário uma letra maiúscula, um caracter especial e um Número"
+            presenter?.errorMessage(error)
+            return
+        }
+        
+        if !isValidEmail(email: user) && !isValidCPF(cpf: user) {
+            error = "Usuário inválido. Preencha e-mail ou CPF corretamente"
+            presenter?.errorMessage(error)
+            return
+        }
+    
+        
+        worker?.requestLogin(completionSuccess: { (response) in
+            self.presenter?.setUserDetails(response)
+            return
+        }, completionError: { (error) in
+            print("error")
+            self.presenter?.errorMessage(error.localizedDescription)
+            return
+        })
+    }
+    
+    func isValidEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    
+    func isValidCPF(cpf : String) -> Bool {
+        let onlyNumbers = cpf.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "-", with: "")
+        let numbers = onlyNumbers.compactMap({ Int(String($0)) })
+        guard numbers.count == 11 && Set(numbers).count != 1 else { return false }
+        func digitCalculator(_ slice: ArraySlice<Int>) -> Int {
+            var number = slice.count + 2
+            let digit = 11 - slice.reduce(into: 0) {
+                number -= 1
+                $0 += $1 * number
+                } % 11
+            return digit > 9 ? 0 : digit
+        }
+        let dv1 = digitCalculator(numbers.prefix(9))
+        let dv2 = digitCalculator(numbers.prefix(10))
+        return dv1 == numbers[9] && dv2 == numbers[10]
+    }
+    
+    
+    func isValidPassword(_ password: String) -> Bool {
+        let passwordRegEx = "^(?=.*[A-Z])(?=.*[@$!%*#?&])(?=.*[a-z0-9])[A-Za-z0-9@$!%*#?&]{3,}$"
+        
+        let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        return passwordTest.evaluate(with: password)
+    }
+    
+    
+    
+    
 }

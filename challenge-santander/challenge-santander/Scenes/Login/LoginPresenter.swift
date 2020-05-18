@@ -9,23 +9,26 @@
 //  you can apply clean architecture to your iOS and Mac projects,
 //  see http://clean-swift.com
 //
-
-import UIKit
+import Foundation
 
 protocol LoginPresentationLogic
 {
-  func presentSomething(response: Login.Something.Response)
+    func errorMessage(_ error: String)
+    func setUserDetails(_ userDetails: LoginModel.UserModel)
 }
 
-class LoginPresenter: LoginPresentationLogic
-{
-  //weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Login.Something.Response)
-  {
-    let viewModel = Login.Something.ViewModel()
-    //viewController?.displaySomething(viewModel: viewModel)
-  }
+class LoginPresenter: LoginPresentationLogic {
+    
+    var userDetails : LoginModel.UserModel?
+    var viewLogin = LoginViewController()
+    
+    func errorMessage(_ error: String) {
+        viewLogin.displayInfoMessage(message: error)
+    }
+    
+    func setUserDetails(_ userDetails: LoginModel.UserModel){
+        self.userDetails = userDetails
+    }
+    
+    
 }

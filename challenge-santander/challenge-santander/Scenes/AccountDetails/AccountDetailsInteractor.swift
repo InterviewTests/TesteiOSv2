@@ -14,28 +14,34 @@ import UIKit
 
 protocol AccountDetailsBusinessLogic
 {
-  func doSomething(request: AccountDetails.Something.Request)
+    func getAccountDetails(userId: Int)
 }
 
 protocol AccountDetailsDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class AccountDetailsInteractor: AccountDetailsBusinessLogic, AccountDetailsDataStore
 {
-  var presenter: AccountDetailsPresentationLogic?
-  var worker: AccountDetailsWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: AccountDetails.Something.Request)
-  {
-    worker = AccountDetailsWorker()
-    worker?.doSomeWork()
+    var presenter: AccountDetailsPresentationLogic?
+    var worker: AccountDetailsWorkerLogic?
     
-    let response = AccountDetails.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    
+    func getAccountDetails(userId: Int) {
+        
+        worker?.requestStatement(userId: userId, completionSuccess: { (response) in
+            self.presenter?.setAccountDetails(accountDetails : response)
+            return
+        }, completionError: { (error) in
+            print("error")
+            self.presenter?.errorMessage(error.localizedDescription)
+            return
+        })
+    }
+    
+    func resumeAccountDetails() {
+        presenter?.getAccountDetails()
+    }
 }
+

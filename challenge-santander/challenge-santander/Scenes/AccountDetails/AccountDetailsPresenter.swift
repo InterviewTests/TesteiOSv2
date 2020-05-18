@@ -14,18 +14,30 @@ import UIKit
 
 protocol AccountDetailsPresentationLogic
 {
-  func presentSomething(response: AccountDetails.Something.Response)
+    func setAccountDetails(accountDetails: [AccountDetailsModel.AccountDetails])
+    func errorMessage(_ error: String)
+    func getAccountDetails()
 }
 
 class AccountDetailsPresenter: AccountDetailsPresentationLogic
 {
-  weak var viewController: AccountDetailsDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: AccountDetails.Something.Response)
-  {
-    let viewModel = AccountDetails.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: AccountDetailsDisplayLogic?
+    var accountDetails : [AccountDetailsModel.AccountDetails]?
+    
+    
+    func setAccountDetails(accountDetails: [AccountDetailsModel.AccountDetails]){
+        self.accountDetails = accountDetails
+    }
+    
+    func errorMessage(_ error: String) {
+        viewController?.displayInfoMessage(message: error)
+    }
+    
+    func getAccountDetails() {
+        viewController?.displayAccountDetails(accountDetails: accountDetails ?? [])
+    }
+    
+    
+    
+    
 }

@@ -10,11 +10,53 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
 
-class LoginWorker
-{
-  func doSomeWork()
-  {
-  }
+protocol LoginWorkerLogic {
+    func requestLogin(completionSuccess: @escaping (LoginModel.UserModel) -> Void, completionError: @escaping (Error) -> Void)
+}
+
+
+class LoginWorker : LoginWorkerLogic {
+    
+    func requestLogin(completionSuccess: @escaping (LoginModel.UserModel) -> Void, completionError: @escaping (Error) -> Void) {
+        
+        let urlBase = "https://bank-app-test.herokuapp.com/api/login"
+        let params : [String:String] = ["user": "test_users", "password": "Test@1"]
+        guard let url = URL(string: urlBase) else {
+            completionError("Invalid static URL" as! Error)
+            return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) else { return }
+        print(httpBody)
+        request.httpBody = httpBody
+        
+        let task = URLSession.init(configuration: .background(withIdentifier: "getUser"))
+        
+        task.dataTask(with: request) { (data, response, error) in
+            
+            print("entra aqui")
+            if let error = error {
+                DispatchQueue.main.async {
+                    completionError(error)
+                }
+            }
+            
+            if let data = data {
+                do{
+                    let decoder = JSONDecoder()
+                    let decodeData = try decoder.decode(LoginModel.ResponseLoginModel.self, from: data)
+                    DispatchQueue.main.async {
+                        completionSuccess((decodeData.userAccount)!)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }.resume()
+    }
+    
 }
