@@ -31,14 +31,12 @@ class LoginWorker : LoginWorkerLogic {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) else { return }
-        print(httpBody)
         request.httpBody = httpBody
         
         let task = URLSession.init(configuration: .background(withIdentifier: "getUser"))
         
         task.dataTask(with: request) { (data, response, error) in
             
-            print("entra aqui")
             if let error = error {
                 DispatchQueue.main.async {
                     completionError(error)
