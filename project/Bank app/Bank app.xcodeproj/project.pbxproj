@@ -47,6 +47,16 @@
 		6D642A6E2472837F00ADCE87 /* CommonDataLayerBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A512472837F00ADCE87 /* CommonDataLayerBaseModel.swift */; };
 		6D642A7424728D1A00ADCE87 /* CDLUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A7224728D1A00ADCE87 /* CDLUserModel.swift */; };
 		6D642A7524728D1A00ADCE87 /* CDLUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A7324728D1A00ADCE87 /* CDLUser.swift */; };
+		6D642A862472AE3200ADCE87 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A7A2472AE3200ADCE87 /* LoginDTO.swift */; };
+		6D642A872472AE3200ADCE87 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A7B2472AE3200ADCE87 /* LoginAssembly.swift */; };
+		6D642A882472AE3200ADCE87 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D642A7D2472AE3200ADCE87 /* LoginView.xib */; };
+		6D642A892472AE3200ADCE87 /* LoginView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D642A7E2472AE3200ADCE87 /* LoginView_iPad.xib */; };
+		6D642A8A2472AE3200ADCE87 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A7F2472AE3200ADCE87 /* LoginView.swift */; };
+		6D642A8B2472AE3200ADCE87 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A802472AE3200ADCE87 /* LoginInteractor.swift */; };
+		6D642A8C2472AE3200ADCE87 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A822472AE3200ADCE87 /* LoginViewModel.swift */; };
+		6D642A8D2472AE3200ADCE87 /* LoginInteractorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A832472AE3200ADCE87 /* LoginInteractorModel.swift */; };
+		6D642A8E2472AE3200ADCE87 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A842472AE3200ADCE87 /* LoginPresenter.swift */; };
+		6D642A8F2472AE3200ADCE87 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642A852472AE3200ADCE87 /* LoginRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +123,16 @@
 		6D642A512472837F00ADCE87 /* CommonDataLayerBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDataLayerBaseModel.swift; sourceTree = "<group>"; };
 		6D642A7224728D1A00ADCE87 /* CDLUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDLUserModel.swift; sourceTree = "<group>"; };
 		6D642A7324728D1A00ADCE87 /* CDLUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDLUser.swift; sourceTree = "<group>"; };
+		6D642A7A2472AE3200ADCE87 /* LoginDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
+		6D642A7B2472AE3200ADCE87 /* LoginAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
+		6D642A7D2472AE3200ADCE87 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		6D642A7E2472AE3200ADCE87 /* LoginView_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView_iPad.xib; sourceTree = "<group>"; };
+		6D642A7F2472AE3200ADCE87 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		6D642A802472AE3200ADCE87 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		6D642A822472AE3200ADCE87 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		6D642A832472AE3200ADCE87 /* LoginInteractorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorModel.swift; sourceTree = "<group>"; };
+		6D642A842472AE3200ADCE87 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		6D642A852472AE3200ADCE87 /* LoginRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +282,7 @@
 		6D642A4B2472837F00ADCE87 /* VIPER */ = {
 			isa = PBXGroup;
 			children = (
+				6D642A782472AE3200ADCE87 /* Login */,
 			);
 			path = VIPER;
 			sourceTree = "<group>";
@@ -286,6 +307,47 @@
 				6D642A7324728D1A00ADCE87 /* CDLUser.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		6D642A782472AE3200ADCE87 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6D642A7C2472AE3200ADCE87 /* XIB */,
+				6D642A792472AE3200ADCE87 /* DTO */,
+				6D642A812472AE3200ADCE87 /* Models */,
+				6D642A7B2472AE3200ADCE87 /* LoginAssembly.swift */,
+				6D642A7F2472AE3200ADCE87 /* LoginView.swift */,
+				6D642A802472AE3200ADCE87 /* LoginInteractor.swift */,
+				6D642A842472AE3200ADCE87 /* LoginPresenter.swift */,
+				6D642A852472AE3200ADCE87 /* LoginRouter.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		6D642A792472AE3200ADCE87 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				6D642A7A2472AE3200ADCE87 /* LoginDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		6D642A7C2472AE3200ADCE87 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				6D642A7D2472AE3200ADCE87 /* LoginView.xib */,
+				6D642A7E2472AE3200ADCE87 /* LoginView_iPad.xib */,
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
+		6D642A812472AE3200ADCE87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6D642A822472AE3200ADCE87 /* LoginViewModel.swift */,
+				6D642A832472AE3200ADCE87 /* LoginInteractorModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +456,8 @@
 			files = (
 				6D642A05247281B300ADCE87 /* LaunchScreen.storyboard in Resources */,
 				6D642A02247281B300ADCE87 /* Assets.xcassets in Resources */,
+				6D642A892472AE3200ADCE87 /* LoginView_iPad.xib in Resources */,
+				6D642A882472AE3200ADCE87 /* LoginView.xib in Resources */,
 				6D6429FD247281B200ADCE87 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,24 +490,31 @@
 				6D642A582472837F00ADCE87 /* Date+Extension.swift in Sources */,
 				6D642A652472837F00ADCE87 /* BaseInteractor.swift in Sources */,
 				6D6429FA247281B200ADCE87 /* ViewController.swift in Sources */,
+				6D642A8F2472AE3200ADCE87 /* LoginRouter.swift in Sources */,
 				6D642A6A2472837F00ADCE87 /* CommonDataLayer.swift in Sources */,
 				6D642A6B2472837F00ADCE87 /* BaseCDL.swift in Sources */,
 				6D642A532472837F00ADCE87 /* BankAppUtils.swift in Sources */,
 				6D642A552472837F00ADCE87 /* UIImageView+Extension.swift in Sources */,
 				6D642A6C2472837F00ADCE87 /* CommonDataLayerEndPoints.swift in Sources */,
 				6D642A592472837F00ADCE87 /* UIButton+Extension.swift in Sources */,
+				6D642A872472AE3200ADCE87 /* LoginAssembly.swift in Sources */,
 				6D642A682472837F00ADCE87 /* BaseRouter.swift in Sources */,
 				6D642A6D2472837F00ADCE87 /* CDLResponse.swift in Sources */,
+				6D642A8A2472AE3200ADCE87 /* LoginView.swift in Sources */,
 				6D642A692472837F00ADCE87 /* BaseView.swift in Sources */,
 				6D642A612472837F00ADCE87 /* String+Extension.swift in Sources */,
 				6D642A662472837F00ADCE87 /* BaseAssembly.swift in Sources */,
 				6D642A602472837F00ADCE87 /* UIViewController+Extension.swift in Sources */,
 				6D642A00247281B200ADCE87 /* Bank_app.xcdatamodeld in Sources */,
 				6D642A622472837F00ADCE87 /* NSMutableAttributedString+Extension.swift in Sources */,
+				6D642A8B2472AE3200ADCE87 /* LoginInteractor.swift in Sources */,
 				6D642A5A2472837F00ADCE87 /* NSObject+Extension.swift in Sources */,
 				6D642A632472837F00ADCE87 /* UINavigationBar+Extension.swift in Sources */,
 				6D642A5B2472837F00ADCE87 /* UIView+Extension.swift in Sources */,
 				6D642A572472837F00ADCE87 /* Int+Extension.swift in Sources */,
+				6D642A8C2472AE3200ADCE87 /* LoginViewModel.swift in Sources */,
+				6D642A862472AE3200ADCE87 /* LoginDTO.swift in Sources */,
+				6D642A8E2472AE3200ADCE87 /* LoginPresenter.swift in Sources */,
 				6D6429F6247281B200ADCE87 /* AppDelegate.swift in Sources */,
 				6D642A7424728D1A00ADCE87 /* CDLUserModel.swift in Sources */,
 				6D642A5D2472837F00ADCE87 /* UINavigationController+Extension.swift in Sources */,
@@ -452,6 +523,7 @@
 				6D642A5C2472837F00ADCE87 /* UIImage+Extension.swift in Sources */,
 				6D642A7524728D1A00ADCE87 /* CDLUser.swift in Sources */,
 				6D6429F8247281B200ADCE87 /* SceneDelegate.swift in Sources */,
+				6D642A8D2472AE3200ADCE87 /* LoginInteractorModel.swift in Sources */,
 				6D642A6E2472837F00ADCE87 /* CommonDataLayerBaseModel.swift in Sources */,
 				6D642A542472837F00ADCE87 /* UIApplication+Extension.swift in Sources */,
 			);

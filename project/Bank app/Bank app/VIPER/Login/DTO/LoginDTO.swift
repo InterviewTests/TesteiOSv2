@@ -1,5 +1,5 @@
 //
-//  BankAppEnums.swift
+//  LoginDTO.swift
 //  Bank app
 //
 //  Created by mmalaqui on 18/05/2020.
@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-public enum XibFile: String {
-    case homeView = "HomeView"
-    case loginView = "LoginView"
+//class that represents the transfer object of Login
+class LoginDTO {
+    //TODO
 }
