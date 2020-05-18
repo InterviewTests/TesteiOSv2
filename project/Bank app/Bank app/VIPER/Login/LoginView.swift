@@ -55,11 +55,17 @@ extension LoginView: BaseViewControllerRefresh {
         self.passwordTextfield.delegate = self
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))))
-
     }
 }
 
 
 extension LoginView : UITextFieldDelegate {
-    //TODO
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == usernameTextfield { // Switch focus to passwordTextfield
+            passwordTextfield.becomeFirstResponder()
+        }
+        return true
+    }
 }
