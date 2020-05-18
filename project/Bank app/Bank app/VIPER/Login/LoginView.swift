@@ -24,7 +24,6 @@ class LoginView: BaseView<LoginPresenterProtocol> {
         self.i18N()
         
         self.presenter?.loginViewDidLoad()
-
     }
     
     deinit {
@@ -42,6 +41,9 @@ extension LoginView: BaseViewControllerRefresh {
     
     func i18N() {
         self.title = "Login"
+        self.loginButton.setTitle("Login.LoginButton".localized, for: .normal)
+        self.usernameTextfield.placeholder = "Login.UsernameTextField".localized
+        self.passwordTextfield.placeholder = "Login.PasswordTextfield".localized
     }
     
     func initializeUI() {
