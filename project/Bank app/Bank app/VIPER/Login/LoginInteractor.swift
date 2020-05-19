@@ -32,12 +32,57 @@ final class LoginInteractor: BaseInteractor<LoginPresenterProtocol>, LoginIntera
         if (password.hasNumberCharacters() && password.hasSpecialCharacters() && password.hasUperCaseCharacters()){
             cdlUser.performLogin(username: username, password: password, subscriber: (
                 InteractorID, { ( response: CDLResponse? ) -> Void in
-                    //TODO
-                    "".infoLog()
+                    
+                    if let cdlResponse = response {
+                        switch cdlResponse {
+                        case .failure(let error):
+                            completion(nil, LoginInteractorError.convertCDLErrorToInteractorError(cdlError: error))
+                            break
+                        case .success(let model):
+                            if let loginCDLModel = model as? CDLUserResponseModel {
+                                if let responseError = loginCDLModel.error, self.isValidError(cdlUserError: responseError) , let errorMessage = responseError.message{
+                                    //has error and needs to be handled
+                                    completion(nil, LoginInteractorError.customServerError(errorMessage))
+                                    return
+                                }
+                                if let userModel = loginCDLModel.userAccount, self.isValidUser(cdlUser: userModel) {
+                                    //is a valid user
+                                    //TODO: save no keychain
+                                    completion(nil, nil)
+                                    return
+                                }
+                                
+                                // error and user objects are not valid
+                                completion(nil, LoginInteractorError.defaultError)
+                                return
+                            }else{
+                                "cdl response is invalid".errorLog()
+                                completion(nil, LoginInteractorError.genericServerError)
+                            }
+                            break
+                        }
+                    }else{
+                        "cdl response is nil".errorLog()
+                        completion(nil, LoginInteractorError.genericServerError)
+                    }
             }))
         }else{
             completion(nil, LoginInteractorError.noValidPasswordError)
         }
+    }
+    
+    private func isValidUser(cdlUser: CDLUserModel) -> Bool{
+        if(cdlUser.id != nil && cdlUser.name != nil && cdlUser.accountNumber != nil && cdlUser.agencyID != nil && cdlUser.balance != nil){
+            return true
+        }
+        return false
+    }
+    
+    private func isValidError(cdlUserError: CDLUserErrorModel) -> Bool {
+        if(cdlUserError.message == nil || cdlUserError.errorCode == nil){
+            return false
+        }
+        return true
     }
     
     func cleanup(){
@@ -48,5 +93,20 @@ final class LoginInteractor: BaseInteractor<LoginPresenterProtocol>, LoginIntera
 
 enum LoginInteractorError{
     case noValidPasswordError
+    case genericServerError
+    case internetError
+    case customServerError(String)
     case defaultError
+    
+    
+    static func convertCDLErrorToInteractorError(cdlError: CDLErrorType) -> LoginInteractorError{
+        switch cdlError {
+        case .internetError:
+            return .internetError
+        default:
+            break
+        }
+        
+        return defaultError
+    }
 }

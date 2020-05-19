@@ -9,7 +9,7 @@ class BaseCDL {
     }
     
     //dataRequest which sends request to given URL and convert to Decodable Object
-    func dataRequest<T: Decodable>(with url: String, objectType: T.Type, httpMethod : httpMethod = .get, parameters : [String: String]? = nil, completion: @escaping (CDLResponse<T>) -> Void) {
+    func dataRequest<T: Decodable>(with url: String, objectType: T.Type, httpMethod : httpMethod = .get, parameters : Data? = nil, completion: @escaping (CDLResponse<T>) -> Void) {
 
         guard let requestURL = URL(string: url) else{
             completion(CDLResponse.failure(CDLErrorType.invalidURLError))
@@ -21,12 +21,7 @@ class BaseCDL {
         request.httpMethod = httpMethod.rawValue
         
         if let parameters = parameters {
-            do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-            } catch let error {
-                completion(CDLResponse.failure(CDLErrorType.invalidParameters))
-                return
-            }
+            request.httpBody = parameters
         }
         
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
@@ -46,6 +41,7 @@ class BaseCDL {
                 // try to decode
                 let decodedObject = try JSONDecoder().decode(objectType.self, from: data)
                 completion(CDLResponse.success(decodedObject))
+                return
             } catch let error {
                 completion(CDLResponse.failure(CDLErrorType.jsonParsingError(error as! DecodingError)))
             }

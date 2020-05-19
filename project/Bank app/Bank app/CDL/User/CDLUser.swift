@@ -17,7 +17,7 @@ class CDLUser : BaseCDL{
     
     func performLogin(username: String, password: String, subscriber: CommonDataLayerSubscriber){
         
-        let parameters = ["user": username, "password": password]
+        let parameters = "user=\(username)&password=\(password)".data(using: .utf8)
             
         self.dataRequest(with: CommonDataLayerEndpointBuilderEnum.postLogin.endpoint, objectType: CDLUserResponseModel.self, httpMethod : .post, parameters: parameters){ (result: CDLResponse) in
                 switch result {

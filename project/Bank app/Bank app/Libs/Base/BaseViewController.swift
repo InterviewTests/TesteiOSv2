@@ -53,6 +53,10 @@ class BaseViewController: UIViewController{
         showAlertWith(title: "BaseViewController.Alert.DefaultTitle".localized, message: "BaseViewController.Alert.DefaultDescription".localized, actions: nil)
     }
     
+    func handleError(message: String){
+        showAlertWith(title: "BaseViewController.Alert.DefaultTitle".localized, message: message, actions: nil)
+    }
+    
     func showAlertWith(title: String, message: String, actions: NSArray?) {
         self.hideLoader()
         

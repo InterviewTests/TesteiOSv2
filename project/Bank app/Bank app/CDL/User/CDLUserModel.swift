@@ -28,6 +28,9 @@ class CDLUserModel : CommonDataLayerBaseModel, Codable{
         case balance = "balance"
     }
     
+    
+
+    
 }
 
 class CDLUserErrorModel: CommonDataLayerBaseModel, Codable {

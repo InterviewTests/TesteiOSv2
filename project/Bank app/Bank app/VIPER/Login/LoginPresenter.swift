@@ -40,13 +40,24 @@ final class LoginPresenter: BasePresenter<LoginView, LoginRouterProtocol, LoginI
                 if let error = error {
                     switch error {
                     case .noValidPasswordError:
-                        self.view?.hideLoader()
-                        self.view?.passwordTextfield.setState(state: false)
+                        DispatchQueue.main.async {
+                            self.view?.hideLoader()
+                            self.view?.passwordTextfield.setState(state: false)
+                        }
+                        break
+                    case .customServerError(let message):
+                        DispatchQueue.main.async {
+                            "Found error \(error)".errorLog()
+                            self.view?.hideLoader()
+                            self.view?.handleError(message: message)
+                        }
                         break
                     default:
-                        "Found error \(error)".errorLog()
-                        self.view?.hideLoader()
-                        self.view?.handleDefaultError()
+                        DispatchQueue.main.async {
+                            "Found error \(error)".errorLog()
+                            self.view?.hideLoader()
+                            self.view?.handleDefaultError()
+                        }
                         break
                     }
                 }
