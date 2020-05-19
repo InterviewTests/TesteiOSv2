@@ -10,12 +10,24 @@ import Foundation
 import UIKit
 
 protocol LoginRouterProtocol: AnyObject {
-    func presentDetailView()
+    func presentDetailView(user: LoginInteractorModel)
 }
 
 final class LoginRouter: BaseRouter<LoginPresenterProtocol, LoginView>, LoginRouterProtocol {
 
-    internal func presentDetailView() {
-        //TODO
+    internal func presentDetailView(user: LoginInteractorModel) {
+
+        let homeDTO = HomeDTO()
+        let homeUser = HomeUserDTO()
+        homeUser.id = user.id
+        homeUser.name = user.name
+        homeUser.accountNumber = user.accountNumber
+        homeUser.agencyID = user.agencyID
+        homeUser.balance = user.balance
+        
+        homeDTO.user = homeUser
+        
+        let homeView = HomeAssembly.homePresenterView(homeDTO: homeDTO)
+        self.present(homeView, animated: true)
     }
 }

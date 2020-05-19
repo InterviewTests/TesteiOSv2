@@ -64,8 +64,7 @@ final class LoginPresenter: BasePresenter<LoginView, LoginRouterProtocol, LoginI
                 if let user = loginInteractorModel{
                     DispatchQueue.main.async {
                         self.view?.hideLoader()
-                        //create DTO and send to detail view 
-                        self.router?.presentDetailView()
+                        self.router?.presentDetailView(user: user)
                     }
                     return
                 }
