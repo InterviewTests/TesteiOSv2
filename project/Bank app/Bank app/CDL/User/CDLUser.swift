@@ -22,6 +22,12 @@ class CDLUser : BaseCDL{
         self.dataRequest(with: CommonDataLayerEndpointBuilderEnum.postLogin.endpoint, objectType: CDLUserResponseModel.self, httpMethod : .post, parameters: parameters){ (result: CDLResponse) in
                 switch result {
                 case .success(let modelToReturn):
+                    
+                    if let user = modelToReturn.userAccount {
+                        CommonDataLayer.shared.saveToCache(cacheID: self.cacheID, model: user)
+
+                    }
+                    
                     let response = CDLResponse.success(modelToReturn as CommonDataLayerBaseModel)
                     subscriber.1(response)
                     break
@@ -32,5 +38,9 @@ class CDLUser : BaseCDL{
                     break
                 }
         }
+    }
+    
+    func getUser()-> CDLUserModel?{
+        return CommonDataLayer.shared.returnFromCache(cacheID: cacheID) as? CDLUserModel
     }
 }

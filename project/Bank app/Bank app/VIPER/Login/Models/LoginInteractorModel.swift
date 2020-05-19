@@ -11,9 +11,18 @@ import UIKit
 
 //class that represents the interactor data
 class LoginInteractorModel {
-    var idLogin: String?
-    init() {
-        //TODO
+    var id : Int?
+    var name : String?
+    var accountNumber : String?
+    var agencyID : String?
+    var balance : Float?
+    
+    init(cdlUser: CDLUserModel) {
+        self.id = cdlUser.id
+        self.name = cdlUser.name
+        self.accountNumber = cdlUser.accountNumber
+        self.agencyID = cdlUser.agencyID
+        self.balance = cdlUser.balance
     }
     
     init(loginDTO: LoginDTO?){

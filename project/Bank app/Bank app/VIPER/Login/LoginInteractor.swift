@@ -28,7 +28,7 @@ final class LoginInteractor: BaseInteractor<LoginPresenterProtocol>, LoginIntera
     }
     var cdlUser = CDLUser()
     
-    func performLogin(username: String, password: String, completion: @escaping(_ loginModelEntity : LoginInteractorModel?, _ error: LoginInteractorError?) -> Void){
+    func performLogin(username: String, password: String, completion: @escaping(_ loginSuccess : LoginInteractorModel?, _ error: LoginInteractorError?) -> Void){
         if (password.hasNumberCharacters() && password.hasSpecialCharacters() && password.hasUperCaseCharacters()){
             cdlUser.performLogin(username: username, password: password, subscriber: (
                 InteractorID, { ( response: CDLResponse? ) -> Void in
@@ -48,7 +48,8 @@ final class LoginInteractor: BaseInteractor<LoginPresenterProtocol>, LoginIntera
                                 if let userModel = loginCDLModel.userAccount, self.isValidUser(cdlUser: userModel) {
                                     //is a valid user
                                     //TODO: save no keychain
-                                    completion(nil, nil)
+                                    self.loginInteractorModel = LoginInteractorModel(cdlUser: userModel)
+                                    completion(self.loginInteractorModel, nil)
                                     return
                                 }
                                 
