@@ -36,7 +36,7 @@ final class LoginPresenter: BasePresenter<LoginView, LoginRouterProtocol, LoginI
         //Interactor call
         if let username =  self.view?.usernameTextfield.text, let password =  self.view?.passwordTextfield.text {
             self.view?.showLoader()
-            self.interactor?.performLogin(username: username, password: password, completion: {(loginModelEntity : LoginInteractorModel?, _ error: LoginInteractorError?) -> Void in
+            self.interactor?.performLogin(username: username, password: password, completion: {(loginInteractorModel : LoginInteractorModel?, _ error: LoginInteractorError?) -> Void in
                 if let error = error {
                     switch error {
                     case .noValidPasswordError:
@@ -47,7 +47,6 @@ final class LoginPresenter: BasePresenter<LoginView, LoginRouterProtocol, LoginI
                         break
                     case .customServerError(let message):
                         DispatchQueue.main.async {
-                            "Found error \(error)".errorLog()
                             self.view?.hideLoader()
                             self.view?.handleError(message: message)
                         }
@@ -60,8 +59,21 @@ final class LoginPresenter: BasePresenter<LoginView, LoginRouterProtocol, LoginI
                         }
                         break
                     }
+                    return
                 }
-                //TODO: handle sucesss and navigate to next screen 
+                if let user = loginInteractorModel{
+                    DispatchQueue.main.async {
+                        self.view?.hideLoader()
+                        self.router?.presentDetailView()
+                    }
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    "error and user are nil".errorLog()
+                    self.view?.hideLoader()
+                    self.view?.handleDefaultError()
+                }
             })
         }
     }

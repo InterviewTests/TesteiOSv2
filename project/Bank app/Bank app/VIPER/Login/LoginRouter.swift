@@ -16,6 +16,6 @@ protocol LoginRouterProtocol: AnyObject {
 final class LoginRouter: BaseRouter<LoginPresenterProtocol, LoginView>, LoginRouterProtocol {
 
     internal func presentDetailView() {
-        
+        //TODO
     }
 }
