@@ -28,6 +28,8 @@ final class LoginRouter: BaseRouter<LoginPresenterProtocol, LoginView>, LoginRou
         homeDTO.user = homeUser
         
         let homeView = HomeAssembly.homePresenterView(homeDTO: homeDTO)
+        homeView.modalPresentationStyle = .fullScreen
+        
         self.present(homeView, animated: true)
     }
 }
