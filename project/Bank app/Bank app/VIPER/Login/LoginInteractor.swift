@@ -26,17 +26,22 @@ final class LoginInteractor: BaseInteractor<LoginPresenterProtocol>, LoginIntera
             self.loginInteractorModel = LoginInteractorModel(loginDTO: loginDTO)
         }
     }
+    var cdlUser = CDLUser()
     
     func performLogin(username: String, password: String, completion: @escaping(_ loginModelEntity : LoginInteractorModel?, _ error: LoginInteractorError?) -> Void){
         if (password.hasNumberCharacters() && password.hasSpecialCharacters() && password.hasUperCaseCharacters()){
-            
+            cdlUser.performLogin(username: username, password: password, subscriber: (
+                InteractorID, { ( response: CDLResponse? ) -> Void in
+                    //TODO
+                    "".infoLog()
+            }))
         }else{
             completion(nil, LoginInteractorError.noValidPasswordError)
         }
     }
     
     func cleanup(){
-        //TODO: add the cleanup to all subscriptions here
+        cdlUser.cleanup(subscriberID: InteractorID)
     }
 }
 

@@ -12,7 +12,7 @@ import Foundation
 enum CommonDataLayerEndpointBuilderEnum{
     
     //TODO: add all endpoints here
-    case getDummy(ID : String)
+    case postLogin
     
     
     /**
@@ -21,8 +21,8 @@ enum CommonDataLayerEndpointBuilderEnum{
      */
     var endpoint : String{
         switch self {
-        case .getDummy(let ID):
-            return "\(BankAppUtils.baseURL)\(ID)"
+        case .postLogin:
+            return "\(BankAppUtils.baseURL)login"
         default:
             return ""
         }

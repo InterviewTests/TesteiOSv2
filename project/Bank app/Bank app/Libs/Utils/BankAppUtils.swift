@@ -21,6 +21,5 @@ class BankAppUtils {
     }
     
     
-    //TODO: Replace Dummy url
-    static var baseURL = "https://jsonplaceholder.typicode.com/todos/"
+    static var baseURL = "https://bank-app-test.herokuapp.com/api/"
 }
