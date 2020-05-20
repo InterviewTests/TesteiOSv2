@@ -20,6 +20,8 @@ class HomeView: BaseView<HomePresenterProtocol>, UITableViewDataSource, UITableV
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var balanceValueLabel: UILabel!
     
+    @IBOutlet weak var noResultLabel: UILabel!
+    
     @IBOutlet weak var tableview: UITableView!
     
     override func viewDidLoad() {
@@ -67,6 +69,8 @@ extension HomeView: BaseViewControllerRefresh {
         self.title = "Home"
         self.accountLabel.text = "Home.AccountLabel".localized
         self.balanceLabel.text = "Home.BalanceLabel".localized
+        self.noResultLabel.text = "Home.NoResultLabel".localized
+        self.noResultLabel.alpha = 0 
     }
     
     func initializeUI() {

@@ -20,19 +20,24 @@ final class HomePresenter: BasePresenter<HomeView, HomeRouterProtocol, HomeInter
     
 
     func homeViewDidLoad() {
+        self.view?.showLoader()
         self.interactor?.getHomeData(completion: { (_ homeInteractorModel:HomeInteractorModel) -> Void in
             self.viewModel = HomeViewModel(homeInteractorModel: homeInteractorModel)
-            //Update header section
-            self.view?.accountNumberLabel.text = self.viewModel?.user?.accountNumber
-            if let balance = self.viewModel?.user?.balance?.formatCurrency() {
-                self.view?.balanceValueLabel.text = balance
-            }else{
-                self.view?.balanceValueLabel.text = "-" // default display value in case of a error
+            DispatchQueue.main.async {
+                //Update header section
+                self.view?.accountNumberLabel.text = self.viewModel?.user?.accountNumber
+                if let balance = self.viewModel?.user?.balance?.formatCurrency() {
+                    self.view?.balanceValueLabel.text = balance
+                }else{
+                    self.view?.balanceValueLabel.text = "-" // default display value in case of a error
+                }
+                self.view?.usernameLabel.text = self.viewModel?.user?.name
+                
+                //Update list
+                self.view?.tableview?.reloadData()
+                
+                self.view?.hideLoader()
             }
-            self.view?.usernameLabel.text = self.viewModel?.user?.name
-            
-            //Update list
-            self.view?.tableview?.reloadData()
         })
         
     }

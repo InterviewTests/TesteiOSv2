@@ -15,6 +15,7 @@
                 <outlet property="balanceLabel" destination="u9i-r9-cdM" id="XOd-TU-nid"/>
                 <outlet property="balanceValueLabel" destination="Og7-YF-WzM" id="apz-hg-JEC"/>
                 <outlet property="logoutButton" destination="p4t-2b-5xB" id="7dq-fA-vCU"/>
+                <outlet property="noResultLabel" destination="MXc-cs-M3m" id="WVN-iv-auj"/>
                 <outlet property="tableview" destination="dKU-oW-NCP" id="lnJ-dr-ZZe"/>
                 <outlet property="usernameLabel" destination="HuD-Rx-hdU" id="uti-Sp-ULT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="x4H-ry-a8n"/>
@@ -32,7 +33,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTw-gT-pYF">
                     <rect key="frame" x="0.0" y="44" width="375" height="220"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marco Moreira" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="HuD-Rx-hdU">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="HuD-Rx-hdU">
                             <rect key="frame" x="18" y="20" width="294" height="30"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                             <color key="textColor" name="thirdTextColor"/>
@@ -56,19 +57,19 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9i-r9-cdM">
-                            <rect key="frame" x="18" y="148" width="31" height="14"/>
+                            <rect key="frame" x="18" y="147.33333333333334" width="31" height="14"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                             <color key="textColor" name="thirdTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADu-ar-gCr">
-                            <rect key="frame" x="18" y="98" width="339" height="30"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADu-ar-gCr">
+                            <rect key="frame" x="18" y="98" width="339" height="29.333333333333329"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                             <color key="textColor" name="thirdTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 123456789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og7-YF-WzM">
-                            <rect key="frame" x="18" y="168" width="339" height="30"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og7-YF-WzM">
+                            <rect key="frame" x="18" y="167.33333333333334" width="339" height="30"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                             <color key="textColor" name="thirdTextColor"/>
                             <nil key="highlightedColor"/>
@@ -94,6 +95,12 @@
                         <constraint firstItem="u9i-r9-cdM" firstAttribute="leading" secondItem="mTw-gT-pYF" secondAttribute="leading" constant="18" id="xuH-QT-gxI"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sem Resultados" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXc-cs-M3m">
+                    <rect key="frame" x="25" y="289" width="325" height="464"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                    <color key="textColor" name="primaryTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dKU-oW-NCP">
                     <rect key="frame" x="0.0" y="264" width="375" height="548"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -102,6 +109,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="mTw-gT-pYF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2YA-Eb-rBc"/>
+                <constraint firstItem="MXc-cs-M3m" firstAttribute="top" secondItem="mTw-gT-pYF" secondAttribute="bottom" constant="25" id="38V-be-dn8"/>
                 <constraint firstItem="Fuj-oU-Dd1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3XO-Wp-E2b"/>
                 <constraint firstItem="dKU-oW-NCP" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Ebl-O1-UFh"/>
                 <constraint firstItem="dKU-oW-NCP" firstAttribute="top" secondItem="mTw-gT-pYF" secondAttribute="bottom" id="G6x-ER-HGA"/>
@@ -109,9 +117,12 @@
                 <constraint firstItem="mTw-gT-pYF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MGy-SG-Ux6"/>
                 <constraint firstItem="Fuj-oU-Dd1" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="TEC-yj-Kjj"/>
                 <constraint firstItem="mTw-gT-pYF" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="UtU-ir-zbY"/>
+                <constraint firstItem="MXc-cs-M3m" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="Vge-4z-D1k"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="MXc-cs-M3m" secondAttribute="bottom" constant="25" id="cZ0-fp-53k"/>
                 <constraint firstItem="Fuj-oU-Dd1" firstAttribute="bottom" secondItem="mTw-gT-pYF" secondAttribute="bottom" id="hUf-Wk-eG9"/>
                 <constraint firstAttribute="bottom" secondItem="dKU-oW-NCP" secondAttribute="bottom" id="s4c-BH-mJ2"/>
                 <constraint firstItem="dKU-oW-NCP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uwF-sZ-4d9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MXc-cs-M3m" secondAttribute="trailing" constant="25" id="ym8-lw-LHu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="140" y="153.69458128078819"/>
@@ -121,6 +132,9 @@
         <image name="icon_logout" width="9" height="9"/>
         <namedColor name="primaryColor">
             <color red="0.23137254901960785" green="0.28235294117647058" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryTextColor">
+            <color red="0.28235294117647058" green="0.32941176470588235" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="thirdTextColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
