@@ -12,6 +12,8 @@ import UIKit
 protocol LoginPresenterProtocol: AnyObject {
     var viewModel: LoginViewModel? { get set }
     func performLogin()
+    func updateViewModel(password: String? , username: String?)
+    func viewDidLoad()
     func cleanup()
 }
 
@@ -75,6 +77,22 @@ final class LoginPresenter: BasePresenter<LoginView, LoginRouterProtocol, LoginI
                     self.view?.handleDefaultError()
                 }
             })
+        }
+    }
+    
+    func updateViewModel(password: String? , username: String?){
+        if let password = password, let username = username {
+            self.viewModel = LoginViewModel()
+            self.viewModel?.username = username
+            self.viewModel?.password = password
+        }
+    }
+    
+    func viewDidLoad(){
+        if let viewModel = self.viewModel{
+            self.view?.usernameTextfield.text = viewModel.username
+            self.view?.passwordTextfield.text = viewModel.password
+
         }
     }
     

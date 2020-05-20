@@ -23,7 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enableAutoToolbar = false
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let login = LoginAssembly.loginPresenterView()
+        
+        var loginDTO : LoginDTO? = nil
+        if let password = KeychainUtils.shared.getPassword(), let username = KeychainUtils.shared.getUsername(){
+            loginDTO = LoginDTO()
+            loginDTO?.username = username
+            loginDTO?.password = password
+        }
+        
+        let login = LoginAssembly.loginPresenterView(loginDTO: loginDTO)
         self.window?.rootViewController = login
         self.window?.makeKeyAndVisible()
         

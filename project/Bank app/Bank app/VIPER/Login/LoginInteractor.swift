@@ -23,7 +23,7 @@ final class LoginInteractor: BaseInteractor<LoginPresenterProtocol>, LoginIntera
     var loginInteractorModel : LoginInteractorModel?
     var loginDTO: LoginDTO? {
         didSet{
-            self.loginInteractorModel = LoginInteractorModel(loginDTO: loginDTO)
+            self.presenter?.updateViewModel(password: loginDTO?.password, username: loginDTO?.username)
         }
     }
     var cdlUser = CDLUser()

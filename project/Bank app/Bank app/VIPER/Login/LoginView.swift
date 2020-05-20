@@ -23,6 +23,7 @@ class LoginView: BaseView<LoginPresenterProtocol> {
         
         self.initializeUI()
         self.i18N()
+        self.presenter?.viewDidLoad()
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {

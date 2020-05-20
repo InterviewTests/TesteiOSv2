@@ -11,5 +11,6 @@ import UIKit
 
 //class that represents the transfer object of Login
 class LoginDTO {
-    //TODO
+    var username : String?
+    var password : String?
 }
