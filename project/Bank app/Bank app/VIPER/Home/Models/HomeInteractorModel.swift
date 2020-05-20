@@ -14,6 +14,8 @@ class HomeInteractorModel {
     var idHome: String?
     var user : HomeUserInteractorModel?
     
+    var error: HomeInteractorError?
+    
     init() {
         //TODO
     }
@@ -35,4 +37,33 @@ class HomeUserInteractorModel {
     var accountNumber : String?
     var agencyID : String?
     var balance : Float?
+}
+
+
+class HomeStatementInteractorModel {
+    var title : String?
+    var desc : String?
+    var date : Date?
+    var value : Float?
+}
+
+
+enum HomeInteractorError{
+    case noUserError
+    case genericServerError
+    case internetError
+    case customServerError(String)
+    case defaultError
+    
+    
+    static func convertCDLErrorToInteractorError(cdlError: CDLErrorType) -> HomeInteractorError{
+        switch cdlError {
+        case .internetError:
+            return .internetError
+        default:
+            break
+        }
+        
+        return defaultError
+    }
 }

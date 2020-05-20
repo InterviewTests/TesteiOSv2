@@ -15,7 +15,7 @@ class CDLStatements : BaseCDL{
         cacheID = "CDLStatements"
     }
     
-    func getStatements(subscriber: CommonDataLayerSubscriber, userID: String){
+    func getStatements(subscriber: CommonDataLayerSubscriber, userID: Int){
         
         self.dataRequest(with: CommonDataLayerEndpointBuilderEnum.getStatements(userID: userID).endpoint, objectType: CDLStatementsModel.self, httpMethod : .get){ (result: CDLResponse) in
                 switch result {

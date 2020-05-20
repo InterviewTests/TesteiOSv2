@@ -13,7 +13,7 @@ enum CommonDataLayerEndpointBuilderEnum{
     
     //TODO: add all endpoints here
     case postLogin
-    case getStatements(userID : String)
+    case getStatements(userID : Int)
     
     /**
      This property returns the String of the endpoint with all the arguments

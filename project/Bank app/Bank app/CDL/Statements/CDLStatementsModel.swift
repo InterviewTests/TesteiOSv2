@@ -18,7 +18,7 @@ class CDLStatementsModel : CommonDataLayerBaseModel, Codable{
     }
     //enum to match model properties and JSON names
     enum CodingKeys: String, CodingKey {
-        case id = "ID"
+        case statementList = "statementList"
     }
     
 }

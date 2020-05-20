@@ -26,17 +26,32 @@ final class HomeInteractor: BaseInteractor<HomePresenterProtocol>, HomeInteracto
         }
     }
     
+    var cdlStatements = CDLStatements()
+    
     func getHomeData(completion: @escaping(_ homeModelEntity : HomeInteractorModel) -> Void) {
-        //TODO: Get data and send response to completion
-        
          if let homeInteractorModel = homeInteractorModel {
-            completion(homeInteractorModel)
-         }
-         
+            if let userID = homeInteractorModel.user?.id {
+                cdlStatements.getStatements(subscriber : (self.InteractorID, { ( response: CDLResponse? ) -> Void in
+                        //TODO
+                    completion(homeInteractorModel)
+                    return
+                }), userID: userID)
+
+            }else{
+                self.homeInteractorModel?.error = .noUserError
+                completion(homeInteractorModel)
+                return
+            }
+         }else{
+            self.homeInteractorModel = HomeInteractorModel()
+            self.homeInteractorModel?.error = .noUserError
+            completion(self.homeInteractorModel!)
+            return
+        }
     }
     
     
     func cleanup(){
-        //TODO: add the cleanup to all subscriptions here
+        cdlStatements.cleanup(subscriberID: InteractorID)
     }
 }
