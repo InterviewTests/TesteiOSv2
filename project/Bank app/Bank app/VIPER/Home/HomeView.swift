@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class HomeView: BaseView<HomePresenterProtocol> {
+class HomeView: BaseView<HomePresenterProtocol>, UITableViewDataSource, UITableViewDelegate {
 
     let screenName = "Home"
     
@@ -36,6 +36,20 @@ class HomeView: BaseView<HomePresenterProtocol> {
     }
     
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //TODO
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //TODO: setup
+        let cell = tableView.dequeueReusableCell(with: HomeTableViewCell.self, for: indexPath)
+        return cell
+    }
+    
+    
+    
     deinit {
         //clean all references
         self.presenter?.cleanup()
@@ -56,7 +70,9 @@ extension HomeView: BaseViewControllerRefresh {
     }
     
     func initializeUI() {
-        //TODO: implement all UI Setups
-
+        self.tableview.dataSource = self
+        self.tableview.delegate = self
+        
+        self.tableview.register(cellType: HomeTableViewCell.self)
     }
 }

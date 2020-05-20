@@ -71,6 +71,9 @@
 		6D642AAD2474125500ADCE87 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642AA32474125400ADCE87 /* HomePresenter.swift */; };
 		6D642AB32474480900ADCE87 /* KeychainUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642AB22474480900ADCE87 /* KeychainUtils.swift */; };
 		6D642AB5247558E400ADCE87 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642AB4247558E400ADCE87 /* Float+Extension.swift */; };
+		6D642ABA2475631A00ADCE87 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642AB82475631A00ADCE87 /* HomeTableViewCell.swift */; };
+		6D642ABB2475631A00ADCE87 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D642AB92475631A00ADCE87 /* HomeTableViewCell.xib */; };
+		6D642ABD247566AB00ADCE87 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642ABC247566AB00ADCE87 /* UITableView+Extension.swift */; };
 		99DF049640DEF40D7E1B7302 /* Pods_Bank_app_Bank_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBCE940D00E61382B94628C /* Pods_Bank_app_Bank_appUITests.framework */; };
 		AC2A0D79E251D3F6EA80EAA4 /* Pods_Bank_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7268A0F6A60F74EC64342 /* Pods_Bank_appTests.framework */; };
 /* End PBXBuildFile section */
@@ -165,6 +168,9 @@
 		6D642AA32474125400ADCE87 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		6D642AB22474480900ADCE87 /* KeychainUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUtils.swift; sourceTree = "<group>"; };
 		6D642AB4247558E400ADCE87 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		6D642AB82475631A00ADCE87 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		6D642AB92475631A00ADCE87 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		6D642ABC247566AB00ADCE87 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		740D734479563D17C2136454 /* Pods-Bank appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank appTests.release.xcconfig"; path = "Target Support Files/Pods-Bank appTests/Pods-Bank appTests.release.xcconfig"; sourceTree = "<group>"; };
 		76EDDF3CE94057B3902FF024 /* Pods-Bank app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank app.release.xcconfig"; path = "Target Support Files/Pods-Bank app/Pods-Bank app.release.xcconfig"; sourceTree = "<group>"; };
 		9660966422D0B119710B3410 /* Pods-Bank appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank appTests.debug.xcconfig"; path = "Target Support Files/Pods-Bank appTests/Pods-Bank appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -300,6 +306,7 @@
 		6D642A332472837F00ADCE87 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6D642ABC247566AB00ADCE87 /* UITableView+Extension.swift */,
 				6D642A342472837F00ADCE87 /* UIApplication+Extension.swift */,
 				6D642A352472837F00ADCE87 /* UIImageView+Extension.swift */,
 				6D642A362472837F00ADCE87 /* UIAlertController+Extension.swift */,
@@ -435,6 +442,8 @@
 			children = (
 				6D642A9A2474125400ADCE87 /* HomeView.xib */,
 				6D642A9B2474125400ADCE87 /* HomeView_iPad.xib */,
+				6D642AB82475631A00ADCE87 /* HomeTableViewCell.swift */,
+				6D642AB92475631A00ADCE87 /* HomeTableViewCell.xib */,
 			);
 			path = XIB;
 			sourceTree = "<group>";
@@ -574,6 +583,7 @@
 				6D642A05247281B300ADCE87 /* LaunchScreen.storyboard in Resources */,
 				6D642A912472CF0200ADCE87 /* Localizable.strings in Resources */,
 				6D642AA62474125500ADCE87 /* HomeView_iPad.xib in Resources */,
+				6D642ABB2475631A00ADCE87 /* HomeTableViewCell.xib in Resources */,
 				6D642A02247281B300ADCE87 /* Assets.xcassets in Resources */,
 				6D642A892472AE3200ADCE87 /* LoginView_iPad.xib in Resources */,
 				6D642A882472AE3200ADCE87 /* LoginView.xib in Resources */,
@@ -727,6 +737,7 @@
 				6D642A692472837F00ADCE87 /* BaseView.swift in Sources */,
 				6D642AAA2474125500ADCE87 /* HomeViewModel.swift in Sources */,
 				6D642A612472837F00ADCE87 /* String+Extension.swift in Sources */,
+				6D642ABD247566AB00ADCE87 /* UITableView+Extension.swift in Sources */,
 				6D642A662472837F00ADCE87 /* BaseAssembly.swift in Sources */,
 				6D642A602472837F00ADCE87 /* UIViewController+Extension.swift in Sources */,
 				6D642A00247281B200ADCE87 /* Bank_app.xcdatamodeld in Sources */,
@@ -747,6 +758,7 @@
 				6D642A5D2472837F00ADCE87 /* UINavigationController+Extension.swift in Sources */,
 				6D642AAC2474125500ADCE87 /* HomeRouter.swift in Sources */,
 				6D642A672472837F00ADCE87 /* BasePresenter.swift in Sources */,
+				6D642ABA2475631A00ADCE87 /* HomeTableViewCell.swift in Sources */,
 				6D642A522472837F00ADCE87 /* BankAppEnums.swift in Sources */,
 				6D642A5C2472837F00ADCE87 /* UIImage+Extension.swift in Sources */,
 				6D642AB32474480900ADCE87 /* KeychainUtils.swift in Sources */,
