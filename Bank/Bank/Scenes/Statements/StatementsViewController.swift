@@ -66,7 +66,7 @@ class StatementsViewController: BaseViewController {
     func setupHeader() {
         headerView = UIView.fromNib()
         tableView.tableHeaderView = headerView
-        tableView.setHeightTableHeaderView(height: 192.0)
+        tableView.setHeightTableHeaderView(height: 222.0)
     }
 }
 

@@ -48,9 +48,19 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginButton.layer.cornerRadius = loginButton.frame.height * 0.10
+        loginButton.layer.cornerRadius = 4.0
         interactor?.getUserData(request: Login.Request(user: User()))
         keyboard()
+        setupTextField(textField: userTextField)
+        setupTextField(textField: passwordTextField)
+    }
+    
+    func setupTextField(textField: UITextField) {
+        textField.layer.borderWidth = 1.0
+        textField.layer.cornerRadius = 4.0
+        textField.textColor = UIColor(hex6: 0xA8B4C4)
+        textField.layer.borderColor = UIColor(hex6: 0xDCE2EE).cgColor
+        textField.layer.backgroundColor = UIColor(hex6: 0xFFFFFF).cgColor
     }
     
     func keyboard() {

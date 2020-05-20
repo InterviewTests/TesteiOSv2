@@ -16,7 +16,7 @@ class BaseViewController: UIViewController {
             IHProgressHUD.set(defaultMaskType: .black)
             IHProgressHUD.show()
             IHProgressHUD.set(viewForExtension: self.view)
-            IHProgressHUD.set(foregroundColor: UIColor(hex6: 0x3F40EE))
+            IHProgressHUD.set(foregroundColor: UIColor(hex6: 0x3B49EE))
         }
     }
     
