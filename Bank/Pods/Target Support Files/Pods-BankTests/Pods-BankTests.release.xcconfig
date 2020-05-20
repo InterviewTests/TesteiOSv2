@@ -1,0 +1,9 @@
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/AlamofireNetworkActivityLogger" "${PODS_CONFIGURATION_BUILD_DIR}/IHProgressHUD" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainSwift" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/IHProgressHUD/IHProgressHUD.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainSwift/KeychainSwift.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "AlamofireNetworkActivityLogger" -framework "IHProgressHUD" -framework "KeychainSwift" -framework "QuartzCore" -framework "SwiftMessages" -framework "UIKit"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
+USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

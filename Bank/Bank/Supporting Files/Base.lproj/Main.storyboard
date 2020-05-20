@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7n5-Fd-Jq6">
+                                <rect key="frame" x="70" y="678" width="235" height="50"/>
+                                <color key="backgroundColor" red="0.24705882352941178" green="0.25098039215686274" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="g8m-U6-bzV"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pLB-Cl-4TV"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO_BANK" translatesAutoresizingMaskIntoConstraints="NO" id="FeQ-s0-zh5">
+                                <rect key="frame" x="80" y="84" width="215" height="64"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SMv-57-KDW">
+                                <rect key="frame" x="16" y="339" width="343" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Fxg-B3-XhM"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3cQ-WL-zUu">
+                                <rect key="frame" x="16" y="393" width="343" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="voR-e0-oXd"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SMv-57-KDW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="2Pc-7S-ScW"/>
+                            <constraint firstItem="FeQ-s0-zh5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Ci4-gw-bJc"/>
+                            <constraint firstItem="FeQ-s0-zh5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="Jdu-6z-N8H"/>
+                            <constraint firstItem="3cQ-WL-zUu" firstAttribute="top" secondItem="SMv-57-KDW" secondAttribute="bottom" constant="20" id="LlM-Q2-yUa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SMv-57-KDW" secondAttribute="trailing" constant="16" id="Nf4-Tb-F58"/>
+                            <constraint firstItem="3cQ-WL-zUu" firstAttribute="leading" secondItem="SMv-57-KDW" secondAttribute="leading" id="Rff-9B-ECg"/>
+                            <constraint firstItem="7n5-Fd-Jq6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="az5-f3-k3p"/>
+                            <constraint firstItem="7n5-Fd-Jq6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="doy-k6-xva"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7n5-Fd-Jq6" secondAttribute="trailing" constant="70" id="l6n-im-8OF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7n5-Fd-Jq6" secondAttribute="bottom" constant="50" id="smn-R3-PcK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FeQ-s0-zh5" secondAttribute="trailing" constant="80" id="tZU-xe-FIJ"/>
+                            <constraint firstItem="SMv-57-KDW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ugl-mM-gnn"/>
+                            <constraint firstItem="3cQ-WL-zUu" firstAttribute="trailing" secondItem="SMv-57-KDW" secondAttribute="trailing" id="uw2-kl-Xdg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="7n5-Fd-Jq6" id="Fn0-On-9bY"/>
+                        <outlet property="passwordTextField" destination="3cQ-WL-zUu" id="m6i-3V-ZWn"/>
+                        <outlet property="userTextField" destination="SMv-57-KDW" id="Xuf-WQ-JO1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="138"/>
+        </scene>
+        <!--Statements View Controller-->
+        <scene sceneID="aNR-hd-vyB">
+            <objects>
+                <viewController storyboardIdentifier="StatementsViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wXd-ib-qrI" customClass="StatementsViewController" customModule="Bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fvm-y2-ayT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ufo-wg-hsi">
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2470588235" green="0.25098039220000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Ufo-wg-hsi" firstAttribute="top" secondItem="GeU-IR-oZ5" secondAttribute="top" id="Sif-ca-02f"/>
+                            <constraint firstItem="Ufo-wg-hsi" firstAttribute="leading" secondItem="GeU-IR-oZ5" secondAttribute="leading" id="VwX-Z7-vyh"/>
+                            <constraint firstItem="GeU-IR-oZ5" firstAttribute="trailing" secondItem="Ufo-wg-hsi" secondAttribute="trailing" id="kG5-eW-DAb"/>
+                            <constraint firstAttribute="bottom" secondItem="Ufo-wg-hsi" secondAttribute="bottom" id="xpR-TS-U3H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GeU-IR-oZ5"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Ufo-wg-hsi" id="tam-cD-3dc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Q8-O2-BhH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1034.4000000000001" y="136.69950738916256"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LOGO_BANK" width="112" height="64"/>
+    </resources>
+</document>
