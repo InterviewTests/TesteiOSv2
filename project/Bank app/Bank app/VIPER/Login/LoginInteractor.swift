@@ -47,7 +47,14 @@ final class LoginInteractor: BaseInteractor<LoginPresenterProtocol>, LoginIntera
                                 }
                                 if let userModel = loginCDLModel.userAccount, self.isValidUser(cdlUser: userModel) {
                                     //is a valid user
-                                    //TODO: save no keychain
+                                    //clear old keychain values
+                                    KeychainUtils.shared.deletePassword()
+                                    KeychainUtils.shared.deleteUsername()
+                                    
+                                    //save new keychain values
+                                    _ = KeychainUtils.shared.savePassword(password: password)
+                                    _ = KeychainUtils.shared.saveUsername(username: username)
+                                    
                                     self.loginInteractorModel = LoginInteractorModel(cdlUser: userModel)
                                     completion(self.loginInteractorModel, nil)
                                     return
