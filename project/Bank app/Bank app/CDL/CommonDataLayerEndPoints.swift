@@ -13,7 +13,7 @@ enum CommonDataLayerEndpointBuilderEnum{
     
     //TODO: add all endpoints here
     case postLogin
-    
+    case getStatements(userID : String)
     
     /**
      This property returns the String of the endpoint with all the arguments
@@ -23,6 +23,8 @@ enum CommonDataLayerEndpointBuilderEnum{
         switch self {
         case .postLogin:
             return "\(BankAppUtils.baseURL)login"
+        case .getStatements(let userID):
+            return "\(BankAppUtils.baseURL)statements/\(userID)"
         default:
             return ""
         }

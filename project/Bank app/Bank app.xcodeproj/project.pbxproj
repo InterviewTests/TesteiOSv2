@@ -74,6 +74,8 @@
 		6D642ABA2475631A00ADCE87 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642AB82475631A00ADCE87 /* HomeTableViewCell.swift */; };
 		6D642ABB2475631A00ADCE87 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D642AB92475631A00ADCE87 /* HomeTableViewCell.xib */; };
 		6D642ABD247566AB00ADCE87 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642ABC247566AB00ADCE87 /* UITableView+Extension.swift */; };
+		6D642AC324757EDC00ADCE87 /* CDLStatementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642AC124757EDC00ADCE87 /* CDLStatementsModel.swift */; };
+		6D642AC424757EDC00ADCE87 /* CDLStatements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D642AC224757EDC00ADCE87 /* CDLStatements.swift */; };
 		99DF049640DEF40D7E1B7302 /* Pods_Bank_app_Bank_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBCE940D00E61382B94628C /* Pods_Bank_app_Bank_appUITests.framework */; };
 		AC2A0D79E251D3F6EA80EAA4 /* Pods_Bank_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B7268A0F6A60F74EC64342 /* Pods_Bank_appTests.framework */; };
 /* End PBXBuildFile section */
@@ -171,6 +173,8 @@
 		6D642AB82475631A00ADCE87 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		6D642AB92475631A00ADCE87 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		6D642ABC247566AB00ADCE87 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		6D642AC124757EDC00ADCE87 /* CDLStatementsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDLStatementsModel.swift; sourceTree = "<group>"; };
+		6D642AC224757EDC00ADCE87 /* CDLStatements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDLStatements.swift; sourceTree = "<group>"; };
 		740D734479563D17C2136454 /* Pods-Bank appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank appTests.release.xcconfig"; path = "Target Support Files/Pods-Bank appTests/Pods-Bank appTests.release.xcconfig"; sourceTree = "<group>"; };
 		76EDDF3CE94057B3902FF024 /* Pods-Bank app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank app.release.xcconfig"; path = "Target Support Files/Pods-Bank app/Pods-Bank app.release.xcconfig"; sourceTree = "<group>"; };
 		9660966422D0B119710B3410 /* Pods-Bank appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank appTests.debug.xcconfig"; path = "Target Support Files/Pods-Bank appTests/Pods-Bank appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -354,6 +358,7 @@
 		6D642A4C2472837F00ADCE87 /* CDL */ = {
 			isa = PBXGroup;
 			children = (
+				6D642AC024757EDC00ADCE87 /* Statements */,
 				6D642A7124728D1A00ADCE87 /* User */,
 				6D642A4D2472837F00ADCE87 /* CommonDataLayer.swift */,
 				6D642A4E2472837F00ADCE87 /* BaseCDL.swift */,
@@ -455,6 +460,15 @@
 				6D642AA12474125400ADCE87 /* HomeInteractorModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6D642AC024757EDC00ADCE87 /* Statements */ = {
+			isa = PBXGroup;
+			children = (
+				6D642AC124757EDC00ADCE87 /* CDLStatementsModel.swift */,
+				6D642AC224757EDC00ADCE87 /* CDLStatements.swift */,
+			);
+			path = Statements;
 			sourceTree = "<group>";
 		};
 		B4D547C7D262985FF9B1F51E /* Pods */ = {
@@ -718,10 +732,12 @@
 				6D642A562472837F00ADCE87 /* UIAlertController+Extension.swift in Sources */,
 				6D642A5E2472837F00ADCE87 /* Bundle+Extension.swift in Sources */,
 				6D642A5F2472837F00ADCE87 /* Double+Extension.swift in Sources */,
+				6D642AC424757EDC00ADCE87 /* CDLStatements.swift in Sources */,
 				6D642A642472837F00ADCE87 /* BaseViewController.swift in Sources */,
 				6D642AB5247558E400ADCE87 /* Float+Extension.swift in Sources */,
 				6D642A582472837F00ADCE87 /* Date+Extension.swift in Sources */,
 				6D642A652472837F00ADCE87 /* BaseInteractor.swift in Sources */,
+				6D642AC324757EDC00ADCE87 /* CDLStatementsModel.swift in Sources */,
 				6D6429FA247281B200ADCE87 /* ViewController.swift in Sources */,
 				6D642A8F2472AE3200ADCE87 /* LoginRouter.swift in Sources */,
 				6D642A6A2472837F00ADCE87 /* CommonDataLayer.swift in Sources */,
