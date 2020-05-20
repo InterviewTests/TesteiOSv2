@@ -22,11 +22,17 @@ final class HomePresenter: BasePresenter<HomeView, HomeRouterProtocol, HomeInter
     func homeViewDidLoad() {
         self.interactor?.getHomeData(completion: { (_ homeInteractorModel:HomeInteractorModel) -> Void in
             self.viewModel = HomeViewModel(homeInteractorModel: homeInteractorModel)
-            //TODO: update view
+            //Update header section
             self.view?.accountNumberLabel.text = self.viewModel?.user?.accountNumber
-            //TODO: Format 
-            self.view?.balanceValueLabel.text = "\(self.viewModel?.user?.balance)"
+            if let balance = self.viewModel?.user?.balance?.formatCurrency() {
+                self.view?.balanceValueLabel.text = balance
+            }else{
+                self.view?.balanceValueLabel.text = "-" // default display value in case of a error
+            }
             self.view?.usernameLabel.text = self.viewModel?.user?.name
+            
+            //Update list
+            self.view?.tableview?.reloadData()
         })
         
     }
