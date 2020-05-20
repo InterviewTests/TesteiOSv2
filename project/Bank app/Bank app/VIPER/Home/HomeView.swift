@@ -46,7 +46,7 @@ class HomeView: BaseView<HomePresenterProtocol>, UITableViewDataSource, UITableV
                 self.noResultLabel.alpha = 1
             }else{
                 self.tableview.alpha = 1
-                self.noResultLabel.alpha = 0 
+                self.noResultLabel.alpha = 0
             }
             return count
         }
@@ -57,12 +57,13 @@ class HomeView: BaseView<HomePresenterProtocol>, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //TODO: setup
         let cell = tableView.dequeueReusableCell(with: HomeTableViewCell.self, for: indexPath)
+        if let item = self.presenter?.viewModel?.statementList?[indexPath.row]{
+            cell.setup(homeViewStatementModel: item)
+        }
+        
         return cell
     }
-    
-    
     
     deinit {
         //clean all references

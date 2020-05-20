@@ -10,6 +10,11 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +24,13 @@ class HomeTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setup(homeViewStatementModel : HomeViewStatementModel){
+        self.titleLabel.text = homeViewStatementModel.title
+        self.descriptionLabel.text = homeViewStatementModel.desc
+        self.valueLabel.text = homeViewStatementModel.value
+        self.dateLabel.text = homeViewStatementModel.date
     }
     
     override func layoutSubviews() {
