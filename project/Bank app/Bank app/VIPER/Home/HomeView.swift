@@ -46,11 +46,13 @@ class HomeView: BaseView<HomePresenterProtocol> {
 // MARK: Extensions declaration of all extension and implementations of protocols 
 extension HomeView: BaseViewControllerRefresh {
     func refresh() {
-        //TODO: implement all calls needed to refresh the UI
+        self.tableview.reloadData()
     }
     
     func i18N() {
         self.title = "Home"
+        self.accountLabel.text = "Home.AccountLabel".localized
+        self.balanceLabel.text = "Home.BalanceLabel".localized
     }
     
     func initializeUI() {
