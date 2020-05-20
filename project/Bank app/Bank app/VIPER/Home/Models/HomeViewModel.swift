@@ -13,6 +13,7 @@ import UIKit
 class HomeViewModel {
     var idHome: String?
     var user : HomeViewUserModel?
+    var statementList : [HomeViewStatementModel]?
     init() {}
     
     init(homeInteractorModel : HomeInteractorModel){
@@ -30,4 +31,12 @@ class HomeViewUserModel {
     var name : String?
     var accountNumber : String?
     var balance : Float?
+}
+
+
+class HomeViewStatementModel {
+    var title : String?
+    var desc : String?
+    var date : String?
+    var value : String?
 }

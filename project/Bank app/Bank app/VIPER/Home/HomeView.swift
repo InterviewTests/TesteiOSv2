@@ -40,8 +40,20 @@ class HomeView: BaseView<HomePresenterProtocol>, UITableViewDataSource, UITableV
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO
-        return 10
+        if let count = self.presenter?.viewModel?.statementList?.count{
+            if(count == 0){
+                self.tableview.alpha = 0
+                self.noResultLabel.alpha = 1
+            }else{
+                self.tableview.alpha = 1
+                self.noResultLabel.alpha = 0 
+            }
+            return count
+        }
+        
+        self.tableview.alpha = 0
+        self.noResultLabel.alpha = 1
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
