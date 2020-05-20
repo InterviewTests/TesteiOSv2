@@ -32,6 +32,8 @@
 		9713C41E2470B91400030AE7 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9713C40E2470B91400030AE7 /* LoginInteractor.swift */; };
 		9713C41F2470B91400030AE7 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9713C40E2470B91400030AE7 /* LoginInteractor.swift */; };
 		9713C4202470B91400030AE7 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9713C40E2470B91400030AE7 /* LoginInteractor.swift */; };
+		97C0E66324716C2400AC4CBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C0E66224716C2400AC4CBD /* Constants.swift */; };
+		97D5E91A24734AE600F616E7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5E91924734AE600F616E7 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		9713C40C2470B91400030AE7 /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
 		9713C40D2470B91400030AE7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9713C40E2470B91400030AE7 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		97C0E66224716C2400AC4CBD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		97D5E91924734AE600F616E7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 		9713C4072470B84700030AE7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				97C0E66124716B1E00AC4CBD /* Common */,
 				9713C4082470B8EC00030AE7 /* Login */,
 			);
 			path = Scenes;
@@ -169,6 +174,15 @@
 				9713C40E2470B91400030AE7 /* LoginInteractor.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		97C0E66124716B1E00AC4CBD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				97C0E66224716C2400AC4CBD /* Constants.swift */,
+				97D5E91924734AE600F616E7 /* Extensions.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,9 +321,11 @@
 				9713C4182470B91400030AE7 /* LoginModels.swift in Sources */,
 				9713C4152470B91400030AE7 /* LoginRouter.swift in Sources */,
 				9713C41B2470B91400030AE7 /* LoginViewController.swift in Sources */,
+				97D5E91A24734AE600F616E7 /* Extensions.swift in Sources */,
 				9713C3D82470AC6900030AE7 /* AppDelegate.swift in Sources */,
 				9713C3DA2470AC6900030AE7 /* SceneDelegate.swift in Sources */,
 				9713C41E2470B91400030AE7 /* LoginInteractor.swift in Sources */,
+				97C0E66324716C2400AC4CBD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@ protocol LoginDisplayLogic: class
   func displaySomething(viewModel: Login.Something.ViewModel)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
+class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLogic
 {
   var interactor: LoginBusinessLogic?
   var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
@@ -63,20 +63,89 @@ class LoginViewController: UIViewController, LoginDisplayLogic
       }
     }
   }
+    
+    //MARK: - IBOutlets
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var userTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    
+    var alterConstraintValue:CGFloat = 0
+    @IBOutlet weak var loginContainerCenterConstraint: NSLayoutConstraint!
+    
+    
+    //MARK: - IBActions
+    @IBAction func loginButtonAction(_ sender: UIButton) {
+    }
   
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
+  // MARK: - View lifecycle
+    override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    setupViews()
+    requestSavedUser()
   }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    //MARK: - Auxiliar methods
+    func setupViews(){
+        loginButton.backgroundColor = Constants().MAIN_PURPLE_COLOR
+        loginButton.setTitleColor(UIColor.white, for: .normal)
+        loginButton.clipsToBounds = true
+        loginButton.layer.cornerRadius = 4
+        
+        userTextfield.delegate = self
+        userTextfield.returnKeyType = .next
+        passwordTextfield.delegate = self
+        passwordTextfield.returnKeyType = .done
+        
+        hideKeyboardWhenTappedOut()
+    }
+    
+    @objc func keyboardWasShown(notification: NSNotification){
+        if let info = notification.userInfo, let keyboardRect = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect{
+            if passwordTextfield.superview!.frame.maxY > keyboardRect.minY{
+                alterConstraintValue = passwordTextfield.superview!.frame.maxY - keyboardRect.minY
+                loginContainerCenterConstraint.constant -= alterConstraintValue
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+    }
+    
+    @objc func keyboardWasHide(notification: NSNotification){
+        loginContainerCenterConstraint.constant += alterConstraintValue
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+        alterConstraintValue = 0
+    }
+    
+    //MARK: - UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userTextfield{
+            passwordTextfield.becomeFirstResponder()
+        }
+        if textField == passwordTextfield{
+            //login
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
   
   // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
+  func requestSavedUser()
   {
     let request = Login.Something.Request()
     interactor?.doSomething(request: request)
