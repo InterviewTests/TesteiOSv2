@@ -13,7 +13,7 @@ protocol HomeInteractorProtocol: AnyObject {
     var homeInteractorModel : HomeInteractorModel? {get set}
     var homeDTO: HomeDTO? {get set}
 
-    func getHomeData(completion: @escaping(_ homeModelEntity : HomeInteractorModel) -> Void)
+    func getHomeData(completion: @escaping(_ homeModelEntity : HomeInteractorModel?, _ error: HomeInteractorError?) -> Void)
     func cleanup()
 }
 
@@ -28,24 +28,43 @@ final class HomeInteractor: BaseInteractor<HomePresenterProtocol>, HomeInteracto
     
     var cdlStatements = CDLStatements()
     
-    func getHomeData(completion: @escaping(_ homeModelEntity : HomeInteractorModel) -> Void) {
+    func getHomeData(completion: @escaping(_ homeModelEntity : HomeInteractorModel?, _ error: HomeInteractorError?) -> Void) {
          if let homeInteractorModel = homeInteractorModel {
             if let userID = homeInteractorModel.user?.id {
                 cdlStatements.getStatements(subscriber : (self.InteractorID, { ( response: CDLResponse? ) -> Void in
-                        //TODO
-                    completion(homeInteractorModel)
+                    if let cdlResponse = response {
+                        switch cdlResponse {
+                        case .failure(let error):
+                            completion(nil, HomeInteractorError.convertCDLErrorToInteractorError(cdlError: error))
+                            return
+                        case .success(let model):
+                            self.homeInteractorModel?.statementsList = []
+                            if let statementsList = (model as? CDLStatementsModel)?.statementList {
+                                for statement in statementsList{
+                                    let homeStatementInteractorModel = HomeStatementInteractorModel()
+                                    homeStatementInteractorModel.title = statement.title
+                                    homeStatementInteractorModel.desc = statement.desc
+                                    homeStatementInteractorModel.value = statement.value
+                                    //homeStatementInteractorModel.date = statement.date
+                                    
+                                    self.homeInteractorModel?.statementsList?.append(homeStatementInteractorModel)
+                                }
+                            }
+                            completion(self.homeInteractorModel, nil)
+                            return
+                        }
+                    }
+                    
+                    completion(homeInteractorModel, nil)
                     return
                 }), userID: userID)
 
             }else{
-                self.homeInteractorModel?.error = .noUserError
-                completion(homeInteractorModel)
+                completion(nil, .noUserError)
                 return
             }
          }else{
-            self.homeInteractorModel = HomeInteractorModel()
-            self.homeInteractorModel?.error = .noUserError
-            completion(self.homeInteractorModel!)
+            completion(nil, .noUserError)
             return
         }
     }

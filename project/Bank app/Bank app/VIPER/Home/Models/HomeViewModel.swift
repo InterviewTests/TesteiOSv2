@@ -17,11 +17,27 @@ class HomeViewModel {
     init() {}
     
     init(homeInteractorModel : HomeInteractorModel){
+        
+        //Setup User
         self.user = HomeViewUserModel()
-    
         self.user?.name = homeInteractorModel.user?.name
-        self.user?.balance = homeInteractorModel.user?.balance
+        self.user?.balance = homeInteractorModel.user?.balance?.formatCurrency()
         self.user?.accountNumber = homeInteractorModel.user?.accountNumber
+        
+        //Setup Statement List
+        self.statementList = []
+        if let statements = homeInteractorModel.statementsList {
+            for statement in statements {
+                let homeViewStatementModel = HomeViewStatementModel()
+                homeViewStatementModel.title = statement.title
+                homeViewStatementModel.desc = statement.desc
+                //TODO: format date 
+                //homeViewStatementModel.date = statement.date
+                homeViewStatementModel.value = statement.value?.formatCurrency()
+            
+                statementList?.append(homeViewStatementModel)
+            }
+        }
         
     }
 
@@ -30,7 +46,7 @@ class HomeViewModel {
 class HomeViewUserModel {
     var name : String?
     var accountNumber : String?
-    var balance : Float?
+    var balance : String?
 }
 
 

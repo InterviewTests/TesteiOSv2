@@ -13,8 +13,7 @@ import UIKit
 class HomeInteractorModel {
     var idHome: String?
     var user : HomeUserInteractorModel?
-    
-    var error: HomeInteractorError?
+    var statementsList : [HomeStatementInteractorModel]?
     
     init() {
         //TODO
