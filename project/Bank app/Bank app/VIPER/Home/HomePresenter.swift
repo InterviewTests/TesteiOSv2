@@ -20,10 +20,13 @@ final class HomePresenter: BasePresenter<HomeView, HomeRouterProtocol, HomeInter
     
 
     func homeViewDidLoad() {
-        //TODO
         self.interactor?.getHomeData(completion: { (_ homeInteractorModel:HomeInteractorModel) -> Void in
             self.viewModel = HomeViewModel(homeInteractorModel: homeInteractorModel)
             //TODO: update view
+            self.view?.accountNumberLabel.text = self.viewModel?.user?.accountNumber
+            //TODO: Format 
+            self.view?.balanceValueLabel.text = "\(self.viewModel?.user?.balance)"
+            self.view?.usernameLabel.text = self.viewModel?.user?.name
         })
         
     }

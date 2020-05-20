@@ -12,6 +12,7 @@ import UIKit
 //class that represents the interactor data
 class HomeInteractorModel {
     var idHome: String?
+    var user : HomeUserInteractorModel?
     
     init() {
         //TODO
@@ -19,7 +20,19 @@ class HomeInteractorModel {
     
     init(homeDTO: HomeDTO?){
         if let homeDTO = homeDTO {
-            //TODO convertion
+            self.user = HomeUserInteractorModel()
+            self.user?.id = homeDTO.user?.id
+            self.user?.name = homeDTO.user?.name
+            self.user?.accountNumber = homeDTO.user?.accountNumber
+            self.user?.agencyID = homeDTO.user?.agencyID
+            self.user?.balance = homeDTO.user?.balance
         }
     }
+}
+class HomeUserInteractorModel {
+    var id : Int?
+    var name : String?
+    var accountNumber : String?
+    var agencyID : String?
+    var balance : Float?
 }

@@ -28,11 +28,11 @@ final class HomeInteractor: BaseInteractor<HomePresenterProtocol>, HomeInteracto
     
     func getHomeData(completion: @escaping(_ homeModelEntity : HomeInteractorModel) -> Void) {
         //TODO: Get data and send response to completion
-        /* example code
+        
          if let homeInteractorModel = homeInteractorModel {
             completion(homeInteractorModel)
          }
-         */
+         
     }
     
     

@@ -12,9 +12,22 @@ import UIKit
 //Class that represents the model that should be used in the  view of Home
 class HomeViewModel {
     var idHome: String?
+    var user : HomeViewUserModel?
     init() {}
+    
     init(homeInteractorModel : HomeInteractorModel){
-        //TODO: convert to viewModel
+        self.user = HomeViewUserModel()
+    
+        self.user?.name = homeInteractorModel.user?.name
+        self.user?.balance = homeInteractorModel.user?.balance
+        self.user?.accountNumber = homeInteractorModel.user?.accountNumber
+        
     }
 
+}
+
+class HomeViewUserModel {
+    var name : String?
+    var accountNumber : String?
+    var balance : Float?
 }
