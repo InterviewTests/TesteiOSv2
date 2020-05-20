@@ -10,6 +10,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeView">
             <connections>
+                <outlet property="accountLabel" destination="73G-sa-ztP" id="5b3-B1-LD5"/>
+                <outlet property="accountNumberLabel" destination="ADu-ar-gCr" id="q39-JE-560"/>
+                <outlet property="balanceLabel" destination="u9i-r9-cdM" id="XOd-TU-nid"/>
+                <outlet property="balanceValueLabel" destination="Og7-YF-WzM" id="apz-hg-JEC"/>
+                <outlet property="logoutButton" destination="p4t-2b-5xB" id="7dq-fA-vCU"/>
+                <outlet property="tableview" destination="dKU-oW-NCP" id="lnJ-dr-ZZe"/>
+                <outlet property="usernameLabel" destination="HuD-Rx-hdU" id="uti-Sp-ULT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="x4H-ry-a8n"/>
             </connections>
         </placeholder>
@@ -38,6 +45,9 @@
                                 <constraint firstAttribute="height" constant="27" id="HjH-He-iUt"/>
                             </constraints>
                             <state key="normal" image="icon_logout"/>
+                            <connections>
+                                <action selector="logoutActionButton:" destination="-1" eventType="touchUpInside" id="ho0-Fz-rOb"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73G-sa-ztP">
                             <rect key="frame" x="18" y="78" width="33" height="14"/>

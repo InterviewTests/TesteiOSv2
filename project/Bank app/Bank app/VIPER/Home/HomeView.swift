@@ -13,14 +13,28 @@ class HomeView: BaseView<HomePresenterProtocol> {
 
     let screenName = "Home"
     
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var accountLabel: UILabel!
+    @IBOutlet weak var accountNumberLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var balanceValueLabel: UILabel!
+    
+    @IBOutlet weak var tableview: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initializeUI()
         self.i18N()
         
         self.presenter?.homeViewDidLoad()
-
     }
+    
+    
+    @IBAction func logoutActionButton(_ sender: Any) {
+        //TODO
+    }
+    
     
     deinit {
         //clean all references
