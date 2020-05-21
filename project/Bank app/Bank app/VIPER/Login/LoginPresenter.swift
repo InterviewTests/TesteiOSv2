@@ -53,6 +53,12 @@ final class LoginPresenter: BasePresenter<LoginView, LoginRouterProtocol, LoginI
                             self.view?.handleError(message: message)
                         }
                         break
+                    case .internetError:
+                        DispatchQueue.main.async {
+                            self.view?.hideLoader()
+                            self.view?.handleError(message: "noInternetError".localized)
+                        }
+                        break
                     default:
                         DispatchQueue.main.async {
                             "Found error \(error)".errorLog()

@@ -57,7 +57,7 @@ enum HomeInteractorError{
     
     static func convertCDLErrorToInteractorError(cdlError: CDLErrorType) -> HomeInteractorError{
         switch cdlError {
-        case .internetError:
+        case .networkError(let error):
             return .internetError
         default:
             break

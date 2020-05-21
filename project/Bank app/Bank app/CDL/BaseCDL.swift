@@ -58,7 +58,6 @@ class BaseCDL {
 
 enum CDLErrorType {
     case serverError
-    case internetError
     case noDataError
     case networkError(Error)
     case jsonParsingError(Error)

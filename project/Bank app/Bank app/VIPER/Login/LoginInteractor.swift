@@ -109,7 +109,7 @@ enum LoginInteractorError{
     
     static func convertCDLErrorToInteractorError(cdlError: CDLErrorType) -> LoginInteractorError{
         switch cdlError {
-        case .internetError:
+        case .networkError(let error):
             return .internetError
         default:
             break
