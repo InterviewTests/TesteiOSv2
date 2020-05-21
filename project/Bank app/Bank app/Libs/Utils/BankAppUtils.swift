@@ -11,13 +11,7 @@ import UIKit
 
 class BankAppUtils {
     static func getXib(xibFile: XibFile) -> String {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return xibFile.rawValue
-        } else if UIDevice.current.userInterfaceIdiom == .pad {
-            return xibFile.rawValue + "_iPad"
-        } else {
-            return ""
-        }
+        return xibFile.rawValue
     }
     
     
