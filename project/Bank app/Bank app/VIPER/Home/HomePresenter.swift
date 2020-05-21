@@ -12,6 +12,7 @@ import UIKit
 protocol HomePresenterProtocol: AnyObject {
     var viewModel: HomeViewModel? { get set }
     func homeViewDidLoad()
+    func performLogout()
     func cleanup()
 }
 
@@ -19,6 +20,17 @@ final class HomePresenter: BasePresenter<HomeView, HomeRouterProtocol, HomeInter
     var viewModel: HomeViewModel?
     
 
+    func performLogout(){
+        let logoutAction = (UIAlertAction(title: "Home.LogoutButton".localized, style: UIAlertAction.Style.default, handler: { (_) -> Void in
+            self.interactor?.performLogout()
+            self.view?.dismiss(animated: true, completion: nil)
+        }))
+        
+        let cancelAction = (UIAlertAction(title: "Home.CancelLogoutButton".localized, style: UIAlertAction.Style.default, handler: nil))
+        
+        self.view?.showAlertWith(title: "Home.LogoutTitle".localized, message: "Home.LogoutDescription".localized, actions: [logoutAction, cancelAction])
+    }
+    
     func homeViewDidLoad() {
         self.view?.showLoader()
         

@@ -26,6 +26,12 @@ class LoginView: BaseView<LoginPresenterProtocol> {
         self.presenter?.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.usernameTextfield.text = ""
+        self.passwordTextfield.text = ""
+    }
+    
     @IBAction func loginButtonAction(_ sender: Any) {
         self.presenter?.performLogin()
     }

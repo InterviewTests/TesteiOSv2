@@ -34,10 +34,8 @@ class HomeView: BaseView<HomePresenterProtocol>, UITableViewDataSource, UITableV
     
     
     @IBAction func logoutActionButton(_ sender: Any) {
-        //TODO
+        self.presenter?.performLogout()
     }
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = self.presenter?.viewModel?.statementList?.count{

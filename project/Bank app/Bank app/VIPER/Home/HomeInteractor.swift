@@ -14,6 +14,7 @@ protocol HomeInteractorProtocol: AnyObject {
     var homeDTO: HomeDTO? {get set}
 
     func getHomeData(completion: @escaping(_ homeModelEntity : HomeInteractorModel?, _ error: HomeInteractorError?) -> Void)
+    func performLogout()
     func cleanup()
 }
 
@@ -74,6 +75,11 @@ final class HomeInteractor: BaseInteractor<HomePresenterProtocol>, HomeInteracto
         }
     }
     
+    
+    func performLogout(){
+        KeychainUtils.shared.deletePassword()
+        KeychainUtils.shared.deleteUsername()
+    }
     
     func cleanup(){
         cdlStatements.cleanup(subscriberID: InteractorID)
