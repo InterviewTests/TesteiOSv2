@@ -28,8 +28,7 @@ class LoginView: BaseView<LoginPresenterProtocol> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.usernameTextfield.text = ""
-        self.passwordTextfield.text = ""
+        refresh()
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
@@ -47,7 +46,10 @@ class LoginView: BaseView<LoginPresenterProtocol> {
 // MARK: Extensions declaration of all extension and implementations of protocols 
 extension LoginView: BaseViewControllerRefresh {
     func refresh() {
-        //TODO: implement all calls needed to refresh the UI
+        if (self.presenter?.viewModel == nil ||  self.presenter?.viewModel?.password == nil ){
+            self.usernameTextfield.text = ""
+            self.passwordTextfield.text = ""
+        }
     }
     
     func i18N() {

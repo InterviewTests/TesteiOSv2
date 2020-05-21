@@ -72,6 +72,7 @@ final class LoginPresenter: BasePresenter<LoginView, LoginRouterProtocol, LoginI
                 if let user = loginInteractorModel{
                     DispatchQueue.main.async {
                         self.view?.hideLoader()
+                        self.viewModel = nil 
                         self.router?.presentDetailView(user: user)
                     }
                     return
