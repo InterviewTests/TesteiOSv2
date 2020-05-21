@@ -65,6 +65,10 @@ class HomeView: BaseView<HomePresenterProtocol>, UITableViewDataSource, UITableV
         return cell
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     deinit {
         //clean all references
         self.presenter?.cleanup()
@@ -91,5 +95,7 @@ extension HomeView: BaseViewControllerRefresh {
         self.tableview.delegate = self
         
         self.tableview.register(cellType: HomeTableViewCell.self)
+        
+        
     }
 }
