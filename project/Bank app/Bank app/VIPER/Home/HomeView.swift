@@ -79,7 +79,7 @@ class HomeView: BaseView<HomePresenterProtocol>, UITableViewDataSource, UITableV
 // MARK: Extensions declaration of all extension and implementations of protocols 
 extension HomeView: BaseViewControllerRefresh {
     func refresh() {
-        self.tableview.reloadData()
+        self.presenter?.homeViewDidLoad()
     }
     
     func i18N() {

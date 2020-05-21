@@ -41,6 +41,19 @@ final class HomePresenter: BasePresenter<HomeView, HomeRouterProtocol, HomeInter
                     self.view?.hideLoader()
                 }
             }else{
+                if let error = error {
+                    switch error {
+                    case .internetError:
+                         DispatchQueue.main.async {
+                            self.view?.handleError(message: "noInternetError".localized, actions: [UIAlertAction(title: "tryAgain".localized, style: UIAlertAction.Style.default, handler: { (_) -> Void in
+                                self.view?.refresh()
+                            })])
+                         }
+                        return
+                    default:
+                        return
+                    }
+                }
                 //TODO handle error
             }
         })
