@@ -31,8 +31,7 @@ class HomeViewModel {
                 let homeViewStatementModel = HomeViewStatementModel()
                 homeViewStatementModel.title = statement.title
                 homeViewStatementModel.desc = statement.desc
-                //TODO: format date 
-                //homeViewStatementModel.date = statement.date
+                homeViewStatementModel.date = statement.date?.format(format: "dd/MM/YYYY")
                 homeViewStatementModel.value = statement.value?.formatCurrency()
             
                 statementList?.append(homeViewStatementModel)

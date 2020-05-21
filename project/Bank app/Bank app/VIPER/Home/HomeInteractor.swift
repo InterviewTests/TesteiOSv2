@@ -45,7 +45,12 @@ final class HomeInteractor: BaseInteractor<HomePresenterProtocol>, HomeInteracto
                                     homeStatementInteractorModel.title = statement.title
                                     homeStatementInteractorModel.desc = statement.desc
                                     homeStatementInteractorModel.value = statement.value
-                                    //homeStatementInteractorModel.date = statement.date
+                                    
+                                    if let strDate = statement.date {
+                                        let dateFormatter = DateFormatter()
+                                        dateFormatter.dateFormat = "YYYY-MM-dd"
+                                        homeStatementInteractorModel.date = dateFormatter.date(from: strDate)
+                                    }
                                     
                                     self.homeInteractorModel?.statementsList?.append(homeStatementInteractorModel)
                                 }
