@@ -18,17 +18,43 @@ class Bank_appTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    //Keychain Tests
+    func testSaveAndGetPasswordInKeychain() throws {
+        let dummyPassword = "DUMMYPASSWORD"
+        _ = KeychainUtils.shared.savePassword(password: dummyPassword)
+        
+        let passworkSaved = KeychainUtils.shared.getPassword()
+        
+        XCTAssertEqual(dummyPassword, passworkSaved, "password is not the same")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testDeletePasswordInKeychain() throws {
+        KeychainUtils.shared.deletePassword()
+        
+        let passworkSaved = KeychainUtils.shared.getPassword()
+        
+        XCTAssertEqual(nil, passworkSaved, "Password was not deleted")
     }
+    
+    func testSaveAndGetUsernameInKeychain() throws {
+        let dummyUsername = "DUMMYUSERNAME"
+        _ = KeychainUtils.shared.saveUsername(username: dummyUsername)
+        
+        let usernameSaved = KeychainUtils.shared.getUsername()
+        
+        XCTAssertEqual(dummyUsername, usernameSaved, "Username is not the same")
+    }
+    
+    func testDeleteUsernameInKeychain() throws {
+        KeychainUtils.shared.deleteUsername()
+        
+        let usernameSaved = KeychainUtils.shared.getUsername()
+        
+        XCTAssertEqual(nil, usernameSaved, "Username was not deleted")
+    }
+    
+    
+
 
 }
