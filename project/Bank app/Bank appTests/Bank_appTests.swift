@@ -54,7 +54,34 @@ class Bank_appTests: XCTestCase {
         XCTAssertEqual(nil, usernameSaved, "Username was not deleted")
     }
     
-    
+    //CDL User test
+    func testPerformLogin() throws {
+        let cdlUser = CDLUser()
+        let username = "test_user"
+        let password = "Test@1"
+        
+        cdlUser.performLogin(username: username, password: password, subscriber: ("Test", {(response :CDLResponse?) -> Void in
+            XCTAssertNil(response, "response is nil")
+            if let response = response {
+                switch response {
+                case .failure(let error):
+                    XCTFail("response with error \(error)")
+                    break
+                case .success(let model):
+                    if let model = model as? CDLUserModel {
+                        if model.accountNumber == nil || model.id == nil || model.name == nil || model.balance == nil ||  model.agencyID == nil {
+                             XCTFail("response model is empty")
+                        }
+                        break
+                    }else{
+                        XCTFail("response is not compatible with CDLUserModel")
+                        break
+                    }
+                }
+            }
+        }))
+        
+    }
 
 
 }
