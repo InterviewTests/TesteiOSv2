@@ -10,4 +10,5 @@ import Foundation
 
 public enum XibFile: String {
     case homeView = "HomeView"
+    case loginView = "LoginView"
 }

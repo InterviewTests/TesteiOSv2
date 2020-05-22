@@ -41,6 +41,7 @@ class BaseCDL {
                 // try to decode
                 let decodedObject = try JSONDecoder().decode(objectType.self, from: data)
                 completion(CDLResponse.success(decodedObject))
+                return
             } catch let error {
                 completion(CDLResponse.failure(CDLErrorType.jsonParsingError(error as! DecodingError)))
             }
@@ -57,11 +58,11 @@ class BaseCDL {
 
 enum CDLErrorType {
     case serverError
-    case internetError
     case noDataError
     case networkError(Error)
     case jsonParsingError(Error)
     case invalidURLError
+    case invalidParameters
 }
 
 enum httpMethod : String{

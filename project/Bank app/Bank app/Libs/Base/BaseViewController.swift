@@ -6,7 +6,7 @@
 
 import Foundation
 import UIKit
-//import NVActivityIndicatorView
+import NVActivityIndicatorView
 
 //Base protocol
 protocol BaseViewControllerRefresh {
@@ -14,7 +14,7 @@ protocol BaseViewControllerRefresh {
 }
 
 //Base Clasees
-class BaseViewController: UIViewController{
+class BaseViewController: UIViewController, NVActivityIndicatorViewable{
     
 
     override func viewDidLoad() {
@@ -42,11 +42,19 @@ class BaseViewController: UIViewController{
     }
     
     func showLoader() {
-        //TODO
+        self.startAnimating(CGSize(width: 50, height: 50), message: "", type: NVActivityIndicatorType.ballClipRotatePulse)
     }
     
     func hideLoader() {
-        // TODO
+         self.stopAnimating()
+    }
+    
+    func handleDefaultError(){
+        showAlertWith(title: "BaseViewController.Alert.DefaultTitle".localized, message: "BaseViewController.Alert.DefaultDescription".localized, actions: nil)
+    }
+    
+    func handleError(message: String, actions : NSArray? = nil){
+        showAlertWith(title: "BaseViewController.Alert.DefaultTitle".localized, message: message, actions: actions)
     }
     
     func showAlertWith(title: String, message: String, actions: NSArray?) {
@@ -64,12 +72,8 @@ class BaseViewController: UIViewController{
             alert.addAction(UIAlertAction(title: ("BaseViewController.Alert.Ok").localized, style: UIAlertAction.Style.default, handler: nil))
         }
 
-        alert.view.tintColor = UIColor(red:0.78, green:0.82, blue:0.02, alpha:1.0)
+        alert.view.tintColor = UIColor(named: "primaryColor") ?? UIColor.black
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func showAlertWithError(title: String, message: String, actions: NSArray?) {
-        self.showAlertWith(title: title, message: message, actions: actions)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
