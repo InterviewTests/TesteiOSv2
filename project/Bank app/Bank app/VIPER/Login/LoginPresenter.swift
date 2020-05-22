@@ -22,19 +22,25 @@ final class LoginPresenter: BasePresenter<LoginView, LoginRouterProtocol, LoginI
     
     func performLogin(){
         
+        var canPerformLogin = true
         //Base textfield validations
         if self.view?.usernameTextfield.text == nil || self.view?.usernameTextfield?.text?.isEmpty == true{
-           self.view?.usernameTextfield.setState(state: false)
+            self.view?.usernameTextfield.setState(state: false)
+            canPerformLogin = false
         }else{
              self.view?.usernameTextfield.setState(state: true)
         }
         
         if self.view?.passwordTextfield.text == nil || self.view?.passwordTextfield?.text?.isEmpty == true{
-           self.view?.passwordTextfield.setState(state: false)
+            self.view?.passwordTextfield.setState(state: false)
+            canPerformLogin = false
         }else{
              self.view?.passwordTextfield.setState(state: true)
         }
         
+        if (canPerformLogin == false) {
+            return
+        }
         //Interactor call
         if let username =  self.view?.usernameTextfield.text, let password =  self.view?.passwordTextfield.text {
             self.view?.showLoader()
