@@ -80,6 +80,44 @@ class Bank_appTests: XCTestCase {
                 }
             }
         }))
+    }
+    
+    func testStatementsList() throws {
+        let cdlStatements = CDLStatements()
+        let fakeUserID = 1
+        
+        cdlStatements.getStatements(subscriber: ("Test", {(response :CDLResponse?) -> Void in
+            XCTAssertNil(response, "response is nil")
+            
+            if let response = response {
+                switch response {
+                case .failure(let error):
+                    XCTFail("response with error \(error)")
+                    break
+                case .success(let model):
+                    if let model = model as? CDLStatementsModel {
+                        if let statementsList = model.statementList {
+                            if(statementsList.count == 0){
+                                XCTFail("statementsList os empty")
+                            }else{
+                                let statementItem = statementsList[0]
+                                if(statementItem.date == nil || statementItem.desc == nil || statementItem.title == nil || statementItem.value == nil){
+                                    XCTFail("response model is empty")
+                                }
+                            }
+                        }else{
+                            XCTFail("statementsList is nil")
+                        }
+                        
+                        break
+                    }else{
+                        XCTFail("response is not compatible with CDLStatements")
+                        break
+                    }
+                }
+            }
+            
+        }), userID: fakeUserID)
         
     }
 
