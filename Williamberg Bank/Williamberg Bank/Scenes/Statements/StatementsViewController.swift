@@ -14,7 +14,7 @@ import UIKit
 
 protocol StatementsDisplayLogic: class
 {
-  func displaySomething(viewModel: Statements.Something.ViewModel)
+    func displayUserAccount(viewModel: Statements.LoadUserAccount.ViewModel)
 }
 
 class StatementsViewController: UIViewController, StatementsDisplayLogic
@@ -35,6 +35,10 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     super.init(coder: aDecoder)
     setup()
   }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
   
   // MARK: Setup
   
@@ -63,27 +67,52 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
       }
     }
   }
+    
+    // MARK: IBOutlets
+    @IBOutlet weak var userAccountView: UIView!
+    @IBOutlet weak var nameUserAccountLabel: UILabel!
+    @IBOutlet weak var accountUserAccountLabel: UILabel!
+    @IBOutlet weak var balanceUserAccountLabel: UILabel!
+    
+    //MARK: - IBActions
+    @IBAction func logoutAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
   
   // MARK: View lifecycle
   
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    setupView()
+    loadUserAccount()
   }
   
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
+
+    //MARK: - Auxiliar Methods
+    func setupView(){
+        let constant = Constants()
+        let statusBarFrame = UIApplication.shared.statusBarFrame
+        let statusBarView = UIView(frame: statusBarFrame)
+        statusBarView.backgroundColor = constant.MAIN_PURPLE_COLOR
+        self.view.addSubview(statusBarView)
+        self.view.bringSubviewToFront(statusBarView)
+        
+        userAccountView.backgroundColor = constant.MAIN_PURPLE_COLOR
+    }
+    
+    
+    
+  func loadUserAccount()
   {
-    let request = Statements.Something.Request()
-    interactor?.doSomething(request: request)
+    let request = Statements.LoadUserAccount.Request()
+    interactor?.loadUserAccount(request: request)
   }
   
-  func displaySomething(viewModel: Statements.Something.ViewModel)
+  func displayUserAccount(viewModel: Statements.LoadUserAccount.ViewModel)
   {
-    //nameTextField.text = viewModel.name
+    nameUserAccountLabel.text = viewModel.name
+    accountUserAccountLabel.text = viewModel.account
+    balanceUserAccountLabel.text = viewModel.balance
   }
 }

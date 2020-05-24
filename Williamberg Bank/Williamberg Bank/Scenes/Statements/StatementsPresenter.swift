@@ -14,7 +14,7 @@ import UIKit
 
 protocol StatementsPresentationLogic
 {
-  func presentSomething(response: Statements.Something.Response)
+    func presentUserAccount(response: Statements.LoadUserAccount.Response)
 }
 
 class StatementsPresenter: StatementsPresentationLogic
@@ -23,9 +23,9 @@ class StatementsPresenter: StatementsPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: Statements.Something.Response)
+    func presentUserAccount(response: Statements.LoadUserAccount.Response)
   {
-    let viewModel = Statements.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+    let viewModel = Statements.LoadUserAccount.ViewModel(userAccount: response.userAccount)
+    viewController?.displayUserAccount(viewModel: viewModel)
   }
 }

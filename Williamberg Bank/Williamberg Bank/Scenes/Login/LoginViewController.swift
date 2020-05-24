@@ -154,7 +154,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
   
   func displayLoginResult(viewModel: Login.Login.ViewModel)
   {
-    if let userAccount = viewModel.userAccount{
+    if let _ = viewModel.userAccount{
         router?.routeToStatementsList(segue:nil)
     }
     else{
