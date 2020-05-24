@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-  func displaySomething(viewModel: Login.Something.ViewModel)
+  func displayLoginResult(viewModel: Login.Login.ViewModel)
 }
 
 class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLogic
@@ -75,6 +75,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
     
     //MARK: - IBActions
     @IBAction func loginButtonAction(_ sender: UIButton) {
+        loginAction()
     }
   
   // MARK: - View lifecycle
@@ -137,7 +138,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
             passwordTextfield.becomeFirstResponder()
         }
         if textField == passwordTextfield{
-            //login
+            loginAction()
             textField.resignFirstResponder()
         }
         return true
@@ -147,12 +148,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
   // MARK: Do something
   func requestSavedUser()
   {
-    let request = Login.Something.Request()
-    interactor?.doSomething(request: request)
+//    let request = Login.Something.Request()
+//    interactor?.doSomething(request: request)
   }
   
-  func displaySomething(viewModel: Login.Something.ViewModel)
+  func displayLoginResult(viewModel: Login.Login.ViewModel)
   {
-    //nameTextField.text = viewModel.name
+    if let userAccount = viewModel.userAccount{
+        router?.routeToStatementsList(segue:nil)
+    }
+    else{
+        let alert = UIAlertController(title: "Atenção", message: viewModel.errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
   }
+    
+    func loginAction(){
+        let request = Login.Login.Request(user: userTextfield.text, password: passwordTextfield.text)
+        interactor?.login(request: request)
+    }
 }

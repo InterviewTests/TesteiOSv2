@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Williamberg_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Williamberg_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,11 +85,28 @@
                         <outlet property="loginContainerCenterConstraint" destination="VpR-9O-ygV" id="x3E-Xa-CxT"/>
                         <outlet property="passwordTextfield" destination="PPF-bm-RBw" id="Kua-5A-7vA"/>
                         <outlet property="userTextfield" destination="oZa-lE-JaY" id="evy-yg-JYr"/>
+                        <segue destination="1EK-ed-jUo" kind="show" identifier="statementsSegue" id="GZ9-q5-6Gj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139" y="87"/>
+        </scene>
+        <!--Statements View Controller-->
+        <scene sceneID="cgb-wQ-ggn">
+            <objects>
+                <viewController storyboardIdentifier="statementsViewController" id="1EK-ed-jUo" customClass="StatementsViewController" customModule="Williamberg_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2mj-E5-ghi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="sWu-WP-ZHf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="e6v-iy-C4p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Y2-bu-Yxo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="994" y="90"/>
         </scene>
     </scenes>
     <resources>

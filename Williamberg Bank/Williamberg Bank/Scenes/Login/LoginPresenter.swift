@@ -14,18 +14,18 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-  func presentSomething(response: Login.Something.Response)
+  func presentLoginResult(response: Login.Login.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
 {
   weak var viewController: LoginDisplayLogic?
   
-  // MARK: Do something
+  // MARK: Present Login Result
   
-  func presentSomething(response: Login.Something.Response)
+  func presentLoginResult(response: Login.Login.Response)
   {
-    let viewModel = Login.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+    let viewModel = Login.Login.ViewModel(userAccount: response.userAccount, errorMessage: response.errorMessage)
+    viewController?.displayLoginResult(viewModel: viewModel)
   }
 }
