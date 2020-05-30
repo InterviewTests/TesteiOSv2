@@ -15,6 +15,7 @@ import UIKit
 protocol LoginPresentationLogic
 {
   func presentLoginResult(response: Login.Login.Response)
+  func presentUserSaved(response: Login.SavedUser.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
@@ -22,10 +23,16 @@ class LoginPresenter: LoginPresentationLogic
   weak var viewController: LoginDisplayLogic?
   
   // MARK: Present Login Result
-  
   func presentLoginResult(response: Login.Login.Response)
   {
     let viewModel = Login.Login.ViewModel(userAccount: response.userAccount, errorMessage: response.errorMessage)
     viewController?.displayLoginResult(viewModel: viewModel)
   }
+    
+    // MARK: Present User Saved Result
+    func presentUserSaved(response: Login.SavedUser.Response)
+    {
+        let viewModel = Login.SavedUser.ViewModel(user: response.user, password: response.password)
+        viewController?.displayUserSaved(viewModel: viewModel)
+    }
 }

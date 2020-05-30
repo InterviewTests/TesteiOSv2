@@ -11,9 +11,14 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class LoginWorker
 {
+    
+    let userKey = "user"
+    let passwordKey = "password"
+    
     enum UserError: LocalizedError{
         case InvalidUser
         case EmptyUser
@@ -150,5 +155,19 @@ class LoginWorker
                 }
             }
         }
+    }
+    
+    func saveUserOnKeychain(user:String, password: String) -> Bool{
+        let savedUSer = KeychainWrapper.standard.set(user, forKey: userKey)
+        let savedPassword = KeychainWrapper.standard.set(password, forKey: passwordKey)
+        return savedUSer && savedPassword
+    }
+    
+    func getUserOnKeychain() -> String?{
+        return KeychainWrapper.standard.string(forKey: userKey)
+    }
+    
+    func getUserPasswordOnKeychain() -> String?{
+        return KeychainWrapper.standard.string(forKey: passwordKey)
     }
 }

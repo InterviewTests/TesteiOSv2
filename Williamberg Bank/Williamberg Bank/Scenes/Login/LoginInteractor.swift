@@ -15,6 +15,7 @@ import UIKit
 protocol LoginBusinessLogic
 {
   func login(request: Login.Login.Request)
+  func getSavedUser(request: Login.SavedUser.Request)
 }
 
 protocol LoginDataStore
@@ -37,6 +38,8 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         try worker?.validadePassword(password: request.password)
         worker?.login(user: request.user!, password: request.password!, completionHandler: {
             [weak self] (userAccount, msgErro)  in
+            let _ = self?.worker?.saveUserOnKeychain(user: request.user!, password: request.password!)
+            
             self?.userAccount = userAccount
             let response = Login.Login.Response(userAccount: userAccount, errorMessage: msgErro)
             self?.presenter?.presentLoginResult(response: response)
@@ -47,4 +50,15 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         presenter?.presentLoginResult(response: response)
     }
   }
+    
+    /// Request the user locally saved.
+    /// - Parameter request: Login.SavedUser.Request
+    func getSavedUser(request: Login.SavedUser.Request)
+    {
+      worker = LoginWorker()
+      let userSaved = worker?.getUserOnKeychain()
+      let passwordSaved = worker?.getUserPasswordOnKeychain()
+      let response = Login.SavedUser.Response(user: userSaved, password: passwordSaved)
+      presenter?.presentUserSaved(response: response)
+    }
 }

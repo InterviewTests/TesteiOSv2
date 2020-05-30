@@ -34,4 +34,21 @@ enum Login
         let errorMessage: String?
     }
   }
+    
+    enum SavedUser
+    {
+      struct Request
+      {
+      }
+      struct Response
+      {
+          let user: String?
+          let password: String?
+      }
+      struct ViewModel
+      {
+          let user: String?
+          let password: String?
+      }
+    }
 }

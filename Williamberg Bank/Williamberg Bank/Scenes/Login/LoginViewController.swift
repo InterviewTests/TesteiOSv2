@@ -16,6 +16,8 @@ import Lottie
 protocol LoginDisplayLogic: class
 {
   func displayLoginResult(viewModel: Login.Login.ViewModel)
+  func displayUserSaved(viewModel: Login.SavedUser.ViewModel)
+    
 }
 
 class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLogic
@@ -78,6 +80,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
     var alterConstraintValue:CGFloat = 0
     @IBOutlet weak var loginContainerCenterConstraint: NSLayoutConstraint!
     
+    let passwordImageViewContainer = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 30))
+    let rightPasswordImageView = UIImageView()
+    let openEyeImage = UIImage(named: "open_eye")
+    let closeEyeImage = UIImage(named: "close_eye")
+    
     
     //MARK: - IBActions
     @IBAction func loginButtonAction(_ sender: UIButton) {
@@ -115,6 +122,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
         userTextfield.returnKeyType = .next
         passwordTextfield.delegate = self
         passwordTextfield.returnKeyType = .done
+        passwordTextfield.rightView = passwordImageViewContainer
+        passwordTextfield.rightViewMode = .unlessEditing
+        
+        rightPasswordImageView.image = openEyeImage
+        rightPasswordImageView.tintColor = .black
+        rightPasswordImageView.isUserInteractionEnabled = true
+        let tapOnRightImageView = UITapGestureRecognizer(target: self, action: #selector(toggleSecurityTextEntryForPasswordTextfield))
+        rightPasswordImageView.addGestureRecognizer(tapOnRightImageView)
+        rightPasswordImageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        
+        passwordImageViewContainer.addSubview(rightPasswordImageView)
         
         loadingButtonView.isHidden = true
         loadingButtonView.layer.cornerRadius = 4
@@ -155,6 +173,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
         loadingButtonView.stop()
     }
     
+    @objc func toggleSecurityTextEntryForPasswordTextfield(){
+        if passwordTextfield.isSecureTextEntry{
+            rightPasswordImageView.image = closeEyeImage
+        }
+        else{
+            rightPasswordImageView.image = openEyeImage
+        }
+        passwordTextfield.isSecureTextEntry = !passwordTextfield.isSecureTextEntry
+    }
+    
     //MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == userTextfield{
@@ -168,13 +196,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
     }
     
   
-  // MARK: Do something
+  // MARK: User Saved
   func requestSavedUser()
   {
-//    let request = Login.Something.Request()
-//    interactor?.doSomething(request: request)
+    let request = Login.SavedUser.Request()
+    interactor?.getSavedUser(request: request)
   }
-  
+    
+  func displayUserSaved(viewModel: Login.SavedUser.ViewModel) {
+    userTextfield.text = viewModel.user
+    passwordTextfield.text = viewModel.password
+  }
+    
+ 
+  //MARK: - Login
   func displayLoginResult(viewModel: Login.Login.ViewModel)
   {
     hideAnimationForLoginButton()
