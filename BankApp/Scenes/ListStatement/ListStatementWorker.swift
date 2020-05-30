@@ -12,9 +12,13 @@
 
 import UIKit
 
-class ListStatementWorker
+class ListStatementWorker: StatementStoreProtocol
 {
-  func doSomeWork()
-  {
-  }
+    
+    static var statements: [Statement] = []
+    
+    func fetchStatement(completionHandler: @escaping (() throws -> [Statement]) -> Void)
+    {
+        completionHandler { return type(of: self).statements }
+    }
 }

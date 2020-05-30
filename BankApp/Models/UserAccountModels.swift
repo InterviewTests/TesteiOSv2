@@ -12,20 +12,16 @@
 
 import UIKit
 
-enum UserAccount
+struct UserAccount: Equatable, Decodable
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
+    var userId: Int
+    var name: String
+    var bankAccount: String
+    var agency: String
+    var balance: Double
+}
+
+func ==(lhs: UserAccount, rhs: UserAccount) -> Bool
+{
+    return lhs.userId == rhs.userId
 }

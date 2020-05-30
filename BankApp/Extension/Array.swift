@@ -6,4 +6,11 @@
 //  Copyright © 2020 Lynneker Souza. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension Array {
+    public func get(at index: Int) -> Element? {
+        guard index >= 0 && index < count else { return nil }
+        return self[index]
+    }
+}

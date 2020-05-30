@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+  func createLogin(request: Login.CreateLogin.Request)
 }
 
 protocol LoginDataStore
@@ -30,12 +30,12 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
   
   // MARK: Do something
   
-  func doSomething(request: Login.Something.Request)
+  func createLogin(request: Login.CreateLogin.Request)
   {
     worker = LoginWorker()
     worker?.doSomeWork()
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
+    let response = Login.CreateLogin.Response()
+    presenter?.presentCreateLogin(response: response)
   }
 }

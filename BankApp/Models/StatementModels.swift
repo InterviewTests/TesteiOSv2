@@ -12,20 +12,10 @@
 
 import UIKit
 
-enum Statement
+struct Statement: Codable
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
+    var title: String
+    var desc: String
+    var date: String
+    var value: Double
 }

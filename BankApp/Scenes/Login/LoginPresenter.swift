@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-  func presentSomething(response: Login.Something.Response)
+  func presentCreateLogin(response: Login.CreateLogin.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
@@ -23,9 +23,9 @@ class LoginPresenter: LoginPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: Login.Something.Response)
+  func presentCreateLogin(response: Login.CreateLogin.Response)
   {
-    let viewModel = Login.Something.ViewModel()
+    let viewModel = Login.CreateLogin.ViewModel()
     viewController?.displaySomething(viewModel: viewModel)
   }
 }

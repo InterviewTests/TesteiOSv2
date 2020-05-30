@@ -14,7 +14,31 @@ import UIKit
 
 class StatementWorker
 {
-  func doSomeWork()
-  {
-  }
+    var statementStore: StatementStoreProtocol
+    
+    init(statementStore: StatementStoreProtocol) {
+        self.statementStore = statementStore
+    }
+    
+    func fetchOrders(completionHandler: @escaping ([Statement]) -> Void)
+    {
+        statementStore.fetchStatement { (statement: () throws -> [Statement]) -> Void in
+            do {
+                let orders = try statement()
+                DispatchQueue.main.async {
+                    completionHandler(orders)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completionHandler([])
+                }
+            }
+        }
+    }
+    
+}
+
+protocol StatementStoreProtocol
+{
+    func fetchStatement(completionHandler: @escaping (() throws -> [Statement]) -> Void)
 }

@@ -14,18 +14,49 @@ import UIKit
 
 protocol ListStatementPresentationLogic
 {
-  func presentSomething(response: ListStatement.Something.Response)
+    func presentFetchStatement(response: ListStatement.FetchStatement.Response)
 }
 
 class ListStatementPresenter: ListStatementPresentationLogic
 {
-  weak var viewController: ListStatementDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: ListStatement.Something.Response)
-  {
-    let viewModel = ListStatement.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: ListStatementDisplayLogic?
+    
+    let currencyFormatter: NumberFormatter = {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.locale = Locale(identifier: "pt_BR")
+        return currencyFormatter
+    }()
+    
+    let dateFormatterGet: DateFormatter = {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatterGet
+    }()
+    
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "pt_BR")
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        return dateFormatter
+    }()
+    
+    // MARK: Fetch Statement
+    
+    func presentFetchStatement(response: ListStatement.FetchStatement.Response)
+    {
+        var displayedStatement: [ListStatement.FetchStatement.ViewModel.DisplayedStatement] = []
+        response.statements.sorted(by: {$0.date > $1.date}).forEach({
+            let title = $0.title
+            let desc = $0.desc
+            let date = dateFormatter.string(from: dateFormatterGet.date(from: $0.date)!)
+            let value = currencyFormatter.string(from: NSNumber(value: $0.value))!
+            displayedStatement.append(ListStatement.FetchStatement.ViewModel.DisplayedStatement(title: title, desc: desc, date: date, value: value))            
+        })
+        viewController?.displayFetchedStatement(viewModel: ListStatement.FetchStatement.ViewModel(displayedStatement: displayedStatement))
+    }
 }
+

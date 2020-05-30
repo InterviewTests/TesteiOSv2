@@ -14,28 +14,29 @@ import UIKit
 
 protocol ListStatementBusinessLogic
 {
-  func doSomething(request: ListStatement.Something.Request)
+    func fetchStatement(request: ListStatement.FetchStatement.Request)
 }
 
 protocol ListStatementDataStore
 {
-  //var name: String { get set }
+    var statements: [Statement]? { get set }
 }
 
 class ListStatementInteractor: ListStatementBusinessLogic, ListStatementDataStore
 {
-  var presenter: ListStatementPresentationLogic?
-  var worker: ListStatementWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: ListStatement.Something.Request)
-  {
-    worker = ListStatementWorker()
-    worker?.doSomeWork()
+    var presenter: ListStatementPresentationLogic?
     
-    let response = ListStatement.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    var statementWorker = StatementWorker(statementStore: StatementAPI())
+    var statements: [Statement]?
+    
+    // MARK: Fetch
+    
+    func fetchStatement(request: ListStatement.FetchStatement.Request)
+    {
+        statementWorker.fetchOrders { (statements) in
+            self.statements = statements
+            let response = ListStatement.FetchStatement.Response(statements: statements)
+            self.presenter?.presentFetchStatement(response: response)
+        }
+    }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class StatementTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
@@ -17,19 +17,25 @@ class StatementTableViewCell: UITableViewCell {
     
     @IBOutlet weak var shadowView: UIView!
     
+    var statement: ListStatement.FetchStatement.ViewModel.DisplayedStatement! {
+        didSet {
+            titleLabel.text = statement.title
+            dateLabel.text = statement.date
+            descLabel.text = statement.desc
+            valueLabel.text = statement.value
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.shadowView.layer.cornerRadius = 4
-        self.shadowView.layer.shadowColor = UIColor.black.cgColor
-        self.shadowView.layer.shadowOpacity = 0.2
-        self.shadowView.layer.shadowOffset = CGSize.zero
-        self.shadowView.layer.masksToBounds = false
+        self.shadowView.applyShadow()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

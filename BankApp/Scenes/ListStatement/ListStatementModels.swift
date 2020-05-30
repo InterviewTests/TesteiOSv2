@@ -14,18 +14,49 @@ import UIKit
 
 enum ListStatement
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
+    // MARK: Use cases
+    
+    enum FetchStatement
     {
+        struct Request
+        {
+        }
+        struct Response
+        {
+            var statements: [Statement]
+        }
+        struct ViewModel
+        {
+            struct DisplayedStatement
+            {
+                var title: String
+                var desc: String
+                var date: String
+                var value: String
+            }
+            var displayedStatement: [DisplayedStatement]
+        }
     }
-    struct Response
+    
+    enum Something
     {
+        struct Request
+        {
+        }
+        struct Response
+        {
+        }
+        struct ViewModel
+        {
+        }
     }
-    struct ViewModel
-    {
+}
+
+extension ListStatement.FetchStatement.ViewModel.DisplayedStatement {
+    public var dateAsDate: Date {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "dd/MM/yyy"
+
+        return dateFormatterGet.date(from: self.date)!
     }
-  }
 }

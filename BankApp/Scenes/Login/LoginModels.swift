@@ -14,18 +14,27 @@ import UIKit
 
 enum Login
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
+    struct LoginFromFields
     {
+        // MARK: User info
+        var login: String
+        var password: String
     }
-    struct Response
+    
+    enum CreateLogin
     {
+        struct Request
+        {
+            var loginFromFields: LoginFromFields
+        }
+        struct Response
+        {
+            var userAccount: UserAccount?
+            var error: Error?
+        }
+        struct ViewModel
+        {
+            var userAccount: UserAccount?
+        }
     }
-    struct ViewModel
-    {
-    }
-  }
 }
