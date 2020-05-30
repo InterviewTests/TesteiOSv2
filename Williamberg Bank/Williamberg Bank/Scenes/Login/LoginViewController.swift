@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import Lottie
 
 protocol LoginDisplayLogic: class
 {
@@ -72,6 +73,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var userTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var loadingButtonView: AnimationView!
     
     var alterConstraintValue:CGFloat = 0
     @IBOutlet weak var loginContainerCenterConstraint: NSLayoutConstraint!
@@ -103,7 +105,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
     
     //MARK: - Auxiliar methods
     func setupViews(){
-        loginButton.backgroundColor = Constants().MAIN_PURPLE_COLOR
+        let constants = Constants()
+        loginButton.backgroundColor = constants.MAIN_PURPLE_COLOR
         loginButton.setTitleColor(UIColor.white, for: .normal)
         loginButton.clipsToBounds = true
         loginButton.layer.cornerRadius = 4
@@ -112,6 +115,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
         userTextfield.returnKeyType = .next
         passwordTextfield.delegate = self
         passwordTextfield.returnKeyType = .done
+        
+        loadingButtonView.isHidden = true
+        loadingButtonView.layer.cornerRadius = 4
+        loadingButtonView.loopMode = .loop
+        loadingButtonView.animation = Animation.named("loading_white")
+        loadingButtonView.backgroundColor = constants.MAIN_PURPLE_COLOR
         
         hideKeyboardWhenTappedOut()
     }
@@ -136,6 +145,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
         alterConstraintValue = 0
     }
     
+    func showAnimationForLoginButton(){
+        loadingButtonView.isHidden = false
+        loadingButtonView.play()
+    }
+    
+    func hideAnimationForLoginButton(){
+        loadingButtonView.isHidden = true
+        loadingButtonView.stop()
+    }
+    
     //MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == userTextfield{
@@ -158,6 +177,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
   
   func displayLoginResult(viewModel: Login.Login.ViewModel)
   {
+    hideAnimationForLoginButton()
     if let _ = viewModel.userAccount{
         router?.routeToStatementsList(segue:nil)
     }
@@ -170,6 +190,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
   }
     
     func loginAction(){
+        showAnimationForLoginButton()
         let request = Login.Login.Request(user: userTextfield.text, password: passwordTextfield.text)
         interactor?.login(request: request)
     }
