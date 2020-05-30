@@ -1,3 +1,5 @@
+[![Platform](https://img.shields.io/badge/iOS-9-green.svg)](https://developer.apple.com/ios/)
+
 # Show me the code
 
 Esse repositório contem uma aplicação por mim desenvolvida como exemplo abaixo: 
