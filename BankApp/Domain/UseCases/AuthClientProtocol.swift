@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol AuthClientProtocol {
+public protocol AuthClientUseCaseProtocol {
     func login(authenticationModel: AuthClientModel, completion: @escaping (Result<UserAccount, DomainError>) -> Void)
 }
