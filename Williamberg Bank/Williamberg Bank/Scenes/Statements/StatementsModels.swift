@@ -43,7 +43,7 @@ enum Statements
                 let middle = _agency[ secondIndex..<_agency.index(before: _agency.endIndex) ]
                 formattedAccount = String(prefix) + " ." + String(middle) + "-" + String(last)
             }
-            account = (userAccount?.bankAccount ?? "") + " /" + formattedAccount
+            account = (userAccount?.bankAccount ?? "") + " / " + formattedAccount
                 
             formatter.numberStyle = .currency
             if let formattedAmount = formatter.string(from: NSNumber(value: (userAccount?.balance ?? 0))) {
@@ -55,4 +55,28 @@ enum Statements
         }
     }
   }
+    
+    enum LoadStatements {
+        struct Request
+        {
+        }
+        struct Response
+        {
+            var statements: [Statement]
+            let errorMessage: String?
+        }
+        struct ViewModel
+        {
+            struct DisplayedStatement
+            {
+              var title: String
+              var description: String
+              var date: String
+              var value: String
+            }
+            var displayedStatements: [DisplayedStatement]
+            let errorMessage: String?
+            let hideAdviseLabel: Bool
+        }
+    }
 }

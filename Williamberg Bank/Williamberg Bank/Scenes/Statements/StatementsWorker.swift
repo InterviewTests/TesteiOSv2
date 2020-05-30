@@ -14,7 +14,33 @@ import UIKit
 
 class StatementsWorker
 {
-  func doSomeWork()
-  {
-  }
+    func fetchStatements(userId: Int, completionHandler: @escaping( _ Statements: [Statement]?, _ errorMessage: String?) -> Void){
+        
+        BaseBankAPI().makeRequest(serviceName: "statements" + "/\(userId)", args: nil, httpMethod: .GET) { (data, response, error) in
+            if let _ = error{
+                DispatchQueue.main.async {
+                    completionHandler(nil, "Por favor, verifique sua conexão com a internet e tente novamente.")
+                }
+            }
+            else{
+                do{
+                    guard let _data = data else{
+                        DispatchQueue.main.async {
+                            completionHandler(nil, BaseBankAPI.ServiceError.NullResponse.localizedDescription)
+                        }
+                        return
+                    }
+                    let statementsDTO = try JSONDecoder().decode(StatementDTO.self, from: _data)
+                    DispatchQueue.main.async {
+                        completionHandler(statementsDTO.statementList, nil)
+                    }
+                }
+                catch{
+                    DispatchQueue.main.async {
+                        completionHandler(nil, "erro ao formatar resposta recebida.")
+                    }
+                }
+            }
+        }
+    }
 }

@@ -15,17 +15,51 @@ import UIKit
 protocol StatementsPresentationLogic
 {
     func presentUserAccount(response: Statements.LoadUserAccount.Response)
+    func presentFetchedStatements(response: Statements.LoadStatements.Response)
 }
 
 class StatementsPresenter: StatementsPresentationLogic
 {
   weak var viewController: StatementsDisplayLogic?
   
-  // MARK: Do something
+  let currencyFormatter: NumberFormatter = {
+    let currencyFormatter = NumberFormatter()
+    currencyFormatter.numberStyle = .currency
+    return currencyFormatter
+  }()
   
+  // MARK: Present User Account
     func presentUserAccount(response: Statements.LoadUserAccount.Response)
   {
     let viewModel = Statements.LoadUserAccount.ViewModel(userAccount: response.userAccount)
     viewController?.displayUserAccount(viewModel: viewModel)
+  }
+    
+  // MARK: Present Statements
+    func presentFetchedStatements(response: Statements.LoadStatements.Response)
+  {
+    var displayedStatements: [Statements.LoadStatements.ViewModel.DisplayedStatement] = []
+    for statement in response.statements{
+        let title = statement.title ?? "-"
+        let description = statement.desc ?? "-"
+        
+        var date = "-"
+        if let dateFields = statement.date?.split(separator: "-"){
+            let dateFields = dateFields.reversed().compactMap({ String($0) })
+            date = dateFields.joined(separator: "/")
+        }
+        
+        var value = "-"
+        if let statementValue = statement.value{
+            value = currencyFormatter.string(from: NSNumber(value: statementValue)) ?? "-"
+        }
+        displayedStatements.append(Statements.LoadStatements.ViewModel.DisplayedStatement(title: title, description: description, date: date, value: value))
+    }
+    
+    let viewModel = Statements.LoadStatements.ViewModel(displayedStatements: displayedStatements, errorMessage: response.errorMessage, hideAdviseLabel: displayedStatements.count > 0)
+    viewController?.displayStatements(viewModel: viewModel)
+    if let _ = viewModel.errorMessage{
+        viewController?.displayErrorMessage(viewModel: viewModel)
+    }
   }
 }

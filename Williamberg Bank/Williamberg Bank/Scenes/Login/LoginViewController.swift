@@ -35,6 +35,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
     super.init(coder: aDecoder)
     setup()
   }
+    
+  override var preferredStatusBarStyle: UIStatusBarStyle{
+    return .default
+  }
   
   // MARK: Setup
   

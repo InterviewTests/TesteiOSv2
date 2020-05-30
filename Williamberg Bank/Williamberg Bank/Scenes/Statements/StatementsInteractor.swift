@@ -15,11 +15,13 @@ import UIKit
 protocol StatementsBusinessLogic
 {
     func loadUserAccount(request: Statements.LoadUserAccount.Request)
+    func loadStatements(request: Statements.LoadStatements.Request)
 }
 
 protocol StatementsDataStore
 {
   var userAccount: UserAccount? { get set }
+  var statements: [Statements]? { get set }
 }
 
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
@@ -27,15 +29,29 @@ class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
   var presenter: StatementsPresentationLogic?
   var worker: StatementsWorker?
   var userAccount: UserAccount?
+  var statements: [Statements]?
   
   // MARK: Do something
   
     func loadUserAccount(request: Statements.LoadUserAccount.Request)
   {
-    worker = StatementsWorker()
-    worker?.doSomeWork()
-    
     let response = Statements.LoadUserAccount.Response(userAccount: userAccount)
     presenter?.presentUserAccount(response: response)
+  }
+    
+  func loadStatements(request: Statements.LoadStatements.Request)
+  {
+    worker = StatementsWorker()
+    if let userId = userAccount?.userId{
+        worker?.fetchStatements(userId: userId, completionHandler: {
+            [weak self] statements, errorMessage in
+            let response = Statements.LoadStatements.Response(statements: statements ?? [Statement](), errorMessage: errorMessage)
+            self?.presenter?.presentFetchedStatements(response: response)
+        })
+    }
+    else{
+        let response = Statements.LoadStatements.Response(statements: [Statement](), errorMessage: "User Id inválido.")
+        presenter?.presentFetchedStatements(response: response)
+    }
   }
 }
