@@ -38,6 +38,29 @@ enum ListStatement
         }
     }
     
+    enum UserAccountInfo
+    {
+        struct Request
+        {
+        }
+        struct Response
+        {
+            var userAccount: UserAccount
+        }
+        struct ViewModel
+        {
+            struct DisplayedUserAccount
+            {
+                var userId: String
+                var name: String
+                var bankAccount: String
+                var agency: String
+                var balance: String
+            }
+            var displayedUserAccount: DisplayedUserAccount
+        }
+    }
+    
     enum Something
     {
         struct Request
@@ -56,7 +79,6 @@ extension ListStatement.FetchStatement.ViewModel.DisplayedStatement {
     public var dateAsDate: Date {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "dd/MM/yyy"
-
         return dateFormatterGet.date(from: self.date)!
     }
 }

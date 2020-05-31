@@ -15,10 +15,12 @@ import UIKit
 protocol ListStatementBusinessLogic
 {
     func fetchStatement(request: ListStatement.FetchStatement.Request)
+    func fetchUserAccount(request: ListStatement.UserAccountInfo.Request)
 }
 
 protocol ListStatementDataStore
 {
+    var userAccount: UserAccount! { get set }
     var statements: [Statement]? { get set }
 }
 
@@ -28,6 +30,7 @@ class ListStatementInteractor: ListStatementBusinessLogic, ListStatementDataStor
     
     var statementWorker = StatementWorker(statementStore: StatementAPI())
     var statements: [Statement]?
+    var userAccount: UserAccount!
     
     // MARK: Fetch
     
@@ -38,5 +41,12 @@ class ListStatementInteractor: ListStatementBusinessLogic, ListStatementDataStor
             let response = ListStatement.FetchStatement.Response(statements: statements)
             self.presenter?.presentFetchStatement(response: response)
         }
+    }
+    
+    func fetchUserAccount(request: ListStatement.UserAccountInfo.Request)
+    {
+        let response = ListStatement.UserAccountInfo.Response(userAccount: userAccount)
+        self.presenter?.presentUserAccount(response: response)
+        
     }
 }

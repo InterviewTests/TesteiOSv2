@@ -14,7 +14,7 @@ import UIKit
 
 @objc protocol ListStatementRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+  func routeBackToLogin()
 }
 
 protocol ListStatementDataPassing
@@ -43,13 +43,17 @@ class ListStatementRouter: NSObject, ListStatementRoutingLogic, ListStatementDat
   //    navigateToSomewhere(source: viewController!, destination: destinationVC)
   //  }
   //}
+    
+    func routeBackToLogin() {
+        navigateToLogin(source: viewController!)
+    }
 
   // MARK: Navigation
   
-  //func navigateToSomewhere(source: ListStatementViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+  func navigateToLogin(source: ListStatementViewController)
+  {
+    source.navigationController?.popViewController(animated: true)
+  }
   
   // MARK: Passing data
   

@@ -14,6 +14,7 @@ import UIKit
 
 protocol ListStatementDisplayLogic: class
 {
+    func displayUserAccountInfo(viewModel: ListStatement.UserAccountInfo.ViewModel)
     func displayFetchedStatement(viewModel: ListStatement.FetchStatement.ViewModel)
 }
 
@@ -70,6 +71,7 @@ class ListStatementViewController: UIViewController, ListStatementDisplayLogic, 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        showUserAccountInfo()
         startLoadingAnimation()
         fetchStatement()
     }
@@ -77,7 +79,9 @@ class ListStatementViewController: UIViewController, ListStatementDisplayLogic, 
     // MARK: - Logout
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        askLogoutAlert(title: "Logout", message: "Tem certeza que deseja sair?") { (_) in
+            self.router?.routeBackToLogin()
+        }
     }
     
     
@@ -153,4 +157,34 @@ class ListStatementViewController: UIViewController, ListStatementDisplayLogic, 
         return cell
     }
     
+    // MARK: - Update UserInfo
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var agencyLabel: UILabel!
+    @IBOutlet weak var bankAccountLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
+    
+    func showUserAccountInfo() {
+        let userAccount = ListStatement.UserAccountInfo.Request()
+        interactor?.fetchUserAccount(request: userAccount)
+    }
+    
+    func displayUserAccountInfo(viewModel: ListStatement.UserAccountInfo.ViewModel) {
+        let user = viewModel.displayedUserAccount
+        nameLabel.text = user.name
+        agencyLabel.text = user.agency
+        bankAccountLabel.text = user.bankAccount
+        balanceLabel.text = user.balance
+    }
+    
+    // MARK: Error handling
+    
+    private func askLogoutAlert(title: String, message: String, actionHandler: ((UIAlertAction) -> Void)? = nil)
+    {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
+        let alertCancelAction = UIAlertAction(title: "Sair", style: .destructive, handler: actionHandler)
+        alertController.addAction(alertAction)
+        alertController.addAction(alertCancelAction)
+        showDetailViewController(alertController, sender: nil)
+    }
 }

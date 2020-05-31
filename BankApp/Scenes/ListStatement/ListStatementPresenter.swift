@@ -15,6 +15,7 @@ import UIKit
 protocol ListStatementPresentationLogic
 {
     func presentFetchStatement(response: ListStatement.FetchStatement.Response)
+    func presentUserAccount(response: ListStatement.UserAccountInfo.Response)
 }
 
 class ListStatementPresenter: ListStatementPresentationLogic
@@ -54,9 +55,22 @@ class ListStatementPresenter: ListStatementPresentationLogic
             let desc = $0.desc
             let date = dateFormatter.string(from: dateFormatterGet.date(from: $0.date)!)
             let value = currencyFormatter.string(from: NSNumber(value: $0.value))!
-            displayedStatement.append(ListStatement.FetchStatement.ViewModel.DisplayedStatement(title: title, desc: desc, date: date, value: value))            
+            displayedStatement.append(ListStatement.FetchStatement.ViewModel.DisplayedStatement(title: title, desc: desc, date: date, value: value))
         })
         viewController?.displayFetchedStatement(viewModel: ListStatement.FetchStatement.ViewModel(displayedStatement: displayedStatement))
+    }
+    
+    func presentUserAccount(response: ListStatement.UserAccountInfo.Response) {
+        let user = response.userAccount
+        let id = "\(user.userId)"
+        let name = user.name
+        let agency = user.agency
+        let account = user.bankAccount
+        let balance = currencyFormatter.string(from: NSNumber(value: user.balance))!
+        let displayed = ListStatement.UserAccountInfo.ViewModel.DisplayedUserAccount(userId: id, name: name, bankAccount: account, agency: agency, balance: balance)
+        let viewModel = ListStatement.UserAccountInfo.ViewModel(displayedUserAccount: displayed)
+        viewController?.displayUserAccountInfo(viewModel: viewModel)
+        
     }
 }
 
