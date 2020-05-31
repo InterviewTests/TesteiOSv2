@@ -44,6 +44,16 @@ class AuthClientTests: XCTestCase {
             httpClientSpy.completeWith(data: dataInvalid)
         })
     }
+    
+    func test_login_should_not_complete_if_sut_has_deinit() {
+        let httpClientSpy = HTTPPostClientSpy()
+        var sut: AuthClientUseCase? = .init(url: url, httpClient: httpClientSpy)
+        var result: Result<UserAccount, DomainError>?
+        sut?.login(authenticationModel: authClientModel, completion: { result = $0 })
+        sut = nil
+        httpClientSpy.completeWith(data: dataInvalid)
+        XCTAssertNil(result)
+    }
 }
 
 extension AuthClientTests {
@@ -84,9 +94,11 @@ extension AuthClientTests {
         return .init(userID: 1, name: "name_any", bankAccount: "bankAccount_any", agency: "agency_any", balance: 0.0)
     }
     
-    func makeSut(with url: URL = URL(string: "http://url-mock.com")!) -> (sut: AuthClientUseCase, httpClientSpy: HTTPPostClientSpy) {
+    func makeSut(with url: URL = URL(string: "http://url-mock.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: AuthClientUseCase, httpClientSpy: HTTPPostClientSpy) {
         let httpClientSpy = HTTPPostClientSpy()
         let sut = AuthClientUseCase(url: url, httpClient: httpClientSpy)
+        memoryLeakCheckWith(instance: sut, file: file, line: line)
+        memoryLeakCheckWith(instance: httpClientSpy, file: file, line: line)
         return (sut, httpClientSpy)
     }
     
@@ -102,5 +114,11 @@ extension AuthClientTests {
         }
         action()
         wait(for: [expectetion], timeout: 1)
+    }
+    
+    func memoryLeakCheckWith(instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, file: file, line: line)
+        }
     }
 }
