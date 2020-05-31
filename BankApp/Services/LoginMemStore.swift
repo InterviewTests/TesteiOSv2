@@ -16,12 +16,4 @@ class LoginMemStore: LoginStoreProtocol {
         completionHandler(type(of: self).userAccount , nil)
     }
     
-    func loginUser(_ user: User, completionHandler: @escaping (() throws -> UserAccount) -> Void) {
-        completionHandler { return type(of: self).userAccount }
-    }
-    
-    func loginUser(_ user: User, completionHandler: @escaping UserStoreFetchUserCompletionHandler) {
-        completionHandler(UserStoreResult.Success(result: type(of: self).userAccount))
-    }
-    
 }

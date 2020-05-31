@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 
 extension UIViewController: NVActivityIndicatorViewable {
     
-    func startLoadingAnimation(_ ignoreInteractionEvents: Bool = true) {
+    public func startLoadingAnimation(_ ignoreInteractionEvents: Bool = true) {
         if ignoreInteractionEvents { UIApplication.shared.beginIgnoringInteractionEvents() }
         
         /**
@@ -32,7 +32,7 @@ extension UIViewController: NVActivityIndicatorViewable {
         startAnimating(type: .ballScaleRippleMultiple, color: .white)
     }
     
-    func stopLoadingAnimation(completition: (() -> Void)? = nil) {
+    public func stopLoadingAnimation(completition: (() -> Void)? = nil) {
         UIApplication.shared.endIgnoringInteractionEvents()
         self.stopAnimating()
         completition?()

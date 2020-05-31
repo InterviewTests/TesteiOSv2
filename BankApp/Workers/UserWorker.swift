@@ -28,9 +28,6 @@ protocol LoginStoreProtocol {
     
     func loginUser(_ user: User, completionHandler: @escaping (UserAccount?, UserStoreError?) -> Void)
     
-    func loginUser(_ user: User, completionHandler: @escaping (() throws -> UserAccount) -> Void)
-    
-    func loginUser(_ user: User, completionHandler: @escaping UserStoreFetchUserCompletionHandler)
 }
 
 // MARK: - User store CRUD operation errors

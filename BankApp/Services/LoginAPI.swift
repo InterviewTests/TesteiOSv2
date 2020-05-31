@@ -28,12 +28,6 @@ class LoginAPI: LoginStoreProtocol {
         }
     }
     
-    func loginUser(_ user: User, completionHandler: @escaping (() throws -> UserAccount) -> Void) {
-    }
-    
-    func loginUser(_ user: User, completionHandler: @escaping UserStoreFetchUserCompletionHandler) {
-    }
-    
     private func parse<T:Decodable>(_ data: Data, as type:T.Type = T.self) -> T {
         do {
             let decoder = JSONDecoder()
