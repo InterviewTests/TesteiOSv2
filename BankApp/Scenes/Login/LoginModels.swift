@@ -35,6 +35,7 @@ enum Login
         struct ViewModel
         {
             var userAccount: UserAccount?
+            var error: Error?
         }
     }
 }

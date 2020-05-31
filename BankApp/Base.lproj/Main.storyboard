@@ -59,7 +59,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Hpw-Na-nGT" kind="show" id="iOf-fY-xx3"/>
+                                    <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w3k-yr-sup"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hx6-W4-Olz">
@@ -86,6 +86,7 @@
                     <connections>
                         <outlet property="loginTextField" destination="JYP-Ka-hIw" id="9UE-nM-knb"/>
                         <outlet property="passwordTextField" destination="zrp-GT-Fye" id="Sl5-VG-KqH"/>
+                        <segue destination="Hpw-Na-nGT" kind="show" identifier="ListStatement" id="Bap-o7-oGe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -95,7 +96,7 @@
         <!--List Statement View Controller-->
         <scene sceneID="iFz-ku-YDM">
             <objects>
-                <viewController interfaceStyle="light" id="Hpw-Na-nGT" customClass="ListStatementViewController" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListStatementViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" interfaceStyle="light" id="Hpw-Na-nGT" customClass="ListStatementViewController" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4pZ-Ll-Iy8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,12 +125,29 @@
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2050 / 00.000000-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztS-PQ-F57">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uAA-7v-lsZ">
                                                                 <rect key="frame" x="0.0" y="2.5" width="334" height="49.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2050" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztS-PQ-F57">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="89.5" height="49.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4G-lT-Cr0">
+                                                                        <rect key="frame" x="89.5" y="10.5" width="13" height="29"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.000000-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdj-gX-Ids">
+                                                                        <rect key="frame" x="102.5" y="10.5" width="231.5" height="29"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="16" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kdM-pN-vIV">
@@ -290,6 +308,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="2np-PN-30r"/>
                     <connections>
+                        <outlet property="agencyLabel" destination="ztS-PQ-F57" id="R9R-nA-jmv"/>
+                        <outlet property="balanceLabel" destination="gWd-7f-4IV" id="MRY-ee-C91"/>
+                        <outlet property="bankAccountLabel" destination="Tdj-gX-Ids" id="JVv-mb-08K"/>
+                        <outlet property="nameLabel" destination="ceN-4A-CSK" id="13O-OQ-LSh"/>
                         <outlet property="tableView" destination="lId-rG-pBE" id="qut-kC-V0c"/>
                     </connections>
                 </viewController>

@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    func displaySomething(viewModel: Login.CreateLogin.ViewModel)
+    func displayUserAccountStatement(viewModel: Login.CreateLogin.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDelegate
@@ -88,20 +88,39 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
         return true
     }
     
-    /*
-    func doSomething()
-    {
-        let request = Login.Something.Request()
-        interactor?.doSomething(request: request)
+    // MARK: Contact info
+    
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        guard let user = loginTextField.text, !user.isEmpty,
+        let password = passwordTextField.text, !password.isEmpty else {
+            showLoginFailureAlert(title: "Ops", message: "Usuário ou senha incorreta.")
+            return
+        }
+        let request = Login.CreateLogin.Request(loginFromFields: Login.LoginFromFields(login: user, password: password))
+        interactor?.createLogin(request: request)
     }
-    */
-    func displaySomething(viewModel: Login.CreateLogin.ViewModel)
+    
+    func displayUserAccountStatement(viewModel: Login.CreateLogin.ViewModel)
     {
-        //nameTextField.text = viewModel.name
+        if viewModel.userAccount != nil {
+            router?.routeToStatement(segue: nil)
+        } else if let error = viewModel.error {
+            showLoginFailureAlert(title: "Ops", message: error.localizedDescription)
+        }
     }
     
     func displayError(viewModel: Login.CreateLogin.Response)
     {
         print(viewModel.error.debugDescription)
+    }
+    
+    // MARK: Error handling
+    
+    private func showLoginFailureAlert(title: String, message: String)
+    {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        showDetailViewController(alertController, sender: nil)
     }
 }

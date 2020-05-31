@@ -45,6 +45,9 @@
 		3CFC32752482B6EE002E9973 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC32742482B6EE002E9973 /* UIView.swift */; };
 		3CFC32772482CC3F002E9973 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC32762482CC3F002E9973 /* Date.swift */; };
 		3CFC32792482EC75002E9973 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3CFC32782482EC74002E9973 /* README.md */; };
+		3CFC327B2482F730002E9973 /* UserWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC327A2482F730002E9973 /* UserWorker.swift */; };
+		3CFC327D2482FC23002E9973 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC327C2482FC23002E9973 /* LoginAPI.swift */; };
+		3CFC327F2482FDB4002E9973 /* LoginMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC327E2482FDB4002E9973 /* LoginMemStore.swift */; };
 		470F753CF83100F4510158F3 /* Pods_BankAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B29B30E231853AEF8A6140 /* Pods_BankAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +97,9 @@
 		3CFC32742482B6EE002E9973 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		3CFC32762482CC3F002E9973 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3CFC32782482EC74002E9973 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3CFC327A2482F730002E9973 /* UserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorker.swift; sourceTree = "<group>"; };
+		3CFC327C2482FC23002E9973 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		3CFC327E2482FDB4002E9973 /* LoginMemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMemStore.swift; sourceTree = "<group>"; };
 		8E9CF2BD0BFEEC0158D44AD2 /* Pods-BankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankApp.release.xcconfig"; path = "Target Support Files/Pods-BankApp/Pods-BankApp.release.xcconfig"; sourceTree = "<group>"; };
 		981C94150BCA255E0ACFEA41 /* Pods-BankAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankAppTests.release.xcconfig"; path = "Target Support Files/Pods-BankAppTests/Pods-BankAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED1E0D171F054C94F58B8F7C /* Pods-BankAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BankAppTests/Pods-BankAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -227,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				3CFC32682481A892002E9973 /* StatementWorker.swift */,
+				3CFC327A2482F730002E9973 /* UserWorker.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -235,6 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				3CFC326E2481B334002E9973 /* StatementAPI.swift */,
+				3CFC327C2482FC23002E9973 /* LoginAPI.swift */,
+				3CFC327E2482FDB4002E9973 /* LoginMemStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -431,6 +440,7 @@
 				3CFC32772482CC3F002E9973 /* Date.swift in Sources */,
 				3CFC322D24814A1D002E9973 /* LoginWorker.swift in Sources */,
 				3CFC322B24814A1D002E9973 /* LoginPresenter.swift in Sources */,
+				3CFC327F2482FDB4002E9973 /* LoginMemStore.swift in Sources */,
 				3CFC32752482B6EE002E9973 /* UIView.swift in Sources */,
 				3CFC326124819F58002E9973 /* ListStatementModels.swift in Sources */,
 				3CFC323124814A1D002E9973 /* LoginModels.swift in Sources */,
@@ -440,10 +450,12 @@
 				3CFC326F2481B334002E9973 /* StatementAPI.swift in Sources */,
 				3CFC322F24814A1D002E9973 /* LoginRouter.swift in Sources */,
 				3CFC323324814A1D002E9973 /* LoginViewController.swift in Sources */,
+				3CFC327B2482F730002E9973 /* UserWorker.swift in Sources */,
 				3CFC32662481A262002E9973 /* Array.swift in Sources */,
 				3CFC325F24819F58002E9973 /* ListStatementWorker.swift in Sources */,
 				3C3FF77C248146F30024B850 /* AppDelegate.swift in Sources */,
 				3CFC323924815B31002E9973 /* UserAccountModels.swift in Sources */,
+				3CFC327D2482FC23002E9973 /* LoginAPI.swift in Sources */,
 				3CFC325E24819F58002E9973 /* ListStatementPresenter.swift in Sources */,
 				3CFC326024819F58002E9973 /* ListStatementRouter.swift in Sources */,
 				3C3FF77E248146F30024B850 /* SceneDelegate.swift in Sources */,

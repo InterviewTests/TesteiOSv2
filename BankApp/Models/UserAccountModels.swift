@@ -25,3 +25,13 @@ func ==(lhs: UserAccount, rhs: UserAccount) -> Bool
 {
     return lhs.userId == rhs.userId
 }
+
+struct User: Decodable {
+    var user: String
+    var password: String
+}
+
+struct UserError: Decodable {
+    var code: Int?
+    var message: String?
+}

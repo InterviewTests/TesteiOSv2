@@ -14,18 +14,26 @@ import UIKit
 
 protocol LoginPresentationLogic
 {
-  func presentCreateLogin(response: Login.CreateLogin.Response)
+    func presentCreateLogin(response: Login.CreateLogin.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic
 {
-  weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentCreateLogin(response: Login.CreateLogin.Response)
-  {
-    let viewModel = Login.CreateLogin.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: LoginDisplayLogic?
+    
+    // MARK: Do something
+    
+    let currencyFormatter: NumberFormatter = {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.numberStyle = .currency
+        return currencyFormatter
+    }()
+    
+    func presentCreateLogin(response: Login.CreateLogin.Response)
+    {
+        var viewModel = Login.CreateLogin.ViewModel()
+        viewModel.error = response.error
+        viewModel.userAccount = response.userAccount
+        viewController?.displayUserAccountStatement(viewModel: viewModel)
+    }
 }
