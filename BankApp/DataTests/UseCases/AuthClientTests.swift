@@ -78,20 +78,8 @@ extension AuthClientTests {
         }
     }
     
-    var dataInvalid: Data {
-        return .init("Data Invaid".utf8)
-    }
-    
-    var url: URL {
-        return URL(string: "http://url-mock.com")!
-    }
-    
     var authClientModel: AuthClientModel {
         return .init(email: "email_any", password: "email_password")
-    }
-    
-    var userAccount: UserAccount {
-        return .init(userID: 1, name: "name_any", bankAccount: "bankAccount_any", agency: "agency_any", balance: 0.0)
     }
     
     func makeSut(with url: URL = URL(string: "http://url-mock.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: AuthClientUseCase, httpClientSpy: HTTPPostClientSpy) {
@@ -114,11 +102,5 @@ extension AuthClientTests {
         }
         action()
         wait(for: [expectetion], timeout: 1)
-    }
-    
-    func memoryLeakCheckWith(instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, file: file, line: line)
-        }
     }
 }
