@@ -70,7 +70,6 @@ class ListStatementPresenter: ListStatementPresentationLogic
         let displayed = ListStatement.UserAccountInfo.ViewModel.DisplayedUserAccount(userId: id, name: name, bankAccount: account, agency: agency, balance: balance)
         let viewModel = ListStatement.UserAccountInfo.ViewModel(displayedUserAccount: displayed)
         viewController?.displayUserAccountInfo(viewModel: viewModel)
-        
     }
 }
 

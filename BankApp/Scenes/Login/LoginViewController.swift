@@ -69,7 +69,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        //doSomething()
     }
     
     // MARK: Text fields
@@ -93,7 +92,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
     @IBAction func loginButtonTapped(_ sender: Any) {
         guard let user = loginTextField.text, !user.isEmpty,
         let password = passwordTextField.text, !password.isEmpty else {
-            showLoginFailureAlert(title: "Ops", message: "Usuário ou senha incorreta.")
+            displayError(viewModel: Login.CreateLogin.Response(userAccount: nil, error: .CannotLogin("Usuário ou senha incorreta")))
             return
         }
         let request = Login.CreateLogin.Request(loginFromFields: Login.LoginFromFields(login: user, password: password))
@@ -105,18 +104,18 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
         if viewModel.userAccount != nil {
             router?.routeToStatement(segue: nil)
         } else if let error = viewModel.error {
-            showLoginFailureAlert(title: "Ops", message: error.localizedDescription)
+            showAlert(title: "Ops", message: error.localizedDescription)
         }
     }
     
     func displayError(viewModel: Login.CreateLogin.Response)
     {
-        print(viewModel.error.debugDescription)
+        showAlert(title: "Ops", message: viewModel.error!.localizedDescription)
     }
     
     // MARK: Error handling
     
-    private func showLoginFailureAlert(title: String, message: String)
+    private func showAlert(title: String, message: String)
     {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)

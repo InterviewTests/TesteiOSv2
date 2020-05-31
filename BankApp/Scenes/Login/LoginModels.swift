@@ -30,12 +30,12 @@ enum Login
         struct Response
         {
             var userAccount: UserAccount?
-            var error: Error?
+            var error: UserStoreError?
         }
         struct ViewModel
         {
             var userAccount: UserAccount?
-            var error: Error?
+            var error: UserStoreError?
         }
     }
 }

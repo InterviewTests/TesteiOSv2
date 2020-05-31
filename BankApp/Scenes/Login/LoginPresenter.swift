@@ -23,12 +23,6 @@ class LoginPresenter: LoginPresentationLogic
     
     // MARK: Do something
     
-    let currencyFormatter: NumberFormatter = {
-        let currencyFormatter = NumberFormatter()
-        currencyFormatter.numberStyle = .currency
-        return currencyFormatter
-    }()
-    
     func presentCreateLogin(response: Login.CreateLogin.Response)
     {
         var viewModel = Login.CreateLogin.ViewModel()

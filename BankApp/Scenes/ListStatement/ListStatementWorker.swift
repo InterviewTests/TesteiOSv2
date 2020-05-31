@@ -12,13 +12,6 @@
 
 import UIKit
 
-class ListStatementWorker: StatementStoreProtocol
+class ListStatementWorker
 {
-    
-    static var statements: [Statement] = []
-    
-    func fetchStatement(completionHandler: @escaping (() throws -> [Statement]) -> Void)
-    {
-        completionHandler { return type(of: self).statements }
-    }
 }

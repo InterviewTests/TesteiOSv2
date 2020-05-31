@@ -19,7 +19,6 @@ protocol LoginBusinessLogic
 
 protocol LoginDataStore
 {
-    var userToLogin: User? { get set }
     var userAccount: UserAccount? { get set }
 }
 
@@ -28,7 +27,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     var presenter: LoginPresentationLogic?
     
     var userWorker: UserWorker = UserWorker(loginStore: LoginAPI())
-    var userToLogin: User?
     var userAccount: UserAccount?
     
     // MARK: Login User
