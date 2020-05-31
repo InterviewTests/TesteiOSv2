@@ -12,6 +12,10 @@ var dataInvalid: Data {
     return .init("Data Invaid".utf8)
 }
 
+var dataValid: Data {
+    return .init("{\"user\":\"test_user\",\"password\":\"Test@1\"}".utf8)
+}
+
 var url: URL {
     return URL(string: "http://url-mock.com")!
 }

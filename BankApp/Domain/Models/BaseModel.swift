@@ -16,10 +16,16 @@ public extension BaseModel {
     }
 
     var json: [String: Any]? {
-        guard let data = self.data else {
+        guard let json = self.data?.json else {
             return nil
         }
-        let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        return json
+    }
+}
+
+public extension Data {
+    var json: [String: Any]? {
+        let json = try? JSONSerialization.jsonObject(with: self, options: .allowFragments)
         return json as? [String: Any]
     }
 }
