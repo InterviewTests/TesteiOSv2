@@ -19,3 +19,7 @@ var dataValid: Data {
 var url: URL {
     return URL(string: "http://url-mock.com")!
 }
+
+var error: Error {
+    NSError(domain: "error_any", code: -1, userInfo: [:])
+}
