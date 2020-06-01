@@ -11,18 +11,18 @@ import Alamofire
 import SwiftyJSON
 
 class StatementAPI: StatementStoreProtocol {
-    func fetchStatement(completionHandler: @escaping (() throws -> [Statement]) -> Void) {
+    
+    func fetchStatement(completionHandler: @escaping ([Statement]) -> Void) {
         Alamofire.request("https://bank-app-test.herokuapp.com/api/statements/1", method: .get)
             .responseJSON { response in
-                if let data = response.data {
-                    do {
-                        let json = try JSON(data: data)
-                        let statements: [Statement] = self.parse(try json["statementList"].rawData())
-                        print("Total",statements.count)
-                        completionHandler { return statements }
-                    } catch {
-                        completionHandler { return [] }
-                    }
+                if let data = response.data,
+                    let json = try? JSON(data: data),
+                    !json["statementList"].isEmpty,
+                    let statementJsonData = try? json["statementList"].rawData() {
+                    let statements: [Statement] = self.parse(statementJsonData)
+                    completionHandler(statements)
+                } else {
+                    completionHandler([])
                 }
         }
     }

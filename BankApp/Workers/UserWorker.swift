@@ -11,36 +11,20 @@ class UserWorker
 {
     var loginStore: LoginStoreProtocol
     
-    init(loginStore: LoginStoreProtocol) {
+    init(loginStore: LoginStoreProtocol)
+    {
         self.loginStore = loginStore
     }
 }
 
-typealias UserStoreFetchUserCompletionHandler = (UserStoreResult<UserAccount>) -> Void
-
-enum UserStoreResult<U>
+protocol LoginStoreProtocol
 {
-    case Success(result: U)
-    case Failure(error: UserStoreError)
-}
-
-protocol LoginStoreProtocol {
-    
     func loginUser(_ user: User, completionHandler: @escaping (UserAccount?, UserStoreError?) -> Void)
-    
 }
 
 // MARK: - User store CRUD operation errors
 
-enum UserStoreError: Equatable, Error
+enum UserStoreError: Error
 {
     case CannotLogin(String)
-}
-
-func ==(lhs: UserStoreError, rhs: UserStoreError) -> Bool
-{
-    switch (lhs, rhs) {
-        case (.CannotLogin(let a), .CannotLogin(let b)) where a == b: return true
-        default: return false
-    }
 }

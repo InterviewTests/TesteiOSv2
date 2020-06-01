@@ -26,12 +26,22 @@ func ==(lhs: UserAccount, rhs: UserAccount) -> Bool
     return lhs.userId == rhs.userId
 }
 
-struct User: Decodable {
+struct User: Equatable, Decodable {
     var user: String
     var password: String
 }
 
-struct UserError: Decodable {
+func ==(lhs: User, rhs: User) -> Bool
+{
+    return lhs.user == rhs.user && lhs.password == rhs.password
+}
+
+struct UserError: Equatable, Decodable {
     var code: Int?
     var message: String?
+}
+
+func ==(lhs: UserError, rhs: UserError) -> Bool
+{
+    return lhs.code == rhs.code
 }

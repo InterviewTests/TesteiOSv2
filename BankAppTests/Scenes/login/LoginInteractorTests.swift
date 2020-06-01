@@ -32,12 +32,16 @@ class LoginInteractorTests: XCTestCase
     class LoginPresentationLogicSpy: LoginPresentationLogic
     {
         // MARK: Method call expectations
-        
+        weak var viewController: LoginDisplayLogic?
         var presentCreateLoginCalled = false
         
         // MARK: Spied methods
         func presentCreateLogin(response: Login.CreateLogin.Response) {
             presentCreateLoginCalled = true
+            var viewModel = Login.CreateLogin.ViewModel()
+            viewModel.error = response.error
+            viewModel.userAccount = response.userAccount
+            viewController?.displayUserAccountStatement(viewModel: viewModel)
         }
     }
     
@@ -54,6 +58,26 @@ class LoginInteractorTests: XCTestCase
             loginUserCalled = true
         }
         
+        
+    }
+    
+    class LoginAPISpy: LoginAPI
+    {
+        // MARK: Method call expectations
+        
+        var apiLoginCalled = false
+        
+        // MARK: Spied methods
+        override func loginUser(_ user: User, completionHandler: @escaping (UserAccount?, UserStoreError?) -> Void) {
+            apiLoginCalled = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                if user.password.isEmpty || user.user.isEmpty {
+                    completionHandler(nil, UserWorkerTests.loginError)
+                } else {
+                    completionHandler(UserWorkerTests.loggedAccount, nil)
+                }
+            }
+        }
     }
     
     // MARK: - Tests
@@ -63,15 +87,17 @@ class LoginInteractorTests: XCTestCase
         // Given
         let loginPresentationLogicSpy = LoginPresentationLogicSpy()
         sut.presenter = loginPresentationLogicSpy
-        let loginWorkerSpy = LoginWorkerSpy(loginStore: LoginMemStore())
+        let apiSpy = LoginAPISpy()
+        let loginWorkerSpy = LoginWorkerSpy(loginStore: apiSpy)
         sut.userWorker = loginWorkerSpy
         
         // When
-        let request = Login.CreateLogin.Request(loginFromFields: Seeds.UserInfo.loginFromFields)
+        let request = Login.CreateLogin.Request(loginFromFields: Seeds.UserInfo.loginErrorFromFields)
         sut.createLogin(request: request)
         
         // Then
         XCTAssert(loginWorkerSpy.loginUserCalled, "FetchLogin() should ask UserWorker to login")
-        XCTAssert(loginPresentationLogicSpy.presentCreateLoginCalled, "FetchLogin() should ask presenter to format login result")
+        XCTAssert(apiSpy.apiLoginCalled, "FetchLogin() should ask Api")
+        XCTAssertFalse(loginPresentationLogicSpy.presentCreateLoginCalled, "FetchLogin() should not ask presenter to format login result")
     }
 }

@@ -16,14 +16,15 @@ class LoginAPI: LoginStoreProtocol {
         
         Alamofire.request("https://bank-app-test.herokuapp.com/api/login", method: .post, parameters: param, encoding: JSONEncoding.default)
             .responseJSON { response in
-                if let data = response.data {
-                    do {
-                        let json = try JSON(data: data)
-                        let userAccount: UserAccount = self.parse(try json["userAccount"].rawData())
-                        completionHandler(userAccount, nil)
-                    } catch {
-                        completionHandler(nil, .CannotLogin("Erro! Tente novamente."))
-                    }
+                if let data = response.data,
+                    let json = try? JSON(data: data),
+                    !json["userAccount"].isEmpty,
+                    let userAcJson = try? json["userAccount"].rawData() {
+                    
+                    let userAccount: UserAccount = self.parse(userAcJson)
+                    completionHandler(userAccount, nil)
+                } else {
+                    completionHandler(nil, .CannotLogin(""))
                 }
         }
     }

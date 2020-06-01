@@ -92,7 +92,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
     @IBAction func loginButtonTapped(_ sender: Any) {
         guard let user = loginTextField.text, !user.isEmpty,
         let password = passwordTextField.text, !password.isEmpty else {
-            displayError(viewModel: Login.CreateLogin.Response(userAccount: nil, error: .CannotLogin("Usuário ou senha incorreta")))
+            
             return
         }
         let request = Login.CreateLogin.Request(loginFromFields: Login.LoginFromFields(login: user, password: password))
@@ -104,20 +104,15 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
         if viewModel.userAccount != nil {
             router?.routeToStatement(segue: nil)
         } else if let error = viewModel.error {
-            showAlert(title: "Ops", message: error.localizedDescription)
+           displayError(viewModel: Login.CreateLogin.Response(userAccount: nil, error: error))
         }
-    }
-    
-    func displayError(viewModel: Login.CreateLogin.Response)
-    {
-        showAlert(title: "Ops", message: viewModel.error!.localizedDescription)
     }
     
     // MARK: Error handling
     
-    private func showAlert(title: String, message: String)
+    func displayError(viewModel: Login.CreateLogin.Response)
     {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Ops", message: viewModel.error!.localizedDescription, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
         showDetailViewController(alertController, sender: nil)

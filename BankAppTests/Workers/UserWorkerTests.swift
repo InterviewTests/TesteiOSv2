@@ -33,7 +33,7 @@ class UserWorkerTests: XCTestCase
         UserWorkerTests.loginError = .CannotLogin("")
     }
     
-    class LoginStoreSpy: LoginMemStore
+    class LoginStoreSpy: LoginAPI
     {
         // MARK: Method call expectations
         

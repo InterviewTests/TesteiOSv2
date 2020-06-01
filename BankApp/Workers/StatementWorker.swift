@@ -22,16 +22,10 @@ class StatementWorker
     
     func fetchOrders(completionHandler: @escaping ([Statement]) -> Void)
     {
-        statementStore.fetchStatement { (statement: () throws -> [Statement]) -> Void in
-            do {
-                let orders = try statement()
-                DispatchQueue.main.async {
-                    completionHandler(orders)
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    completionHandler([])
-                }
+        statementStore.fetchStatement { (statement: [Statement]) -> Void in
+            let orders = statement
+            DispatchQueue.main.async {
+                completionHandler(orders)
             }
         }
     }
@@ -40,5 +34,5 @@ class StatementWorker
 
 protocol StatementStoreProtocol
 {
-    func fetchStatement(completionHandler: @escaping (() throws -> [Statement]) -> Void)
+    func fetchStatement(completionHandler: @escaping ([Statement]) -> Void)
 }

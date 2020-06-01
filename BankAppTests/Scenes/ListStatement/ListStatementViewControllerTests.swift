@@ -68,6 +68,20 @@ class ListStatementViewControllerTests: XCTestCase
         }
     }
     
+    class TableViewSpy: UITableView
+    {
+        // MARK: Method call expectations
+        
+        var reloadDataCalled = false
+        
+        // MARK: Spied methods
+        
+        override func reloadData()
+        {
+            reloadDataCalled = true
+        }
+    }
+    
     // MARK: Tests
     
     func testShouldFetchStatementWhenViewIsLoaded()
@@ -95,5 +109,46 @@ class ListStatementViewControllerTests: XCTestCase
         // Then
         XCTAssertTrue(spy.fetchUserAccount, "viewDidLoad() should ask the interactor to fetchUserAccount")
     }
+    
+    func testNumberOfRowsInAnySectionShouldEqaulNumberOfStatementToDisplay()
+    {
+        // Given
+        let tableViewSpy = TableViewSpy()
+        sut.tableView = tableViewSpy
+        let displayedStatement = Seeds.StatementInfo.arrayTwo
+        let statmentsToShow = ListStatement.FetchStatement.ViewModel(displayedStatement: displayedStatement)
+        sut.displayFetchedStatement(viewModel: statmentsToShow)
+        
+        // When
+        let numberOfRows = sut.tableView(tableViewSpy, numberOfRowsInSection: 0)
+
+        // Then
+        XCTAssert(tableViewSpy.reloadDataCalled, "Displaying fetched statements should reload the table view")
+        XCTAssertEqual(displayedStatement.count, numberOfRows , "Equal number")
+    }
+    
+    
+    /*
+    func testTableViewCellToDisplay()
+    {
+        // Given
+        
+        let tableView = UITableView()
+        sut.tableView = tableView
+        tableView.register(StatementTableViewCell.self, forCellReuseIdentifier: "StatementTableViewCell")
+        let displayedStatement = Seeds.StatementInfo.arrayTwo
+        let first = displayedStatement.first!
+        let statmentsToShow = ListStatement.FetchStatement.ViewModel(displayedStatement: displayedStatement)
+        sut.displayFetchedStatement(viewModel: statmentsToShow)
+        
+        // When
+        let indexPath = IndexPath(row: 0, section: 0)
+        let cell = sut.tableView(tableView, cellForRowAt: indexPath) as! StatementTableViewCell
+        
+        // Then
+        XCTAssertEqual(cell.textLabel?.text,first.title)
+        
+    }
+ */
     
 }

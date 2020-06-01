@@ -54,6 +54,21 @@ class LoginViewControllerTests: XCTestCase
         }
     }
     
+    class LoginRouterSpy: LoginRouter
+    {
+        // MARK: Method call expectations
+        
+        var loginRouterCalled = false
+        var navigateToStatementCalled = false
+        var passDataToStatementCalled = false
+        
+        // MARK: Spied methods
+        
+        override func routeToStatement(segue: UIStoryboardSegue?) {
+            loginRouterCalled = true
+        }
+    }
+    
     // MARK: - Tests
     
     func testShouldFailLoginWhenViewDidAppear()
@@ -88,5 +103,43 @@ class LoginViewControllerTests: XCTestCase
         
         // Then
         XCTAssertTrue(loginBusinessLogicSpy.loginButtonTappedCalled, "Should login")
+    }
+    
+    func testShouldRouteToSomewhereElse()
+    {
+        // Given
+        let routerSpy = LoginRouterSpy()
+        sut.router = routerSpy
+        
+        
+        // When
+        sut.displayUserAccountStatement(viewModel: Login.CreateLogin.ViewModel(userAccount: Seeds.UserInfo.loggedAccount, error: nil))
+        // Then
+        XCTAssert(routerSpy.loginRouterCalled,"Redirect to other view")
+    }
+    
+    func testShouldNOTRouteToSomewhereElse()
+    {
+        // Given
+        let routerSpy = LoginRouterSpy()
+        sut.router = routerSpy
+        
+        // When
+        sut.displayUserAccountStatement(viewModel: Login.CreateLogin.ViewModel(userAccount: nil, error: .CannotLogin("")))
+        // Then
+        XCTAssertFalse(routerSpy.loginRouterCalled,"Redirect to other view")
+    }
+    
+    func testViewWithShadows()
+    {
+        let shadowColorBefore = sut.view.layer.shadowColor
+        let shadowOpacityBefore = sut.view.layer.shadowOpacity
+        let shadowOffsetBefore = sut.view.layer.shadowOffset
+        
+        sut.view.applyShadow()
+        
+        XCTAssertNotEqual(sut.view.layer.shadowColor, shadowColorBefore,"Different shadowColor")
+        XCTAssertNotEqual(sut.view.layer.shadowOpacity, shadowOpacityBefore,"Different shadowOpacity")
+        XCTAssertNotEqual(sut.view.layer.shadowOffset, shadowOffsetBefore,"Different shadowOffset")
     }
 }
