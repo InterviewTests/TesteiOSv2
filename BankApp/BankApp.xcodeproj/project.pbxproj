@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5039E0CD2485B30400D6DE50 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */; };
 		810DEBD82482FE5E00D9710E /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810DEBD72482FE5E00D9710E /* HTTPError.swift */; };
 		812D71F32482E96F009C7DEE /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F22482E96F009C7DEE /* AuthClient.swift */; };
 		812D71F52482E9DA009C7DEE /* HTTPPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */; };
@@ -92,6 +93,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		810DEBD72482FE5E00D9710E /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		812D71F22482E96F009C7DEE /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPPostClient.swift; sourceTree = "<group>"; };
@@ -164,6 +166,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5039E0CB2485B2E100D6DE50 /* Client HTTPs */ = {
+			isa = PBXGroup;
+			children = (
+				5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */,
+			);
+			path = "Client HTTPs";
+			sourceTree = "<group>";
+		};
+		5039E0CE2485B3FA00D6DE50 /* Client HTTPs */ = {
+			isa = PBXGroup;
+			children = (
+				81505D6F2483F8D8000B3431 /* AlamofireAdapterTests.swift */,
+			);
+			path = "Client HTTPs";
+			sourceTree = "<group>";
+		};
 		812D71F12482E93F009C7DEE /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,13 +190,13 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		812D71F62482EAAA009C7DEE /* HTTP */ = {
+		812D71F62482EAAA009C7DEE /* Client HTTPs */ = {
 			isa = PBXGroup;
 			children = (
 				812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */,
 				810DEBD72482FE5E00D9710E /* HTTPError.swift */,
 			);
-			path = HTTP;
+			path = "Client HTTPs";
 			sourceTree = "<group>";
 		};
 		812D71F72482EAC6009C7DEE /* UseCases */ = {
@@ -199,17 +217,18 @@
 			path = Comons;
 			sourceTree = "<group>";
 		};
-		81505D5824835E8E000B3431 /* HTTP */ = {
+		81505D5824835E8E000B3431 /* Client HTTPs */ = {
 			isa = PBXGroup;
 			children = (
 				81505D5924835EA1000B3431 /* HTTPPostClientSpy.swift */,
 			);
-			path = HTTP;
+			path = "Client HTTPs";
 			sourceTree = "<group>";
 		};
 		81505D632483F8D8000B3431 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				5039E0CB2485B2E100D6DE50 /* Client HTTPs */,
 				81505D652483F8D8000B3431 /* Info.plist */,
 			);
 			path = Networking;
@@ -219,7 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				81505D9024841C77000B3431 /* Comons */,
-				81505D6F2483F8D8000B3431 /* AlamofireAdapterTests.swift */,
+				5039E0CE2485B3FA00D6DE50 /* Client HTTPs */,
 				81505D712483F8D8000B3431 /* Info.plist */,
 			);
 			path = NetworkingTests;
@@ -273,7 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				812D71F12482E93F009C7DEE /* UseCases */,
-				812D71F62482EAAA009C7DEE /* HTTP */,
+				812D71F62482EAAA009C7DEE /* Client HTTPs */,
 				81EDC1172483187800942182 /* Comons */,
 				81A68B1E2482BDDC00F8C50C /* Info.plist */,
 			);
@@ -284,7 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				812D71F72482EAC6009C7DEE /* UseCases */,
-				81505D5824835E8E000B3431 /* HTTP */,
+				81505D5824835E8E000B3431 /* Client HTTPs */,
 				81505D5324835B99000B3431 /* Comons */,
 				81A68B2A2482BDDC00F8C50C /* Info.plist */,
 			);
@@ -468,7 +487,7 @@
 				TargetAttributes = {
 					81505D612483F8D8000B3431 = {
 						CreatedOnToolsVersion = 11.4.1;
-						LastSwiftMigration = 1140;
+						LastSwiftMigration = 1130;
 					};
 					81505D692483F8D8000B3431 = {
 						CreatedOnToolsVersion = 11.4.1;
@@ -554,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5039E0CD2485B30400D6DE50 /* AlamofireAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +708,7 @@
 		81505D772483F8D8000B3431 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 39FPYG3XUV;
@@ -708,6 +729,7 @@
 		81505D782483F8D8000B3431 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 39FPYG3XUV;

@@ -18,8 +18,8 @@ public final class AuthClientUseCase {
         self.httpClient = httpClient
     }
     
-    private func handleSuccess(_ data: Data) -> Result<UserAccount, DomainError> {
-        if let model: UserAccount = data.convertToModel() {
+    private func handleSuccess(_ data: Data?) -> Result<UserAccount, DomainError> {
+        if let model: UserAccount = data?.convertToModel() {
             return .success(model)
         } else {
             return .failure(.convert)

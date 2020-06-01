@@ -61,9 +61,9 @@ extension AuthClientTests {
     class HTTPPostClientSpy: HTTPPostClient {
         var url = [URL]()
         var data: Data?
-        var completion: ((Result<Data, HTTPError>) -> Void)?
+        var completion: ((Result<Data?, HTTPError>) -> Void)?
         
-        func post(to url: URL, with data: Data?, completion: @escaping (Result<Data, HTTPError>) -> Void) {
+        func post(to url: URL, with data: Data?, completion: @escaping (Result<Data?, HTTPError>) -> Void) {
             self.url.append(url)
             self.data = data
             self.completion = completion

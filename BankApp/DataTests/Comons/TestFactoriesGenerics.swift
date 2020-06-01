@@ -16,6 +16,15 @@ var dataValid: Data {
     return .init("{\"user\":\"test_user\",\"password\":\"Test@1\"}".utf8)
 }
 
+var dataEmpty: Data {
+    return .init()
+}
+
+
+func createResponseWith(statusCode: Int) -> HTTPURLResponse {
+    return HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+}
+
 var url: URL {
     return URL(string: "http://url-mock.com")!
 }
