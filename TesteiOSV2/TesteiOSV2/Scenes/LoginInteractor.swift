@@ -13,28 +13,34 @@
 import UIKit
 
 protocol LoginBusinessLogic {
-  func doSomething(request: Login.Something.Request)
+    func login(user: String, password: String)
 }
 
-protocol LoginDataStore
-{
-  //var name: String { get set }
+protocol LoginDataStore {
+    //var name: String { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
+class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
+    
+    func login(user: String, password: String) {
+        
+        worker = LoginWorker(configuration: .default)
+        
+        let postObject = Login.PostObject(user: user, password: password)
+        
+        let request = Login.Request(service: .post, postObject: postObject)
+        worker?.postLogin(request: request, completion: { result in
+            switch result {
+            case .success(let response):
+                dump(response)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
+        
+    }
+
 }

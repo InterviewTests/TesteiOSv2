@@ -12,9 +12,38 @@
 
 import UIKit
 
-class LoginWorker
-{
-  func doSomeWork()
-  {
-  }
+class LoginWorker: APIClient {
+    var session: URLSession
+    
+    init(configuration: URLSessionConfiguration) {
+        self.session = URLSession(configuration: configuration)
+    }
+    
+    //    convenience init() {
+    //        self.init(configuration: .default)
+    //    }
+    
+    func postLogin(request: Login.Request, completion: @escaping (Result<Login.Response?, APIError>) -> Void) {
+        let endpoint = request.service
+        var postRequest = endpoint.request
+        postRequest.url = URL(string: postRequest.url!.absoluteString.removingPercentEncoding!)
+        postRequest.httpMethod = "post"
+        postRequest.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        let jsonEncoder = JSONEncoder()
+        do {
+            let jsonData = try jsonEncoder.encode(request.postObject)
+            let convertedString = String(data: jsonData, encoding: .utf8)
+            print(convertedString ?? "sem body")
+            postRequest.httpBody = jsonData
+        }
+        catch {
+            return
+        }
+        
+        fetch(with: postRequest, decode: { json -> Login.Response? in
+            guard let feedResult = json as? Login.Response else { return  nil }
+            return feedResult
+        }, completion: completion)
+    }
 }

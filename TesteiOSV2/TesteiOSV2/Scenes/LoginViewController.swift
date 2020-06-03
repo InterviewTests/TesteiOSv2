@@ -13,7 +13,7 @@
 import UIKit
 
 protocol LoginDisplayLogic: class {
-    func displaySomething(viewModel: Login.Something.ViewModel)
+//    func displaySomething(viewModel: Login.Something.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -69,7 +69,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         super.viewDidLoad()
         updateLayout()
         
-        doSomething()
+//        doSomething()
     }
     
     // MARK: Methods
@@ -80,17 +80,12 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     // MARK: Actions
     @IBAction func login(_ sender: Any) {
-        
+        guard let userText = userTextField.text else {
+            print("Usuário não preecheu login")
+            return
+        }
+        guard let passwordText = passwordTextField.text else { return }
+        interactor?.login(user: userText, password: passwordText)
     }
     
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething() {
-        let request = Login.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
-    func displaySomething(viewModel: Login.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
-    }
 }

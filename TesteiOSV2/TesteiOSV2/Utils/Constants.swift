@@ -10,5 +10,5 @@ import Foundation
 
 struct Constants {
     static let baseURL: String = "https://bank-app-test.herokuapp.com/api/"
-    static let login: String "login"
+    static let login: String = "login"
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Network
 
 protocol Endpoint {
     var base: String { get }
@@ -64,7 +65,6 @@ protocol APIClient {
     
     var session: URLSession { get }
     func fetch<T: Decodable>(with request: URLRequest, decode: @escaping (Decodable) -> T?, completion: @escaping (Result<T, APIError>) -> Void)
-    func fetchWithoutToken<T: Decodable>(with request: URLRequest, decode: @escaping (Decodable) -> T?, completion: @escaping (Result<T, APIError>) -> Void)
 }
 
 extension APIClient {

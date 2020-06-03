@@ -24,7 +24,6 @@ import UIKit
 //}
 
 enum Login {
-    // MARK: Use cases
     
     struct Response: Codable {
         let userAccount: UserAccount
@@ -32,24 +31,35 @@ enum Login {
     }
     
     struct UserAccount: Codable {
-        let userId: Int
-        let name: String
-        let bankAccount: String
-        let agency: String
-        let balance: Double
+        let userId: Int?
+        let name: String?
+        let bankAccount: String?
+        let agency: String?
+        let balance: Double?
     }
     
     struct Error: Codable {
-        //Não sei os atributos por conta da api estar mockada
-        let error: String
+        let code: Int?
+        let message: String?
     }
     
     struct Request {
         let service: LoginAPI
+        let postObject: PostObject?
+    }
+    
+    struct PostObject: Codable {
+        let user: String
+        let password: String
+        
+        init(user: String, password: String) {
+            self.user = password
+            self.password = password
+        }
     }
     
     enum LoginAPI {
-        case post (user: String, password: String)
+        case post
     }
 
 }
