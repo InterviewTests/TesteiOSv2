@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		3F08ED842487EF6A007A7C7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08ED832487EF6A007A7C7E /* AppDelegate.swift */; };
 		3F08ED862487EF6A007A7C7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08ED852487EF6A007A7C7E /* SceneDelegate.swift */; };
-		3F08ED882487EF6A007A7C7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08ED872487EF6A007A7C7E /* ViewController.swift */; };
 		3F08ED8B2487EF6A007A7C7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08ED892487EF6A007A7C7E /* Main.storyboard */; };
 		3F08ED8D2487EF6B007A7C7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F08ED8C2487EF6B007A7C7E /* Assets.xcassets */; };
 		3F08ED902487EF6B007A7C7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08ED8E2487EF6B007A7C7E /* LaunchScreen.storyboard */; };
 		3F08ED9B2487EF6B007A7C7E /* TesteiOSv2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08ED9A2487EF6B007A7C7E /* TesteiOSv2Tests.swift */; };
+		3F08EDAB2488608C007A7C7E /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08EDAA2488608C007A7C7E /* LoginInteractor.swift */; };
+		3F08EDAF248860A7007A7C7E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08EDAE248860A7007A7C7E /* LoginPresenter.swift */; };
+		3F08EDB3248860DF007A7C7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08EDB2248860DF007A7C7E /* LoginViewController.swift */; };
+		3F08EDB5248862DE007A7C7E /* LoginViewControllerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08EDB4248862DE007A7C7E /* LoginViewControllerProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +33,6 @@
 		3F08ED802487EF6A007A7C7E /* TesteiOSv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteiOSv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F08ED832487EF6A007A7C7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F08ED852487EF6A007A7C7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3F08ED872487EF6A007A7C7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3F08ED8A2487EF6A007A7C7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F08ED8C2487EF6B007A7C7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F08ED8F2487EF6B007A7C7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +40,10 @@
 		3F08ED962487EF6B007A7C7E /* TesteiOSv2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TesteiOSv2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F08ED9A2487EF6B007A7C7E /* TesteiOSv2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteiOSv2Tests.swift; sourceTree = "<group>"; };
 		3F08ED9C2487EF6B007A7C7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F08EDAA2488608C007A7C7E /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		3F08EDAE248860A7007A7C7E /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		3F08EDB2248860DF007A7C7E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3F08EDB4248862DE007A7C7E /* LoginViewControllerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +89,6 @@
 				3F08EDA8248856A8007A7C7E /* Models */,
 				3F08EDA62487EF7B007A7C7E /* Scenes */,
 				3F08EDA72488569C007A7C7E /* Services */,
-				3F08ED872487EF6A007A7C7E /* ViewController.swift */,
 				3F08ED892487EF6A007A7C7E /* Main.storyboard */,
 				3F08ED8C2487EF6B007A7C7E /* Assets.xcassets */,
 				3F08ED8E2487EF6B007A7C7E /* LaunchScreen.storyboard */,
@@ -113,6 +118,7 @@
 		3F08EDA62487EF7B007A7C7E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3F08EDA92488601E007A7C7E /* login */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -129,6 +135,17 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3F08EDA92488601E007A7C7E /* login */ = {
+			isa = PBXGroup;
+			children = (
+				3F08EDAA2488608C007A7C7E /* LoginInteractor.swift */,
+				3F08EDAE248860A7007A7C7E /* LoginPresenter.swift */,
+				3F08EDB2248860DF007A7C7E /* LoginViewController.swift */,
+				3F08EDB4248862DE007A7C7E /* LoginViewControllerProtocols.swift */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +249,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F08ED882487EF6A007A7C7E /* ViewController.swift in Sources */,
+				3F08EDB3248860DF007A7C7E /* LoginViewController.swift in Sources */,
 				3F08ED842487EF6A007A7C7E /* AppDelegate.swift in Sources */,
+				3F08EDB5248862DE007A7C7E /* LoginViewControllerProtocols.swift in Sources */,
 				3F08ED862487EF6A007A7C7E /* SceneDelegate.swift in Sources */,
+				3F08EDAB2488608C007A7C7E /* LoginInteractor.swift in Sources */,
+				3F08EDAF248860A7007A7C7E /* LoginPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
