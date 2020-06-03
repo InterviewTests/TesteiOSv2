@@ -12,7 +12,7 @@ import Data
 public final class AlamofireAdapter {
     private let session: Session
    
-    init(session: Session = .default) {
+    public init(session: Session = .default) {
         self.session = session
     }
     

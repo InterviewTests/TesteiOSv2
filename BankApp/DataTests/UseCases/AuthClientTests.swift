@@ -33,8 +33,8 @@ class AuthClientTests: XCTestCase {
     
     func testLoginShouldCompleteWithAcountWhenUserGiveSuccesWithValidData() {
         let (sut, httpClientSpy) = makeSut()
-        expect(sut, completeWith: .success(userAccount), whem: {
-            httpClientSpy.completeWith(data: userAccount.data!)
+        expect(sut, completeWith: .success(userAccountResponse), whem: {
+            httpClientSpy.completeWith(data: userAccountResponse.data!)
         })
     }
     
@@ -48,7 +48,7 @@ class AuthClientTests: XCTestCase {
     func test_login_should_not_complete_if_sut_has_deinit() {
         let httpClientSpy = HTTPPostClientSpy()
         var sut: AuthClientUseCase? = .init(url: url, httpClient: httpClientSpy)
-        var result: Result<UserAccount, DomainError>?
+        var result: Result<UserAccountResponse, DomainError>?
         sut?.login(authenticationModel: authClientModel, completion: { result = $0 })
         sut = nil
         httpClientSpy.completeWith(data: dataInvalid)
@@ -59,7 +59,7 @@ class AuthClientTests: XCTestCase {
 extension AuthClientTests {
     
     var authClientModel: AuthClientModel {
-        return .init(email: "email_any", password: "email_password")
+        return .init(user: "email_any", password: "email_password")
     }
     
     func makeSut(with url: URL = URL(string: "http://url-mock.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: AuthClientUseCase, httpClientSpy: HTTPPostClientSpy) {
@@ -70,7 +70,7 @@ extension AuthClientTests {
         return (sut, httpClientSpy)
     }
     
-    func expect(_ sut: AuthClientUseCase, completeWith expectedResult: Result<UserAccount, DomainError>, whem action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    func expect(_ sut: AuthClientUseCase, completeWith expectedResult: Result<UserAccountResponse, DomainError>, whem action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let expectetion = expectation(description: "waiting")
         sut.login(authenticationModel: authClientModel) { receivedResult in
             switch (expectedResult, receivedResult) {
