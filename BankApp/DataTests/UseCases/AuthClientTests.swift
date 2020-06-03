@@ -12,33 +12,33 @@ import Domain
 
 class AuthClientTests: XCTestCase {
     
-    func test_login_should_call_httpClient_with_url_correct() {
+    func testLoginShouldCallHttpClientWithUrlCorrect() {
         let (sut, httpClientSpy) = makeSut(with: url)
         sut.login(authenticationModel: authClientModel) { _ in }
         XCTAssertEqual(httpClientSpy.url, [url])
     }
     
-    func test_login_should_call_httpClient_with_data_correct() {
+    func testLoginShouldCallHttpClientWithDataCorrect() {
         let (sut, httpClientSpy) = makeSut()
         sut.login(authenticationModel: authClientModel) { _ in }
         XCTAssertEqual(httpClientSpy.data, authClientModel.data)
     }
     
-    func test_login_should_complete_with_error_when_user_fails() {
+    func testLoginShouldCompleteWithErrorWhenUserFails() {
         let (sut, httpClientSpy) = makeSut()
         expect(sut, completeWith: .failure(.unknown), whem: {
             httpClientSpy.completeWith(error: .noConnectivity)
         })
     }
     
-    func test_login_should_complete_with_acount_when_user_give_succes_with_valid_data() {
+    func testLoginShouldCompleteWithAcountWhenUserGiveSuccesWithValidData() {
         let (sut, httpClientSpy) = makeSut()
         expect(sut, completeWith: .success(userAccount), whem: {
             httpClientSpy.completeWith(data: userAccount.data!)
         })
     }
     
-    func test_login_should_complete_with_acount_when_user_give_succes_with_invalid_data() {
+    func testLoginShouldCompleteWithAcountWhenUserGiveSuccesWithInvalidData() {
         let (sut, httpClientSpy) = makeSut()
         expect(sut, completeWith: .failure(.convert), whem: {
             httpClientSpy.completeWith(data: dataInvalid)
@@ -57,26 +57,6 @@ class AuthClientTests: XCTestCase {
 }
 
 extension AuthClientTests {
-    
-    class HTTPPostClientSpy: HTTPPostClient {
-        var url = [URL]()
-        var data: Data?
-        var completion: ((Result<Data?, HTTPError>) -> Void)?
-        
-        func post(to url: URL, with data: Data?, completion: @escaping (Result<Data?, HTTPError>) -> Void) {
-            self.url.append(url)
-            self.data = data
-            self.completion = completion
-        }
-        
-        func completeWith(error: HTTPError) {
-            completion?(.failure(.unknown))
-        }
-        
-        func completeWith(data: Data) {
-            completion?(.success(data))
-        }
-    }
     
     var authClientModel: AuthClientModel {
         return .init(email: "email_any", password: "email_password")

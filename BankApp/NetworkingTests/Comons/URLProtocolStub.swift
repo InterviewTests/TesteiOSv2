@@ -8,7 +8,7 @@
 
 import Foundation
 
-class URLProtocolStub: URLProtocol {
+internal class URLProtocolStub: URLProtocol {
     static var emit: ((URLRequest) -> Void)?
     static var data: Data?
     static var response: HTTPURLResponse?

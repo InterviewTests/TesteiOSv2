@@ -13,7 +13,7 @@ import Data
 
 class NetworkingTests: XCTestCase {
 
-    func test_post_make_request_with_url_and_method_corect() throws {
+    func testPostMakeRequestWithUrlAndMethodCorect() throws {
         let sut = createSut()
         expectRequestWith(sut: sut, data: dataValid) { (request) in
             XCTAssertEqual(url, request.url)
@@ -22,41 +22,41 @@ class NetworkingTests: XCTestCase {
         }
     }
     
-    func test_post_make_request_when_data_has_been_nil() throws {
+    func testPostMakeRequestRequestWhenDataHasBeenNil() throws {
         let sut = createSut()
         expectRequestWith(sut: sut, data: nil) { (request) in
             XCTAssertNil(request.httpBodyStream)
         }
     }
     
-    func test_post_make_request_to_complete_with_error() throws {
+    func testPostMakeRequestToCompleteWithError() throws {
         expectResultWith(resultExpected: .failure(.unknown), andWith: (data: nil, response: nil, error: error))
     }
     
-    func test_post_make_request_to_complete_with_data_and_response_200() throws {
+    func testPostMakeRequestToCompleteWithDataAndResponse200() throws {
         expectResultWith(resultExpected: .success(dataValid), andWith: (data: dataValid, response: createResponseWith(statusCode: 200), error: nil))
     }
     
-    func test_post_make_request_to_complete_without_data_and_response_204() throws {
+    func testPostMakeRequestToCompleteWithoutDataAndResponse204() throws {
         expectResultWith(resultExpected: .success(nil), andWith: (data: dataValid, response: createResponseWith(statusCode: 204), error: nil))
         expectResultWith(resultExpected: .success(nil), andWith: (data: dataEmpty, response: createResponseWith(statusCode: 204), error: nil))
         expectResultWith(resultExpected: .success(nil), andWith: (data: nil, response: createResponseWith(statusCode: 204), error: nil))
     }
     
-    func test_post_make_request_to_complete_with_error_and_response_class_400_status_code() throws {
+    func testPostMakeRequestToCompleteWithErrorAndResponseClass400StatusCode() throws {
         expectResultWith(resultExpected: .failure(.unauthorized), andWith: (data: dataInvalid, response: createResponseWith(statusCode: 401), error: nil))
         expectResultWith(resultExpected: .failure(.forbidden), andWith: (data: dataInvalid, response: createResponseWith(statusCode: 403), error: nil))
         expectResultWith(resultExpected: .failure(.notFound), andWith: (data: dataInvalid, response: createResponseWith(statusCode: 404), error: nil))
         expectResultWith(resultExpected: .failure(.invalidRequest), andWith: (data: dataInvalid, response: createResponseWith(statusCode: 499), error: nil))
     }
     
-    func test_post_make_request_to_complete_with_error_and_response_class_500_status_code() throws {
+    func testPostMakeRequestToCompleteWithErrorAndResponseClass500StatusCode() throws {
         expectResultWith(resultExpected: .failure(.internalServer), andWith: (data: dataInvalid, response: createResponseWith(statusCode: 500), error: nil))
         expectResultWith(resultExpected: .failure(.internalServer), andWith: (data: dataInvalid, response: createResponseWith(statusCode: 550), error: nil))
         expectResultWith(resultExpected: .failure(.internalServer), andWith: (data: dataInvalid, response: createResponseWith(statusCode: 599), error: nil))
     }
     
-    func test_post_make_request_to_complete_with_all_responses_invalid() throws {
+    func testPostMakeRequestToCompleteWithAllResponsesInvalid() throws {
         expectResultWith(resultExpected: .failure(.unknown), andWith: (data: dataValid, response: nil, error: error))
         expectResultWith(resultExpected: .failure(.unknown), andWith: (data: nil, response: nil, error: error))
         expectResultWith(resultExpected: .failure(.unknown), andWith: (data: nil, response: nil, error: nil))
