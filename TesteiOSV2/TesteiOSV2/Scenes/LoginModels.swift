@@ -12,20 +12,57 @@
 
 import UIKit
 
-enum Login
-{
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
+//{
+//    "userAccount": {
+//        "userId": 1,
+//        "name": "Jose da Silva Teste",
+//        "bankAccount": "2050",
+//        "agency": "012314564",
+//        "balance": 3.3445
+//    },
+//    "error": {}
+//}
+
+enum Login {
+    // MARK: Use cases
+    
+    struct Response: Codable {
+        let userAccount: UserAccount
+        let error: Error
     }
-    struct Response
-    {
+    
+    struct UserAccount: Codable {
+        let userId: Int
+        let name: String
+        let bankAccount: String
+        let agency: String
+        let balance: Double
     }
-    struct ViewModel
-    {
+    
+    struct Error: Codable {
+        //Não sei os atributos por conta da api estar mockada
+        let error: String
     }
-  }
+    
+    struct Request {
+        let service: LoginAPI
+    }
+    
+    enum LoginAPI {
+        case post (user: String, password: String)
+    }
+
 }
+
+extension Login.LoginAPI: Endpoint {
+    var base: String {
+        return Constants.baseURL
+    }
+    
+    var path: String {
+        switch self {
+        case .post: return Constants.login
+        }
+    }
+}
+

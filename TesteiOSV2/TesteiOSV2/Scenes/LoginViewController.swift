@@ -12,34 +12,29 @@
 
 import UIKit
 
-protocol LoginDisplayLogic: class
-{
+protocol LoginDisplayLogic: class {
     func displaySomething(viewModel: Login.Something.ViewModel)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
-{
+class LoginViewController: UIViewController, LoginDisplayLogic {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
     // MARK: Object lifecycle
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
     
     // MARK: Setup
     
-    private func setup()
-    {
+    private func setup() {
         let viewController = self
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
@@ -54,8 +49,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     // MARK: Routing
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
             if let router = router, router.responds(to: selector) {
@@ -66,29 +60,37 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     // MARK: Outlets
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     // MARK: View lifecycle
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        updateLayout()
         
-        loginButton.layer.cornerRadius = 4
         doSomething()
     }
     
-    // MARK: Do something
+    // MARK: Methods
+    
+    func updateLayout() {
+        loginButton.layer.cornerRadius = 4
+    }
+    
+    // MARK: Actions
+    @IBAction func login(_ sender: Any) {
+        
+    }
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func doSomething()
-    {
+    func doSomething() {
         let request = Login.Something.Request()
         interactor?.doSomething(request: request)
     }
     
-    func displaySomething(viewModel: Login.Something.ViewModel)
-    {
+    func displaySomething(viewModel: Login.Something.ViewModel) {
         //nameTextField.text = viewModel.name
     }
 }

@@ -33,6 +33,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E3u-MK-dvb"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyk-5O-E3A">
                                 <rect key="frame" x="16" y="275" width="382" height="50"/>
@@ -48,7 +51,7 @@
                                     <constraint firstAttribute="height" constant="50" id="9Gp-7a-JnU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -68,6 +71,8 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="QaD-8S-vhI" id="CdA-Vk-oXd"/>
+                        <outlet property="passwordTextField" destination="Q68-qg-IUM" id="RzN-qm-lTi"/>
+                        <outlet property="userTextField" destination="oyk-5O-E3A" id="hsu-CK-GlL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

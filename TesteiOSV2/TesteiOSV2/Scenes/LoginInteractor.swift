@@ -12,8 +12,7 @@
 
 import UIKit
 
-protocol LoginBusinessLogic
-{
+protocol LoginBusinessLogic {
   func doSomething(request: Login.Something.Request)
 }
 
