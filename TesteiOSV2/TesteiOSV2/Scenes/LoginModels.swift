@@ -26,8 +26,8 @@ import UIKit
 enum Login {
     
     struct Response: Codable {
-        let userAccount: UserAccount
-        let error: Error
+        let userAccount: UserAccount?
+        let error: Error?
     }
     
     struct UserAccount: Codable {
@@ -45,7 +45,7 @@ enum Login {
     
     struct Request {
         let service: LoginAPI
-        let postObject: PostObject?
+        let postObject: PostObject
     }
     
     struct PostObject: Codable {
@@ -53,7 +53,7 @@ enum Login {
         let password: String
         
         init(user: String, password: String) {
-            self.user = password
+            self.user = user
             self.password = password
         }
     }

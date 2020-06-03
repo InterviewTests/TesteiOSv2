@@ -32,6 +32,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         let postObject = Login.PostObject(user: user, password: password)
         
         let request = Login.Request(service: .post, postObject: postObject)
+        
         worker?.postLogin(request: request, completion: { result in
             switch result {
             case .success(let response):

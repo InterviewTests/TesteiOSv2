@@ -30,16 +30,22 @@ class LoginWorker: APIClient {
         postRequest.httpMethod = "post"
         postRequest.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
-        let jsonEncoder = JSONEncoder()
-        do {
-            let jsonData = try jsonEncoder.encode(request.postObject)
-            let convertedString = String(data: jsonData, encoding: .utf8)
-            print(convertedString ?? "sem body")
-            postRequest.httpBody = jsonData
-        }
-        catch {
-            return
-        }
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "user", value: request.postObject.user),
+            URLQueryItem(name: "password", value: request.postObject.password)
+        ]
+        postRequest.httpBody = requestBodyComponents.query?.data(using: .utf8)
+
+//        Jeito de enviar JSON em vez de x-www-form-urlencoded
+//        let jsonEncoder = JSONEncoder()
+//        do {
+//        let jsonData = try jsonEncoder.encode(request.postObject)
+//        postRequest.httpBody = requestBodyComponents.query?.data(using: .utf8)
+//        }
+//        catch {
+//            return
+//        }
         
         fetch(with: postRequest, decode: { json -> Login.Response? in
             guard let feedResult = json as? Login.Response else { return  nil }

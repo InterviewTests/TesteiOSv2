@@ -85,6 +85,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
             return
         }
         guard let passwordText = passwordTextField.text else { return }
+        
         interactor?.login(user: userText, password: passwordText)
     }
     
