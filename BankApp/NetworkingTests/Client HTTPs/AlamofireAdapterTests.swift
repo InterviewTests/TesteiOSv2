@@ -43,6 +43,11 @@ class NetworkingTests: XCTestCase {
         expectResultWith(resultExpected: .success(nil), andWith: (data: nil, response: createResponseWith(statusCode: 204), error: nil))
     }
     
+    func testPostMakeRequestToCompleteWithErrorAndResponseClass300StatusCode() throws {
+        expectResultWith(resultExpected: .failure(.noConnectivity), andWith: (data: dataValid, response: createResponseWith(statusCode: 300), error: nil))
+        expectResultWith(resultExpected: .failure(.noConnectivity), andWith: (data: dataValid, response: createResponseWith(statusCode: 399), error: nil))
+    }
+    
     func testPostMakeRequestToCompleteWithErrorAndResponseClass400StatusCode() throws {
         expectResultWith(resultExpected: .failure(.unauthorized), andWith: (data: dataInvalid, response: createResponseWith(statusCode: 401), error: nil))
         expectResultWith(resultExpected: .failure(.forbidden), andWith: (data: dataInvalid, response: createResponseWith(statusCode: 403), error: nil))

@@ -18,21 +18,15 @@ public final class AlamofireAdapter {
     
     private func handleSuccssesWith(statusCode: Int, and data: Data?) -> Result<Data?, HTTPError> {
         switch statusCode {
-        case 204:
-            return .success(nil)
-        case 200...299:
-            return .success(data)
-        case 401:
-            return .failure(.unauthorized)
-        case 403:
-            return .failure(.forbidden)
+        case 204: return .success(nil)
+        case 200...299: return .success(data)
+        case 401: return .failure(.unauthorized)
+        case 403: return .failure(.forbidden)
+        case 300...399: return .failure(.noConnectivity)
         case 404: return .failure(.notFound)
-        case 400...499:
-            return .failure(.invalidRequest)
-        case 500...599:
-            return .failure(.internalServer)
-        default:
-            return .failure(.unknown)
+        case 400...499: return .failure(.invalidRequest)
+        case 500...599: return .failure(.internalServer)
+        default: return .failure(.unknown)
         }
     }
 }

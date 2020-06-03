@@ -21,9 +21,8 @@ public final class AuthClientUseCase {
     private func handleSuccess(_ data: Data?) -> Result<UserAccount, DomainError> {
         if let model: UserAccount = data?.convertToModel() {
             return .success(model)
-        } else {
-            return .failure(.convert)
         }
+        return .failure(.convert)
     }
 }
 
