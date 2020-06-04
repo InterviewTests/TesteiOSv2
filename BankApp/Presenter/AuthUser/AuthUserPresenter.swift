@@ -25,12 +25,15 @@ public final class AuthUserPresenter {
     }
     
     private func errorViewModel(_ viewModel: AuthUserViewModel) -> AlertViewModel? {
-        let title = "Fail in auth the user"
-        var message = "The field %@ is mandatory"
+        var title = "Fail in auth the user"
+        var message = ""
         if !StringCheck.isValidField(viewModel.password) {
-            message = String(format: message, "Password")
+            message = "The field Password is mandatory"
         } else if !StringCheck.isValidField(viewModel.userName) {
-            message = String(format: message, "Name User")
+            message = "The field User Name is mandatory"
+        } else if !userNameValidate.isValid(userName: viewModel.userName) {
+            title = "The field User Name is wrong"
+            message = "You should put an email or cpf valid"
         } else {
             return nil
         }

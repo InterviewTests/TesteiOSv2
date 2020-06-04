@@ -1,5 +1,5 @@
 //
-//  PresenterTests.swift
+//  AuthUserPresenterTests.swift
 //  PresenterTests
 //
 //  Created by Estaife Lima on 03/06/20.
@@ -30,7 +30,7 @@ class AuthUserPresenterTests: XCTestCase {
         //Given
         let (sut, alertViewSpy, _) = createSut()
         let authUserViewModel = AuthUserViewModel(userName: nil, password: "password@dd")
-        let alertViewModel = AlertViewModel(title: "Fail in auth the user", message: "The field Name User is mandatory")
+        let alertViewModel = AlertViewModel(title: "Fail in auth the user", message: "The field User Name is mandatory")
         
         //When
         sut.auth(viewModel: authUserViewModel)
@@ -77,6 +77,21 @@ class AuthUserPresenterTests: XCTestCase {
         //Then
         XCTAssertEqual(userNameValidatorSpy.userName, authUserViewModel.userName)
     }
+    
+    func testShowErrorWhenInvalidUserName() throws {
+        
+        //Given
+        let (sut, alertViewSpy, userNameValidatorSpy) = createSut()
+        let authUserViewModel = AuthUserViewModel(userName: "Test Name Drive", password: "password@dd")
+        let alertViewModel = AlertViewModel(title: "The field User Name is wrong", message: "You should put an email or cpf valid")
+        
+        //When
+        userNameValidatorSpy.isValid = false
+        sut.auth(viewModel: authUserViewModel)
+        
+        //Then
+        XCTAssertEqual(alertViewSpy.viewModel, alertViewModel)
+    }
 }
 
 extension AuthUserPresenterTests {
@@ -94,7 +109,6 @@ extension AuthUserPresenterTests {
         var isValid = true
         
         func isValid(userName: String?) -> Bool {
-            guard let userName = userName else { return false }
             self.userName = userName
             return isValid
         }
