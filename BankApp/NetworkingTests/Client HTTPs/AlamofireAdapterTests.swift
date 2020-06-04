@@ -14,7 +14,11 @@ import Data
 class NetworkingTests: XCTestCase {
 
     func testPostMakeRequestWithUrlAndMethodCorect() throws {
+        
+        //Given
         let sut = createSut()
+        
+        //When/Then
         expectRequestWith(sut: sut, data: dataValid) { (request) in
             XCTAssertEqual(url, request.url)
             XCTAssertEqual("POST", request.httpMethod)
@@ -23,7 +27,11 @@ class NetworkingTests: XCTestCase {
     }
     
     func testPostMakeRequestRequestWhenDataHasBeenNil() throws {
+        
+        //Given
         let sut = createSut()
+        
+        //When/Then
         expectRequestWith(sut: sut, data: nil) { (request) in
             XCTAssertNil(request.httpBodyStream)
         }
@@ -92,9 +100,12 @@ extension NetworkingTests {
     }
     
     func expectResultWith(resultExpected: (Result<Data?, HTTPError>), andWith stub: (data: Data?, response: HTTPURLResponse?, error: Error?), file: StaticString = #file, line: UInt = #line) {
+        
+        //Given
         let sut = createSut()
+        
+        //Then
         let expect = expectation(description: "waiting")
-        URLProtocolStub.applySimulateWith(data: stub.data, response: stub.response, error: stub.error)
         sut.post(to: url, with: nil) { resultReceived in
             switch (resultExpected, resultReceived) {
             case (.success(let dataExpected), .success(let dataReceived)): XCTAssertEqual(dataExpected, dataReceived, file: file, line: line)
@@ -103,6 +114,9 @@ extension NetworkingTests {
             }
             expect.fulfill()
         }
+    
+        //When
+        URLProtocolStub.applySimulateWith(data: stub.data, response: stub.response, error: stub.error)
         wait(for: [expect], timeout: 1)
     }
 }

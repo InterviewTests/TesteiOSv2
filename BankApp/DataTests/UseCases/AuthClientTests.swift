@@ -13,33 +13,58 @@ import Domain
 class AuthClientTests: XCTestCase {
     
     func testLoginShouldCallHttpClientWithUrlCorrect() {
+        
+        //Given
         let (sut, httpClientSpy) = makeSut(with: url)
+
+        //When
         sut.login(authenticationModel: authClientModel) { _ in }
+        
+        //Then
         XCTAssertEqual(httpClientSpy.url, [url])
+        
     }
     
     func testLoginShouldCallHttpClientWithDataCorrect() {
+        
+        //Given
         let (sut, httpClientSpy) = makeSut()
+
+        //When
         sut.login(authenticationModel: authClientModel) { _ in }
+        
+        //Then
         XCTAssertEqual(httpClientSpy.data, authClientModel.data)
     }
     
     func testLoginShouldCompleteWithErrorWhenUserFails() {
+        
+        //Given
         let (sut, httpClientSpy) = makeSut()
+
+        //When/Then
         expect(sut, completeWith: .failure(.unknown), whem: {
             httpClientSpy.completeWith(error: .noConnectivity)
         })
     }
     
     func testLoginShouldCompleteWithAcountWhenUserGiveSuccesWithValidData() {
+        
+        //Given
         let (sut, httpClientSpy) = makeSut()
+        
+        //When/Then
         expect(sut, completeWith: .success(userAccountModel), whem: {
             httpClientSpy.completeWith(data: userAccountModel.data!)
         })
     }
     
     func testLoginShouldCompleteWithAcountWhenUserGiveSuccesWithInvalidData() {
+        
+        //Given
         let (sut, httpClientSpy) = makeSut()
+        
+        //When/Then
         expect(sut, completeWith: .failure(.convert), whem: {
             httpClientSpy.completeWith(data: dataInvalid)
         })
