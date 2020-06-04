@@ -8,10 +8,18 @@
 
 import Domain
 
-class AuthClientUseCaseSpy: AuthClientUseCaseProtocol {
+class AuthClientUseCaseSpy {
     var authClientModel: AuthClientModel?
+    var completion: ((Result<UserAccountModel, DomainError>) -> Void)?
     
-    func login(authenticationModel: AuthClientModel, completion: @escaping (Result<UserAccountResponse, DomainError>) -> Void) {
-        self.authClientModel = authenticationModel
+    func completeWith(error: DomainError) {
+        completion?(.failure(.unknown))
+    }
+}
+
+extension AuthClientUseCaseSpy: AuthClientUseCaseProtocol {
+    func login(authenticationModel: AuthClientModel, completion: @escaping (Result<UserAccountModel, DomainError>) -> Void) {
+        self.authClientModel = authenticationModel 
+        self.completion = completion
     }
 }

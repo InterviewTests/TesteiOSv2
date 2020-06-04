@@ -1,5 +1,5 @@
 //
-//  UserAccount.swift
+//  UserAccountModel.swift
 //  Domain
 //
 //  Created by Estaife Lima on 30/05/20.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-public struct UserAccountResponse: BaseModel {
+public struct UserAccountModel: BaseModel {
     public let userAccount: UserAccount
     public var authError: AuthError
 
@@ -18,7 +18,7 @@ public struct UserAccountResponse: BaseModel {
         self.authError = authError
     }
     
-    public static func == (lhs: UserAccountResponse, rhs: UserAccountResponse) -> Bool {
+    public static func == (lhs: UserAccountModel, rhs: UserAccountModel) -> Bool {
         return lhs.userAccount.userID == rhs.userAccount.userID
     }
     

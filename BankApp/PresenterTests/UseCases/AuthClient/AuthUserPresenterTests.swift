@@ -113,6 +113,23 @@ class AuthUserPresenterTests: XCTestCase {
         //Then
         XCTAssertEqual(authClientUseCaseSpy.authClientModel, authClientModel)
     }
+    
+    func testShowErrorWhenAuthClientCompleteWithError() throws {
+        
+        //Given
+        let alertViewSpy = AlertViewSpy()
+        let authClientUseCaseSpy = AuthClientUseCaseSpy()
+        let sut = createSutWith(authClientUseCaseSpy: authClientUseCaseSpy, alertViewSpy: alertViewSpy)
+        let authUserViewModel = createAuthUserViewModel()
+        let alertViewModel = AlertViewModel(title: "Fail", message: "An unexpected error occurred, try again")
+        
+        //When
+        sut.auth(viewModel: authUserViewModel)
+        authClientUseCaseSpy.completeWith(error: .unknown)
+        
+        //Then
+        XCTAssertEqual(alertViewSpy.viewModel, alertViewModel)
+    }
 }
 
 extension AuthUserPresenterTests {

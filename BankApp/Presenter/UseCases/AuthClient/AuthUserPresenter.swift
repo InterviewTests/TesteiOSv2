@@ -27,7 +27,14 @@ public final class AuthUserPresenter {
         } else {
             guard let user = viewModel.userName, let password = viewModel.password else { return }
             let authClientModel = AuthClientModel(user: user, password: password)
-            authClientUseCase.login(authenticationModel: authClientModel) { _ in }
+            authClientUseCase.login(authenticationModel: authClientModel) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .failure:
+                    self.alertView.presentMessageWith(.init(title: "Fail", message: "An unexpected error occurred, try again"))
+                case .success: break
+                }
+            }
         }
     }
     
