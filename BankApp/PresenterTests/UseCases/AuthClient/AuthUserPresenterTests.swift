@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Domain
 @testable import Presenter
 
 class AuthUserPresenterTests: XCTestCase {
@@ -97,21 +98,41 @@ class AuthUserPresenterTests: XCTestCase {
         //Then
         XCTAssertEqual(alertViewSpy.viewModel, alertViewModel)
     }
+    
+    func testAuthUserWithAllValuesIformated() throws {
+        
+        //Given
+        let authClientUseCaseSpy = AuthClientUseCaseSpy()
+        let sut = createSutWith(authClientUseCaseSpy: authClientUseCaseSpy)
+        let authUserViewModel = createAuthUserViewModel()
+        let authClientModel = createAuthClientModel()
+        
+        //When
+        sut.auth(viewModel: authUserViewModel)
+        
+        //Then
+        XCTAssertEqual(authClientUseCaseSpy.authClientModel, authClientModel)
+    }
 }
 
 extension AuthUserPresenterTests {
     
     func createSutWith(
+        authClientUseCaseSpy: AuthClientUseCaseSpy = AuthClientUseCaseSpy(),
         alertViewSpy: AlertViewSpy = AlertViewSpy(),
         userNameValidateSpy: UserNameValidateSpy = UserNameValidateSpy(),
         file: StaticString = #file,
         line: UInt = #line) -> AuthUserPresenter {
-        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy, userNameValidate: userNameValidateSpy)
+        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy, userNameValidate: userNameValidateSpy, authClientUseCase: authClientUseCaseSpy)
         memoryLeakCheckWith(instance: authUserPresenter)
         return authUserPresenter
     }
     
-    func createAuthUserViewModel(userName: String? = "Test Name Drive", password: String? = "Passw1rd@dd") -> AuthUserViewModel{
+    func createAuthUserViewModel(userName: String? = "Test Name Drive", password: String? = "Passw1rd@dd") -> AuthUserViewModel {
         return .init(userName: userName, password: password)
+    }
+    
+    func createAuthClientModel(user: String = "Test Name Drive", password: String = "Passw1rd@dd") -> AuthClientModel {
+        return .init(user: user, password: password)
     }
 }

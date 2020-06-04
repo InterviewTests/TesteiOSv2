@@ -7,20 +7,27 @@
 //
 
 import Foundation
+import Domain
 
 public final class AuthUserPresenter {
     private let alertView: AlertViewProtocol
     private let userNameValidate: UserNameValidateProtocol
+    private let authClientUseCase: AuthClientUseCaseProtocol
     
-    public init(alertView: AlertViewProtocol, userNameValidate: UserNameValidateProtocol) {
+    public init(alertView: AlertViewProtocol, userNameValidate: UserNameValidateProtocol, authClientUseCase: AuthClientUseCaseProtocol) {
         self.alertView = alertView
         self.userNameValidate = userNameValidate
+        self.authClientUseCase = authClientUseCase
     }
     
     public func auth(viewModel: AuthUserViewModel) {
         userNameValidate.isValid(userName: viewModel.userName)
         if let viewModel = errorViewModel(viewModel) {
             alertView.presentMessageWith(viewModel)
+        } else {
+            guard let user = viewModel.userName, let password = viewModel.password else { return }
+            let authClientModel = AuthClientModel(user: user, password: password)
+            authClientUseCase.login(authenticationModel: authClientModel) { _ in }
         }
     }
     
