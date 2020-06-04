@@ -14,8 +14,9 @@ class AuthUserPresenterTests: XCTestCase {
     func testAuthUserShowMessageErrorWhenPasswordDontInformated() throws {
         
         //Given
-        let (sut, alertViewSpy, _) = createSut()
-        let authUserViewModel = AuthUserViewModel(userName: "Test Name Drive", password: nil)
+        let alertViewSpy = AlertViewSpy()
+        let sut = createSutWith(alertViewSpy: alertViewSpy)
+        let authUserViewModel = createAuthUserViewModel(password: nil)
         let alertViewModel = AlertViewModel(title: "Fail in auth the user", message: "The field Password is mandatory")
         
         //When
@@ -28,8 +29,9 @@ class AuthUserPresenterTests: XCTestCase {
     func testAuthUserShowMessageErrorWhenUserNameDontInformated() throws {
         
         //Given
-        let (sut, alertViewSpy, _) = createSut()
-        let authUserViewModel = AuthUserViewModel(userName: nil, password: "password@dd")
+        let alertViewSpy = AlertViewSpy()
+        let sut = createSutWith(alertViewSpy: alertViewSpy)
+        let authUserViewModel = createAuthUserViewModel(userName: nil)
         let alertViewModel = AlertViewModel(title: "Fail in auth the user", message: "The field User Name is mandatory")
         
         //When
@@ -68,25 +70,28 @@ class AuthUserPresenterTests: XCTestCase {
     func testIfUserNameValidatorHasBeenCalled() throws {
         
         //Given
-        let (sut, _, userNameValidatorSpy) = createSut()
-        let authUserViewModel = AuthUserViewModel(userName: nil, password: "password@dd")
+        let userNameValidateSpy = UserNameValidateSpy()
+        let sut = createSutWith(userNameValidateSpy: userNameValidateSpy)
+        let authUserViewModel = createAuthUserViewModel(userName: nil)
         
         //When
         sut.auth(viewModel: authUserViewModel)
         
         //Then
-        XCTAssertEqual(userNameValidatorSpy.userName, authUserViewModel.userName)
+        XCTAssertEqual(userNameValidateSpy.userName, authUserViewModel.userName)
     }
     
     func testShowErrorWhenInvalidUserName() throws {
         
         //Given
-        let (sut, alertViewSpy, userNameValidatorSpy) = createSut()
-        let authUserViewModel = AuthUserViewModel(userName: "Test Name Drive", password: "password@dd")
+        let alertViewSpy = AlertViewSpy()
+        let userNameValidateSpy = UserNameValidateSpy()
+        let sut = createSutWith(alertViewSpy: alertViewSpy, userNameValidateSpy: userNameValidateSpy)
+        let authUserViewModel = createAuthUserViewModel()
         let alertViewModel = AlertViewModel(title: "The field User Name is wrong", message: "You should put an email or cpf valid")
         
         //When
-        userNameValidatorSpy.isValid = false
+        userNameValidateSpy.makeInvalid()
         sut.auth(viewModel: authUserViewModel)
         
         //Then
@@ -96,21 +101,17 @@ class AuthUserPresenterTests: XCTestCase {
 
 extension AuthUserPresenterTests {
     
-    func createSut(file: StaticString = #file, line: UInt = #line) -> (sut: AuthUserPresenter, alertViewSpy: AlertViewSpy, userNameValidateSpy: UserNameValidateSpy) {
-        let alertViewSpy = AlertViewSpy()
-        let userNameValidateSpy = UserNameValidateSpy()
-        let sut = AuthUserPresenter(alertView: alertViewSpy, userNameValidate: userNameValidateSpy)
-        memoryLeakCheckWith(instance: sut)
-        return (sut, alertViewSpy, userNameValidateSpy)
+    func createSutWith(
+        alertViewSpy: AlertViewSpy = AlertViewSpy(),
+        userNameValidateSpy: UserNameValidateSpy = UserNameValidateSpy(),
+        file: StaticString = #file,
+        line: UInt = #line) -> AuthUserPresenter {
+        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy, userNameValidate: userNameValidateSpy)
+        memoryLeakCheckWith(instance: authUserPresenter)
+        return authUserPresenter
     }
     
-    class UserNameValidateSpy: UserNameValidateProtocol {
-        var userName: String?
-        var isValid = true
-        
-        func isValid(userName: String?) -> Bool {
-            self.userName = userName
-            return isValid
-        }
+    func createAuthUserViewModel(userName: String? = "Test Name Drive", password: String? = "Passw1rd@dd") -> AuthUserViewModel{
+        return .init(userName: userName, password: password)
     }
 }
