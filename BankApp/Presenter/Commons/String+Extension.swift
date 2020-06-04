@@ -10,8 +10,6 @@ import Foundation
 
 struct StringCheck {
     
-    private init() { }
-    
     static func isValidField(_ content: String?) -> Bool {
         guard let string = content else { return false }
         return !string.isEmpty

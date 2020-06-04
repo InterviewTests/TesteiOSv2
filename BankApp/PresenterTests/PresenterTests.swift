@@ -38,7 +38,32 @@ class AuthUserPresenterTests: XCTestCase {
         //Then
         XCTAssertEqual(alertViewSpy.viewModel, alertViewModel)
     }
-
+    
+    func testFuncStringCheckWhenPutStringInvalid() throws {
+        
+        //Given
+        let stringNil: String? = nil
+        let stringEmpty: String = ""
+        
+        //When
+        let isValid = false
+        
+        //Then
+        XCTAssertEqual(isValid, StringCheck.isValidField(stringNil))
+        XCTAssertEqual(isValid, StringCheck.isValidField(stringEmpty))
+    }
+    
+    func testFuncStringCheckWhenPutStringValid() throws {
+        
+        //Given
+        let stringValid: String = "stringValid"
+        
+        //When
+        let isValid = true
+        
+        //Then
+        XCTAssertEqual(isValid, StringCheck.isValidField(stringValid))
+    }
 }
 
 extension AuthUserPresenterTests {
