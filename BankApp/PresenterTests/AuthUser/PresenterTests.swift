@@ -74,13 +74,4 @@ extension AuthUserPresenterTests {
         memoryLeakCheckWith(instance: sut)
         return (sut, spy)
     }
-    
-    class AlertViewSpy: AlertViewProtocol {
-        var viewModel: AlertViewModel?
-        
-        func presentMessageWith(_ viewModel: AlertViewModel) {
-            self.viewModel = viewModel
-        }
-        
-    }
 }

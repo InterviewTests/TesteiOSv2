@@ -15,6 +15,7 @@
 		5009022C24887F0B0072DF16 /* AuthUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */; };
 		5009022D24887F3A0072DF16 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022324886FAE0072DF16 /* String+Extension.swift */; };
 		5009022F248880390072DF16 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022E248880390072DF16 /* AlertView.swift */; };
+		50090231248889400072DF16 /* AlertViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50090230248889400072DF16 /* AlertViewSpy.swift */; };
 		5039E0CD2485B30400D6DE50 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */; };
 		506F61A82488215100BA2578 /* IntegrationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F61A72488215100BA2578 /* IntegrationUseCaseTests.swift */; };
 		506F61AA2488215100BA2578 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A68B1B2482BDDC00F8C50C /* Data.framework */; };
@@ -149,6 +150,7 @@
 		5009022924887E740072DF16 /* AuthUserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserPresenter.swift; sourceTree = "<group>"; };
 		5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserViewModel.swift; sourceTree = "<group>"; };
 		5009022E248880390072DF16 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		50090230248889400072DF16 /* AlertViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewSpy.swift; sourceTree = "<group>"; };
 		5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		506F61A52488215100BA2578 /* IntegrationUseCaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationUseCaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		506F61A72488215100BA2578 /* IntegrationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationUseCaseTests.swift; sourceTree = "<group>"; };
@@ -262,7 +264,7 @@
 		500902172488669D0072DF16 /* PresenterTests */ = {
 			isa = PBXGroup;
 			children = (
-				500902182488669D0072DF16 /* PresenterTests.swift */,
+				50090232248889BA0072DF16 /* AuthUser */,
 				5009021A2488669D0072DF16 /* Info.plist */,
 			);
 			path = PresenterTests;
@@ -282,6 +284,15 @@
 			children = (
 				5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */,
 				5009022924887E740072DF16 /* AuthUserPresenter.swift */,
+			);
+			path = AuthUser;
+			sourceTree = "<group>";
+		};
+		50090232248889BA0072DF16 /* AuthUser */ = {
+			isa = PBXGroup;
+			children = (
+				50090230248889400072DF16 /* AlertViewSpy.swift */,
+				500902182488669D0072DF16 /* PresenterTests.swift */,
 			);
 			path = AuthUser;
 			sourceTree = "<group>";
@@ -820,6 +831,7 @@
 			files = (
 				50090225248871C00072DF16 /* XCTestCase+Extension.swift in Sources */,
 				500902192488669D0072DF16 /* PresenterTests.swift in Sources */,
+				50090231248889400072DF16 /* AlertViewSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
