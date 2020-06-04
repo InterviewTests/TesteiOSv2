@@ -24,7 +24,9 @@ class AuthUserPresenterTests: XCTestCase {
         sut.auth(viewModel: authUserViewModel)
         
         //Then
-        XCTAssertEqual(alertViewSpy.viewModel, alertViewModel)
+        alertViewSpy.observerViewModel { (viewModel) in
+            XCTAssertEqual(viewModel, alertViewModel)
+        }
     }
     
     func testAuthUserShowMessageErrorWhenUserNameDontInformated() throws {
@@ -39,7 +41,9 @@ class AuthUserPresenterTests: XCTestCase {
         sut.auth(viewModel: authUserViewModel)
         
         //Then
-        XCTAssertEqual(alertViewSpy.viewModel, alertViewModel)
+        alertViewSpy.observerViewModel { (viewModel) in
+            XCTAssertEqual(viewModel, alertViewModel)
+        }
     }
     
     func testFuncStringCheckWhenPutStringInvalid() throws {
@@ -96,7 +100,9 @@ class AuthUserPresenterTests: XCTestCase {
         sut.auth(viewModel: authUserViewModel)
         
         //Then
-        XCTAssertEqual(alertViewSpy.viewModel, alertViewModel)
+        alertViewSpy.observerViewModel { (viewModel) in
+            XCTAssertEqual(viewModel, alertViewModel)
+        }
     }
     
     func testAuthUserWithAllValuesIformated() throws {
@@ -128,7 +134,9 @@ class AuthUserPresenterTests: XCTestCase {
         authClientUseCaseSpy.completeWith(error: .unknown)
         
         //Then
-        XCTAssertEqual(alertViewSpy.viewModel, alertViewModel)
+        alertViewSpy.observerViewModel { (viewModel) in
+            XCTAssertEqual(viewModel, alertViewModel)
+        }
     }
 }
 

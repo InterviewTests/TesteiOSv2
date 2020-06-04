@@ -9,10 +9,17 @@
 import Foundation
 import Presenter
 
-public class AlertViewSpy: AlertViewProtocol {
+public class AlertViewSpy {
     public var viewModel: AlertViewModel?
+    private var emit: ((AlertViewModel) -> Void)?
     
+    public func observerViewModel(completion: @escaping (AlertViewModel) -> Void) {
+        emit = completion
+    }
+}
+
+extension AlertViewSpy: AlertViewProtocol {
     public func presentMessageWith(_ viewModel: AlertViewModel) {
-        self.viewModel = viewModel
+        emit?(viewModel)
     }
 }
