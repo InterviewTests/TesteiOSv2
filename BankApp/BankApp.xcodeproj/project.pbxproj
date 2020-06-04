@@ -13,12 +13,13 @@
 		50090225248871C00072DF16 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5424835BBA000B3431 /* XCTestCase+Extension.swift */; };
 		5009022A24887E740072DF16 /* AuthUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022924887E740072DF16 /* AuthUserPresenter.swift */; };
 		5009022C24887F0B0072DF16 /* AuthUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */; };
-		5009022D24887F3A0072DF16 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022324886FAE0072DF16 /* String+Extension.swift */; };
 		5009022F248880390072DF16 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022E248880390072DF16 /* AlertView.swift */; };
 		50090231248889400072DF16 /* AlertViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50090230248889400072DF16 /* AlertViewSpy.swift */; };
 		5039E0CD2485B30400D6DE50 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */; };
 		506F61A82488215100BA2578 /* IntegrationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F61A72488215100BA2578 /* IntegrationUseCaseTests.swift */; };
 		506F61AA2488215100BA2578 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A68B1B2482BDDC00F8C50C /* Data.framework */; };
+		506FEA8F24889FE70002DF70 /* UserNameValidateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FEA8E24889FE70002DF70 /* UserNameValidateProtocol.swift */; };
+		506FEA912488AB870002DF70 /* StringCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FEA902488AB870002DF70 /* StringCheck.swift */; };
 		50B80C342488460D002A216B /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5424835BBA000B3431 /* XCTestCase+Extension.swift */; };
 		810DEBD82482FE5E00D9710E /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810DEBD72482FE5E00D9710E /* HTTPError.swift */; };
 		812D71F32482E96F009C7DEE /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F22482E96F009C7DEE /* AuthClient.swift */; };
@@ -146,7 +147,6 @@
 		500902132488669D0072DF16 /* PresenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		500902182488669D0072DF16 /* PresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterTests.swift; sourceTree = "<group>"; };
 		5009021A2488669D0072DF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5009022324886FAE0072DF16 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		5009022924887E740072DF16 /* AuthUserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserPresenter.swift; sourceTree = "<group>"; };
 		5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserViewModel.swift; sourceTree = "<group>"; };
 		5009022E248880390072DF16 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -155,6 +155,8 @@
 		506F61A52488215100BA2578 /* IntegrationUseCaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationUseCaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		506F61A72488215100BA2578 /* IntegrationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationUseCaseTests.swift; sourceTree = "<group>"; };
 		506F61A92488215100BA2578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		506FEA8E24889FE70002DF70 /* UserNameValidateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameValidateProtocol.swift; sourceTree = "<group>"; };
+		506FEA902488AB870002DF70 /* StringCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCheck.swift; sourceTree = "<group>"; };
 		810DEBD72482FE5E00D9710E /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		812D71F22482E96F009C7DEE /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPPostClient.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		5009020C2488669D0072DF16 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				506FEA8D24889F840002DF70 /* Validators */,
 				5009022224886F210072DF16 /* Commons */,
 				5009022824887E610072DF16 /* AuthUser */,
 				5009020D2488669D0072DF16 /* Presenter.h */,
@@ -273,8 +276,8 @@
 		5009022224886F210072DF16 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
-				5009022324886FAE0072DF16 /* String+Extension.swift */,
 				5009022E248880390072DF16 /* AlertView.swift */,
+				506FEA902488AB870002DF70 /* StringCheck.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -320,6 +323,14 @@
 				506F61A92488215100BA2578 /* Info.plist */,
 			);
 			path = IntegrationUseCaseTests;
+			sourceTree = "<group>";
+		};
+		506FEA8D24889F840002DF70 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				506FEA8E24889FE70002DF70 /* UserNameValidateProtocol.swift */,
+			);
+			path = Validators;
 			sourceTree = "<group>";
 		};
 		812D71F12482E93F009C7DEE /* UseCases */ = {
@@ -819,9 +830,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5009022A24887E740072DF16 /* AuthUserPresenter.swift in Sources */,
+				506FEA8F24889FE70002DF70 /* UserNameValidateProtocol.swift in Sources */,
 				5009022F248880390072DF16 /* AlertView.swift in Sources */,
-				5009022D24887F3A0072DF16 /* String+Extension.swift in Sources */,
 				5009022C24887F0B0072DF16 /* AuthUserViewModel.swift in Sources */,
+				506FEA912488AB870002DF70 /* StringCheck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

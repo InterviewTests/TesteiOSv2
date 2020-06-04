@@ -9,11 +9,11 @@
 import Foundation
 
 public struct AuthUserViewModel {
-    public var nameUser: String?
+    public var userName: String?
     public var password: String?
     
-    public init(nameUser: String?, password: String?) {
-        self.nameUser = nameUser
+    public init(userName: String?, password: String?) {
+        self.userName = userName
         self.password = password
     }
 }

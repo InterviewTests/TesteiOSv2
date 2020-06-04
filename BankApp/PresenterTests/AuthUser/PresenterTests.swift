@@ -14,8 +14,8 @@ class AuthUserPresenterTests: XCTestCase {
     func testAuthUserShowMessageErrorWhenPasswordDontInformated() throws {
         
         //Given
-        let (sut, alertViewSpy) = createSut()
-        let authUserViewModel = AuthUserViewModel(nameUser: "Test Name Drive", password: nil)
+        let (sut, alertViewSpy, _) = createSut()
+        let authUserViewModel = AuthUserViewModel(userName: "Test Name Drive", password: nil)
         let alertViewModel = AlertViewModel(title: "Fail in auth the user", message: "The field Password is mandatory")
         
         //When
@@ -28,8 +28,8 @@ class AuthUserPresenterTests: XCTestCase {
     func testAuthUserShowMessageErrorWhenUserNameDontInformated() throws {
         
         //Given
-        let (sut, alertViewSpy) = createSut()
-        let authUserViewModel = AuthUserViewModel(nameUser: nil, password: "password@dd")
+        let (sut, alertViewSpy, _) = createSut()
+        let authUserViewModel = AuthUserViewModel(userName: nil, password: "password@dd")
         let alertViewModel = AlertViewModel(title: "Fail in auth the user", message: "The field Name User is mandatory")
         
         //When
@@ -64,14 +64,39 @@ class AuthUserPresenterTests: XCTestCase {
         //Then
         XCTAssertEqual(isValid, StringCheck.isValidField(stringValid))
     }
+    
+    func testIfUserNameValidatorHasBeenCalled() throws {
+        
+        //Given
+        let (sut, _, userNameValidatorSpy) = createSut()
+        let authUserViewModel = AuthUserViewModel(userName: nil, password: "password@dd")
+        
+        //When
+        sut.auth(viewModel: authUserViewModel)
+        
+        //Then
+        XCTAssertEqual(userNameValidatorSpy.userName, authUserViewModel.userName)
+    }
 }
 
 extension AuthUserPresenterTests {
     
-    func createSut(file: StaticString = #file, line: UInt = #line) -> (sut: AuthUserPresenter, spy: AlertViewSpy) {
-        let spy = AlertViewSpy()
-        let sut = AuthUserPresenter(alertView: spy)
+    func createSut(file: StaticString = #file, line: UInt = #line) -> (sut: AuthUserPresenter, alertViewSpy: AlertViewSpy, userNameValidateSpy: UserNameValidateSpy) {
+        let alertViewSpy = AlertViewSpy()
+        let userNameValidateSpy = UserNameValidateSpy()
+        let sut = AuthUserPresenter(alertView: alertViewSpy, userNameValidate: userNameValidateSpy)
         memoryLeakCheckWith(instance: sut)
-        return (sut, spy)
+        return (sut, alertViewSpy, userNameValidateSpy)
+    }
+    
+    class UserNameValidateSpy: UserNameValidateProtocol {
+        var userName: String?
+        var isValid = true
+        
+        func isValid(userName: String?) -> Bool {
+            guard let userName = userName else { return false }
+            self.userName = userName
+            return isValid
+        }
     }
 }

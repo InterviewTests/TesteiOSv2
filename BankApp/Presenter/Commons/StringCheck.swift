@@ -1,8 +1,8 @@
 //
 //  StringCheck.swift
-//  PresenterTests
+//  Presenter
 //
-//  Created by Estaife Lima on 03/06/20.
+//  Created by Estaife Lima on 04/06/20.
 //  Copyright © 2020 Estaife Lima. All rights reserved.
 //
 

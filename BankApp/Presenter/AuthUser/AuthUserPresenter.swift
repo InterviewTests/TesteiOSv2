@@ -10,12 +10,15 @@ import Foundation
 
 public final class AuthUserPresenter {
     private let alertView: AlertViewProtocol
+    private let userNameValidate: UserNameValidateProtocol
     
-    public init(alertView: AlertViewProtocol) {
+    public init(alertView: AlertViewProtocol, userNameValidate: UserNameValidateProtocol) {
         self.alertView = alertView
+        self.userNameValidate = userNameValidate
     }
     
     public func auth(viewModel: AuthUserViewModel) {
+        userNameValidate.isValid(userName: viewModel.userName)
         if let viewModel = errorViewModel(viewModel) {
             alertView.presentMessageWith(viewModel)
         }
@@ -26,7 +29,7 @@ public final class AuthUserPresenter {
         var message = "The field %@ is mandatory"
         if !StringCheck.isValidField(viewModel.password) {
             message = String(format: message, "Password")
-        } else if !StringCheck.isValidField(viewModel.nameUser) {
+        } else if !StringCheck.isValidField(viewModel.userName) {
             message = String(format: message, "Name User")
         } else {
             return nil
