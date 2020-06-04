@@ -15,6 +15,8 @@
 		5009022C24887F0B0072DF16 /* AuthUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */; };
 		5009022F248880390072DF16 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022E248880390072DF16 /* AlertView.swift */; };
 		50090231248889400072DF16 /* AlertViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50090230248889400072DF16 /* AlertViewSpy.swift */; };
+		501365EB248964DA004902D5 /* LoadingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501365EA248964DA004902D5 /* LoadingViewProtocol.swift */; };
+		501365ED248964FE004902D5 /* LoadingViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501365EC248964FE004902D5 /* LoadingViewSpy.swift */; };
 		5039E0CD2485B30400D6DE50 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */; };
 		506682B4248946BF00CF7524 /* AuthClientUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506682B3248946BF00CF7524 /* AuthClientUseCaseSpy.swift */; };
 		506F61A82488215100BA2578 /* IntegrationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F61A72488215100BA2578 /* IntegrationUseCaseTests.swift */; };
@@ -153,6 +155,8 @@
 		5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserViewModel.swift; sourceTree = "<group>"; };
 		5009022E248880390072DF16 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		50090230248889400072DF16 /* AlertViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewSpy.swift; sourceTree = "<group>"; };
+		501365EA248964DA004902D5 /* LoadingViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewProtocol.swift; sourceTree = "<group>"; };
+		501365EC248964FE004902D5 /* LoadingViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewSpy.swift; sourceTree = "<group>"; };
 		5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		506682B3248946BF00CF7524 /* AuthClientUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientUseCaseSpy.swift; sourceTree = "<group>"; };
 		506F61A52488215100BA2578 /* IntegrationUseCaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationUseCaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,6 +263,7 @@
 		5009020C2488669D0072DF16 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				501365E9248964C2004902D5 /* Loading */,
 				506FEA8D24889F840002DF70 /* Validators */,
 				5009022224886F210072DF16 /* Commons */,
 				5009022824887E610072DF16 /* UseCases */,
@@ -302,6 +307,14 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		501365E9248964C2004902D5 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				501365EA248964DA004902D5 /* LoadingViewProtocol.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		5039E0CB2485B2E100D6DE50 /* Client HTTPs */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +355,7 @@
 				50090230248889400072DF16 /* AlertViewSpy.swift */,
 				506FEA92248935CD0002DF70 /* UserValidateSpy.swift */,
 				506682B3248946BF00CF7524 /* AuthClientUseCaseSpy.swift */,
+				501365EC248964FE004902D5 /* LoadingViewSpy.swift */,
 			);
 			path = Spys;
 			sourceTree = "<group>";
@@ -862,6 +876,7 @@
 				5009022A24887E740072DF16 /* AuthUserPresenter.swift in Sources */,
 				506FEA8F24889FE70002DF70 /* UserNameValidateProtocol.swift in Sources */,
 				5009022F248880390072DF16 /* AlertView.swift in Sources */,
+				501365EB248964DA004902D5 /* LoadingViewProtocol.swift in Sources */,
 				5009022C24887F0B0072DF16 /* AuthUserViewModel.swift in Sources */,
 				506FEA912488AB870002DF70 /* StringCheck.swift in Sources */,
 			);
@@ -873,6 +888,7 @@
 			files = (
 				50090225248871C00072DF16 /* XCTestCase+Extension.swift in Sources */,
 				506FEA93248935CD0002DF70 /* UserValidateSpy.swift in Sources */,
+				501365ED248964FE004902D5 /* LoadingViewSpy.swift in Sources */,
 				500902192488669D0072DF16 /* AuthUserPresenterTests.swift in Sources */,
 				50090231248889400072DF16 /* AlertViewSpy.swift in Sources */,
 				506682B4248946BF00CF7524 /* AuthClientUseCaseSpy.swift in Sources */,

@@ -13,22 +13,29 @@ public final class AuthUserPresenter {
     private let alertView: AlertViewProtocol
     private let userNameValidate: UserNameValidateProtocol
     private let authClientUseCase: AuthClientUseCaseProtocol
+    private let loadingView: LoadingViewProtocol
     
-    public init(alertView: AlertViewProtocol, userNameValidate: UserNameValidateProtocol, authClientUseCase: AuthClientUseCaseProtocol) {
+    public init(alertView: AlertViewProtocol, loadingView: LoadingViewProtocol, userNameValidate: UserNameValidateProtocol, authClientUseCase: AuthClientUseCaseProtocol) {
         self.alertView = alertView
+        self.loadingView = loadingView
         self.userNameValidate = userNameValidate
         self.authClientUseCase = authClientUseCase
     }
     
     public func auth(viewModel: AuthUserViewModel) {
         userNameValidate.isValid(userName: viewModel.userName)
+        
         if let viewModel = errorViewModel(viewModel) {
             alertView.presentMessageWith(viewModel)
         } else {
             guard let user = viewModel.userName, let password = viewModel.password else { return }
             let authClientModel = AuthClientModel(user: user, password: password)
+            loadingView.start()
             authClientUseCase.login(authenticationModel: authClientModel) { [weak self] result in
                 guard let self = self else { return }
+                
+                self.loadingView.stop()
+                
                 switch result {
                 case .failure:
                     self.alertView.presentMessageWith(.init(title: "Fail", message: "An unexpected error occurred, try again"))

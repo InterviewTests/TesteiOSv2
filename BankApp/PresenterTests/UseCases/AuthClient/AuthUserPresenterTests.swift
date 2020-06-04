@@ -138,17 +138,50 @@ class AuthUserPresenterTests: XCTestCase {
             XCTAssertEqual(viewModel, alertViewModel)
         }
     }
+    
+    func testLoadingBeforeAuthClientAndAfterAuthClient() throws {
+        
+        //Given
+        let loadingViewSpy = LoadingViewSpy()
+        let authClientUseCaseSpy = AuthClientUseCaseSpy()
+        let sut = createSutWith(loadingViewSpy: loadingViewSpy, authClientUseCaseSpy: authClientUseCaseSpy)
+        let authUserViewModel = createAuthUserViewModel()
+        
+        
+        //Then Auth Called
+        let expectationAuthCalled = expectation(description: "Waiting auth client called")
+        loadingViewSpy.observerLoading { (isLoading) in
+            XCTAssertTrue(isLoading)
+            expectationAuthCalled.fulfill()
+        }
+        
+        //When Auth Called
+        sut.auth(viewModel: authUserViewModel)
+        wait(for: [expectationAuthCalled], timeout: 1)
+        
+        //Then Auth Complete
+        let expectationAuthComplete = expectation(description: "Waiting auth client complete")
+        loadingViewSpy.observerLoading { (isLoading) in
+            XCTAssertFalse(isLoading)
+            expectationAuthComplete.fulfill()
+        }
+        
+        //When Auth Complete
+        authClientUseCaseSpy.completeWith(error: .unknown)
+        wait(for: [expectationAuthComplete], timeout: 1)
+    }
 }
 
 extension AuthUserPresenterTests {
     
     func createSutWith(
+        loadingViewSpy: LoadingViewSpy = LoadingViewSpy(),
         authClientUseCaseSpy: AuthClientUseCaseSpy = AuthClientUseCaseSpy(),
         alertViewSpy: AlertViewSpy = AlertViewSpy(),
         userNameValidateSpy: UserNameValidateSpy = UserNameValidateSpy(),
         file: StaticString = #file,
         line: UInt = #line) -> AuthUserPresenter {
-        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy, userNameValidate: userNameValidateSpy, authClientUseCase: authClientUseCaseSpy)
+        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy, loadingView: loadingViewSpy, userNameValidate: userNameValidateSpy, authClientUseCase: authClientUseCaseSpy)
         memoryLeakCheckWith(instance: authUserPresenter)
         return authUserPresenter
     }
