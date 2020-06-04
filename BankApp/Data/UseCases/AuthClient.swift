@@ -18,8 +18,8 @@ public final class AuthClientUseCase {
         self.httpClient = httpClient
     }
     
-    private func handleSuccess(_ data: Data?) -> Result<UserAccountResponse, DomainError> {
-        if let model: UserAccountResponse = data?.convertToModel() {
+    private func handleSuccess(_ data: Data?) -> Result<UserAccountModel, DomainError> {
+        if let model: UserAccountModel = data?.convertToModel() {
             return .success(model)
         }
         return .failure(.convert)
@@ -27,7 +27,7 @@ public final class AuthClientUseCase {
 }
 
 extension AuthClientUseCase: AuthClientUseCaseProtocol {
-    public func login(authenticationModel: AuthClientModel, completion: @escaping (Result<UserAccountResponse, DomainError>) -> Void) {
+    public func login(authenticationModel: AuthClientModel, completion: @escaping (Result<UserAccountModel, DomainError>) -> Void) {
         httpClient.post(to: url, with: authenticationModel.data) { [weak self] result in
             guard let self = self else { return }
             switch result {
