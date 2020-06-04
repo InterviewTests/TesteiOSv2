@@ -28,9 +28,9 @@ public final class AuthUserPresenter {
         if let viewModel = errorViewModel(viewModel) {
             alertView.presentMessageWith(viewModel)
         } else {
-            guard let user = viewModel.userName, let password = viewModel.password else { return }
-            let authClientModel = AuthClientModel(user: user, password: password)
             loadingView.start()
+            
+            guard let authClientModel = viewModel.authClientModel else { return }
             authClientUseCase.login(authenticationModel: authClientModel) { [weak self] result in
                 guard let self = self else { return }
                 
@@ -39,7 +39,8 @@ public final class AuthUserPresenter {
                 switch result {
                 case .failure:
                     self.alertView.presentMessageWith(.init(title: "Fail", message: "An unexpected error occurred, try again"))
-                case .success: break
+                case .success:
+                    self.alertView.presentMessageWith(.init(title: "Success", message: "Bem vindo ao BankApp"))
                 }
             }
         }

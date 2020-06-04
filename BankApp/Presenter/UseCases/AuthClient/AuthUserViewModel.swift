@@ -6,7 +6,7 @@
 //  Copyright © 2020 Estaife Lima. All rights reserved.
 //
 
-import Foundation
+import Domain
 
 public struct AuthUserViewModel {
     public var userName: String?
@@ -15,5 +15,12 @@ public struct AuthUserViewModel {
     public init(userName: String?, password: String?) {
         self.userName = userName
         self.password = password
+    }
+}
+
+extension AuthUserViewModel {
+    var authClientModel: AuthClientModel? {
+        guard let user = userName, let password = password else { return nil }
+        return .init(user: user, password: password)
     }
 }

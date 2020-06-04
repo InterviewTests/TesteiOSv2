@@ -15,6 +15,10 @@ class AuthClientUseCaseSpy {
     func completeWith(error: DomainError) {
         completion?(.failure(.unknown))
     }
+    
+    func completeWith(model: UserAccountModel) {
+        completion?(.success(model))
+    }
 }
 
 extension AuthClientUseCaseSpy: AuthClientUseCaseProtocol {

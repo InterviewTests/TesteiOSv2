@@ -8,6 +8,6 @@
 
 import Domain
 
-var userAccountResponse: UserAccountResponse {
+var userAccountModel: UserAccountModel {
     return .init(userAccount: UserAccount(userID: 1, name: "name_any", bankAccount: "bankAccount_any", agency: "agency_any", balance: 0.0), authError: AuthError())
 }

@@ -170,6 +170,29 @@ class AuthUserPresenterTests: XCTestCase {
         authClientUseCaseSpy.completeWith(error: .unknown)
         wait(for: [expectationAuthComplete], timeout: 1)
     }
+    
+    func testShowSuccessWhenAuthClientCompleteWithSuccess() throws {
+        
+        //Given
+        let alertViewSpy = AlertViewSpy()
+        let authClientUseCaseSpy = AuthClientUseCaseSpy()
+        let sut = createSutWith(authClientUseCaseSpy: authClientUseCaseSpy, alertViewSpy: alertViewSpy)
+        let authUserViewModel = createAuthUserViewModel()
+        let alertViewModel = AlertViewModel(title: "Success", message: "Bem vindo ao BankApp")
+        
+        
+        //Then
+        let expectationAuthComplete = expectation(description: "Waiting auth client complete")
+        alertViewSpy.observerViewModel { (viewModel) in
+            XCTAssertEqual(viewModel, alertViewModel)
+            expectationAuthComplete.fulfill()
+        }
+        
+        //When
+        sut.auth(viewModel: authUserViewModel)
+        authClientUseCaseSpy.completeWith(model: userAccountModel)
+        wait(for: [expectationAuthComplete], timeout: 1)
+    }
 }
 
 extension AuthUserPresenterTests {
