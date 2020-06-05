@@ -84,10 +84,12 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     func displayLogin(response: Login.UserAccount) {
         print("fez o login")
+        self.removeSpinner()
     }
     
     func displayError(response: Login.Error) {
-        print(response.message)
+        self.showOkAlert(title: "Erro", message: "\(response.message ?? "") Erro: \(response.code ?? 0)")
+        self.removeSpinner()
     }
     
     // MARK: Actions
@@ -97,7 +99,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
             return
         }
         guard let passwordText = passwordTextField.text else { return }
-        
+        self.showSpinner(onView: self.view)
         interactor?.login(user: userText, password: passwordText)
     }
     
