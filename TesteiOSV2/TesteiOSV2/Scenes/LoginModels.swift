@@ -26,8 +26,8 @@ import UIKit
 enum Login {
     
     struct Response: Codable {
-        let userAccount: UserAccount?
-        let error: Error?
+        let userAccount: UserAccount
+        let error: Error
     }
     
     struct UserAccount: Codable {

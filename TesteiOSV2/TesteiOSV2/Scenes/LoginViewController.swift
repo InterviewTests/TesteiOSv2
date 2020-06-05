@@ -14,9 +14,13 @@ import UIKit
 
 protocol LoginDisplayLogic: class {
 //    func displaySomething(viewModel: Login.Something.ViewModel)
+    func displayError(response: Login.Error)
+    func displayLogin(response: Login.UserAccount)
+    
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
+    
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
@@ -76,6 +80,14 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     func updateLayout() {
         loginButton.layer.cornerRadius = 4
+    }
+    
+    func displayLogin(response: Login.UserAccount) {
+        print("fez o login")
+    }
+    
+    func displayError(response: Login.Error) {
+        print(response.message)
     }
     
     // MARK: Actions

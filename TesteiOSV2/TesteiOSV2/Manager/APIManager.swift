@@ -72,6 +72,7 @@ extension APIClient {
     typealias JSONTaskCompletionHandler = (Decodable?, APIError?) -> Void
     
     func decodingTask<T: Decodable>(with request: URLRequest, decodingType: T.Type, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
+
         let task = session.dataTask(with: request) { data, response, error in
             
             guard let httpResponse = response as? HTTPURLResponse else {

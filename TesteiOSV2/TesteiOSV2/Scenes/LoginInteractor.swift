@@ -36,9 +36,14 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         worker?.postLogin(request: request, completion: { result in
             switch result {
             case .success(let response):
-                dump(response)
+                guard let resp = response else {
+                    print("response nil")
+                    self.presenter?.presentDefaultError()
+                    return }
+                self.presenter?.presentUserLogin(response: resp)
             case .failure(let error):
                 print(error.localizedDescription)
+                self.presenter?.presentDefaultError()
             }
         })
         

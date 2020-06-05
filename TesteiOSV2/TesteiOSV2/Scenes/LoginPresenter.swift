@@ -13,17 +13,34 @@
 import UIKit
 
 protocol LoginPresentationLogic {
-//  func presentSomething(response: Login.Something.Response)
+    func presentUserLogin(response: Login.Response)
+    func presentDefaultError()
 }
 
 class LoginPresenter: LoginPresentationLogic {
+    
   weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
-  
-//  func presentSomething(response: Login.Something.Response)
-//  {
-//    let viewModel = Login.Something.ViewModel()
-//    viewController?.displaySomething(viewModel: viewModel)
-//  }
+    
+    func presentUserLogin(response: Login.Response) {
+        
+        if response.userAccount.userId != nil {
+            viewController?.displayLogin(response: response.userAccount)
+        } else {
+            viewController?.displayError(response: response.error)
+        }
+//        if let userAccount = response?.userAccount {
+//
+//        }
+//
+//        if let error = response?.error {
+//
+//        }
+    }
+    
+    func presentDefaultError() {
+        //
+    }
+
+
+
 }
