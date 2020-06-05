@@ -21,7 +21,7 @@ Você será avaliado pela usabilidade, por respeitar o design e pela arquitetura
 Teste Unitários: Foi utilizado o XCTest por se tratar de um recurso nativo, fácil de utilizar e não depender de recursos de terceiros.
 
 
-### Laércio Luiz Obici Junior / Beijaflore  
+### Laércio Luiz Obici Junior / Altran  
 #### Requisitos:
 - Xcode 10.1   
 - Cocoapods   
