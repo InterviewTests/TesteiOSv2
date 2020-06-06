@@ -9,8 +9,8 @@
 import Foundation
 
 public struct AlertViewModel: Equatable {
-    var title: String
-    var message: String
+    public var title: String
+    public var message: String
 }
 
 public protocol AlertViewProtocol {

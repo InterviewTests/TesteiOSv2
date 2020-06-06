@@ -213,6 +213,6 @@ extension LoginViewController: LoadingViewProtocol {
 extension LoginViewController: AlertViewProtocol {
     
     public func presentMessageWith(_ viewModel: AlertViewModel) {
-        //TODO: - Implement AlertView
+        showAlert(title: viewModel.title, message: viewModel.message, and: .actionSheet)
     }
 }
