@@ -22,9 +22,10 @@ public class AppFactoryImplementation: AppFactory {
         guard let url = endpoint.url else { return LoginViewController() }
         
         let loginVC = LoginViewController()
-        let validator = UserNameValidate()
+        let userNameValidate = UserNameValidate()
+        let passwordValidate = PasswordValidate()
         let authClientUseCase = AuthClientUseCase(url: url, httpClient: AlamofireAdapter())
-        let authPresenter = AuthUserPresenter(alertView: loginVC, loadingView: loginVC, userNameValidate: validator, authClientUseCase: authClientUseCase, router: loginVC)
+        let authPresenter = AuthUserPresenter(alertView: loginVC, loadingView: loginVC, userNameValidate: userNameValidate, passwordValidate: passwordValidate, authClientUseCase: authClientUseCase, router: loginVC)
         loginVC.loginBlock = authPresenter.auth
         
         return loginVC

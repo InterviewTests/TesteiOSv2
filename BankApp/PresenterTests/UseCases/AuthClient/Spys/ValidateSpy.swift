@@ -1,5 +1,5 @@
 //
-//  UserValidateSpy.swift
+//  ValidateSpy.swift
 //  PresenterTests
 //
 //  Created by Estaife Lima on 04/06/20.
@@ -8,7 +8,7 @@
 
 import Presenter
 
-class UserNameValidateSpy: UserNameValidateProtocol {
+class ValidateSpy: UserNameValidateProtocol {
     var userName: String?
     fileprivate var isValid = true
     

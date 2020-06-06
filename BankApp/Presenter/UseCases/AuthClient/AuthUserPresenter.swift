@@ -12,14 +12,16 @@ import Domain
 public final class AuthUserPresenter {
     private let alertView: AlertViewProtocol
     private let userNameValidate: UserNameValidateProtocol
+    private let passwordValidate: UserNameValidateProtocol
     private let authClientUseCase: AuthClientUseCaseProtocol
     private let loadingView: LoadingViewProtocol
     private let router: RouterProtocol
     
-    public init(alertView: AlertViewProtocol, loadingView: LoadingViewProtocol, userNameValidate: UserNameValidateProtocol, authClientUseCase: AuthClientUseCaseProtocol, router: RouterProtocol) {
+    public init(alertView: AlertViewProtocol, loadingView: LoadingViewProtocol, userNameValidate: UserNameValidateProtocol,  passwordValidate: UserNameValidateProtocol, authClientUseCase: AuthClientUseCaseProtocol, router: RouterProtocol) {
         self.alertView = alertView
         self.loadingView = loadingView
         self.userNameValidate = userNameValidate
+        self.passwordValidate = passwordValidate
         self.authClientUseCase = authClientUseCase
         self.router = router
     }
@@ -58,6 +60,9 @@ public final class AuthUserPresenter {
         } else if !userNameValidate.isValid(userName: viewModel.userName) {
             title = "The field User Name is wrong"
             message = "You should put an email or cpf valid"
+        } else if !passwordValidate.isValid(userName: viewModel.password) {
+            title = "Your password does not meet prerequisites"
+            message = "Should contains an Uppercase letter, a number and special character"
         } else {
             return nil
         }

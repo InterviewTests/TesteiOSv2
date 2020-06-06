@@ -75,7 +75,7 @@ class AuthUserPresenterTests: XCTestCase {
     func testIfUserNameValidatorHasBeenCalled() throws {
         
         //Given
-        let userNameValidateSpy = UserNameValidateSpy()
+        let userNameValidateSpy = ValidateSpy()
         let sut = createSutWith(userNameValidateSpy: userNameValidateSpy)
         let authUserViewModel = createAuthUserViewModel(userName: nil)
         
@@ -90,7 +90,7 @@ class AuthUserPresenterTests: XCTestCase {
         
         //Given
         let alertViewSpy = AlertViewSpy()
-        let userNameValidateSpy = UserNameValidateSpy()
+        let userNameValidateSpy = ValidateSpy()
         let sut = createSutWith(alertViewSpy: alertViewSpy, userNameValidateSpy: userNameValidateSpy)
         let authUserViewModel = createAuthUserViewModel()
         let alertViewModel = AlertViewModel(title: "The field User Name is wrong", message: "You should put an email or cpf valid")
@@ -191,6 +191,25 @@ class AuthUserPresenterTests: XCTestCase {
         authClientUseCaseSpy.completeWith(model: userAccountModel)
         wait(for: [expectationAuthComplete], timeout: 1)
     }
+    
+    func testShowErrorWhenUserPutPasswordDoestMeetRequirements() throws {
+
+        //Given
+        let alertViewSpy = AlertViewSpy()
+        let passwordValidator = ValidateSpy()
+        let sut = createSutWith(alertViewSpy: alertViewSpy, passwordValidateSpy: passwordValidator)
+        let authUserViewModel = createAuthUserViewModel(password: "123456")
+        let alertViewModel = AlertViewModel(title: "Your password does not meet prerequisites",
+                                            message: "Should contains an Uppercase letter, a number and special character")
+        
+        //When
+        sut.auth(viewModel: authUserViewModel)
+        
+        //Then
+        alertViewSpy.observerViewModel { (viewModel) in
+            XCTAssertEqual(viewModel, alertViewModel)
+        }
+    }
 }
 
 extension AuthUserPresenterTests {
@@ -199,11 +218,12 @@ extension AuthUserPresenterTests {
         loadingViewSpy: LoadingViewSpy = LoadingViewSpy(),
         authClientUseCaseSpy: AuthClientUseCaseSpy = AuthClientUseCaseSpy(),
         alertViewSpy: AlertViewSpy = AlertViewSpy(),
-        userNameValidateSpy: UserNameValidateSpy = UserNameValidateSpy(),
+        userNameValidateSpy: ValidateSpy = ValidateSpy(),
+        passwordValidateSpy: ValidateSpy = ValidateSpy(),
         routerSpy: RouterSpy = RouterSpy(),
         file: StaticString = #file,
         line: UInt = #line) -> AuthUserPresenter {
-        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy, loadingView: loadingViewSpy, userNameValidate: userNameValidateSpy, authClientUseCase: authClientUseCaseSpy, router: routerSpy)
+        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy, loadingView: loadingViewSpy, userNameValidate: userNameValidateSpy, passwordValidate: passwordValidateSpy, authClientUseCase: authClientUseCaseSpy, router: routerSpy)
         memoryLeakCheckWith(instance: authUserPresenter)
         return authUserPresenter
     }

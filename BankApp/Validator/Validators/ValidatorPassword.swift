@@ -9,6 +9,8 @@
 import Presenter
 
 public class PasswordValidate: UserNameValidateProtocol {
+     
+    public init() { }
     
     public func isValid(userName: String?) -> Bool {
         guard let text = userName else { return false }
