@@ -12,30 +12,42 @@
 
 import UIKit
 
-enum Detail
-{
-    // MARK: Use cases
+enum Detail {
     
-    enum Something
-    {
-        struct Request
-        {
-        }
-        struct Response {
-            let statementList: [StatementList]
-            let error: Error
-        }
-        
-        struct StatementList: Codable {
-            let title: String?
-            let desc: String?
-            let date: String?
-            let value: Double?
-        }
-        
-        struct Error: Codable {
-            let code: Int?
-            let message: String?
+    struct Response {
+        let statementList: [StatementList]
+        let error: Error
+    }
+    
+    struct StatementList: Codable {
+        let title: String?
+        let desc: String?
+        let date: String?
+        let value: Double?
+    }
+    
+    struct Error: Codable {
+        let code: Int?
+        let message: String?
+    }
+    
+    struct Request {
+        let service: DetailAPI
+    }
+    
+    enum DetailAPI {
+        case get(userId: Int)
+    }
+}
+
+extension Detail.DetailAPI: Endpoint {
+    var base: String {
+        return Constants.baseURL
+    }
+    
+    var path: String {
+        switch self {
+        case .get(let userId): return "\(Constants.statements)\(userId)"
         }
     }
 }
