@@ -39,6 +39,9 @@
 		50E034E1248BF10D00FFBA4F /* Validator.h in Headers */ = {isa = PBXBuildFile; fileRef = 50E034D3248BF10C00FFBA4F /* Validator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50E034EA248BF20A00FFBA4F /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5009020B2488669D0072DF16 /* Presenter.framework */; };
 		50E034EB248BF20A00FFBA4F /* Presenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5009020B2488669D0072DF16 /* Presenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50E03506248BF6D400FFBA4F /* ValidatorCPF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03505248BF6D400FFBA4F /* ValidatorCPF.swift */; };
+		50E03508248BF72F00FFBA4F /* ValidatorEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03507248BF72F00FFBA4F /* ValidatorEmail.swift */; };
+		50E0350A248BF80500FFBA4F /* UserNameValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03509248BF80500FFBA4F /* UserNameValidate.swift */; };
 		810DEBD82482FE5E00D9710E /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810DEBD72482FE5E00D9710E /* HTTPError.swift */; };
 		812D71F32482E96F009C7DEE /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F22482E96F009C7DEE /* AuthClient.swift */; };
 		812D71F52482E9DA009C7DEE /* HTTPPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */; };
@@ -227,6 +230,9 @@
 		50E034D9248BF10D00FFBA4F /* ValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E034DE248BF10D00FFBA4F /* UserNameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameValidator.swift; sourceTree = "<group>"; };
 		50E034E0248BF10D00FFBA4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50E03505248BF6D400FFBA4F /* ValidatorCPF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorCPF.swift; sourceTree = "<group>"; };
+		50E03507248BF72F00FFBA4F /* ValidatorEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorEmail.swift; sourceTree = "<group>"; };
+		50E03509248BF80500FFBA4F /* UserNameValidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameValidate.swift; sourceTree = "<group>"; };
 		810DEBD72482FE5E00D9710E /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		812D71F22482E96F009C7DEE /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPPostClient.swift; sourceTree = "<group>"; };
@@ -527,6 +533,8 @@
 		50E034D2248BF10C00FFBA4F /* Validator */ = {
 			isa = PBXGroup;
 			children = (
+				50E0350B248BF80A00FFBA4F /* Validators */,
+				50E03509248BF80500FFBA4F /* UserNameValidate.swift */,
 				50E034D3248BF10C00FFBA4F /* Validator.h */,
 				50E034D4248BF10C00FFBA4F /* Info.plist */,
 			);
@@ -540,6 +548,15 @@
 				50E034E0248BF10D00FFBA4F /* Info.plist */,
 			);
 			path = ValidatorTests;
+			sourceTree = "<group>";
+		};
+		50E0350B248BF80A00FFBA4F /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				50E03505248BF6D400FFBA4F /* ValidatorCPF.swift */,
+				50E03507248BF72F00FFBA4F /* ValidatorEmail.swift */,
+			);
+			path = Validators;
 			sourceTree = "<group>";
 		};
 		812D71F12482E93F009C7DEE /* UseCases */ = {
@@ -1033,6 +1050,7 @@
 					};
 					50E034D0248BF10C00FFBA4F = {
 						CreatedOnToolsVersion = 11.4.1;
+						LastSwiftMigration = 1140;
 					};
 					50E034D8248BF10D00FFBA4F = {
 						CreatedOnToolsVersion = 11.4.1;
@@ -1237,6 +1255,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E0350A248BF80500FFBA4F /* UserNameValidate.swift in Sources */,
+				50E03506248BF6D400FFBA4F /* ValidatorCPF.swift in Sources */,
+				50E03508248BF72F00FFBA4F /* ValidatorEmail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1616,6 +1637,7 @@
 		50E034E3248BF10D00FFBA4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1636,6 +1658,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1643,6 +1666,7 @@
 		50E034E4248BF10D00FFBA4F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1670,6 +1694,7 @@
 		50E034E6248BF10D00FFBA4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 39FPYG3XUV;
@@ -1691,6 +1716,7 @@
 		50E034E7248BF10D00FFBA4F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 39FPYG3XUV;
