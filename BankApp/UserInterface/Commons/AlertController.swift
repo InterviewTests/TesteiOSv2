@@ -15,9 +15,13 @@ public final class AlertController {
         isShowing.toggle()
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(okAction)
+//        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        alertController.addAction(okAction)
         viewController.present(alertController, animated: true) { self.isShowing.toggle() }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
+            viewController.dismiss(animated: true)
+        }
     }
 }
 

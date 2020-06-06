@@ -28,7 +28,7 @@ public struct UserAccountModel: BaseModel {
     }
 }
 
-public struct UserAccount: Codable {
+public struct UserAccount: Codable, Equatable {
     public var userID: Int?
     public let name: String?
     public let bankAccount: String?

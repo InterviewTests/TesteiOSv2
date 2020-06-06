@@ -31,6 +31,6 @@ public class AppFactoryImplementation: AppFactory {
     }
     
     public func makeBalanceViewController() -> UIViewController {
-        return UIViewController()
+        return BalanceViewController()
     }
 }

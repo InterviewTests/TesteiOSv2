@@ -42,7 +42,6 @@ public final class AuthUserPresenter {
                 case .failure:
                     self.alertView.presentMessageWith(.init(title: "Fail", message: "An unexpected error occurred, try again"))
                 case .success(let userAccountModel):
-                    self.alertView.presentMessageWith(.init(title: "Success", message: "Bem vindo ao BankApp"))
                     self.router.presentBalanceViewController(userAccount: userAccountModel.userAccount)
                 }
             }

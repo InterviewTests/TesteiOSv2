@@ -54,7 +54,7 @@ class LoginViewControllerTests: XCTestCase {
         var callLogin = false
         
         //When
-        sut.loginClousure = { viewModel in
+        sut.loginBlock = { viewModel in
             callLogin = true
         }
         sut.simulateTap()
@@ -69,7 +69,7 @@ class LoginViewControllerTests: XCTestCase {
         var callLogin = false
         
         //When
-        sut.loginClousure = { viewModel in
+        sut.loginBlock = { viewModel in
             callLogin = true
         }
         sut.simulateTap()
@@ -85,7 +85,7 @@ class LoginViewControllerTests: XCTestCase {
         var loginViewModelReceived: AuthUserViewModel?
         
         //When
-        sut.loginClousure = { loginViewModelReceived = $0 }
+        sut.loginBlock = { loginViewModelReceived = $0 }
         sut.simulateTap()
          
         //Then

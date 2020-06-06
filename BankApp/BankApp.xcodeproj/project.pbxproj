@@ -31,6 +31,8 @@
 		50075B4D248C2500008E9FE6 /* AuthClientEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B4C248C2500008E9FE6 /* AuthClientEndpoint.swift */; };
 		50075B4F248C29CC008E9FE6 /* ValidatorPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B4E248C29CC008E9FE6 /* ValidatorPassword.swift */; };
 		50075B51248C2D88008E9FE6 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B50248C2D88008E9FE6 /* RouterProtocol.swift */; };
+		50075B54248C30CA008E9FE6 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B53248C30CA008E9FE6 /* BalanceViewController.swift */; };
+		50075B56248C32F7008E9FE6 /* RouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B55248C32F7008E9FE6 /* RouterSpy.swift */; };
 		500902142488669D0072DF16 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5009020B2488669D0072DF16 /* Presenter.framework */; };
 		500902192488669D0072DF16 /* AuthUserPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500902182488669D0072DF16 /* AuthUserPresenterTests.swift */; };
 		5009021B2488669D0072DF16 /* Presenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5009020D2488669D0072DF16 /* Presenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -299,6 +301,8 @@
 		50075B4C248C2500008E9FE6 /* AuthClientEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientEndpoint.swift; sourceTree = "<group>"; };
 		50075B4E248C29CC008E9FE6 /* ValidatorPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorPassword.swift; sourceTree = "<group>"; };
 		50075B50248C2D88008E9FE6 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		50075B53248C30CA008E9FE6 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
+		50075B55248C32F7008E9FE6 /* RouterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterSpy.swift; sourceTree = "<group>"; };
 		5009020B2488669D0072DF16 /* Presenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5009020D2488669D0072DF16 /* Presenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Presenter.h; sourceTree = "<group>"; };
 		5009020E2488669D0072DF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -524,6 +528,14 @@
 			path = Endpoints;
 			sourceTree = "<group>";
 		};
+		50075B52248C30A7008E9FE6 /* Balance */ = {
+			isa = PBXGroup;
+			children = (
+				50075B53248C30CA008E9FE6 /* BalanceViewController.swift */,
+			);
+			path = Balance;
+			sourceTree = "<group>";
+		};
 		5009020C2488669D0072DF16 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,9 +611,10 @@
 		5063EA90248B366C00828A1C /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				50D00715248B3C3000811134 /* Login */,
+				50075B52248C30A7008E9FE6 /* Balance */,
 				50075B42248C19E0008E9FE6 /* FlowController */,
 				50BC87E4248B458100C205B9 /* Commons */,
-				50D00715248B3C3000811134 /* Login */,
 				50D00712248B3BFD00811134 /* Architecture */,
 				5063EA91248B366C00828A1C /* UserInterface.h */,
 				5063EA92248B366C00828A1C /* Info.plist */,
@@ -651,6 +664,7 @@
 				506FEA92248935CD0002DF70 /* UserValidateSpy.swift */,
 				506682B3248946BF00CF7524 /* AuthClientUseCaseSpy.swift */,
 				501365EC248964FE004902D5 /* LoadingViewSpy.swift */,
+				50075B55248C32F7008E9FE6 /* RouterSpy.swift */,
 			);
 			path = Spys;
 			sourceTree = "<group>";
@@ -1477,6 +1491,7 @@
 				500902192488669D0072DF16 /* AuthUserPresenterTests.swift in Sources */,
 				50090231248889400072DF16 /* AlertViewSpy.swift in Sources */,
 				506682B4248946BF00CF7524 /* AuthClientUseCaseSpy.swift in Sources */,
+				50075B56248C32F7008E9FE6 /* RouterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1484,6 +1499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50075B54248C30CA008E9FE6 /* BalanceViewController.swift in Sources */,
 				50075B48248C1BBD008E9FE6 /* AppFlowController.swift in Sources */,
 				50075B46248C1B2A008E9FE6 /* AppFactoryImplementation.swift in Sources */,
 				50075B4A248C1C73008E9FE6 /* AppFlowControllerDelegate.swift in Sources */,

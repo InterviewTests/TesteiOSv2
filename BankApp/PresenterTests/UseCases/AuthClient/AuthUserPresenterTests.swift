@@ -174,17 +174,15 @@ class AuthUserPresenterTests: XCTestCase {
     func testShowSuccessWhenAuthClientCompleteWithSuccess() throws {
         
         //Given
-        let alertViewSpy = AlertViewSpy()
         let authClientUseCaseSpy = AuthClientUseCaseSpy()
-        let sut = createSutWith(authClientUseCaseSpy: authClientUseCaseSpy, alertViewSpy: alertViewSpy)
+        let routerSpy = RouterSpy()
+        let sut = createSutWith(authClientUseCaseSpy: authClientUseCaseSpy, routerSpy: routerSpy)
         let authUserViewModel = createAuthUserViewModel()
-        let alertViewModel = AlertViewModel(title: "Success", message: "Bem vindo ao BankApp")
-        
         
         //Then
         let expectationAuthComplete = expectation(description: "Waiting auth client complete")
-        alertViewSpy.observerViewModel { (viewModel) in
-            XCTAssertEqual(viewModel, alertViewModel)
+        routerSpy.observerUserAccount { userAccount in
+            XCTAssertEqual(userAccount, userAccountModel.userAccount)
             expectationAuthComplete.fulfill()
         }
         
@@ -202,9 +200,10 @@ extension AuthUserPresenterTests {
         authClientUseCaseSpy: AuthClientUseCaseSpy = AuthClientUseCaseSpy(),
         alertViewSpy: AlertViewSpy = AlertViewSpy(),
         userNameValidateSpy: UserNameValidateSpy = UserNameValidateSpy(),
+        routerSpy: RouterSpy = RouterSpy(),
         file: StaticString = #file,
         line: UInt = #line) -> AuthUserPresenter {
-        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy, loadingView: loadingViewSpy, userNameValidate: userNameValidateSpy, authClientUseCase: authClientUseCaseSpy)
+        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy, loadingView: loadingViewSpy, userNameValidate: userNameValidateSpy, authClientUseCase: authClientUseCaseSpy, router: routerSpy)
         memoryLeakCheckWith(instance: authUserPresenter)
         return authUserPresenter
     }
