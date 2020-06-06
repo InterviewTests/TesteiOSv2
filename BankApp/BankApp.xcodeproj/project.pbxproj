@@ -28,6 +28,9 @@
 		50075B46248C1B2A008E9FE6 /* AppFactoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B45248C1B2A008E9FE6 /* AppFactoryImplementation.swift */; };
 		50075B48248C1BBD008E9FE6 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B47248C1BBD008E9FE6 /* AppFlowController.swift */; };
 		50075B4A248C1C73008E9FE6 /* AppFlowControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B49248C1C73008E9FE6 /* AppFlowControllerDelegate.swift */; };
+		50075B4D248C2500008E9FE6 /* AuthClientEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B4C248C2500008E9FE6 /* AuthClientEndpoint.swift */; };
+		50075B4F248C29CC008E9FE6 /* ValidatorPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B4E248C29CC008E9FE6 /* ValidatorPassword.swift */; };
+		50075B51248C2D88008E9FE6 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B50248C2D88008E9FE6 /* RouterProtocol.swift */; };
 		500902142488669D0072DF16 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5009020B2488669D0072DF16 /* Presenter.framework */; };
 		500902192488669D0072DF16 /* AuthUserPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500902182488669D0072DF16 /* AuthUserPresenterTests.swift */; };
 		5009021B2488669D0072DF16 /* Presenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5009020D2488669D0072DF16 /* Presenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -293,6 +296,9 @@
 		50075B45248C1B2A008E9FE6 /* AppFactoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactoryImplementation.swift; sourceTree = "<group>"; };
 		50075B47248C1BBD008E9FE6 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
 		50075B49248C1C73008E9FE6 /* AppFlowControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowControllerDelegate.swift; sourceTree = "<group>"; };
+		50075B4C248C2500008E9FE6 /* AuthClientEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientEndpoint.swift; sourceTree = "<group>"; };
+		50075B4E248C29CC008E9FE6 /* ValidatorPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorPassword.swift; sourceTree = "<group>"; };
+		50075B50248C2D88008E9FE6 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		5009020B2488669D0072DF16 /* Presenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5009020D2488669D0072DF16 /* Presenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Presenter.h; sourceTree = "<group>"; };
 		5009020E2488669D0072DF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -510,6 +516,14 @@
 			path = FlowController;
 			sourceTree = "<group>";
 		};
+		50075B4B248C24DC008E9FE6 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				50075B4C248C2500008E9FE6 /* AuthClientEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
 		5009020C2488669D0072DF16 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -537,6 +551,7 @@
 			children = (
 				5009022E248880390072DF16 /* AlertView.swift */,
 				506FEA902488AB870002DF70 /* StringCheck.swift */,
+				50075B50248C2D88008E9FE6 /* RouterProtocol.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -707,6 +722,7 @@
 			children = (
 				50E03505248BF6D400FFBA4F /* ValidatorCPF.swift */,
 				50E03507248BF72F00FFBA4F /* ValidatorEmail.swift */,
+				50075B4E248C29CC008E9FE6 /* ValidatorPassword.swift */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -714,6 +730,7 @@
 		812D71F12482E93F009C7DEE /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				50075B4B248C24DC008E9FE6 /* Endpoints */,
 				812D71F22482E96F009C7DEE /* AuthClient.swift */,
 			);
 			path = UseCases;
@@ -1440,6 +1457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5009022A24887E740072DF16 /* AuthUserPresenter.swift in Sources */,
+				50075B51248C2D88008E9FE6 /* RouterProtocol.swift in Sources */,
 				506FEA8F24889FE70002DF70 /* UserNameValidateProtocol.swift in Sources */,
 				5009022F248880390072DF16 /* AlertView.swift in Sources */,
 				501365EB248964DA004902D5 /* LoadingViewProtocol.swift in Sources */,
@@ -1502,6 +1520,7 @@
 				50E0350A248BF80500FFBA4F /* UserNameValidate.swift in Sources */,
 				50E03506248BF6D400FFBA4F /* ValidatorCPF.swift in Sources */,
 				50E03508248BF72F00FFBA4F /* ValidatorEmail.swift in Sources */,
+				50075B4F248C29CC008E9FE6 /* ValidatorPassword.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1551,6 +1570,7 @@
 			files = (
 				812D71F52482E9DA009C7DEE /* HTTPPostClient.swift in Sources */,
 				810DEBD82482FE5E00D9710E /* HTTPError.swift in Sources */,
+				50075B4D248C2500008E9FE6 /* AuthClientEndpoint.swift in Sources */,
 				81EDC119248318A300942182 /* Data+Extension.swift in Sources */,
 				812D71F32482E96F009C7DEE /* AuthClient.swift in Sources */,
 			);

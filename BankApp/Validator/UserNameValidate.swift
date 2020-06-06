@@ -13,10 +13,12 @@ public class UserNameValidate: UserNameValidateProtocol {
     public let validatorCPF = StatusValidator()
     public let validatorEmail = ValidatorEmail()
     
+    public init() { }
+    
     public func isValid(userName: String?) -> Bool {
         guard let user = userName else { return false }
         let isValidCPF = validatorCPF.validate(cpf: user) == .valid
-        let isValidEmail = validatorEmail.validate(with: user)
+        let isValidEmail = validatorEmail.isValid(userName: user)
         
         switch (isValidCPF, isValidEmail) {
         case (true, true): return false

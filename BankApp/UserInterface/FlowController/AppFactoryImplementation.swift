@@ -7,13 +7,27 @@
 //
 
 import UIKit
+import Domain
+import Presenter
+import Validator
+import Data
+import Networking
 
 public class AppFactoryImplementation: AppFactory {
     
     public init() { }
     
     public func makeLoginViewController() -> LoginViewController {
-        return LoginViewController()
+        let endpoint: AuthClientEndpoint = .login
+        guard let url = endpoint.url else { return LoginViewController() }
+        
+        let loginVC = LoginViewController()
+        let validator = UserNameValidate()
+        let authClientUseCase = AuthClientUseCase(url: url, httpClient: AlamofireAdapter())
+        let authPresenter = AuthUserPresenter(alertView: loginVC, loadingView: loginVC, userNameValidate: validator, authClientUseCase: authClientUseCase, router: loginVC)
+        loginVC.loginBlock = authPresenter.auth
+        
+        return loginVC
     }
     
     public func makeBalanceViewController() -> UIViewController {

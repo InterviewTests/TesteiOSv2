@@ -1,5 +1,5 @@
 //
-//  ValidatorEmail.swift
+//  ValidatorPassword.swift
 //  Validator
 //
 //  Created by Estaife Lima on 06/06/20.
@@ -8,7 +8,7 @@
 
 import Presenter
 
-public class ValidatorEmail: UserNameValidateProtocol {
+public class ValidatorPassword: UserNameValidateProtocol {
     
     public func isValid(userName: String?) -> Bool {
         guard let content = userName else { return false }

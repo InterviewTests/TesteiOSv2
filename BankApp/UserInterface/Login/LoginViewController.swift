@@ -14,8 +14,6 @@ public class LoginViewController: CustomViewController {
     
     // MARK: - INTERNAL PROPERTIES
     
-    internal var loginClousure: ((AuthUserViewModel) -> Void)?
-    
     internal var userText: String? {
         get {
             return userTextField.text
@@ -31,6 +29,7 @@ public class LoginViewController: CustomViewController {
     // MARK: - PUBLIC PROPERTIES
     
     public weak var delegate: AppFlowControllerDelegate?
+     internal var loginBlock: ((AuthUserViewModel) -> Void)?
     
     public var isLoading: Bool {
         get {
@@ -133,7 +132,6 @@ public class LoginViewController: CustomViewController {
     
     public init() {
         super.init(nibName: nil, bundle: nil)
-        commonInit()
     }
     
     required init?(coder: NSCoder) {
@@ -144,6 +142,7 @@ public class LoginViewController: CustomViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        commonInit()
     }
     
     // MARK: - TOUCHES
@@ -199,7 +198,7 @@ public class LoginViewController: CustomViewController {
     
     @objc
     private func didTapLogin() {
-        loginClousure?(AuthUserViewModel(userName: userText, password: passwordText))
+        loginBlock?(AuthUserViewModel(userName: userText, password: passwordText))
     }
     
     // MARK: - INTERNAL FUNC
@@ -226,6 +225,12 @@ extension LoginViewController: LoadingViewProtocol {
 extension LoginViewController: AlertViewProtocol {
     
     public func presentMessageWith(_ viewModel: AlertViewModel) {
-        alertController.showAlert(title: viewModel.title, message: viewModel.message, and: .actionSheet, into: self)
+        alertController.showAlert(title: viewModel.title, message: viewModel.message, and: .alert, into: self)
+    }
+}
+
+extension LoginViewController: RouterProtocol {
+    public func presentBalanceViewController(userAccount: UserAccount) {
+        delegate?.presentBalanceViewController(userAccount: userAccount)
     }
 }

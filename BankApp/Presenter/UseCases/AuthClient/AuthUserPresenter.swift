@@ -14,12 +14,14 @@ public final class AuthUserPresenter {
     private let userNameValidate: UserNameValidateProtocol
     private let authClientUseCase: AuthClientUseCaseProtocol
     private let loadingView: LoadingViewProtocol
+    private let router: RouterProtocol
     
-    public init(alertView: AlertViewProtocol, loadingView: LoadingViewProtocol, userNameValidate: UserNameValidateProtocol, authClientUseCase: AuthClientUseCaseProtocol) {
+    public init(alertView: AlertViewProtocol, loadingView: LoadingViewProtocol, userNameValidate: UserNameValidateProtocol, authClientUseCase: AuthClientUseCaseProtocol, router: RouterProtocol) {
         self.alertView = alertView
         self.loadingView = loadingView
         self.userNameValidate = userNameValidate
         self.authClientUseCase = authClientUseCase
+        self.router = router
     }
     
     public func auth(viewModel: AuthUserViewModel) {
@@ -39,8 +41,9 @@ public final class AuthUserPresenter {
                 switch result {
                 case .failure:
                     self.alertView.presentMessageWith(.init(title: "Fail", message: "An unexpected error occurred, try again"))
-                case .success:
+                case .success(let userAccountModel):
                     self.alertView.presentMessageWith(.init(title: "Success", message: "Bem vindo ao BankApp"))
+                    self.router.presentBalanceViewController(userAccount: userAccountModel.userAccount)
                 }
             }
         }
