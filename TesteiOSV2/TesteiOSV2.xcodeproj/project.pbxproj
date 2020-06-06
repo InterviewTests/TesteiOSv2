@@ -21,7 +21,14 @@
 		F78D403524830E5800FC60B0 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D402F24830E5800FC60B0 /* LoginInteractor.swift */; };
 		F78D40382487261300FC60B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D40372487261300FC60B0 /* Constants.swift */; };
 		F78D403D2489DC9E00FC60B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D403C2489DC9E00FC60B0 /* ViewController.swift */; };
-		F78D403F2489E0CB00FC60B0 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D403E2489E0CB00FC60B0 /* Spinner.swift */; };
+		F78D4048248B336A00FC60B0 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D4042248B336900FC60B0 /* DetailPresenter.swift */; };
+		F78D4049248B336A00FC60B0 /* DetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D4043248B336900FC60B0 /* DetailWorker.swift */; };
+		F78D404A248B336A00FC60B0 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D4044248B336900FC60B0 /* DetailRouter.swift */; };
+		F78D404B248B336A00FC60B0 /* DetailModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D4045248B336A00FC60B0 /* DetailModels.swift */; };
+		F78D404C248B336A00FC60B0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D4046248B336A00FC60B0 /* DetailViewController.swift */; };
+		F78D404D248B336A00FC60B0 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D4047248B336A00FC60B0 /* DetailInteractor.swift */; };
+		F78D404F248B364700FC60B0 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D404E248B364700FC60B0 /* UIView.swift */; };
+		F79A7DE3248B3DBD0055700C /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A7DE2248B3DBD0055700C /* DetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +48,14 @@
 		F78D402F24830E5800FC60B0 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		F78D40372487261300FC60B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F78D403C2489DC9E00FC60B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F78D403E2489E0CB00FC60B0 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		F78D4042248B336900FC60B0 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		F78D4043248B336900FC60B0 /* DetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorker.swift; sourceTree = "<group>"; };
+		F78D4044248B336900FC60B0 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		F78D4045248B336A00FC60B0 /* DetailModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModels.swift; sourceTree = "<group>"; };
+		F78D4046248B336A00FC60B0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F78D4047248B336A00FC60B0 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		F78D404E248B364700FC60B0 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		F79A7DE2248B3DBD0055700C /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +113,8 @@
 		F78D402924830E1000FC60B0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				F78D402A24830E5800FC60B0 /* LoginPresenter.swift */,
-				F78D402B24830E5800FC60B0 /* LoginWorker.swift */,
-				F78D402C24830E5800FC60B0 /* LoginRouter.swift */,
-				F78D402D24830E5800FC60B0 /* LoginModels.swift */,
-				F78D402E24830E5800FC60B0 /* LoginViewController.swift */,
-				F78D402F24830E5800FC60B0 /* LoginInteractor.swift */,
+				F78D4040248B334000FC60B0 /* Login */,
+				F78D4041248B334900FC60B0 /* Detail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -113,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				F78D40372487261300FC60B0 /* Constants.swift */,
-				F78D403E2489E0CB00FC60B0 /* Spinner.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -122,8 +131,36 @@
 			isa = PBXGroup;
 			children = (
 				F78D403C2489DC9E00FC60B0 /* ViewController.swift */,
+				F78D404E248B364700FC60B0 /* UIView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F78D4040248B334000FC60B0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F78D402A24830E5800FC60B0 /* LoginPresenter.swift */,
+				F78D402B24830E5800FC60B0 /* LoginWorker.swift */,
+				F78D402C24830E5800FC60B0 /* LoginRouter.swift */,
+				F78D402D24830E5800FC60B0 /* LoginModels.swift */,
+				F78D402E24830E5800FC60B0 /* LoginViewController.swift */,
+				F78D402F24830E5800FC60B0 /* LoginInteractor.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		F78D4041248B334900FC60B0 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				F78D4042248B336900FC60B0 /* DetailPresenter.swift */,
+				F78D4043248B336900FC60B0 /* DetailWorker.swift */,
+				F78D4044248B336900FC60B0 /* DetailRouter.swift */,
+				F78D4045248B336A00FC60B0 /* DetailModels.swift */,
+				F78D4046248B336A00FC60B0 /* DetailViewController.swift */,
+				F78D4047248B336A00FC60B0 /* DetailInteractor.swift */,
+				F79A7DE2248B3DBD0055700C /* DetailTableViewCell.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,14 +238,21 @@
 				F78D40382487261300FC60B0 /* Constants.swift in Sources */,
 				F78D402824830D4400FC60B0 /* APIManager.swift in Sources */,
 				F78D403324830E5800FC60B0 /* LoginModels.swift in Sources */,
+				F78D4049248B336A00FC60B0 /* DetailWorker.swift in Sources */,
+				F78D404A248B336A00FC60B0 /* DetailRouter.swift in Sources */,
 				F78D401324808B6600FC60B0 /* AppDelegate.swift in Sources */,
+				F78D404C248B336A00FC60B0 /* DetailViewController.swift in Sources */,
 				F78D403D2489DC9E00FC60B0 /* ViewController.swift in Sources */,
+				F78D404B248B336A00FC60B0 /* DetailModels.swift in Sources */,
 				F78D401524808B6600FC60B0 /* SceneDelegate.swift in Sources */,
-				F78D403F2489E0CB00FC60B0 /* Spinner.swift in Sources */,
 				F78D403024830E5800FC60B0 /* LoginPresenter.swift in Sources */,
 				F78D403224830E5800FC60B0 /* LoginRouter.swift in Sources */,
+				F78D404D248B336A00FC60B0 /* DetailInteractor.swift in Sources */,
 				F78D403524830E5800FC60B0 /* LoginInteractor.swift in Sources */,
 				F78D403124830E5800FC60B0 /* LoginWorker.swift in Sources */,
+				F78D404F248B364700FC60B0 /* UIView.swift in Sources */,
+				F78D4048248B336A00FC60B0 /* DetailPresenter.swift in Sources */,
+				F79A7DE3248B3DBD0055700C /* DetailTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
