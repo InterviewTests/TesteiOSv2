@@ -35,6 +35,12 @@ public class LoginViewController: CustomViewController {
         }
     }
     
+    internal var isAlertShowing: Bool {
+        get {
+            return alertController.isShowing
+        }
+    }
+    
     // MARK: - CONSTANTS
     
     private struct Strings {
@@ -117,6 +123,8 @@ public class LoginViewController: CustomViewController {
         indicatorView.hidesWhenStopped = true
         return indicatorView
     }()
+    
+    private let alertController = AlertController()
     
     // MARK: - INITALIZER
     
@@ -215,6 +223,6 @@ extension LoginViewController: LoadingViewProtocol {
 extension LoginViewController: AlertViewProtocol {
     
     public func presentMessageWith(_ viewModel: AlertViewModel) {
-        showAlert(title: viewModel.title, message: viewModel.message, and: .actionSheet)
+        alertController.showAlert(title: viewModel.title, message: viewModel.message, and: .actionSheet, into: self)
     }
 }

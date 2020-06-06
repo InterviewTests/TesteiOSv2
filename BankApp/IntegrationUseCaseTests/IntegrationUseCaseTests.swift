@@ -37,7 +37,7 @@ class IntegrationUseCaseTests: XCTestCase {
             }
             expect.fulfill()
         }
-        wait(for: [expect], timeout: 1)
+        wait(for: [expect], timeout: 3)
     }
     
     func testAuthenticationUserFailurePassword() throws {

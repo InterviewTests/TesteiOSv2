@@ -91,5 +91,37 @@ class LoginViewControllerTests: XCTestCase {
         //Then
         XCTAssertEqual(loginViewModel, loginViewModelReceived)
     }
+    
+    func testAlertWasShowed() throws {
+        //Given
+        let sut: LoginViewController = LoginViewController()
+        
+        //When
+        let exp = expectation(description: "Test after 1 seconds wait")
+        let result = XCTWaiter.wait(for: [exp], timeout: 1.0)
+        sut.presentMessageWith(AlertViewModel(title: "", message: ""))
+        
+        //Then
+        if result == XCTWaiter.Result.timedOut {
+            XCTAssertTrue(sut.isAlertShowing)
+        } else {
+            XCTFail("There was no delay")
+        }
+    }
+    
+    func testAlertWasNotShowed() throws {
+        //Given
+        let sut: LoginViewController = LoginViewController()
+        
+        //When
+        let exp = expectation(description: "Test after 1 seconds wait")
+        let result = XCTWaiter.wait(for: [exp], timeout: 1.0)
+        
+        //Then
+        if result == XCTWaiter.Result.timedOut {
+            XCTAssertFalse(sut.isAlertShowing)
+        } else {
+            XCTFail("There was no delay")
+        }
+    }
 }
-

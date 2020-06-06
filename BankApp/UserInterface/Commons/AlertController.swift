@@ -8,12 +8,16 @@
 
 import UIKit
 
-extension UIViewController {
-    func showAlert(title: String? = nil, message: String? = nil, and style: UIAlertController.Style) {
+public final class AlertController {
+    public var isShowing: Bool = false
+    
+    public func showAlert(title: String? = nil, message: String? = nil, and style: UIAlertController.Style, into viewController: UIViewController) {
+        isShowing.toggle()
+        
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
-        present(alertController, animated: true)
+        viewController.present(alertController, animated: true) { self.isShowing.toggle() }
     }
 }
 
