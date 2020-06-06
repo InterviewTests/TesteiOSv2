@@ -13,17 +13,30 @@
 import UIKit
 
 protocol DetailPresentationLogic {
-//  func presentSomething(response: Detail.Something.Response)
+    func presentList(response: Detail.Response)
+    func presentDefaultError()
+    func presentUser(user: Login.UserAccount)
 }
 
-class DetailPresenter: DetailPresentationLogic
-{
+class DetailPresenter: DetailPresentationLogic {
+
+    
   weak var viewController: DetailDisplayLogic?
   
-  // MARK: Do something
-  
-//  func presentSomething(response: Detail.Something.Response) {
-//    let viewModel = Detail.Something.ViewModel()
-//    viewController?.displaySomething(viewModel: viewModel)
-//  }
+    func presentList(response: Detail.Response) {
+        if response.statementList.first != nil {
+            viewController?.displayList(response: response.statementList)
+        } else {
+            viewController?.displayError(response: response.error)
+        }
+  }
+    
+    func presentDefaultError() {
+        
+    }
+
+    func presentUser(user: Login.UserAccount) {
+        viewController?.displayPersonalData(user: user)
+    }
+    
 }

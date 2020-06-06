@@ -14,6 +14,7 @@ import UIKit
 
 protocol DetailBusinessLogic {
     func getList()
+    func updatePersonalData()
 }
 
 protocol DetailDataStore {
@@ -33,11 +34,23 @@ class DetailInteractor: DetailBusinessLogic, DetailDataStore {
             
             worker?.getList(request: request, completion: { result in
                 switch result {
-                case .success(let response): dump(response)
-                case .failure(let error): print(error.localizedDescription)
+                case .success(let response):
+                    guard let resp = response else {
+                        print("response nil")
+                        self.presenter?.presentDefaultError()
+                        return }
+                    self.presenter?.presentList(response: resp)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.presenter?.presentDefaultError()
                 }
             })
         }
-        
+    }
+    
+    func updatePersonalData() {
+        if let user = userAccount {
+            presenter?.presentUser(user: user)
+        }
     }
 }

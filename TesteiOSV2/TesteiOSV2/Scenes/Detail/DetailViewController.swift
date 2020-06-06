@@ -13,7 +13,9 @@
 import UIKit
 
 protocol DetailDisplayLogic: class {
-//    func displaySomething(viewModel: Detail.Something.ViewModel)
+    func displayError(response: Detail.Error)
+    func displayList(response: [Detail.StatementList])
+    func displayPersonalData(user: Login.UserAccount)
 }
 
 class DetailViewController: UIViewController, DetailDisplayLogic {
@@ -63,9 +65,13 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateLayout()
+        updateUserScreen()
         getList()
     }
+    
+    // MARK: Properties
+
+    var list: [Detail.StatementList] = []
     
     // MARK: Outlets
     
@@ -81,10 +87,26 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
     
     // MARK: Methods
     
-    func updateLayout() {
-
+    func updateUserScreen() {
+        interactor?.updatePersonalData()
     }
     
+    func displayPersonalData(user: Login.UserAccount) {
+        nameLabel.text = user.name
+        accountNumberLabel.text = "\(user.agency ?? "") / \(user.bankAccount ?? "")"
+        balanceLabel.text = user.balance?.formatCurrency()
+    }
+    
+    func displayList(response: [Detail.StatementList]) {
+        list = response
+        tableView.reloadData()
+    }
+    
+    func displayError(response: Detail.Error) {
+        self.showOkAlert(title: "Erro", message: response.message ?? "Ërro desconhecido")
+    }
+    
+
     func getList() {
         interactor?.getList()
     }
@@ -94,16 +116,16 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
 // MARK: Table View
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell") as! DetailTableViewCell
         cell.shadowView.addShadow(color: .black)
-        cell.titleLabel.text = "Pagamento"
-        cell.descLabel.text = "Conta de luz"
-        cell.valueLabel.text = "R$ 1.000,00"
-        cell.dateLabel.text = "12/12/2020"
+        cell.titleLabel.text = list[indexPath.row].title
+        cell.descLabel.text = list[indexPath.row].desc
+        cell.valueLabel.text = list[indexPath.row].value?.formatCurrency()
+        cell.dateLabel.text = list[indexPath.row].date
         return cell
     }
     

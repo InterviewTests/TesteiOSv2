@@ -28,13 +28,6 @@ class LoginPresenter: LoginPresentationLogic {
         } else {
             viewController?.displayError(response: response.error)
         }
-//        if let userAccount = response?.userAccount {
-//
-//        }
-//
-//        if let error = response?.error {
-//
-//        }
     }
     
     func presentDefaultError() {
