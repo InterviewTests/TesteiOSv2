@@ -12,10 +12,47 @@ import Presenter
 
 class UserNameValidator: XCTestCase {
 
-    func testExample() throws {
+    func testEmailValid() throws {
+        //Given
+        let sut = UserNameValidate()
         
+        //When
+        let emailValid = "invalid_email@provider.com"
+        
+        //Then
+        XCTAssertTrue(sut.isValid(userName: emailValid))
     }
-
     
-
+    func testEmailInvalid() throws {
+        //Given
+        let sut = UserNameValidate()
+        
+        //When
+        let emailInvalid = "invalid_email#provider.com"
+        
+        //Then
+        XCTAssertFalse(sut.isValid(userName: emailInvalid))
+    }
+    
+    func testCPFValid() throws {
+        //Given
+        let sut = UserNameValidate()
+        
+        //When
+        let cpfValid = "18962206064"
+        
+        //Then
+        XCTAssertTrue(sut.isValid(userName: cpfValid))
+    }
+    
+    func testCPFInvalid() throws {
+        //Given
+        let sut = UserNameValidate()
+        
+        //When
+        let cpfInvalid = "12345678901"
+        
+        //Then
+        XCTAssertFalse(sut.isValid(userName: cpfInvalid))
+    }
 }
