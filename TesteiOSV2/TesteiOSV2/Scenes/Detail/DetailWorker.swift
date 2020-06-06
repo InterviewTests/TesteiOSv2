@@ -12,9 +12,29 @@
 
 import UIKit
 
-class DetailWorker
-{
-  func doSomeWork()
-  {
-  }
+class DetailWorker: APIClient {
+    
+    var session: URLSession
+    
+    init(configuration: URLSessionConfiguration) {
+        self.session = URLSession(configuration: configuration)
+    }
+    
+    convenience init() {
+        self.init(configuration: .default)
+    }
+    
+    func getList(request: Detail.Request, completion: @escaping (Result<Detail.Response?, APIError>) -> Void) {
+        let endpoint = request.service
+        var request = endpoint.request
+        request.url = URL(string: request.url!.absoluteString.removingPercentEncoding!)
+        request.httpMethod = "get"
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        fetch(with: request, decode: { json -> Detail.Response? in
+            guard let feedResult = json as? Detail.Response else { return  nil }
+            return feedResult
+        }, completion: completion)
+    }
+    
 }

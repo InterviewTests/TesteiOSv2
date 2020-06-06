@@ -61,8 +61,7 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
     
     // MARK: View lifecycle
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         doSomething()
         updateLayout()
@@ -87,18 +86,22 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
     func updateLayout() {
 
     }
+    
+    func getList() {
+        
+    }
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func doSomething()
-    {
-        let request = Detail.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
-    func displaySomething(viewModel: Detail.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
-    }
+//    func doSomething()
+//    {
+//        let request = Detail.Something.Request()
+//        interactor?.doSomething(request: request)
+//    }
+//
+//    func displaySomething(viewModel: Detail.Something.ViewModel)
+//    {
+//        //nameTextField.text = viewModel.name
+//    }
 }
 
 // MARK: Table View

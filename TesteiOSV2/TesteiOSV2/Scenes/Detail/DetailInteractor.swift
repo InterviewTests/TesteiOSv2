@@ -12,30 +12,34 @@
 
 import UIKit
 
-protocol DetailBusinessLogic
-{
-  func doSomething(request: Detail.Something.Request)
+protocol DetailBusinessLogic {
+    func getList()
 }
 
-protocol DetailDataStore
-{
-  //var name: String { get set }
+protocol DetailDataStore {
+    var userAccount: Login.UserAccount? { get set }
 }
 
-class DetailInteractor: DetailBusinessLogic, DetailDataStore
-{
-  var presenter: DetailPresentationLogic?
-  var worker: DetailWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Detail.Something.Request)
-  {
-    worker = DetailWorker()
-    worker?.doSomeWork()
+class DetailInteractor: DetailBusinessLogic, DetailDataStore {
+    var presenter: DetailPresentationLogic?
+    var worker: DetailWorker?
+    var userAccount: Login.UserAccount?
     
-    let response = Detail.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    func getList() {
+        worker = DetailWorker()
+        
+        if let userId = userAccount?.userId {
+            let request = Detail.Request(service: .get(userId: userId))
+        }
+        
+    }
+    
+    //  func doSomething(request: Detail.Something.Request)
+    //  {
+    //    worker = DetailWorker()
+    //    worker?.doSomeWork()
+    //
+    //    let response = Detail.Something.Response()
+    //    presenter?.presentSomething(response: response)
+    //  }
 }

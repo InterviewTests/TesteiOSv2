@@ -14,7 +14,7 @@ import UIKit
 
 enum Detail {
     
-    struct Response {
+    struct Response: Codable {
         let statementList: [StatementList]
         let error: Error
     }
