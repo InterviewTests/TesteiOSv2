@@ -203,10 +203,12 @@ extension LoginViewController: LoadingViewProtocol {
 
     public func start() {
         indicatorView.startAnimating()
+        loginButton.isUserInteractionEnabled = false
     }
     
     public func stop() {
         indicatorView.stopAnimating()
+        loginButton.isUserInteractionEnabled = true
     }
 }
 
