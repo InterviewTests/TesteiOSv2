@@ -8,12 +8,27 @@
 
 import Presenter
 
-public class ValidatorPassword: UserNameValidateProtocol {
+public class PasswordValidate: UserNameValidateProtocol {
     
     public func isValid(userName: String?) -> Bool {
-        guard let content = userName else { return false }
+        guard let text = userName else { return false }
         
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: content)
+        let capitalPattern = "[A-Z]+"
+        let rangeCapital = NSRange(location: 0, length: text.utf16.count)
+        let regexCapital = try! NSRegularExpression(pattern: capitalPattern)
+        let capitalResult = regexCapital.firstMatch(in: text, options: [], range: rangeCapital) != nil
+        
+        let numberPattern = "[0-9]+"
+        let rangeNumber = NSRange(location: 0, length: text.utf16.count)
+        let regexNumber = try! NSRegularExpression(pattern: numberPattern)
+        let numberResult = regexNumber.firstMatch(in: text, options: [], range: rangeNumber) != nil
+        
+        
+        let specialCharacterPattern = "[.*&^%$#@()/]+"
+        let rangeSpecialCharacter = NSRange(location: 0, length: text.utf16.count)
+        let regexSpecialCharacter = try! NSRegularExpression(pattern: specialCharacterPattern)
+        let specialCharacterResult = regexSpecialCharacter.firstMatch(in: text, options: [], range: rangeSpecialCharacter) != nil
+        
+        return capitalResult && numberResult && specialCharacterResult
     }
 }

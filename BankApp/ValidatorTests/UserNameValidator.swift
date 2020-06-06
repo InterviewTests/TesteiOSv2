@@ -55,4 +55,26 @@ class UserNameValidator: XCTestCase {
         //Then
         XCTAssertFalse(sut.isValid(userName: cpfInvalid))
     }
+    
+    func testPasswordInvalid() throws {
+        //Given
+        let sut = PasswordValidate()
+        
+        //When
+        let passwordInvalid = "123456789qwert"
+        
+        //Then
+        XCTAssertFalse(sut.isValid(userName: passwordInvalid))
+    }
+    
+    func testPasswordValid() throws {
+        //Given
+        let sut = PasswordValidate()
+        
+        //When
+        let passwordValid = "Tes!@10j3"
+        
+        //Then
+        XCTAssertTrue(sut.isValid(userName: passwordValid))
+    }
 }
