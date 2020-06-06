@@ -35,7 +35,6 @@
                                 </state>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E3u-MK-dvb"/>
-                                    <segue destination="i0V-eH-ubp" kind="show" id="4QO-Qq-S74"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyk-5O-E3A">
@@ -74,6 +73,7 @@
                         <outlet property="loginButton" destination="QaD-8S-vhI" id="CdA-Vk-oXd"/>
                         <outlet property="passwordTextField" destination="Q68-qg-IUM" id="RzN-qm-lTi"/>
                         <outlet property="userTextField" destination="oyk-5O-E3A" id="hsu-CK-GlL"/>
+                        <segue destination="i0V-eH-ubp" kind="show" identifier="Detail" id="bVA-gB-bd1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

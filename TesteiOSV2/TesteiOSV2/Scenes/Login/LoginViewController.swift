@@ -84,6 +84,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     func displayLogin(response: Login.UserAccount) {
         print("fez o login")
+        interactor?.userAccount = response
+        self.performSegue(withIdentifier: "Detail", sender: nil)
         self.removeSpinner()
     }
     
@@ -94,13 +96,13 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     // MARK: Actions
     @IBAction func login(_ sender: Any) {
-//        guard let userText = userTextField.text else {
-//            print("Usuário não preecheu login")
-//            return
-//        }
-//        guard let passwordText = passwordTextField.text else { return }
-//        self.showSpinner(onView: self.view)
-//        interactor?.login(user: userText, password: passwordText)
+        guard let userText = userTextField.text else {
+            print("Usuário não preecheu login")
+            return
+        }
+        guard let passwordText = passwordTextField.text else { return }
+        self.showSpinner(onView: self.view)
+        interactor?.login(user: userText, password: passwordText)
     }
     
 }

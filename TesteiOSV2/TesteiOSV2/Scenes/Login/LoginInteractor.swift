@@ -14,16 +14,18 @@ import UIKit
 
 protocol LoginBusinessLogic {
     func login(user: String, password: String)
+    var userAccount: Login.UserAccount? { get set }
 }
 
 protocol LoginDataStore {
-    //var name: String { get set }
+    var userAccount: Login.UserAccount? { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
+    var userAccount: Login.UserAccount?
     
     func login(user: String, password: String) {
         
@@ -48,5 +50,5 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         })
         
     }
-
+    
 }

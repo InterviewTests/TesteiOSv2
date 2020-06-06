@@ -13,7 +13,7 @@
 import UIKit
 
 protocol DetailDisplayLogic: class {
-    func displaySomething(viewModel: Detail.Something.ViewModel)
+//    func displaySomething(viewModel: Detail.Something.ViewModel)
 }
 
 class DetailViewController: UIViewController, DetailDisplayLogic {
@@ -63,8 +63,8 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
         updateLayout()
+        getList()
     }
     
     // MARK: Outlets
@@ -79,8 +79,6 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
     // MARK: Methods
     
     func updateLayout() {
@@ -88,20 +86,9 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
     }
     
     func getList() {
-        
+        interactor?.getList()
     }
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-//    func doSomething()
-//    {
-//        let request = Detail.Something.Request()
-//        interactor?.doSomething(request: request)
-//    }
-//
-//    func displaySomething(viewModel: Detail.Something.ViewModel)
-//    {
-//        //nameTextField.text = viewModel.name
-//    }
+
 }
 
 // MARK: Table View
