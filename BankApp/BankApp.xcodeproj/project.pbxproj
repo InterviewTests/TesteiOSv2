@@ -34,6 +34,11 @@
 		50E034C8248BE1D700FFBA4F /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E034C7248BE1D700FFBA4F /* UIControl+Extensions.swift */; };
 		50E034C9248BE1E500FFBA4F /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E034C7248BE1D700FFBA4F /* UIControl+Extensions.swift */; };
 		50E034CB248BE9E500FFBA4F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E034CA248BE9E500FFBA4F /* UIViewController+Extensions.swift */; };
+		50E034DA248BF10D00FFBA4F /* Validator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E034D1248BF10C00FFBA4F /* Validator.framework */; };
+		50E034DF248BF10D00FFBA4F /* UserNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E034DE248BF10D00FFBA4F /* UserNameValidator.swift */; };
+		50E034E1248BF10D00FFBA4F /* Validator.h in Headers */ = {isa = PBXBuildFile; fileRef = 50E034D3248BF10C00FFBA4F /* Validator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		50E034EA248BF20A00FFBA4F /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5009020B2488669D0072DF16 /* Presenter.framework */; };
+		50E034EB248BF20A00FFBA4F /* Presenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5009020B2488669D0072DF16 /* Presenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		810DEBD82482FE5E00D9710E /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810DEBD72482FE5E00D9710E /* HTTPError.swift */; };
 		812D71F32482E96F009C7DEE /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F22482E96F009C7DEE /* AuthClient.swift */; };
 		812D71F52482E9DA009C7DEE /* HTTPPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */; };
@@ -105,6 +110,20 @@
 			remoteGlobalIDString = 81A68B0D2482B5BC00F8C50C;
 			remoteInfo = Domain;
 		};
+		50E034DB248BF10D00FFBA4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81A68AF52482B51C00F8C50C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50E034D0248BF10C00FFBA4F;
+			remoteInfo = Validator;
+		};
+		50E034EC248BF20A00FFBA4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81A68AF52482B51C00F8C50C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5009020A2488669D0072DF16;
+			remoteInfo = Presenter;
+		};
 		81505D6C2483F8D8000B3431 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 81A68AF52482B51C00F8C50C /* Project object */;
@@ -136,6 +155,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		50E034EE248BF20A00FFBA4F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				50E034EB248BF20A00FFBA4F /* Presenter.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81505D8924840169000B3431 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,6 +221,12 @@
 		50D00713248B3C2B00811134 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		50E034C7248BE1D700FFBA4F /* UIControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
 		50E034CA248BE9E500FFBA4F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		50E034D1248BF10C00FFBA4F /* Validator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Validator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50E034D3248BF10C00FFBA4F /* Validator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Validator.h; sourceTree = "<group>"; };
+		50E034D4248BF10C00FFBA4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50E034D9248BF10D00FFBA4F /* ValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50E034DE248BF10D00FFBA4F /* UserNameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameValidator.swift; sourceTree = "<group>"; };
+		50E034E0248BF10D00FFBA4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		810DEBD72482FE5E00D9710E /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		812D71F22482E96F009C7DEE /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPPostClient.swift; sourceTree = "<group>"; };
@@ -255,6 +291,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				506F61AA2488215100BA2578 /* Data.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50E034CE248BF10C00FFBA4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50E034EA248BF20A00FFBA4F /* Presenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50E034D6248BF10D00FFBA4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50E034DA248BF10D00FFBA4F /* Validator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +524,24 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		50E034D2248BF10C00FFBA4F /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				50E034D3248BF10C00FFBA4F /* Validator.h */,
+				50E034D4248BF10C00FFBA4F /* Info.plist */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
+		50E034DD248BF10D00FFBA4F /* ValidatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				50E034DE248BF10D00FFBA4F /* UserNameValidator.swift */,
+				50E034E0248BF10D00FFBA4F /* Info.plist */,
+			);
+			path = ValidatorTests;
+			sourceTree = "<group>";
+		};
 		812D71F12482E93F009C7DEE /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,6 +625,8 @@
 				500902172488669D0072DF16 /* PresenterTests */,
 				5063EA90248B366C00828A1C /* UserInterface */,
 				5063EA9B248B366C00828A1C /* UserInterfaceTests */,
+				50E034D2248BF10C00FFBA4F /* Validator */,
+				50E034DD248BF10D00FFBA4F /* ValidatorTests */,
 				81A68AFF2482B51C00F8C50C /* Products */,
 				81A68B3F2482C74900F8C50C /* Frameworks */,
 			);
@@ -573,6 +645,8 @@
 				500902132488669D0072DF16 /* PresenterTests.xctest */,
 				5063EA8F248B366C00828A1C /* UserInterface.framework */,
 				5063EA97248B366C00828A1C /* UserInterfaceTests.xctest */,
+				50E034D1248BF10C00FFBA4F /* Validator.framework */,
+				50E034D9248BF10D00FFBA4F /* ValidatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -667,6 +741,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5063EA9F248B366C00828A1C /* UserInterface.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50E034CC248BF10C00FFBA4F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50E034E1248BF10D00FFBA4F /* Validator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +867,44 @@
 			name = IntegrationUseCaseTests;
 			productName = IntegrationUseCaseTests;
 			productReference = 506F61A52488215100BA2578 /* IntegrationUseCaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		50E034D0248BF10C00FFBA4F /* Validator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50E034E2248BF10D00FFBA4F /* Build configuration list for PBXNativeTarget "Validator" */;
+			buildPhases = (
+				50E034CC248BF10C00FFBA4F /* Headers */,
+				50E034CD248BF10C00FFBA4F /* Sources */,
+				50E034CE248BF10C00FFBA4F /* Frameworks */,
+				50E034CF248BF10C00FFBA4F /* Resources */,
+				50E034EE248BF20A00FFBA4F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50E034ED248BF20A00FFBA4F /* PBXTargetDependency */,
+			);
+			name = Validator;
+			productName = Validator;
+			productReference = 50E034D1248BF10C00FFBA4F /* Validator.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		50E034D8248BF10D00FFBA4F /* ValidatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50E034E5248BF10D00FFBA4F /* Build configuration list for PBXNativeTarget "ValidatorTests" */;
+			buildPhases = (
+				50E034D5248BF10D00FFBA4F /* Sources */,
+				50E034D6248BF10D00FFBA4F /* Frameworks */,
+				50E034D7248BF10D00FFBA4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50E034DC248BF10D00FFBA4F /* PBXTargetDependency */,
+			);
+			name = ValidatorTests;
+			productName = ValidatorTests;
+			productReference = 50E034D9248BF10D00FFBA4F /* ValidatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		81505D612483F8D8000B3431 /* Networking */ = {
@@ -911,6 +1031,12 @@
 					506F61A42488215100BA2578 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
+					50E034D0248BF10C00FFBA4F = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					50E034D8248BF10D00FFBA4F = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 					81505D612483F8D8000B3431 = {
 						CreatedOnToolsVersion = 11.4.1;
 						LastSwiftMigration = 1130;
@@ -957,6 +1083,8 @@
 				500902122488669D0072DF16 /* PresenterTests */,
 				5063EA8E248B366C00828A1C /* UserInterface */,
 				5063EA96248B366C00828A1C /* UserInterfaceTests */,
+				50E034D0248BF10C00FFBA4F /* Validator */,
+				50E034D8248BF10D00FFBA4F /* ValidatorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -991,6 +1119,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		506F61A32488215100BA2578 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50E034CF248BF10C00FFBA4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50E034D7248BF10D00FFBA4F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1091,6 +1233,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50E034CD248BF10C00FFBA4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50E034D5248BF10D00FFBA4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50E034DF248BF10D00FFBA4F /* UserNameValidator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81505D5E2483F8D8000B3431 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1178,6 +1335,16 @@
 			isa = PBXTargetDependency;
 			target = 81A68B0D2482B5BC00F8C50C /* Domain */;
 			targetProxy = 50B80C3724884698002A216B /* PBXContainerItemProxy */;
+		};
+		50E034DC248BF10D00FFBA4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50E034D0248BF10C00FFBA4F /* Validator */;
+			targetProxy = 50E034DB248BF10D00FFBA4F /* PBXContainerItemProxy */;
+		};
+		50E034ED248BF20A00FFBA4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5009020A2488669D0072DF16 /* Presenter */;
+			targetProxy = 50E034EC248BF20A00FFBA4F /* PBXContainerItemProxy */;
 		};
 		81505D6D2483F8D8000B3431 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1326,7 +1493,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1355,7 +1522,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1377,7 +1544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = lima.estaife.UserInterfaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1399,7 +1566,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = lima.estaife.UserInterfaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1439,6 +1606,102 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = lima.estaife.IntegrationUseCaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		50E034E3248BF10D00FFBA4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 39FPYG3XUV;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Validator/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = lima.estaife.Validator;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		50E034E4248BF10D00FFBA4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 39FPYG3XUV;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Validator/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = lima.estaife.Validator;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		50E034E6248BF10D00FFBA4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 39FPYG3XUV;
+				INFOPLIST_FILE = ValidatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = lima.estaife.ValidatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		50E034E7248BF10D00FFBA4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 39FPYG3XUV;
+				INFOPLIST_FILE = ValidatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = lima.estaife.ValidatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
@@ -1869,6 +2132,24 @@
 			buildConfigurations = (
 				506F61AD2488215100BA2578 /* Debug */,
 				506F61AE2488215100BA2578 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50E034E2248BF10D00FFBA4F /* Build configuration list for PBXNativeTarget "Validator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50E034E3248BF10D00FFBA4F /* Debug */,
+				50E034E4248BF10D00FFBA4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50E034E5248BF10D00FFBA4F /* Build configuration list for PBXNativeTarget "ValidatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50E034E6248BF10D00FFBA4F /* Debug */,
+				50E034E7248BF10D00FFBA4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
