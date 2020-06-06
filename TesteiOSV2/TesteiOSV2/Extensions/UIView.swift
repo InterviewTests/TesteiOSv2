@@ -12,10 +12,11 @@ extension UIView {
     
     func shadow(color: UIColor) {
         self.layer.shadowColor = color.cgColor
-        self.layer.shadowOffset = CGSize.zero
-        self.layer.shadowRadius = 2
-        self.layer.shadowOpacity = 0.8
+        self.layer.shadowOffset = CGSize(width: 2, height: 1)
+        self.layer.shadowRadius = 6
+        self.layer.shadowOpacity = 0.1
         self.layer.masksToBounds = false
+        self.layer.cornerRadius = 10
     }
     
 }

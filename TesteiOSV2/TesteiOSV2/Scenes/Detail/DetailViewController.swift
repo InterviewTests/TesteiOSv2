@@ -75,6 +75,13 @@ class DetailViewController: UIViewController, DetailDisplayLogic {
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: Actions
+    @IBAction func logout(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     // MARK: Methods
     
     func updateLayout() {
@@ -101,7 +108,12 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell") as! DetailTableViewCell
+        cell.shadowView.shadow(color: .black)
+        cell.titleLabel.text = "Pagamento"
+        cell.descLabel.text = "Conta de luz"
+        cell.valueLabel.text = "R$ 1.000,00"
+        cell.dateLabel.text = "12/12/2020"
         return cell
     }
     
