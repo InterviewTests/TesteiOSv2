@@ -46,4 +46,20 @@ class LoginViewControllerTests: XCTestCase {
         //Then
         XCTAssertNotNil(comformToAlertViewProtocol)
     }
+    
+    func testLoginButtonDidTap() throws {
+        //Given
+        let sut: LoginViewController = LoginViewController()
+        var callLogin = false
+        
+        //When
+        sut.loginClousure = { viewModel in
+            callLogin = true
+        }
+        sut.simulateTap()
+         
+        //Then
+        XCTAssertEqual(callLogin, true)
+    }
 }
+

@@ -11,6 +11,10 @@ import Presenter
 
 public class LoginViewController: CustomViewController {
     
+    // MARK: - INTERNAL PROPERTIES
+    
+    internal var loginClousure: ((AuthUserViewModel) -> Void)?
+    
     // MARK: - PUBLIC PROPERTIES
     
     public var isLoading: Bool {
@@ -172,7 +176,13 @@ public class LoginViewController: CustomViewController {
     
     @objc
     private func didTapLogin() {
-        
+        loginClousure?(AuthUserViewModel(userName: nil, password: nil))
+    }
+    
+    // MARK: - INTERNAL FUNC
+    
+    internal func simulateTap() {
+        loginButton.simulateTap()
     }
    
 }
