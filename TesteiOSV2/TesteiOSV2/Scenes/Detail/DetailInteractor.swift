@@ -30,16 +30,14 @@ class DetailInteractor: DetailBusinessLogic, DetailDataStore {
         
         if let userId = userAccount?.userId {
             let request = Detail.Request(service: .get(userId: userId))
+            
+            worker?.getList(request: request, completion: { result in
+                switch result {
+                case .success(let response): dump(response)
+                case .failure(let error): print(error.localizedDescription)
+                }
+            })
         }
         
     }
-    
-    //  func doSomething(request: Detail.Something.Request)
-    //  {
-    //    worker = DetailWorker()
-    //    worker?.doSomeWork()
-    //
-    //    let response = Detail.Something.Response()
-    //    presenter?.presentSomething(response: response)
-    //  }
 }
