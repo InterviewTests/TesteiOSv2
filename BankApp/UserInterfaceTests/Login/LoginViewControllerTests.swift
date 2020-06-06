@@ -9,6 +9,7 @@
 import XCTest
 @testable import UserInterface
 import Presenter
+import Domain
 
 import UIKit
 
@@ -60,6 +61,35 @@ class LoginViewControllerTests: XCTestCase {
          
         //Then
         XCTAssertEqual(callLogin, true)
+    }
+    
+    func testLoginButtonWhenTapped() throws {
+        //Given
+        let sut: LoginViewController = LoginViewController()
+        var callLogin = false
+        
+        //When
+        sut.loginClousure = { viewModel in
+            callLogin = true
+        }
+        sut.simulateTap()
+         
+        //Then
+        XCTAssertEqual(callLogin, true)
+    }
+    
+    func testLoginButtonWhenTappedWithCorretViewModel() throws {
+        //Given
+        let sut: LoginViewController = LoginViewController()
+        let loginViewModel = AuthUserViewModel(userName: sut.userText, password: sut.passwordText)
+        var loginViewModelReceived: AuthUserViewModel?
+        
+        //When
+        sut.loginClousure = { loginViewModelReceived = $0 }
+        sut.simulateTap()
+         
+        //Then
+        XCTAssertEqual(loginViewModel, loginViewModelReceived)
     }
 }
 

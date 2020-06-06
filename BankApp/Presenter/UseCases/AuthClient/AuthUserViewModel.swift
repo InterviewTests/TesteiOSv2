@@ -8,7 +8,7 @@
 
 import Domain
 
-public struct AuthUserViewModel {
+public struct AuthUserViewModel: BaseModel {
     public var userName: String?
     public var password: String?
     

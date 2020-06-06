@@ -15,6 +15,18 @@ public class LoginViewController: CustomViewController {
     
     internal var loginClousure: ((AuthUserViewModel) -> Void)?
     
+    internal var userText: String? {
+        get {
+            return userTextField.text
+        }
+    }
+    
+    internal var passwordText: String? {
+        get {
+            return passwordTextField.text
+        }
+    }
+    
     // MARK: - PUBLIC PROPERTIES
     
     public var isLoading: Bool {
@@ -176,7 +188,7 @@ public class LoginViewController: CustomViewController {
     
     @objc
     private func didTapLogin() {
-        loginClousure?(AuthUserViewModel(userName: nil, password: nil))
+        loginClousure?(AuthUserViewModel(userName: userText, password: passwordText))
     }
     
     // MARK: - INTERNAL FUNC
