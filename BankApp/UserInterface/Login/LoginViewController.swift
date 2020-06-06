@@ -8,6 +8,7 @@
 
 import UIKit
 import Presenter
+import Domain
 
 public class LoginViewController: CustomViewController {
     
@@ -28,6 +29,8 @@ public class LoginViewController: CustomViewController {
     }
     
     // MARK: - PUBLIC PROPERTIES
+    
+    public weak var delegate: AppFlowControllerDelegate?
     
     public var isLoading: Bool {
         get {

@@ -24,6 +24,10 @@
 		50075B3A248C1794008E9FE6 /* UserInterface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5063EA8F248B366C00828A1C /* UserInterface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50075B3D248C1794008E9FE6 /* Validator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E034D1248BF10C00FFBA4F /* Validator.framework */; };
 		50075B3E248C1795008E9FE6 /* Validator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50E034D1248BF10C00FFBA4F /* Validator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50075B44248C1A03008E9FE6 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B43248C1A03008E9FE6 /* AppFactory.swift */; };
+		50075B46248C1B2A008E9FE6 /* AppFactoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B45248C1B2A008E9FE6 /* AppFactoryImplementation.swift */; };
+		50075B48248C1BBD008E9FE6 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B47248C1BBD008E9FE6 /* AppFlowController.swift */; };
+		50075B4A248C1C73008E9FE6 /* AppFlowControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B49248C1C73008E9FE6 /* AppFlowControllerDelegate.swift */; };
 		500902142488669D0072DF16 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5009020B2488669D0072DF16 /* Presenter.framework */; };
 		500902192488669D0072DF16 /* AuthUserPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500902182488669D0072DF16 /* AuthUserPresenterTests.swift */; };
 		5009021B2488669D0072DF16 /* Presenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5009020D2488669D0072DF16 /* Presenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -285,6 +289,10 @@
 		50075B1C248C1655008E9FE6 /* MainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50075B20248C1655008E9FE6 /* MainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTests.swift; sourceTree = "<group>"; };
 		50075B22248C1655008E9FE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50075B43248C1A03008E9FE6 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
+		50075B45248C1B2A008E9FE6 /* AppFactoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactoryImplementation.swift; sourceTree = "<group>"; };
+		50075B47248C1BBD008E9FE6 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
+		50075B49248C1C73008E9FE6 /* AppFlowControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowControllerDelegate.swift; sourceTree = "<group>"; };
 		5009020B2488669D0072DF16 /* Presenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5009020D2488669D0072DF16 /* Presenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Presenter.h; sourceTree = "<group>"; };
 		5009020E2488669D0072DF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -491,6 +499,17 @@
 			path = MainTests;
 			sourceTree = "<group>";
 		};
+		50075B42248C19E0008E9FE6 /* FlowController */ = {
+			isa = PBXGroup;
+			children = (
+				50075B43248C1A03008E9FE6 /* AppFactory.swift */,
+				50075B45248C1B2A008E9FE6 /* AppFactoryImplementation.swift */,
+				50075B47248C1BBD008E9FE6 /* AppFlowController.swift */,
+				50075B49248C1C73008E9FE6 /* AppFlowControllerDelegate.swift */,
+			);
+			path = FlowController;
+			sourceTree = "<group>";
+		};
 		5009020C2488669D0072DF16 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +584,7 @@
 		5063EA90248B366C00828A1C /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				50075B42248C19E0008E9FE6 /* FlowController */,
 				50BC87E4248B458100C205B9 /* Commons */,
 				50D00715248B3C3000811134 /* Login */,
 				50D00712248B3BFD00811134 /* Architecture */,
@@ -1446,8 +1466,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50075B48248C1BBD008E9FE6 /* AppFlowController.swift in Sources */,
+				50075B46248C1B2A008E9FE6 /* AppFactoryImplementation.swift in Sources */,
+				50075B4A248C1C73008E9FE6 /* AppFlowControllerDelegate.swift in Sources */,
 				50E034CB248BE9E500FFBA4F /* AlertController.swift in Sources */,
 				50E034C8248BE1D700FFBA4F /* UIControl+Extensions.swift in Sources */,
+				50075B44248C1A03008E9FE6 /* AppFactory.swift in Sources */,
 				50D00714248B3C2B00811134 /* LoginViewController.swift in Sources */,
 				50D00711248B3BCA00811134 /* CustomView.swift in Sources */,
 			);
