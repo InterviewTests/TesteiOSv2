@@ -14,18 +14,28 @@ import UIKit
 
 enum Detail
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
+    // MARK: Use cases
+    
+    enum Something
     {
+        struct Request
+        {
+        }
+        struct Response {
+            let statementList: [StatementList]
+            let error: Error
+        }
+        
+        struct StatementList: Codable {
+            let title: String?
+            let desc: String?
+            let date: String?
+            let value: Double?
+        }
+        
+        struct Error: Codable {
+            let code: Int?
+            let message: String?
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }

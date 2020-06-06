@@ -109,7 +109,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell") as! DetailTableViewCell
-        cell.shadowView.shadow(color: .black)
+        cell.shadowView.addShadow(color: .black)
         cell.titleLabel.text = "Pagamento"
         cell.descLabel.text = "Conta de luz"
         cell.valueLabel.text = "R$ 1.000,00"
