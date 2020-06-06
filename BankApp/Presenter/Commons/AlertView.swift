@@ -14,6 +14,5 @@ public struct AlertViewModel: Equatable {
 }
 
 public protocol AlertViewProtocol {
-    var viewModel: AlertViewModel? { get set }
     func presentMessageWith(_ viewModel: AlertViewModel)
 }

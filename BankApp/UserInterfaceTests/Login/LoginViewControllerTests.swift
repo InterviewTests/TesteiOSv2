@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import UserInterface
+import Presenter
 
 import UIKit
 
@@ -22,5 +23,27 @@ class LoginViewControllerTests: XCTestCase {
         
         //Then
         XCTAssertEqual(sut.isLoading, false)
+    }
+    
+    func testLoginViewControllerConformToLoadingViewProtocol() throws {
+        //Given
+        let sut: LoginViewController = LoginViewController()
+        
+        //When
+        let comformToLoadingViewProtocol = sut as LoadingViewProtocol
+         
+        //Then
+        XCTAssertNotNil(comformToLoadingViewProtocol)
+    }
+    
+    func testLoginViewControllerConformToAlertViewProtocol() throws {
+        //Given
+        let sut: LoginViewController = LoginViewController()
+        
+        //When
+        let comformToAlertViewProtocol = sut as AlertViewProtocol
+         
+        //Then
+        XCTAssertNotNil(comformToAlertViewProtocol)
     }
 }

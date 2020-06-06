@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import Presenter
 
 public class LoginViewController: CustomViewController {
     
     // MARK: - PUBLIC PROPERTIES
     
     public var isLoading: Bool {
-        return indicatorView.isAnimating
+        get {
+            return indicatorView.isAnimating
+        }
     }
     
     // MARK: - CONSTANTS
@@ -174,3 +177,20 @@ public class LoginViewController: CustomViewController {
    
 }
 
+extension LoginViewController: LoadingViewProtocol {
+
+    public func start() {
+        indicatorView.startAnimating()
+    }
+    
+    public func stop() {
+        indicatorView.stopAnimating()
+    }
+}
+
+extension LoginViewController: AlertViewProtocol {
+    
+    public func presentMessageWith(_ viewModel: AlertViewModel) {
+        //TODO: - Implement AlertView
+    }
+}
