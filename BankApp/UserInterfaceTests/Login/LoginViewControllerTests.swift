@@ -9,9 +9,18 @@
 import XCTest
 @testable import UserInterface
 
+import UIKit
+
 class LoginViewControllerTests: XCTestCase {
 
-    func testExample() throws {
+    func testifHiddenLoadingViewWhenStart() throws {
+        //Given
+        let sut = LoginViewController()
         
+        //When
+        sut.loadViewIfNeeded()
+        
+        //Then
+        XCTAssertEqual(sut.isLoading, false)
     }
 }
