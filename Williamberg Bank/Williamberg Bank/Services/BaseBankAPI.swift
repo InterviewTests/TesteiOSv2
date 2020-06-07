@@ -33,13 +33,13 @@ struct BaseBankAPI{
     func makeRequest(serviceName: String, args: [String: Any]?, httpMethod: HttpMethod, completionHandler: @escaping (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void){
         
         guard let url = URL(string: baseUrl + serviceName) else{
-            completionHandler(nil, nil, nil)
+            completionHandler(nil, nil, URLError(URLError.badURL))
             return
         }
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = httpMethod.rawValue
-         urlRequest.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         if let dictArgs = args{
                 let dictArray = dictArgs.compactMap({ "\($0)=\($1)" })
                 urlRequest.httpBody = dictArray.joined(separator: "&").data(using: .utf8)

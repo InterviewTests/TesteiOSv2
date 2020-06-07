@@ -29,7 +29,7 @@ enum Statements
     {
         let name: String
         let account: String
-        let balance: String
+        var balance = "-"
         let formatter = NumberFormatter()
         
         init(userAccount: UserAccount?) {
@@ -49,9 +49,6 @@ enum Statements
             if let formattedAmount = formatter.string(from: NSNumber(value: (userAccount?.balance ?? 0))) {
                 balance = formattedAmount
             }
-            else{
-                balance = "-"
-            }
         }
     }
   }
@@ -62,7 +59,7 @@ enum Statements
         }
         struct Response
         {
-            var statements: [Statement]
+            var statements: [Statement]?
             let errorMessage: String?
         }
         struct ViewModel

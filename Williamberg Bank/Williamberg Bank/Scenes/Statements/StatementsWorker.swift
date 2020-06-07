@@ -24,7 +24,7 @@ class StatementsWorker
             }
             else{
                 do{
-                    guard let _data = data else{
+                    guard let _data = data, !_data.isEmpty else{
                         DispatchQueue.main.async {
                             completionHandler(nil, BaseBankAPI.ServiceError.NullResponse.localizedDescription)
                         }

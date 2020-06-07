@@ -53,7 +53,6 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
   }
   
   // MARK: Passing data
-  
   func passDataToStatementsViewController(source: LoginDataStore, destination: inout StatementsDataStore)
   {
     destination.userAccount = source.userAccount

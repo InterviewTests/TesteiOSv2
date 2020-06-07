@@ -56,14 +56,14 @@ class LoginWorker
     
     func validadePassword(password: String?) throws{
         if let _password = password, !_password.isEmpty{
+            if !existAlphanumericCharacter(str: _password){
+                throw PasswordError.NoAlphanumericCharacter
+            }
             if !existCapitalLetter(str: _password){
                 throw PasswordError.NoCapitalLetter
             }
             if !existSpecialCharacter(str: _password){
                 throw PasswordError.NoEspecialCharacter
-            }
-            if !existAlphanumericCharacter(str: _password){
-                throw PasswordError.NoAlphanumericCharacter
             }
         }
         else{
@@ -137,7 +137,7 @@ class LoginWorker
             }
             else{
                 do{
-                    guard let _data = data else{
+                    guard let _data = data, !_data.isEmpty else{
                         DispatchQueue.main.async {
                             completionHandler(nil, BaseBankAPI.ServiceError.NullResponse.localizedDescription)
                         }

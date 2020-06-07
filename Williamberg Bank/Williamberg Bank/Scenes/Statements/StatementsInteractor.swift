@@ -27,7 +27,7 @@ protocol StatementsDataStore
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
 {
   var presenter: StatementsPresentationLogic?
-  var worker: StatementsWorker?
+  var worker = StatementsWorker()
   var userAccount: UserAccount?
   var statements: [Statements]?
   
@@ -41,11 +41,10 @@ class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore
     
   func loadStatements(request: Statements.LoadStatements.Request)
   {
-    worker = StatementsWorker()
     if let userId = userAccount?.userId{
-        worker?.fetchStatements(userId: userId, completionHandler: {
+        worker.fetchStatements(userId: userId, completionHandler: {
             [weak self] statements, errorMessage in
-            let response = Statements.LoadStatements.Response(statements: statements ?? [Statement](), errorMessage: errorMessage)
+            let response = Statements.LoadStatements.Response(statements: statements, errorMessage: errorMessage)
             self?.presenter?.presentFetchedStatements(response: response)
         })
     }

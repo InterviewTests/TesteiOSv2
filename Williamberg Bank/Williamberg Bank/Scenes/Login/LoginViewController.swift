@@ -17,7 +17,6 @@ protocol LoginDisplayLogic: class
 {
   func displayLoginResult(viewModel: Login.Login.ViewModel)
   func displayUserSaved(viewModel: Login.SavedUser.ViewModel)
-    
 }
 
 class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLogic
@@ -61,15 +60,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
   
   // MARK: Routing
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
-    }
-  }
+//  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+//  {
+//    if let scene = segue.identifier {
+//      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+//      if let router = router, router.responds(to: selector) {
+//        router.perform(selector, with: segue)
+//      }
+//    }
+//  }
     
     //MARK: - IBOutlets
     @IBOutlet weak var loginButton: UIButton!
@@ -105,8 +104,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginDisplayLo
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
     

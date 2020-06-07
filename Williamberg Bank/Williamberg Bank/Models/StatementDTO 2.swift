@@ -1,5 +1,5 @@
 //
-//  Statement.swift
+//  StatementDTO.swift
 //  Williamberg Bank
 //
 //  Created by padrao on 24/05/20.
@@ -8,9 +8,6 @@
 
 import Foundation
 
-struct Statement: Codable {
-    let title: String
-    let desc: String?
-    let date: String?
-    let value: Double?
+struct StatementDTO: Decodable {
+    let statementList: [Statement]?
 }

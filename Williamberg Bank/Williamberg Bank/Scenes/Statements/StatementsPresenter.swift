@@ -39,21 +39,23 @@ class StatementsPresenter: StatementsPresentationLogic
     func presentFetchedStatements(response: Statements.LoadStatements.Response)
   {
     var displayedStatements: [Statements.LoadStatements.ViewModel.DisplayedStatement] = []
-    for statement in response.statements{
-        let title = statement.title ?? "-"
-        let description = statement.desc ?? "-"
-        
-        var date = "-"
-        if let dateFields = statement.date?.split(separator: "-"){
-            let dateFields = dateFields.reversed().compactMap({ String($0) })
-            date = dateFields.joined(separator: "/")
+    if let _statements = response.statements{
+        for statement in _statements{
+            let title = statement.title
+            let description = statement.desc ?? "-"
+            
+            var date = "-"
+            if let dateFields = statement.date?.split(separator: "-"){
+                let dateFields = dateFields.reversed().compactMap({ String($0) })
+                date = dateFields.joined(separator: "/")
+            }
+            
+            var value = "-"
+            if let statementValue = statement.value, let currencyValue = currencyFormatter.string(from: NSNumber(value: statementValue)){
+                value = currencyValue
+            }
+            displayedStatements.append(Statements.LoadStatements.ViewModel.DisplayedStatement(title: title, description: description, date: date, value: value))
         }
-        
-        var value = "-"
-        if let statementValue = statement.value{
-            value = currencyFormatter.string(from: NSNumber(value: statementValue)) ?? "-"
-        }
-        displayedStatements.append(Statements.LoadStatements.ViewModel.DisplayedStatement(title: title, description: description, date: date, value: value))
     }
     
     let viewModel = Statements.LoadStatements.ViewModel(displayedStatements: displayedStatements, errorMessage: response.errorMessage, hideAdviseLabel: displayedStatements.count > 0)
