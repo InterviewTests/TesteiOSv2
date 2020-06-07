@@ -1,5 +1,5 @@
 //
-//  AuthClientProtocol.swift
+//  AuthClientUseCaseProtocol.swift
 //  Domain
 //
 //  Created by Estaife Lima on 30/05/20.
