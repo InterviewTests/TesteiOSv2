@@ -192,6 +192,8 @@ public class LoginViewController: CustomViewController {
     
     public func style() {
         view.backgroundColor = .white
+        userTextField.text = "teste@test.com"
+        passwordTextField.text = "Teste1@password"
     }
     
     // MARK: - PRIVATE FUNC
@@ -213,12 +215,12 @@ extension LoginViewController: LoadingViewProtocol {
 
     public func start() {
         indicatorView.startAnimating()
-        loginButton.isUserInteractionEnabled = false
+        view.isUserInteractionEnabled = false
     }
     
     public func stop() {
         indicatorView.stopAnimating()
-        loginButton.isUserInteractionEnabled = true
+        view.isUserInteractionEnabled = true
     }
 }
 

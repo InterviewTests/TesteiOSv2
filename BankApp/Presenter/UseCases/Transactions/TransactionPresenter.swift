@@ -25,8 +25,13 @@ public final class TransactionPresenter {
     }
     
     public func getTransactions(identifier: String, completion: @escaping ([TransactionModel]) -> Void) {
+        loadingView.start()
+        
         transactionUseCase.getTransactions(identifier: identifier) { [weak self] result in
             guard let self = self else { return }
+            
+            self.loadingView.stop()
+            
             switch result {
             case .success(let resultModel):
                 completion(self.makeTransactions(result: resultModel))

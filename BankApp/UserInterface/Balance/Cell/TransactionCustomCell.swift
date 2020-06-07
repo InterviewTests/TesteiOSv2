@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Presenter
 
 public class TransactionCustomCell: CustomTableViewCell {
 
@@ -45,7 +46,6 @@ public class TransactionCustomCell: CustomTableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "PagamentPagamentoPagamentoo" //TODO: - Remove
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .gray
         label.numberOfLines = 1
@@ -56,7 +56,6 @@ public class TransactionCustomCell: CustomTableViewCell {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Conta de Luze Luze Luz" //TODO: - Remove
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .black
         label.numberOfLines = 1
@@ -77,7 +76,6 @@ public class TransactionCustomCell: CustomTableViewCell {
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "12/12/2018" //TODO: - Remove
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = .gray
         label.numberOfLines = 1
@@ -88,7 +86,6 @@ public class TransactionCustomCell: CustomTableViewCell {
     private lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "R$ 1.000,00000,00" //TODO: - Remove
         label.font = .systemFont(ofSize: 20, weight: .regular)
         label.textColor = .black
         label.numberOfLines = 1
@@ -105,6 +102,16 @@ public class TransactionCustomCell: CustomTableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - LIFE CYCLE
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        self.titleLabel.text = nil
+        self.descriptionLabel.text = nil
+        self.dateLabel.text = nil
+        self.valueLabel.text = nil
     }
     
     // MARK: - VIEW HIERARCHY
@@ -142,4 +149,13 @@ public class TransactionCustomCell: CustomTableViewCell {
     }
     
     // MARK: - PUBLIC FUNC
+    
+    public func update(with transaction: TransactionModel) {
+        DispatchQueue.main.async {
+            self.titleLabel.text = transaction.title
+            self.descriptionLabel.text = transaction.description
+            self.dateLabel.text = transaction.date
+            self.valueLabel.text = "\(transaction.value)" //TODO: - Use decimal to make simbol R$
+        }
+    }
 }

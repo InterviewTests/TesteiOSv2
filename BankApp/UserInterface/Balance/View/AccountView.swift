@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Domain
 
 public protocol AccountViewDelegate: AnyObject {
     func didTapLogoutButon()
@@ -14,8 +15,9 @@ public protocol AccountViewDelegate: AnyObject {
 
 public class AccountView: CustomView {
     
-    // MARK: - PUBLIC PROPERTIES
-    
+    // MARK: - PRIVATE PROPERTIES
+       
+    private let userAccount: UserAccount
     private let delegate: AccountViewDelegate
     
     // MARK: - CONSTANTS
@@ -35,7 +37,7 @@ public class AccountView: CustomView {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "José da Silva Teste"
+        label.text = userAccount.name //TODO: - Change this object and put into preset layer
         label.font = .systemFont(ofSize: 25, weight: .regular)
         label.textColor = .white
         label.numberOfLines = 1
@@ -67,7 +69,7 @@ public class AccountView: CustomView {
     private lazy var accoutNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "2050 / 01.111222-4"
+        label.text = "\(userAccount.agency ?? "") / \(userAccount.bankAccount ?? "")" //TODO: - Change this object and put into preset layer
         label.font = .systemFont(ofSize: 25, weight: .regular)
         label.textColor = .white
         label.numberOfLines = 1
@@ -99,7 +101,7 @@ public class AccountView: CustomView {
     private lazy var balanceNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "R$ 1.000,00"
+        label.text = "\(userAccount.balance ?? 0)" //TODO: - Change this object and put into preset layer
         label.font = .systemFont(ofSize: 25, weight: .regular)
         label.textColor = .white
         label.numberOfLines = 1
@@ -119,7 +121,8 @@ public class AccountView: CustomView {
     
     // MARK: - INITALIZER
     
-    public init(delegate: AccountViewDelegate) {
+    public init(userAccount: UserAccount, delegate: AccountViewDelegate) {
+        self.userAccount = userAccount
         self.delegate = delegate
         super.init(frame: .zero)
         commonInit()

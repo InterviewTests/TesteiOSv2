@@ -11,5 +11,5 @@ import Domain
 
 public protocol AppFactory: AnyObject {
     func makeLoginViewController() -> LoginViewController
-    func makeBalanceViewController(accountUser: UserAccount) -> BalanceViewController
+    func makeBalanceViewController(userAccount: UserAccount) -> BalanceViewController
 }

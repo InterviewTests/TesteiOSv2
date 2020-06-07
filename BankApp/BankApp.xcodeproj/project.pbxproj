@@ -44,7 +44,7 @@
 		501365EB248964DA004902D5 /* LoadingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501365EA248964DA004902D5 /* LoadingViewProtocol.swift */; };
 		501365ED248964FE004902D5 /* LoadingViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501365EC248964FE004902D5 /* LoadingViewSpy.swift */; };
 		501365EF24897174004902D5 /* UserAccountFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5B2483603F000B3431 /* UserAccountFactory.swift */; };
-		501FE253248C967A00AC0508 /* TrasactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE252248C967A00AC0508 /* TrasactionsView.swift */; };
+		501FE253248C967A00AC0508 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE252248C967A00AC0508 /* TransactionsView.swift */; };
 		501FE255248CA6B100AC0508 /* TransactionCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE254248CA6B100AC0508 /* TransactionCustomCell.swift */; };
 		501FE25A248D404A00AC0508 /* TransactionsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE259248D404A00AC0508 /* TransactionsUseCaseProtocol.swift */; };
 		501FE25C248D412400AC0508 /* TransactionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE25B248D412400AC0508 /* TransactionResult.swift */; };
@@ -330,7 +330,7 @@
 		50090230248889400072DF16 /* AlertViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewSpy.swift; sourceTree = "<group>"; };
 		501365EA248964DA004902D5 /* LoadingViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewProtocol.swift; sourceTree = "<group>"; };
 		501365EC248964FE004902D5 /* LoadingViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewSpy.swift; sourceTree = "<group>"; };
-		501FE252248C967A00AC0508 /* TrasactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrasactionsView.swift; sourceTree = "<group>"; };
+		501FE252248C967A00AC0508 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		501FE254248CA6B100AC0508 /* TransactionCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCustomCell.swift; sourceTree = "<group>"; };
 		501FE259248D404A00AC0508 /* TransactionsUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsUseCaseProtocol.swift; sourceTree = "<group>"; };
 		501FE25B248D412400AC0508 /* TransactionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionResult.swift; sourceTree = "<group>"; };
@@ -572,10 +572,10 @@
 		5009020C2488669D0072DF16 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				5009022824887E610072DF16 /* UseCases */,
 				501365E9248964C2004902D5 /* Loading */,
 				506FEA8D24889F840002DF70 /* Validators */,
 				5009022224886F210072DF16 /* Commons */,
-				5009022824887E610072DF16 /* UseCases */,
 				5009020D2488669D0072DF16 /* Presenter.h */,
 				5009020E2488669D0072DF16 /* Info.plist */,
 			);
@@ -640,7 +640,7 @@
 			isa = PBXGroup;
 			children = (
 				50F1DD41248C8B2300A8BF70 /* AccountView.swift */,
-				501FE252248C967A00AC0508 /* TrasactionsView.swift */,
+				501FE252248C967A00AC0508 /* TransactionsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1597,7 +1597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50075B54248C30CA008E9FE6 /* BalanceViewController.swift in Sources */,
-				501FE253248C967A00AC0508 /* TrasactionsView.swift in Sources */,
+				501FE253248C967A00AC0508 /* TransactionsView.swift in Sources */,
 				50075B48248C1BBD008E9FE6 /* AppFlowController.swift in Sources */,
 				50075B46248C1B2A008E9FE6 /* AppFactoryImplementation.swift in Sources */,
 				50075B4A248C1C73008E9FE6 /* AppFlowControllerDelegate.swift in Sources */,

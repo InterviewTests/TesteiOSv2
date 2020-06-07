@@ -24,9 +24,9 @@ public class BalanceViewController: CustomViewController {
     
     // MARK: - PRIVATE PROPERTIES
     
-    private let accountUser: UserAccount
+    private let userAccount: UserAccount
     private var identifier: String {
-        if let id = accountUser.userID {
+        if let id = userAccount.userID {
             return "\(id)"
         }
         return ""
@@ -45,16 +45,14 @@ public class BalanceViewController: CustomViewController {
     // MARK: - UI
     
     private lazy var accountView: AccountView = {
-        let view = AccountView(delegate: self)
+        let view = AccountView(userAccount: userAccount, delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var trasactionsView: TrasactionsView = {
-        let view = TrasactionsView()
+    private lazy var trasactionsView: TransactionsView = {
+        let view = TransactionsView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        let range = Range(1...30)
-        view.applySnapshot(trasactions: range.map { return $0 })
         return view
     }()
     
@@ -69,8 +67,8 @@ public class BalanceViewController: CustomViewController {
     
     // MARK: - INITALIZER
     
-    public init(accountUser: UserAccount) {
-        self.accountUser = accountUser
+    public init(userAccount: UserAccount) {
+        self.userAccount = userAccount
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -84,11 +82,11 @@ public class BalanceViewController: CustomViewController {
         super.viewDidLoad()
         commonInit()
         getTransactionsBlock?(identifier) { transactions in
-            print("transactions: \(transactions)")
+            self.trasactionsView.applySnapshot(trasactions: transactions)
         }
     }
     
-    // MARK: - VIEW HIERARCHY
+    // MARK: - VIEW Hself.IERARCHY
     
     public func subviews() {
         view.addSubview(accountView)
@@ -122,11 +120,13 @@ public class BalanceViewController: CustomViewController {
 extension BalanceViewController: LoadingViewProtocol {
     
     public func start() {
-        
+        indicatorView.startAnimating()
+        view.isUserInteractionEnabled = false
     }
     
     public func stop() {
-        
+        indicatorView.stopAnimating()
+        view.isUserInteractionEnabled = true
     }
 }
 

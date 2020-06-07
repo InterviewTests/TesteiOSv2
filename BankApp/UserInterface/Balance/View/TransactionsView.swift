@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Presenter
 
-public class TrasactionsView: UIView {
+public class TransactionsView: CustomView {
     
     // MARK: - INTERNAL PROPERTIES
     
@@ -17,7 +18,7 @@ public class TrasactionsView: UIView {
     // MARK: - CONSTANTS
     
     private struct Metrics {
-        static let heightCell: CGFloat = 80
+        static let heightCell: CGFloat = 100
     }
     
     private struct Strings {
@@ -29,6 +30,7 @@ public class TrasactionsView: UIView {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.rowHeight = Metrics.heightCell
         tableView.separatorColor = .clear
         tableView.backgroundColor = .clear
         tableView.allowsSelection = false
@@ -41,13 +43,8 @@ public class TrasactionsView: UIView {
     
     public init() {
         super.init(frame: .zero)
-        subviews()
-        constraints()
-        style()
+        commonInit()
         setupDataSource()
-        let range = Range(1...100)
-        
-        applySnapshot(trasactions: range.map { return $0 })
     }
     
     required init?(coder: NSCoder) {
@@ -79,27 +76,26 @@ public class TrasactionsView: UIView {
         case main
     }
     
-    private typealias DataSource = UITableViewDiffableDataSource<Section, Int>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Int>
+    private typealias DataSource = UITableViewDiffableDataSource<Section, TransactionModel>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, TransactionModel>
     
     private var dataSource: DataSource! = nil
     
     private func setupDataSource() {
-        dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, value) -> UITableViewCell? in
+        dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, transaction) -> UITableViewCell? in
             let cellOptional = tableView.dequeueReusableCell(withIdentifier: self.identifierCell, for: indexPath) as? TransactionCustomCell
             guard let cell = cellOptional else { return .init() }
+            cell.update(with: transaction)
             return cell
         })
     }
     
     // MARK: - PUBLIC FUNC
     
-    public func applySnapshot(trasactions: [Int]) {
+    public func applySnapshot(trasactions: [TransactionModel]) {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(trasactions)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
-    // MARK: - PRIVATE FUNC
 }
