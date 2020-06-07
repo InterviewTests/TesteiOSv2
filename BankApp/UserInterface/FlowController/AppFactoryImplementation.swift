@@ -31,7 +31,16 @@ public class AppFactoryImplementation: AppFactory {
         return loginVC
     }
     
-    public func makeBalanceViewController() -> UIViewController {
-        return BalanceViewController()
+    public func makeBalanceViewController(accountUser: UserAccount) -> BalanceViewController {
+        let endpoint: UseCasesEndpoint = .transactions
+        guard let url = endpoint.url else {
+            return .init(accountUser: UserAccount(userID: 0, name: "", bankAccount: "", agency: "", balance: 0.0))
+        }
+        
+        let balanceVC = BalanceViewController(accountUser: accountUser)
+        let transactionsUseCase = TransactionsUseCase(url: url, httpClient: AlamofireAdapter())
+        let trasactionPresenter = TransactionPresenter(loadingView: balanceVC, transactionUseCase: transactionsUseCase)
+        balanceVC.getTransactionsBlock = trasactionPresenter.getTransactions
+        return balanceVC
     }
 }

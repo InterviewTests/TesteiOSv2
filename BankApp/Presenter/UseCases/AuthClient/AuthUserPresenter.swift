@@ -41,8 +41,8 @@ public final class AuthUserPresenter {
                 self.loadingView.stop()
                 
                 switch result {
-                case .failure:
-                    self.alertView.presentMessageWith(.init(title: "Fail", message: "An unexpected error occurred, try again"))
+                case .failure(let error):
+                    self.alertView.presentMessageWith(.init(title: "Fail", message: error.localizedDescription))
                 case .success(let userAccountModel):
                     self.router.presentBalanceViewController(userAccount: userAccountModel.userAccount)
                 }

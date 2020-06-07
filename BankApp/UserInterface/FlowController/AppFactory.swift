@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Domain
 
 public protocol AppFactory: AnyObject {
     func makeLoginViewController() -> LoginViewController
-    func makeBalanceViewController() -> UIViewController
+    func makeBalanceViewController(accountUser: UserAccount) -> BalanceViewController
 }

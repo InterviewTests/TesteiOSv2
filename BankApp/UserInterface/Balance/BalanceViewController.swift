@@ -12,11 +12,25 @@ import Domain
 
 public class BalanceViewController: CustomViewController {
     
-    // MARK: - INTERNAL PROPERTIES
-    
     // MARK: - PUBLIC PROPERTIES
     
+    public var getTransactionsBlock: ((_ : String, _ : @escaping ([TransactionModel]) -> Void) -> Void)?
+    
+    public var isLoading: Bool {
+        return indicatorView.isAnimating
+    }
+    
     public weak var delegate: AppFlowControllerDelegate?
+    
+    // MARK: - PRIVATE PROPERTIES
+    
+    private let accountUser: UserAccount
+    private var identifier: String {
+        if let id = accountUser.userID {
+            return "\(id)"
+        }
+        return ""
+    }
     
     // MARK: - CONSTANTS
     
@@ -55,7 +69,8 @@ public class BalanceViewController: CustomViewController {
     
     // MARK: - INITALIZER
     
-    public init() {
+    public init(accountUser: UserAccount) {
+        self.accountUser = accountUser
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -68,6 +83,9 @@ public class BalanceViewController: CustomViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
+        getTransactionsBlock?(identifier) { transactions in
+            print("transactions: \(transactions)")
+        }
     }
     
     // MARK: - VIEW HIERARCHY
@@ -99,9 +117,17 @@ public class BalanceViewController: CustomViewController {
     public func style() {
         view.backgroundColor = .white
     }
+}
+
+extension BalanceViewController: LoadingViewProtocol {
     
-    // MARK: - PRIVATE FUNC
+    public func start() {
+        
+    }
     
+    public func stop() {
+        
+    }
 }
 
 extension BalanceViewController: AccountViewDelegate {

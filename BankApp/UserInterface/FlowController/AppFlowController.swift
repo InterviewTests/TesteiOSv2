@@ -44,7 +44,7 @@ extension AppFlowController: FlowControllerDelegate {
 extension AppFlowController: AppFlowControllerDelegate {
     
     public func presentBalanceViewController(userAccount: UserAccount) {
-        let balanceViewController = factory.makeBalanceViewController()
+        let balanceViewController = factory.makeBalanceViewController(accountUser: userAccount)
         balanceViewController.modalPresentationStyle = .fullScreen
         
         navigationController.present(balanceViewController, animated: false)
