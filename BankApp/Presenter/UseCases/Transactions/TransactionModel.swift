@@ -24,7 +24,7 @@ public struct TransactionModel: Equatable, Hashable {
     }
     
     public static func == (lhs: TransactionModel, rhs: TransactionModel) -> Bool {
-        return lhs.uuid == rhs.uuid
+        return lhs.title == rhs.title && lhs.description == rhs.description && lhs.date == rhs.date && lhs.value == rhs.value
     }
     
     public func hash(into hasher: inout Hasher) {

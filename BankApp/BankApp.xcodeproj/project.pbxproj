@@ -69,6 +69,8 @@
 		50CA8AC3248C7665007155EE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CA8AC2248C7665007155EE /* Environment.swift */; };
 		50D00711248B3BCA00811134 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D00710248B3BC900811134 /* CustomView.swift */; };
 		50D00714248B3C2B00811134 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D00713248B3C2B00811134 /* LoginViewController.swift */; };
+		50D27A3C248D7B7100C0D5FE /* TransactionPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D27A3B248D7B7100C0D5FE /* TransactionPresenterTests.swift */; };
+		50D27A3E248D7C0500C0D5FE /* TransactionsUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D27A3D248D7C0500C0D5FE /* TransactionsUseCaseSpy.swift */; };
 		50E034C8248BE1D700FFBA4F /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E034C7248BE1D700FFBA4F /* UIControl+Extensions.swift */; };
 		50E034C9248BE1E500FFBA4F /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E034C7248BE1D700FFBA4F /* UIControl+Extensions.swift */; };
 		50E034CB248BE9E500FFBA4F /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E034CA248BE9E500FFBA4F /* AlertController.swift */; };
@@ -356,6 +358,8 @@
 		50CA8AC2248C7665007155EE /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		50D00710248B3BC900811134 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		50D00713248B3C2B00811134 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		50D27A3B248D7B7100C0D5FE /* TransactionPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPresenterTests.swift; sourceTree = "<group>"; };
+		50D27A3D248D7C0500C0D5FE /* TransactionsUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsUseCaseSpy.swift; sourceTree = "<group>"; };
 		50E034C7248BE1D700FFBA4F /* UIControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
 		50E034CA248BE9E500FFBA4F /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		50E034D1248BF10C00FFBA4F /* Validator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Validator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -581,6 +585,7 @@
 		500902172488669D0072DF16 /* PresenterTests */ = {
 			isa = PBXGroup;
 			children = (
+				50D27A3A248D7B4E00C0D5FE /* Commons */,
 				50090232248889BA0072DF16 /* UseCases */,
 				5009021A2488669D0072DF16 /* Info.plist */,
 			);
@@ -609,6 +614,7 @@
 		50090232248889BA0072DF16 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				50D27A38248D7B0E00C0D5FE /* Transactions */,
 				506682B52489470500CF7524 /* AuthClient */,
 			);
 			path = UseCases;
@@ -720,7 +726,6 @@
 				50090230248889400072DF16 /* AlertViewSpy.swift */,
 				506FEA92248935CD0002DF70 /* ValidateSpy.swift */,
 				506682B3248946BF00CF7524 /* AuthClientUseCaseSpy.swift */,
-				501365EC248964FE004902D5 /* LoadingViewSpy.swift */,
 				50075B55248C32F7008E9FE6 /* RouterSpy.swift */,
 			);
 			path = Spys;
@@ -767,6 +772,31 @@
 				50D00713248B3C2B00811134 /* LoginViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		50D27A38248D7B0E00C0D5FE /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				50D27A39248D7B2400C0D5FE /* Spys */,
+				50D27A3B248D7B7100C0D5FE /* TransactionPresenterTests.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		50D27A39248D7B2400C0D5FE /* Spys */ = {
+			isa = PBXGroup;
+			children = (
+				50D27A3D248D7C0500C0D5FE /* TransactionsUseCaseSpy.swift */,
+			);
+			path = Spys;
+			sourceTree = "<group>";
+		};
+		50D27A3A248D7B4E00C0D5FE /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				501365EC248964FE004902D5 /* LoadingViewSpy.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 		50E034D2248BF10C00FFBA4F /* Validator */ = {
@@ -1550,6 +1580,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50090225248871C00072DF16 /* XCTestCase+Extension.swift in Sources */,
+				50D27A3E248D7C0500C0D5FE /* TransactionsUseCaseSpy.swift in Sources */,
 				501365EF24897174004902D5 /* UserAccountFactory.swift in Sources */,
 				506FEA93248935CD0002DF70 /* ValidateSpy.swift in Sources */,
 				501365ED248964FE004902D5 /* LoadingViewSpy.swift in Sources */,
@@ -1557,6 +1588,7 @@
 				50090231248889400072DF16 /* AlertViewSpy.swift in Sources */,
 				506682B4248946BF00CF7524 /* AuthClientUseCaseSpy.swift in Sources */,
 				50075B56248C32F7008E9FE6 /* RouterSpy.swift in Sources */,
+				50D27A3C248D7B7100C0D5FE /* TransactionPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
