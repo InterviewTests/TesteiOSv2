@@ -44,7 +44,11 @@ public final class AuthUserPresenter {
                 case .failure(let error):
                     self.alertView.presentMessageWith(.init(title: "Fail", message: error.localizedDescription))
                 case .success(let userAccountModel):
-                    self.router.presentBalanceViewController(userAccount: userAccountModel.userAccount)
+                    guard let model = self.makeUserAccontModel(userAccountModel.userAccount) else {
+                        self.alertView.presentMessageWith(.init(title: "Fail", message: "An unexpected error occurred, try again"))
+                        return
+                    }
+                    self.router.presentBalanceViewController(userAccount: model)
                 }
             }
         }
@@ -67,5 +71,14 @@ public final class AuthUserPresenter {
             return nil
         }
         return .init(title: title, message: message)
+    }
+    
+    private func makeUserAccontModel(_ userAccountResult: UserAccountInternalResponse) -> UserAccountModel? {
+        guard let identifier = userAccountResult.userID,
+            let name = userAccountResult.name,
+            let bankAccount = userAccountResult.bankAccount,
+            let agency = userAccountResult.agency,
+            let balance = userAccountResult.balance else { return nil }
+        return .init(identifier: String(identifier), name: name, bankAccount: bankAccount, agency: agency, balance: balance)
     }
 }

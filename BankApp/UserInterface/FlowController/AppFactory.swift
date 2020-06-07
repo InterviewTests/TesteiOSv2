@@ -8,8 +8,9 @@
 
 import UIKit
 import Domain
+import Presenter
 
 public protocol AppFactory: AnyObject {
     func makeLoginViewController() -> LoginViewController
-    func makeBalanceViewController(userAccount: UserAccount) -> BalanceViewController
+    func makeBalanceViewController(userAccount: UserAccountModel) -> BalanceViewController
 }

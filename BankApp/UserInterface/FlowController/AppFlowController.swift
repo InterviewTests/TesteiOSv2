@@ -8,6 +8,7 @@
 
 import UIKit
 import Domain
+import Presenter
 
 public protocol FlowControllerDelegate {
     func start()
@@ -43,7 +44,7 @@ extension AppFlowController: FlowControllerDelegate {
 
 extension AppFlowController: AppFlowControllerDelegate {
     
-    public func presentBalanceViewController(userAccount: UserAccount) {
+    public func presentBalanceViewController(userAccount: UserAccountModel) {
         let balanceViewController = factory.makeBalanceViewController(userAccount: userAccount)
         balanceViewController.modalPresentationStyle = .fullScreen
         

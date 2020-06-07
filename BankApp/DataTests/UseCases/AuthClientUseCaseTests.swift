@@ -75,7 +75,7 @@ class AuthClientUseCaseTests: XCTestCase {
         //Given
         let httpClientSpy = HTTPPostClientSpy()
         var sut: AuthClientUseCase? = .init(url: url, httpClient: httpClientSpy)
-        var result: Result<UserAccountModel, DomainError>?
+        var result: Result<UserAccountResponse, DomainError>?
         
         //When
         sut?.login(authenticationModel: authClientModel, completion: { result = $0 })
@@ -101,7 +101,7 @@ extension AuthClientUseCaseTests {
         return (sut, httpClientSpy)
     }
     
-    func expect(_ sut: AuthClientUseCase, completeWith expectedResult: Result<UserAccountModel, DomainError>, whem action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    func expect(_ sut: AuthClientUseCase, completeWith expectedResult: Result<UserAccountResponse, DomainError>, whem action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let expectetion = expectation(description: "waiting")
         sut.login(authenticationModel: authClientModel) { receivedResult in
             switch (expectedResult, receivedResult) {

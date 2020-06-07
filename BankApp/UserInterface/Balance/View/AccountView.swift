@@ -8,6 +8,7 @@
 
 import UIKit
 import Domain
+import Presenter
 
 public protocol AccountViewDelegate: AnyObject {
     func didTapLogoutButon()
@@ -17,7 +18,7 @@ public class AccountView: CustomView {
     
     // MARK: - PRIVATE PROPERTIES
        
-    private let userAccount: UserAccount
+    private let userAccount: UserAccountModel
     private let delegate: AccountViewDelegate
     
     // MARK: - CONSTANTS
@@ -37,7 +38,7 @@ public class AccountView: CustomView {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = userAccount.name //TODO: - Change this object and put into preset layer
+        label.text = userAccount.name
         label.font = .systemFont(ofSize: 25, weight: .regular)
         label.textColor = .white
         label.numberOfLines = 1
@@ -69,7 +70,7 @@ public class AccountView: CustomView {
     private lazy var accoutNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "\(userAccount.agency ?? "") / \(userAccount.bankAccount ?? "")" //TODO: - Change this object and put into preset layer
+        label.text = "\(userAccount.agency) / \(userAccount.bankAccount)"
         label.font = .systemFont(ofSize: 25, weight: .regular)
         label.textColor = .white
         label.numberOfLines = 1
@@ -101,7 +102,7 @@ public class AccountView: CustomView {
     private lazy var balanceNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "\(userAccount.balance ?? 0)" //TODO: - Change this object and put into preset layer
+        label.text = "\(userAccount.balance)" //TODO: - Use decimal to make simbol R$
         label.font = .systemFont(ofSize: 25, weight: .regular)
         label.textColor = .white
         label.numberOfLines = 1
@@ -121,7 +122,7 @@ public class AccountView: CustomView {
     
     // MARK: - INITALIZER
     
-    public init(userAccount: UserAccount, delegate: AccountViewDelegate) {
+    public init(userAccount: UserAccountModel, delegate: AccountViewDelegate) {
         self.userAccount = userAccount
         self.delegate = delegate
         super.init(frame: .zero)

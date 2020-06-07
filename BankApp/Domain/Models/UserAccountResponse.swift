@@ -8,17 +8,16 @@
 
 import Foundation
 
-
-public struct UserAccountModel: BaseModel {
-    public let userAccount: UserAccount
+public struct UserAccountResponse: BaseModel {
+    public let userAccount: UserAccountInternalResponse
     public var authError: AuthError
 
-    public init(userAccount: UserAccount, authError: AuthError) {
+    public init(userAccount: UserAccountInternalResponse, authError: AuthError) {
         self.userAccount = userAccount
         self.authError = authError
     }
     
-    public static func == (lhs: UserAccountModel, rhs: UserAccountModel) -> Bool {
+    public static func == (lhs: UserAccountResponse, rhs: UserAccountResponse) -> Bool {
         return lhs.userAccount.userID == rhs.userAccount.userID
     }
     
@@ -28,7 +27,7 @@ public struct UserAccountModel: BaseModel {
     }
 }
 
-public struct UserAccount: Codable, Equatable {
+public struct UserAccountInternalResponse: Codable, Equatable {
     public var userID: Int?
     public let name: String?
     public let bankAccount: String?

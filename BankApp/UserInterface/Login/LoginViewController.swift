@@ -232,7 +232,8 @@ extension LoginViewController: AlertViewProtocol {
 }
 
 extension LoginViewController: RouterProtocol {
-    public func presentBalanceViewController(userAccount: UserAccount) {
+    
+    public func presentBalanceViewController(userAccount: UserAccountModel) {
         delegate?.presentBalanceViewController(userAccount: userAccount)
     }
 }

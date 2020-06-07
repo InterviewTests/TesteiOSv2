@@ -9,5 +9,5 @@
 import Domain
 
 public protocol RouterProtocol {
-    func presentBalanceViewController(userAccount: UserAccount)
+    func presentBalanceViewController(userAccount: UserAccountModel)
 }

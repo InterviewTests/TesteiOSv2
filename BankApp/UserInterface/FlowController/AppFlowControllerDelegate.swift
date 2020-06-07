@@ -8,8 +8,9 @@
 
 import Foundation
 import Domain
+import Presenter
 
 public protocol AppFlowControllerDelegate: AnyObject {
     
-    func presentBalanceViewController(userAccount: UserAccount)
+    func presentBalanceViewController(userAccount: UserAccountModel)
 }

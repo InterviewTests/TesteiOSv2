@@ -24,13 +24,7 @@ public class BalanceViewController: CustomViewController {
     
     // MARK: - PRIVATE PROPERTIES
     
-    private let userAccount: UserAccount
-    private var identifier: String {
-        if let id = userAccount.userID {
-            return "\(id)"
-        }
-        return ""
-    }
+    private let userAccount: UserAccountModel
     
     // MARK: - CONSTANTS
     
@@ -67,7 +61,7 @@ public class BalanceViewController: CustomViewController {
     
     // MARK: - INITALIZER
     
-    public init(userAccount: UserAccount) {
+    public init(userAccount: UserAccountModel) {
         self.userAccount = userAccount
         super.init(nibName: nil, bundle: nil)
     }
@@ -81,7 +75,7 @@ public class BalanceViewController: CustomViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
-        getTransactionsBlock?(identifier) { transactions in
+        getTransactionsBlock?(userAccount.identifier) { transactions in
             self.trasactionsView.applySnapshot(trasactions: transactions)
         }
     }

@@ -31,10 +31,10 @@ public class AppFactoryImplementation: AppFactory {
         return loginVC
     }
     
-    public func makeBalanceViewController(userAccount: UserAccount) -> BalanceViewController {
+    public func makeBalanceViewController(userAccount: UserAccountModel) -> BalanceViewController {
         let endpoint: UseCasesEndpoint = .transactions
         guard let url = endpoint.url else {
-            return .init(userAccount: UserAccount(userID: 0, name: "", bankAccount: "", agency: "", balance: 0.0))
+            return .init(userAccount: UserAccountModel(identifier: "", name: "", bankAccount: "", agency: "", balance: 0.0))
         }
         
         let balanceVC = BalanceViewController(userAccount: userAccount)

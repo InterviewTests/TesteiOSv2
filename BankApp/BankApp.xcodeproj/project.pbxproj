@@ -41,6 +41,7 @@
 		5009022C24887F0B0072DF16 /* AuthUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */; };
 		5009022F248880390072DF16 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5009022E248880390072DF16 /* AlertView.swift */; };
 		50090231248889400072DF16 /* AlertViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50090230248889400072DF16 /* AlertViewSpy.swift */; };
+		500C2E19248D9F2D00A20E79 /* UserAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C2E18248D9F2D00A20E79 /* UserAccountModel.swift */; };
 		501365EB248964DA004902D5 /* LoadingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501365EA248964DA004902D5 /* LoadingViewProtocol.swift */; };
 		501365ED248964FE004902D5 /* LoadingViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501365EC248964FE004902D5 /* LoadingViewSpy.swift */; };
 		501365EF24897174004902D5 /* UserAccountFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5B2483603F000B3431 /* UserAccountFactory.swift */; };
@@ -103,7 +104,7 @@
 		81A68B292482BDDC00F8C50C /* AuthClientUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B282482BDDC00F8C50C /* AuthClientUseCaseTests.swift */; };
 		81A68B332482BDF000F8C50C /* AuthClientUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B322482BDF000F8C50C /* AuthClientUseCaseProtocol.swift */; };
 		81A68B372482C24800F8C50C /* AuthClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B362482C24800F8C50C /* AuthClientModel.swift */; };
-		81A68B392482C32300F8C50C /* UserAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B382482C32300F8C50C /* UserAccountModel.swift */; };
+		81A68B392482C32300F8C50C /* UserAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B382482C32300F8C50C /* UserAccountResponse.swift */; };
 		81A68B3B2482C39D00F8C50C /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B3A2482C39D00F8C50C /* BaseModel.swift */; };
 		81A68B3E2482C49500F8C50C /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B3D2482C49500F8C50C /* DomainError.swift */; };
 		81A68B402482C74900F8C50C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A68B0E2482B5BC00F8C50C /* Domain.framework */; };
@@ -328,6 +329,7 @@
 		5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserViewModel.swift; sourceTree = "<group>"; };
 		5009022E248880390072DF16 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		50090230248889400072DF16 /* AlertViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewSpy.swift; sourceTree = "<group>"; };
+		500C2E18248D9F2D00A20E79 /* UserAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountModel.swift; sourceTree = "<group>"; };
 		501365EA248964DA004902D5 /* LoadingViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewProtocol.swift; sourceTree = "<group>"; };
 		501365EC248964FE004902D5 /* LoadingViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewSpy.swift; sourceTree = "<group>"; };
 		501FE252248C967A00AC0508 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
@@ -394,7 +396,7 @@
 		81A68B2A2482BDDC00F8C50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81A68B322482BDF000F8C50C /* AuthClientUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientUseCaseProtocol.swift; sourceTree = "<group>"; };
 		81A68B362482C24800F8C50C /* AuthClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientModel.swift; sourceTree = "<group>"; };
-		81A68B382482C32300F8C50C /* UserAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountModel.swift; sourceTree = "<group>"; };
+		81A68B382482C32300F8C50C /* UserAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountResponse.swift; sourceTree = "<group>"; };
 		81A68B3A2482C39D00F8C50C /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		81A68B3D2482C49500F8C50C /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 		81EDC118248318A300942182 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
@@ -620,6 +622,23 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		500C2E17248D9F1100A20E79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				501FE26A248D752300AC0508 /* TransactionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		500C2E1A248D9F3500A20E79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */,
+				500C2E18248D9F2D00A20E79 /* UserAccountModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		501365E9248964C2004902D5 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,8 +667,8 @@
 		501FE267248D74C800AC0508 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				500C2E17248D9F1100A20E79 /* Model */,
 				501FE268248D74E400AC0508 /* TransactionPresenter.swift */,
-				501FE26A248D752300AC0508 /* TransactionModel.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -714,7 +733,7 @@
 		506682B62489472300CF7524 /* AuthClient */ = {
 			isa = PBXGroup;
 			children = (
-				5009022B24887F0B0072DF16 /* AuthUserViewModel.swift */,
+				500C2E1A248D9F3500A20E79 /* Model */,
 				5009022924887E740072DF16 /* AuthUserPresenter.swift */,
 			);
 			path = AuthClient;
@@ -993,7 +1012,7 @@
 			children = (
 				501FE25B248D412400AC0508 /* TransactionResult.swift */,
 				81A68B362482C24800F8C50C /* AuthClientModel.swift */,
-				81A68B382482C32300F8C50C /* UserAccountModel.swift */,
+				81A68B382482C32300F8C50C /* UserAccountResponse.swift */,
 				81A68B3A2482C39D00F8C50C /* BaseModel.swift */,
 			);
 			path = Models;
@@ -1571,6 +1590,7 @@
 				5009022F248880390072DF16 /* AlertView.swift in Sources */,
 				501365EB248964DA004902D5 /* LoadingViewProtocol.swift in Sources */,
 				5009022C24887F0B0072DF16 /* AuthUserViewModel.swift in Sources */,
+				500C2E19248D9F2D00A20E79 /* UserAccountModel.swift in Sources */,
 				506FEA912488AB870002DF70 /* StringCheck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1675,7 +1695,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81A68B3E2482C49500F8C50C /* DomainError.swift in Sources */,
-				81A68B392482C32300F8C50C /* UserAccountModel.swift in Sources */,
+				81A68B392482C32300F8C50C /* UserAccountResponse.swift in Sources */,
 				81A68B372482C24800F8C50C /* AuthClientModel.swift in Sources */,
 				501FE25C248D412400AC0508 /* TransactionResult.swift in Sources */,
 				81A68B3B2482C39D00F8C50C /* BaseModel.swift in Sources */,

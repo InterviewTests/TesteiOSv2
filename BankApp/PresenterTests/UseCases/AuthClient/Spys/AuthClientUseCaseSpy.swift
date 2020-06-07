@@ -10,19 +10,19 @@ import Domain
 
 class AuthClientUseCaseSpy {
     var authClientModel: AuthClientModel?
-    var completion: ((Result<UserAccountModel, DomainError>) -> Void)?
+    var completion: ((Result<UserAccountResponse, DomainError>) -> Void)?
     
     func completeWith(error: DomainError) {
         completion?(.failure(.unknown))
     }
     
-    func completeWith(model: UserAccountModel) {
+    func completeWith(model: UserAccountResponse) {
         completion?(.success(model))
     }
 }
 
 extension AuthClientUseCaseSpy: AuthClientUseCaseProtocol {
-    func login(authenticationModel: AuthClientModel, completion: @escaping (Result<UserAccountModel, DomainError>) -> Void) {
+    func login(authenticationModel: AuthClientModel, completion: @escaping (Result<UserAccountResponse, DomainError>) -> Void) {
         self.authClientModel = authenticationModel 
         self.completion = completion
     }
