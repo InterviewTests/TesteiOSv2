@@ -106,6 +106,8 @@ public class BalanceViewController: CustomViewController {
 
 extension BalanceViewController: AccountViewDelegate {
     public func didTapLogoutButon() {
-        
+        dismiss(animated: true) {
+            //TODO: Remove data from user
+        }
     }
 }

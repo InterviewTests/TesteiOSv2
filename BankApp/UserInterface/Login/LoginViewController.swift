@@ -165,8 +165,8 @@ public class LoginViewController: CustomViewController {
     
     public func constraints() {
         NSLayoutConstraint.activate([
-            indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            indicatorView.centerXAnchor.constraint(equalTo: logoImageView.centerXAnchor),
+            indicatorView.centerYAnchor.constraint(equalTo: logoImageView.centerYAnchor),
             
             logoImageView.bottomAnchor.constraint(equalTo: credentialsStackView.topAnchor, constant: -Metrics.margin * 4),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
