@@ -51,6 +51,8 @@
 		501FE25E248D463E00AC0508 /* NetworkingGetProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE25D248D463E00AC0508 /* NetworkingGetProtocolTests.swift */; };
 		501FE260248D4AC900AC0508 /* TransactionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE25F248D4AC900AC0508 /* TransactionsUseCase.swift */; };
 		501FE262248D5C7800AC0508 /* IntegrationTransactionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE261248D5C7800AC0508 /* IntegrationTransactionUseCaseTests.swift */; };
+		501FE264248D682800AC0508 /* HTTPGetClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE263248D682800AC0508 /* HTTPGetClientSpy.swift */; };
+		501FE266248D6D5800AC0508 /* TransactionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE265248D6D5800AC0508 /* TransactionUseCaseTests.swift */; };
 		5039E0CD2485B30400D6DE50 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */; };
 		5063EA98248B366C00828A1C /* UserInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5063EA8F248B366C00828A1C /* UserInterface.framework */; };
 		5063EA9D248B366C00828A1C /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063EA9C248B366C00828A1C /* LoginViewControllerTests.swift */; };
@@ -94,7 +96,7 @@
 		81505D8F2484025F000B3431 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 81505D8E2484025F000B3431 /* Alamofire */; };
 		81505D9224841C80000B3431 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D9124841C80000B3431 /* URLProtocolStub.swift */; };
 		81A68B242482BDDC00F8C50C /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A68B1B2482BDDC00F8C50C /* Data.framework */; };
-		81A68B292482BDDC00F8C50C /* AuthClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B282482BDDC00F8C50C /* AuthClientTests.swift */; };
+		81A68B292482BDDC00F8C50C /* AuthClientUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B282482BDDC00F8C50C /* AuthClientUseCaseTests.swift */; };
 		81A68B332482BDF000F8C50C /* AuthClientUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B322482BDF000F8C50C /* AuthClientUseCaseProtocol.swift */; };
 		81A68B372482C24800F8C50C /* AuthClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B362482C24800F8C50C /* AuthClientModel.swift */; };
 		81A68B392482C32300F8C50C /* UserAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68B382482C32300F8C50C /* UserAccountModel.swift */; };
@@ -331,6 +333,8 @@
 		501FE25D248D463E00AC0508 /* NetworkingGetProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingGetProtocolTests.swift; sourceTree = "<group>"; };
 		501FE25F248D4AC900AC0508 /* TransactionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsUseCase.swift; sourceTree = "<group>"; };
 		501FE261248D5C7800AC0508 /* IntegrationTransactionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTransactionUseCaseTests.swift; sourceTree = "<group>"; };
+		501FE263248D682800AC0508 /* HTTPGetClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPGetClientSpy.swift; sourceTree = "<group>"; };
+		501FE265248D6D5800AC0508 /* TransactionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionUseCaseTests.swift; sourceTree = "<group>"; };
 		5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		5063EA8F248B366C00828A1C /* UserInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5063EA91248B366C00828A1C /* UserInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInterface.h; sourceTree = "<group>"; };
@@ -378,7 +382,7 @@
 		81A68B1B2482BDDC00F8C50C /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A68B1E2482BDDC00F8C50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81A68B232482BDDC00F8C50C /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		81A68B282482BDDC00F8C50C /* AuthClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientTests.swift; sourceTree = "<group>"; };
+		81A68B282482BDDC00F8C50C /* AuthClientUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientUseCaseTests.swift; sourceTree = "<group>"; };
 		81A68B2A2482BDDC00F8C50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81A68B322482BDF000F8C50C /* AuthClientUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientUseCaseProtocol.swift; sourceTree = "<group>"; };
 		81A68B362482C24800F8C50C /* AuthClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientModel.swift; sourceTree = "<group>"; };
@@ -803,7 +807,8 @@
 		812D71F72482EAC6009C7DEE /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				81A68B282482BDDC00F8C50C /* AuthClientTests.swift */,
+				81A68B282482BDDC00F8C50C /* AuthClientUseCaseTests.swift */,
+				501FE265248D6D5800AC0508 /* TransactionUseCaseTests.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -822,6 +827,7 @@
 			isa = PBXGroup;
 			children = (
 				81505D5924835EA1000B3431 /* HTTPPostClientSpy.swift */,
+				501FE263248D682800AC0508 /* HTTPGetClientSpy.swift */,
 			);
 			path = "Client HTTPs";
 			sourceTree = "<group>";
@@ -1649,7 +1655,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				81505D5524835BBA000B3431 /* XCTestCase+Extension.swift in Sources */,
-				81A68B292482BDDC00F8C50C /* AuthClientTests.swift in Sources */,
+				501FE264248D682800AC0508 /* HTTPGetClientSpy.swift in Sources */,
+				81A68B292482BDDC00F8C50C /* AuthClientUseCaseTests.swift in Sources */,
+				501FE266248D6D5800AC0508 /* TransactionUseCaseTests.swift in Sources */,
 				81505D5724835DD2000B3431 /* TestFactoriesGenerics.swift in Sources */,
 				81505D5C2483603F000B3431 /* UserAccountFactory.swift in Sources */,
 				81505D5A24835EA1000B3431 /* HTTPPostClientSpy.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  APIAuthClientTests.swift
+//  AuthClientUseCaseTests.swift
 //  DataTests
 //
 //  Created by Estaife Lima on 30/05/20.
@@ -10,7 +10,7 @@ import XCTest
 import Domain
 @testable import Data
 
-class AuthClientTests: XCTestCase {
+class AuthClientUseCaseTests: XCTestCase {
     
     func testLoginShouldCallHttpClientWithUrlCorrect() {
         
@@ -70,18 +70,24 @@ class AuthClientTests: XCTestCase {
         })
     }
     
-    func test_login_should_not_complete_if_sut_has_deinit() { //TODO: - rename and add given / when / then
+    func testLoginShouldDontcompleteAndDeinitializer() {
+        
+        //Given
         let httpClientSpy = HTTPPostClientSpy()
         var sut: AuthClientUseCase? = .init(url: url, httpClient: httpClientSpy)
         var result: Result<UserAccountModel, DomainError>?
+        
+        //When
         sut?.login(authenticationModel: authClientModel, completion: { result = $0 })
         sut = nil
         httpClientSpy.completeWith(data: dataInvalid)
+        
+        //Then
         XCTAssertNil(result)
     }
 }
 
-extension AuthClientTests {
+extension AuthClientUseCaseTests {
     
     var authClientModel: AuthClientModel {
         return .init(user: "email_any", password: "email_password")
