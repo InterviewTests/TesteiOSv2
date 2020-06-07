@@ -49,7 +49,7 @@ public struct UserAccount: Codable, Equatable {
     }
 }
 
-public struct AuthError: Codable {
+public struct AuthError: BaseModel {
     public var code: Int?
     public var message: String?
     

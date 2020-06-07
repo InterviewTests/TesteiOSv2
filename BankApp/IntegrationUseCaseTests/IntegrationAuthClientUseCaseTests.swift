@@ -1,5 +1,5 @@
 //
-//  IntegrationUseCaseTests.swift
+//  IntegrationAuthClientUseCaseTests.swift
 //  IntegrationUseCaseTests
 //
 //  Created by Estaife Lima on 03/06/20.
@@ -11,7 +11,7 @@ import Data
 import Networking
 import Domain
 
-class IntegrationUseCaseTests: XCTestCase {
+class IntegrationAuthClientUseCaseTests: XCTestCase {
     
     func testAuthenticationUserSuccess() throws {
 
@@ -85,7 +85,7 @@ class IntegrationUseCaseTests: XCTestCase {
     }
 }
 
-extension IntegrationUseCaseTests {
+extension IntegrationAuthClientUseCaseTests {
     func createSut(url: URL = URL(string: "https://bank-app-test.herokuapp.com/api/login")!, file: StaticString = #file, line: UInt = #line) -> AuthClientUseCase {
         let httpPostClient = AlamofireAdapter()
         let sut = AuthClientUseCase(url: url, httpClient: httpPostClient)

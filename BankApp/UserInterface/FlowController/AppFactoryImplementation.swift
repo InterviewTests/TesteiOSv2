@@ -18,8 +18,8 @@ public class AppFactoryImplementation: AppFactory {
     public init() { }
     
     public func makeLoginViewController() -> LoginViewController {
-        let endpoint: AuthClientEndpoint = .login
-        guard let url = endpoint.url else { return LoginViewController() }
+        let endpoint: UseCasesEndpoint = .login
+        guard let url = endpoint.url else { return .init() }
         
         let loginVC = LoginViewController()
         let userNameValidate = UserNameValidate()

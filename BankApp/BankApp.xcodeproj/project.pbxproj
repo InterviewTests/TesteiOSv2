@@ -28,7 +28,7 @@
 		50075B46248C1B2A008E9FE6 /* AppFactoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B45248C1B2A008E9FE6 /* AppFactoryImplementation.swift */; };
 		50075B48248C1BBD008E9FE6 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B47248C1BBD008E9FE6 /* AppFlowController.swift */; };
 		50075B4A248C1C73008E9FE6 /* AppFlowControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B49248C1C73008E9FE6 /* AppFlowControllerDelegate.swift */; };
-		50075B4D248C2500008E9FE6 /* AuthClientEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B4C248C2500008E9FE6 /* AuthClientEndpoint.swift */; };
+		50075B4D248C2500008E9FE6 /* UseCasesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B4C248C2500008E9FE6 /* UseCasesEndpoint.swift */; };
 		50075B4F248C29CC008E9FE6 /* ValidatorPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B4E248C29CC008E9FE6 /* ValidatorPassword.swift */; };
 		50075B51248C2D88008E9FE6 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B50248C2D88008E9FE6 /* RouterProtocol.swift */; };
 		50075B54248C30CA008E9FE6 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50075B53248C30CA008E9FE6 /* BalanceViewController.swift */; };
@@ -49,12 +49,14 @@
 		501FE25A248D404A00AC0508 /* TransactionsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE259248D404A00AC0508 /* TransactionsUseCaseProtocol.swift */; };
 		501FE25C248D412400AC0508 /* TransactionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE25B248D412400AC0508 /* TransactionResult.swift */; };
 		501FE25E248D463E00AC0508 /* NetworkingGetProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE25D248D463E00AC0508 /* NetworkingGetProtocolTests.swift */; };
+		501FE260248D4AC900AC0508 /* TransactionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE25F248D4AC900AC0508 /* TransactionsUseCase.swift */; };
+		501FE262248D5C7800AC0508 /* IntegrationTransactionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE261248D5C7800AC0508 /* IntegrationTransactionUseCaseTests.swift */; };
 		5039E0CD2485B30400D6DE50 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */; };
 		5063EA98248B366C00828A1C /* UserInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5063EA8F248B366C00828A1C /* UserInterface.framework */; };
 		5063EA9D248B366C00828A1C /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063EA9C248B366C00828A1C /* LoginViewControllerTests.swift */; };
 		5063EA9F248B366C00828A1C /* UserInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 5063EA91248B366C00828A1C /* UserInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		506682B4248946BF00CF7524 /* AuthClientUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506682B3248946BF00CF7524 /* AuthClientUseCaseSpy.swift */; };
-		506F61A82488215100BA2578 /* IntegrationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F61A72488215100BA2578 /* IntegrationUseCaseTests.swift */; };
+		506F61A82488215100BA2578 /* IntegrationAuthClientUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F61A72488215100BA2578 /* IntegrationAuthClientUseCaseTests.swift */; };
 		506F61AA2488215100BA2578 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A68B1B2482BDDC00F8C50C /* Data.framework */; };
 		506FEA8F24889FE70002DF70 /* UserNameValidateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FEA8E24889FE70002DF70 /* UserNameValidateProtocol.swift */; };
 		506FEA912488AB870002DF70 /* StringCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FEA902488AB870002DF70 /* StringCheck.swift */; };
@@ -76,7 +78,7 @@
 		50E0350A248BF80500FFBA4F /* UserNameValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03509248BF80500FFBA4F /* UserNameValidate.swift */; };
 		50F1DD42248C8B2300A8BF70 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DD41248C8B2300A8BF70 /* AccountView.swift */; };
 		810DEBD82482FE5E00D9710E /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810DEBD72482FE5E00D9710E /* HTTPError.swift */; };
-		812D71F32482E96F009C7DEE /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F22482E96F009C7DEE /* AuthClient.swift */; };
+		812D71F32482E96F009C7DEE /* AuthClientUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F22482E96F009C7DEE /* AuthClientUseCase.swift */; };
 		812D71F52482E9DA009C7DEE /* HTTPsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F42482E9DA009C7DEE /* HTTPsClient.swift */; };
 		81505D5524835BBA000B3431 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5424835BBA000B3431 /* XCTestCase+Extension.swift */; };
 		81505D5724835DD2000B3431 /* TestFactoriesGenerics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5624835DD2000B3431 /* TestFactoriesGenerics.swift */; };
@@ -305,7 +307,7 @@
 		50075B45248C1B2A008E9FE6 /* AppFactoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactoryImplementation.swift; sourceTree = "<group>"; };
 		50075B47248C1BBD008E9FE6 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
 		50075B49248C1C73008E9FE6 /* AppFlowControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowControllerDelegate.swift; sourceTree = "<group>"; };
-		50075B4C248C2500008E9FE6 /* AuthClientEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientEndpoint.swift; sourceTree = "<group>"; };
+		50075B4C248C2500008E9FE6 /* UseCasesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesEndpoint.swift; sourceTree = "<group>"; };
 		50075B4E248C29CC008E9FE6 /* ValidatorPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorPassword.swift; sourceTree = "<group>"; };
 		50075B50248C2D88008E9FE6 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		50075B53248C30CA008E9FE6 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +329,8 @@
 		501FE259248D404A00AC0508 /* TransactionsUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsUseCaseProtocol.swift; sourceTree = "<group>"; };
 		501FE25B248D412400AC0508 /* TransactionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionResult.swift; sourceTree = "<group>"; };
 		501FE25D248D463E00AC0508 /* NetworkingGetProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingGetProtocolTests.swift; sourceTree = "<group>"; };
+		501FE25F248D4AC900AC0508 /* TransactionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsUseCase.swift; sourceTree = "<group>"; };
+		501FE261248D5C7800AC0508 /* IntegrationTransactionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTransactionUseCaseTests.swift; sourceTree = "<group>"; };
 		5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		5063EA8F248B366C00828A1C /* UserInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5063EA91248B366C00828A1C /* UserInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInterface.h; sourceTree = "<group>"; };
@@ -336,7 +340,7 @@
 		5063EA9E248B366C00828A1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		506682B3248946BF00CF7524 /* AuthClientUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientUseCaseSpy.swift; sourceTree = "<group>"; };
 		506F61A52488215100BA2578 /* IntegrationUseCaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationUseCaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		506F61A72488215100BA2578 /* IntegrationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationUseCaseTests.swift; sourceTree = "<group>"; };
+		506F61A72488215100BA2578 /* IntegrationAuthClientUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationAuthClientUseCaseTests.swift; sourceTree = "<group>"; };
 		506F61A92488215100BA2578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		506FEA8E24889FE70002DF70 /* UserNameValidateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameValidateProtocol.swift; sourceTree = "<group>"; };
 		506FEA902488AB870002DF70 /* StringCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCheck.swift; sourceTree = "<group>"; };
@@ -357,7 +361,7 @@
 		50E03509248BF80500FFBA4F /* UserNameValidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameValidate.swift; sourceTree = "<group>"; };
 		50F1DD41248C8B2300A8BF70 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		810DEBD72482FE5E00D9710E /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
-		812D71F22482E96F009C7DEE /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
+		812D71F22482E96F009C7DEE /* AuthClientUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClientUseCase.swift; sourceTree = "<group>"; };
 		812D71F42482E9DA009C7DEE /* HTTPsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPsClient.swift; sourceTree = "<group>"; };
 		81505D5424835BBA000B3431 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
 		81505D5624835DD2000B3431 /* TestFactoriesGenerics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactoriesGenerics.swift; sourceTree = "<group>"; };
@@ -538,7 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				50CA8AC2248C7665007155EE /* Environment.swift */,
-				50075B4C248C2500008E9FE6 /* AuthClientEndpoint.swift */,
+				50075B4C248C2500008E9FE6 /* UseCasesEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -707,7 +711,8 @@
 		506F61A62488215100BA2578 /* IntegrationUseCaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				506F61A72488215100BA2578 /* IntegrationUseCaseTests.swift */,
+				506F61A72488215100BA2578 /* IntegrationAuthClientUseCaseTests.swift */,
+				501FE261248D5C7800AC0508 /* IntegrationTransactionUseCaseTests.swift */,
 				506F61A92488215100BA2578 /* Info.plist */,
 			);
 			path = IntegrationUseCaseTests;
@@ -780,7 +785,8 @@
 			isa = PBXGroup;
 			children = (
 				50075B4B248C24DC008E9FE6 /* Endpoints */,
-				812D71F22482E96F009C7DEE /* AuthClient.swift */,
+				812D71F22482E96F009C7DEE /* AuthClientUseCase.swift */,
+				501FE25F248D4AC900AC0508 /* TransactionsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1565,7 +1571,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B80C342488460D002A216B /* XCTestCase+Extension.swift in Sources */,
-				506F61A82488215100BA2578 /* IntegrationUseCaseTests.swift in Sources */,
+				501FE262248D5C7800AC0508 /* IntegrationTransactionUseCaseTests.swift in Sources */,
+				506F61A82488215100BA2578 /* IntegrationAuthClientUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1629,10 +1636,11 @@
 			files = (
 				812D71F52482E9DA009C7DEE /* HTTPsClient.swift in Sources */,
 				810DEBD82482FE5E00D9710E /* HTTPError.swift in Sources */,
-				50075B4D248C2500008E9FE6 /* AuthClientEndpoint.swift in Sources */,
+				50075B4D248C2500008E9FE6 /* UseCasesEndpoint.swift in Sources */,
+				501FE260248D4AC900AC0508 /* TransactionsUseCase.swift in Sources */,
 				50CA8AC3248C7665007155EE /* Environment.swift in Sources */,
 				81EDC119248318A300942182 /* Data+Extension.swift in Sources */,
-				812D71F32482E96F009C7DEE /* AuthClient.swift in Sources */,
+				812D71F32482E96F009C7DEE /* AuthClientUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,7 +23,7 @@ public struct TransactionResult: BaseModel {
     }
 }
 
-public struct StatementList: Codable {
+public struct StatementList: BaseModel {
     public let title: String
     public let desc: String
     public let date: String
