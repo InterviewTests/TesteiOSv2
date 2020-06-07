@@ -102,9 +102,7 @@ public class AccountView: CustomView {
     private lazy var balanceNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "\(userAccount.balance)" //TODO: - Use decimal to make simbol R$
-        label.font = .systemFont(ofSize: 25, weight: .regular)
-        label.textColor = .white
+        label.attributedText = NumberFormatter.balanceAttString(with: Decimal(userAccount.balance), and: (symbolColor: UIColor.systemGray2, textColor: UIColor.white, fontSize: 25))
         label.numberOfLines = 1
         label.textAlignment = .left
         return label

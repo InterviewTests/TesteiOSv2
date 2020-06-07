@@ -86,8 +86,6 @@ public class TransactionCustomCell: CustomTableViewCell {
     private lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .regular)
-        label.textColor = .black
         label.numberOfLines = 1
         label.textAlignment = .right
         return label
@@ -154,8 +152,11 @@ public class TransactionCustomCell: CustomTableViewCell {
         DispatchQueue.main.async {
             self.titleLabel.text = transaction.title
             self.descriptionLabel.text = transaction.description
-            self.dateLabel.text = transaction.date
-            self.valueLabel.text = "\(transaction.value)" //TODO: - Use decimal to make simbol R$
+            self.dateLabel.text = transaction.date.dateFormated
+            self.valueLabel.attributedText = NumberFormatter.balanceAttString(with: Decimal(transaction.value),
+                                                                              and: (symbolColor: .systemGray2,
+                                                                                    textColor: .black,
+                                                                                    fontSize: 20))
         }
     }
 }
