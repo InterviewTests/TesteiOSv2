@@ -12,7 +12,9 @@ public typealias CustomView = UIView & CustomViewProtocol
 public typealias CustomViewController = UIViewController & CustomViewProtocol
 public typealias CustomCollectionViewCell = UICollectionViewCell & CustomViewProtocol
 public typealias CustomCollectionView = UICollectionView & CustomViewProtocol
-public typealias CustomCollectionReusableView = UICollectionReusableView & CustomViewProtocol 
+public typealias CustomCollectionReusableView = UICollectionReusableView & CustomViewProtocol
+public typealias CustomTableViewCell = UITableViewCell & CustomViewProtocol
+
 
 public protocol CustomViewProtocol {
     func subviews()

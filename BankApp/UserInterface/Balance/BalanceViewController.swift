@@ -25,10 +25,24 @@ public class BalanceViewController: CustomViewController {
     }
     
     private struct Metrics {
-        static let margin: CGFloat = 16
+        static let heightMultiplierAccountView: CGFloat = 0.4
     }
     
     // MARK: - UI
+    
+    private lazy var accountView: AccountView = {
+        let view = AccountView(delegate: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var trasactionsView: TrasactionsView = {
+        let view = TrasactionsView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let range = Range(1...30)
+        view.applySnapshot(trasactions: range.map { return $0 })
+        return view
+    }()
     
     private lazy var indicatorView: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView(style: .large)
@@ -59,15 +73,26 @@ public class BalanceViewController: CustomViewController {
     // MARK: - VIEW HIERARCHY
     
     public func subviews() {
+        view.addSubview(accountView)
+        view.addSubview(trasactionsView)
         view.addSubview(indicatorView)
         
     }
     
     public func constraints() {
         NSLayoutConstraint.activate([
-            indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            accountView.topAnchor.constraint(equalTo: view.topAnchor),
+            accountView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            accountView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            accountView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: Metrics.heightMultiplierAccountView),
             
+            trasactionsView.topAnchor.constraint(equalTo: accountView.bottomAnchor),
+            trasactionsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            trasactionsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            trasactionsView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            indicatorView.centerXAnchor.constraint(equalTo: trasactionsView.centerXAnchor),
+            indicatorView.centerYAnchor.constraint(equalTo: trasactionsView.centerYAnchor),
         ])
     }
     
@@ -77,4 +102,10 @@ public class BalanceViewController: CustomViewController {
     
     // MARK: - PRIVATE FUNC
     
+}
+
+extension BalanceViewController: AccountViewDelegate {
+    public func didTapLogoutButon() {
+        
+    }
 }

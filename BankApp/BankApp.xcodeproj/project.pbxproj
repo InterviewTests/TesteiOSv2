@@ -45,6 +45,7 @@
 		501365ED248964FE004902D5 /* LoadingViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501365EC248964FE004902D5 /* LoadingViewSpy.swift */; };
 		501365EF24897174004902D5 /* UserAccountFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5B2483603F000B3431 /* UserAccountFactory.swift */; };
 		501FE253248C967A00AC0508 /* TrasactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE252248C967A00AC0508 /* TrasactionsView.swift */; };
+		501FE255248CA6B100AC0508 /* TransactionCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE254248CA6B100AC0508 /* TransactionCustomCell.swift */; };
 		5039E0CD2485B30400D6DE50 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */; };
 		5063EA98248B366C00828A1C /* UserInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5063EA8F248B366C00828A1C /* UserInterface.framework */; };
 		5063EA9D248B366C00828A1C /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063EA9C248B366C00828A1C /* LoginViewControllerTests.swift */; };
@@ -319,6 +320,7 @@
 		501365EA248964DA004902D5 /* LoadingViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewProtocol.swift; sourceTree = "<group>"; };
 		501365EC248964FE004902D5 /* LoadingViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewSpy.swift; sourceTree = "<group>"; };
 		501FE252248C967A00AC0508 /* TrasactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrasactionsView.swift; sourceTree = "<group>"; };
+		501FE254248CA6B100AC0508 /* TransactionCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCustomCell.swift; sourceTree = "<group>"; };
 		5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		5063EA8F248B366C00828A1C /* UserInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5063EA91248B366C00828A1C /* UserInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInterface.h; sourceTree = "<group>"; };
@@ -538,8 +540,8 @@
 		50075B52248C30A7008E9FE6 /* Balance */ = {
 			isa = PBXGroup;
 			children = (
-				50F1DD41248C8B2300A8BF70 /* AccountView.swift */,
-				501FE252248C967A00AC0508 /* TrasactionsView.swift */,
+				501FE256248CA73700AC0508 /* Cell */,
+				501FE257248CA80800AC0508 /* View */,
 				50075B53248C30CA008E9FE6 /* BalanceViewController.swift */,
 			);
 			path = Balance;
@@ -599,6 +601,23 @@
 				501365EA248964DA004902D5 /* LoadingViewProtocol.swift */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		501FE256248CA73700AC0508 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				501FE254248CA6B100AC0508 /* TransactionCustomCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		501FE257248CA80800AC0508 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				50F1DD41248C8B2300A8BF70 /* AccountView.swift */,
+				501FE252248C967A00AC0508 /* TrasactionsView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5039E0CB2485B2E100D6DE50 /* Client HTTPs */ = {
@@ -1513,6 +1532,7 @@
 				50075B48248C1BBD008E9FE6 /* AppFlowController.swift in Sources */,
 				50075B46248C1B2A008E9FE6 /* AppFactoryImplementation.swift in Sources */,
 				50075B4A248C1C73008E9FE6 /* AppFlowControllerDelegate.swift in Sources */,
+				501FE255248CA6B100AC0508 /* TransactionCustomCell.swift in Sources */,
 				50F1DD42248C8B2300A8BF70 /* AccountView.swift in Sources */,
 				50E034CB248BE9E500FFBA4F /* AlertController.swift in Sources */,
 				50E034C8248BE1D700FFBA4F /* UIControl+Extensions.swift in Sources */,
