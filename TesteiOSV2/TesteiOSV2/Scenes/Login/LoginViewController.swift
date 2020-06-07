@@ -96,11 +96,19 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     // MARK: Actions
     @IBAction func login(_ sender: Any) {
-        guard let userText = userTextField.text else {
-            print("Usuário não preecheu login")
+        guard let userText = userTextField.text else { return }
+        guard let passwordText = passwordTextField.text else { return }
+        
+        guard userText.isEmailValid() || userText.isValidCPF else {
+            self.showOkAlert(title: "Erro", message: "Digite um CPF ou email válido")
             return
         }
-        guard let passwordText = passwordTextField.text else { return }
+        
+        guard passwordText.isPasswordStrengthHigh() else {
+            self.showOkAlert(title: "Erro", message: "Sua senha deve conter letra maiuscula, um caracter especial e um caracter alfanumérico.")
+            return
+        }
+        
         self.showSpinner(onView: self.view)
         interactor?.login(user: userText, password: passwordText)
     }

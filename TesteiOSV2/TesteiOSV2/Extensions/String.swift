@@ -42,6 +42,14 @@ extension String {
             return false
         }
     }
+    
+        func toDate(format: String = "yyyy-MM-dd") -> Date? {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = format
+    //        dateFormatter.locale = Locale(identifier: "pt_BR")
+            guard let date = dateFormatter.date(from: self) else { return nil }
+            return date
+        }
 }
 
 extension StringProtocol {

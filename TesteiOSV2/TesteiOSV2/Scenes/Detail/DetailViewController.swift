@@ -125,7 +125,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = list[indexPath.row].title
         cell.descLabel.text = list[indexPath.row].desc
         cell.valueLabel.text = list[indexPath.row].value?.formatCurrency()
-        cell.dateLabel.text = list[indexPath.row].date
+        cell.dateLabel.text = list[indexPath.row].date?.toDate()?.toString()
         return cell
     }
     
