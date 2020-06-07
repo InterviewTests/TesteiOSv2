@@ -29,7 +29,7 @@ public class LoginViewController: CustomViewController {
     // MARK: - PUBLIC PROPERTIES
     
     public weak var delegate: AppFlowControllerDelegate?
-     internal var loginBlock: ((AuthUserViewModel) -> Void)?
+    internal var loginBlock: ((AuthUserViewModel) -> Void)?
     
     public var isLoading: Bool {
         get {
