@@ -12,6 +12,6 @@ public enum AuthClientEndpoint {
     case login
     
     public var url: URL? {
-        return URL(string: "https://bank-app-test.herokuapp.com/api/login")
+        return URL(string: Environment.baseURL + "login")
     }
 }
