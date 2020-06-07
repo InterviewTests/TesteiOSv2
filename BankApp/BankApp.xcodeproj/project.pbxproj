@@ -48,6 +48,7 @@
 		501FE255248CA6B100AC0508 /* TransactionCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE254248CA6B100AC0508 /* TransactionCustomCell.swift */; };
 		501FE25A248D404A00AC0508 /* TransactionsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE259248D404A00AC0508 /* TransactionsUseCaseProtocol.swift */; };
 		501FE25C248D412400AC0508 /* TransactionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE25B248D412400AC0508 /* TransactionResult.swift */; };
+		501FE25E248D463E00AC0508 /* NetworkingGetProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FE25D248D463E00AC0508 /* NetworkingGetProtocolTests.swift */; };
 		5039E0CD2485B30400D6DE50 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */; };
 		5063EA98248B366C00828A1C /* UserInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5063EA8F248B366C00828A1C /* UserInterface.framework */; };
 		5063EA9D248B366C00828A1C /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063EA9C248B366C00828A1C /* LoginViewControllerTests.swift */; };
@@ -76,13 +77,13 @@
 		50F1DD42248C8B2300A8BF70 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DD41248C8B2300A8BF70 /* AccountView.swift */; };
 		810DEBD82482FE5E00D9710E /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810DEBD72482FE5E00D9710E /* HTTPError.swift */; };
 		812D71F32482E96F009C7DEE /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F22482E96F009C7DEE /* AuthClient.swift */; };
-		812D71F52482E9DA009C7DEE /* HTTPPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */; };
+		812D71F52482E9DA009C7DEE /* HTTPsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D71F42482E9DA009C7DEE /* HTTPsClient.swift */; };
 		81505D5524835BBA000B3431 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5424835BBA000B3431 /* XCTestCase+Extension.swift */; };
 		81505D5724835DD2000B3431 /* TestFactoriesGenerics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5624835DD2000B3431 /* TestFactoriesGenerics.swift */; };
 		81505D5A24835EA1000B3431 /* HTTPPostClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5924835EA1000B3431 /* HTTPPostClientSpy.swift */; };
 		81505D5C2483603F000B3431 /* UserAccountFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5B2483603F000B3431 /* UserAccountFactory.swift */; };
 		81505D6B2483F8D8000B3431 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81505D622483F8D8000B3431 /* Networking.framework */; };
-		81505D702483F8D8000B3431 /* AlamofireAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D6F2483F8D8000B3431 /* AlamofireAdapterTests.swift */; };
+		81505D702483F8D8000B3431 /* NetworkingPostProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D6F2483F8D8000B3431 /* NetworkingPostProtocolTests.swift */; };
 		81505D8524840169000B3431 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A68B1B2482BDDC00F8C50C /* Data.framework */; };
 		81505D8624840169000B3431 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 81A68B1B2482BDDC00F8C50C /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81505D8A24840174000B3431 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81505D5424835BBA000B3431 /* XCTestCase+Extension.swift */; };
@@ -325,6 +326,7 @@
 		501FE254248CA6B100AC0508 /* TransactionCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCustomCell.swift; sourceTree = "<group>"; };
 		501FE259248D404A00AC0508 /* TransactionsUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsUseCaseProtocol.swift; sourceTree = "<group>"; };
 		501FE25B248D412400AC0508 /* TransactionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionResult.swift; sourceTree = "<group>"; };
+		501FE25D248D463E00AC0508 /* NetworkingGetProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingGetProtocolTests.swift; sourceTree = "<group>"; };
 		5039E0CC2485B30400D6DE50 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		5063EA8F248B366C00828A1C /* UserInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5063EA91248B366C00828A1C /* UserInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInterface.h; sourceTree = "<group>"; };
@@ -356,7 +358,7 @@
 		50F1DD41248C8B2300A8BF70 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		810DEBD72482FE5E00D9710E /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		812D71F22482E96F009C7DEE /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
-		812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPPostClient.swift; sourceTree = "<group>"; };
+		812D71F42482E9DA009C7DEE /* HTTPsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPsClient.swift; sourceTree = "<group>"; };
 		81505D5424835BBA000B3431 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
 		81505D5624835DD2000B3431 /* TestFactoriesGenerics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactoriesGenerics.swift; sourceTree = "<group>"; };
 		81505D5924835EA1000B3431 /* HTTPPostClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPPostClientSpy.swift; sourceTree = "<group>"; };
@@ -364,7 +366,7 @@
 		81505D622483F8D8000B3431 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81505D652483F8D8000B3431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81505D6A2483F8D8000B3431 /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		81505D6F2483F8D8000B3431 /* AlamofireAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapterTests.swift; sourceTree = "<group>"; };
+		81505D6F2483F8D8000B3431 /* NetworkingPostProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingPostProtocolTests.swift; sourceTree = "<group>"; };
 		81505D712483F8D8000B3431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81505D9124841C80000B3431 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		81A68B0E2482B5BC00F8C50C /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -635,7 +637,8 @@
 		5039E0CE2485B3FA00D6DE50 /* Client HTTPs */ = {
 			isa = PBXGroup;
 			children = (
-				81505D6F2483F8D8000B3431 /* AlamofireAdapterTests.swift */,
+				81505D6F2483F8D8000B3431 /* NetworkingPostProtocolTests.swift */,
+				501FE25D248D463E00AC0508 /* NetworkingGetProtocolTests.swift */,
 			);
 			path = "Client HTTPs";
 			sourceTree = "<group>";
@@ -785,7 +788,7 @@
 		812D71F62482EAAA009C7DEE /* Client HTTPs */ = {
 			isa = PBXGroup;
 			children = (
-				812D71F42482E9DA009C7DEE /* HTTPPostClient.swift */,
+				812D71F42482E9DA009C7DEE /* HTTPsClient.swift */,
 				810DEBD72482FE5E00D9710E /* HTTPError.swift */,
 			);
 			path = "Client HTTPs";
@@ -1598,9 +1601,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				81505D9224841C80000B3431 /* URLProtocolStub.swift in Sources */,
+				501FE25E248D463E00AC0508 /* NetworkingGetProtocolTests.swift in Sources */,
 				81505D8A24840174000B3431 /* XCTestCase+Extension.swift in Sources */,
 				81505D8B24840176000B3431 /* TestFactoriesGenerics.swift in Sources */,
-				81505D702483F8D8000B3431 /* AlamofireAdapterTests.swift in Sources */,
+				81505D702483F8D8000B3431 /* NetworkingPostProtocolTests.swift in Sources */,
 				81505D8C2484017C000B3431 /* UserAccountFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1623,7 +1627,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				812D71F52482E9DA009C7DEE /* HTTPPostClient.swift in Sources */,
+				812D71F52482E9DA009C7DEE /* HTTPsClient.swift in Sources */,
 				810DEBD82482FE5E00D9710E /* HTTPError.swift in Sources */,
 				50075B4D248C2500008E9FE6 /* AuthClientEndpoint.swift in Sources */,
 				50CA8AC3248C7665007155EE /* Environment.swift in Sources */,

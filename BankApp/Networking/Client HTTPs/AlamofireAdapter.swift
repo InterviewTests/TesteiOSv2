@@ -33,12 +33,25 @@ public final class AlamofireAdapter {
 
 extension AlamofireAdapter: HTTPPostClient {
     public func post(to url: URL, with data: Data?, completion: @escaping (Result<Data?, HTTPError>) -> Void) {
-        session.request(url, method: .post, parameters: data?.json, encoding: JSONEncoding.default)
+        session.request(url, method: .post, parameters: data?.json)
             .responseData { [weak self] response in
                 guard let self = self else { return }
-                guard let statusCode = response.response?.statusCode else {
-                    return completion(.failure(.unknown))
+                guard let statusCode = response.response?.statusCode else { return completion(.failure(.unknown)) }
+                switch response.result {
+                case .success(let data):
+                    completion(self.handleSuccssesWith(statusCode: statusCode, and: data))
+                case .failure: completion(.failure(.unknown))
                 }
+        }
+    }
+}
+
+extension AlamofireAdapter: HTTPGetClient {
+    public func get(from url: URL, completion: @escaping (Result<Data?, HTTPError>) -> Void) {
+        session.request(url, method: .get)
+            .responseData { [weak self] response in
+                guard let self = self else { return }
+                guard let statusCode = response.response?.statusCode else { return completion(.failure(.unknown)) }
                 switch response.result {
                 case .success(let data):
                     completion(self.handleSuccssesWith(statusCode: statusCode, and: data))

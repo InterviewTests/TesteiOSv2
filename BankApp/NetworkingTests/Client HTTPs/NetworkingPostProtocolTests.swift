@@ -1,5 +1,5 @@
 //
-//  NetworkingTests.swift
+//  NetworkingPostProtocolTests.swift
 //  NetworkingTests
 //
 //  Created by Estaife Lima on 31/05/20.
@@ -11,7 +11,7 @@ import Alamofire
 import Data
 @testable import Networking
 
-class NetworkingTests: XCTestCase {
+class NetworkingPostProtocolTests: XCTestCase {
 
     func testPostMakeRequestWithUrlAndMethodCorect() throws {
         
@@ -79,7 +79,7 @@ class NetworkingTests: XCTestCase {
     }
 }
 
-extension NetworkingTests {
+extension NetworkingPostProtocolTests {
     
     func createSut(file: StaticString = #file, line: UInt = #line) -> AlamofireAdapter {
         let configuration = URLSessionConfiguration.default
