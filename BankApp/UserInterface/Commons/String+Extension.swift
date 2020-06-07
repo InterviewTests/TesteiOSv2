@@ -17,4 +17,11 @@ extension String {
         dateFormatterString.dateFormat = "dd/MM/yyyy"
         return dateFormatterString.string(from: date)
     }
+    
+    var bankFormated: String {
+        var characters = Array(self)
+        characters.insert(".", at: 2)
+        characters.insert("-", at: characters.count - 1)
+        return String(characters)
+    }
 }

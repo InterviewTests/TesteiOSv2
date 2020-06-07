@@ -70,7 +70,7 @@ public class AccountView: CustomView {
     private lazy var accoutNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "\(userAccount.agency) / \(userAccount.bankAccount)"
+        label.text = "\(userAccount.bankAccount) / \(userAccount.agency.bankFormated)"
         label.font = .systemFont(ofSize: 25, weight: .regular)
         label.textColor = .white
         label.numberOfLines = 1
