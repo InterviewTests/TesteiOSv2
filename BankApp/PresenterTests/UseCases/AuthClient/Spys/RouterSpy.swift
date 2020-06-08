@@ -11,16 +11,16 @@ import Domain
 
 class RouterSpy {
     
-    public var userAccount: UserAccountResponse?
-    private var emit: ((UserAccountResponse) -> Void)?
+    public var userAccount: UserAccountModel?
+    private var emit: ((UserAccountModel) -> Void)?
     
-    public func observerUserAccount(completion: @escaping (UserAccountResponse) -> Void) {
+    public func observerUserAccount(completion: @escaping (UserAccountModel) -> Void) {
         emit = completion
     }
 }
 
 extension RouterSpy: RouterProtocol {
-    func presentBalanceViewController(userAccount: UserAccountResponse) {
+    func presentBalanceViewController(userAccount: UserAccountModel) {
         emit?(userAccount)
     }
 }

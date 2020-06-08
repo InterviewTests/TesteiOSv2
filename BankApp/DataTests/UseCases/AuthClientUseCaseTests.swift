@@ -54,8 +54,8 @@ class AuthClientUseCaseTests: XCTestCase {
         let (sut, httpClientSpy) = makeSut()
         
         //When/Then
-        expect(sut, completeWith: .success(userAccountModel), whem: {
-            httpClientSpy.completeWith(data: userAccountModel.data!)
+        expect(sut, completeWith: .success(userAccountResponse), whem: {
+            httpClientSpy.completeWith(data: userAccountResponse.data!)
         })
     }
     

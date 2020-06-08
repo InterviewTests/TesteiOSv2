@@ -182,13 +182,13 @@ class AuthUserPresenterTests: XCTestCase {
         //Then
         let expectationAuthComplete = expectation(description: "Waiting auth client complete")
         routerSpy.observerUserAccount { userAccount in
-            XCTAssertEqual(userAccount, userAccountModel.userAccount)
+            XCTAssertEqual(userAccount, userAccountModel)
             expectationAuthComplete.fulfill()
         }
         
         //When
         sut.auth(viewModel: authUserViewModel)
-        authClientUseCaseSpy.completeWith(model: userAccountModel)
+        authClientUseCaseSpy.completeWith(model: userAccountResponse)
         wait(for: [expectationAuthComplete], timeout: 1)
     }
     
@@ -210,6 +210,8 @@ class AuthUserPresenterTests: XCTestCase {
             XCTAssertEqual(viewModel, alertViewModel)
         }
     }
+    
+    //TODO: - Teste RetrieveCredentials
 }
 
 extension AuthUserPresenterTests {
@@ -221,9 +223,16 @@ extension AuthUserPresenterTests {
         userNameValidateSpy: ValidateSpy = ValidateSpy(),
         passwordValidateSpy: ValidateSpy = ValidateSpy(),
         routerSpy: RouterSpy = RouterSpy(),
+        retrieveCredentialsSpy: RetrieveCredentialsSpy = RetrieveCredentialsSpy(),
         file: StaticString = #file,
         line: UInt = #line) -> AuthUserPresenter {
-        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy, loadingView: loadingViewSpy, userNameValidate: userNameValidateSpy, passwordValidate: passwordValidateSpy, authClientUseCase: authClientUseCaseSpy, router: routerSpy)
+        let authUserPresenter = AuthUserPresenter(alertView: alertViewSpy,
+                                                  loadingView: loadingViewSpy,
+                                                  userNameValidate: userNameValidateSpy,
+                                                  passwordValidate: passwordValidateSpy,
+                                                  authClientUseCase: authClientUseCaseSpy,
+                                                  router: routerSpy,
+                                                  retrieveCredentials: retrieveCredentialsSpy)
         memoryLeakCheckWith(instance: authUserPresenter)
         return authUserPresenter
     }
