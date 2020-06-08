@@ -29,7 +29,7 @@ class LoginWorkerTest: XCTestCase {
     func testPasswordErrorEnum(){
         XCTAssertEqual(LoginWorker.PasswordError.NoCapitalLetter.localizedDescription, "A senha deve ter pelo menos uma uma letra maiúscula.")
         XCTAssertEqual(LoginWorker.PasswordError.NoEspecialCharacter.localizedDescription, "A senha deve ter pelo menos um caractere especial. Por exemplo: @ ou >.")
-        XCTAssertEqual(LoginWorker.PasswordError.NoAlphanumericCharacter.localizedDescription, "A senha deve ter pelo menos um caractere alfanumérico.")
+        XCTAssertEqual(LoginWorker.PasswordError.NoAlphanumericCharacter.localizedDescription, "A senha deve ter pelo menos um número ou letra minúscula.")
         XCTAssertEqual(LoginWorker.PasswordError.EmptyPassword.localizedDescription, "A senha não pode ser vazia")
     }
     
@@ -38,7 +38,8 @@ class LoginWorkerTest: XCTestCase {
         XCTAssertThrowsError(try sut.validadePassword(password: "w1"))
         XCTAssertThrowsError(try sut.validadePassword(password: "Aq"))
         XCTAssertThrowsError(try sut.validadePassword(password: ""))
-        XCTAssertNoThrow(try sut.validadePassword(password: "A@"))
+        XCTAssertThrowsError(try sut.validadePassword(password: "A@"))
+        XCTAssertNoThrow(try sut.validadePassword(password: "A@a"))
     }
     
     func testValidadeUser(){

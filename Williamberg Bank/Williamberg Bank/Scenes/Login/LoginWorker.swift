@@ -46,7 +46,7 @@ class LoginWorker
             case .NoEspecialCharacter:
                 return NSLocalizedString("A senha deve ter pelo menos um caractere especial. Por exemplo: @ ou >.", comment: "Passaword Error")
             case .NoAlphanumericCharacter:
-                return NSLocalizedString("A senha deve ter pelo menos um caractere alfanumérico.", comment: "Passaword Error")
+                return NSLocalizedString("A senha deve ter pelo menos um número ou letra minúscula.", comment: "Passaword Error")
             case .EmptyPassword:
                 return NSLocalizedString("A senha não pode ser vazia", comment: "Passaword Error")
             }
@@ -56,7 +56,7 @@ class LoginWorker
     
     func validadePassword(password: String?) throws{
         if let _password = password, !_password.isEmpty{
-            if !existAlphanumericCharacter(str: _password){
+            if !existLowerAlphanumericCharacter(str: _password){
                 throw PasswordError.NoAlphanumericCharacter
             }
             if !existCapitalLetter(str: _password){
@@ -89,11 +89,11 @@ class LoginWorker
         return result != nil
     }
     
-    /// it checks if exists at least one alphanumeric character on str.
-    /// it returns true if exists at least one alphanumeric character on str, it returns false otherwise.
-    /// - Parameter str: An string to be checked for alphanumeric character.
-    func existAlphanumericCharacter(str: String) -> Bool{
-        let alphanumericCharacterRex = ".*[a-zA-Z0-9]+.*"
+    /// it checks if exists at least one lower alphanumeric character on str.
+    /// it returns true if exists at least one lower alphanumeric character on str, it returns false otherwise.
+    /// - Parameter str: An string to be checked for lower alphanumeric character.
+    func existLowerAlphanumericCharacter(str: String) -> Bool{
+        let alphanumericCharacterRex = ".*[a-z0-9]+.*"
         let result = str.range(of: alphanumericCharacterRex, options: .regularExpression)
         return result != nil
     }
