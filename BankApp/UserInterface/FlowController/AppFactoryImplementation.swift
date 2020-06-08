@@ -25,7 +25,13 @@ public class AppFactoryImplementation: AppFactory {
         let userNameValidate = UserNameValidate()
         let passwordValidate = PasswordValidate()
         let authClientUseCase = AuthClientUseCase(url: url, httpClient: AlamofireAdapter())
-        let authPresenter = AuthUserPresenter(alertView: loginVC, loadingView: loginVC, userNameValidate: userNameValidate, passwordValidate: passwordValidate, authClientUseCase: authClientUseCase, router: loginVC)
+        let authPresenter = AuthUserPresenter(alertView: loginVC,
+                                              loadingView: loginVC,
+                                              userNameValidate: userNameValidate,
+                                              passwordValidate: passwordValidate,
+                                              authClientUseCase: authClientUseCase,
+                                              router: loginVC,
+                                              retrieveCredentials: loginVC)
         loginVC.loginBlock = authPresenter.auth
         
         return loginVC

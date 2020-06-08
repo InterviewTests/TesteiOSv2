@@ -8,22 +8,35 @@
 
 import Foundation
 import Domain
+import Keychain
 
 public final class AuthUserPresenter {
+    private let keychain = Keychain()
+    
     private let alertView: AlertViewProtocol
     private let userNameValidate: UserNameValidateProtocol
     private let passwordValidate: UserNameValidateProtocol
     private let authClientUseCase: AuthClientUseCaseProtocol
     private let loadingView: LoadingViewProtocol
     private let router: RouterProtocol
+    private let retrieveCredentials: RetrieveCredentialsProtocol
     
-    public init(alertView: AlertViewProtocol, loadingView: LoadingViewProtocol, userNameValidate: UserNameValidateProtocol,  passwordValidate: UserNameValidateProtocol, authClientUseCase: AuthClientUseCaseProtocol, router: RouterProtocol) {
+    public init(alertView: AlertViewProtocol,
+                loadingView: LoadingViewProtocol,
+                userNameValidate: UserNameValidateProtocol,
+                passwordValidate: UserNameValidateProtocol,
+                authClientUseCase: AuthClientUseCaseProtocol,
+                router: RouterProtocol,
+                retrieveCredentials: RetrieveCredentialsProtocol) {
         self.alertView = alertView
         self.loadingView = loadingView
         self.userNameValidate = userNameValidate
         self.passwordValidate = passwordValidate
         self.authClientUseCase = authClientUseCase
         self.router = router
+        self.retrieveCredentials = retrieveCredentials
+        
+        retriveCredentials()
     }
     
     public func auth(viewModel: AuthUserViewModel) {
@@ -49,6 +62,7 @@ public final class AuthUserPresenter {
                         return
                     }
                     self.router.presentBalanceViewController(userAccount: model)
+                    self.saveLoginUser(viewModel: viewModel)
                 }
             }
         }
@@ -80,5 +94,16 @@ public final class AuthUserPresenter {
             let agency = userAccountResult.agency,
             let balance = userAccountResult.balance else { return nil }
         return .init(identifier: String(identifier), name: name, bankAccount: bankAccount, agency: agency, balance: balance)
+    }
+    
+    private func saveLoginUser(viewModel: AuthUserViewModel) {
+        guard let key = viewModel.userName, let password = viewModel.password else { return }
+        keychain.save(password: password, key: key)
+    }
+    
+    private func retriveCredentials() {
+        guard let userName = keychain.lastKey() else { return }
+        let password = keychain.retrieve(key: userName)
+        retrieveCredentials.resultWith(credentials: AuthUserViewModel(userName: userName, password: password))
     }
 }

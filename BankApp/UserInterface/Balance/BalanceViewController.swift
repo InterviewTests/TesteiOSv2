@@ -126,8 +126,6 @@ extension BalanceViewController: LoadingViewProtocol {
 
 extension BalanceViewController: AccountViewDelegate {
     public func didTapLogoutButon() {
-        dismiss(animated: true) {
-            //TODO: Remove data from user
-        }
+        dismiss(animated: true)
     }
 }

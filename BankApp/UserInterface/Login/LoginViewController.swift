@@ -192,8 +192,6 @@ public class LoginViewController: CustomViewController {
     
     public func style() {
         view.backgroundColor = .white
-        userTextField.text = "teste@test.com"
-        passwordTextField.text = "Teste1@password"
     }
     
     // MARK: - PRIVATE FUNC
@@ -235,5 +233,14 @@ extension LoginViewController: RouterProtocol {
     
     public func presentBalanceViewController(userAccount: UserAccountModel) {
         delegate?.presentBalanceViewController(userAccount: userAccount)
+    }
+}
+
+extension LoginViewController: RetrieveCredentialsProtocol {
+    public func resultWith(credentials: AuthUserViewModel) {
+        DispatchQueue.main.async {
+            self.userTextField.text = credentials.userName
+            self.passwordTextField.text = credentials.password
+        }
     }
 }
