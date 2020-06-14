@@ -9,14 +9,22 @@
 import Foundation
 
 protocol LoginInteractorProtocol {
-    func fetchUserData()
+    func fetchUserData(username: String, password: String)
 }
 
 class LoginInteractor: LoginInteractorProtocol {
     
     var presenter: LoginPresenterProtocol?
+    var repository: LoginRepositoryProtocol = LoginRepository()
     
-    func fetchUserData() {
-        presenter?.presentUserData()
+    func fetchUserData(username: String, password: String) {
+        let model = UserAuthModel(name: username, password: password)
+        repository.requestLoginData(data: model) { (data) in
+            
+            self.presenter?.presentUserData(data: data?.userAccount)
+            
+        }
+        
     }
 }
+

@@ -7,3 +7,21 @@
 //
 
 import Foundation
+
+protocol StatementsPresenterProtocol {
+    func presentUserData(data: [Statement])
+}
+
+class StatementsPresenter: StatementsPresenterProtocol {
+    
+    var controller: StatementsViewControllerProtocol?
+    
+    func presentUserData(data: [Statement]) {
+        //
+        DispatchQueue.main.async {
+            self.controller?.showUserData(data: data)
+        }
+        
+    }
+    
+}

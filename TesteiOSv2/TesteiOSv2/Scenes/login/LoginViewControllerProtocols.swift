@@ -10,11 +10,16 @@ import Foundation
 import UIKit
 
 protocol LoginViewControllerProtocol {
-    func showUserData()
+    func showUserData(data: UserInfo?)
 }
 
 extension LoginViewController: LoginViewControllerProtocol {
     
-    func showUserData() {
+    func showUserData(data: UserInfo?) {
+        
+        
+        DispatchQueue.main.async {
+            LoginRouter.navigateToStatements(controller: self, data: data)
+        }
     }
 }

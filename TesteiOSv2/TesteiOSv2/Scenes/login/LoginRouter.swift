@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+class LoginRouter{
+    static func navigateToStatements(controller: UIViewController, data: UserInfo?) {
+        let statementsController = StatementsViewController()
+        statementsController.userAccount = data!
+        
+        controller.navigationController?.pushViewController(statementsController, animated: true)
+        
+    }
+}
+

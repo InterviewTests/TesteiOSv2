@@ -21,9 +21,7 @@ class StatementsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        cellView.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        cellView.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        cellView.layer.shadowColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         cellView.layer.cornerRadius = 8
         cellView.layer.shadowOffset = CGSize.zero
         cellView.layer.shadowRadius = 3
@@ -36,11 +34,11 @@ class StatementsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell(type: String, date: String, desc: String, value: String){
-        typeLabel.text = type
-        dateLabel.text = date
-        descLabel.text = desc
-        valueLabel.text = value
+    func setupCell(statement: Statement){
+        typeLabel.text = statement.title
+        dateLabel.text = statement.date.formatDate()
+        descLabel.text = statement.desc
+        valueLabel.text = "R$\(String(format:"%.2f", statement.value))"
     }
     
 }

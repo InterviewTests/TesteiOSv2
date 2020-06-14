@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+// MARK: - Welcome
+struct StatementResponse: Codable {
+    let statementList: [Statement]
+    let error: StatementError
+}
+
+// MARK: - Error
+struct StatementError: Codable {
+}
+
+// MARK: - StatementList
+struct Statement: Codable {
+    let title, desc, date: String
+    let value: Double
+}
