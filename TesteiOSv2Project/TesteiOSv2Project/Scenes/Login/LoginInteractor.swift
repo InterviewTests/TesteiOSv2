@@ -29,7 +29,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     var worker: LoginWorker?
     var userAccount: UserAccount?
     
-    
     // MARK: Fetch user account given user credentials
     
     func fetchUserAccount(request: Login.FetchUser.Request)
@@ -49,16 +48,21 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
         
         worker = LoginWorker(bankStore: BankAPI())
         worker?.fetchUserAccount(userCredentials: request.credentials, completionHandler: { (response, error) in
-            if let error = error{
-                self.presenter?.presentErrorMessage(message: error.localizedDescription)
-                return
+            DispatchQueue.main.async {
+                if let error = error{
+                    self.presenter?.presentErrorMessage(message: error.localizedDescription)
+                    return
+                }
+                if let errorMessage = response?.error?.message,
+                    let errorCode = response?.error?.code{
+                    self.presenter?.presentErrorMessage(message: "Code: \(errorCode)\n\(errorMessage)")
+                    return
+                }
+                if let response = response{
+                    self.userAccount = response.userAccount
+                    self.presenter?.presentUserData(response: response)
+                }
             }
-            if let error = response?.error{
-                self.presenter?.presentErrorMessage(message: error.message ?? "There was an unknown mistake!")
-                return
-            }
-            self.userAccount = response?.userAccount
-//            presenter?.presentUserData(response: response)
         })
     }
     

@@ -18,9 +18,9 @@ enum LoginError: Error{
 
 class LoginWorker
 {
-    var bankStore: BankStoreProtocol
+    var bankStore: BankUserStoreProtocol
     
-    init(bankStore: BankStoreProtocol) {
+    init(bankStore: BankUserStoreProtocol) {
         self.bankStore = bankStore
     }
     
@@ -32,6 +32,6 @@ class LoginWorker
     }
 }
 
-protocol BankStoreProtocol{
+protocol BankUserStoreProtocol{
     func fetchUserAccount(userCredentials: UserCredentials, completionHandler: @escaping (Login.FetchUser.Response?, LoginError?) -> Void)
 }

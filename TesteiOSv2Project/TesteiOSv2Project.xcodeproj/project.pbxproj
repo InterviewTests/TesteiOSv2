@@ -29,6 +29,15 @@
 		550842532493150400BE2ED8 /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508424F2493150400BE2ED8 /* LoginWorkerTests.swift */; };
 		550842542493150400BE2ED8 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550842502493150400BE2ED8 /* LoginPresenterTests.swift */; };
 		550842572493C9C400BE2ED8 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550842562493C9C400BE2ED8 /* KeyChainService.swift */; };
+		550842612497456100BE2ED8 /* UserBalancePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508425B2497456000BE2ED8 /* UserBalancePresenter.swift */; };
+		550842622497456100BE2ED8 /* UserBalanceWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508425C2497456000BE2ED8 /* UserBalanceWorker.swift */; };
+		550842632497456100BE2ED8 /* UserBalanceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508425D2497456000BE2ED8 /* UserBalanceRouter.swift */; };
+		550842642497456100BE2ED8 /* UserBalanceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508425E2497456000BE2ED8 /* UserBalanceModels.swift */; };
+		550842652497456100BE2ED8 /* UserBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508425F2497456000BE2ED8 /* UserBalanceViewController.swift */; };
+		550842662497456100BE2ED8 /* UserBalanceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550842602497456000BE2ED8 /* UserBalanceInteractor.swift */; };
+		5582BE082497F29000D33993 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582BE072497F29000D33993 /* Statement.swift */; };
+		5582BE0A2497FA7B00D33993 /* MView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582BE092497FA7B00D33993 /* MView.swift */; };
+		5582BE0C2498000500D33993 /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582BE0B2498000500D33993 /* StatementTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +86,15 @@
 		5508424F2493150400BE2ED8 /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
 		550842502493150400BE2ED8 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
 		550842562493C9C400BE2ED8 /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
+		5508425B2497456000BE2ED8 /* UserBalancePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalancePresenter.swift; sourceTree = "<group>"; };
+		5508425C2497456000BE2ED8 /* UserBalanceWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalanceWorker.swift; sourceTree = "<group>"; };
+		5508425D2497456000BE2ED8 /* UserBalanceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalanceRouter.swift; sourceTree = "<group>"; };
+		5508425E2497456000BE2ED8 /* UserBalanceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalanceModels.swift; sourceTree = "<group>"; };
+		5508425F2497456000BE2ED8 /* UserBalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalanceViewController.swift; sourceTree = "<group>"; };
+		550842602497456000BE2ED8 /* UserBalanceInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalanceInteractor.swift; sourceTree = "<group>"; };
+		5582BE072497F29000D33993 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
+		5582BE092497FA7B00D33993 /* MView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MView.swift; sourceTree = "<group>"; };
+		5582BE0B2498000500D33993 /* StatementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +183,8 @@
 			children = (
 				550842332492AC2500BE2ED8 /* MTextField.swift */,
 				550842352492B56500BE2ED8 /* MButton.swift */,
+				5582BE092497FA7B00D33993 /* MView.swift */,
+				5582BE0B2498000500D33993 /* StatementTableViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -173,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				550842442492CB0500BE2ED8 /* Login */,
+				550842672497456B00BE2ED8 /* UserBalance */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -195,6 +216,7 @@
 			children = (
 				550842462492E6A100BE2ED8 /* UserCredentials.swift */,
 				550842482492E88000BE2ED8 /* UserAccount.swift */,
+				5582BE072497F29000D33993 /* Statement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,6 +246,19 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		550842672497456B00BE2ED8 /* UserBalance */ = {
+			isa = PBXGroup;
+			children = (
+				5508425B2497456000BE2ED8 /* UserBalancePresenter.swift */,
+				5508425C2497456000BE2ED8 /* UserBalanceWorker.swift */,
+				5508425D2497456000BE2ED8 /* UserBalanceRouter.swift */,
+				5508425E2497456000BE2ED8 /* UserBalanceModels.swift */,
+				5508425F2497456000BE2ED8 /* UserBalanceViewController.swift */,
+				550842602497456000BE2ED8 /* UserBalanceInteractor.swift */,
+			);
+			path = UserBalance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,10 +394,16 @@
 			files = (
 				550842412492CAD700BE2ED8 /* LoginViewController.swift in Sources */,
 				550842402492CAD700BE2ED8 /* LoginModels.swift in Sources */,
+				550842612497456100BE2ED8 /* UserBalancePresenter.swift in Sources */,
 				5508424C249302EA00BE2ED8 /* BankAPI.swift in Sources */,
+				550842652497456100BE2ED8 /* UserBalanceViewController.swift in Sources */,
 				550842362492B56500BE2ED8 /* MButton.swift in Sources */,
+				5582BE0A2497FA7B00D33993 /* MView.swift in Sources */,
+				550842642497456100BE2ED8 /* UserBalanceModels.swift in Sources */,
+				550842622497456100BE2ED8 /* UserBalanceWorker.swift in Sources */,
 				550842342492AC2500BE2ED8 /* MTextField.swift in Sources */,
 				550842492492E88000BE2ED8 /* UserAccount.swift in Sources */,
+				550842632497456100BE2ED8 /* UserBalanceRouter.swift in Sources */,
 				550842032492A38300BE2ED8 /* AppDelegate.swift in Sources */,
 				550842572493C9C400BE2ED8 /* KeyChainService.swift in Sources */,
 				5508423D2492CAD700BE2ED8 /* LoginPresenter.swift in Sources */,
@@ -370,6 +411,9 @@
 				550842422492CAD700BE2ED8 /* LoginInteractor.swift in Sources */,
 				550842472492E6A100BE2ED8 /* UserCredentials.swift in Sources */,
 				5508423E2492CAD700BE2ED8 /* LoginWorker.swift in Sources */,
+				5582BE0C2498000500D33993 /* StatementTableViewCell.swift in Sources */,
+				550842662497456100BE2ED8 /* UserBalanceInteractor.swift in Sources */,
+				5582BE082497F29000D33993 /* Statement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

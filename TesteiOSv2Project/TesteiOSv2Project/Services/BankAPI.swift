@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BankAPI: BankStoreProtocol{
+class BankAPI: BankUserStoreProtocol, BankStatementsStoreProtocol{
     let baseURL = "https://bank-app-test.herokuapp.com/api"
     let routeLogin = "/login"
     let routeStatements = "/statements/"
@@ -33,10 +33,33 @@ class BankAPI: BankStoreProtocol{
                     completionHandler(response, nil)
                 }catch{
                     print(error)
-                    completionHandler(nil, LoginError.CannotLogin("Ocorreu un erro decodificando a resposta da api."))
+                    completionHandler(nil, LoginError.CannotLogin("Error decoding response from api."))
                 }
             }else{
-                completionHandler(nil, LoginError.CannotLogin("Ocorreu um erro desconhecido!"))
+                completionHandler(nil, LoginError.CannotLogin("There was an unknown error!"))
+            }
+        }
+        currentTask?.resume()
+    }
+    
+    func fetchStatements(userAccount: UserAccount,
+                         completionHandler: @escaping (UserBalance.FetchStatements.Response?, UserBalanceError?) -> Void){
+        guard let url = URL(string: baseURL + routeStatements + "\(userAccount.userId ?? 0)") else { return }
+        currentTask?.cancel()
+        currentTask = URLSession.shared.dataTask(with: url) {data, _, error in
+            if let error = error{
+                completionHandler(nil, UserBalanceError.CannotGetStatements(error.localizedDescription))
+            }else if let data = data{
+                do{
+                    let response = try JSONDecoder().decode(UserBalance.FetchStatements.Response.self,
+                                                            from: data)
+                    completionHandler(response, nil)
+                }catch{
+                    print(error)
+                    completionHandler(nil, UserBalanceError.CannotGetStatements("Error decoding response from api."))
+                }
+            }else{
+                completionHandler(nil, UserBalanceError.CannotGetStatements("There was an unknown error"))
             }
         }
         currentTask?.resume()

@@ -21,12 +21,6 @@ protocol LoginPresentationLogic
 class LoginPresenter: LoginPresentationLogic
 {
     weak var viewController: LoginDisplayLogic?
-    let currencyFormatter: NumberFormatter = {
-        let currencyFormatter = NumberFormatter()
-        currencyFormatter.numberStyle = .currency
-        currencyFormatter.locale = Locale(identifier: "pt_BR")
-        return currencyFormatter
-    }()
     
     func presentUserData(response: Login.FetchUser.Response)
     {
@@ -34,17 +28,8 @@ class LoginPresenter: LoginPresentationLogic
             let message = error.message{
             viewController?.displayAlertError(message: message)
         }else{
-            let viewModel = generateViewModel(response: response)
-            viewController?.displayBalanceScreen(viewModel: viewModel)
+            viewController?.displayBalanceScreen()
         }
-    }
-    
-    private func generateViewModel(response: Login.FetchUser.Response) -> Login.FetchUser.ViewModel{
-        let displayedUser = Login.FetchUser.ViewModel.DisplayedUser(id: response.userAccount?.userId ?? 0,
-                                                                    name: response.userAccount?.name ?? "",
-                                                                    account: response.userAccount?.name ?? "",
-                                                                    balance: currencyFormatter.string(from: (response.userAccount?.balance ?? 0.0) as NSNumber) ?? "")
-        return Login.FetchUser.ViewModel(displayedUser: displayedUser)
     }
     
     func presentErrorMessage(message: String){

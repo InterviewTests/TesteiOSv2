@@ -33,13 +33,7 @@ enum Login
     }
     struct ViewModel
     {
-        struct DisplayedUser {
-            var id: Int
-            var name: String
-            var account: String
-            var balance: String
-        }
-        var displayedUser: DisplayedUser?
+        
     }
   }
 }

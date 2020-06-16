@@ -15,76 +15,76 @@ import XCTest
 
 class LoginViewControllerTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: LoginViewController!
-  var window: UIWindow!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    window = UIWindow()
-    setupLoginViewController()
-  }
-  
-  override func tearDown()
-  {
-    window = nil
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupLoginViewController()
-  {
-    let bundle = Bundle.main
-    let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-    sut = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-  }
-  
-  func loadView()
-  {
-    window.addSubview(sut.view)
-    RunLoop.current.run(until: Date())
-  }
-  
-  // MARK: Test doubles
-  
-  class LoginBusinessLogicSpy: LoginBusinessLogic
-  {
-    var fetchUserAccountCalled = false
-    func fetchUserAccount(request: Login.FetchUser.Request) {
-        fetchUserAccountCalled = true
+    // MARK: Subject under test
+    
+    var sut: LoginViewController!
+    var window: UIWindow!
+    
+    // MARK: Test lifecycle
+    
+    override func setUp()
+    {
+        super.setUp()
+        window = UIWindow()
+        setupLoginViewController()
     }
-  }
-  
-  // MARK: Tests
-  
-  func testShouldDoSomethingWhenViewIsLoaded()
-  {
-    // Given
-    let spy = LoginBusinessLogicSpy()
-    sut.interactor = spy
     
-    // When
-    loadView()
+    override func tearDown()
+    {
+        window = nil
+        super.tearDown()
+    }
     
-    // Then
-    XCTAssertTrue(spy.fetchUserAccountCalled, "viewDidLoad() should ask the interactor to do something")
-  }
-  
-  func testDisplaySomething()
-  {
-    // Given
-    let viewModel = Login.FetchUser.ViewModel()
+    // MARK: Test setup
     
-    // When
-    loadView()
-    sut.displaySomething(viewModel: viewModel)
+    func setupLoginViewController()
+    {
+        let bundle = Bundle.main
+        let storyboard = UIStoryboard(name: "Main", bundle: bundle)
+        sut = (storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController)
+    }
     
-    // Then
-    //XCTAssertEqual(sut.nameTextField.text, "", "displaySomething(viewModel:) should update the name text field")
-  }
+    func loadView()
+    {
+        window.addSubview(sut.view)
+        RunLoop.current.run(until: Date())
+    }
+    
+    // MARK: Test doubles
+    
+    class LoginBusinessLogicSpy: LoginBusinessLogic
+    {
+        var fetchUserAccountCalled = false
+        func fetchUserAccount(request: Login.FetchUser.Request) {
+            fetchUserAccountCalled = true
+        }
+    }
+    
+    // MARK: Tests
+    
+    func testShouldDoSomethingWhenViewIsLoaded()
+    {
+        // Given
+        let spy = LoginBusinessLogicSpy()
+        sut.interactor = spy
+        
+        // When
+        loadView()
+        
+        // Then
+        XCTAssertTrue(spy.fetchUserAccountCalled, "viewDidLoad() should ask the interactor to do something")
+    }
+
+    func testDisplaySomething()
+    {
+        // Given
+//        let viewModel = Login.FetchUser.ViewModel()
+        
+        // When
+        loadView()
+        //    sut?.displaySomething()
+        
+        // Then
+        //XCTAssertEqual(sut.nameTextField.text, "", "displaySomething(viewModel:) should update the name text field")
+    }
 }

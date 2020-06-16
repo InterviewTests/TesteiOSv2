@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class
 {
-    func displayBalanceScreen(viewModel: Login.FetchUser.ViewModel)
+    func displayBalanceScreen()
     func displayAlertError(message: String)
 }
 
@@ -58,7 +58,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            let selector = Selector("routeTo\(scene)WithSegue:")
             if let router = router, router.responds(to: selector) {
                 router.perform(selector, with: segue)
             }
@@ -78,7 +78,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loginUIButton: MButton!
     
-    let buttonLoginTitle = "Login"
+    private let buttonLoginTitle = "Login"
+    private let balanceSegueIdentifier = "ShowBalance"
     
     
     private func fetchUser(username: String, password: String)
@@ -90,9 +91,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         interactor?.fetchUserAccount(request: request)
     }
     
-    func displayBalanceScreen(viewModel: Login.FetchUser.ViewModel)
-    {
-        
+    func displayBalanceScreen(){
+        performSegue(withIdentifier: balanceSegueIdentifier, sender: self)
     }
     
     @IBAction func didTapLoginButton(_ sender: Any) {
