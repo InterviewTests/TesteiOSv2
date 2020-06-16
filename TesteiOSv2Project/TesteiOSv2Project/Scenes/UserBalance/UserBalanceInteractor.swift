@@ -16,6 +16,7 @@ protocol UserBalanceBusinessLogic
 {
     func fetchStatements()
     func displayUserInfo()
+    func logout()
 }
 
 protocol UserBalanceDataStore
@@ -52,5 +53,9 @@ class UserBalanceInteractor: UserBalanceBusinessLogic, UserBalanceDataStore
                 }
             })
         }
+    }
+    
+    func logout(){
+        
     }
 }

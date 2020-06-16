@@ -16,6 +16,7 @@ protocol UserBalancePresentationLogic
 {
     func presentStatements(response: UserBalance.FetchStatements.Response)
     func presentUserInfo(userAccount: UserAccount)
+    func logout()
 }
 
 class UserBalancePresenter: UserBalancePresentationLogic
@@ -30,6 +31,9 @@ class UserBalancePresenter: UserBalancePresentationLogic
     
     // MARK: Do something
     
+    func logout() {
+        viewController?.navigateBack()
+    }
     
     func presentUserInfo(userAccount: UserAccount) {
         let userInfo = generatePresentableUserInfo(userAccount: userAccount)

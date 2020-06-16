@@ -15,6 +15,7 @@ import UIKit
 protocol LoginBusinessLogic
 {
     func fetchUserAccount(request: Login.FetchUser.Request)
+    func checkLastUser()
 }
 
 protocol LoginDataStore
@@ -29,7 +30,23 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     var worker: LoginWorker?
     var userAccount: UserAccount?
     
+    let keychainCredentialsKey = "bank_app_user_credentials"
+    
     // MARK: Fetch user account given user credentials
+    
+    func checkLastUser() {
+        let base64StoredCredentials = KeyChainService.shared[keychainCredentialsKey]
+        if let base64StoredCredentials = base64StoredCredentials,
+            let data = base64StoredCredentials.data(using: .utf8),
+            let b64Data = Data(base64Encoded: data),
+            let dataStr = String(data: b64Data, encoding: .utf8){
+            let credentials = try? JSONDecoder().decode(UserCredentials.self, from: dataStr.data(using: .utf8)!)
+            if let credentials = credentials{
+                presenter?.presentCurrentSavedUser(userCredentials: credentials)
+            }
+        }
+    }
+    
     
     func fetchUserAccount(request: Login.FetchUser.Request)
     {
@@ -61,6 +78,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
                 if let response = response{
                     self.userAccount = response.userAccount
                     self.presenter?.presentUserData(response: response)
+                    if let dataToStore = try? JSONEncoder().encode(request.credentials){
+                        KeyChainService.shared[self.keychainCredentialsKey] = dataToStore.base64EncodedString()
+                    }
                 }
             }
         })

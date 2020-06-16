@@ -16,6 +16,7 @@ protocol LoginDisplayLogic: class
 {
     func displayBalanceScreen()
     func displayAlertError(message: String)
+    func fillCurrentCredentials(userCredentials: UserCredentials)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -70,6 +71,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        interactor?.checkLastUser()
     }
     
     
@@ -107,5 +109,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic
             alert.dismiss(animated: false, completion: nil)
         }))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func fillCurrentCredentials(userCredentials: UserCredentials){
+        usernameTextField.text = userCredentials.emailOrCPF
+        passwordTextField.text = userCredentials.password
     }
 }

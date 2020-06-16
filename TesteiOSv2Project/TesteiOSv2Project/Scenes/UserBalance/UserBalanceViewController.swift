@@ -16,6 +16,7 @@ protocol UserBalanceDisplayLogic: class
 {
     func displayStatements(viewModel: UserBalance.FetchStatements.ViewModel)
     func displayUserInfo(userInfo: UserBalance.FetchStatements.ViewModel.DisplayedUser)
+    func navigateBack()
 }
 
 class UserBalanceViewController: UIViewController, UserBalanceDisplayLogic, UITableViewDataSource
@@ -85,6 +86,13 @@ class UserBalanceViewController: UIViewController, UserBalanceDisplayLogic, UITa
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
+    @IBAction func didTapLogoutButton(_ sender: Any) {
+        interactor?.logout()
+    }
+    
+    func navigateBack(){
+        navigationController?.popViewController(animated: true)
+    }
     
     func displayUserInfo(){
         interactor?.displayUserInfo()

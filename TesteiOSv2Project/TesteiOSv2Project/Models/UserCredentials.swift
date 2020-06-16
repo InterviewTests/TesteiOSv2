@@ -8,7 +8,12 @@
 
 import Foundation
 
-struct UserCredentials{
+struct UserCredentials: Codable{
     var emailOrCPF: String
     var password: String
+    
+    enum CodingKeys: String, CodingKey{
+        case emailOrCPF = "username"
+        case password = "password"
+    }
 }

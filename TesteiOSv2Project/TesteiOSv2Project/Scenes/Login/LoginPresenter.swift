@@ -16,11 +16,16 @@ protocol LoginPresentationLogic
 {
     func presentUserData(response: Login.FetchUser.Response)
     func presentErrorMessage(message: String)
+    func presentCurrentSavedUser(userCredentials: UserCredentials)
 }
 
 class LoginPresenter: LoginPresentationLogic
 {
     weak var viewController: LoginDisplayLogic?
+    
+    func presentCurrentSavedUser(userCredentials: UserCredentials){
+        viewController?.fillCurrentCredentials(userCredentials: userCredentials)
+    }
     
     func presentUserData(response: Login.FetchUser.Response)
     {

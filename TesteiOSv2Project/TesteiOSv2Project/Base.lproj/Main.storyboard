@@ -178,6 +178,9 @@
                                             <constraint firstAttribute="height" constant="27" id="iTQ-up-aDR"/>
                                         </constraints>
                                         <state key="normal" image="logout_icon"/>
+                                        <connections>
+                                            <action selector="didTapLogoutButton:" destination="cBj-BK-FAV" eventType="touchUpInside" id="tAO-CF-9WL"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23137254900000001" green="0.28235294119999998" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -228,7 +231,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta de Luz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30K-Jc-Ezp">
-                                                            <rect key="frame" x="20" y="49" width="227" height="19"/>
+                                                            <rect key="frame" x="20" y="44" width="227" height="19"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" red="0.28235294117647058" green="0.32941176470588235" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -243,7 +246,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 1.000,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2T-3O-vEz">
-                                                            <rect key="frame" x="252" y="49" width="120" height="19"/>
+                                                            <rect key="frame" x="252" y="44" width="120" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="0V9-jK-9sN"/>
                                                             </constraints>
@@ -260,7 +263,7 @@
                                                         <constraint firstAttribute="height" constant="80" id="CbD-Dc-HC9"/>
                                                         <constraint firstItem="30K-Jc-Ezp" firstAttribute="leading" secondItem="Olr-HK-x4f" secondAttribute="leading" id="DaH-ok-1MH"/>
                                                         <constraint firstItem="T2T-3O-vEz" firstAttribute="leading" secondItem="30K-Jc-Ezp" secondAttribute="trailing" constant="5" id="NXx-aG-ImN"/>
-                                                        <constraint firstItem="30K-Jc-Ezp" firstAttribute="top" secondItem="Olr-HK-x4f" secondAttribute="bottom" constant="20" id="TSK-oW-k03"/>
+                                                        <constraint firstItem="30K-Jc-Ezp" firstAttribute="top" secondItem="Olr-HK-x4f" secondAttribute="bottom" constant="15" id="TSK-oW-k03"/>
                                                         <constraint firstItem="T2T-3O-vEz" firstAttribute="centerY" secondItem="30K-Jc-Ezp" secondAttribute="centerY" id="aur-Qs-IL0"/>
                                                         <constraint firstAttribute="trailing" secondItem="T2T-3O-vEz" secondAttribute="trailing" constant="10" id="l6v-yE-VTY"/>
                                                         <constraint firstItem="8DZ-0d-06l" firstAttribute="leading" secondItem="Olr-HK-x4f" secondAttribute="trailing" constant="5" id="pjz-6z-WbW"/>
