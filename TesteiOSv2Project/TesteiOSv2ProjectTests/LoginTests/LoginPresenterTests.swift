@@ -15,56 +15,102 @@ import XCTest
 
 class LoginPresenterTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: LoginPresenter!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupLoginPresenter()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupLoginPresenter()
-  {
-    sut = LoginPresenter()
-  }
-  
-  // MARK: Test doubles
-  
-  class LoginDisplayLogicSpy: LoginDisplayLogic
-  {
-    var displaySomethingCalled = false
+    // MARK: Subject under test
     
-    func displaySomething(viewModel: Login.FetchUser.ViewModel)
+    var sut: LoginPresenter!
+    
+    // MARK: Test lifecycle
+    
+    override func setUp()
     {
-      displaySomethingCalled = true
+        super.setUp()
+        setupLoginPresenter()
     }
-  }
-  
-  // MARK: Tests
-  
-  func testPresentSomething()
-  {
-    // Given
-    let spy = LoginDisplayLogicSpy()
-    sut.viewController = spy
-    let response = Login.FetchUser.Response(userAccount: UserAccount(userId: 1, name: "", bankAccount: "", agency: "", balance: 0.0),
-                                            error: Login.FetchUser.Response.Error(code: 0, message: ""))
     
-    // When
-    sut.presentSomething(response: response)
+    override func tearDown()
+    {
+        super.tearDown()
+    }
     
-    // Then
-    XCTAssertTrue(spy.displaySomethingCalled, "presentSomething(response:) should ask the view controller to display the result")
-  }
+    // MARK: Test setup
+    
+    func setupLoginPresenter()
+    {
+        sut = LoginPresenter()
+    }
+    
+    // MARK: Test doubles
+    
+    class LoginDisplayLogicSpy: LoginDisplayLogic
+    {
+        
+        var displayBalanceScreenCalled = false
+        var displayAlertErrorCalled = false
+        var fillCredentialsCalled = false
+        
+        func displayBalanceScreen() {
+            displayBalanceScreenCalled = true
+        }
+        
+        func displayAlertError(message: String) {
+            displayAlertErrorCalled = true
+        }
+        
+        func fillCurrentCredentials(userCredentials: UserCredentials) {
+            fillCredentialsCalled = true
+        }
+        
+    }
+    
+    // MARK: Tests
+    
+    func testFillTextFieldsWithCredentials(){
+        // Given
+        let spy = LoginDisplayLogicSpy()
+        sut.viewController = spy
+        // When
+        sut.presentCurrentSavedUser(userCredentials: UserCredentials(emailOrCPF: "some_username", password: "some_password"))
+        // Then
+        XCTAssertTrue(spy.fillCredentialsCalled,
+                      "presentCurrentSavedUser(userCredentials: should ask the view controller to fill the textfields in the login form")
+    }
+    
+    func testPresentErrorShouldCallDisplayAlertError()
+    {
+        // Given
+        let spy = LoginDisplayLogicSpy()
+        sut.viewController = spy
+        // When
+        sut.presentErrorMessage(message: "Some error")
+        // Then
+        XCTAssertTrue(spy.displayAlertErrorCalled, "presentErrorMessage(message:) should ask the view controller to display the error message")
+    }
+    
+    func testPresentBalanceScreenShouldCallDisplayBalanceScreenIfNoError()
+    {
+        // Given
+        let spy = LoginDisplayLogicSpy()
+        let response = Login.FetchUser.Response(userAccount: UserAccount(userId: 1, name: "John", bankAccount: "000", agency: "12345", balance: 400.0), error: nil)
+        sut.viewController = spy
+        // When
+        sut.presentUserData(response: response)
+        // Then
+        XCTAssertTrue(spy.displayBalanceScreenCalled,
+                      "presentUserData(response:) should ask the view controller to display the balance screen if there was no error")
+    }
+    
+    func testPresentBalanceScreenShouldCallDisplayAlertErrorIfError()
+    {
+        // Given
+        let spy = LoginDisplayLogicSpy()
+        let response = Login.FetchUser.Response(userAccount: nil,
+                                                error: Login.FetchUser.Response.Error(code: 53,
+                                                                                      message: "Some Error"))
+        sut.viewController = spy
+        // When
+        sut.presentUserData(response: response)
+        // Then
+        XCTAssertTrue(spy.displayAlertErrorCalled,
+                      "presentUserData(response:) should ask the view controller to display an error alert if there was an error")
+    }
 }

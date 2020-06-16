@@ -30,7 +30,7 @@ class UserBalanceInteractor: UserBalanceBusinessLogic, UserBalanceDataStore
     var userAccount: UserAccount?
     
     var presenter: UserBalancePresentationLogic?
-    var worker: UserBalanceWorker?
+    var worker: UserBalanceWorker = UserBalanceWorker(bankStore: BankAPI())
     
     let keychainCredentialsKey = "bank_app_user_credentials"
     
@@ -44,13 +44,10 @@ class UserBalanceInteractor: UserBalanceBusinessLogic, UserBalanceDataStore
     
     func fetchStatements()
     {
-        worker = UserBalanceWorker(bankStore: BankAPI())
         if let userAccount = userAccount{
-            worker?.fetchStatements(userAccount: userAccount, completionHandler: { response, error in
-                DispatchQueue.main.async {
-                    if let response = response{
-                        self.presenter?.presentStatements(response: response)
-                    }
+            worker.fetchStatements(userAccount: userAccount, completionHandler: { response, error in
+                if let response = response{
+                    self.presenter?.presentStatements(response: response)
                 }
             })
         }

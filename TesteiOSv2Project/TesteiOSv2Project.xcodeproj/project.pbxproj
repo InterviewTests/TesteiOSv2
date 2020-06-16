@@ -38,6 +38,10 @@
 		5582BE082497F29000D33993 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582BE072497F29000D33993 /* Statement.swift */; };
 		5582BE0A2497FA7B00D33993 /* MView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582BE092497FA7B00D33993 /* MView.swift */; };
 		5582BE0C2498000500D33993 /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582BE0B2498000500D33993 /* StatementTableViewCell.swift */; };
+		5582BE11249952A200D33993 /* UserBalanceViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582BE0D249952A200D33993 /* UserBalanceViewControllerTests.swift */; };
+		5582BE12249952A200D33993 /* UserBalanceInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582BE0E249952A200D33993 /* UserBalanceInteractorTests.swift */; };
+		5582BE13249952A200D33993 /* UserBalanceWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582BE0F249952A200D33993 /* UserBalanceWorkerTests.swift */; };
+		5582BE14249952A200D33993 /* UserBalancePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582BE10249952A200D33993 /* UserBalancePresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +99,10 @@
 		5582BE072497F29000D33993 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
 		5582BE092497FA7B00D33993 /* MView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MView.swift; sourceTree = "<group>"; };
 		5582BE0B2498000500D33993 /* StatementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
+		5582BE0D249952A200D33993 /* UserBalanceViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalanceViewControllerTests.swift; sourceTree = "<group>"; };
+		5582BE0E249952A200D33993 /* UserBalanceInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalanceInteractorTests.swift; sourceTree = "<group>"; };
+		5582BE0F249952A200D33993 /* UserBalanceWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalanceWorkerTests.swift; sourceTree = "<group>"; };
+		5582BE10249952A200D33993 /* UserBalancePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalancePresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +173,7 @@
 				550842192492A38900BE2ED8 /* TesteiOSv2ProjectTests.swift */,
 				5508421B2492A38900BE2ED8 /* Info.plist */,
 				550842552493152A00BE2ED8 /* LoginTests */,
+				5582BE15249952A800D33993 /* UserBalance */,
 			);
 			path = TesteiOSv2ProjectTests;
 			sourceTree = "<group>";
@@ -257,6 +266,17 @@
 				5508425E2497456000BE2ED8 /* UserBalanceModels.swift */,
 				5508425F2497456000BE2ED8 /* UserBalanceViewController.swift */,
 				550842602497456000BE2ED8 /* UserBalanceInteractor.swift */,
+			);
+			path = UserBalance;
+			sourceTree = "<group>";
+		};
+		5582BE15249952A800D33993 /* UserBalance */ = {
+			isa = PBXGroup;
+			children = (
+				5582BE0D249952A200D33993 /* UserBalanceViewControllerTests.swift */,
+				5582BE0E249952A200D33993 /* UserBalanceInteractorTests.swift */,
+				5582BE0F249952A200D33993 /* UserBalanceWorkerTests.swift */,
+				5582BE10249952A200D33993 /* UserBalancePresenterTests.swift */,
 			);
 			path = UserBalance;
 			sourceTree = "<group>";
@@ -422,10 +442,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				550842512493150400BE2ED8 /* LoginViewControllerTests.swift in Sources */,
+				5582BE13249952A200D33993 /* UserBalanceWorkerTests.swift in Sources */,
+				5582BE12249952A200D33993 /* UserBalanceInteractorTests.swift in Sources */,
 				550842522493150400BE2ED8 /* LoginInteractorTests.swift in Sources */,
 				5508421A2492A38900BE2ED8 /* TesteiOSv2ProjectTests.swift in Sources */,
 				550842532493150400BE2ED8 /* LoginWorkerTests.swift in Sources */,
+				5582BE11249952A200D33993 /* UserBalanceViewControllerTests.swift in Sources */,
 				550842542493150400BE2ED8 /* LoginPresenterTests.swift in Sources */,
+				5582BE14249952A200D33993 /* UserBalancePresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

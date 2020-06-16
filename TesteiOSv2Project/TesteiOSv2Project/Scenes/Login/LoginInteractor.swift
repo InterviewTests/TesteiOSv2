@@ -27,7 +27,7 @@ protocol LoginDataStore
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
     var presenter: LoginPresentationLogic?
-    var worker: LoginWorker?
+    var worker: LoginWorker = LoginWorker(bankStore: BankAPI())
     var userAccount: UserAccount?
     
     let keychainCredentialsKey = "bank_app_user_credentials"
@@ -67,24 +67,21 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
             return
         }
         
-        worker = LoginWorker(bankStore: BankAPI())
-        worker?.fetchUserAccount(userCredentials: request.credentials, completionHandler: { (response, error) in
-            DispatchQueue.main.async {
-                if let error = error{
-                    self.presenter?.presentErrorMessage(message: error.localizedDescription)
-                    return
-                }
-                if let errorMessage = response?.error?.message,
-                    let errorCode = response?.error?.code{
-                    self.presenter?.presentErrorMessage(message: "Code: \(errorCode)\n\(errorMessage)")
-                    return
-                }
-                if let response = response{
-                    self.userAccount = response.userAccount
-                    self.presenter?.presentUserData(response: response)
-                    if let dataToStore = try? JSONEncoder().encode(request.credentials){
-                        KeyChainService.shared[self.keychainCredentialsKey] = dataToStore.base64EncodedString()
-                    }
+        worker.fetchUserAccount(userCredentials: request.credentials, completionHandler: { (response, error) in
+            if let error = error{
+                self.presenter?.presentErrorMessage(message: error.localizedDescription)
+                return
+            }
+            if let errorMessage = response?.error?.message,
+                let errorCode = response?.error?.code{
+                self.presenter?.presentErrorMessage(message: "Code: \(errorCode)\n\(errorMessage)")
+                return
+            }
+            if let response = response{
+                self.userAccount = response.userAccount
+                self.presenter?.presentUserData(response: response)
+                if let dataToStore = try? JSONEncoder().encode(request.credentials){
+                    KeyChainService.shared[self.keychainCredentialsKey] = dataToStore.base64EncodedString()
                 }
             }
         })

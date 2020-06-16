@@ -24,19 +24,21 @@ class BankAPI: BankUserStoreProtocol, BankStatementsStoreProtocol{
         request.httpMethod = "POST"
         request.httpBody = bodyData
         currentTask = URLSession.shared.dataTask(with: request) { (data, _, error) in
-            if let error = error{
-                completionHandler(nil, LoginError.CannotLogin(error.localizedDescription))
-            }else if let data = data{
-                do{
-                    let response = try JSONDecoder().decode(Login.FetchUser.Response.self,
-                                                            from: data)
-                    completionHandler(response, nil)
-                }catch{
-                    print(error)
-                    completionHandler(nil, LoginError.CannotLogin("Error decoding response from api."))
+            DispatchQueue.main.async {
+                if let error = error{
+                    completionHandler(nil, LoginError.CannotLogin(error.localizedDescription))
+                }else if let data = data{
+                    do{
+                        let response = try JSONDecoder().decode(Login.FetchUser.Response.self,
+                                                                from: data)
+                        completionHandler(response, nil)
+                    }catch{
+                        print(error)
+                        completionHandler(nil, LoginError.CannotLogin("Error decoding response from api."))
+                    }
+                }else{
+                    completionHandler(nil, LoginError.CannotLogin("There was an unknown error!"))
                 }
-            }else{
-                completionHandler(nil, LoginError.CannotLogin("There was an unknown error!"))
             }
         }
         currentTask?.resume()
@@ -47,19 +49,21 @@ class BankAPI: BankUserStoreProtocol, BankStatementsStoreProtocol{
         guard let url = URL(string: baseURL + routeStatements + "\(userAccount.userId ?? 0)") else { return }
         currentTask?.cancel()
         currentTask = URLSession.shared.dataTask(with: url) {data, _, error in
-            if let error = error{
-                completionHandler(nil, UserBalanceError.CannotGetStatements(error.localizedDescription))
-            }else if let data = data{
-                do{
-                    let response = try JSONDecoder().decode(UserBalance.FetchStatements.Response.self,
-                                                            from: data)
-                    completionHandler(response, nil)
-                }catch{
-                    print(error)
-                    completionHandler(nil, UserBalanceError.CannotGetStatements("Error decoding response from api."))
+            DispatchQueue.main.async {
+                if let error = error{
+                    completionHandler(nil, UserBalanceError.CannotGetStatements(error.localizedDescription))
+                }else if let data = data{
+                    do{
+                        let response = try JSONDecoder().decode(UserBalance.FetchStatements.Response.self,
+                                                                from: data)
+                        completionHandler(response, nil)
+                    }catch{
+                        print(error)
+                        completionHandler(nil, UserBalanceError.CannotGetStatements("Error decoding response from api."))
+                    }
+                }else{
+                    completionHandler(nil, UserBalanceError.CannotGetStatements("There was an unknown error"))
                 }
-            }else{
-                completionHandler(nil, UserBalanceError.CannotGetStatements("There was an unknown error"))
             }
         }
         currentTask?.resume()

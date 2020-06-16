@@ -15,55 +15,117 @@ import XCTest
 
 class LoginInteractorTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: LoginInteractor!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupLoginInteractor()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupLoginInteractor()
-  {
-    sut = LoginInteractor()
-  }
-  
-  // MARK: Test doubles
-  
-  class LoginPresentationLogicSpy: LoginPresentationLogic
-  {
-    var presentSomethingCalled = false
+    // MARK: Subject under test
     
-    func presentSomething(response: Login.FetchUser.Response)
+    let keychainCredentialsKey = "bank_app_user_credentials"
+    var sut: LoginInteractor!
+    
+    // MARK: Test lifecycle
+    
+    override func setUp()
     {
-      presentSomethingCalled = true
+        super.setUp()
+        setupLoginInteractor()
     }
-  }
-  
-  // MARK: Tests
-  
-  func testDoSomething()
-  {
-    // Given
-    let spy = LoginPresentationLogicSpy()
-    sut.presenter = spy
-    let request = Login.FetchUser.Request(credentials: UserCredentials(emailOrCPF: "", password: ""))
     
-    // When
-    sut.fetchUserAccount(request: request)
+    override func tearDown()
+    {
+        super.tearDown()
+    }
     
-    // Then
-    XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
-  }
+    // MARK: Test setup
+    
+    func setupLoginInteractor()
+    {
+        sut = LoginInteractor()
+    }
+    
+    // MARK: Test doubles
+    
+    class LoginWorkerSpy: LoginWorker{
+        var fetchUserCalled = false
+        
+        override func fetchUserAccount(userCredentials: UserCredentials, completionHandler: @escaping (Login.FetchUser.Response?, LoginError?) -> Void) {
+            fetchUserCalled = true
+            if !userCredentials.emailOrCPF.isEmpty && !userCredentials.password.isEmpty{
+                completionHandler(Login.FetchUser.Response(userAccount: UserAccount(userId: 1,
+                                                                                name: "John",
+                                                                                bankAccount: "0000",
+                                                                                agency: "012345",
+                                                                                balance: 100.0),error: nil), nil)
+            }else if userCredentials.emailOrCPF.isEmpty || userCredentials.password.isEmpty{
+                completionHandler(Login.FetchUser.Response(userAccount: nil,error: nil), LoginError.CannotLogin("Some error"))
+            }
+        }
+    }
+    
+    class LoginPresentationLogicSpy: LoginPresentationLogic
+    {
+        var presentUserDataCalled = false
+        var presentErrorMessageCalled = false
+        var presentCurrentSavedUserCalled = false
+        
+        func presentUserData(response: Login.FetchUser.Response) {
+            presentUserDataCalled = true
+        }
+        
+        func presentErrorMessage(message: String) {
+            presentErrorMessageCalled = true
+        }
+        
+        func presentCurrentSavedUser(userCredentials: UserCredentials) {
+            presentCurrentSavedUserCalled = true
+        }
+    }
+    
+    // MARK: Tests
+    
+    func testFetchUserShouldAskWorkerToFetchUserAndPresentData(){
+        let spy = LoginPresentationLogicSpy()
+        sut.presenter = spy
+        let workerSpy = LoginWorkerSpy(bankStore: BankAPI())
+        sut.worker = workerSpy
+        
+        let request = Login.FetchUser.Request(credentials: UserCredentials(emailOrCPF: "test_user",
+                                                                           password: "Asd@1"))
+        sut.fetchUserAccount(request: request)
+        
+        XCTAssertTrue(workerSpy.fetchUserCalled,
+                      "fetchUserAccount(request:) should ask the worker to fetch the user details from the network")
+        XCTAssertTrue(spy.presentUserDataCalled,
+                      "fetchUserAccount(request:) should ask the presenter to present the data obtained previously")
+    }
+    
+    func testFetchUserShouldNotAskWorkerToFetchUserAndPresentError(){
+        let spy = LoginPresentationLogicSpy()
+        sut.presenter = spy
+        let workerSpy = LoginWorkerSpy(bankStore: BankAPI())
+        sut.worker = workerSpy
+        
+        let request = Login.FetchUser.Request(credentials: UserCredentials(emailOrCPF: "test_user",
+                                                                           password: ""))
+        sut.fetchUserAccount(request: request)
+        
+        XCTAssertTrue(!workerSpy.fetchUserCalled,
+                      "fetchUserAccount(request:) should never call the worker and return an error")
+        XCTAssertTrue(spy.presentErrorMessageCalled,
+                      "fetchUserAccount(request:) should ask the presenter to present an error")
+    }
+    
+    func testFetchUserShouldAskWorkerToFetchUserAndPresentErrorForInvalidCredentials(){
+        let spy = LoginPresentationLogicSpy()
+        sut.presenter = spy
+        let workerSpy = LoginWorkerSpy(bankStore: BankAPI())
+        sut.worker = workerSpy
+        
+        let request = Login.FetchUser.Request(credentials: UserCredentials(emailOrCPF: "",
+                                                                           password: "Asd@1"))
+        sut.fetchUserAccount(request: request)
+        
+        XCTAssertTrue(workerSpy.fetchUserCalled,
+                      "fetchUserAccount(request:) should call the worker and return an error")
+        XCTAssertTrue(spy.presentErrorMessageCalled,
+                      "fetchUserAccount(request:) should ask the presenter to present an error")
+    }
+    
 }

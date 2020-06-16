@@ -41,7 +41,7 @@ class LoginViewControllerTests: XCTestCase
     {
         let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-        sut = (storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController)
+        sut = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
     }
     
     func loadView()
@@ -55,6 +55,13 @@ class LoginViewControllerTests: XCTestCase
     class LoginBusinessLogicSpy: LoginBusinessLogic
     {
         var fetchUserAccountCalled = false
+        var checkLastUserCalled = false
+        
+        func checkLastUser() {
+            checkLastUserCalled = true
+        }
+        
+        
         func fetchUserAccount(request: Login.FetchUser.Request) {
             fetchUserAccountCalled = true
         }
@@ -72,19 +79,20 @@ class LoginViewControllerTests: XCTestCase
         loadView()
         
         // Then
-        XCTAssertTrue(spy.fetchUserAccountCalled, "viewDidLoad() should ask the interactor to do something")
+        XCTAssertTrue(spy.checkLastUserCalled, "viewDidLoad() should ask the interactor to do check the last user")
     }
 
-    func testDisplaySomething()
+    func testDisplayCurrentUserCredentials()
     {
         // Given
 //        let viewModel = Login.FetchUser.ViewModel()
         
         // When
         loadView()
-        //    sut?.displaySomething()
+        sut?.fillCurrentCredentials(userCredentials: UserCredentials(emailOrCPF: "asd", password: "asd@A1"))
         
         // Then
-        //XCTAssertEqual(sut.nameTextField.text, "", "displaySomething(viewModel:) should update the name text field")
+        XCTAssertEqual(sut.usernameTextField.text, "asd", "fillCurrentCredentials(userCredentials:) should update the username text field")
+        XCTAssertEqual(sut.passwordTextField.text, "asd@A1", "fillCurrentCredentials(userCredentials:) should update the password text field")
     }
 }
