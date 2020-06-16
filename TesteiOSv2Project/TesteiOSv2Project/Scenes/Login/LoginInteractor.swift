@@ -43,7 +43,11 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
             let credentials = try? JSONDecoder().decode(UserCredentials.self, from: dataStr.data(using: .utf8)!)
             if let credentials = credentials{
                 presenter?.presentCurrentSavedUser(userCredentials: credentials)
+            }else{
+                presenter?.presentCurrentSavedUser(userCredentials: UserCredentials(emailOrCPF: "", password: ""))
             }
+        }else{
+            presenter?.presentCurrentSavedUser(userCredentials: UserCredentials(emailOrCPF: "", password: ""))
         }
     }
     
@@ -59,7 +63,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
             return
         }
         if !isValidPassword(password: request.credentials.password){
-            presenter?.presentErrorMessage(message: "The password should have at least an uppercase letter, an alpha numeric character and a special character")
+            presenter?.presentErrorMessage(message: "The password should have at least an uppercase letter, a lowercase letter, an alpha numeric character and a special character")
             return
         }
         
@@ -89,8 +93,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
     private func isValidPassword(password: String) -> Bool{
         let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
         let containsUppercase = password.contains(where: {$0.isUppercase})
+        let containsLowercase = password.contains(where: {$0.isLowercase})
         let containsNumber = password.contains(where: {$0.isNumber})
         let containsSpecialChar = password.rangeOfCharacter(from: characterset.inverted) != nil
-        return containsUppercase && containsNumber && containsSpecialChar
+        return containsUppercase && containsNumber && containsSpecialChar && containsLowercase
     }
 }

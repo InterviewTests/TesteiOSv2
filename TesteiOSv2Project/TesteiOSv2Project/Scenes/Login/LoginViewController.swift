@@ -68,12 +68,18 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     // MARK: View lifecycle
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad(){
         super.viewDidLoad()
-        interactor?.checkLastUser()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                         action: #selector(didTapBody(_:))))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loginUIButton.setTitle(buttonLoginTitle, for: .normal)
+        activityIndicator.stopAnimating()
+        interactor?.checkLastUser()
+    }
     
     @IBOutlet weak var usernameTextField: MTextField!
     @IBOutlet weak var passwordTextField: MTextField!
@@ -83,6 +89,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     private let buttonLoginTitle = "Login"
     private let balanceSegueIdentifier = "ShowBalance"
     
+    
+    @objc func didTapBody(_: UITapGestureRecognizer){
+        view.endEditing(true)
+    }
     
     private func fetchUser(username: String, password: String)
     {

@@ -31,7 +31,8 @@ class UserBalanceInteractor: UserBalanceBusinessLogic, UserBalanceDataStore
     
     var presenter: UserBalancePresentationLogic?
     var worker: UserBalanceWorker?
-    //var name: String = ""
+    
+    let keychainCredentialsKey = "bank_app_user_credentials"
     
     // MARK: Do something
     
@@ -56,6 +57,7 @@ class UserBalanceInteractor: UserBalanceBusinessLogic, UserBalanceDataStore
     }
     
     func logout(){
-        
+        KeyChainService.shared[keychainCredentialsKey] = nil
+        presenter?.logout()
     }
 }
