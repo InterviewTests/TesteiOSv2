@@ -70,12 +70,54 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   {
     super.viewDidLoad()
     doSomething()
+    setupButton()
+    setupUserTextField()
+    setupPasswordTextField()
   }
   
-  // MARK: Do something
+  // MARK: IBOutlet
+    
+    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
   
-  //@IBOutlet weak var nameTextField: UITextField!
-  
+    // MARK: Do something
+    
+    func setupButton() {
+        loginButton.setRadius()
+        loginButton.setShadow()
+    }
+    
+    func setupUserTextField() {
+        userTextField.layer.borderWidth = 1.0
+        userTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
+    }
+    
+    func setupPasswordTextField() {
+        passwordTextField.layer.borderWidth = 1.0
+        passwordTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
+    }
+    
+    @IBAction func doLogin(_ sender: UIButton) {
+        guard let userText = userTextField.text else { return }
+        guard let passwordText = passwordTextField.text else { return }
+        if userText.isCPF {
+            print("É um CPF")
+        } else if userText.isValidEmail {
+            print("É um email")
+        } else {
+            print("Mostrar error EmailCpf")
+        }
+        
+        if passwordText.isValidPassword {
+            print("Senha correta")
+        } else {
+            print("Mostrar error")
+        }
+        
+    }
+    
+    
   func doSomething()
   {
     let request = Login.Something.Request()
