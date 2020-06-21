@@ -73,6 +73,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     setupButton()
     setupUserTextField()
     setupPasswordTextField()
+    setupErrorLabel()
   }
   
   // MARK: IBOutlet
@@ -80,7 +81,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-  
+    @IBOutlet weak var errorLabel: UILabel!
+    
     // MARK: Do something
     
     func setupButton() {
@@ -96,23 +98,28 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     func setupPasswordTextField() {
         passwordTextField.layer.borderWidth = 1.0
         passwordTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
+        passwordTextField.isSecureTextEntry = true
+    }
+    
+    func setupErrorLabel() {
+        errorLabel.isHidden = true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     @IBAction func doLogin(_ sender: UIButton) {
-        guard let userText = userTextField.text else { return }
-        guard let passwordText = passwordTextField.text else { return }
-        if userText.isCPF {
-            print("É um CPF")
-        } else if userText.isValidEmail {
-            print("É um email")
-        } else {
-            print("Mostrar error EmailCpf")
-        }
+        let userText = userTextField.text ?? ""
+        let passwordText = passwordTextField.text ?? ""
         
-        if passwordText.isValidPassword {
-            print("Senha correta")
+        if (userText.isValidEmail || userText.isCPF) && passwordText.isValidPassword {
+            print("Email e senha corretos")
+            errorLabel.isHidden = true
         } else {
-            print("Mostrar error")
+            print("Email ou senha invalidos.")
+            errorLabel.text = "Email ou senha inválidos."
+            errorLabel.isHidden = false
         }
         
     }
