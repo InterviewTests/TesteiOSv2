@@ -12,9 +12,11 @@
 
 import UIKit
 
-class LoginWorker
-{
-  func doSomeWork()
-  {
-  }
+class LoginWorker {
+    
+    func doLogin(request: Login.Request, completion: @escaping (Result<Login.Response, Error>) -> () ) {
+        
+        LoginNetworking.shared.doLogin(userLogin: request, completion: completion)
+        
+    }
 }

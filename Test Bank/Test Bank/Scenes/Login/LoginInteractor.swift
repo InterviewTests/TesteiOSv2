@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+  func doSomething(request: Login.Request)
 }
 
 protocol LoginDataStore
@@ -30,12 +30,33 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
   
   // MARK: Do something
   
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
-    
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
+  func doSomething(request: Login.Request) {
+    if checkIfUserAndPasswordValidate(request: request) {
+        
+        worker = LoginWorker()
+        worker?.doLogin(request: request) { [weak self] result in
+            guard let this = self else { return }
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let response):
+                let response = Login.Response(error: response.error, userAccount: response.userAccount)
+                this.presenter?.presentSomething(response: response)
+            }
+        }
+    }
   }
+    
+    func checkIfUserAndPasswordValidate(request: Login.Request) -> Bool {
+        if (request.user.isValidEmail || request.user.isCPF) && request.password.isValidPassword {
+            return true
+        } else {
+            let errorLogin = Login.ErrorLogin(code: nil, message: "Usuário ou senha inválidos")
+            let response = Login.Response(error: errorLogin, userAccount: nil)
+            presenter?.presentSomething(response: response)
+            
+            return false
+        }
+        
+    }
 }

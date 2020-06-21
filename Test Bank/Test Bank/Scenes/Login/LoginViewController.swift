@@ -12,13 +12,12 @@
 
 import UIKit
 
-protocol LoginDisplayLogic: class
-{
-  func displaySomething(viewModel: Login.Something.ViewModel)
+protocol LoginDisplayLogic: class {
+    func showErrorLabel(viewModel: Login.ViewModel)
+    func hideErrorLabel()
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
-{
+class LoginViewController: UIViewController {
   var interactor: LoginBusinessLogic?
   var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
 
@@ -69,7 +68,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+//    doSomething()
     setupButton()
     setupUserTextField()
     setupPasswordTextField()
@@ -113,26 +112,23 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         let userText = userTextField.text ?? ""
         let passwordText = passwordTextField.text ?? ""
         
-        if (userText.isValidEmail || userText.isCPF) && passwordText.isValidPassword {
-            print("Email e senha corretos")
-            errorLabel.isHidden = true
-        } else {
-            print("Email ou senha invalidos.")
-            errorLabel.text = "Email ou senha inválidos."
-            errorLabel.isHidden = false
-        }
+        let request = Login.Request(user: userText, password: passwordText)
+        interactor?.doSomething(request: request)
         
     }
+}
+
+extension LoginViewController: LoginDisplayLogic {
+    func showErrorLabel(viewModel: Login.ViewModel) {
+        DispatchQueue.main.async {
+            self.errorLabel.isHidden = false
+            self.errorLabel.text = viewModel.errorMesage
+        }
+    }
     
-    
-  func doSomething()
-  {
-    let request = Login.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Login.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    func hideErrorLabel() {
+        DispatchQueue.main.async {
+            self.errorLabel.isHidden = true
+        }
+    }
 }
