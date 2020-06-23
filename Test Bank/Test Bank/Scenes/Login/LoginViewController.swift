@@ -68,7 +68,6 @@ class LoginViewController: UIViewController {
   override func viewDidLoad()
   {
     super.viewDidLoad()
-//    doSomething()
     setupButton()
     setupUserTextField()
     setupPasswordTextField()
@@ -113,7 +112,7 @@ class LoginViewController: UIViewController {
         let passwordText = passwordTextField.text ?? ""
         
         let request = Login.Request(user: userText, password: passwordText)
-        interactor?.doSomething(request: request)
+        interactor?.doLogin(request: request)
         
     }
 }

@@ -14,7 +14,7 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Request)
+  func doLogin(request: Login.Request)
 }
 
 protocol LoginDataStore
@@ -30,33 +30,34 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
   
   // MARK: Do something
   
-  func doSomething(request: Login.Request) {
-    if checkIfUserAndPasswordValidate(request: request) {
-        
-        worker = LoginWorker()
-        worker?.doLogin(request: request) { [weak self] result in
-            guard let this = self else { return }
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let response):
-                let response = Login.Response(error: response.error, userAccount: response.userAccount)
-                this.presenter?.presentSomething(response: response)
+    func doLogin(request: Login.Request) {
+        if checkIfUserAndPasswordValidate(request: request) {
+            
+            worker = LoginWorker()
+            worker?.doLogin(request: request) { [weak self] result in
+                guard let this = self else { return }
+                
+                switch result {
+                case .failure(let error):
+                    this.presenter?.presentError(errorMessage: "Error no servidor \(error.localizedDescription)")
+                case .success(let response):
+                    this.presenter?.presentSomething(response: response)
+                }
             }
         }
     }
-  }
     
     func checkIfUserAndPasswordValidate(request: Login.Request) -> Bool {
-        if (request.user.isValidEmail || request.user.isCPF) && request.password.isValidPassword {
-            return true
-        } else {
-            let errorLogin = Login.ErrorLogin(code: nil, message: "Usuário ou senha inválidos")
-            let response = Login.Response(error: errorLogin, userAccount: nil)
-            presenter?.presentSomething(response: response)
-            
+        if !request.user.isValidEmail && !request.user.isCPF {
+            presenter?.presentError(errorMessage: "Email ou cpf inválidos")
             return false
+            
+        } else if !request.password.isValidPassword {
+            presenter?.presentError(errorMessage: "A senha precisa ter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico e mais de 4 caracteres.")
+            return false
+            
+        } else {
+            return true
         }
-        
     }
 }
