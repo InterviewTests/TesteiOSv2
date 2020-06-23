@@ -14,9 +14,29 @@ import UIKit
 
 class LoginWorker {
     
-    func doLogin(request: Login.Request, completion: @escaping (Result<Login.Response, Error>) -> () ) {
+    private var apiRequest = ApiRequest()
+    
+    func doLogin(request: Login.Request, completion: @escaping (ApiResult<Login.Response>) -> Void ) {
         
-        LoginNetworking.shared.doLogin(userLogin: request, completion: completion)
-        
+        apiRequest.doLogin(userLogin: request) { result in
+            switch result {
+                case .success(let data):
+                    do {
+                        let loginResponse = try JSONDecoder().decode(Login.Response.self, from: data)
+                        
+                        if let userAccount = loginResponse.userAccount {
+                            print(userAccount.name ?? "")
+                        } else if let error = loginResponse.error {
+                            print(error)
+                        }
+                        
+                    } catch {
+                        completion(.failure(.couldNotParseObject))
+                    }
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
     }
 }
