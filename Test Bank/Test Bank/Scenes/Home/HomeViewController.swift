@@ -72,6 +72,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     setupTableView()
     registerCell()
     doSomething()
+    setupActivityIndicator()
   }
   
   // MARK: Do something
@@ -88,6 +89,14 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     @IBAction func doLogout(_ sender: UIButton) {
         router?.goBack(source: self)
     }
+    
+    private func setupActivityIndicator() {
+       if #available(iOS 13.0, *) {
+           activityIndicator.style = .large
+       } else {
+           activityIndicator.style = .whiteLarge
+       }
+   }
     
     private func setupTableView() {
         tablewView.dataSource = self

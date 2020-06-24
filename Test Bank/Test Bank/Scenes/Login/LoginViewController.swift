@@ -72,6 +72,7 @@ class LoginViewController: UIViewController {
     setupUserTextField()
     setupPasswordTextField()
     setupErrorLabel()
+    setupActivityIndicator()
   }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -85,21 +86,29 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var activitiIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Do something
     
-    func setupButton() {
+    private func setupActivityIndicator() {
+        if #available(iOS 13.0, *) {
+            activityIndicator.style = .large
+        } else {
+            activityIndicator.style = .whiteLarge
+        }
+    }
+    
+    private func setupButton() {
         loginButton.setRadius()
         loginButton.setShadow()
     }
     
-    func setupUserTextField() {
+    private func setupUserTextField() {
         userTextField.layer.borderWidth = 1.0
         userTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
     }
     
-    func setupPasswordTextField() {
+    private func setupPasswordTextField() {
         passwordTextField.layer.borderWidth = 1.0
         passwordTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
         passwordTextField.isSecureTextEntry = true
@@ -119,7 +128,7 @@ class LoginViewController: UIViewController {
         
         let request = Login.Request(user: userText, password: passwordText)
         interactor?.doLogin(request: request)
-        activitiIndicator.startAnimating()
+        activityIndicator.startAnimating()
     }
     
     private func cleanTextField() {
@@ -129,14 +138,14 @@ class LoginViewController: UIViewController {
     
     func showHomeScene() {
         performSegue(withIdentifier: segueIdentifier, sender: self)
-        activitiIndicator.stopAnimating()
+        activityIndicator.stopAnimating()
     }
 }
 
 extension LoginViewController: LoginDisplayLogic {
     func showErrorLabel(viewModel: Login.ViewModel) {
         DispatchQueue.main.async {
-            self.activitiIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
             self.errorLabel.isHidden = false
             self.errorLabel.text = viewModel.errorMesage
         }
