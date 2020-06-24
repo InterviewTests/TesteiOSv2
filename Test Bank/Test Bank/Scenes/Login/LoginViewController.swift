@@ -18,8 +18,9 @@ protocol LoginDisplayLogic: class {
 }
 
 class LoginViewController: UIViewController {
-  var interactor: LoginBusinessLogic?
-  var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    var interactor: LoginBusinessLogic?
+    var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    private let segueIdentifier = "ShowHome"
 
   // MARK: Object lifecycle
   
@@ -53,8 +54,7 @@ class LoginViewController: UIViewController {
   
   // MARK: Routing
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let scene = segue.identifier {
       let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
       if let router = router, router.responds(to: selector) {
@@ -115,6 +115,10 @@ class LoginViewController: UIViewController {
         interactor?.doLogin(request: request)
         
     }
+    
+    func showHomeScene() {
+        performSegue(withIdentifier: segueIdentifier, sender: self)
+    }
 }
 
 extension LoginViewController: LoginDisplayLogic {
@@ -128,6 +132,7 @@ extension LoginViewController: LoginDisplayLogic {
     func hideErrorLabel() {
         DispatchQueue.main.async {
             self.errorLabel.isHidden = true
+            self.showHomeScene()
         }
     }
 }

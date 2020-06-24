@@ -27,8 +27,8 @@ class LoginPresenter: LoginPresentationLogic {
     
     func presentSomething(response: Login.Response) {
 
-        if let error = response.error {
-            let viewModel = Login.ViewModel(errorMesage: error.message ?? "")
+        if let errorMessage = response.error?.message {
+            let viewModel = Login.ViewModel(errorMesage: errorMessage)
             viewController?.showErrorLabel(viewModel: viewModel)
         } else {
             viewController?.hideErrorLabel()

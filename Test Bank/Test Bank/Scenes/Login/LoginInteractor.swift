@@ -12,21 +12,18 @@
 
 import UIKit
 
-protocol LoginBusinessLogic
-{
+protocol LoginBusinessLogic {
   func doLogin(request: Login.Request)
 }
 
-protocol LoginDataStore
-{
-  //var name: String { get set }
+protocol LoginDataStore {
+    var account: Login.UserAccount? { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
+class LoginInteractor: LoginBusinessLogic, LoginDataStore {
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
+    var account: Login.UserAccount?
   
   // MARK: Do something
   
@@ -38,10 +35,12 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
                 guard let this = self else { return }
                 
                 switch result {
-                case .failure(let error):
-                    this.presenter?.presentError(errorMessage: "Error no servidor \(error.localizedDescription)")
-                case .success(let response):
-                    this.presenter?.presentSomething(response: response)
+                    case .failure(let error):
+                        this.presenter?.presentError(errorMessage: "Error no servidor \(error.localizedDescription)")
+                    
+                    case .success(let response):
+                        this.account = response.userAccount
+                        this.presenter?.presentSomething(response: response)
                 }
             }
         }

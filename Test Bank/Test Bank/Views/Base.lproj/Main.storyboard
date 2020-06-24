@@ -64,7 +64,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0dn-ZR-uzh" secondAttribute="bottom" constant="33" id="0Sx-nQ-4kY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CqD-0Q-xpa" secondAttribute="trailing" constant="64" id="6Ex-3q-dCN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CqD-0Q-xpa" secondAttribute="trailing" priority="999" constant="64" id="6Ex-3q-dCN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0dn-ZR-uzh" secondAttribute="trailing" constant="85" id="I1i-GI-UVz"/>
                             <constraint firstItem="0dn-ZR-uzh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="85" id="JFb-EF-1ve"/>
                             <constraint firstItem="hka-r9-VQO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="MDZ-dJ-jka"/>
@@ -83,16 +83,17 @@
                         <outlet property="loginButton" destination="0dn-ZR-uzh" id="3ZE-KF-cxQ"/>
                         <outlet property="passwordTextField" destination="T0Q-lk-hbo" id="HcD-bd-WeJ"/>
                         <outlet property="userTextField" destination="4Qi-xt-LN6" id="l3G-du-Yn4"/>
+                        <segue destination="Z6E-wN-JbS" kind="presentation" identifier="ShowHome" modalPresentationStyle="fullScreen" id="cLq-JK-Uey"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="133" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="yJb-LG-FfK">
             <objects>
-                <viewController id="Z6E-wN-JbS" sceneMemberID="viewController">
+                <viewController id="Z6E-wN-JbS" customClass="HomeViewController" customModule="Test_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y3J-u3-UPv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,6 +138,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ou-K7-LWV">
                                         <rect key="frame" x="374" y="66" width="27" height="27"/>
                                         <state key="normal" image="ic_logout"/>
+                                        <connections>
+                                            <action selector="doLogout:" destination="Z6E-wN-JbS" eventType="touchUpInside" id="unb-Vb-Eve"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jose da Silva Teste" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuS-lB-zly">
                                         <rect key="frame" x="18" y="66" width="214.5" height="29.5"/>
@@ -185,6 +189,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aHf-2i-Tga"/>
                     </view>
+                    <navigationItem key="navigationItem" id="pcB-ln-8Kx"/>
+                    <connections>
+                        <outlet property="accountNumberLabel" destination="wRl-Xx-vt1" id="Kfv-Tp-DeG"/>
+                        <outlet property="balanceLabel" destination="PV0-64-1GA" id="lQC-DE-fQZ"/>
+                        <outlet property="nameLabel" destination="EuS-lB-zly" id="gcs-cb-65a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAx-AH-mv6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
