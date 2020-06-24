@@ -27,6 +27,7 @@ enum Home {
         var bankAccount: String
         var agency: String
         var balance: Double
+        var statmentList: StatementList?
     }
     
     struct StatementList: Decodable {

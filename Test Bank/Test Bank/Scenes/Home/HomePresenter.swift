@@ -13,8 +13,9 @@
 import UIKit
 
 protocol HomePresentationLogic {
-    func presentStatements(response: Home.Response)
     func presentAccount(response: Home.Response)
+    func presentStatements(list: Home.StatementList)
+    func presentErrorGetStatements(errorMessage: String)
 }
 
 class HomePresenter: HomePresentationLogic
@@ -22,16 +23,6 @@ class HomePresenter: HomePresentationLogic
   weak var viewController: HomeDisplayLogic?
   
   // MARK: Do something
-  
-    func presentStatements(response: Home.Response) {
-        if let userId = response.account?.userId {
-            let worker = HomeWorker()
-            worker.getListStatements(userId: userId)
-        } else {
-            print("userId not found!")
-        }
-        
-    }
     
     func presentAccount(response: Home.Response) {
         guard let accout = response.account else { return }
@@ -42,5 +33,13 @@ class HomePresenter: HomePresentationLogic
             balance: accout.balance ?? 0.0
         )
         viewController?.displayAccount(viewModel: viewModel)
+    }
+    
+    func presentStatements(list: Home.StatementList) {
+        viewController?.displayStatements(list: list.statementList)
+    }
+    
+    func presentErrorGetStatements(errorMessage: String) {
+        print(errorMessage)
     }
 }

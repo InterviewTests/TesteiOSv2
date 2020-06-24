@@ -34,15 +34,20 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore {
     }
     
     func getStatements() {
-        let response = Home.Response(account: account)
-        presenter?.presentStatements(response: response)
+        let worker = HomeWorker()
+        if let userId = account?.userId {
+            worker.getListStatements(userId: userId) { [weak self] result in
+                guard let this = self else { return }
+                switch result {
+                case .success(let list):
+                    this.presenter?.presentStatements(list: list)
+                case .failure(let error):
+                    this.presenter?.presentErrorGetStatements(errorMessage: error.localizedDescription)
+                }
+            }
+        } else {
+            presenter?.presentErrorGetStatements(errorMessage: "userId not found!")
+        }
+        
     }
-    
-//    func doSomething(request: Home.Request) {
-//        worker = HomeWorker()
-//        worker?.doSomeWork()
-//
-//        let response = Home.Response()
-//        presenter?.presentSomething(response: response)
-//    }
 }

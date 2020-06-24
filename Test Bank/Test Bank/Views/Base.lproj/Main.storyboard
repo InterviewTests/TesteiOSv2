@@ -177,14 +177,14 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1WX-14-jqj">
                                 <rect key="frame" x="0.0" y="310.5" width="414" height="551.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5Bj-Fc-Ddb">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                                 <color key="color" red="0.23137254900000001" green="0.28235294119999998" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1WX-14-jqj" firstAttribute="trailing" secondItem="aHf-2i-Tga" secondAttribute="trailing" id="0w6-oM-0w7"/>
                             <constraint firstItem="hlH-ny-ZDc" firstAttribute="top" secondItem="Y3J-u3-UPv" secondAttribute="top" id="19y-z5-E5F"/>
@@ -208,6 +208,7 @@
                         <outlet property="activityIndicator" destination="5Bj-Fc-Ddb" id="DAu-OH-2Mz"/>
                         <outlet property="balanceLabel" destination="PV0-64-1GA" id="lQC-DE-fQZ"/>
                         <outlet property="nameLabel" destination="EuS-lB-zly" id="gcs-cb-65a"/>
+                        <outlet property="tablewView" destination="1WX-14-jqj" id="KD5-u2-Vtv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAx-AH-mv6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

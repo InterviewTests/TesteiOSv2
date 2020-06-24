@@ -13,8 +13,8 @@
 import UIKit
 
 protocol HomeDisplayLogic: class {
-    func displaySomething(viewModel: Home.ViewModel)
     func displayAccount(viewModel: Home.ViewModel)
+    func displayStatements(list: [Home.Statement])
 }
 
 class HomeViewController: UIViewController, HomeDisplayLogic
@@ -69,6 +69,8 @@ class HomeViewController: UIViewController, HomeDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    setupTableView()
+    registerCell()
     doSomething()
   }
   
@@ -78,20 +80,29 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     @IBOutlet weak var accountNumberLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var tablewView: UITableView!
     
-  
+    private let statementCell = "StatementCell"
+    private var statementList = [Home.Statement]()
+    
     @IBAction func doLogout(_ sender: UIButton) {
         router?.goBack(source: self)
     }
     
+    private func setupTableView() {
+        tablewView.dataSource = self
+        tablewView.delegate = self
+    }
+    
+    private func registerCell() {
+        tablewView.register(UINib(nibName: statementCell, bundle: nil), forCellReuseIdentifier: statementCell)
+        tablewView.rowHeight = UITableView.automaticDimension
+        tablewView.separatorColor = .clear
+    }
     
     func doSomething() {
         interactor?.getStatements()
         interactor?.showAccount()
-    }
-
-    func displaySomething(viewModel: Home.ViewModel) {
-        
     }
     
     func displayAccount(viewModel: Home.ViewModel) {
@@ -99,4 +110,29 @@ class HomeViewController: UIViewController, HomeDisplayLogic
         accountNumberLabel.text = "\(viewModel.agency) / \(viewModel.bankAccount)"
         balanceLabel.text = String(viewModel.balance)
     }
+    
+    func displayStatements(list: [Home.Statement]) {
+        statementList = list
+        DispatchQueue.main.async {
+            self.tablewView.reloadData()
+        }
+    }
+}
+extension HomeViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statementList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: statementCell, for: indexPath) as? StatementCell else { return UITableViewCell() }
+        let statment = statementList[indexPath.row]
+        cell.selectionStyle = .none
+        cell.updateUI(statement: statment)
+        return cell
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    
 }
