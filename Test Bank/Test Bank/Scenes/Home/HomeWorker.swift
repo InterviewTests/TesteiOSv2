@@ -12,9 +12,22 @@
 
 import UIKit
 
-class HomeWorker
-{
-  func doSomeWork()
-  {
-  }
+class HomeWorker {
+    
+    func getListStatements(userId: Int, completion: @escaping (ApiResult<Home.StatementList>) -> Void) {
+        
+        ApiRequest.shared.getStatements(userId: userId) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(Home.StatementList.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    completion(.failure(.couldNotParseObject))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

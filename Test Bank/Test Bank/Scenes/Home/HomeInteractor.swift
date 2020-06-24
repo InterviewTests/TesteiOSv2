@@ -13,8 +13,8 @@
 import UIKit
 
 protocol HomeBusinessLogic {
-    func doSomething(request: Home.Request)
     func showAccount()
+    func getStatements() 
 }
 
 protocol HomeDataStore {
@@ -33,11 +33,16 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore {
         presenter?.presentAccount(response: response)
     }
     
-    func doSomething(request: Home.Request) {
-        worker = HomeWorker()
-        worker?.doSomeWork()
-
-        let response = Home.Response()
-        presenter?.presentSomething(response: response)
+    func getStatements() {
+        let response = Home.Response(account: account)
+        presenter?.presentStatements(response: response)
     }
+    
+//    func doSomething(request: Home.Request) {
+//        worker = HomeWorker()
+//        worker?.doSomeWork()
+//
+//        let response = Home.Response()
+//        presenter?.presentSomething(response: response)
+//    }
 }

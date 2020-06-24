@@ -14,11 +14,9 @@ import UIKit
 
 class LoginWorker {
     
-    private var apiRequest = ApiRequest()
-    
     func doLogin(request: Login.Request, completion: @escaping (ApiResult<Login.Response>) -> Void ) {
         
-        apiRequest.doLogin(userLogin: request) { result in
+        ApiRequest.shared.doLogin(userLogin: request) { result in
             switch result {
                 case .success(let data):
                     do {

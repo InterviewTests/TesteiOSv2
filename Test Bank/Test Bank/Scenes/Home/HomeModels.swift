@@ -29,7 +29,11 @@ enum Home {
         var balance: Double
     }
     
-    struct statementList: Decodable {
+    struct StatementList: Decodable {
+        var statementList: [Statement]
+    }
+    
+    struct Statement: Decodable {
         var title: String
         var desc: String
         var date: String

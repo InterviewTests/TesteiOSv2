@@ -13,7 +13,7 @@
 import UIKit
 
 protocol HomePresentationLogic {
-    func presentSomething(response: Home.Response)
+    func presentStatements(response: Home.Response)
     func presentAccount(response: Home.Response)
 }
 
@@ -23,9 +23,14 @@ class HomePresenter: HomePresentationLogic
   
   // MARK: Do something
   
-    func presentSomething(response: Home.Response) {
-//        let viewModel = Home.ViewModel()
-//        viewController?.displaySomething(viewModel: viewModel)
+    func presentStatements(response: Home.Response) {
+        if let userId = response.account?.userId {
+            let worker = HomeWorker()
+            worker.getListStatements(userId: userId)
+        } else {
+            print("userId not found!")
+        }
+        
     }
     
     func presentAccount(response: Home.Response) {

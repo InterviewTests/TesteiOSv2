@@ -86,8 +86,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     
     
     func doSomething() {
-//        let request = Home.Request()
-//        interactor?.doSomething(request: request)
+        interactor?.getStatements()
         interactor?.showAccount()
     }
 
