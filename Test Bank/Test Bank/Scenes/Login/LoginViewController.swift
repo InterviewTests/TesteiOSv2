@@ -85,6 +85,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var activitiIndicator: UIActivityIndicatorView!
     
     // MARK: Do something
     
@@ -118,6 +119,7 @@ class LoginViewController: UIViewController {
         
         let request = Login.Request(user: userText, password: passwordText)
         interactor?.doLogin(request: request)
+        activitiIndicator.startAnimating()
     }
     
     private func cleanTextField() {
@@ -127,12 +129,14 @@ class LoginViewController: UIViewController {
     
     func showHomeScene() {
         performSegue(withIdentifier: segueIdentifier, sender: self)
+        activitiIndicator.stopAnimating()
     }
 }
 
 extension LoginViewController: LoginDisplayLogic {
     func showErrorLabel(viewModel: Login.ViewModel) {
         DispatchQueue.main.async {
+            self.activitiIndicator.stopAnimating()
             self.errorLabel.isHidden = false
             self.errorLabel.text = viewModel.errorMesage
         }

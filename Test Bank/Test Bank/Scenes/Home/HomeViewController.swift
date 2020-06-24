@@ -77,6 +77,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var accountNumberLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
   
     @IBAction func doLogout(_ sender: UIButton) {
