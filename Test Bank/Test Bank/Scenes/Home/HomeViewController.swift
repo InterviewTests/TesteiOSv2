@@ -80,6 +80,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     
   
     @IBAction func doLogout(_ sender: UIButton) {
+        router?.goBack(source: self)
     }
     
     

@@ -12,9 +12,8 @@
 
 import UIKit
 
-@objc protocol HomeRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol HomeRoutingLogic {
+    func goBack(source: HomeViewController)
 }
 
 protocol HomeDataPassing
@@ -50,6 +49,10 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing
   //{
   //  source.show(destination, sender: nil)
   //}
+    
+    func goBack(source: HomeViewController) {
+        source.dismiss(animated: true)
+    }
   
   // MARK: Passing data
   

@@ -73,6 +73,11 @@ class LoginViewController: UIViewController {
     setupPasswordTextField()
     setupErrorLabel()
   }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cleanTextField()
+    }
   
   // MARK: IBOutlet
     
@@ -113,7 +118,11 @@ class LoginViewController: UIViewController {
         
         let request = Login.Request(user: userText, password: passwordText)
         interactor?.doLogin(request: request)
-        
+    }
+    
+    private func cleanTextField() {
+        userTextField.text = ""
+        passwordTextField.text = ""
     }
     
     func showHomeScene() {
