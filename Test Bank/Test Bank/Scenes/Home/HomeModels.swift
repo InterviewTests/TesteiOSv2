@@ -27,11 +27,12 @@ enum Home {
         var bankAccount: String
         var agency: String
         var balance: Double
-        var statmentList: StatementList?
+        var statmentList: [Statement]?
     }
     
-    struct StatementList: Decodable {
+    struct StatementResponse: Decodable {
         var statementList: [Statement]
+        var error: ErrorHome
     }
     
     struct Statement: Decodable {
@@ -39,5 +40,10 @@ enum Home {
         var desc: String
         var date: String
         var value: Double
+    }
+    
+    struct ErrorHome: Decodable {
+        var code: Int?
+        var message: String?
     }
 }

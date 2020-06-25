@@ -22,7 +22,7 @@ protocol LoginDataStore {
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
-    var worker: LoginWorker?
+    var worker: LoginWorker? = LoginWorker()
     var account: Login.UserAccount?
   
   // MARK: Do something
@@ -30,7 +30,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     func doLogin(request: Login.Request) {
         if checkIfUserAndPasswordValidate(request: request) {
             
-            worker = LoginWorker()
             worker?.doLogin(request: request) { [weak self] result in
                 guard let this = self else { return }
                 

@@ -24,7 +24,7 @@ protocol HomeDataStore {
 class HomeInteractor: HomeBusinessLogic, HomeDataStore {
    
   var presenter: HomePresentationLogic?
-  var worker: HomeWorker?
+  var worker: HomeWorker? = HomeWorker()
   var account: Login.UserAccount?
   
   // MARK: Do something
@@ -34,13 +34,17 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore {
     }
     
     func getStatements() {
-        let worker = HomeWorker()
         if let userId = account?.userId {
-            worker.getListStatements(userId: userId) { [weak self] result in
+            worker?.getListStatements(userId: userId) { [weak self] result in
                 guard let this = self else { return }
                 switch result {
-                case .success(let list):
-                    this.presenter?.presentStatements(list: list)
+                case .success(let resultStatement):
+                    if let errorMessage = resultStatement.error.message {
+                        this.presenter?.presentErrorGetStatements(errorMessage: errorMessage)
+                    } else {
+                        this.presenter?.presentStatements(list: resultStatement.statementList)
+                    }
+                    
                 case .failure(let error):
                     this.presenter?.presentErrorGetStatements(errorMessage: error.localizedDescription)
                 }

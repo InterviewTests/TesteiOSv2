@@ -14,7 +14,7 @@ import UIKit
 
 protocol HomePresentationLogic {
     func presentAccount(response: Home.Response)
-    func presentStatements(list: Home.StatementList)
+    func presentStatements(list: [Home.Statement])
     func presentErrorGetStatements(errorMessage: String)
 }
 
@@ -35,11 +35,12 @@ class HomePresenter: HomePresentationLogic
         viewController?.displayAccount(viewModel: viewModel)
     }
     
-    func presentStatements(list: Home.StatementList) {
-        viewController?.displayStatements(list: list.statementList)
+    func presentStatements(list: [Home.Statement]) {
+        viewController?.displayStatements(list: list)
     }
     
     func presentErrorGetStatements(errorMessage: String) {
         print(errorMessage)
+        viewController?.displayErrorGetStatements(errorMessage: errorMessage)
     }
 }

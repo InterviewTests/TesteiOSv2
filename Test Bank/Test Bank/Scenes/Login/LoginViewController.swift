@@ -65,15 +65,15 @@ class LoginViewController: UIViewController {
   
   // MARK: View lifecycle
   
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    setupButton()
-    setupUserTextField()
-    setupPasswordTextField()
-    setupErrorLabel()
-    setupActivityIndicator()
-  }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupButton()
+        setupUserTextField()
+        setupPasswordTextField()
+        setupErrorLabel()
+        setupActivityIndicator()
+        checkIfExistUser()
+    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -87,6 +87,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    private let defaults = UserDefaults.standard
+    private let keyUserDefaults = "userKey"
     
     // MARK: Do something
     
@@ -114,6 +117,11 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
     }
     
+    private func checkIfExistUser() {
+        let userText = defaults.string(forKey: keyUserDefaults)
+        userTextField.text = userText ?? ""
+    }
+    
     func setupErrorLabel() {
         errorLabel.isHidden = true
     }
@@ -132,17 +140,23 @@ class LoginViewController: UIViewController {
     }
     
     private func cleanTextField() {
-        userTextField.text = ""
         passwordTextField.text = ""
     }
     
     func showHomeScene() {
         performSegue(withIdentifier: segueIdentifier, sender: self)
         activityIndicator.stopAnimating()
+        saveUser()
+    }
+    
+    private func saveUser() {
+        let userText = userTextField.text ?? ""
+        defaults.set(userText, forKey: keyUserDefaults)
     }
 }
 
 extension LoginViewController: LoginDisplayLogic {
+    
     func showErrorLabel(viewModel: Login.ViewModel) {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()

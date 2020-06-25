@@ -14,13 +14,13 @@ import UIKit
 
 class HomeWorker {
     
-    func getListStatements(userId: Int, completion: @escaping (ApiResult<Home.StatementList>) -> Void) {
+    func getListStatements(userId: Int, completion: @escaping (ApiResult<Home.StatementResponse>) -> Void) {
         
         ApiRequest.shared.getStatements(userId: userId) { result in
             switch result {
             case .success(let data):
                 do {
-                    let response = try JSONDecoder().decode(Home.StatementList.self, from: data)
+                    let response = try JSONDecoder().decode(Home.StatementResponse.self, from: data)
                     completion(.success(response))
                 } catch {
                     completion(.failure(.couldNotParseObject))

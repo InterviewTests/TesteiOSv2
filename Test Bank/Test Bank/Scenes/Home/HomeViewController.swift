@@ -15,6 +15,7 @@ import UIKit
 protocol HomeDisplayLogic: class {
     func displayAccount(viewModel: Home.ViewModel)
     func displayStatements(list: [Home.Statement])
+    func displayErrorGetStatements(errorMessage: String)
 }
 
 class HomeViewController: UIViewController, HomeDisplayLogic
@@ -75,7 +76,8 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     setupActivityIndicator()
   }
   
-  // MARK: Do something
+    // MARK: IBOutlet
+  
   
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var accountNumberLabel: UILabel!
@@ -85,6 +87,13 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     
     private let statementCell = "StatementCell"
     private var statementList = [Home.Statement]()
+    private var errorLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.textAlignment = .center
+        return label
+    }()
+    // MARK: Do something
     
     @IBAction func doLogout(_ sender: UIButton) {
         router?.goBack(source: self)
@@ -110,8 +119,9 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     }
     
     func doSomething() {
-        interactor?.getStatements()
         interactor?.showAccount()
+        interactor?.getStatements()
+        activityIndicator.startAnimating()
     }
     
     func displayAccount(viewModel: Home.ViewModel) {
@@ -123,11 +133,21 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     func displayStatements(list: [Home.Statement]) {
         statementList = list
         DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.tablewView.backgroundView = nil
             self.tablewView.reloadData()
         }
     }
+    
+    func displayErrorGetStatements(errorMessage: String) {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.errorLabel.text = errorMessage
+            self.tablewView.backgroundView = self.errorLabel
+        }
+    }
 }
-extension HomeViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return statementList.count
@@ -140,8 +160,4 @@ extension HomeViewController: UITableViewDataSource {
         cell.updateUI(statement: statment)
         return cell
     }
-}
-
-extension HomeViewController: UITableViewDelegate {
-    
 }

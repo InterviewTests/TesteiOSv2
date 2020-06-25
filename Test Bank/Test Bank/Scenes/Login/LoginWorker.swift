@@ -21,20 +21,13 @@ class LoginWorker {
                 case .success(let data):
                     do {
                         let loginResponse = try JSONDecoder().decode(Login.Response.self, from: data)
-                        if let userAccount = loginResponse.userAccount {
-                            print(userAccount.name ?? "")
-                            
-                        } else if let error = loginResponse.error {
-                            print(error)
-                        }
-                        
                         completion(.success(loginResponse))
-                        
                     } catch {
                         completion(.failure(.couldNotParseObject))
                     }
                     
                 case .failure(let error):
+                    completion(.failure(.unknown(error.localizedDescription)))
                     print(error.localizedDescription)
             }
         }
