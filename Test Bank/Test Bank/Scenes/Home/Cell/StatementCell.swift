@@ -26,7 +26,7 @@ class StatementCell: UITableViewCell {
     func updateUI(statement: Home.Statement) {
         titleLabel.text = statement.title
         descriptionLabel.text = statement.desc
-        dateLabel.text = statement.date
+        dateLabel.text = statement.date.formatDate
         valueLabel.text = "R$ \(statement.value)"
         setupBackView()
     }

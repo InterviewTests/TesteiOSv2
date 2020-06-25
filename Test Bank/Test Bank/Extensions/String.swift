@@ -62,4 +62,9 @@ extension String {
         let passwordPred = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordPred.evaluate(with: self)
     }
+    
+    var formatDate: String {
+        let numbers = self.split(separator: "-")
+        return numbers[2] + "/" + numbers[1] + "/" + numbers[0]
+    }
 }
