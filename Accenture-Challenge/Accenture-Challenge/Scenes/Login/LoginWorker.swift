@@ -6,4 +6,13 @@
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
 
-import Foundation
+protocol LoginWorkerProtocol {
+    func fetchLogin()
+}
+
+class LoginWorker: LoginWorkerProtocol {
+    
+    func fetchLogin() {
+        
+    }
+}

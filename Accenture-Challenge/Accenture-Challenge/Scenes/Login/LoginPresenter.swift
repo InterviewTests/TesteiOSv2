@@ -6,4 +6,19 @@
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
 
-import Foundation
+protocol LoginPresentationLogic {
+    func didFetchLoginResponse()
+}
+
+class LoginPresenter: LoginPresentationLogic {
+    
+    private unowned var viewController: LoginDisplayLogic
+    
+    init(viewController: LoginDisplayLogic) {
+        self.viewController = viewController
+    }
+    
+    func didFetchLoginResponse() {
+        
+    }
+}
