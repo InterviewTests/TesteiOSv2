@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TableViewSectionProtocol {
-    init(builders: [TableViewCellBuilderProtocol])
+    init(builders: [TableViewCellBuilderProtocol], tableView: UITableView)
     func numberOfRows() -> Int
     func heightForHeader() -> CGFloat
     func headerView() -> UIView?
