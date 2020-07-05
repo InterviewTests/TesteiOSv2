@@ -8,7 +8,8 @@
 import UIKit
 
 protocol PaymentsDisplayLogic: class {
-    
+    func displayUserInfo(_ viewModel: Payments.Info.ViewModel.UserAccount)
+    func displayStatements(_ viewModel: Payments.Info.ViewModel.Payment)
 }
 
 class PaymentsViewController: UIViewController {
@@ -38,6 +39,10 @@ class PaymentsViewController: UIViewController {
     var router: PaymentsRouterProtocol?
     
     private var viewModel: Payments.Info.ViewModel.Payment?
+    
+    private var factory: PaymentsFactory?
+    
+    private var dataSource: DefaultTableViewOutput?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -79,9 +84,43 @@ extension PaymentsViewController {
     private func didTapLogOutButton() {
         
     }
+
+    private func setupDataSource() {
+        guard let sections = factory?.buildSections() else { return }
+        dataSource = DefaultTableViewOutput(sections: sections)
+    }
+    
+    private func setupTableView() {
+        guard let dataSource = dataSource else { return }
+        tableView.assignProtocols(to: dataSource)
+    }
+    
+    private func setupFactory() {
+        guard let viewModel = viewModel else { return }
+        factory = PaymentsFactory(viewModel: viewModel,
+                                  tableView: tableView)
+    }
+    
+    private func refreshList() {
+        setupFactory()
+        setupDataSource()
+        setupTableView()
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension PaymentsViewController: PaymentsDisplayLogic {
     
+    func displayUserInfo(_ viewModel: Payments.Info.ViewModel.UserAccount) {
+        headerView.setup(viewModel: viewModel)
+    }
+    
+    func displayStatements(_ viewModel: Payments.Info.ViewModel.Payment) {
+        self.viewModel = viewModel
+        refreshList()
+    }
 }
 
