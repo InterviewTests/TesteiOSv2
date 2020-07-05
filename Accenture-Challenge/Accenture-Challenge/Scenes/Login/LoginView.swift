@@ -9,29 +9,75 @@
 import UIKit
 import SnapKit
 
+enum LoginViewState {
+    case normal
+    case loading
+    case error(String)
+}
+
 class LoginView: UIView {
     
     private unowned var userTextField: UITextField
     private unowned var passwordTextField: UITextField
     private unowned var loginButton: UIButton
+    private unowned var errorLbl: UILabel
+    private unowned var activityView: UIActivityIndicatorView
     
     private lazy var logoImageView: UIImageView = {
         return UIImageView(frame: .zero)
     }()
     
+    var state: LoginViewState = .normal {
+        didSet {
+            switch state {
+            case .normal:
+                handleNormal()
+                break
+            case .error(let error):
+                handleError(error)
+                break
+            case .loading:
+                handleLoading()
+            }
+        }
+    }
+    
     init(frame: CGRect,
          userTextField: UITextField,
          passwordTextField: UITextField,
-         loginButton: UIButton) {
+         loginButton: UIButton,
+         errorLbl: UILabel,
+         activityView: UIActivityIndicatorView) {
         self.userTextField = userTextField
         self.passwordTextField = passwordTextField
         self.loginButton = loginButton
+        self.errorLbl = errorLbl
+        self.activityView = activityView
         super.init(frame: frame)
         applyViewCode()
     }
     
     required init?(coder: NSCoder) {
         fatalError("Could not load view")
+    }
+}
+
+extension LoginView {
+    
+    private func handleLoading() {
+        activityView.isHidden = false
+        errorLbl.isHidden = true
+    }
+    
+    private func handleError(_ errorMessage: String) {
+        activityView.isHidden = true
+        errorLbl.isHidden = false
+        errorLbl.text = errorMessage
+    }
+    
+    private func handleNormal() {
+        activityView.isHidden = true
+        errorLbl.isHidden = true
     }
 }
 
@@ -42,6 +88,8 @@ extension LoginView: ViewCodeProtocol {
         addSubview(userTextField)
         addSubview(passwordTextField)
         addSubview(loginButton)
+        addSubview(errorLbl)
+        addSubview(activityView)
     }
     
     func setupConstraints() {
@@ -65,10 +113,20 @@ extension LoginView: ViewCodeProtocol {
             make.left.right.equalToSuperview().inset(86)
             make.height.equalTo(63)
         }
+        activityView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        errorLbl.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(5)
+            make.left.right.equalTo(userTextField)
+            make.height.equalTo(60)
+        }
     }
     
     func configureViews() {
         backgroundColor = Login.Constants.Colors.backgroundColor
+        errorLbl.isHidden = true
+        activityView.isHidden = true
         
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.image = Login.Constants.Images.logoImageView
@@ -88,5 +146,12 @@ extension LoginView: ViewCodeProtocol {
         loginButton.titleLabel?.attributedText = NSAttributedString(string: Login.Constants.Texts.loginButton, attributes: [NSAttributedString.Key.font: Login.Constants.Fonts.loginButtonFont, NSAttributedString.Key.foregroundColor: Login.Constants.Colors.loginButtonTextColor])
         loginButton.backgroundColor = Login.Constants.Colors.loginButtonBackgroundColor
         loginButton.layer.cornerRadius = 4
+        
+        errorLbl.textColor = .red
+        errorLbl.textAlignment = .center
+        
+        activityView.backgroundColor = Login.Constants.Colors.loginButtonTextColor
+        activityView.color = .white
+        activityView.startAnimating()
     }
 }

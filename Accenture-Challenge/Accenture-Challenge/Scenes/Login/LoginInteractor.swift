@@ -31,6 +31,24 @@ class LoginInteractor: LoginDataStore {
 extension LoginInteractor: LoginBusinessLogic {
     
     func fetchLogin(request: Login.Info.LoginRequest) {
- 
+        guard request.user.isValidEmail() else {
+            presenter.invalidEmailRequest()
+            return
+        }
+        guard request.password.hasUppercaseLetter(),
+            request.password.hasSpecialCharacters(),
+            request.password.hasNumber() else {
+            presenter.invalidpasswordRequest()
+            return
+        }
+        worker.fetchLogin(request: request) { response in
+            switch response {
+            case .success(let user): self.loginResponse = user
+                break
+            case .error(let error): self.presenter.didFetchError(error.localizedDescription)
+                break
+            case .genericError: self.presenter.didFetchError("Generic error")
+            }
+        }
     }
 }

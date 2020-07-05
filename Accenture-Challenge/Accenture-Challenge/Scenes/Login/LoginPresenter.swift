@@ -8,6 +8,9 @@
 
 protocol LoginPresentationLogic {
     func didFetchLoginResponse()
+    func invalidEmailRequest()
+    func invalidpasswordRequest()
+    func didFetchError(_ errorMessage: String)
 }
 
 class LoginPresenter: LoginPresentationLogic {
@@ -20,5 +23,17 @@ class LoginPresenter: LoginPresentationLogic {
     
     func didFetchLoginResponse() {
         viewController.routeToPayments()
+    }
+    
+    func invalidEmailRequest() {
+        
+    }
+    
+    func invalidpasswordRequest() {
+        
+    }
+    
+    func didFetchError(_ errorMessage: String) {
+        
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 protocol LoginDisplayLogic: class {
     func routeToPayments()
+    func displayLoginError(message: String)
+    func displayErrorAlert(message: String)
 }
 
 class LoginViewController: UIViewController {
@@ -28,11 +30,21 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    private lazy var errorLbl: UILabel = {
+        return UILabel(frame: .zero)
+    }()
+    
+    private lazy var activityView: UIActivityIndicatorView = {
+        return UIActivityIndicatorView(frame: .zero)
+    }()
+    
     private lazy var loginView: LoginView = {
         return LoginView(frame: .zero,
                          userTextField: userTextField,
                          passwordTextField: passwordTextField,
-                         loginButton: loginButton)
+                         loginButton: loginButton,
+                         errorLbl: errorLbl,
+                         activityView: activityView)
     }()
     
     private var interactor: LoginBusinessLogic?
@@ -80,6 +92,14 @@ extension LoginViewController {
 extension LoginViewController: LoginDisplayLogic {
     
     func routeToPayments() {
+        
+    }
+    
+    func displayLoginError(message: String) {
+        
+    }
+    
+    func displayErrorAlert(message: String) {
         
     }
 }

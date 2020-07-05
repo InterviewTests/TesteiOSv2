@@ -35,6 +35,11 @@ struct Login {
             static let passwordTextFieldFont = UIFont(name: "HelveticaNeue", size: 15)
             static let loginButtonFont = UIFont(name: "HelveticaNeue", size: 16)
         }
+        
+        struct Errors {
+            static let invalidEmail = "Email inválido"
+            static let invalidpassword = "Senha inválida"
+        }
     }
     
     struct Info {
