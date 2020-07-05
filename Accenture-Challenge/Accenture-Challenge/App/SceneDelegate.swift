@@ -16,6 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let _ = (scene as? UIWindowScene) else { return }
+        LoginWorker().fetchLogin(request: Login.Info.LoginRequest(user: "test_user", password: "Test@1")){ response in
+            print(response)
+        }
     }
 }
 

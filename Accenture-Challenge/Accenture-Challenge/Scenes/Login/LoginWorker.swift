@@ -12,7 +12,7 @@ protocol LoginWorkerProtocol {
 }
 
 enum LoginResponse {
-    case success(Login.Info.LoginJSONModel)
+    case success(Login.Info.LoginResponse)
     case error(Error)
     case genericError
 }
@@ -30,9 +30,14 @@ class LoginWorker: LoginWorkerProtocol {
                                     switch response {
                                     case .sucess(let data):
                                         do {
-                                            let jsonModel = try JSONDecoder().decode(Login.Info.LoginJSONModel.self,
-                                                                                     from: data)
-                                            completion(.success(jsonModel))
+                                            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                                                if let user = json["userAccount"] as? [String : Any] {
+                                                    let userJSON = try JSONSerialization.data(withJSONObject: user, options: [])
+                                                    let jsonModel = try JSONDecoder().decode(Login.Info.LoginResponse.self,
+                                                    from: userJSON)
+                                                    completion(.success(jsonModel))
+                                                }
+                                            }
                                         } catch {
                                             completion(.genericError)
                                         }

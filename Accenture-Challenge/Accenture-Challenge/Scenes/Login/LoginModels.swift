@@ -61,5 +61,17 @@ struct Login {
             var code: Int?
             var message: String?
         }
+        
+        struct User: Decodable{
+            var userId: Int
+            var name: String
+            var bankAccount: String
+            var agency: String
+            var balance: Double
+        }
+        struct Response: Decodable
+           {
+               var result:User?
+           }
     }
 }
