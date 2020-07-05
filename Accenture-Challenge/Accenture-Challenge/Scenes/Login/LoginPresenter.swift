@@ -7,6 +7,8 @@
 //
 
 protocol LoginPresentationLogic {
+    var viewController: LoginDisplayLogic? { get set }
+    
     func didFetchLoginResponse()
     func invalidEmailRequest()
     func invalidpasswordRequest()
@@ -15,25 +17,21 @@ protocol LoginPresentationLogic {
 
 class LoginPresenter: LoginPresentationLogic {
     
-    private unowned var viewController: LoginDisplayLogic
-    
-    init(viewController: LoginDisplayLogic) {
-        self.viewController = viewController
-    }
+    weak var viewController: LoginDisplayLogic?
     
     func didFetchLoginResponse() {
-        viewController.routeToPayments()
+        viewController?.routeToPayments()
     }
     
     func invalidEmailRequest() {
-        viewController.displayLoginError(message: Login.Constants.Errors.invalidEmail)
+        viewController?.displayLoginError(message: Login.Constants.Errors.invalidEmail)
     }
     
     func invalidpasswordRequest() {
-        viewController.displayLoginError(message: Login.Constants.Errors.invalidpassword)
+        viewController?.displayLoginError(message: Login.Constants.Errors.invalidpassword)
     }
     
     func didFetchError(_ errorMessage: String) {
-        viewController.displayErrorAlert(message: errorMessage)
+        viewController?.displayErrorAlert(message: errorMessage)
     }
 }

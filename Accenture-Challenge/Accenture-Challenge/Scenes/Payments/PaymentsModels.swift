@@ -9,14 +9,29 @@ import UIKit
 
 struct Payments {
     
+    struct Received {
+        
+        struct UserAccount {
+            var userId: Int?
+            var name: String?
+            var bankAccount: String?
+            var agency: String?
+            var balance: Double?
+        }
+    }
+    
     struct Info {
+        
+        struct PaymentModel {
+            let paymentInfo: String
+            let date: String
+            let value: String
+        }
         
         struct ViewModel {
             
             struct Payment {
-                let paymentInfo: String
-                let date: String
-                let value: String
+                var model: [PaymentModel]
             }
             
             struct UserAccount {
@@ -24,6 +39,25 @@ struct Payments {
                 let accountInfo: String
                 let balance: String
             }
+        }
+    }
+    
+    struct Request {
+        
+        struct UserInfo { }
+        
+        struct Statements {
+            let userId: String
+        }
+    }
+    
+    struct Response {
+        
+        struct Statements: Decodable {
+            var title: String
+            var desc: String
+            var date: String
+            var value: Double
         }
     }
     

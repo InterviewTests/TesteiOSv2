@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
     }()
     
     private var interactor: LoginBusinessLogic?
-    private var router: LoginRouterProtocol?
+    var router: LoginRouterProtocol?
     
     init() {
         super.init(nibName: nil, bundle: nil)

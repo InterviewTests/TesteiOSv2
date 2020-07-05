@@ -9,10 +9,10 @@ import UIKit
 
 class PaymentsFactory: TableViewFactoryProtocol {
     
-    private var viewModel: [Payments.Info.ViewModel.Payment] = []
+    private var viewModel: Payments.Info.ViewModel.Payment?
     private let tableView: UITableView
     
-    init(viewModel: [Payments.Info.ViewModel.Payment],
+    init(viewModel: Payments.Info.ViewModel.Payment,
          tableView: UITableView) {
         self.viewModel = viewModel
         self.tableView = tableView
@@ -24,7 +24,8 @@ class PaymentsFactory: TableViewFactoryProtocol {
     
     private var mainSection: TableViewSectionProtocol {
         var builders: [PaymentsTableViewCellBuilder] = []
-        for payment in viewModel {
+        guard let models = viewModel?.model else { return BaseSection(builders: [], tableView: tableView)}
+        for payment in models {
             let builder = PaymentsTableViewCellBuilder(viewModel: payment)
             builders.append(builder)
         }

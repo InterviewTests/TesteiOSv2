@@ -35,7 +35,18 @@ class PaymentsViewController: UIViewController {
     }()
     
     private var interactor: PaymentsBusinessLogic?
-    private var router: PaymentsRouterProtocol?
+    var router: PaymentsRouterProtocol?
+    
+    private var viewModel: Payments.Info.ViewModel.Payment?
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +55,21 @@ class PaymentsViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view = paymentsView
+    }
+    
+    private func setup() {
+        let viewController = self
+        let interactor = PaymentsInteractor(viewController: viewController)
+        let router = PaymentsRouter()
+        router.dataStore = interactor
+        router.viewController = viewController
+        viewController.router = router
+        viewController.interactor = interactor
+    }
+    
+    private func fetch() {
+        interactor?.fetchUserInfo(Payments.Request.UserInfo())
+        interactor?.fetchStatements()
     }
 }
 

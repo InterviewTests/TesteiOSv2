@@ -21,6 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                    let loginVC = LoginViewController()
                    window.rootViewController = loginVC
                }
+        PaymentsWorker().fetchStatements(Payments.Request.Statements(userId: "2")) { response in
+            
+        }
     }
 }
 

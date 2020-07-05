@@ -7,7 +7,7 @@
 //
 
 protocol PaymentsPresentationLogic {
-    
+    func didFetchUserAccount(_ response: Payments.Info.ViewModel.UserAccount)
 }
 
 class PaymentsPresenter: PaymentsPresentationLogic {
@@ -16,5 +16,9 @@ class PaymentsPresenter: PaymentsPresentationLogic {
     
     init(viewController: PaymentsDisplayLogic) {
         self.viewController = viewController
+    }
+    
+    func didFetchUserAccount(_ response: Payments.Info.ViewModel.UserAccount) {
+        
     }
 }

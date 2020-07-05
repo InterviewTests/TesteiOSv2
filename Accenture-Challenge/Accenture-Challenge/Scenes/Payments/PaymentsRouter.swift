@@ -14,11 +14,13 @@ protocol PaymentsRoutingLogic {
 }
 
 protocol PaymentsDataTransfer {
-    
+    var dataStore: PaymentsDataStore? { get set}
 }
 
-class PaymentsRouter: PaymentsDataTransfer {
+class PaymentsRouter: NSObject, PaymentsDataTransfer {
     
+    var dataStore: PaymentsDataStore?
+    weak var viewController: UIViewController?
 }
 
 extension PaymentsRouter: PaymentsRoutingLogic {

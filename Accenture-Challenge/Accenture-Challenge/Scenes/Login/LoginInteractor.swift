@@ -21,9 +21,12 @@ class LoginInteractor: LoginDataStore {
     
     var loginResponse: Login.Info.LoginResponse?
     
-    init(viewController: LoginDisplayLogic) {
-        self.presenter = LoginPresenter(viewController: viewController)
-        self.worker = LoginWorker()
+    init(viewController: LoginDisplayLogic,
+         presenter: LoginPresentationLogic = LoginPresenter(),
+         worker: LoginWorkerProtocol = LoginWorker()) {
+        self.worker = worker
+        self.presenter = presenter
+        self.presenter.viewController = viewController
     }
 
 }
@@ -47,9 +50,11 @@ extension LoginInteractor: LoginBusinessLogic {
                 self.loginResponse = user
                 self.presenter.didFetchLoginResponse()
                 break
-            case .error(let error): self.presenter.didFetchError(error.localizedDescription)
+            case .error(let error):
+                self.presenter.didFetchError(error.localizedDescription)
                 break
-            case .genericError: self.presenter.didFetchError("Generic error")
+            case .genericError:
+                self.presenter.didFetchError("Generic error")
             }
         }
     }

@@ -29,7 +29,7 @@ class PaymentsTableViewCell: UITableViewCell {
         return UILabel(frame: .zero)
     }()
     
-    private var viewModel: Payments.Info.ViewModel.Payment?
+    private var viewModel: Payments.Info.PaymentModel?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -39,7 +39,7 @@ class PaymentsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(viewModel: Payments.Info.ViewModel.Payment) {
+    func setup(viewModel: Payments.Info.PaymentModel) {
         self.viewModel = viewModel
         applyViewCode()
     }

@@ -21,14 +21,32 @@ class LoginRouter: NSObject, LoginDataTransfer {
     
     var dataStore: LoginDataStore?
     weak var viewController: LoginViewController?
+    
+    func present(_ viewController: UIViewController) {
+        viewController.present(viewController, animated: true)
+    }
+    
+    func transferDataToPayments(source: LoginDataStore, to: inout PaymentsDataStore) {
+        guard let data = dataStore?.loginResponse else { return }
+        let userAccount = Payments.Received.UserAccount(userId: data.userId,
+                                                        name: data.name,
+                                                        bankAccount: data.bankAccount,
+                                                        agency: data.agency,
+                                                        balance: data.balance)
+        to.userAccount = userAccount
+    }
 
 }
 
 extension LoginRouter: LoginRoutingLogic {
     
     func routeToPayments() {
-        guard let dataStore = dataStore else {
+        let paymentsVC = PaymentsViewController()
+        guard let dataStore = dataStore,
+                var paymentsDataStore = paymentsVC.router?.dataStore else {
             return
         }
+        transferDataToPayments(source: dataStore, to: &paymentsDataStore)
+        present(paymentsVC)
     }
 }

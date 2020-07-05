@@ -9,9 +9,9 @@ import UIKit
 
 class PaymentsTableViewCellBuilder: TableViewCellBuilderProtocol {
     
-    let viewModel: Payments.Info.ViewModel.Payment
+    let viewModel: Payments.Info.PaymentModel
     
-    init(viewModel: Payments.Info.ViewModel.Payment) {
+    init(viewModel: Payments.Info.PaymentModel) {
         self.viewModel = viewModel
     }
     

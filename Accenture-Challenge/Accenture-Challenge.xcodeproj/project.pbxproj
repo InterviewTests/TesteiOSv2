@@ -44,6 +44,10 @@
 		3F8116A424B145F80083A3DA /* PaymentMainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8116A324B145F80083A3DA /* PaymentMainHeaderView.swift */; };
 		3F8116A624B160660083A3DA /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8116A524B160660083A3DA /* APIProvider.swift */; };
 		3F8116A824B23D340083A3DA /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8116A724B23D340083A3DA /* String+.swift */; };
+		3F8116B024B253380083A3DA /* LoginWorkerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8116AF24B253380083A3DA /* LoginWorkerMock.swift */; };
+		3F8116B224B255F90083A3DA /* LoginInteractor+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8116B124B255F90083A3DA /* LoginInteractor+Tests.swift */; };
+		3F8116B424B259150083A3DA /* LoginPresenter+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8116B324B259150083A3DA /* LoginPresenter+Tests.swift */; };
+		3F8116B624B25ADE0083A3DA /* LoginViewController+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8116B524B25ADE0083A3DA /* LoginViewController+Tests.swift */; };
 		497AC97E97FA38B8C5082DFA /* Pods_Accenture_Challenge_Accenture_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F11CEB32648AC6D2566827 /* Pods_Accenture_Challenge_Accenture_ChallengeUITests.framework */; };
 		4A1A3A3C4C3F151ECC6E0FDC /* Pods_Accenture_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8DDA5E4F87026AFD64A8FB /* Pods_Accenture_ChallengeTests.framework */; };
 		77CBC8DF32636F9DDA1C3C2F /* Pods_Accenture_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDF9D45DDCF9C8D4F60B72B /* Pods_Accenture_Challenge.framework */; };
@@ -111,6 +115,10 @@
 		3F8116A324B145F80083A3DA /* PaymentMainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMainHeaderView.swift; sourceTree = "<group>"; };
 		3F8116A524B160660083A3DA /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		3F8116A724B23D340083A3DA /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		3F8116AF24B253380083A3DA /* LoginWorkerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerMock.swift; sourceTree = "<group>"; };
+		3F8116B124B255F90083A3DA /* LoginInteractor+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginInteractor+Tests.swift"; sourceTree = "<group>"; };
+		3F8116B324B259150083A3DA /* LoginPresenter+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginPresenter+Tests.swift"; sourceTree = "<group>"; };
+		3F8116B524B25ADE0083A3DA /* LoginViewController+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Tests.swift"; sourceTree = "<group>"; };
 		4047AADFF2AFFACAB205AF58 /* Pods-Accenture-ChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Accenture-ChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-Accenture-ChallengeTests/Pods-Accenture-ChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4477130E64A9F20AA15B2EC8 /* Pods-Accenture-Challenge-Accenture-ChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Accenture-Challenge-Accenture-ChallengeUITests.debug.xcconfig"; path = "Target Support Files/Pods-Accenture-Challenge-Accenture-ChallengeUITests/Pods-Accenture-Challenge-Accenture-ChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8EDF9D45DDCF9C8D4F60B72B /* Pods_Accenture_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Accenture_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,8 +193,11 @@
 		3F81164424B104B80083A3DA /* Accenture-ChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
-				3F81164524B104B80083A3DA /* Accenture_ChallengeTests.swift */,
+				3F8116AE24B2532D0083A3DA /* Mocks */,
 				3F81164724B104B80083A3DA /* Info.plist */,
+				3F81164524B104B80083A3DA /* Accenture_ChallengeTests.swift */,
+				3F8116A924B253030083A3DA /* Common */,
+				3F8116AA24B253090083A3DA /* Scenes */,
 			);
 			path = "Accenture-ChallengeTests";
 			sourceTree = "<group>";
@@ -326,6 +337,39 @@
 				3F8116A324B145F80083A3DA /* PaymentMainHeaderView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		3F8116A924B253030083A3DA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3F8116AA24B253090083A3DA /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3F8116AB24B253120083A3DA /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3F8116AB24B253120083A3DA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3F8116B124B255F90083A3DA /* LoginInteractor+Tests.swift */,
+				3F8116B324B259150083A3DA /* LoginPresenter+Tests.swift */,
+				3F8116B524B25ADE0083A3DA /* LoginViewController+Tests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3F8116AE24B2532D0083A3DA /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				3F8116AF24B253380083A3DA /* LoginWorkerMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		95F45FCEBC5D483D9046A6F9 /* Pods */ = {
@@ -629,6 +673,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F8116B424B259150083A3DA /* LoginPresenter+Tests.swift in Sources */,
+				3F8116B224B255F90083A3DA /* LoginInteractor+Tests.swift in Sources */,
+				3F8116B024B253380083A3DA /* LoginWorkerMock.swift in Sources */,
+				3F8116B624B25ADE0083A3DA /* LoginViewController+Tests.swift in Sources */,
 				3F81164624B104B80083A3DA /* Accenture_ChallengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
