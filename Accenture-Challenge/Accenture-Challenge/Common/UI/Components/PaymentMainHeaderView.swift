@@ -18,19 +18,21 @@ class PaymentMainHeaderView: UIView {
     private lazy var balanceFixedLbl: UILabel = { return UILabel(frame: .zero) }()
     private lazy var balanceLbl: UILabel = { return UILabel(frame: .zero) }()
     
-    private var viewModel: Payments.Info.ViewModel.UserAccount
+    private var viewModel: Payments.Info.ViewModel.UserAccount?
     
     init(frame: CGRect,
-         logOutButton: UIButton,
-         viewModel: Payments.Info.ViewModel.UserAccount) {
+         logOutButton: UIButton) {
         self.logOutButton = logOutButton
-        self.viewModel = viewModel
         super.init(frame: frame)
-        applyViewCode()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setup(viewModel: Payments.Info.ViewModel.UserAccount) {
+        self.viewModel = viewModel
+        applyViewCode()
     }
 }
 
@@ -87,7 +89,7 @@ extension PaymentMainHeaderView: ViewCodeProtocol {
     func configureViews() {
         backgroundColor = UIColor(rgb: 0x3b49ee)
         
-        nameLbl.text = viewModel.name
+        nameLbl.text = viewModel?.name
         nameLbl.textColor = .white
         nameLbl.textAlignment = .left
         nameLbl.font = UIFont(name: "HelveticaNeue-Light", size: 25)
@@ -101,7 +103,7 @@ extension PaymentMainHeaderView: ViewCodeProtocol {
         accountFixedLbl.font = UIFont(name: "HelveticaNeue", size: 12)
         
         accountLbl.textAlignment = .left
-        accountLbl.text = viewModel.accountInfo
+        accountLbl.text = viewModel?.accountInfo
         accountLbl.textColor = .white
         accountLbl.font = UIFont(name: "HelveticaNeue-Light", size: 25)
         
@@ -111,7 +113,7 @@ extension PaymentMainHeaderView: ViewCodeProtocol {
         balanceFixedLbl.font = UIFont(name: "HelveticaNeue", size: 12)
         
         balanceLbl.textAlignment = .left
-        balanceLbl.text = viewModel.balance
+        balanceLbl.text = viewModel?.balance
         balanceLbl.textColor = .white
         balanceLbl.font = UIFont(name: "HelveticaNeue-Light", size: 25)
     }

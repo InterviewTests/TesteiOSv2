@@ -6,4 +6,15 @@
 //  Copyright © 2020 Pedro Alvarez. All rights reserved.
 //
 
-import Foundation
+protocol PaymentsPresentationLogic {
+    
+}
+
+class PaymentsPresenter: PaymentsPresentationLogic {
+    
+    private unowned var viewController: PaymentsDisplayLogic
+    
+    init(viewController: PaymentsDisplayLogic) {
+        self.viewController = viewController
+    }
+}
