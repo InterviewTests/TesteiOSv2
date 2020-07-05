@@ -60,6 +60,10 @@ class LoginView: UIView {
     required init?(coder: NSCoder) {
         fatalError("Could not load view")
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        endEditing(true)
+    }
 }
 
 extension LoginView {
@@ -88,8 +92,8 @@ extension LoginView: ViewCodeProtocol {
         addSubview(userTextField)
         addSubview(passwordTextField)
         addSubview(loginButton)
-        addSubview(errorLbl)
-        addSubview(activityView)
+//        addSubview(errorLbl)
+//        addSubview(activityView)
     }
     
     func setupConstraints() {
@@ -110,23 +114,24 @@ extension LoginView: ViewCodeProtocol {
         }
         loginButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(33)
-            make.left.right.equalToSuperview().inset(86)
+            make.centerX.equalToSuperview()
             make.height.equalTo(63)
+            make.width.equalTo(202)
         }
-        activityView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        errorLbl.snp.makeConstraints { make in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(5)
-            make.left.right.equalTo(userTextField)
-            make.height.equalTo(60)
-        }
+//        activityView.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
+//        errorLbl.snp.makeConstraints { make in
+//            make.top.equalTo(passwordTextField.snp.bottom).offset(5)
+//            make.left.right.equalTo(userTextField)
+//            make.height.equalTo(60)
+//        }
     }
     
     func configureViews() {
         backgroundColor = Login.Constants.Colors.backgroundColor
-        errorLbl.isHidden = true
-        activityView.isHidden = true
+//        errorLbl.isHidden = true
+//        activityView.isHidden = true
         
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.image = Login.Constants.Images.logoImageView
@@ -141,9 +146,10 @@ extension LoginView: ViewCodeProtocol {
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.borderColor = Login.Constants.Colors.textFieldLayerColor.cgColor
         passwordTextField.layer.cornerRadius = 4
+        passwordTextField.isSecureTextEntry = true
         passwordTextField.attributedPlaceholder = NSAttributedString(string: Login.Constants.Texts.passwordTextFieldPlaceHolder, attributes: [NSAttributedString.Key.font: Login.Constants.Fonts.userTextFieldFont, NSAttributedString.Key.foregroundColor: Login.Constants.Colors.textFieldPlaceHolderColor])
-        
-        loginButton.titleLabel?.attributedText = NSAttributedString(string: Login.Constants.Texts.loginButton, attributes: [NSAttributedString.Key.font: Login.Constants.Fonts.loginButtonFont, NSAttributedString.Key.foregroundColor: Login.Constants.Colors.loginButtonTextColor])
+
+        loginButton.setAttributedTitle(NSAttributedString(string: Login.Constants.Texts.loginButton, attributes: [NSAttributedString.Key.font: Login.Constants.Fonts.loginButtonFont, NSAttributedString.Key.foregroundColor: Login.Constants.Colors.loginButtonTextColor]), for: .normal)
         loginButton.backgroundColor = Login.Constants.Colors.loginButtonBackgroundColor
         loginButton.layer.cornerRadius = 4
         

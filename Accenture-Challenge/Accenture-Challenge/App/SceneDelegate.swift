@@ -14,11 +14,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
-        guard let _ = (scene as? UIWindowScene) else { return }
-        LoginWorker().fetchLogin(request: Login.Info.LoginRequest(user: "test_user", password: "Test@1")){ response in
-            print(response)
-        }
+        if let windowScene = scene as? UIWindowScene {
+                   let window = UIWindow(windowScene: windowScene)
+                   window.makeKeyAndVisible()
+                   self.window = window
+                   let loginVC = LoginViewController()
+                   window.rootViewController = loginVC
+               }
     }
 }
 

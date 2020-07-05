@@ -43,7 +43,9 @@ extension LoginInteractor: LoginBusinessLogic {
         }
         worker.fetchLogin(request: request) { response in
             switch response {
-            case .success(let user): self.loginResponse = user
+            case .success(let user):
+                self.loginResponse = user
+                self.presenter.didFetchLoginResponse()
                 break
             case .error(let error): self.presenter.didFetchError(error.localizedDescription)
                 break

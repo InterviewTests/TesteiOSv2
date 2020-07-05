@@ -26,14 +26,14 @@ class LoginPresenter: LoginPresentationLogic {
     }
     
     func invalidEmailRequest() {
-        
+        viewController.displayLoginError(message: Login.Constants.Errors.invalidEmail)
     }
     
     func invalidpasswordRequest() {
-        
+        viewController.displayLoginError(message: Login.Constants.Errors.invalidpassword)
     }
     
     func didFetchError(_ errorMessage: String) {
-        
+        viewController.displayErrorAlert(message: errorMessage)
     }
 }

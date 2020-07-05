@@ -21,7 +21,7 @@ struct Login {
             static let textFieldLayerColor = UIColor(rgb: 0xdce2ee)
             static let textFieldPlaceHolderColor = UIColor(rgb: 0xa8b4c4)
             static let loginButtonTextColor = UIColor(rgb: 0xffffff)
-            static let loginButtonBackgroundColor = UIColor(rgb: 0x38b48ee)
+            static let loginButtonBackgroundColor = UIColor(rgb: 0x3b48ee)
         }
         
         struct Texts {

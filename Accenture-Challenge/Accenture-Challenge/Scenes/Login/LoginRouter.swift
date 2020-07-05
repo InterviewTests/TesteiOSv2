@@ -27,6 +27,8 @@ class LoginRouter: NSObject, LoginDataTransfer {
 extension LoginRouter: LoginRoutingLogic {
     
     func routeToPayments() {
-        
+        guard let dataStore = dataStore else {
+            return
+        }
     }
 }

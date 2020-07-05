@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
     private var interactor: LoginBusinessLogic?
     private var router: LoginRouterProtocol?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init() {
         super.init(nibName: nil, bundle: nil)
         setup()
     }
@@ -92,14 +92,16 @@ extension LoginViewController {
 extension LoginViewController: LoginDisplayLogic {
     
     func routeToPayments() {
-        
+        router?.routeToPayments()
     }
     
     func displayLoginError(message: String) {
-        
+        loginView.state = .error(message)
     }
     
     func displayErrorAlert(message: String) {
-        
+        let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
 }
