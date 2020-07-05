@@ -18,6 +18,12 @@ struct Payments {
                 let date: String
                 let value: String
             }
+            
+            struct UserAccount {
+                let name: String
+                let accountInfo: String
+                let balance: String
+            }
         }
     }
     

@@ -14,6 +14,6 @@ class PaymentsSection: BaseSection {
     }
     
     override func headerView() -> UIView? {
-        return PaymentHeaderView(frame: .zero)
+        return PaymentListHeaderView(frame: .zero)
     }
 }

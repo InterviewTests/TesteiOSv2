@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentHeaderView: UIView {
+class PaymentListHeaderView: UIView {
     
     private lazy var headerLbl: UILabel = {
         return UILabel(frame: .zero)
@@ -24,7 +24,7 @@ class PaymentHeaderView: UIView {
     }
 }
 
-extension PaymentHeaderView: ViewCodeProtocol {
+extension PaymentListHeaderView: ViewCodeProtocol {
     
     func buildViewHierarchy() {
         addSubview(headerLbl)
