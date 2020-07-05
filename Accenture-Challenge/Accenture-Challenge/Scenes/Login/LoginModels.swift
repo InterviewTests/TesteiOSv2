@@ -39,13 +39,27 @@ struct Login {
     
     struct Info {
         
+        struct LoginJSONModel: Decodable{
+            var error: LoginError?
+            var response: LoginResponse?
+        }
+        
         struct LoginRequest {
             let user: String
             let password: String
         }
         
-        struct LoginResponse {
-            
+        struct LoginResponse: Codable {
+            var userId: Int?
+            var name: String?
+            var bankAccount: String?
+            var agency: String?
+            var balance: Double?
+        }
+        
+        struct LoginError: Decodable {
+            var code: Int?
+            var message: String?
         }
     }
 }

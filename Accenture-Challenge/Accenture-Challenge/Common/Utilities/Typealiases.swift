@@ -9,3 +9,4 @@ import UIKit
 
 typealias TableViewProtocol = UITableViewDelegate & UITableViewDataSource
 typealias APIResponseCallback = (APIResponse) -> Void
+typealias LoginResponseCallback = (LoginResponse) -> Void
