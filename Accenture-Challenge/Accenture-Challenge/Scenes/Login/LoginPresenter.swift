@@ -19,6 +19,6 @@ class LoginPresenter: LoginPresentationLogic {
     }
     
     func didFetchLoginResponse() {
-        
+        viewController.routeToPayments()
     }
 }

@@ -8,3 +8,4 @@
 import UIKit
 
 typealias TableViewProtocol = UITableViewDelegate & UITableViewDataSource
+typealias APIResponseCallback = (APIResponse) -> Void

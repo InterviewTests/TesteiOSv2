@@ -10,7 +10,7 @@ import UIKit
 typealias LoginRouterProtocol = NSObject & LoginRoutingLogic & LoginDataTransfer
 
 protocol LoginRoutingLogic {
-
+    func routeToPayments()
 }
 
 protocol LoginDataTransfer {
@@ -26,4 +26,7 @@ class LoginRouter: NSObject, LoginDataTransfer {
 
 extension LoginRouter: LoginRoutingLogic {
     
+    func routeToPayments() {
+        
+    }
 }

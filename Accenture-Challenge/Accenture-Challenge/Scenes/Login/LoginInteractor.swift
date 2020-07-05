@@ -31,6 +31,6 @@ class LoginInteractor: LoginDataStore {
 extension LoginInteractor: LoginBusinessLogic {
     
     func fetchLogin(request: Login.Info.LoginRequest) {
-        
+ 
     }
 }
