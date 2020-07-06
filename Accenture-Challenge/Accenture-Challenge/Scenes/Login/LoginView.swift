@@ -100,7 +100,7 @@ extension LoginView: ViewCodeProtocol {
     
     func setupConstraints() {
         logoImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(36)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(36)
             make.centerX.equalToSuperview()
             make.height.equalTo(70)
             make.width.equalTo(125)

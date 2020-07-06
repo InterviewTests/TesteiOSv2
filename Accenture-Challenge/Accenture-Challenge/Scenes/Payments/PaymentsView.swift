@@ -56,7 +56,8 @@ extension PaymentsView: ViewCodeProtocol {
     
     func setupConstraints() {
         headerView.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
+            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.left.right.equalToSuperview()
             make.height.equalTo(232)
         }
         tableView.snp.makeConstraints { make in

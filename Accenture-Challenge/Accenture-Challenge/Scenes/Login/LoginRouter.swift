@@ -24,9 +24,7 @@ class LoginRouter: NSObject, LoginDataTransfer {
     
     func present(_ vc: UIViewController) {
         DispatchQueue.main.async {
-            self.viewController?.present(vc, animated: true) {
-                vc.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
-            }
+            self.viewController?.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

@@ -26,6 +26,6 @@ class PaymentsRouter: NSObject, PaymentsDataTransfer {
 extension PaymentsRouter: PaymentsRoutingLogic {
     
     func routeBack() {
-        viewController?.dismiss(animated: true, completion: nil)
+        viewController?.navigationController?.popViewController(animated: true)
     }
 }

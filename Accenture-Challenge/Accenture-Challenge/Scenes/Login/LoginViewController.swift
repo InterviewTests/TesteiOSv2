@@ -65,6 +65,11 @@ class LoginViewController: UIViewController {
         interactor?.fetchSavedLoginInfo(Login.Info.SavedRequest())
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     override func loadView() {
         super.loadView()
         self.view = loginView
