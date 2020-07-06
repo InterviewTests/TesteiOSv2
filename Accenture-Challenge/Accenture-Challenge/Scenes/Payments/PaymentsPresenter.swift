@@ -7,6 +7,8 @@
 //
 
 protocol PaymentsPresentationLogic {
+    var viewController: PaymentsDisplayLogic? { get set }
+    
     func didFetchUserAccount(_ response: Payments.Info.ViewModel.UserAccount)
     func didFetchStatements(_ response: Payments.Info.ViewModel.Payment)
     func didFetchError(_ errorMessage: String)
@@ -14,21 +16,17 @@ protocol PaymentsPresentationLogic {
 
 class PaymentsPresenter: PaymentsPresentationLogic {
     
-    private unowned var viewController: PaymentsDisplayLogic
-    
-    init(viewController: PaymentsDisplayLogic) {
-        self.viewController = viewController
-    }
+    weak var viewController: PaymentsDisplayLogic?
     
     func didFetchUserAccount(_ response: Payments.Info.ViewModel.UserAccount) {
-        viewController.displayUserInfo(response)
+        viewController?.displayUserInfo(response)
     }
     
     func didFetchStatements(_ response: Payments.Info.ViewModel.Payment) {
-        viewController.displayStatements(response)
+        viewController?.displayStatements(response)
     }
     
     func didFetchError(_ errorMessage: String) {
-        viewController.displayError(errorMessage)
+        viewController?.displayError(errorMessage)
     }
 }

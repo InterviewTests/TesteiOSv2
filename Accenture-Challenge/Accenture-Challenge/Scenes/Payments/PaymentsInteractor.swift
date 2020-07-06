@@ -24,9 +24,12 @@ class PaymentsInteractor: PaymentsDataStore {
     var userAccount: Payments.Received.UserAccount?
     var payments: [Payments.Info.PaymentModel] = []
     
-    init(viewController: PaymentsDisplayLogic) {
-        self.presenter = PaymentsPresenter(viewController: viewController)
-        self.worker = PaymentsWorker()
+    init(viewController: PaymentsDisplayLogic,
+         presenter: PaymentsPresentationLogic = PaymentsPresenter(),
+         worker: PaymentsWorkerProtocol = PaymentsWorker()) {
+        self.presenter = presenter
+        self.worker = worker
+        self.presenter.viewController = viewController
     }
 }
 

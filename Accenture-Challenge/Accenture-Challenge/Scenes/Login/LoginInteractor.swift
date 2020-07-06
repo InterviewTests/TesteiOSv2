@@ -29,23 +29,14 @@ class LoginInteractor: LoginDataStore {
         self.presenter = presenter
         self.presenter.viewController = viewController
     }
-
 }
 
 extension LoginInteractor: LoginBusinessLogic {
     
     func fetchLogin(_ request: Login.Info.LoginRequest) {
-        guard request.user.isValidEmail() else {
-            presenter.invalidEmailRequest()
-            return
-        }
-        guard request.password.hasUppercaseLetter(),
-            request.password.hasSpecialCharacters(),
-            request.password.hasNumber() else {
-            presenter.invalidpasswordRequest()
-            return
-        }
-        LocalSaves.shared.saveLastUser(email: request.user, password: request.password)
+        checkInputValidity(request)
+        saveLastUser(request)
+        
         worker.fetchLogin(request: request) { response in
             switch response {
             case .success(let user):
@@ -65,5 +56,25 @@ extension LoginInteractor: LoginBusinessLogic {
         let loginInfo = LocalSaves.shared.getUserInfo()
         let response = Login.Saves.User(email: loginInfo.0 ?? .empty, password: loginInfo.1 ?? .empty)
         presenter.didFetchLoginInfo(response)
+    }
+}
+
+extension LoginInteractor {
+    
+    private func checkInputValidity(_ request: Login.Info.LoginRequest) {
+        guard request.user.isValidEmail() else {
+            presenter.invalidEmailRequest()
+            return
+        }
+        guard request.password.hasUppercaseLetter(),
+            request.password.hasSpecialCharacters(),
+            request.password.hasNumber() else {
+            presenter.invalidpasswordRequest()
+            return
+        }
+    }
+    
+    private func saveLastUser(_ request: Login.Info.LoginRequest) {
+        LocalSaves.shared.saveLastUser(email: request.user, password: request.password)
     }
 }
