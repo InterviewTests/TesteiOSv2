@@ -31,25 +31,29 @@ class LoginInteractor_Tests: XCTestCase {
     }
     
     func testFetchLogin_Success() {
-        sut.fetchLogin(request: Login.Info.LoginRequest(user: "test_user@hotmail.com", password: "Test@1"))
+        sut.fetchLogin(Login.Info.LoginRequest(user: "test_user@hotmail.com", password: "Test@1"))
         let expectedResult = 1
         let testable = dataStore.userId
         XCTAssertEqual(testable, expectedResult)
     }
     
     func testFetchLogin_WrongUser() {
-        sut.fetchLogin(request: Login.Info.LoginRequest(user: "test_user", password: "Test@1"))
+        sut.fetchLogin(Login.Info.LoginRequest(user: "test_user", password: "Test@1"))
         XCTAssertTrue(wrongUser)
     }
     
     func testFetchLogin_Wrongpassword() {
-        sut.fetchLogin(request: Login.Info.LoginRequest(user: "test_user@hotmail.com", password: "Test1"))
+        sut.fetchLogin(Login.Info.LoginRequest(user: "test_user@hotmail.com", password: "Test1"))
         XCTAssertTrue(passwordWrong)
     }
 }
 
 extension LoginInteractor_Tests: LoginPresentationLogic {
     
+    func didFetchLoginInfo(_ response: Login.Saves.User) {
+        
+    }
+
     func didFetchLoginResponse() {
         dataStore = sut.loginResponse
     }

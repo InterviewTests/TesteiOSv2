@@ -52,6 +52,10 @@ class LoginPresenter_Tests: XCTestCase {
 
 extension LoginPresenter_Tests: LoginDisplayLogic {
     
+    func displayLoginInfo(_ response: Login.Saves.User) {
+        
+    }
+
     func routeToPayments() {
         didRouteToPayments = true
     }
