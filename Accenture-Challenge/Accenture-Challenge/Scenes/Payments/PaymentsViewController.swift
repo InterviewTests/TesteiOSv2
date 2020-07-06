@@ -10,6 +10,7 @@ import UIKit
 protocol PaymentsDisplayLogic: class {
     func displayUserInfo(_ viewModel: Payments.Info.ViewModel.UserAccount)
     func displayStatements(_ viewModel: Payments.Info.ViewModel.Payment)
+    func displayError(_ errorMessage: String)
 }
 
 class PaymentsViewController: UIViewController {
@@ -55,6 +56,7 @@ class PaymentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetch()
     }
     
     override func loadView() {
@@ -82,7 +84,7 @@ extension PaymentsViewController {
     
     @objc
     private func didTapLogOutButton() {
-        
+        router?.routeBack()
     }
 
     private func setupDataSource() {
@@ -121,6 +123,10 @@ extension PaymentsViewController: PaymentsDisplayLogic {
     func displayStatements(_ viewModel: Payments.Info.ViewModel.Payment) {
         self.viewModel = viewModel
         refreshList()
+    }
+    
+    func displayError(_ errorMessage: String) {
+        
     }
 }
 

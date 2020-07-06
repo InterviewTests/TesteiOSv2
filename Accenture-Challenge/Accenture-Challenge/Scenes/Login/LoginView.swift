@@ -92,8 +92,8 @@ extension LoginView: ViewCodeProtocol {
         addSubview(userTextField)
         addSubview(passwordTextField)
         addSubview(loginButton)
-//        addSubview(errorLbl)
 //        addSubview(activityView)
+        addSubview(errorLbl)
     }
     
     func setupConstraints() {
@@ -115,23 +115,22 @@ extension LoginView: ViewCodeProtocol {
         loginButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(33)
             make.centerX.equalToSuperview()
-            make.height.equalTo(63)
+            make.height.equalTo(60)
             make.width.equalTo(202)
         }
 //        activityView.snp.makeConstraints { make in
 //            make.edges.equalToSuperview()
 //        }
-//        errorLbl.snp.makeConstraints { make in
-//            make.top.equalTo(passwordTextField.snp.bottom).offset(5)
-//            make.left.right.equalTo(userTextField)
-//            make.height.equalTo(60)
-//        }
+        errorLbl.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(5)
+            make.left.right.equalTo(userTextField)
+            make.height.equalTo(60)
+        }
     }
     
     func configureViews() {
         backgroundColor = Login.Constants.Colors.backgroundColor
-//        errorLbl.isHidden = true
-//        activityView.isHidden = true
+        errorLbl.isHidden = false
         
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.image = Login.Constants.Images.logoImageView
@@ -140,16 +139,19 @@ extension LoginView: ViewCodeProtocol {
         userTextField.layer.borderWidth = 1
         userTextField.layer.borderColor = Login.Constants.Colors.textFieldLayerColor.cgColor
         userTextField.layer.cornerRadius = 4
-        userTextField.attributedPlaceholder = NSAttributedString(string: Login.Constants.Texts.userTextFieldPlaceHolder, attributes: [NSAttributedString.Key.font: Login.Constants.Fonts.userTextFieldFont, NSAttributedString.Key.foregroundColor: Login.Constants.Colors.textFieldPlaceHolderColor])
+        userTextField.attributedPlaceholder = NSAttributedString(string: Login.Constants.Texts.userTextFieldPlaceHolder,
+                                                                 attributes: [NSAttributedString.Key.font: Login.Constants.Fonts.userTextFieldFont, NSAttributedString.Key.foregroundColor: Login.Constants.Colors.textFieldPlaceHolderColor])
         
         passwordTextField.backgroundColor = Login.Constants.Colors.textFieldBackgroundColor
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.borderColor = Login.Constants.Colors.textFieldLayerColor.cgColor
         passwordTextField.layer.cornerRadius = 4
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: Login.Constants.Texts.passwordTextFieldPlaceHolder, attributes: [NSAttributedString.Key.font: Login.Constants.Fonts.userTextFieldFont, NSAttributedString.Key.foregroundColor: Login.Constants.Colors.textFieldPlaceHolderColor])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: Login.Constants.Texts.passwordTextFieldPlaceHolder,
+                                                                     attributes: [NSAttributedString.Key.font: Login.Constants.Fonts.userTextFieldFont, NSAttributedString.Key.foregroundColor: Login.Constants.Colors.textFieldPlaceHolderColor])
 
-        loginButton.setAttributedTitle(NSAttributedString(string: Login.Constants.Texts.loginButton, attributes: [NSAttributedString.Key.font: Login.Constants.Fonts.loginButtonFont, NSAttributedString.Key.foregroundColor: Login.Constants.Colors.loginButtonTextColor]), for: .normal)
+        loginButton.setAttributedTitle(NSAttributedString(string: Login.Constants.Texts.loginButton,
+                                                          attributes: [NSAttributedString.Key.font: Login.Constants.Fonts.loginButtonFont, NSAttributedString.Key.foregroundColor: Login.Constants.Colors.loginButtonTextColor]), for: .normal)
         loginButton.backgroundColor = Login.Constants.Colors.loginButtonBackgroundColor
         loginButton.layer.cornerRadius = 4
         

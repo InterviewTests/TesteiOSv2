@@ -22,8 +22,10 @@ class LoginRouter: NSObject, LoginDataTransfer {
     var dataStore: LoginDataStore?
     weak var viewController: LoginViewController?
     
-    func present(_ viewController: UIViewController) {
-        viewController.present(viewController, animated: true)
+    func present(_ vc: UIViewController) {
+        DispatchQueue.main.async {
+            self.viewController?.present(vc, animated: true)
+        }
     }
     
     func transferDataToPayments(source: LoginDataStore, to: inout PaymentsDataStore) {

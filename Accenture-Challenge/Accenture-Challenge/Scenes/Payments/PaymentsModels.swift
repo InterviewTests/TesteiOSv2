@@ -23,6 +23,7 @@ struct Payments {
     struct Info {
         
         struct PaymentModel {
+            let title: String
             let paymentInfo: String
             let date: String
             let value: String

@@ -89,7 +89,9 @@ extension PaymentMainHeaderView: ViewCodeProtocol {
     func configureViews() {
         backgroundColor = UIColor(rgb: 0x3b49ee)
         
-        nameLbl.text = viewModel?.name
+        guard let viewModel = viewModel else { return }
+        
+        nameLbl.text = viewModel.name
         nameLbl.textColor = .white
         nameLbl.textAlignment = .left
         nameLbl.font = UIFont(name: "HelveticaNeue-Light", size: 25)
@@ -103,7 +105,7 @@ extension PaymentMainHeaderView: ViewCodeProtocol {
         accountFixedLbl.font = UIFont(name: "HelveticaNeue", size: 12)
         
         accountLbl.textAlignment = .left
-        accountLbl.text = viewModel?.accountInfo
+        accountLbl.text = viewModel.accountInfo
         accountLbl.textColor = .white
         accountLbl.font = UIFont(name: "HelveticaNeue-Light", size: 25)
         
@@ -113,7 +115,7 @@ extension PaymentMainHeaderView: ViewCodeProtocol {
         balanceFixedLbl.font = UIFont(name: "HelveticaNeue", size: 12)
         
         balanceLbl.textAlignment = .left
-        balanceLbl.text = viewModel?.balance
+        balanceLbl.text = viewModel.balance
         balanceLbl.textColor = .white
         balanceLbl.font = UIFont(name: "HelveticaNeue-Light", size: 25)
     }

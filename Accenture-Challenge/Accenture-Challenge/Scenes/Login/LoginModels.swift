@@ -33,12 +33,20 @@ struct Login {
         struct Fonts {
             static let userTextFieldFont = UIFont(name: "HelveticaNeue", size: 15)
             static let passwordTextFieldFont = UIFont(name: "HelveticaNeue", size: 15)
-            static let loginButtonFont = UIFont(name: "HelveticaNeue", size: 16)
+            static let loginButtonFont = UIFont(name: "HelveticaNeue", size: 18)
         }
         
         struct Errors {
             static let invalidEmail = "Email inválido"
             static let invalidpassword = "Senha inválida"
+        }
+    }
+    
+    struct Saves {
+        
+        struct User {
+            let email: String
+            let password: String
         }
     }
     
@@ -52,6 +60,10 @@ struct Login {
         struct LoginRequest {
             let user: String
             let password: String
+        }
+        
+        struct SavedRequest {
+            
         }
         
         struct LoginResponse: Codable {

@@ -13,7 +13,7 @@ class PaymentsTableViewCell: UITableViewCell {
         return UIView(frame: .zero)
     }()
     
-    private lazy var paymentFixedLbl: UILabel = {
+    private lazy var titleLbl: UILabel = {
         return UILabel(frame: .zero)
     }()
     
@@ -48,7 +48,7 @@ class PaymentsTableViewCell: UITableViewCell {
 extension PaymentsTableViewCell: ViewCodeProtocol {
     
     func buildViewHierarchy() {
-        containerView.addSubview(paymentFixedLbl)
+        containerView.addSubview(titleLbl)
         containerView.addSubview(paymentLbl)
         containerView.addSubview(dateLbl)
         containerView.addSubview(valueLbl)
@@ -61,21 +61,21 @@ extension PaymentsTableViewCell: ViewCodeProtocol {
             make.left.right.equalToSuperview().inset(16)
             make.height.equalTo(80)
         }
-        paymentFixedLbl.snp.makeConstraints { make in
+        titleLbl.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(19)
             make.left.equalToSuperview().inset(9)
             make.height.equalTo(18)
             make.width.equalTo(120)
         }
         paymentLbl.snp.makeConstraints { make in
-            make.top.equalTo(paymentFixedLbl.snp.bottom).offset(19)
+            make.top.equalTo(titleLbl.snp.bottom).offset(18)
             make.left.equalToSuperview().inset(9)
             make.height.equalTo(18)
-            make.width.equalTo(120)
+            make.width.equalTo(140)
         }
         dateLbl.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(20)
-            make.top.equalToSuperview().inset(19)
+            make.top.equalToSuperview().inset(18)
             make.height.equalTo(14)
             make.width.equalTo(117)
         }
@@ -83,7 +83,7 @@ extension PaymentsTableViewCell: ViewCodeProtocol {
             make.right.equalToSuperview().inset(15)
             make.top.equalTo(dateLbl.snp.bottom).offset(14)
             make.height.equalTo(23)
-            make.width.equalTo(184)
+            make.width.equalTo(160)
         }
     }
     
@@ -95,10 +95,10 @@ extension PaymentsTableViewCell: ViewCodeProtocol {
         containerView.layer.borderColor = Payments.Constants.Colors.cellLayerColor.cgColor
         containerView.layer.cornerRadius = 6
         
-        paymentFixedLbl.textAlignment = .left
-        paymentFixedLbl.text = Payments.Constants.Texts.paymentFixed
-        paymentFixedLbl.font = Payments.Constants.Fonts.paymentFixed
-        paymentFixedLbl.textColor = Payments.Constants.Colors.paymentFixedColor
+        titleLbl.textAlignment = .left
+        titleLbl.text = viewModel?.title
+        titleLbl.font = Payments.Constants.Fonts.paymentFixed
+        titleLbl.textColor = Payments.Constants.Colors.paymentFixedColor
         
         paymentLbl.textAlignment = .left
         paymentLbl.text = viewModel?.paymentInfo

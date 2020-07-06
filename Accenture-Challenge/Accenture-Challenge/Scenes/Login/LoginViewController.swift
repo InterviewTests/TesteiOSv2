@@ -12,6 +12,7 @@ protocol LoginDisplayLogic: class {
     func routeToPayments()
     func displayLoginError(message: String)
     func displayErrorAlert(message: String)
+    func displayLoginInfo(_ response: Login.Saves.User)
 }
 
 class LoginViewController: UIViewController {
@@ -61,6 +62,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor?.fetchSavedLoginInfo(Login.Info.SavedRequest())
     }
     
     override func loadView() {
@@ -85,7 +87,7 @@ extension LoginViewController {
     private func didTapLoginButton() {
         guard let user = userTextField.text, let password = passwordTextField.text else { return }
         let request = Login.Info.LoginRequest(user: user, password: password)
-        interactor?.fetchLogin(request: request)
+        interactor?.fetchLogin(request)
     }
 }
 
@@ -103,5 +105,10 @@ extension LoginViewController: LoginDisplayLogic {
         let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         present(alert, animated: true)
+    }
+    
+    func displayLoginInfo(_ response: Login.Saves.User) {
+        userTextField.text = response.email
+        passwordTextField.text = response.password
     }
 }

@@ -13,6 +13,7 @@ protocol LoginPresentationLogic {
     func invalidEmailRequest()
     func invalidpasswordRequest()
     func didFetchError(_ errorMessage: String)
+    func didFetchLoginInfo(_ response: Login.Saves.User)
 }
 
 class LoginPresenter: LoginPresentationLogic {
@@ -33,5 +34,9 @@ class LoginPresenter: LoginPresentationLogic {
     
     func didFetchError(_ errorMessage: String) {
         viewController?.displayErrorAlert(message: errorMessage)
+    }
+    
+    func didFetchLoginInfo(_ response: Login.Saves.User) {
+        viewController?.displayLoginInfo(response)
     }
 }

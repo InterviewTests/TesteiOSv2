@@ -8,6 +8,7 @@
 
 protocol PaymentsPresentationLogic {
     func didFetchUserAccount(_ response: Payments.Info.ViewModel.UserAccount)
+    func didFetchStatements(_ response: Payments.Info.ViewModel.Payment)
 }
 
 class PaymentsPresenter: PaymentsPresentationLogic {
@@ -19,6 +20,10 @@ class PaymentsPresenter: PaymentsPresentationLogic {
     }
     
     func didFetchUserAccount(_ response: Payments.Info.ViewModel.UserAccount) {
-        
+        viewController.displayUserInfo(response)
+    }
+    
+    func didFetchStatements(_ response: Payments.Info.ViewModel.Payment) {
+        viewController.displayStatements(response)
     }
 }

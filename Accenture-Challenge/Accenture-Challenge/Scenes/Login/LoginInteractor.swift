@@ -7,7 +7,8 @@
 //
 
 protocol LoginBusinessLogic {
-    func fetchLogin(request: Login.Info.LoginRequest)
+    func fetchLogin(_ request: Login.Info.LoginRequest)
+    func fetchSavedLoginInfo(_ request: Login.Info.SavedRequest)
 }
 
 protocol LoginDataStore {
@@ -33,7 +34,7 @@ class LoginInteractor: LoginDataStore {
 
 extension LoginInteractor: LoginBusinessLogic {
     
-    func fetchLogin(request: Login.Info.LoginRequest) {
+    func fetchLogin(_ request: Login.Info.LoginRequest) {
         guard request.user.isValidEmail() else {
             presenter.invalidEmailRequest()
             return
@@ -44,6 +45,7 @@ extension LoginInteractor: LoginBusinessLogic {
             presenter.invalidpasswordRequest()
             return
         }
+        LocalSaves.shared.saveLastUser(email: request.user, password: request.password)
         worker.fetchLogin(request: request) { response in
             switch response {
             case .success(let user):
@@ -57,5 +59,11 @@ extension LoginInteractor: LoginBusinessLogic {
                 self.presenter.didFetchError("Generic error")
             }
         }
+    }
+    
+    func fetchSavedLoginInfo(_ request: Login.Info.SavedRequest) {
+        let loginInfo = LocalSaves.shared.getUserInfo()
+        let response = Login.Saves.User(email: loginInfo.0 ?? .empty, password: loginInfo.1 ?? .empty)
+        presenter.didFetchLoginInfo(response)
     }
 }

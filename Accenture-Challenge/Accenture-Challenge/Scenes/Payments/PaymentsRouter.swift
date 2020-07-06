@@ -10,7 +10,7 @@ import UIKit
 typealias PaymentsRouterProtocol = NSObject & PaymentsDataTransfer & PaymentsRoutingLogic
 
 protocol PaymentsRoutingLogic {
-    
+    func routeBack()
 }
 
 protocol PaymentsDataTransfer {
@@ -25,4 +25,7 @@ class PaymentsRouter: NSObject, PaymentsDataTransfer {
 
 extension PaymentsRouter: PaymentsRoutingLogic {
     
+    func routeBack() {
+        viewController?.dismiss(animated: true, completion: nil)
+    }
 }

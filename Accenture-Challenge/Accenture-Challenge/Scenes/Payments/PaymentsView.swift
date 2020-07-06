@@ -12,6 +12,20 @@ class PaymentsView: UIView {
     private unowned var headerView: PaymentMainHeaderView
     private unowned var tableView: UITableView
     
+    private lazy var errorView: UIView = {
+        return UIView(frame: .zero)
+    }()
+    
+    private lazy var errorLbl: UILabel = {
+        return UILabel(frame: .zero)
+    }()
+    
+    var errorMessage: String? {
+        didSet {
+            
+        }
+    }
+    
     init(frame: CGRect,
          headerView: PaymentMainHeaderView,
          tableView: UITableView) {
@@ -29,8 +43,10 @@ class PaymentsView: UIView {
 extension PaymentsView: ViewCodeProtocol {
     
     func buildViewHierarchy() {
+        errorView.addSubview(errorLbl)
         addSubview(headerView)
         addSubview(tableView)
+        addSubview(errorView)
     }
     
     func setupConstraints() {
@@ -41,6 +57,14 @@ extension PaymentsView: ViewCodeProtocol {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(headerView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
+        }
+        errorLbl.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.equalTo(30)
+            make.width.equalTo(100)
+        }
+        errorView.snp.makeConstraints { make in
+            make.edges.equalTo(tableView)
         }
     }
     
