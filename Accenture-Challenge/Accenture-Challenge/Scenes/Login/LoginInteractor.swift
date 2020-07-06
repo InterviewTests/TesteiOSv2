@@ -34,7 +34,9 @@ class LoginInteractor: LoginDataStore {
 extension LoginInteractor: LoginBusinessLogic {
     
     func fetchLogin(_ request: Login.Info.LoginRequest) {
-        checkInputValidity(request)
+        guard checkInputValidity(request) else {
+            return
+        }
         saveLastUser(request)
         
         worker.fetchLogin(request: request) { response in
@@ -61,17 +63,18 @@ extension LoginInteractor: LoginBusinessLogic {
 
 extension LoginInteractor {
     
-    private func checkInputValidity(_ request: Login.Info.LoginRequest) {
+    private func checkInputValidity(_ request: Login.Info.LoginRequest) -> Bool{
         guard request.user.isValidEmail() else {
             presenter.invalidEmailRequest()
-            return
+            return false
         }
         guard request.password.hasUppercaseLetter(),
             request.password.hasSpecialCharacters(),
             request.password.hasNumber() else {
             presenter.invalidpasswordRequest()
-            return
+            return false
         }
+        return true
     }
     
     private func saveLastUser(_ request: Login.Info.LoginRequest) {

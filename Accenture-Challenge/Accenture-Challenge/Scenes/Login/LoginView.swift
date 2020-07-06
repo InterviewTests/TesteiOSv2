@@ -80,8 +80,10 @@ extension LoginView {
     }
     
     private func handleNormal() {
-        activityView.isHidden = true
-        errorLbl.isHidden = true
+        DispatchQueue.main.async {
+            self.activityView.isHidden = true
+            self.errorLbl.isHidden = true
+        }
     }
 }
 

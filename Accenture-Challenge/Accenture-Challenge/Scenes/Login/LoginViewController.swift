@@ -94,6 +94,7 @@ extension LoginViewController {
 extension LoginViewController: LoginDisplayLogic {
     
     func routeToPayments() {
+        loginView.state = .normal
         router?.routeToPayments()
     }
     
