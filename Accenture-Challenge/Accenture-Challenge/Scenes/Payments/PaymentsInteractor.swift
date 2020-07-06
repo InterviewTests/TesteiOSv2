@@ -50,9 +50,11 @@ extension PaymentsInteractor: PaymentsBusinessLogic {
                 self.presenter.didFetchStatements(viewModel)
                 break
             case .error(let error):
+                self.presenter.didFetchError(error.localizedDescription)
                 break
-            case .genericError: break
-                
+            case .genericError:
+                self.presenter.didFetchError("Erro genérico")
+                break
             }
         }
     }

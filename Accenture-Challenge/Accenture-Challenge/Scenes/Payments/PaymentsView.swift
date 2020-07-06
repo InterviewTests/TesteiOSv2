@@ -22,7 +22,12 @@ class PaymentsView: UIView {
     
     var errorMessage: String? {
         didSet {
-            
+            if errorMessage != nil {
+                errorView.isHidden = false
+                errorLbl.text = errorMessage
+            } else {
+                errorView.isHidden = true
+            }
         }
     }
     
@@ -70,6 +75,8 @@ extension PaymentsView: ViewCodeProtocol {
     
     func configureViews() {
         backgroundColor = Payments.Constants.Colors.backgroundColor
+        errorView.backgroundColor = .white
+        errorView.isHidden = true
         
         tableView.bounces = false
         tableView.alwaysBounceVertical = false

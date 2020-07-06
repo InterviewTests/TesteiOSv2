@@ -126,7 +126,7 @@ extension PaymentsViewController: PaymentsDisplayLogic {
     }
     
     func displayError(_ errorMessage: String) {
-        
+        paymentsView.errorMessage = errorMessage
     }
 }
 
