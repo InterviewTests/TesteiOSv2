@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		D9C323DB24BCA94600112AF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C323D924BCA94600112AF7 /* LaunchScreen.storyboard */; };
 		D9C323E624BCA94600112AF7 /* TCS_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C323E524BCA94600112AF7 /* TCS_ChallengeTests.swift */; };
 		D9C323F124BCA94600112AF7 /* TCS_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C323F024BCA94600112AF7 /* TCS_ChallengeUITests.swift */; };
+		D9D9C9C624BCC0BC007D245A /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D9C9C524BCC0BC007D245A /* APIProvider.swift */; };
+		D9D9C9CA24BCDFD0007D245A /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D9C9C924BCDFD0007D245A /* LoginModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		D9C323EC24BCA94600112AF7 /* TCS_ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TCS_ChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C323F024BCA94600112AF7 /* TCS_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCS_ChallengeUITests.swift; sourceTree = "<group>"; };
 		D9C323F224BCA94600112AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9D9C9C524BCC0BC007D245A /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
+		D9D9C9C924BCDFD0007D245A /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
 		FC21F53C60C375446BA1E592 /* Pods_TCS_ChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TCS_ChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,7 +115,6 @@
 				234C4EC3F7E8FEF6F57BF9F6 /* Pods-TCS_ChallengeTests.debug.xcconfig */,
 				3FB1037EA17C07462C4186A7 /* Pods-TCS_ChallengeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,6 +143,8 @@
 		D9C323CD24BCA94100112AF7 /* TCS_Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				D9D9C9CB24BCE1FB007D245A /* Scenes */,
+				D9D9C9C424BCC098007D245A /* API */,
 				D9C323CE24BCA94100112AF7 /* AppDelegate.swift */,
 				D9C323D024BCA94100112AF7 /* SceneDelegate.swift */,
 				D9C323D224BCA94100112AF7 /* ViewController.swift */,
@@ -167,6 +172,30 @@
 				D9C323F224BCA94600112AF7 /* Info.plist */,
 			);
 			path = TCS_ChallengeUITests;
+			sourceTree = "<group>";
+		};
+		D9D9C9C424BCC098007D245A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D9D9C9C524BCC0BC007D245A /* APIProvider.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		D9D9C9C824BCDADC007D245A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D9D9C9C924BCDFD0007D245A /* LoginModels.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D9D9C9CB24BCE1FB007D245A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D9D9C9C824BCDADC007D245A /* Login */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +438,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9C323D324BCA94100112AF7 /* ViewController.swift in Sources */,
+				D9D9C9CA24BCDFD0007D245A /* LoginModels.swift in Sources */,
+				D9D9C9C624BCC0BC007D245A /* APIProvider.swift in Sources */,
 				D9C323CF24BCA94100112AF7 /* AppDelegate.swift in Sources */,
 				D9C323D124BCA94100112AF7 /* SceneDelegate.swift in Sources */,
 			);
