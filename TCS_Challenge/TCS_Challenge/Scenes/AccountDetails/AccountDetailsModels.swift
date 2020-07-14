@@ -23,14 +23,11 @@ enum AccountDetails {
     enum FetchStatements {
         
         struct Request {
-            let userId: Int
+            let userId: String
         }
         
-        struct Response: Codable {
-            var title: String?
-            var desc: String?
-            var date: String?
-            var value: Double?
+        struct Response: Decodable {
+            var statementList: [Statement]
         }
         
         struct ViewModel {

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AccountDetailsDisplayLogic: class {
-    
+    func displayFetchedStatements(viewModel: AccountDetails.FetchStatements.ViewModel)
 }
 
 class AccountDetailsViewController: UIViewController {
@@ -48,6 +48,7 @@ class AccountDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor?.fetchStatements()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,5 +58,8 @@ class AccountDetailsViewController: UIViewController {
 
 // MARK: - AccountDetailsDisplayLogic
 extension AccountDetailsViewController: AccountDetailsDisplayLogic {
-    
+    func displayFetchedStatements(viewModel: AccountDetails.FetchStatements.ViewModel) {
+//        let displayedStatements = viewModel.displayedStatements
+        // tableView.reloadData
+    }
 }

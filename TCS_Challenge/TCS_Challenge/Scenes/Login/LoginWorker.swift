@@ -37,9 +37,7 @@ class LoginWorker {
                         let loginResponse = try JSONDecoder().decode(Login.Fetch.Response.self, from: userJSON)
                         
                         completion(.success(loginResponse))
-                        return
                     }
-                    break
                 } catch let error {
                     completion(.error(error))
                 }
@@ -49,10 +47,7 @@ class LoginWorker {
                 break
             default:
                 completion(.nonSpecifiedError)
-                break
             }
-            
-            completion(.nonSpecifiedError)
         }
     }
     
