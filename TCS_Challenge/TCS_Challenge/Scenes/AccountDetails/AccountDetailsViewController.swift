@@ -46,20 +46,55 @@ class AccountDetailsViewController: UIViewController {
 
     // MARK: View lifecycle
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.fetchStatements()
+        
+        setupTable()
+        fetchStatements()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+    
+    // MARK: - UI Setup
+    
+    private func setupTable() {
+        dataSource = StatementsDataSource(statements: [])
+        tableView.delegate = self
+        tableView.dataSource = dataSource
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: StatementTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: StatementTableViewCell.identifier)
+        
+        let headerView = tableView.tableHeaderView as! StatementTableHeaderView
+        headerView.setupView()
+    }
+    
+    // MARK: - Fetch Statements
+    
+    private var dataSource: StatementsDataSource!
+    
+    private func fetchStatements() {
+        interactor?.fetchStatements()
+    }
 }
 
 // MARK: - AccountDetailsDisplayLogic
 extension AccountDetailsViewController: AccountDetailsDisplayLogic {
+    
     func displayFetchedStatements(viewModel: AccountDetails.FetchStatements.ViewModel) {
-//        let displayedStatements = viewModel.displayedStatements
-        // tableView.reloadData
+        let displayedStatements = viewModel.displayedStatements
+        dataSource.statements = displayedStatements
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+}
+
+extension AccountDetailsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return StatementTableViewCell.cellHeight
     }
 }

@@ -105,7 +105,7 @@ private extension LoginViewController {
         loginButton.tintColor = .white
         loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
         loginButton.layer.cornerRadius = 4.0
-        loginButton.setShadow(offset: CGSize(width: 0, height: 3))
+        loginButton.setShadow(color: .appBlueShadow, offset: CGSize(width: 0, height: 4))
     }
 }
 
