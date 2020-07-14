@@ -25,6 +25,17 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     // MARK: - LoginBusinessLogic
     func fetchLogin(_ request: Login.Fetch.Request) {
+        
+        guard isValidUser(request.user) else {
+            presenter?.presentInvalidUser()
+            return
+        }
+        
+        guard isValidPassword(request.password) else {
+            presenter?.presentInvalidPassword()
+            return
+        }
+        
         worker = LoginWorker()
         worker?.performLogin(request: request, completion: { (response) in
             switch response{
@@ -40,13 +51,27 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             }
         })
     }
+}
+
+extension LoginInteractor {
     
-//    func doSomething(request: ___VARIABLE_sceneName___.Something.Request)
-//    {
-//      worker = ___VARIABLE_sceneName___Worker()
-//      worker?.doSomeWork()
-//
-//      let response = ___VARIABLE_sceneName___.Something.Response()
-//      presenter?.presentSomething(response: response)
-//    }
+    /// Checks the user field, should be a CPF or an email address
+    /// - Parameter user: user login
+    /// - Returns: boolean indicating if its a valid user account
+    func isValidUser(_ user: String) -> Bool {
+        guard !user.isEmpty,
+            user.isValidEmail() || user.isValidCPF() else { return false }
+        return true
+    }
+    
+    /// Checks the password field, should contain at least one uppercased letter, one number, and one special character
+    /// - Parameter password: user password
+    /// - Returns: boolean indicating if its a valid password
+    func isValidPassword(_ password: String) -> Bool {
+        guard !password.isEmpty,
+            password.containsUpperCaseLetter(),
+            password.containsNumber(),
+            password.containsSpecialCharacter() else { return false }
+        return true
+    }
 }

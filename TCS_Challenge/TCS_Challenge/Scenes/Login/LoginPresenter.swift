@@ -11,19 +11,29 @@ import Foundation
 protocol LoginPresentationLogic {
     func presentLoginError(error: Error)
     func presentAccountDetails(response: Login.Fetch.Response)
+    func presentInvalidUser()
+    func presentInvalidPassword()
 }
 
 class LoginPresenter: LoginPresentationLogic {
     
     weak var viewController: LoginDisplayLogic?
-  
-    // MARK: Do something
     
     func presentLoginError(error: Error) {
-        viewController?.displayErrorMessage(error.localizedDescription)
+        viewController?.displayErrorMessage(withTitle: "Error", message: error.localizedDescription)
     }
     
     func presentAccountDetails(response: Login.Fetch.Response) {
         viewController?.showAccountDetails()
+    }
+    
+    func presentInvalidUser() {
+        viewController?.displayErrorMessage(withTitle: "Invalid User",
+                                            message: "User field should be an email or CPF.")
+    }
+    
+    func presentInvalidPassword() {
+        viewController?.displayErrorMessage(withTitle: "Invalid Password",
+                                            message: "Password must contain at least one upper case letter, one special char, and one alphanumeric value.")
     }
 }

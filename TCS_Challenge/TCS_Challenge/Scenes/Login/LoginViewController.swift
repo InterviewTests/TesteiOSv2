@@ -10,7 +10,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class {
     func showAccountDetails()
-    func displayErrorMessage(_ message: String)
+    func displayErrorMessage(withTitle title: String, message: String)
 }
 
 class LoginViewController: UIViewController {
@@ -33,33 +33,31 @@ class LoginViewController: UIViewController {
     // MARK: Setup
     
     private func setup() {
-      let viewController = self
-      let interactor = LoginInteractor()
-      let presenter = LoginPresenter()
-      let router = LoginRouter()
-      viewController.interactor = interactor
-      viewController.router = router
-      interactor.presenter = presenter
-      presenter.viewController = viewController
-      router.viewController = viewController
-      router.dataStore = interactor
-    }
-    
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let scene = segue.identifier {
-        let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-//        if let router = router, router.responds(to: selector) {
-//          router.perform(selector, with: segue)
-//        }
-      }
+        let viewController = self
+        let interactor = LoginInteractor()
+        let presenter = LoginPresenter()
+        let router = LoginRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
     }
     
     // MARK: View lifecycle
     
     override func viewDidLoad() {
-      super.viewDidLoad()
+        super.viewDidLoad()
+        setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        dismissKeyboard()
     }
     
     // MARK: Login
@@ -78,6 +76,53 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: - UI Setup
+private extension LoginViewController {
+    
+    func setupUI() {
+        setupLoginButton()
+        setupUserTextField()
+        setupPasswordTextField()
+    }
+    
+    func setupUserTextField() {
+        userTextField.delegate = self
+        userTextField.placeholder = "User"
+        userTextField.keyboardType = .emailAddress
+        passwordTextField.font = UIFont.systemFont(ofSize: 15.0)
+    }
+    
+    func setupPasswordTextField() {
+        passwordTextField.delegate = self
+        passwordTextField.placeholder = "Password"
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.font = UIFont.systemFont(ofSize: 15.0)
+    }
+    
+    func setupLoginButton() {
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.backgroundColor = .appBlue
+        loginButton.tintColor = .white
+        loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
+        loginButton.layer.cornerRadius = 4.0
+        loginButton.setShadow(offset: CGSize(width: 0, height: 3))
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dismissKeyboard()
+        return true
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+}
+
+
 // MARK: - LoginDisplayLogic
 extension LoginViewController: LoginDisplayLogic {
     
@@ -85,8 +130,10 @@ extension LoginViewController: LoginDisplayLogic {
         router?.routeToAccountDetails(segue: nil)
     }
     
-    func displayErrorMessage(_ message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+    func displayErrorMessage(withTitle title: String,
+                             message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alertController, animated: true)
     }

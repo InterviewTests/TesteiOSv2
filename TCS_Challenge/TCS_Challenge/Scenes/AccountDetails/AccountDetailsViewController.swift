@@ -8,23 +8,54 @@
 
 import UIKit
 
+protocol AccountDetailsDisplayLogic: class {
+    
+}
+
 class AccountDetailsViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    var interactor: AccountDetailsBusinessLogic?
+    var router: (NSObject & AccountDetailsRoutingLogic & AccountDetailsDataPassing)?
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
     }
-    */
+    
+    // MARK: Setup
+    
+    private func setup() {
+        let viewController = self
+        let interactor = AccountDetailsInteractor()
+        let presenter = AccountDetailsPresenter()
+        let router = AccountDetailsRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
 
+    // MARK: View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+}
+
+// MARK: - AccountDetailsDisplayLogic
+extension AccountDetailsViewController: AccountDetailsDisplayLogic {
+    
 }

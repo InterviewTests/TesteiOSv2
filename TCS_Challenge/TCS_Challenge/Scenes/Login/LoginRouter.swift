@@ -10,7 +10,6 @@ import UIKit
 
 @objc protocol LoginRoutingLogic {
     func routeToAccountDetails(segue: UIStoryboardSegue?)
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
 protocol LoginDataPassing {
@@ -18,35 +17,41 @@ protocol LoginDataPassing {
 }
 
 class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
-    
+        
     weak var viewController: LoginViewController?
     var dataStore: LoginDataStore?
     
     // MARK: Routing
     
-    func routeToAccountDetails() {
-        let accountDetailsVC = AccountDetailsViewController()
-        passDataToAccountDetails(source: dataStore as! LoginDataStore, destination: &accountDetailsVC)
-        
+    func routeToAccountDetails(segue: UIStoryboardSegue?) {
         DispatchQueue.main.async {
-            self.viewController?.navigationController?.pushViewController(accountDetailsVC, animated: true)
+            let destinationVC = self.viewController?.storyboard?.instantiateViewController(identifier: "AccountDetailsViewController") as! AccountDetailsViewController
+            var destinationDS = destinationVC.router!.dataStore!
+            self.passDataToAccountDetails(source: self.dataStore!,
+                                     destination: &destinationDS)
+            self.navigateToAccountDetails(source: self.viewController!, destination: destinationVC)
         }
     }
 
     // MARK: Navigation
     
-//    func navigateToAccountDetails(source: LoginViewController, destination: AccountDetailsViewController) {
-//        source.show(destination, sender: nil)
-//    }
+    func navigateToAccountDetails(source: LoginViewController, destination: AccountDetailsViewController) {
+        source.navigationController?.pushViewController(destination, animated: true)
+    }
     
     // MARK: Passing data
     
-//    func passDataToAccountDetails(source: LoginDataStore, destination: inout AccountDetailsDataStore) {
-//
-//    }
-    
-    //func passDataToSomewhere(source: ___VARIABLE_sceneName___DataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+    func passDataToAccountDetails(source: LoginDataStore, destination: inout AccountDetailsDataStore) {
+        let userId = source.loginResponse?.userId
+        let name = source.loginResponse?.name
+        let bankAccount = source.loginResponse?.bankAccount
+        let agency = source.loginResponse?.agency
+        let balance = source.loginResponse?.balance
+        
+        destination.userAccount = AccountDetails.AccountInfo(userId: userId,
+                                                             name: name,
+                                                             bankAccount: bankAccount,
+                                                             agency: agency,
+                                                             balance: balance)
+    }
 }
