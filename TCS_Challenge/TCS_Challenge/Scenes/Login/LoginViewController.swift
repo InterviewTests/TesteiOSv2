@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class {
     func showAccountDetails()
+    func displayLastLoggedUser(_ user: String)
     func displayErrorMessage(withTitle title: String, message: String)
 }
 
@@ -56,6 +57,14 @@ class LoginViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let userText = userTextField.text, userText.isEmpty {
+            interactor?.fetchLastLoggedUser()
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         dismissKeyboard()
     }
@@ -84,8 +93,10 @@ private extension LoginViewController {
         setupUserTextField()
         setupPasswordTextField()
         
-        userTextField.text = "sd@lasd.com"
-        passwordTextField.text = "12Ffs#"
+        #if DEBUG
+            userTextField.text = "sd@lasd.com"
+            passwordTextField.text = "12Ffs#"
+        #endif
     }
     
     func setupUserTextField() {
@@ -129,7 +140,13 @@ extension LoginViewController: UITextFieldDelegate {
 // MARK: - LoginDisplayLogic
 extension LoginViewController: LoginDisplayLogic {
     
+    private func clearTextFields() {
+        userTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
     func showAccountDetails() {
+        clearTextFields()
         router?.routeToAccountDetails(segue: nil)
     }
     
@@ -139,5 +156,9 @@ extension LoginViewController: LoginDisplayLogic {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alertController, animated: true)
+    }
+    
+    func displayLastLoggedUser(_ user: String) {
+        userTextField.text = user
     }
 }

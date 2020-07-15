@@ -13,6 +13,7 @@ protocol LoginPresentationLogic {
     func presentAccountDetails(response: Login.Fetch.Response)
     func presentInvalidUser()
     func presentInvalidPassword()
+    func presentLastLoggedUser(response: Login.FetchLastLoggedUser.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic {
@@ -24,7 +25,9 @@ class LoginPresenter: LoginPresentationLogic {
     }
     
     func presentAccountDetails(response: Login.Fetch.Response) {
-        viewController?.showAccountDetails()
+        DispatchQueue.main.async {
+            self.viewController?.showAccountDetails()
+        }
     }
     
     func presentInvalidUser() {
@@ -35,5 +38,9 @@ class LoginPresenter: LoginPresentationLogic {
     func presentInvalidPassword() {
         viewController?.displayErrorMessage(withTitle: "Invalid Password",
                                             message: "Password must contain at least one upper case letter, one special char, and one alphanumeric value.")
+    }
+    
+    func presentLastLoggedUser(response: Login.FetchLastLoggedUser.Response) {
+        viewController?.displayLastLoggedUser(response.user)
     }
 }

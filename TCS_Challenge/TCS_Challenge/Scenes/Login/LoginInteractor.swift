@@ -10,6 +10,7 @@ import Foundation
 
 protocol LoginBusinessLogic {
     func fetchLogin(_ request: Login.Fetch.Request)
+    func fetchLastLoggedUser()
 }
 
 protocol LoginDataStore {
@@ -40,6 +41,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         worker?.performLogin(request: request, completion: { (response) in
             switch response{
             case .success(let response):
+                UserConfig.shared.loginUser = request.user
                 self.loginResponse = response
                 self.presenter?.presentAccountDetails(response: response)
                 break
@@ -50,6 +52,15 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
                 break
             }
         })
+    }
+    
+    func fetchLastLoggedUser() {
+        guard let lastLoggedUser = UserConfig.shared.loginUser else {
+            return
+        }
+        
+        let response = Login.FetchLastLoggedUser.Response(user: lastLoggedUser)
+        self.presenter?.presentLastLoggedUser(response: response)
     }
 }
 

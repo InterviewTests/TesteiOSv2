@@ -12,8 +12,19 @@ enum Login {
     
     // MARK: Use cases
     
-    enum Fetch {
+    enum FetchLastLoggedUser {
+        struct Request {
+        }
         
+        struct Response {
+            var user: String
+        }
+        
+        struct ViewModel {
+        }
+    }
+    
+    enum Fetch {
         struct Request {
             let user: String
             let password: String
