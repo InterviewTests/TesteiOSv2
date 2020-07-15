@@ -43,7 +43,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             case .success(let response):
                 UserConfig.shared.loginUser = request.user
                 self.loginResponse = response
-                self.presenter?.presentAccountDetails(response: response)
+                self.presenter?.presentAccountDetails()
                 break
             case .error(let error):
                 self.presenter?.presentLoginError(error: error)

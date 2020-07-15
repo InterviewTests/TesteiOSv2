@@ -10,7 +10,7 @@ import Foundation
 
 protocol LoginPresentationLogic {
     func presentLoginError(error: Error)
-    func presentAccountDetails(response: Login.Fetch.Response)
+    func presentAccountDetails()
     func presentInvalidUser()
     func presentInvalidPassword()
     func presentLastLoggedUser(response: Login.FetchLastLoggedUser.Response)
@@ -24,7 +24,7 @@ class LoginPresenter: LoginPresentationLogic {
         viewController?.displayErrorMessage(withTitle: "Error", message: error.localizedDescription)
     }
     
-    func presentAccountDetails(response: Login.Fetch.Response) {
+    func presentAccountDetails() {
         self.viewController?.showAccountDetails()
     }
     
