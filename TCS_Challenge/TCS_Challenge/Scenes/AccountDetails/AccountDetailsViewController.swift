@@ -70,6 +70,7 @@ class AccountDetailsViewController: UIViewController {
         tableView.dataSource = dataSource
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: StatementTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: StatementTableViewCell.identifier)
+        tableView.register(UINib(nibName: StatementTableSectionHeaderView.identifier, bundle: nil), forHeaderFooterViewReuseIdentifier: StatementTableSectionHeaderView.identifier)
         
         let headerView = tableView.tableHeaderView as! StatementTableHeaderView
         headerView.delegate = self
@@ -113,8 +114,19 @@ extension AccountDetailsViewController: AccountDetailsDisplayLogic {
 
 // MARK: - UITableViewDelegate
 extension AccountDetailsViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return StatementTableViewCell.cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: StatementTableSectionHeaderView.identifier)
+        
+        return sectionHeaderView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return StatementTableSectionHeaderView.headerHeight
     }
 }
 
