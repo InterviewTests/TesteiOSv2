@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A140B5D24BCFFBB007C1480 /* ListCurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A140B5C24BCFFBB007C1480 /* ListCurrencyTableViewCell.swift */; };
+		7A140B5F24BDF2DB007C1480 /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A140B5E24BDF2DB007C1480 /* Statement.swift */; };
 		7A1B5CA324BA0D2A00746A16 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B5CA224BA0D2A00746A16 /* login.json */; };
-		7A1B5CA524BA0D3600746A16 /* currency.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B5CA424BA0D3600746A16 /* currency.json */; };
+		7A1B5CA524BA0D3600746A16 /* statements.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B5CA424BA0D3600746A16 /* statements.json */; };
 		7A1B5CA724BA0ED600746A16 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B5CA624BA0ED600746A16 /* Login.swift */; };
 		7A1B5CAA24BA11AC00746A16 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B5CA924BA11AC00746A16 /* ApiManager.swift */; };
 		7A1B5CAC24BA162700746A16 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B5CAB24BA162700746A16 /* CurrencyViewModel.swift */; };
 		7A1B5CAE24BA237A00746A16 /* ValidatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B5CAD24BA237A00746A16 /* ValidatePassword.swift */; };
-		7A20C07824AA97ED008D2ECF /* ValidateCPF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A20C07724AA97ED008D2ECF /* ValidateCPF.swift */; };
 		7A20C07A24AA99B5008D2ECF /* ValidateEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A20C07924AA99B5008D2ECF /* ValidateEmail.swift */; };
 		7A20C07C24AA9A87008D2ECF /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A20C07B24AA9A87008D2ECF /* String+Extension.swift */; };
 		7A20C07F24AB742F008D2ECF /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A20C07E24AB742F008D2ECF /* ValidationError.swift */; };
@@ -40,13 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A140B5C24BCFFBB007C1480 /* ListCurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		7A140B5E24BDF2DB007C1480 /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
 		7A1B5CA224BA0D2A00746A16 /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = login.json; path = ../../../../login.json; sourceTree = "<group>"; };
-		7A1B5CA424BA0D3600746A16 /* currency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = currency.json; path = ../../../../currency.json; sourceTree = "<group>"; };
+		7A1B5CA424BA0D3600746A16 /* statements.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = statements.json; path = ../../../../statements.json; sourceTree = "<group>"; };
 		7A1B5CA624BA0ED600746A16 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		7A1B5CA924BA11AC00746A16 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		7A1B5CAB24BA162700746A16 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		7A1B5CAD24BA237A00746A16 /* ValidatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePassword.swift; sourceTree = "<group>"; };
-		7A20C07724AA97ED008D2ECF /* ValidateCPF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCPF.swift; sourceTree = "<group>"; };
 		7A20C07924AA99B5008D2ECF /* ValidateEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateEmail.swift; sourceTree = "<group>"; };
 		7A20C07B24AA9A87008D2ECF /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		7A20C07E24AB742F008D2ECF /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
@@ -84,6 +86,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A140B5A24BCFF31007C1480 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				7A140B5B24BCFF40007C1480 /* Cell */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		7A140B5B24BCFF40007C1480 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7A140B5C24BCFFBB007C1480 /* ListCurrencyTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		7A1B5C9F24BA0B0900746A16 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,7 +122,7 @@
 		7A1B5CA124BA0D1200746A16 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				7A1B5CA424BA0D3600746A16 /* currency.json */,
+				7A1B5CA424BA0D3600746A16 /* statements.json */,
 				7A1B5CA224BA0D2A00746A16 /* login.json */,
 			);
 			path = Data;
@@ -121,7 +139,6 @@
 		7A20C07624AA97BA008D2ECF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7A20C07724AA97ED008D2ECF /* ValidateCPF.swift */,
 				7A20C07924AA99B5008D2ECF /* ValidateEmail.swift */,
 				7A1B5CAD24BA237A00746A16 /* ValidatePassword.swift */,
 			);
@@ -133,6 +150,7 @@
 			children = (
 				7A20C07E24AB742F008D2ECF /* ValidationError.swift */,
 				7A1B5CA624BA0ED600746A16 /* Login.swift */,
+				7A140B5E24BDF2DB007C1480 /* Statement.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,11 +176,11 @@
 		7AA5D5CA24A90AA900A40905 /* BankAPP */ = {
 			isa = PBXGroup;
 			children = (
+				7AA5D5ED24A9128F00A40905 /* Extensions */,
+				7A20C07624AA97BA008D2ECF /* Helpers */,
+				7A20C07D24AB741E008D2ECF /* Model */,
 				7A1B5CA024BA0B1300746A16 /* ViewModel */,
 				7A1B5C9F24BA0B0900746A16 /* Repository */,
-				7A20C07D24AB741E008D2ECF /* Model */,
-				7A20C07624AA97BA008D2ECF /* Helpers */,
-				7AA5D5ED24A9128F00A40905 /* Extensions */,
 				7AA5D5F224A9178F00A40905 /* View */,
 				7AA5D5CB24A90AA900A40905 /* AppDelegate.swift */,
 				7AA5D5CD24A90AA900A40905 /* SceneDelegate.swift */,
@@ -196,6 +214,7 @@
 		7AA5D5F224A9178F00A40905 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A140B5A24BCFF31007C1480 /* Custom */,
 				7AA5D5CF24A90AA900A40905 /* LoginViewController.swift */,
 				7ADE82A724ABDD8300366813 /* ListCurrencyViewController.swift */,
 			);
@@ -283,7 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A1B5CA524BA0D3600746A16 /* currency.json in Resources */,
+				7A1B5CA524BA0D3600746A16 /* statements.json in Resources */,
 				7A1B5CA324BA0D2A00746A16 /* login.json in Resources */,
 				7AA5D5D824A90AAB00A40905 /* LaunchScreen.storyboard in Resources */,
 				7AA5D5D524A90AAB00A40905 /* Assets.xcassets in Resources */,
@@ -308,6 +327,7 @@
 				7A20C07C24AA9A87008D2ECF /* String+Extension.swift in Sources */,
 				7AA5D5D024A90AA900A40905 /* LoginViewController.swift in Sources */,
 				7A1B5CAC24BA162700746A16 /* CurrencyViewModel.swift in Sources */,
+				7A140B5D24BCFFBB007C1480 /* ListCurrencyTableViewCell.swift in Sources */,
 				7A1B5CA724BA0ED600746A16 /* Login.swift in Sources */,
 				7AA5D5CC24A90AA900A40905 /* AppDelegate.swift in Sources */,
 				7A20C07A24AA99B5008D2ECF /* ValidateEmail.swift in Sources */,
@@ -317,8 +337,8 @@
 				7AA5D5CE24A90AA900A40905 /* SceneDelegate.swift in Sources */,
 				7AA5D5F124A914E700A40905 /* UIColor+Extension.swift in Sources */,
 				7A20C08124AB7457008D2ECF /* UIViewController+Extension.swift in Sources */,
-				7A20C07824AA97ED008D2ECF /* ValidateCPF.swift in Sources */,
 				7A1B5CAE24BA237A00746A16 /* ValidatePassword.swift in Sources */,
+				7A140B5F24BDF2DB007C1480 /* Statement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,11 +9,13 @@
 import Foundation
 
 struct Login: Codable {
-    let userAccount: CurrencyUser
+    let userAccount: [DataUser]
 }
 
-struct CurrencyUser: Codable {
+struct DataUser: Codable {
     let userId: Int
+    let email: String
+    let cpf: String
     let name: String
     let bankAccount: String
     let agency: String
