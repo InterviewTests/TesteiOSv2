@@ -20,7 +20,7 @@ protocol LoginDataStore {
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     var presenter: LoginPresentationLogic?
-    var worker: LoginWorker?
+    var worker: LoginWorker = LoginWorker()
     
     var loginResponse: Login.Fetch.Response?
     
@@ -36,9 +36,8 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             presenter?.presentInvalidPassword()
             return
         }
-        
-        worker = LoginWorker()
-        worker?.performLogin(request: request, completion: { (response) in
+       
+        worker.performLogin(request: request, completion: { (response) in
             switch response{
             case .success(let response):
                 UserConfig.shared.loginUser = request.user

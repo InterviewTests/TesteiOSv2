@@ -111,11 +111,6 @@ private extension LoginViewController {
         setupLoginButton()
         setupUserTextField()
         setupPasswordTextField()
-        
-        #if DEBUG
-            userTextField.text = "sd@lasd.com"
-            passwordTextField.text = "12Ffs#"
-        #endif
     }
     
     func setupUserTextField() {

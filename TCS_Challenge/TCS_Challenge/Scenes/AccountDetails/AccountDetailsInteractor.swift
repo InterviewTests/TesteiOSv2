@@ -24,7 +24,7 @@ class AccountDetailsInteractor: AccountDetailsBusinessLogic, AccountDetailsDataS
     var userAccount: AccountInfo?
     
     var presenter: AccountDetailsPresentationLogic?
-    var worker: AccountDetailsWorker?
+    var worker: AccountDetailsWorker = AccountDetailsWorker()
     
     func fetchAccountInfo() {
         guard let accountInfo = userAccount else {
@@ -44,10 +44,9 @@ class AccountDetailsInteractor: AccountDetailsBusinessLogic, AccountDetailsDataS
             return
         }
         
-        worker = AccountDetailsWorker()
         let request = AccountDetails.FetchStatements.Request(userId: "\(userId)")
         
-        worker?.fetchStatements(request: request, completion: { (response) in
+        worker.fetchStatements(request: request, completion: { (response) in
             switch response {
             case .success(let statements):
                 self.statements = statements
