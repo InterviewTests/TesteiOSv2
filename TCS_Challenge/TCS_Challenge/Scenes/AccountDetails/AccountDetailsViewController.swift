@@ -52,7 +52,7 @@ class AccountDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTable()
         fetchAccountInfo()
         fetchStatements()
@@ -64,7 +64,10 @@ class AccountDetailsViewController: UIViewController {
     
     // MARK: - UI Setup
     
+    private let refreshControl = UIRefreshControl()
+    
     private func setupTable() {
+        
         dataSource = StatementsDataSource(statements: [])
         tableView.delegate = self
         tableView.dataSource = dataSource
@@ -75,6 +78,13 @@ class AccountDetailsViewController: UIViewController {
         let headerView = tableView.tableHeaderView as! StatementTableHeaderView
         headerView.delegate = self
         headerView.setupView()
+        
+        refreshControl.addTarget(self, action: #selector(refreshStatements(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshStatements(_ sender: Any) {
+        fetchStatements()
     }
     
     // MARK: - Fetch Data
@@ -104,6 +114,7 @@ extension AccountDetailsViewController: AccountDetailsDisplayLogic {
         dataSource.statements = displayedStatements
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     

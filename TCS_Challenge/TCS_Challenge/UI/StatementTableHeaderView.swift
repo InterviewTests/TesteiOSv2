@@ -14,6 +14,7 @@ protocol StatementTableHeaderViewDelegate: class {
 
 class StatementTableHeaderView: UIView {
 
+    @IBOutlet var contentView: UIView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var accountTitleLabel: UILabel!
     @IBOutlet var accountLabel: UILabel!
@@ -29,9 +30,9 @@ class StatementTableHeaderView: UIView {
 }
 
 extension StatementTableHeaderView {
+    
     func setupView() {
-        
-        backgroundColor = .appBlue
+        contentView.backgroundColor = .appBlue
         
         accountTitleLabel.text = "Conta"
         accountTitleLabel.textColor = .white

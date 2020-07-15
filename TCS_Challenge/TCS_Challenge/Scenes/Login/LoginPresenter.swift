@@ -25,9 +25,7 @@ class LoginPresenter: LoginPresentationLogic {
     }
     
     func presentAccountDetails(response: Login.Fetch.Response) {
-        DispatchQueue.main.async {
-            self.viewController?.showAccountDetails()
-        }
+        self.viewController?.showAccountDetails()
     }
     
     func presentInvalidUser() {

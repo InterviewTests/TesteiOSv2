@@ -71,6 +71,7 @@ class LoginViewController: UIViewController {
     
     // MARK: Login
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -80,8 +81,26 @@ class LoginViewController: UIViewController {
             return
         }
         
+        updateLoginButton(enabled: false)
         let request = Login.Fetch.Request(user: user, password: password)
         interactor?.fetchLogin(request)
+    }
+}
+
+// MARK: - Update UI
+private extension LoginViewController {
+    
+    func updateLoginButton(enabled: Bool) {
+        DispatchQueue.main.async {
+            self.loginButton.isEnabled = enabled
+            self.activityIndicator.isHidden = enabled
+            
+            if enabled {
+                self.activityIndicator.stopAnimating()
+            } else {
+                self.activityIndicator.startAnimating()
+            }
+        }
     }
 }
 
@@ -114,6 +133,11 @@ private extension LoginViewController {
     }
     
     func setupLoginButton() {
+        activityIndicator.isHidden = true
+        activityIndicator.style = .large
+        activityIndicator.color = .white
+        
+        loginButton.addSubview(activityIndicator)
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = .appBlue
         loginButton.tintColor = .white
@@ -141,21 +165,28 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController: LoginDisplayLogic {
     
     private func clearTextFields() {
-        userTextField.text = ""
-        passwordTextField.text = ""
+        DispatchQueue.main.async {
+            self.userTextField.text = ""
+            self.passwordTextField.text = ""
+        }
     }
     
     func showAccountDetails() {
-        clearTextFields()
+        self.updateLoginButton(enabled: true)
+        self.clearTextFields()
         router?.routeToAccountDetails(segue: nil)
     }
     
     func displayErrorMessage(withTitle title: String,
                              message: String) {
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        present(alertController, animated: true)
+        updateLoginButton(enabled: true)
+        
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alertController, animated: true)
+        }
     }
     
     func displayLastLoggedUser(_ user: String) {
