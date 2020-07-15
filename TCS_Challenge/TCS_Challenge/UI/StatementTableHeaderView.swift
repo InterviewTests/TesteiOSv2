@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol StatementTableHeaderViewDelegate: class {
+    func logoutButtonTapped()
+}
+
 class StatementTableHeaderView: UIView {
 
     @IBOutlet var nameLabel: UILabel!
@@ -17,10 +21,14 @@ class StatementTableHeaderView: UIView {
     @IBOutlet var balanceLabel: UILabel!
     @IBOutlet var logoutButton: UIButton!
     
+    weak var delegate: StatementTableHeaderViewDelegate?
+   
     @IBAction func logoutButtonTapped(_ sender: Any) {
-        
+        delegate?.logoutButtonTapped()
     }
-    
+}
+
+extension StatementTableHeaderView {
     func setupView() {
         
         backgroundColor = .appBlue

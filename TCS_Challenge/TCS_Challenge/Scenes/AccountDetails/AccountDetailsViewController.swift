@@ -11,6 +11,7 @@ import UIKit
 protocol AccountDetailsDisplayLogic: class {
     func displayFetchedStatements(viewModel: AccountDetails.FetchStatements.ViewModel)
     func displayFetchedAccountInfo(viewModel: AccountDetails.FetchAccountInfo.ViewModel)
+    func logoutUser()
 }
 
 class AccountDetailsViewController: UIViewController {
@@ -71,6 +72,7 @@ class AccountDetailsViewController: UIViewController {
         tableView.register(UINib(nibName: StatementTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: StatementTableViewCell.identifier)
         
         let headerView = tableView.tableHeaderView as! StatementTableHeaderView
+        headerView.delegate = self
         headerView.setupView()
     }
     
@@ -103,11 +105,22 @@ extension AccountDetailsViewController: AccountDetailsDisplayLogic {
             self.tableView.reloadData()
         }
     }
+    
+    func logoutUser() {
+        router?.navigateToLogin(source: self)
+    }
 }
 
 // MARK: - UITableViewDelegate
 extension AccountDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return StatementTableViewCell.cellHeight
+    }
+}
+
+// MARK: - StatementTableHeaderViewDelegate
+extension AccountDetailsViewController: StatementTableHeaderViewDelegate {
+    func logoutButtonTapped() {
+        logoutUser()
     }
 }

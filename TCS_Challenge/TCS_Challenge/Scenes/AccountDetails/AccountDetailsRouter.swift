@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 @objc protocol AccountDetailsRoutingLogic {
-    
+    func navigateToLogin(source: AccountDetailsViewController)
 }
 
 protocol AccountDetailsDataPassing {
@@ -21,10 +22,9 @@ class AccountDetailsRouter: NSObject, AccountDetailsRoutingLogic, AccountDetails
     weak var viewController: AccountDetailsViewController?
     var dataStore: AccountDetailsDataStore?
     
-    // MARK: Routing
-    
     // MARK: Navigation
-
-    // MARK: Passing data
-
+    
+    func navigateToLogin(source: AccountDetailsViewController) {
+        source.navigationController?.popViewController(animated: true)
+    }
 }

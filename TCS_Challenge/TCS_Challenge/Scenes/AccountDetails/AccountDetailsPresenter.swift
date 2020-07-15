@@ -10,7 +10,6 @@ import Foundation
 
 protocol AccountDetailsPresentationLogic {
     func logoutUser()
-    func presentLoginError(error: Error)
     func presentFetchedStatements(response: AccountDetails.FetchStatements.Response)
     func presentFetchedAccountInfo(response: AccountDetails.FetchAccountInfo.Response)
 }
@@ -52,10 +51,6 @@ class AccountDetailsPresenter: AccountDetailsPresentationLogic {
     }
     
     func logoutUser() {
-        
-    }
-    
-    func presentLoginError(error: Error) {
-        
+        viewController?.logoutUser()
     }
 }

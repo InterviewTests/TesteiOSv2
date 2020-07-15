@@ -55,11 +55,11 @@ class AccountDetailsInteractor: AccountDetailsBusinessLogic, AccountDetailsDataS
                 self.presenter?.presentFetchedStatements(response: response)
                 break
             case .error(let error):
-                // present error
+                // TODO: present empty list with button to reload
                 print("Error \(error.localizedDescription)")
                 break
             case .nonSpecifiedError:
-                // present error
+                // TODO: present empty list with button to reload
                 print("Error")
                 break
             }
