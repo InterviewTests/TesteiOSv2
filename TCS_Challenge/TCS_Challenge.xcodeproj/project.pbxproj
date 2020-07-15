@@ -209,13 +209,38 @@
 		D916B23E24BE4EAB0043F581 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				D916B23F24BE4EE00043F581 /* StatementTableViewCell.swift */,
-				D916B24024BE4EE00043F581 /* StatementTableViewCell.xib */,
-				D916B24924BE67570043F581 /* StatementTableHeaderView.swift */,
-				D92A03C224BF776300CC12BA /* StatementTableSectionHeaderView.xib */,
-				D92A03C424BF7A9B00CC12BA /* StatementTableSectionHeaderView.swift */,
+				D924A1D824BFC85800F1169A /* Views */,
+				D924A1D724BFC84200F1169A /* Xibs */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		D924A1D724BFC84200F1169A /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				D916B24024BE4EE00043F581 /* StatementTableViewCell.xib */,
+				D92A03C224BF776300CC12BA /* StatementTableSectionHeaderView.xib */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		D924A1D824BFC85800F1169A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D916B23F24BE4EE00043F581 /* StatementTableViewCell.swift */,
+				D916B24924BE67570043F581 /* StatementTableHeaderView.swift */,
+				D92A03C424BF7A9B00CC12BA /* StatementTableSectionHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D924A1D924BFC8AA00F1169A /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D9C323D424BCA94100112AF7 /* Main.storyboard */,
+				D9C323D924BCA94600112AF7 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		D92A03C924BF972F00CC12BA /* Scenes */ = {
@@ -278,18 +303,17 @@
 		D9C323CD24BCA94100112AF7 /* TCS_Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				D916B23E24BE4EAB0043F581 /* UI */,
-				D916B23B24BE447C0043F581 /* DataSources */,
-				D916B23824BE29600043F581 /* Models */,
-				D916B22D24BDEA660043F581 /* Extensions */,
-				D9D9C9CB24BCE1FB007D245A /* Scenes */,
-				D9D9C9C424BCC098007D245A /* API */,
+				D9C323DC24BCA94600112AF7 /* Info.plist */,
 				D9C323CE24BCA94100112AF7 /* AppDelegate.swift */,
 				D9C323D024BCA94100112AF7 /* SceneDelegate.swift */,
-				D9C323D424BCA94100112AF7 /* Main.storyboard */,
 				D9C323D724BCA94600112AF7 /* Assets.xcassets */,
-				D9C323D924BCA94600112AF7 /* LaunchScreen.storyboard */,
-				D9C323DC24BCA94600112AF7 /* Info.plist */,
+				D9D9C9C424BCC098007D245A /* API */,
+				D916B23B24BE447C0043F581 /* DataSources */,
+				D916B22D24BDEA660043F581 /* Extensions */,
+				D916B23824BE29600043F581 /* Models */,
+				D9D9C9CB24BCE1FB007D245A /* Scenes */,
+				D924A1D924BFC8AA00F1169A /* Storyboard */,
+				D916B23E24BE4EAB0043F581 /* UI */,
 			);
 			path = TCS_Challenge;
 			sourceTree = "<group>";
