@@ -46,4 +46,12 @@ class StatementTableHeaderView: UIView {
         logoutButton.setImage(UIImage(named: "logout_icon")?
             .withTintColor(.white),for: .normal)
     }
+    
+    func update(withViewModel viewModel: AccountDetails.FetchAccountInfo.ViewModel) {
+        let displayedAccountInfo = viewModel.displayedAccountInfo
+        
+        nameLabel.text = displayedAccountInfo.name
+        accountLabel.text = displayedAccountInfo.account
+        balanceLabel.text = displayedAccountInfo.balance
+    }
 }

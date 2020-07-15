@@ -38,4 +38,21 @@ extension String {
     func containsSpecialCharacter() -> Bool {
         return self.range(of: ".*[^A-Za-z0-9].*", options: .regularExpression) != nil
     }
+    
+    
+    /// Converts a date string to another format
+    /// - Parameters:
+    ///   - from: String date format
+    ///   - to: String date format
+    /// - Returns: The final string converted to another date format
+    func convert(fromDateFormat from: String, toDateFormat to: String) -> String? {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = from
+        guard let fromDate = dateFormatter.date(from: self) else { return nil }
+
+        dateFormatter.dateFormat = to
+        let toDateString = dateFormatter.string(from: fromDate)
+        return toDateString
+    }
 }

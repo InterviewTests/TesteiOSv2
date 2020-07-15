@@ -10,15 +10,26 @@ import Foundation
 
 enum AccountDetails {
     
-    struct AccountInfo {
-        var userId: Int?
-        var name: String?
-        var bankAccount: String?
-        var agency: String?
-        var balance: Double?
-    }
-    
     // MARK: Use cases
+    
+    enum FetchAccountInfo {
+        
+        struct Request {
+        }
+        
+        struct Response {
+            var accountInfo: AccountInfo
+        }
+        
+        struct ViewModel {
+            struct DisplayedAccountInfo {
+                var name: String
+                var account: String
+                var balance: String
+            }
+            var displayedAccountInfo: DisplayedAccountInfo
+        }
+    }
     
     enum FetchStatements {
         

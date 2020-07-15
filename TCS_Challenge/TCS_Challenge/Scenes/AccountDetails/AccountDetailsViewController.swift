@@ -10,6 +10,7 @@ import UIKit
 
 protocol AccountDetailsDisplayLogic: class {
     func displayFetchedStatements(viewModel: AccountDetails.FetchStatements.ViewModel)
+    func displayFetchedAccountInfo(viewModel: AccountDetails.FetchAccountInfo.ViewModel)
 }
 
 class AccountDetailsViewController: UIViewController {
@@ -52,6 +53,7 @@ class AccountDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTable()
+        fetchAccountInfo()
         fetchStatements()
     }
     
@@ -72,17 +74,27 @@ class AccountDetailsViewController: UIViewController {
         headerView.setupView()
     }
     
-    // MARK: - Fetch Statements
+    // MARK: - Fetch Data
     
     private var dataSource: StatementsDataSource!
     
     private func fetchStatements() {
         interactor?.fetchStatements()
     }
+    
+    private func fetchAccountInfo() {
+        interactor?.fetchAccountInfo()
+    }
 }
 
 // MARK: - AccountDetailsDisplayLogic
 extension AccountDetailsViewController: AccountDetailsDisplayLogic {
+    
+    func displayFetchedAccountInfo(viewModel: AccountDetails.FetchAccountInfo.ViewModel) {
+        if let headerView = tableView.tableHeaderView as? StatementTableHeaderView {
+            headerView.update(withViewModel: viewModel)
+        }
+    }
     
     func displayFetchedStatements(viewModel: AccountDetails.FetchStatements.ViewModel) {
         let displayedStatements = viewModel.displayedStatements
@@ -93,6 +105,7 @@ extension AccountDetailsViewController: AccountDetailsDisplayLogic {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension AccountDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return StatementTableViewCell.cellHeight

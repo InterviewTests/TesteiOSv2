@@ -10,20 +10,31 @@ import Foundation
 
 protocol AccountDetailsBusinessLogic {
     func fetchStatements()
+    func fetchAccountInfo()
 }
 
 protocol AccountDetailsDataStore {
-    var userAccount: AccountDetails.AccountInfo? { get set }
+    var userAccount: AccountInfo? { get set }
     var statements: [Statement]? { get set }
 }
 
 class AccountDetailsInteractor: AccountDetailsBusinessLogic, AccountDetailsDataStore {
     
     var statements: [Statement]?
-    var userAccount: AccountDetails.AccountInfo?
+    var userAccount: AccountInfo?
     
     var presenter: AccountDetailsPresentationLogic?
     var worker: AccountDetailsWorker?
+    
+    func fetchAccountInfo() {
+        guard let accountInfo = userAccount else {
+            presenter?.logoutUser()
+            return
+        }
+        
+        let response = AccountDetails.FetchAccountInfo.Response(accountInfo: accountInfo)
+        self.presenter?.presentFetchedAccountInfo(response: response)
+    }
     
     func fetchStatements() {
         

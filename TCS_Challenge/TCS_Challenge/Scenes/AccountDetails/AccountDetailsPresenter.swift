@@ -10,8 +10,9 @@ import Foundation
 
 protocol AccountDetailsPresentationLogic {
     func logoutUser()
-    func presentFetchedStatements(response: AccountDetails.FetchStatements.Response)
     func presentLoginError(error: Error)
+    func presentFetchedStatements(response: AccountDetails.FetchStatements.Response)
+    func presentFetchedAccountInfo(response: AccountDetails.FetchAccountInfo.Response)
 }
 
 class AccountDetailsPresenter: AccountDetailsPresentationLogic {
@@ -21,18 +22,33 @@ class AccountDetailsPresenter: AccountDetailsPresentationLogic {
     func presentFetchedStatements(response: AccountDetails.FetchStatements.Response) {
         var displayedStatements: [AccountDetails.FetchStatements.ViewModel.DisplayedStatement] = []
         
-        for statements in response.statementList {
-            let title = statements.title
-            let desc = statements.desc
-            let date = statements.date
-            let value = "R$ \(statements.value)"
-            
-            let displayedStatement = AccountDetails.FetchStatements.ViewModel.DisplayedStatement(title: title, desc: desc, date: date, value: value)
+        for statement in response.statementList {
+            let title = statement.title
+            let desc = statement.desc
+            let formattedDate = statement
+                .date.convert(fromDateFormat: "yyyy-MM-dd", toDateFormat: "dd/MM/yyyy")
+            let formattedValue = abs(statement.value).convertToCurrency()
+
+            let displayedStatement = AccountDetails.FetchStatements.ViewModel.DisplayedStatement(title: title, desc: desc, date: formattedDate ?? "", value: "R$" + (formattedValue ?? "0,00"))
             displayedStatements.append(displayedStatement)
         }
         
         let viewModel = AccountDetails.FetchStatements.ViewModel(displayedStatements: displayedStatements)
         viewController?.displayFetchedStatements(viewModel: viewModel)
+    }
+    
+    func presentFetchedAccountInfo(response: AccountDetails.FetchAccountInfo.Response) {
+        
+        let accountInfo = response.accountInfo
+        
+        let displayedAccountInfo = AccountDetails
+            .FetchAccountInfo.ViewModel
+            .DisplayedAccountInfo(name: accountInfo.name,
+                                  account: accountInfo.bankAccount + " / " + accountInfo.agency,
+                                  balance: "R$" + (accountInfo.balance.convertToCurrency() ?? "0,00"))
+        
+        let viewModel = AccountDetails.FetchAccountInfo.ViewModel(displayedAccountInfo: displayedAccountInfo)
+        viewController?.displayFetchedAccountInfo(viewModel: viewModel)
     }
     
     func logoutUser() {

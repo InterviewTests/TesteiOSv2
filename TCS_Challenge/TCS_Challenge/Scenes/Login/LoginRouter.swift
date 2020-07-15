@@ -42,16 +42,19 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     // MARK: Passing data
     
     func passDataToAccountDetails(source: LoginDataStore, destination: inout AccountDetailsDataStore) {
-        let userId = source.loginResponse?.userId
-        let name = source.loginResponse?.name
-        let bankAccount = source.loginResponse?.bankAccount
-        let agency = source.loginResponse?.agency
-        let balance = source.loginResponse?.balance
         
-        destination.userAccount = AccountDetails.AccountInfo(userId: userId,
-                                                             name: name,
-                                                             bankAccount: bankAccount,
-                                                             agency: agency,
-                                                             balance: balance)
+        guard let userId = source.loginResponse?.userId,
+            let name = source.loginResponse?.name,
+            let bankAccount = source.loginResponse?.bankAccount,
+            let agency = source.loginResponse?.agency,
+            let balance = source.loginResponse?.balance else {
+                return
+        }
+        
+        destination.userAccount = AccountInfo(userId: userId,
+                                              name: name,
+                                              bankAccount: bankAccount,
+                                              agency: agency,
+                                              balance: balance)
     }
 }
