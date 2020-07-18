@@ -11,6 +11,7 @@ import UIKit
 protocol AccountDetailsDisplayLogic: class {
     func displayFetchedStatements(viewModel: AccountDetails.FetchStatements.ViewModel)
     func displayFetchedAccountInfo(viewModel: AccountDetails.FetchAccountInfo.ViewModel)
+    func displayErrorMessage(_ message: String)
     func logoutUser()
 }
 
@@ -115,6 +116,15 @@ extension AccountDetailsViewController: AccountDetailsDisplayLogic {
         self.displayedStatements = displayedStatements
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
+    func displayErrorMessage(_ message: String) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alertController, animated: true)
             self.refreshControl.endRefreshing()
         }
     }

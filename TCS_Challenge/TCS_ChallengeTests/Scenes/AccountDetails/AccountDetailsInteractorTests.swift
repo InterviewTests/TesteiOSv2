@@ -34,10 +34,11 @@ class AccountDetailsInteractorTests: XCTestCase {
     // MARK: - Test doubles
     
     class AccountDetailsPresentationLogicSpy: AccountDetailsPresentationLogic {
-        
+
         // MARK: Method call expectations
         var presentFetchedStatementsCalled = false
         var presentFetchedAccountInfoCalled = false
+        var presentErrorMessageCalled = false
         
         // MARK: Argument expectations
         var statementsResponse: AccountDetails.FetchStatements.Response!
@@ -54,11 +55,17 @@ class AccountDetailsInteractorTests: XCTestCase {
             accountInfoResponse = response
         }
         
+        func presentErrorMessage(_ message: String) {
+            presentErrorMessageCalled = true
+        }
+        
         func logoutUser() {
         }
     }
     
     class AccountDetailsWorkerSpy: AccountDetailsWorker {
+        
+        static let invalidUserId: Int = -1
         
         // MARK: Method call expectations
         var fetchStatementsCalled = false
@@ -66,7 +73,12 @@ class AccountDetailsInteractorTests: XCTestCase {
         // MARK: Spied methods
         override func fetchStatements(request: AccountDetails.FetchStatements.Request, completion: @escaping (AccountDetailsWorker.StatementsResponse) -> Void) {
             fetchStatementsCalled = true
-            completion(.success([Seeds.Statements.tedStatement]))
+
+            if request.userId == String(AccountDetailsWorkerSpy.invalidUserId) {
+                completion(.nonSpecifiedError)
+            } else {
+                completion(.success([Seeds.Statements.tedStatement]))
+            }
         }
     }
     
@@ -86,6 +98,21 @@ class AccountDetailsInteractorTests: XCTestCase {
         // Then
         XCTAssert(accountDetailsWorkerSpy.fetchStatementsCalled, "FetchStatements should ask AccountDetailsWorker to fetch statements")
         XCTAssert(accountDetailsPresentationLogicSpy.presentFetchedStatementsCalled, "FetchStatements should ask presenter to format the statements")
+    }
+    
+    func testFetchStatementsWithInvalidAccountInfoShouldAskPresenterToPresentErrorMessage() {
+        // Given
+        let accountDetailsPresentationLogicSpy = AccountDetailsPresentationLogicSpy()
+        sut.presenter = accountDetailsPresentationLogicSpy
+        let accountDetailsWorkerSpy = AccountDetailsWorkerSpy()
+        sut.worker = accountDetailsWorkerSpy
+        
+        // When
+        sut.userAccount = AccountInfo(userId: AccountDetailsWorkerSpy.invalidUserId, name: "Amy Go", bankAccount: "1234", agency: "a25123", balance: 1500)
+        sut.fetchStatements()
+        
+        // Then
+        XCTAssert(accountDetailsPresentationLogicSpy.presentErrorMessageCalled, "FetchStatements with an invalid user id should ask the presenter to present an error message")
     }
     
     func testFetchAccountInfoShouldAskPresenterToFormatResult() {

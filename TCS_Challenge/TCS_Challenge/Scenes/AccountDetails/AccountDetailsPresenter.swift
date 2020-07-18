@@ -12,6 +12,7 @@ protocol AccountDetailsPresentationLogic {
     func logoutUser()
     func presentFetchedStatements(response: AccountDetails.FetchStatements.Response)
     func presentFetchedAccountInfo(response: AccountDetails.FetchAccountInfo.Response)
+    func presentErrorMessage(_ message: String)
 }
 
 class AccountDetailsPresenter: AccountDetailsPresentationLogic {
@@ -48,6 +49,10 @@ class AccountDetailsPresenter: AccountDetailsPresentationLogic {
         
         let viewModel = AccountDetails.FetchAccountInfo.ViewModel(displayedAccountInfo: displayedAccountInfo)
         viewController?.displayFetchedAccountInfo(viewModel: viewModel)
+    }
+    
+    func presentErrorMessage(_ message: String) {
+        viewController?.displayErrorMessage(message)
     }
     
     func logoutUser() {

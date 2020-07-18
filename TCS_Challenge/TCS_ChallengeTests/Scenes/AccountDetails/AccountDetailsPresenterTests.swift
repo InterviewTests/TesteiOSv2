@@ -39,6 +39,7 @@ class AccountDetailsPresenterTests: XCTestCase {
         // MARK: Method call expectations
         var displayFetchedStatementsCalled = false
         var displayFetchedAccountInfoCalled = false
+        var displayErrorMessageCalled = false
         var logoutUserCalled = false
         
         // MARK: Argument expectations
@@ -54,6 +55,10 @@ class AccountDetailsPresenterTests: XCTestCase {
         func displayFetchedAccountInfo(viewModel: AccountDetails.FetchAccountInfo.ViewModel) {
             displayFetchedAccountInfoCalled = true
             fetchAccountInfoViewModel = viewModel
+        }
+        
+        func displayErrorMessage(_ message: String) {
+            displayErrorMessageCalled = true
         }
         
         func logoutUser() {
@@ -103,6 +108,18 @@ class AccountDetailsPresenterTests: XCTestCase {
         XCTAssertEqual(displayedAccountInfo.balance, "R$45.120,90", "Presenting fetched statements should properly format balance")
         XCTAssertEqual(displayedAccountInfo.account, "312351 / 2321", "Presenting fetched statements should properly format account")
         XCTAssert(accountDetailsDisplayLogicSpy.displayFetchedAccountInfoCalled, "Presenting fetched account info should ask view controller to display it")
+    }
+    
+    func testPresentErrorMessage() {
+        // Given
+        let accountDetailsDisplayLogicSpy = AccountDetailsDisplayLogicSpy()
+        sut.viewController = accountDetailsDisplayLogicSpy
+        
+        // When
+        sut.presentErrorMessage("Error Message")
+        
+        // Then
+        XCTAssert(accountDetailsDisplayLogicSpy.displayErrorMessageCalled, "Present error message should ask view controller to route to display it")
     }
     
     func testLogoutUser() {
