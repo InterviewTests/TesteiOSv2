@@ -8,14 +8,19 @@
 
 import Foundation
 
+protocol CurrencyStatementDelegate: class {
+    func isError(isError: Bool)
+}
+
 class CurrencyViewModel {
     
     let apiManager: ApiManagerDelegate
     var userAccount = [DataUser]()
     var statementUser = [StatementUser]()
     var statementList = [StatementList]()
-    var isError = false
-
+    var usuarioKey = "Usuario"
+    weak var delegate: CurrencyStatementDelegate?
+    
     init(apiManager: ApiManagerDelegate) {
         self.apiManager = apiManager
     }
@@ -52,64 +57,63 @@ class CurrencyViewModel {
             return
         }
     }
-    //TODO: - passar erro para viewController correta
+    
     private func getStatements() {
         loadStatement { [weak self] (error) in
             guard let self = self else {return}
             DispatchQueue.main.async {
                 if error == nil {
-                    self.isError = false
+                    self.delegate?.isError(isError: false)
                 }else{
-                    self.isError = true
+                    self.delegate?.isError(isError: true)
                 }
             }
         }
     }
     
-    
-    func checkIsValidEmail(email: String) -> (Bool, DataUser) {
+    func checkIsValidLogin(loginType: LoginType, user: String) -> (Bool, DataUser) {
         getStatements()
         
         var isValid: Bool = false
-        var user = [DataUser]()
         var dataUser: DataUser?
         
-        let userEmail = userAccount.filter({$0.email == email})
+        let userEmail = (loginType == .email) ? userAccount.filter({$0.email == user}) : userAccount.filter({$0.cpf == user})
         if userEmail.count > 0 {
             isValid = true
-            user = userEmail
             
-//            for userId in user {
-//                 userid = userId.userId
-//            }
-
             for info in userEmail {
                 dataUser = DataUser(userId: info.userId, email: info.email, cpf: info.cpf, name: info.name, bankAccount: info.bankAccount, agency: info.agency, balance: info.balance)
                 self.statementList = loadStatementListFromUser(userId: dataUser?.userId ?? 0)
             }
-            
-            //self.statementList = loadStatementListFromUser(userId: userid ?? 0)
-            
-          self.saveLastUserLogged(userLogged: user)
-            
         }else{
             isValid = false
-            user = []
+            dataUser = nil
         }
-        
         guard let data = dataUser else {return (false, DataUser(userId: 0, email: "", cpf: "", name: "", bankAccount: "", agency: "", balance: 0.0)) }
+        saveLastUserLogged(userLogged: data)
         
         return (isValid, data)
     }
     
-    func saveLastUserLogged(userLogged: [DataUser]) {
-        let defaults = UserDefaults.standard
-        
-        for email in userLogged{
-            defaults.set(email.email, forKey: "SaveEmail")
+    func saveLastUserLogged(userLogged: DataUser) {
+        do {
+            let usuarioData = try JSONEncoder().encode(userLogged)
+            UserDefaults.standard.set(usuarioData, forKey: usuarioKey)
+        } catch {
+            print(error.localizedDescription)
+            return
         }
-        
-        
+    }
+    
+    func loadUsuarioLogged() -> DataUser? {
+        do {
+            guard let usuarioData = UserDefaults.standard.data(forKey: usuarioKey) else { return nil}
+            let usuario = try JSONDecoder().decode(DataUser.self, from: usuarioData)
+            return usuario
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
     }
     
     func loadStatementListFromUser(userId: Int) -> [StatementList] {

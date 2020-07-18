@@ -11,7 +11,6 @@ import Foundation
 protocol ApiManagerDelegate: class {
     func getLoginSerealization(completion: @escaping ([DataUser]?, ValidationError?) -> Void)
     func getStatementSerealization(completion: @escaping ([StatementUser]?, ValidationError?) -> Void)
-    
 }
 
 class ApiManager: ApiManagerDelegate{
@@ -25,7 +24,6 @@ class ApiManager: ApiManagerDelegate{
                 do{
                     let result = try JSONDecoder().decode(Login.self, from: data)
                     completion(result.userAccount, nil)
-                    
                 }
             }catch{
                 let error = ValidationError(titleError: "Atenção", messageError: "Não foi possivel carregar a lista de Login.")
@@ -49,8 +47,6 @@ class ApiManager: ApiManagerDelegate{
             }
         }
     }
-    
-    
 }
 
 

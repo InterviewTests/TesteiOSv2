@@ -10,9 +10,17 @@ import UIKit
 
 class ListCurrencyViewController: UIViewController {
     
-    let viewModel = CurrencyViewModel(apiManager: ApiManager())
-    var statementList = [StatementList]()
     var dataUserLoged: DataUser?
+    let viewModel: CurrencyViewModel
+    
+    init(viewModel: CurrencyViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     lazy var viewHeader: UIView = {
         let v = UIView()
@@ -87,7 +95,7 @@ class ListCurrencyViewController: UIViewController {
         let v = UILabel()
         v.textAlignment = .left
         v.textColor = .white
-        v.text = "R$ 1.000,00"
+        v.text = String(format: "%0.2f", "")
         v.font = UIFont().fontAppLight(size: 25)
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
@@ -117,7 +125,6 @@ class ListCurrencyViewController: UIViewController {
         let v = UITableView(frame: .zero)
         v.separatorStyle = .none
         v.allowsSelection = false
-        //v.showsVerticalScrollIndicator = false
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -126,25 +133,25 @@ class ListCurrencyViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         instantiateUI()
+        viewModel.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureUI()
-        tableview.reloadData()
     }
     
     private func instantiateUI() {
         tableview.delegate = self
         tableview.dataSource = self
         tableview.register(ListCurrencyTableViewCell.self, forCellReuseIdentifier: ListCurrencyTableViewCell.reuseIdentifier)
-
+        
     }
     
     private func configureUI() {
         guard let userLogged = dataUserLoged else {
             labelUserName.text = "Pereira Pereira"
-            labelBalance.text = String(2000.00)
+            labelBalance.text = "R$ 1.000.00"
             labelDataBank.text = "\(0000) / \(111111111)"
             return
         }
@@ -215,8 +222,8 @@ class ListCurrencyViewController: UIViewController {
         ])
         NSLayoutConstraint.activate([
             tableview.topAnchor.constraint(equalTo: labelRecent.bottomAnchor, constant: 8),
-            tableview.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            tableview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            tableview.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 13),
+            tableview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -13),
             tableview.bottomAnchor.constraint(equalTo: bottomanchor, constant: 0)
         ])
     }
@@ -225,38 +232,24 @@ class ListCurrencyViewController: UIViewController {
 extension ListCurrencyViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statementList.count
+        return viewModel.statementList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListCurrencyTableViewCell.reuseIdentifier, for: indexPath) as? ListCurrencyTableViewCell else {return UITableViewCell()}
         
         cell.frame.size.width = tableView.frame.size.width
-        //        cell.contentView.layer.cornerRadius = 16
-        //        cell.contentView.clipsToBounds = false
-        //        cell.contentView.layer.borderColor = UIColor.colorBorder.cgColor
-        //        cell.backgroundColor = .clear
-        //        //cell.layer.shadowOffset = CGSize(width: 1, height: 0)
-        //        cell.layer.shadowRadius = 4
-        //        cell.layer.shadowOpacity = 0.20
-        //        cell.layer.shadowOffset = .zero
-        //        cell.layer.masksToBounds = false
-        //        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
-        //        cell.layer.shouldRasterize = true
-        //
         cell.backgroundColor = .clear
         cell.layer.shadowColor = UIColor.colorShadowCell.cgColor
-        
         cell.layer.cornerRadius = 16
-        cell.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cell.layer.shadowOffset = CGSize(width: 2, height: 1)
         cell.layer.shadowRadius = 3
         cell.layer.shadowOpacity = 0.3
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         cell.layer.shouldRasterize = true
         cell.layer.rasterizationScale = UIScreen.main.scale
         
-        
-        cell.statementsContent(infoStatement: statementList[indexPath.row])
+        cell.statementsContent(infoStatement: viewModel.statementList[indexPath.row])
         
         return cell
     }
@@ -264,14 +257,16 @@ extension ListCurrencyViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 105
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
+
+extension ListCurrencyViewController: CurrencyStatementDelegate {
+    
+    func isError(isError: Bool) {
+        if isError {
+            showError(buttonLabel: "OK", titleError: "ATENÇÃO!", messageError: "Tivemos um problema para carregar a lista de despesas, por favor, tente novamente mais tarde!")
+        }else {
+            tableview.reloadData()
+        }
+    }
+}
+

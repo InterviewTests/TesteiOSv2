@@ -21,7 +21,6 @@ class ListCurrencyTableViewCell: UITableViewCell {
         return v
     }()
     
-    
     lazy var labelTitle: UILabel = {
         let v = UILabel(frame: .zero)
         v.font = UIFont().fontAppDefault(size: 16)
@@ -77,7 +76,6 @@ class ListCurrencyTableViewCell: UITableViewCell {
     private func setupLayoutUI() {
         backgroundColor = .white
         addSubview(viewCell)
-        //viewCell.addSubview(viewCellBack)
         addSubview(labelTitle)
         addSubview(labelTitleContent)
         addSubview(labelDate)
@@ -90,12 +88,7 @@ class ListCurrencyTableViewCell: UITableViewCell {
             viewCell.rightAnchor.constraint(equalTo: rightAnchor, constant: -2),
             viewCell.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
         ])
-        //        NSLayoutConstraint.activate([
-        //            viewCellBack.topAnchor.constraint(equalTo: viewCell.topAnchor, constant: 3),
-        //            viewCellBack.leftAnchor.constraint(equalTo: viewCell.leftAnchor, constant: 3),
-        //            viewCellBack.rightAnchor.constraint(equalTo: viewCell.rightAnchor, constant: -3),
-        //            viewCellBack.bottomAnchor.constraint(equalTo: viewCell.bottomAnchor, constant: -3)
-        //        ])
+        
         NSLayoutConstraint.activate([
             labelTitle.topAnchor.constraint(equalTo: topAnchor, constant: 15),
             labelTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
@@ -128,7 +121,7 @@ class ListCurrencyTableViewCell: UITableViewCell {
         }
         labelTitle.text = statement.title
         labelDate.text = statement.date
-        labelValue.text = String(statement.value)
+        labelValue.text = "R$ "+String(format: "%0.2f", statement.value)
         labelTitleContent.text = statement.desc
     }
 }

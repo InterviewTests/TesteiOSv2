@@ -10,9 +10,9 @@ import Foundation
 
 class ValidatePassword {
     
-    func validpassword(mypassword : String) -> Bool {
-         let passwordreg =  ("(?=.*[A-Z])(?=.*[0-9])(?=.*[a-zA-Z0-9])(?=.*[@#$%^&*]).{8,}")
-         let passwordtesting = NSPredicate(format: "SELF MATCHES %@", passwordreg)
-         return passwordtesting.evaluate(with: mypassword)
-     }
+    public static func validpassword(password: String) -> Bool {
+        let passwordreg =  ("(?=.*[A-Z])(?=.*[0-9])(?=.*[a-zA-Z0-9])(?=.*[@#$%^&*]).{8,}")
+        let passwordtesting = NSPredicate(format: "SELF MATCHES %@", passwordreg)
+        return passwordtesting.evaluate(with: password)
+    }
 }

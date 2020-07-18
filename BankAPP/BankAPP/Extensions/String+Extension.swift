@@ -22,12 +22,6 @@ extension String {
         return pureNumber
     }
     
-    var isNumber: Bool {
-        get {
-            return !self.isEmpty && self.rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
-        }
-    }
-    
     var isString: Bool {
            get {
                return Int(self) == nil
