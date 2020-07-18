@@ -13,14 +13,8 @@ enum Login {
     // MARK: Use cases
     
     enum FetchLastLoggedUser {
-        struct Request {
-        }
-        
         struct Response {
             var user: String
-        }
-        
-        struct ViewModel {
         }
     }
     
@@ -36,10 +30,6 @@ enum Login {
             var bankAccount: String?
             var agency: String?
             var balance: Double?
-        }
-        
-        struct ViewModel {
-            
         }
     }
 }

@@ -14,9 +14,6 @@ enum AccountDetails {
     
     enum FetchAccountInfo {
         
-        struct Request {
-        }
-        
         struct Response {
             var accountInfo: AccountInfo
         }
@@ -51,5 +48,4 @@ enum AccountDetails {
             var displayedStatements: [DisplayedStatement]
         }
     }
-    
 }
