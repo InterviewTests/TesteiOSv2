@@ -16,6 +16,8 @@ protocol LoginDisplayLogic: class {
 
 class LoginViewController: UIViewController {
     
+    static let identifier: String = "LoginViewController"
+    
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
 

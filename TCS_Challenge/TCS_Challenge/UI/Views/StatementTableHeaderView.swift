@@ -27,6 +27,14 @@ class StatementTableHeaderView: UIView {
     @IBAction func logoutButtonTapped(_ sender: Any) {
         delegate?.logoutButtonTapped()
     }
+    
+    func update(withViewModel viewModel: AccountDetails.FetchAccountInfo.ViewModel) {
+        let displayedAccountInfo = viewModel.displayedAccountInfo
+        
+        nameLabel.text = displayedAccountInfo.name
+        accountLabel.text = displayedAccountInfo.account
+        balanceLabel.text = displayedAccountInfo.balance
+    }
 }
 
 extension StatementTableHeaderView {
@@ -54,13 +62,5 @@ extension StatementTableHeaderView {
         logoutButton.tintColor = .white
         logoutButton.setImage(UIImage(named: "logout_icon")?
             .withTintColor(.white),for: .normal)
-    }
-    
-    func update(withViewModel viewModel: AccountDetails.FetchAccountInfo.ViewModel) {
-        let displayedAccountInfo = viewModel.displayedAccountInfo
-        
-        nameLabel.text = displayedAccountInfo.name
-        accountLabel.text = displayedAccountInfo.account
-        balanceLabel.text = displayedAccountInfo.balance
     }
 }

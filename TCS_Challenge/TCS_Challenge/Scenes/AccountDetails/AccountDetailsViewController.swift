@@ -16,6 +16,8 @@ protocol AccountDetailsDisplayLogic: class {
 
 class AccountDetailsViewController: UIViewController {
     
+    static let identifier: String = "AccountDetailsViewController"
+    
     var interactor: AccountDetailsBusinessLogic?
     var router: (NSObject & AccountDetailsRoutingLogic & AccountDetailsDataPassing)?
     
@@ -67,10 +69,9 @@ class AccountDetailsViewController: UIViewController {
     private let refreshControl = UIRefreshControl()
     
     private func setupTable() {
-        
-        dataSource = StatementsDataSource(statements: [])
+
         tableView.delegate = self
-        tableView.dataSource = dataSource
+        tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: StatementTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: StatementTableViewCell.identifier)
         tableView.register(UINib(nibName: StatementTableSectionHeaderView.identifier, bundle: nil), forHeaderFooterViewReuseIdentifier: StatementTableSectionHeaderView.identifier)
@@ -89,7 +90,7 @@ class AccountDetailsViewController: UIViewController {
     
     // MARK: - Fetch Data
     
-    private var dataSource: StatementsDataSource!
+    var displayedStatements: [AccountDetails.FetchStatements.ViewModel.DisplayedStatement] = []
     
     private func fetchStatements() {
         interactor?.fetchStatements()
@@ -111,7 +112,7 @@ extension AccountDetailsViewController: AccountDetailsDisplayLogic {
     
     func displayFetchedStatements(viewModel: AccountDetails.FetchStatements.ViewModel) {
         let displayedStatements = viewModel.displayedStatements
-        dataSource.statements = displayedStatements
+        self.displayedStatements = displayedStatements
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
@@ -120,6 +121,22 @@ extension AccountDetailsViewController: AccountDetailsDisplayLogic {
     
     func logoutUser() {
         router?.navigateToLogin(source: self)
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension AccountDetailsViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return displayedStatements.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: StatementTableViewCell.identifier, for: indexPath) as! StatementTableViewCell
+        cell.setup(withViewModel: displayedStatements[indexPath.row])
+        
+        return cell
     }
 }
 
