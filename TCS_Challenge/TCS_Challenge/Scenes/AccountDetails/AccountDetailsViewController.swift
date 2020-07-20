@@ -153,10 +153,6 @@ extension AccountDetailsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension AccountDetailsViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return StatementTableViewCell.cellHeight
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: StatementTableSectionHeaderView.identifier)
         
