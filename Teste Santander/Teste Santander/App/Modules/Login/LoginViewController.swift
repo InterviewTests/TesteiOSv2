@@ -40,12 +40,18 @@ class LoginViewController: UIViewController {
         button.backgroundColor = Colors.loginButtonColor
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(didPressLogin), for: .touchUpInside)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpLayout()
+    }
+    
+    @objc func didPressLogin() {
+        let controller = MainPageRouter.createModule()
+        navigationController?.pushViewController(controller, animated: true)
     }
 
 }

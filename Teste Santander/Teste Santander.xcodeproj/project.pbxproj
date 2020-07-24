@@ -26,6 +26,12 @@
 		94CC9D4724CA568800BCDD11 /* LayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CC9D4624CA568800BCDD11 /* LayoutProtocol.swift */; };
 		94CC9D4A24CA5B8200BCDD11 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CC9D4924CA5B8200BCDD11 /* Constants.swift */; };
 		94CC9D4D24CA646C00BCDD11 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CC9D4C24CA646C00BCDD11 /* Colors.swift */; };
+		94CC9D5024CA709F00BCDD11 /* MainPageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CC9D4F24CA709F00BCDD11 /* MainPageProtocols.swift */; };
+		94CC9D5224CA728E00BCDD11 /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CC9D5124CA728E00BCDD11 /* MainPagePresenter.swift */; };
+		94CC9D5424CA72F500BCDD11 /* MainPageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CC9D5324CA72F500BCDD11 /* MainPageInteractor.swift */; };
+		94CC9D5624CA737900BCDD11 /* MainPageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CC9D5524CA737900BCDD11 /* MainPageRouter.swift */; };
+		94CC9D5824CA76F500BCDD11 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CC9D5724CA76F500BCDD11 /* MainPageViewController.swift */; };
+		94CC9D5A24CA774F00BCDD11 /* MainPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94CC9D5924CA774F00BCDD11 /* MainPage.storyboard */; };
 		B6182C9861900FA2C7A224B2 /* Pods_Teste_Santander_Teste_SantanderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B38946B7089A9256831CEF /* Pods_Teste_Santander_Teste_SantanderUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +83,12 @@
 		94CC9D4624CA568800BCDD11 /* LayoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutProtocol.swift; sourceTree = "<group>"; };
 		94CC9D4924CA5B8200BCDD11 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		94CC9D4C24CA646C00BCDD11 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		94CC9D4F24CA709F00BCDD11 /* MainPageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageProtocols.swift; sourceTree = "<group>"; };
+		94CC9D5124CA728E00BCDD11 /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
+		94CC9D5324CA72F500BCDD11 /* MainPageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageInteractor.swift; sourceTree = "<group>"; };
+		94CC9D5524CA737900BCDD11 /* MainPageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRouter.swift; sourceTree = "<group>"; };
+		94CC9D5724CA76F500BCDD11 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		94CC9D5924CA774F00BCDD11 /* MainPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainPage.storyboard; sourceTree = "<group>"; };
 		A98CCA08750C7C1E5CD89B60 /* Pods_Teste_SantanderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teste_SantanderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B38946B7089A9256831CEF /* Pods_Teste_Santander_Teste_SantanderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teste_Santander_Teste_SantanderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -237,6 +249,12 @@
 		94CC9D4E24CA683700BCDD11 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				94CC9D4F24CA709F00BCDD11 /* MainPageProtocols.swift */,
+				94CC9D5124CA728E00BCDD11 /* MainPagePresenter.swift */,
+				94CC9D5324CA72F500BCDD11 /* MainPageInteractor.swift */,
+				94CC9D5524CA737900BCDD11 /* MainPageRouter.swift */,
+				94CC9D5724CA76F500BCDD11 /* MainPageViewController.swift */,
+				94CC9D5924CA774F00BCDD11 /* MainPage.storyboard */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -362,6 +380,7 @@
 			files = (
 				94CC9D4424CA544100BCDD11 /* Login.storyboard in Resources */,
 				94CC9D1124CA4D2900BCDD11 /* LaunchScreen.storyboard in Resources */,
+				94CC9D5A24CA774F00BCDD11 /* MainPage.storyboard in Resources */,
 				94CC9D0E24CA4D2900BCDD11 /* Assets.xcassets in Resources */,
 				94CC9D0924CA4D2700BCDD11 /* Main.storyboard in Resources */,
 			);
@@ -492,11 +511,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				94CC9D4724CA568800BCDD11 /* LayoutProtocol.swift in Sources */,
+				94CC9D5224CA728E00BCDD11 /* MainPagePresenter.swift in Sources */,
+				94CC9D5624CA737900BCDD11 /* MainPageRouter.swift in Sources */,
 				94CC9D4D24CA646C00BCDD11 /* Colors.swift in Sources */,
 				94CC9D4224CA53BB00BCDD11 /* LoginViewController.swift in Sources */,
 				94CC9D3A24CA51AA00BCDD11 /* LoginPresenter.swift in Sources */,
 				94CC9D0C24CA4D2700BCDD11 /* Teste_Santander.xcdatamodeld in Sources */,
+				94CC9D5024CA709F00BCDD11 /* MainPageProtocols.swift in Sources */,
+				94CC9D5824CA76F500BCDD11 /* MainPageViewController.swift in Sources */,
 				94CC9D3C24CA51EF00BCDD11 /* LoginInteractor.swift in Sources */,
+				94CC9D5424CA72F500BCDD11 /* MainPageInteractor.swift in Sources */,
 				94CC9D4A24CA5B8200BCDD11 /* Constants.swift in Sources */,
 				94CC9D3824CA503D00BCDD11 /* LoginProtocols.swift in Sources */,
 				94CC9D0224CA4D2700BCDD11 /* AppDelegate.swift in Sources */,
