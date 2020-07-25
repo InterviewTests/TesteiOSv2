@@ -6,13 +6,16 @@
 //  Copyright © 2020 Maria Eugênia Pereira Teixeira. All rights reserved.
 //
 
-import Foundation
-
+import UIKit
 
 struct Constants {
     
     struct Network {
         static let scheme = "https"
         static let host = "bank-app-test.herokuapp.com"
+    }
+    
+    struct Palette {
+        static let defaultColor = UIColor(hex: "#3B48EE")
     }
 }

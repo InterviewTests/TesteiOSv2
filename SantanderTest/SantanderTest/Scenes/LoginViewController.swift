@@ -12,25 +12,83 @@ protocol LoginDisplayLogic: class {
     func displaySomething(viewModel: Login.ViewModel)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic {
+class LoginViewController: ViewController, LoginDisplayLogic {
+    
+    //MARK: -
+    //MARK: - VIEW PROPERTIES
+    private var logoImageView: UIImageView!
+    private var stackView: UIStackView!
+    private var userTextField: UITextField!
+    private var passwordTextField: UITextField!
+    private var loginButton: UIButton!
+    
+    
+    //MARK: -
+    //MARK: - SCENE PROPERTIES
     var interactor: LoginBusinessLogic?
     var router: LoginRoutingLogic?
     
-    // MARK: Object lifecycle
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
+    //MARK: -
+    //MARK: VIEW LIFE CYCLE
+    override func prepareViews() {
+        logoImageView = .init()
+        stackView = .init()
+        userTextField = .init()
+        passwordTextField = .init()
+        loginButton = .init()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    override func addViewHierarchy() {
+        stackView.addArrangedSubviews([
+            userTextField,
+            passwordTextField
+        ])
+        
+        view.addSubviews([
+            logoImageView,
+            stackView,
+            loginButton
+        ])
     }
     
-    // MARK: Setup
+    override func setupConstraints() {
+        
+        logoImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(60)
+        }
+        
+        userTextField.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.centerX.equalTo(logoImageView)
+            make.centerY.equalToSuperview().offset(-60)
+            make.left.right.equalToSuperview().inset(20)
+        }
+        
+        loginButton.snp.makeConstraints { make in
+            make.centerX.equalTo(stackView)
+            make.bottom.equalToSuperview().inset(50)
+            make.height.equalTo(50)
+            make.width.equalTo(190)
+        }
+    }
+   
+    override func configureViews() {
+        view.backgroundColor = .white
+        configureLoginScene()
+        configureLogoImageView()
+        configureStackView()
+        configureTextFields()
+        configureLoginButton()
+    }
     
-    private func setup() {
+    //MARK: -
+    //MARK: - CONFIGURE SCENE
+    private func configureLoginScene() {
         let viewController = self
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
@@ -42,28 +100,50 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         router.viewController = viewController
     }
     
-    // MARK: Configuration
-    private func configure() {
-        
+    //MARK: -
+    //MARK: - CONFIGURE LOGO IMAGEVIEW
+    private func configureLogoImageView() {
+        logoImageView.contentMode = .scaleAspectFit
+        logoImageView.clipsToBounds = true
+        logoImageView.image = UIImage(named: "logo")
     }
     
-    // MARK: View lifecycle
+    //MARK: -
+    //MARK: - CONFIGURE STACKVIEW
+    private func configureStackView() {
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 20
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        doSomething()
-        configure()
+    //MARK: -
+    //MARK: - CONFIGURE TEXTFIELDS
+    private func configureTextFields() {
+        userTextField.placeholder = "User"
+        userTextField.borderStyle = .roundedRect
+        
+        passwordTextField.placeholder = "Password"
+        passwordTextField.borderStyle = .roundedRect
+        passwordTextField.isSecureTextEntry = true
+    }
+    
+    //MARK: -
+    //MARK: - CONFIGURE TEXTFIELDS
+    private func configureLoginButton() {
+        loginButton.backgroundColor = Constants.Palette.defaultColor
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.layer.cornerRadius = 4
     }
     
     // MARK: Event handling
-    
     func doSomething() {
         let request = Login.Request(user: "", password: "")
         interactor?.login(with: request)
     }
     
     // MARK: Display logic
-    
     func displaySomething(viewModel: Login.ViewModel) {
         //nameTextField.text = viewModel.name
     }
