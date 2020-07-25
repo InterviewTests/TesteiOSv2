@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LoginBusinessLogic {
-    func login(with request: Login.Request)
+    func login(with user: String?, and password: String?)
 }
 
 class LoginInteractor: LoginBusinessLogic {
@@ -21,15 +21,33 @@ class LoginInteractor: LoginBusinessLogic {
     }
     
     // MARK: Business logic
-    func login(with request: Login.Request) {
-        worker.performLogin(with: request).done(handleSuccess).catch(handleError)
+    func login(with user: String?, and password: String?) {
+        if let user = user, !user.isEmpty, let pwd = password, !pwd.isEmpty  {
+            if pwd.isValidPassword {
+                presenter?.shouldPresentLoading(true)
+                let request = Login.Request(user: user, password: pwd)
+                worker.performLogin(with: request).done(handleSuccess).catch(handleError)
+            } else {
+                presentError(with: "A senha tem que ter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico")
+            }
+        } else {
+            presentError(with: "Ambos os campos devem ser preenchidos")
+        }
     }
     
     func handleSuccess(response: Login.Response) {
-        //let user = response.userAccount
+        presenter?.shouldPresentLoading(false)
+        if let error = response.error?.message {
+            presentError(with: error)
+        }
     }
     
     func handleError(error: Error) {
-        
+        presentError(with: error.localizedDescription)
+    }
+    
+    func presentError(with message: String) {
+        presenter?.shouldPresentLoading(false)
+        presenter?.onError(title: "Erro", message: message)
     }
 }

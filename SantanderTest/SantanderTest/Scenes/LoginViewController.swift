@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 protocol LoginDisplayLogic: class {
-    func displaySomething(viewModel: Login.ViewModel)
+    func displayLoading(_ isLoading: Bool)
+    func displayError(title: String, message: String)
 }
 
-class LoginViewController: ViewController, LoginDisplayLogic {
+class LoginViewController: ViewController {
     
     //MARK: -
     //MARK: - VIEW PROPERTIES
@@ -135,16 +137,29 @@ class LoginViewController: ViewController, LoginDisplayLogic {
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.setTitle("Login", for: .normal)
         loginButton.layer.cornerRadius = 4
+        loginButton.addTarget(self, action: #selector(loginButtonTapped(_ :)), for: .touchUpInside)
     }
     
-    // MARK: Event handling
-    func doSomething() {
-        let request = Login.Request(user: "", password: "")
-        interactor?.login(with: request)
+    //MARK: -
+    //MARK: - HANDLE LOGIN BUTTON
+    @objc private func loginButtonTapped(_ sender: UIButton) {
+        interactor?.login(with: userTextField.text, and: passwordTextField.text)
+    }
+
+    
+}
+
+extension LoginViewController: LoginDisplayLogic {
+    
+    func displayError(title: String, message: String) {
+        presentAlert(with: title, and: message)
     }
     
-    // MARK: Display logic
-    func displaySomething(viewModel: Login.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func displayLoading(_ isLoading: Bool) {
+        if isLoading {
+            SVProgressHUD.show()
+        } else {
+            SVProgressHUD.dismiss()
+        }
     }
 }
