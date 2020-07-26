@@ -18,4 +18,9 @@ struct Constants {
     struct Palette {
         static let defaultColor = UIColor(hex: "#3B48EE")
     }
+    
+    struct KeychainKeys {
+        static let user = "user"
+        static let password = "password"
+    }
 }

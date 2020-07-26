@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 protocol LoginBusinessLogic {
     func login(with user: String?, and password: String?)
+    func checkForSavedUser()
 }
 
 protocol LoginDataSource {
@@ -24,6 +26,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataSource {
     var presenter: LoginPresentationLogic?
     var worker: LoginNetworkLogic
     
+    var userReceived: String?
+    var passwordReceived: String?
+    
     init(with worker: LoginNetworkLogic = LoginWorker()) {
         self.worker = worker
     }
@@ -33,6 +38,8 @@ class LoginInteractor: LoginBusinessLogic, LoginDataSource {
     func login(with user: String?, and password: String?) {
         if let user = user, !user.isEmpty, let pwd = password, !pwd.isEmpty  {
             if pwd.isValidPassword {
+                userReceived = user
+                passwordReceived = pwd
                 presenter?.shouldPresentLoading(true)
                 let request = Login.Request(user: user, password: pwd)
                 worker.performLogin(with: request).done(handleSuccess).catch(handleError)
@@ -51,6 +58,10 @@ class LoginInteractor: LoginBusinessLogic, LoginDataSource {
         if let error = response.error?.message {
             presentError(with: error)
         } else {
+            if let user = userReceived, let pwd = passwordReceived {
+                KeychainWrapper.standard.set(user, forKey: Constants.KeychainKeys.user)
+                KeychainWrapper.standard.set(pwd, forKey: Constants.KeychainKeys.password)
+            }
             loginVM = Login.ViewModel(user: response.userAccount)
             presenter?.onSuccess()
         }
@@ -67,5 +78,13 @@ class LoginInteractor: LoginBusinessLogic, LoginDataSource {
     func presentError(with message: String) {
         presenter?.shouldPresentLoading(false)
         presenter?.onError(title: Strings.Error.alertTitle, message: message)
+    }
+    
+    //MARK: -
+    //MARK: - CHECK USER
+    func checkForSavedUser() {
+        guard let retrivedUser = KeychainWrapper.standard.string(forKey: Constants.KeychainKeys.user),
+            let retrivedPassword = KeychainWrapper.standard.string(forKey: Constants.KeychainKeys.password) else { return }
+        presenter?.shouldPresentSaved(user: retrivedUser, and: retrivedPassword)
     }
 }

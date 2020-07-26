@@ -13,6 +13,7 @@ protocol LoginDisplayLogic: class {
     func displayAccountDetail()
     func displayError(title: String, message: String)
     func displayLoading(_ isLoading: Bool)
+    func displaySaved(user: String, and password: String)
 }
 
 class LoginViewController: ViewController {
@@ -82,11 +83,16 @@ class LoginViewController: ViewController {
    
     override func configureViews() {
         view.backgroundColor = .white
-        configureLoginScene()
         configureLogoImageView()
         configureStackView()
         configureTextFields()
         configureLoginButton()
+        configureLoginScene()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.checkForSavedUser()
     }
     
     //MARK: -
@@ -125,6 +131,7 @@ class LoginViewController: ViewController {
     private func configureTextFields() {
         userTextField.placeholder = "User"
         userTextField.borderStyle = .roundedRect
+        userTextField.autocapitalizationType = .none
         
         passwordTextField.placeholder = "Password"
         passwordTextField.borderStyle = .roundedRect
@@ -167,5 +174,10 @@ extension LoginViewController: LoginDisplayLogic {
         } else {
             SVProgressHUD.dismiss()
         }
+    }
+    
+    func displaySaved(user: String, and password: String) {
+        userTextField.text = user
+        passwordTextField.text = password
     }
 }

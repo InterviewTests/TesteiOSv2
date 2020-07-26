@@ -12,6 +12,7 @@ protocol LoginPresentationLogic {
     func onSuccess()
     func onError(title: String, message: String)
     func shouldPresentLoading(_ isLoading: Bool)
+    func shouldPresentSaved(user: String, and password: String)
 }
 
 class LoginPresenter: LoginPresentationLogic {
@@ -30,5 +31,9 @@ class LoginPresenter: LoginPresentationLogic {
     
     func shouldPresentLoading(_ isLoading: Bool) {
         viewController?.displayLoading(isLoading)
+    }
+    
+    func shouldPresentSaved(user: String, and password: String) {
+        viewController?.displaySaved(user: user, and: password)
     }
 }
