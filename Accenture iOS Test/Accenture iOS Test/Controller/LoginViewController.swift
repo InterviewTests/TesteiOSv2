@@ -19,9 +19,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         
         // Outlets formatting
-        addBorderAndShadow(view: txtUser, color: #colorLiteral(red: 0.7154890895, green: 0.758533895, blue: 0.8112761974, alpha: 1), shadow: false)
-        addBorderAndShadow(view: txtPassword, color: #colorLiteral(red: 0.7154890895, green: 0.758533895, blue: 0.8112761974, alpha: 1), shadow: false)
-        addBorderAndShadow(view: btnLogin, color: #colorLiteral(red: 0.2974309027, green: 0.3922638893, blue: 0.9480091929, alpha: 1), shadow: true)
+        txtUser = roundAndAddShadow(view: txtUser, color: #colorLiteral(red: 0.7154890895, green: 0.758533895, blue: 0.8112761974, alpha: 1), shadow: false) as? UITextField
+        txtPassword = roundAndAddShadow(view: txtPassword, color: #colorLiteral(red: 0.7154890895, green: 0.758533895, blue: 0.8112761974, alpha: 1), shadow: false) as? UITextField
+        btnLogin = roundAndAddShadow(view: btnLogin, color: #colorLiteral(red: 0.2974309027, green: 0.3922638893, blue: 0.9480091929, alpha: 1), shadow: true) as? UIButton
 
         
         // Outlets behavior
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func addBorderAndShadow(view: UIView, color: UIColor, shadow: Bool){
+    func roundAndAddShadow(view: UIView, color: UIColor, shadow: Bool) -> UIView{
         
         view.layer.cornerRadius = 4.0
         
@@ -64,6 +64,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let textField = view as! UITextField
             textField.borderStyle = UITextField.BorderStyle.roundedRect
         }
+        
+        return view
         
     }
     
