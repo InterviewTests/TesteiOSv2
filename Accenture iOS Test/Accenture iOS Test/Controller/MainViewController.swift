@@ -16,6 +16,10 @@ class MainViewController: UIViewController {
         
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
+    }
+    
     @IBAction func clickLogout(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
