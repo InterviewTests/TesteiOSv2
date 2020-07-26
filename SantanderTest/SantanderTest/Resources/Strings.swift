@@ -14,4 +14,13 @@ struct Strings {
         static let invalidPassword = NSLocalizedString("invalid_password", comment: "")
         static let emptyFields = NSLocalizedString("empty_fields", comment: "")
     }
+     struct Login {
+        struct Placeholder {
+            static let loginUser = NSLocalizedString("login_user", comment: "")
+            static let loginPassword = NSLocalizedString("login_password", comment: "")
+        }
+        struct Button {
+            static let loginButton = NSLocalizedString("login_button", comment: "")
+        }
+    }
 }

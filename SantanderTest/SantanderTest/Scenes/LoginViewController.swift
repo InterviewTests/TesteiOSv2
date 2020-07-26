@@ -34,7 +34,7 @@ class LoginViewController: ViewController {
     
     
     //MARK: -
-    //MARK: VIEW LIFE CYCLE
+    //MARK: - VIEW LIFE CYCLE
     override func prepareViews() {
         logoImageView = .init()
         stackView = .init()
@@ -129,11 +129,11 @@ class LoginViewController: ViewController {
     //MARK: -
     //MARK: - CONFIGURE TEXTFIELDS
     private func configureTextFields() {
-        userTextField.placeholder = "User"
+        userTextField.placeholder = Strings.Login.Placeholder.loginUser
         userTextField.borderStyle = .roundedRect
         userTextField.autocapitalizationType = .none
         
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = Strings.Login.Placeholder.loginPassword
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
     }
@@ -143,7 +143,7 @@ class LoginViewController: ViewController {
     private func configureLoginButton() {
         loginButton.backgroundColor = Constants.Palette.defaultColor
         loginButton.setTitleColor(.white, for: .normal)
-        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitle(Strings.Login.Button.loginButton, for: .normal)
         loginButton.layer.cornerRadius = 4
         loginButton.addTarget(self, action: #selector(loginButtonTapped(_ :)), for: .touchUpInside)
     }
