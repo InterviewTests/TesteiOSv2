@@ -1,5 +1,5 @@
 //
-//  TesteIOSTests.swift
+//  LoginInteractorTest.swift
 //  TesteIOSTests
 //
 //  Created by VM on 26/07/20.
@@ -7,9 +7,8 @@
 //
 
 import XCTest
-@testable import TesteIOS
 
-class TesteIOSTests: XCTestCase {
+class LoginInteractorTest: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
