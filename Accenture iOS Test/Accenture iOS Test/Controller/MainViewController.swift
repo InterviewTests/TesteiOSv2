@@ -20,11 +20,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     @IBOutlet weak var tableview: UITableView!
-    // These strings will be the data for the table view cells
-    let animals: [String] = ["Horse", "Cow", "Camel", "Sheep", "Goat"]
-    
-    let cellReuseIdentifier = "cell"
-    let cellSpacingHeight: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,24 +42,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Table View delegate methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.animals.count
+        return 5
     }
     
     // There is just one row in every section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
-    }
-    
-    // Set the spacing between sections
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellSpacingHeight
-    }
-    
-    // Make the background color show through
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-        return headerView
     }
 
     // create a cell for each table view row
@@ -72,11 +55,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableview.dequeueReusableCell(withIdentifier: "cell") as! MainViewCell
         
+        // Formatting Cell:
         cell.viewContent.layer.borderColor = #colorLiteral(red: 0.8588235294, green: 0.8745098039, blue: 0.8901960784, alpha: 0.3)
         cell.viewContent.layer.borderWidth = 1
         cell.viewContent.layer.cornerRadius = 6
         cell.viewContent.layer.masksToBounds = true
-
         cell.viewShadow.layer.masksToBounds = false
         cell.viewShadow.layer.shadowOffset = CGSize(width: 0, height: 4)
         cell.viewShadow.layer.shadowColor = #colorLiteral(red: 0.8588235294, green: 0.8705882353, blue: 0.8862745098, alpha: 1)
@@ -86,6 +69,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    // Height of cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
