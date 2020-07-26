@@ -9,15 +9,21 @@
 import UIKit
 
 protocol LoginPresentationLogic {
+    func onSuccess()
     func onError(title: String, message: String)
     func shouldPresentLoading(_ isLoading: Bool)
 }
 
 class LoginPresenter: LoginPresentationLogic {
-
+  
     weak var viewController: LoginDisplayLogic?
     
-    // MARK: Presentation logic
+    //MARK: -
+    //MARK: - PRESENTATION LOGIC
+    func onSuccess() {
+        viewController?.displayAccountDetail()
+    }
+    
     func onError(title: String, message: String) {
         viewController?.displayError(title: title, message: message)
     }

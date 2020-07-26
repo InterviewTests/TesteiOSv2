@@ -9,12 +9,19 @@
 import UIKit
 
 protocol LoginRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToDetail()
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic {
+protocol LoginDataPassing {
+    var dataSource: LoginDataSource? { get }
+}
+
+class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
+    
+    var dataSource: LoginDataSource?
     weak var viewController: LoginViewController?
     
-    // MARK: Routing
+    func routeToDetail() {
+    }
 
 }

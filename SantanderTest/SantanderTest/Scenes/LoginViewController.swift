@@ -10,8 +10,9 @@ import UIKit
 import SVProgressHUD
 
 protocol LoginDisplayLogic: class {
-    func displayLoading(_ isLoading: Bool)
+    func displayAccountDetail()
     func displayError(title: String, message: String)
+    func displayLoading(_ isLoading: Bool)
 }
 
 class LoginViewController: ViewController {
@@ -146,10 +147,15 @@ class LoginViewController: ViewController {
         interactor?.login(with: userTextField.text, and: passwordTextField.text)
     }
 
-    
 }
 
+//MARK: -
+//MARK: - DISPLAY LOGIC
 extension LoginViewController: LoginDisplayLogic {
+    
+    func displayAccountDetail() {
+        router?.routeToDetail()
+    }
     
     func displayError(title: String, message: String) {
         presentAlert(with: title, and: message)

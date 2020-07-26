@@ -39,6 +39,7 @@
 		54C0C2AF24CCD0F400606489 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C0C2AE24CCD0F400606489 /* UIColorExtensions.swift */; };
 		54C0C2B124CCD6A400606489 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C0C2B024CCD6A400606489 /* StringExtensions.swift */; };
 		54C0C2B324CCDB8800606489 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C0C2B224CCDB8800606489 /* UIViewControllerExtensions.swift */; };
+		54C0C2B824CD0F5A00606489 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C0C2B724CD0F5A00606489 /* Strings.swift */; };
 		6D67194EC0AF2215B19A8234 /* Pods_SantanderTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E63E1C3379472BD97C8E285 /* Pods_SantanderTest.framework */; };
 		BCEE6E52C17D0A65711775B6 /* Pods_SantanderTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E138E2C1266C7DD1B898AF /* Pods_SantanderTestTests.framework */; };
 /* End PBXBuildFile section */
@@ -69,7 +70,6 @@
 		54C0C24324CB9C6100606489 /* SantanderTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SantanderTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54C0C24624CB9C6100606489 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54C0C24F24CB9C6400606489 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		54C0C25224CB9C6400606489 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54C0C25424CB9C6400606489 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54C0C25924CB9C6400606489 /* SantanderTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SantanderTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54C0C25D24CB9C6400606489 /* SantanderTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SantanderTestTests.swift; sourceTree = "<group>"; };
@@ -103,6 +103,8 @@
 		54C0C2AE24CCD0F400606489 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		54C0C2B024CCD6A400606489 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		54C0C2B224CCDB8800606489 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		54C0C2B724CD0F5A00606489 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		54C0C2BD24CD126C00606489 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC7F381D3FA9420F79837D23 /* Pods_SantanderTest_SantanderTestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SantanderTest_SantanderTestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF08A97FF948C885460DF11A /* Pods-SantanderTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderTestTests.debug.xcconfig"; path = "Target Support Files/Pods-SantanderTestTests/Pods-SantanderTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB39B0B948C891E36C22CE39 /* Pods-SantanderTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderTest.debug.xcconfig"; path = "Target Support Files/Pods-SantanderTest/Pods-SantanderTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +232,8 @@
 		54C0C28C24CBBF2E00606489 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				54C0C2C624CD13D900606489 /* Localizables */,
+				54C0C2B624CD0E7A00606489 /* Strings */,
 				54C0C28D24CBBF3900606489 /* Constants.swift */,
 			);
 			path = Resources;
@@ -268,6 +272,21 @@
 				54C0C2A824CCC7AC00606489 /* ViewController.swift */,
 			);
 			path = Abstraction;
+			sourceTree = "<group>";
+		};
+		54C0C2B624CD0E7A00606489 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				54C0C2B724CD0F5A00606489 /* Strings.swift */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		54C0C2C624CD13D900606489 /* Localizables */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Localizables;
 			sourceTree = "<group>";
 		};
 		DA52F880B14130B436FA1F5A /* Pods */ = {
@@ -537,6 +556,7 @@
 				54C0C28824CBB91800606489 /* JSONDataDecoder.swift in Sources */,
 				54C0C2A424CC9F4900606489 /* DoubleExtensions.swift in Sources */,
 				54C0C29A24CBC94E00606489 /* LoginPresenter.swift in Sources */,
+				54C0C2B824CD0F5A00606489 /* Strings.swift in Sources */,
 				54C0C28324CBB80000606489 /* JSONParameterEncoder.swift in Sources */,
 				54C0C2A924CCC7AC00606489 /* ViewController.swift in Sources */,
 				54C0C28124CBB7D300606489 /* ParameterEncoding.swift in Sources */,
@@ -596,7 +616,7 @@
 		54C0C25124CB9C6400606489 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				54C0C25224CB9C6400606489 /* Base */,
+				54C0C2BD24CD126C00606489 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
