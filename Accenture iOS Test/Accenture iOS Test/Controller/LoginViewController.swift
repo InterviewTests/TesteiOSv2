@@ -14,7 +14,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     
+    var bankTransactionDic: [NSDictionary]?
     var fieldChecker = FieldChecker()
+    let apiCaller = APICaller()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         txtPassword.delegate = self
     }
     
+    // MARK: - Delegates
+    
+    func getAccountInfoResponse(response: [NSDictionary]){
+        if(response.count > 0){
+            self.bankTransactionDic = response
+            self.performSegue(withIdentifier: "main", sender: self)
+        } else {
+            print("getAccountInfoResponse: response.count = " + String(response.count))
+        }
+    }
+    
     // MARK: - IBActions
 
     @IBAction func clickLogin(_ sender: UIButton) {
@@ -44,7 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         if(fieldChecker.isAllFieldsValidated()){
-            self.performSegue(withIdentifier: "main", sender: self)
+            apiCaller.getAccountInfo(user: txtUser.text!, password: txtPassword.text!, delegate: self)
         }
     }
     
@@ -58,7 +72,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if(textField == txtUser){
                 fieldChecker.validateCPF(textField.text!)
                 fieldChecker.validateEmail(textField.text!)
-                if(fieldChecker.isCPFValidated || fieldChecker.isEmailValidated){
+                if(fieldChecker.isCPFValidated){
+                    textField.text = textField.text!.filter("0123456789".contains)
+                    isValidated = true
+                } else if (fieldChecker.isEmailValidated){
                     isValidated = true
                 }
             }else{
@@ -114,7 +131,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
             case "main":
-                _ = segue.destination as! MainViewController
+                let mainViewController = segue.destination as! MainViewController
+                
+                var bkTransaction = BankTransaction()
+                for dic in bankTransactionDic! {
+                    bkTransaction.title = dic["title"] as? String
+                    bkTransaction.description = dic["desc"] as? String
+                    bkTransaction.date = dic["date"] as? String
+                    bkTransaction.value = dic["value"] as? NSNumber
+                    mainViewController.bankTransactions.append(bkTransaction)
+                }
+                
+                
             default: break
         }
     }

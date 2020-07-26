@@ -55,7 +55,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.23137254900000001" green="0.28627450980000002" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -281,6 +281,10 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
+                                                    <outlet property="lblDate" destination="lFa-ws-ldE" id="j6m-Xf-SBQ"/>
+                                                    <outlet property="lblDescription" destination="QC2-2G-OwA" id="qFW-kk-8xr"/>
+                                                    <outlet property="lblTitle" destination="BsU-5l-1pn" id="hmP-90-tBJ"/>
+                                                    <outlet property="lblValue" destination="L4e-ao-t8w" id="OJb-dN-zmp"/>
                                                     <outlet property="viewContent" destination="c2W-xW-VaJ" id="oIi-6R-Amf"/>
                                                     <outlet property="viewShadow" destination="0s1-xH-J70" id="UOq-OF-AMi"/>
                                                 </connections>

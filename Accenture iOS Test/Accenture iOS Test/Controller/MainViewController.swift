@@ -12,6 +12,10 @@ import UIKit
 class MainViewCell: UITableViewCell {
     @IBOutlet weak var viewShadow: UIView!
     @IBOutlet weak var viewContent: UIView!
+    @IBOutlet weak var lblDate: UILabel!
+    @IBOutlet weak var lblValue: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
     
 }
 
@@ -20,6 +24,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     @IBOutlet weak var tableview: UITableView!
+    var bankTransactions: [BankTransaction] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +48,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Table View delegate methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return bankTransactions.count
     }
     
     // There is just one row in every section
@@ -65,6 +71,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.viewShadow.layer.shadowColor = #colorLiteral(red: 0.8588235294, green: 0.8705882353, blue: 0.8862745098, alpha: 1)
         cell.viewShadow.layer.shadowOpacity = 0.3
         cell.viewShadow.layer.shadowRadius = 12
+        
+        
+        // R$ Formatter:
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale(identifier: "pt_BR")
+        
+        // Populating Cell:
+        cell.lblTitle.text = bankTransactions[indexPath[0]].title!
+        cell.lblDescription.text = bankTransactions[indexPath[0]].description!
+        cell.lblValue.text = currencyFormatter.string(from: NSNumber(value: bankTransactions[indexPath[0]].value!.floatValue))!
+        cell.lblDate.text = bankTransactions[indexPath[0]].date!
         
         return cell
     }
