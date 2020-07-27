@@ -14,14 +14,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     
-    var bankTransactionDic: [NSDictionary]?
+    var userAccount: UserAccount!
     var fieldChecker = FieldChecker()
     let apiCaller = APICaller()
+    var appDelegate: AppDelegate!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        appDelegate = UIApplication.shared.delegate as? AppDelegate
+        
         
         // Outlets formatting
         txtUser = roundAndAddShadow(view: txtUser, color: #colorLiteral(red: 0.7154890895, green: 0.758533895, blue: 0.8112761974, alpha: 1), shadow: false) as? UITextField
@@ -35,12 +38,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Delegates
+    func getAccountInfoError(error: NSDictionary?){
+        appDelegate.stopLoading()
+        var alertMessage = "Ocorreu um erro. Tente novamente mais tarde."
+        if(error?["message"] != nil){
+            alertMessage = error?["message"] as! String
+        }
+        let alert = UIAlertController(title: "Atenção", message: alertMessage, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        self.present(alert, animated: true)
+        
+    }
     
-    func getAccountInfoResponse(response: [NSDictionary]){
+    func getAccountInfoResponse(response: NSDictionary){
         if(response.count > 0){
-            self.bankTransactionDic = response
+            self.userAccount = UserAccount(id: response["userId"] as! NSNumber, name: response["name"] as! String, bankAccount: response["agency"] as! String, agency: response["bankAccount"] as! String, balance: response["balance"] as! NSNumber)
             self.performSegue(withIdentifier: "main", sender: self)
         } else {
+            getAccountInfoError(error: nil);
             print("getAccountInfoResponse: response.count = " + String(response.count))
         }
     }
@@ -58,6 +75,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         if(fieldChecker.isAllFieldsValidated()){
+            appDelegate.startLoading()
             apiCaller.getAccountInfo(user: txtUser.text!, password: txtPassword.text!, delegate: self)
         }
     }
@@ -131,17 +149,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
             case "main":
+                appDelegate.stopLoading()
                 let mainViewController = segue.destination as! MainViewController
-                
-                var bkTransaction = BankTransaction()
-                for dic in bankTransactionDic! {
-                    bkTransaction.title = dic["title"] as? String
-                    bkTransaction.description = dic["desc"] as? String
-                    bkTransaction.date = dic["date"] as? String
-                    bkTransaction.value = dic["value"] as? NSNumber
-                    mainViewController.bankTransactions.append(bkTransaction)
-                }
-                
+                mainViewController.userAccount = self.userAccount
                 
             default: break
         }

@@ -12,13 +12,52 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window : UIWindow?
+    var indicatorViewController: UIViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
     
+    func startLoading() {
+        if(currentTopViewController() != nil){
+            let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
+            indicator.color = #colorLiteral(red: 0.231372549, green: 0.2862745098, blue: 0.9333333333, alpha: 1)
+            indicator.center = currentTopViewController()!.view.center
+            indicator.tag = 100
+            currentTopViewController()!.view.addSubview(indicator)
+            currentTopViewController()!.view.bringSubviewToFront(indicator)
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            indicator.startAnimating()
+            self.indicatorViewController = currentTopViewController()
+        }
+    }
+    
+    func stopLoading() {
+        if(indicatorViewController != nil){
+            for subView in indicatorViewController!.view.subviews {
+                if subView.tag == 100{
+                    subView.removeFromSuperview()
+                }
+            }
+        }
+    }
 
+    
+    func currentTopViewController() -> UIViewController? {
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+        while let presentedViewController = topController.presentedViewController {
+            topController = presentedViewController
+            }
+            return topController;
+        }
+        return nil
+    }
+    
+    func appDelegate() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     @available(iOS 13.0, *)

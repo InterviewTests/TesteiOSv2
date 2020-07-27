@@ -19,9 +19,6 @@ struct BankTransaction {
         self.description = nil
         self.title = nil
         self.value = nil
-        
-        
-        
     }
     
 }

@@ -23,16 +23,56 @@ class MainViewCell: UITableViewCell {
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
+    @IBOutlet weak var lblBalance: UILabel!
+    @IBOutlet weak var lblAccount: UILabel!
+    @IBOutlet weak var lblUser: UILabel!
     @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var bankTransactions: [BankTransaction] = []
+    var userAccount: UserAccount?
+    let apiCaller = APICaller()
+
+    var appDelegate: AppDelegate!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableview.delegate = self
-        tableview.dataSource = self
+        appDelegate = UIApplication.shared.delegate as? AppDelegate
         
+
+        // R$ Formatter:
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale(identifier: "pt_BR")
+        
+        // Format Account Number
+        var maskedAccount: String?
+        if(userAccount?.bankAccount != nil){
+            let account = userAccount!.bankAccount!
+
+            let firstIndex = account.index(account.startIndex, offsetBy: 0)..<account.index(account.startIndex, offsetBy: 2)
+            let secondIndex = account.index(account.startIndex, offsetBy: 2)..<account.index(account.startIndex, offsetBy: 8)
+            let thirdIndex = account.index(account.startIndex, offsetBy: 8)..<account.endIndex
+            maskedAccount = "\(account[firstIndex]).\(account[secondIndex])-\(account[thirdIndex])"
+        }
+        
+        // Populating Fields
+        self.lblUser.text = userAccount?.name
+        self.lblBalance.text = currencyFormatter.string(from: userAccount?.balance ?? 0)
+        if(userAccount?.agency != nil && maskedAccount != nil){
+           self.lblAccount.text = "\(userAccount!.agency!) / \(maskedAccount!)"
+        }
+        
+        getUserTransactions()
+    }
+    
+    func getUserTransactions() {
+        
+        activityIndicator.startAnimating()
+        apiCaller.getUserTransactions(user: userAccount?.userId ?? 0, delegate: self)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -44,6 +84,41 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Delegates
+    func getUserTransactionsResponse(response: [NSDictionary]){
+        activityIndicator.stopAnimating()
+        if(response.count > 0){
+            var bkTransaction = BankTransaction()
+            for dic in response {
+                bkTransaction.title = dic["title"] as? String
+                bkTransaction.description = dic["desc"] as? String
+                bkTransaction.date = dic["date"] as? String
+                bkTransaction.value = dic["value"] as? NSNumber
+                bankTransactions.append(bkTransaction)
+            }
+            self.tableview.delegate = self
+            self.tableview.dataSource = self
+            self.tableview.reloadData()
+            
+        } else {
+            print("getUserTransactionsResponse: response.count = " + String(response.count))
+            getUserTransactionsError(error: nil);
+        }
+    }
+        
+    func getUserTransactionsError(error: NSDictionary?){
+        activityIndicator.stopAnimating()
+        var alertMessage = "Ocorreu um erro. Tente novamente mais tarde."
+        if(error?["message"] != nil){
+            alertMessage = error?["message"] as! String
+        }
+        let alert = UIAlertController(title: "Atenção", message: alertMessage, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        self.present(alert, animated: true)
+        
+    }
     
     // MARK: - Table View delegate methods
     

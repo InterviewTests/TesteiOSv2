@@ -292,6 +292,13 @@
                                         </prototypes>
                                         <sections/>
                                     </tableView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="VIV-Fr-1hH">
+                                        <rect key="frame" x="197" y="262.33333333333331" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.23137254900000001" green="0.28627450980000002" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="color" red="0.23137254900000001" green="0.28627450980000002" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -328,6 +335,10 @@
                         <viewLayoutGuide key="safeArea" id="ZiO-Jw-wAn"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="VIV-Fr-1hH" id="WVG-Gv-6aY"/>
+                        <outlet property="lblAccount" destination="ajz-pv-onf" id="uUd-SU-UE7"/>
+                        <outlet property="lblBalance" destination="HtD-sQ-LQg" id="55T-aS-rFj"/>
+                        <outlet property="lblUser" destination="w73-AF-Vsi" id="oP0-4E-3PS"/>
                         <outlet property="tableview" destination="GYN-38-NMe" id="u7J-o6-csD"/>
                     </connections>
                 </viewController>
