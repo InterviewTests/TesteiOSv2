@@ -15,12 +15,12 @@ protocol LoginBusinessLogic {
 }
 
 protocol LoginDataSource {
-    var loginVM: Login.ViewModel? { get }
+    var user: UserAccount? { get }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataSource {
     
-    var loginVM: Login.ViewModel?
+    var user: UserAccount?
     var userID: Int?
     
     var presenter: LoginPresentationLogic?
@@ -31,6 +31,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataSource {
     
     init(with worker: LoginNetworkLogic = LoginWorker()) {
         self.worker = worker
+        user = .init()
     }
     
     //MARK: -
@@ -62,7 +63,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataSource {
                 KeychainWrapper.standard.set(user, forKey: Constants.KeychainKeys.user)
                 KeychainWrapper.standard.set(pwd, forKey: Constants.KeychainKeys.password)
             }
-            loginVM = Login.ViewModel(user: response.userAccount)
+            user = response.userAccount
             presenter?.onSuccess()
         }
     }

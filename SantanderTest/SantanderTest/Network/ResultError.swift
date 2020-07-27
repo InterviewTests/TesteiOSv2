@@ -1,5 +1,5 @@
 //
-//  ErrorModel.swift
+//  ResultError.swift
 //  SantanderTest
 //
 //  Created by Maria Eugênia Pereira Teixeira on 24/07/20.

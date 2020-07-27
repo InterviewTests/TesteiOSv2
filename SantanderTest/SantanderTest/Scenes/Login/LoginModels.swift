@@ -20,17 +20,9 @@ enum Login {
         let error: ResultError?
     }
     struct ViewModel {
-        let userID: Int
-        let name: String
-        let account: String
-        let balance: String
         let errorMsg: String?
         
-        init(user: UserAccount? = nil, error: ResultError? = nil) {
-            userID = user?.userID ?? 0
-            name = user?.name ?? ""
-            account = "\(user?.agency ?? "0") / \(user?.bankAccount ?? "0")"
-            balance = user?.balance?.convertToCurrency() ?? "-"
+        init(error: ResultError? = nil) {
             errorMsg = error?.message
         }
     }
@@ -44,5 +36,13 @@ struct UserAccount: Decodable {
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
         case name, bankAccount, agency, balance
+    }
+    
+    init() {
+        userID = 0
+        name = ""
+        bankAccount = ""
+        agency = ""
+        balance = 0.0
     }
 }

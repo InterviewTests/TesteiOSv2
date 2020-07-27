@@ -1,23 +1,23 @@
 //
-//  ViewController.swift
+//  TableViewCell.swift
 //  SantanderTest
 //
-//  Created by Maria Eugênia Pereira Teixeira on 25/07/20.
+//  Created by Maria Eugênia Pereira Teixeira on 26/07/20.
 //  Copyright © 2020 Maria Eugênia Pereira Teixeira. All rights reserved.
 //
 
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController, ViewControllerConfigurating {
-
+class TableViewCell: UITableViewCell, ViewControllerConfigurating {
+    
     init() {
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .default, reuseIdentifier: nil)
         setup()
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
     
@@ -26,9 +26,6 @@ class ViewController: UIViewController, ViewControllerConfigurating {
         setup()
     }
     
-    
-    //MARK: -
-    //MARK: - VIEWCONTROLLER CONFIGURING
     func prepareViews() {}
     func addViewHierarchy() {}
     func setupConstraints() {}

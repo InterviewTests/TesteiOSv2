@@ -23,4 +23,13 @@ struct Strings {
             static let loginButton = NSLocalizedString("login_button", comment: "")
         }
     }
+    struct Statment {
+        struct Header {
+            static let accountLabel = NSLocalizedString("account_label", comment: "")
+            static let balanceLabel = NSLocalizedString("balance_label", comment: "")
+        }
+        struct Section {
+            static let sectionTitle = NSLocalizedString("section_title", comment: "")
+        }
+    }
 }

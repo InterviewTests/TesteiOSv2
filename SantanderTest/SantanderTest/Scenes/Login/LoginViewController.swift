@@ -26,11 +26,10 @@ class LoginViewController: ViewController {
     private var passwordTextField: UITextField!
     private var loginButton: UIButton!
     
-    
     //MARK: -
     //MARK: - SCENE PROPERTIES
     var interactor: LoginBusinessLogic?
-    var router: LoginRoutingLogic?
+    var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
     
     //MARK: -
@@ -107,6 +106,7 @@ class LoginViewController: ViewController {
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
+        router.dataSource = interactor
     }
     
     //MARK: -
