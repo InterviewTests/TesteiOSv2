@@ -12,12 +12,12 @@
 
 import UIKit
 
-protocol StatementsDisplayLogic: class {
+protocol AccountDetailsDisplayLogig: class {
     func displayData(viewModel: AccountDetailsModel.Fetch.ViewModel)
     func displayHeaderData(viewModel: AccountDetailsModel.Header.ViewModel)
 }
 
-class AccountDetailsViewController: UIViewController, StatementsDisplayLogic {
+class AccountDetailsViewController: UIViewController, AccountDetailsDisplayLogig {
     var interactor: StatementsBusinessLogic?
     var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
     var statementList = [Statement]()
@@ -38,9 +38,9 @@ class AccountDetailsViewController: UIViewController, StatementsDisplayLogic {
   
     private func setup() {
         let viewController = self
-        let interactor = StatementsInteractor()
+        let interactor = AccountDetailsInteractor()
         let presenter = AccountDetailsPresenter()
-        let router = StatementsRouter()
+        let router = AccountDetailsRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter

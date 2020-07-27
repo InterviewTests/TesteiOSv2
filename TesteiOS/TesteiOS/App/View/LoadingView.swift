@@ -9,13 +9,13 @@
 import UIKit
 
 class LoadingView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    class func instanceFromNib(rect: CGRect) -> LoadingView? {
+        let view = UINib(nibName: "LoadingView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? LoadingView
+        view?.frame = rect
+        return view
     }
-    */
-
+    
 }

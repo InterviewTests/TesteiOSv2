@@ -1,5 +1,5 @@
 //
-//  AccountDetaiisRouter.swift
+//  AccountDetailsRouter.swift
 //  TesteIOS
 //
 //  Created by VM on 26/07/20.
@@ -20,7 +20,7 @@ protocol StatementsDataPassing {
     var dataStore: StatementsDataStore? { get }
 }
 
-class AccountDetaiisRouter: NSObject, StatementsRoutingLogic, StatementsDataPassing {
+class AccountDetailsRouter: NSObject, StatementsRoutingLogic, StatementsDataPassing {
     weak var viewController: AccountDetailsViewController?
     var dataStore: StatementsDataStore?
 }

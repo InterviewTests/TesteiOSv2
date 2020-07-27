@@ -1,33 +1,70 @@
 //
-//  StatementsInteractorTest.swift
+//  AccountDetailsInteractorTest.swift
 //  TesteIOSTests
 //
 //  Created by VM on 26/07/20.
 //  Copyright © 2020 VM. All rights reserved.
 //
 
+@testable import TesteIOS
 import XCTest
 
-class StatementsInteractorTest: XCTestCase {
+class AccountDetailsInteractorTest: XCTestCase {
+    
+      var sut: AccountDetailsInteractor!
+        
+      override func setUp() {
+          super.setUp()
+          setupStatementsInteractor()
+      }
+          
+      func setupStatementsInteractor() {
+          sut = AccountDetailsInteractor()
+      }
+        
+      class StatementsPresentationLogicSpy: AccountDetailsPresentationLogig {
+          var fetchStatementIsCalled = false
+          var fetchErrorIsCalled = false
+          var setupHeaderIsCalled = false
+          
+          func presenterFetchAccountDetails(response: AccountDetailsModel.Fetch.Response) {
+              fetchStatementIsCalled = true
+          }
+          
+          func presentFetchError(error: String) {
+              fetchErrorIsCalled = true
+          }
+          
+          func setupHeader(data: AccountDetailsModel.Header.Response) {
+              setupHeaderIsCalled = true
+          }
+      }
+      
+      class StatementWorkerSpy: AccountDetailsWorker {
+          let presentationLogic = StatementsPresentationLogicSpy()
+          
+          override func fetchStatements(completionSuccess: @escaping FetchStatementResponseSuccess, completionFailure: @escaping FetchStatementResponseFailure) {
+              let response = AccountDetailsModel.Fetch.Response(statements: nil)
+              presentationLogic.presenterFetchAccountDetails(response: response)
+          }
+      }
+          
+      func testFetchStatements() {
+          let worker = StatementWorkerSpy()
+          sut.worker = worker
+          
+          sut.fetchStatements()
+          XCTAssertTrue(worker.presentationLogic.fetchStatementIsCalled)
+      }
+      
+      func testeSetupHeader() {
+          let statementPresentationSpy = StatementsPresentationLogicSpy()
+          sut.presenter = statementPresentationSpy
+          let request = AccountDetailsModel.Header.Request(headerData: nil)
+          
+          sut.fetchHeader(data: request)
+          XCTAssertTrue(statementPresentationSpy.setupHeaderIsCalled)
+      }
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
 }

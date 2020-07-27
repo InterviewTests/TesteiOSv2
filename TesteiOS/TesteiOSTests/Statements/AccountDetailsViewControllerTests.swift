@@ -1,5 +1,5 @@
 //
-//  StatementsViewControllerTests.swift
+//  AccountDetailsViewControllerTests.swift
 //  TesteIOSTests
 //
 //  Created by VM on 26/07/20.
@@ -9,7 +9,7 @@
 @testable import TesteIOS
 import XCTest
 
-class StatementsViewControllerTests: XCTestCase {
+class AccountDetailsViewControllerTests: XCTestCase {
     
       var sut: AccountDetailsViewController!
       var window: UIWindow!

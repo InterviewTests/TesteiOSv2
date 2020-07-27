@@ -12,17 +12,17 @@
 
 import UIKit
 
-protocol StatementsPresentationLogic {
-    func presentFetchStatements(response: AccountDetailsModel.Fetch.Response)
+protocol AccountDetailsPresentationLogig {
+    func presenterFetchAccountDetails(response: AccountDetailsModel.Fetch.Response)
     func presentFetchError(error: String)
     func setupHeader(data: AccountDetailsModel.Header.Response)
 }
 
-class AccountDetailsPresenter: StatementsPresentationLogic {
+class AccountDetailsPresenter: AccountDetailsPresentationLogig {
     
-    weak var viewController: StatementsDisplayLogic?
+    weak var viewController: AccountDetailsDisplayLogig?
   
-    func presentFetchStatements(response: AccountDetailsModel.Fetch.Response) {
+    func presenterFetchAccountDetails(response: AccountDetailsModel.Fetch.Response) {
         guard let statementList = response.statements?.statementList else { return }
         let list = statementList.sorted(by: { $0.date?.toDate().compare($1.date?.toDate() ?? Date()) == .orderedDescending })
         

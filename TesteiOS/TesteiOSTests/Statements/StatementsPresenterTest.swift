@@ -1,33 +1,61 @@
 //
-//  StatementsPresenterTest.swift
+//  AccountDetailsPresenterTest.swift
 //  TesteIOSTests
 //
 //  Created by VM on 26/07/20.
 //  Copyright © 2020 VM. All rights reserved.
 //
 
+@testable import TesteIOS
 import XCTest
 
-class StatementsPresenterTest: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class AccountDetailsPresenterTest: XCTestCase {
+    
+    var sut: AccountDetailsPresenter!
+        
+    override func setUp() {
+        super.setUp()
+        setupAccountDetailsPresenter()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
+    func setupAccountDetailsPresenter() {
+        sut = AccountDetailsPresenter()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        
+    class StatementsDisplayLogicSpy: AccountDetailsDisplayLogig {
+        var displayDataIsCalled = false
+        var displayHeaderIsCalled = false
+        
+        func displayData(viewModel: AccountDetailsModel.Fetch.ViewModel) {
+            displayDataIsCalled = true
+        }
+        
+        func displayHeaderData(viewModel: AccountDetailsModel.Header.ViewModel) {
+            displayHeaderIsCalled = true
         }
     }
-
+        
+    func testFetchStatement() {
+        let viewControllerSpy = StatementsDisplayLogicSpy()
+        sut.viewController = viewControllerSpy
+        let statement = Statement(title: "",
+                                  desc: "",
+                                  date: "",
+                                  value: 0)
+        let statementList = StatementList(statementList: [statement], error: nil)
+        let response = AccountDetailsModel.Fetch.Response(statements: statementList)
+        
+        sut.presenterFetchAccountDetails(response: response)
+        
+        XCTAssertTrue(viewControllerSpy.displayDataIsCalled)
+    }
+    
+    func testFetchHeader() {
+        let viewControllerSpy = StatementsDisplayLogicSpy()
+        sut.viewController = viewControllerSpy
+        let response = AccountDetailsModel.Header.Response(headerData: nil)
+        
+        sut.setupHeader(data: response)
+        XCTAssertTrue(viewControllerSpy.displayHeaderIsCalled)
+    }
 }

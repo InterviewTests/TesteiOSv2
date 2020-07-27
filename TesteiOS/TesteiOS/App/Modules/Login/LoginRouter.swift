@@ -12,49 +12,46 @@
 
 import UIKit
 
-@objc protocol LoginRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol LoginRoutingLogic {
+    func routeToShowStatement(segue: UIStoryboardSegue?)
 }
 
-protocol LoginDataPassing
-{
-  var dataStore: LoginDataStore? { get }
+protocol LoginDataPassing {
+    var dataStore: LoginDataStore? { get }
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
-{
-  weak var viewController: LoginViewController?
-  var dataStore: LoginDataStore?
+class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
+    weak var viewController: LoginViewController?
+    var dataStore: LoginDataStore?
   
-  // MARK: Routing
+    // MARK: Routing
   
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+    func routeToShowStatement(segue: UIStoryboardSegue?) {
+        if let segue = segue {
+            guard let destinationVC = segue.destination as? AccountDetailsViewController,
+                  var destinationDS = destinationVC.router?.dataStore,
+                  let dataStore = self.dataStore else { return }
+            passDataToStatements(source: dataStore, destination: &destinationDS)
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "StatementsViewController") as? AccountDetailsViewController,
+                  var destinationDS = destinationVC.router?.dataStore,
+                  let dataStore = self.dataStore,
+                  let loginViewController = viewController else { return }
+            passDataToStatements(source: dataStore, destination: &destinationDS)
+            navigateToStatements(source: loginViewController, destination: destinationVC)
+        }
+    }
 
-  // MARK: Navigation
+    // MARK: Navigation
   
-  //func navigateToSomewhere(source: LoginViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+    func navigateToStatements(source: LoginViewController, destination: AccountDetailsViewController) {
+        source.show(destination, sender: nil)
+    }
   
-  // MARK: Passing data
+    // MARK: Passing data
   
-  //func passDataToSomewhere(source: LoginDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    func passDataToStatements(source: LoginDataStore, destination: inout StatementsDataStore) {
+        destination.userAccount = source.userAccount
+    }
 }

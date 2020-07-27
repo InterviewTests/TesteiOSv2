@@ -6,28 +6,79 @@
 //  Copyright © 2020 VM. All rights reserved.
 //
 
+@testable import TesteIOS
 import XCTest
 
 class LoginInteractorTest: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+      var sut: LoginInteractor!
+        
+      override func setUp() {
+          super.setUp()
+          setupLoginInteractor()
+      }
+        
+      func setupLoginInteractor() {
+          sut = LoginInteractor()
+      }
+            
+      class LoginWorkerSpy: LoginWorker {
+          let loginPresentationLogic = LoginPresentationLogicSpy()
+          
+          override func login(requestData: LoginModel.Login.Request, completionSuccess: @escaping LoginResponseSuccess, completionFailure: @escaping LoginResponseFailure) {
+              let response = LoginModel.Login.Response(user: nil)
+              loginPresentationLogic.presentLogin(response: response)
+          }
+      }
+      
+      class LoginInteractorSpy: LoginInteractor {
+          let loginPresentationLogic = LoginPresentationLogicSpy()
+          
+          override func performLogin(request: LoginModel.Login.Request) {
+              loginPresentationLogic.presentLoginError(error: "erro")
+          }
+      }
+    
+      class LoginPresentationLogicSpy: LoginPresentationLogic {
+          var presentLoginIsCalled = false
+          var presentLoginErrorIsCalled = false
+          var getLastUsernameIsCalled = false
+          
+          func presentLogin(response: LoginModel.Login.Response) {
+              presentLoginIsCalled = true
+          }
+          
+          func presentLoginError(error: String) {
+              presentLoginErrorIsCalled = true
+          }
+          
+          func getLastUsername(username: String) {
+              getLastUsernameIsCalled = true
+          }
+      }
+      
+      func testPerformLogin() {
+          let loginWorkerSpy = LoginWorkerSpy()
+          sut.worker = loginWorkerSpy
+          
+          sut.performLogin(request: LoginModel.Login.Request(user: "teste@teste.com", password: "Teste@1"))
+          
+          XCTAssertTrue(loginWorkerSpy.loginPresentationLogic.presentLoginIsCalled)
+      }
+      
+      func testPerformLoginError() {
+          let interactorSpy = LoginInteractorSpy()
+          
+          interactorSpy.performLogin(request: LoginModel.Login.Request(user: "teste.com", password: "Teste"))
+          
+          XCTAssertTrue(interactorSpy.loginPresentationLogic.presentLoginErrorIsCalled)
+      }
+      
+      func testGetLastUsername() {
+          let loginPresentSpy = LoginPresentationLogicSpy()
+          sut.presenter = loginPresentSpy
+          
+          sut.getLastUserName()
+          XCTAssertTrue(loginPresentSpy.getLastUsernameIsCalled)
+      }    
 }

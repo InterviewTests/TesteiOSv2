@@ -12,30 +12,53 @@
 
 import UIKit
 
-protocol LoginBusinessLogic
-{
-  func doSomething(request: Login.Something.Request)
+protocol LoginBusinessLogic {
+    func performLogin(request: LoginModel.Login.Request)
+    func getLastUserName()
 }
 
-protocol LoginDataStore
-{
-  //var name: String { get set }
+protocol LoginDataStore {
+    var userAccount: UserAccount? { get }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
+class LoginInteractor: LoginBusinessLogic, LoginDataStore {
+    var userAccount: UserAccount?
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    func performLogin(request: LoginModel.Login.Request) {
+        if worker == nil {
+            worker = LoginWorker()
+        }
+        
+        guard let userIsValid = worker?.validateUserName(username: request.user ?? ""),
+            let passwordIsValid = worker?.validatePassword(password: request.password ?? "") else { return }
+        
+        if userIsValid && passwordIsValid {
+            worker?.login(requestData: request, completionSuccess: { (response) in
+                self.userAccount = response.user?.userAccount
+                self.saveLastUsername(username: request.user ?? "")
+                DispatchQueue.main.async {
+                    self.presenter?.presentLogin(response: response)
+                }
+            }, completionFailure: { (error) in
+                DispatchQueue.main.async {
+                    self.presenter?.presentLoginError(error: error)
+                }
+            })
+        } else {
+            DispatchQueue.main.async {
+                self.presenter?.presentLoginError(error: "usuário ou senha inválida")
+            }
+        }
+    }
+    
+    func getLastUserName() {
+        guard let username = UserDefaults.standard.string(forKey: Constants.lastUsername) else { return }
+        self.presenter?.getLastUsername(username: username)
+    }
+    
+    private func saveLastUsername(username: String) {
+        UserDefaults.standard.set(username, forKey: Constants.lastUsername)
+    }
 }

@@ -23,7 +23,7 @@ protocol StatementsDataStore {
 
 class AccountDetailsInteractor: StatementsBusinessLogic, StatementsDataStore {
     var userAccount: UserAccount?
-    var presenter: StatementsPresentationLogic?
+    var presenter: AccountDetailsPresentationLogig?
     var worker: AccountDetailsWorker?
     
     func fetchHeader(data: AccountDetailsModel.Header.Request) {
@@ -38,7 +38,7 @@ class AccountDetailsInteractor: StatementsBusinessLogic, StatementsDataStore {
         
         worker?.fetchStatements(completionSuccess: { (response) in
             DispatchQueue.main.async {
-                self.presenter?.presentFetchStatements(response: response)
+                self.presenter?.presenterFetchAccountDetails(response: response)
             }
         }, completionFailure: { (error) in
             DispatchQueue.main.async {

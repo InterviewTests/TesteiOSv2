@@ -12,20 +12,26 @@
 
 import UIKit
 
-enum Login
-{
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
+enum LoginModel {
+    enum Login {
+        struct Request {
+            let user: String?
+            let password: String?
+            
+            func getBody() -> String {
+                return "user=\(user ?? "")&password=\(password ?? "")"
+            }
+        }
+        
+        struct Response {
+            let user: User?
+        }
+        
+        struct ViewModel {
+            let name: String
+            let bankAccount: String
+            let agency: String
+            let balance: Double
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }

@@ -12,20 +12,28 @@
 
 import UIKit
 
-protocol LoginPresentationLogic
-{
-  func presentSomething(response: Login.Something.Response)
+protocol LoginPresentationLogic {
+    func presentLogin(response: LoginModel.Login.Response)
+    func presentLoginError(error: String)
+    func getLastUsername(username: String)
 }
 
-class LoginPresenter: LoginPresentationLogic
-{
-  weak var viewController: LoginDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Login.Something.Response)
-  {
-    let viewModel = Login.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+class LoginPresenter: LoginPresentationLogic {
+    weak var viewController: LoginDisplayLogic?
+    
+    func presentLogin(response: LoginModel.Login.Response) {
+        let viewModel = LoginModel.Login.ViewModel(name: response.user?.userAccount?.name ?? "",
+                                                   bankAccount: response.user?.userAccount?.bankAccount ?? "",
+                                                   agency: response.user?.userAccount?.agency ?? "",
+                                                   balance: response.user?.userAccount?.balance ?? 0.0)
+        viewController?.getData(viewModel: viewModel)
+    }
+    
+    func presentLoginError(error: String) {
+        viewController?.displayErrorAlert(error: error)
+    }
+    
+    func getLastUsername(username: String) {
+        viewController?.fillLastUsername(username: username)
+    }
 }
