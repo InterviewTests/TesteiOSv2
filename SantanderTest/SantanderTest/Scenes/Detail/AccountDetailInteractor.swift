@@ -25,7 +25,7 @@ class AccountDetailInteractor: AccountDetailBusinessLogic,AccountDetailDataStore
     var user: UserAccount?
     
     var presenter: AccountDetailPresentationLogic?
-    var worker: AccountDetailWorker
+    var worker: AccountDetailNetworkLogic
     
     var statments: [StatementList]
     
@@ -33,13 +33,15 @@ class AccountDetailInteractor: AccountDetailBusinessLogic,AccountDetailDataStore
         return 96.0
     }
     
-    init(with worker: AccountDetailWorker = AccountDetailWorker()) {
+    init(with worker: AccountDetailNetworkLogic = AccountDetailWorker()) {
         self.worker = worker
         statments = []
     }
     
     func retrieveStaments() {
-        worker.retrieveStatments(for: 1).done(handleSuccess).catch(handleError)
+        worker.retrieveStatments(for: 1).done(handleSuccess).catch(handleError).finally { [weak self] in
+            self?.presenter?.shouldPresentLoading(false)
+        }
     }
     
     //MARK: -
@@ -47,7 +49,7 @@ class AccountDetailInteractor: AccountDetailBusinessLogic,AccountDetailDataStore
     func handleSuccess(response: AccountDetail.Response) {
         presenter?.shouldPresentLoading(false)
         if let error = response.error?.message {
-            presentError(with: error)
+            presenter?.onError(title: Strings.Error.alertTitle, message: error)
         } else {
             statments = response.statementList ?? []
             presenter?.presentData()
@@ -57,14 +59,7 @@ class AccountDetailInteractor: AccountDetailBusinessLogic,AccountDetailDataStore
     //MARK: -
     //MARK: - HANDLE ERROR
     func handleError(error: Error) {
-        presentError(with: error.localizedDescription)
-    }
-    
-    //MARK: -
-    //MARK: - SETUP PRESENT ERROR
-    func presentError(with message: String) {
-        presenter?.shouldPresentLoading(false)
-        presenter?.onError(title: Strings.Error.alertTitle, message: message)
+        presenter?.onError(title: Strings.Error.alertTitle, message: error.localizedDescription)
     }
     
     func numberOfRows(in section: Int) -> Int {
@@ -72,6 +67,14 @@ class AccountDetailInteractor: AccountDetailBusinessLogic,AccountDetailDataStore
             return statments.count
         }
         return 0
+    }
+    
+    func configureHeaderViewModel(at section: Int) -> AccountDetail.TableViewModel.Section? {
+        if section == 0 {
+            let vm = AccountDetail.TableViewModel.Section(user: user)
+            return vm
+        }
+        return nil
     }
     
     func header(tableView: UITableView, section: Int) -> UIView {
@@ -83,17 +86,27 @@ class AccountDetailInteractor: AccountDetailBusinessLogic,AccountDetailDataStore
         }
         let rect = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 230)
         let headerView = StatmentHeaderView(frame: rect)
-        let vm = AccountDetail.TableViewModel.Section(user: user)
-        headerView.set(vm: vm, handler: logout)
+        if let vm = configureHeaderViewModel(at: 0) {
+            headerView.set(vm: vm, handler: logout)
+        }
         return headerView
+    }
+    
+    func configureViewModel(at indexPath: IndexPath) -> AccountDetail.TableViewModel.Cell? {
+        if indexPath.section == 1 {
+            let statment = statments[indexPath.row]
+            let vm = AccountDetail.TableViewModel.Cell(statment: statment)
+            return vm
+        }
+        return nil
     }
     
     func cell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(StatementCell.self)
-            let statment = statments[indexPath.row]
-            let vm = AccountDetail.TableViewModel.Cell(statment: statment)
-            cell.set(vm: vm)
+            if let vm = configureViewModel(at: indexPath) {
+                cell.set(vm: vm)
+            }
             return cell
         }
         return UITableViewCell()

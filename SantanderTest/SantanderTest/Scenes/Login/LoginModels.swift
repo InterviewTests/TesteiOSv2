@@ -29,9 +29,9 @@ enum Login {
 }
 
 struct UserAccount: Decodable {
-    let userID: Int?
-    let name, bankAccount, agency: String?
-    let balance: Double?
+    var userID: Int?
+    var name, bankAccount, agency: String?
+    var balance: Double?
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"

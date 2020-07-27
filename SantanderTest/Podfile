@@ -1,6 +1,12 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '9.0'
 
+def shared_testing_pds
+  pod 'Nimble'
+  pod 'Nimble-Snapshots'
+  pod 'Quick'
+end
+
 target 'SantanderTest' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -12,11 +18,12 @@ target 'SantanderTest' do
 
   target 'SantanderTestTests' do
     inherit! :search_paths
-    # Pods for testing
+    shared_testing_pds
   end
 
   target 'SantanderTestUITests' do
-    # Pods for testing
+    shared_testing_pds
+    pod 'KIF'
   end
 
 end

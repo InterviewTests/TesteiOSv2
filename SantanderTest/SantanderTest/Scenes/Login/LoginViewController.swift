@@ -151,7 +151,8 @@ class LoginViewController: ViewController {
     //MARK: -
     //MARK: - HANDLE LOGIN BUTTON
     @objc private func loginButtonTapped(_ sender: UIButton) {
-        interactor?.login(with: userTextField.text, and: passwordTextField.text)
+        let reques = Login.Request(user: userTextField.text ?? "", password: passwordTextField.text ?? "")
+        interactor?.login(with: reques)
     }
 
 }

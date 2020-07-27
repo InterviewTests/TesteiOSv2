@@ -10,7 +10,7 @@ import UIKit
 import SwiftKeychainWrapper
 
 protocol LoginBusinessLogic {
-    func login(with user: String?, and password: String?)
+    func login(with request: Login.Request)
     func checkForSavedUser()
 }
 
@@ -36,28 +36,32 @@ class LoginInteractor: LoginBusinessLogic, LoginDataSource {
     
     //MARK: -
     //MARK: - PERFORM LOGIN
-    func login(with user: String?, and password: String?) {
-        if let user = user, !user.isEmpty, let pwd = password, !pwd.isEmpty  {
-            if pwd.isValidPassword {
-                userReceived = user
-                passwordReceived = pwd
+    func login(with request: Login.Request) {
+        if !request.user.isEmpty, !request.password.isEmpty  {
+            if request.password.isValidPassword {
+                userReceived = request.user
+                passwordReceived = request.password
                 presenter?.shouldPresentLoading(true)
-                let request = Login.Request(user: user, password: pwd)
-                worker.performLogin(with: request).done(handleSuccess).catch(handleError)
+                worker.performLogin(with: request)
+                    .done(handleSuccess)
+                    .catch(handleError)
+                    .finally { [weak self] in
+                    self?.presenter?.shouldPresentLoading(false)
+                }
             } else {
-                presentError(with: Strings.Error.invalidPassword)
+                presenter?.onError(title: Strings.Error.alertTitle, message: Strings.Error.invalidPassword)
             }
         } else {
-            presentError(with: Strings.Error.emptyFields)
+            presenter?.onError(title: Strings.Error.alertTitle, message: Strings.Error.emptyFields)
         }
     }
     
     //MARK: -
     //MARK: - HANDLE SUCCESS
     func handleSuccess(response: Login.Response) {
-        presenter?.shouldPresentLoading(false)
+        
         if let error = response.error?.message {
-            presentError(with: error)
+            presenter?.onError(title: Strings.Error.alertTitle, message: error)
         } else {
             if let user = userReceived, let pwd = passwordReceived {
                 KeychainWrapper.standard.set(user, forKey: Constants.KeychainKeys.user)
@@ -71,14 +75,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataSource {
     //MARK: -
     //MARK: - HANDLE ERROR
     func handleError(error: Error) {
-        presentError(with: error.localizedDescription)
-    }
-    
-    //MARK: -
-    //MARK: - SETUP PRESENT ERROR
-    func presentError(with message: String) {
-        presenter?.shouldPresentLoading(false)
-        presenter?.onError(title: Strings.Error.alertTitle, message: message)
+        presenter?.onError(title: Strings.Error.alertTitle, message: error.localizedDescription)
     }
     
     //MARK: -
