@@ -16,9 +16,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var userAccount: UserAccount!
     var fieldChecker = FieldChecker()
-    let apiCaller = APICaller()
+    var apiCaller = APICaller()
     var appDelegate: AppDelegate!
     
+    override func viewWillAppear(_ animated: Bool) {
+        // Keychain
+        getSavedUser()
+        fieldChecker.validateCPF(self.txtUser.text!)
+        fieldChecker.validateEmail(self.txtUser.text!)
+        fieldChecker.validatePasssword(self.txtPassword.text!)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +61,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func getAccountInfoResponse(response: NSDictionary){
         if(response.count > 0){
+            
+            // Saves user login data
+            
+            
+            
+            // Saves return in struct
             self.userAccount = UserAccount(id: response["userId"] as! NSNumber, name: response["name"] as! String, bankAccount: response["agency"] as! String, agency: response["bankAccount"] as! String, balance: response["balance"] as! NSNumber)
             self.performSegue(withIdentifier: "main", sender: self)
         } else {
@@ -68,10 +81,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if !(fieldChecker.isCPFValidated || fieldChecker.isEmailValidated) {
             txtUser.textColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            txtUser.attributedPlaceholder = NSAttributedString(string: txtUser.placeholder!,
+            attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 0.3492019747)])
         }
         
         if !(fieldChecker.isPasswordValidated){
             txtPassword.textColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            txtPassword.attributedPlaceholder = NSAttributedString(string: txtPassword.placeholder!,
+            attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 0.3492019747)])
         }
         
         if(fieldChecker.isAllFieldsValidated()){
@@ -80,10 +97,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    
+    // MARK: - iOS Keychain
+    
+    func getSavedUser() {
+        self.txtUser.text = KeychainWrapper.standard.string(forKey: "SavedUser") ?? ""
+        self.txtPassword.text = KeychainWrapper.standard.string(forKey: "SavedPassword") ?? ""
+    }
+    
+    func setSavedUser() {
+        KeychainWrapper.standard.set(self.txtUser.text!, forKey: "SavedUser")
+        KeychainWrapper.standard.set(self.txtPassword.text!, forKey: "SavedPassword")
+    }
+    
     // MARK: - TextField
     
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
+        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!,
+        attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.22)])
         if(textField.text != nil){
             var isValidated:Bool = false
             
@@ -149,12 +181,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
             case "main":
+                
+                // Keychain
+                setSavedUser()
+                
                 appDelegate.stopLoading()
                 let mainViewController = segue.destination as! MainViewController
                 mainViewController.userAccount = self.userAccount
                 
             default: break
         }
+    }
+    
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        self.userAccount = nil
+        self.txtUser.text = nil
+        self.txtPassword.text = nil
+        self.apiCaller = APICaller()
+        self.fieldChecker = FieldChecker()
     }
     
 }

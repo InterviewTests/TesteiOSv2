@@ -12,7 +12,7 @@ struct APICaller {
     
     
     func getAccountInfo(user: String, password: String, delegate: LoginViewController) {
-        let parameters = ["user": "test_user", "password": "Test@01"]
+        let parameters = ["user": user, "password": password]
         var request = URLRequest(url: URL(string: "https://bank-app-test.herokuapp.com/api/login")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -53,7 +53,9 @@ struct APICaller {
     }
     
     func getUserTransactions(user: NSNumber, delegate: MainViewController) {
-        let request = URLRequest(url: URL(string: "https://bank-app-test.herokuapp.com/api/statements/" + user.stringValue)!)
+        var request = URLRequest(url: URL(string: "https://bank-app-test.herokuapp.com/api/statements/" + user.stringValue)!)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {

@@ -298,7 +298,7 @@
                                         </prototypes>
                                         <sections/>
                                     </tableView>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="VIV-Fr-1hH">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VIV-Fr-1hH">
                                         <rect key="frame" x="188.5" y="254.5" width="37" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.23137254900000001" green="0.28627450980000002" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -345,9 +345,11 @@
                         <outlet property="lblBalance" destination="HtD-sQ-LQg" id="55T-aS-rFj"/>
                         <outlet property="lblUser" destination="w73-AF-Vsi" id="oP0-4E-3PS"/>
                         <outlet property="tableview" destination="GYN-38-NMe" id="u7J-o6-csD"/>
+                        <segue destination="5qt-Z3-Mjb" kind="unwind" identifier="logout" unwindAction="prepareForUnwindWithSegue:" id="xbu-uN-v3u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4K-GJ-aeO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="5qt-Z3-Mjb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="973.91304347826099" y="139.95535714285714"/>
         </scene>
