@@ -24,4 +24,17 @@ class JSONFileReader {
         return nil
     }
     
+    func read(filename: String) -> Data? {
+        let bundle = Bundle(for: type(of: self))
+        if let path = bundle.path(forResource: filename, ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                return data
+            } catch {
+                return nil
+            }
+        }
+        return nil
+    }
+    
 }

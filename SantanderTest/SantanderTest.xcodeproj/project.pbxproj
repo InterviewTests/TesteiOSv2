@@ -64,6 +64,14 @@
 		54C0C30324CF2AE100606489 /* MockLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C0C30224CF2AE100606489 /* MockLoginInteractor.swift */; };
 		54C0C30724CF43A200606489 /* LoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C0C30624CF43A200606489 /* LoginInteractorTests.swift */; };
 		54C0C30924CF518000606489 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C0C30824CF518000606489 /* NetworkTests.swift */; };
+		54C0C30B24CF582900606489 /* emptyBody.json in Resources */ = {isa = PBXBuildFile; fileRef = 54C0C30A24CF582900606489 /* emptyBody.json */; };
+		54C0C31624CF6A0200606489 /* LoginVewSnapShotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C0C31224CF650200606489 /* LoginVewSnapShotTests.swift */; };
+		54C0C32024CF6C7800606489 /* LoginVewSnapShotTests__should_present_login_view
+.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C0C31F24CF6C7800606489 /* LoginVewSnapShotTests__should_present_login_view
+.png */; };
+		54C0C32224CF6D2F00606489 /* LoginVewSnapShotTests__should_present_login_view_with_user_and_password_set
+.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C0C32124CF6D2F00606489 /* LoginVewSnapShotTests__should_present_login_view_with_user_and_password_set
+.png */; };
 		6D67194EC0AF2215B19A8234 /* Pods_SantanderTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E63E1C3379472BD97C8E285 /* Pods_SantanderTest.framework */; };
 		BCEE6E52C17D0A65711775B6 /* Pods_SantanderTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E138E2C1266C7DD1B898AF /* Pods_SantanderTestTests.framework */; };
 /* End PBXBuildFile section */
@@ -153,6 +161,12 @@
 		54C0C30224CF2AE100606489 /* MockLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginInteractor.swift; sourceTree = "<group>"; };
 		54C0C30624CF43A200606489 /* LoginInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorTests.swift; sourceTree = "<group>"; };
 		54C0C30824CF518000606489 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		54C0C30A24CF582900606489 /* emptyBody.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptyBody.json; sourceTree = "<group>"; };
+		54C0C31224CF650200606489 /* LoginVewSnapShotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVewSnapShotTests.swift; sourceTree = "<group>"; };
+		54C0C31F24CF6C7800606489 /* LoginVewSnapShotTests__should_present_login_view
+.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginVewSnapShotTests__should_present_login_view\n.png"; sourceTree = "<group>"; };
+		54C0C32124CF6D2F00606489 /* LoginVewSnapShotTests__should_present_login_view_with_user_and_password_set
+.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginVewSnapShotTests__should_present_login_view_with_user_and_password_set\n.png"; sourceTree = "<group>"; };
 		AC7F381D3FA9420F79837D23 /* Pods_SantanderTest_SantanderTestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SantanderTest_SantanderTestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF08A97FF948C885460DF11A /* Pods-SantanderTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderTestTests.debug.xcconfig"; path = "Target Support Files/Pods-SantanderTestTests/Pods-SantanderTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB39B0B948C891E36C22CE39 /* Pods-SantanderTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SantanderTest.debug.xcconfig"; path = "Target Support Files/Pods-SantanderTest/Pods-SantanderTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -228,11 +242,13 @@
 		54C0C25C24CB9C6400606489 /* SantanderTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				54C0C30F24CF646200606489 /* ReferenceImages */,
 				54C0C2F624CF241700606489 /* Resources */,
 				54C0C2EB24CF21B700606489 /* Mocks */,
 				54C0C30624CF43A200606489 /* LoginInteractorTests.swift */,
 				54C0C25D24CB9C6400606489 /* AccountDetailInteractorTests.swift */,
 				54C0C30824CF518000606489 /* NetworkTests.swift */,
+				54C0C31224CF650200606489 /* LoginVewSnapShotTests.swift */,
 				54C0C25F24CB9C6400606489 /* Info.plist */,
 			);
 			path = SantanderTestTests;
@@ -377,6 +393,7 @@
 			children = (
 				54C0C2ED24CF21CC00606489 /* login.json */,
 				54C0C2EE24CF21CC00606489 /* statements-1.json */,
+				54C0C30A24CF582900606489 /* emptyBody.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -407,6 +424,17 @@
 				54C0C30224CF2AE100606489 /* MockLoginInteractor.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		54C0C30F24CF646200606489 /* ReferenceImages */ = {
+			isa = PBXGroup;
+			children = (
+				54C0C32124CF6D2F00606489 /* LoginVewSnapShotTests__should_present_login_view_with_user_and_password_set
+.png */,
+				54C0C31F24CF6C7800606489 /* LoginVewSnapShotTests__should_present_login_view
+.png */,
+			);
+			path = ReferenceImages;
 			sourceTree = "<group>";
 		};
 		DA52F880B14130B436FA1F5A /* Pods */ = {
@@ -554,6 +582,11 @@
 			files = (
 				54C0C2EF24CF21CC00606489 /* login.json in Resources */,
 				54C0C2F024CF21CC00606489 /* statements-1.json in Resources */,
+				54C0C32024CF6C7800606489 /* LoginVewSnapShotTests__should_present_login_view
+.png in Resources */,
+				54C0C30B24CF582900606489 /* emptyBody.json in Resources */,
+				54C0C32224CF6D2F00606489 /* LoginVewSnapShotTests__should_present_login_view_with_user_and_password_set
+.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +781,7 @@
 				54C0C2FA24CF253900606489 /* MockAccountDetailInteractor.swift in Sources */,
 				54C0C2F324CF223000606489 /* MockAccountDetailPresenter.swift in Sources */,
 				54C0C25E24CB9C6400606489 /* AccountDetailInteractorTests.swift in Sources */,
+				54C0C31624CF6A0200606489 /* LoginVewSnapShotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
