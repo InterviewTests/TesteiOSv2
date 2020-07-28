@@ -29,11 +29,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    var appDelegate: AppDelegate!
     var bankTransactions: [BankTransaction] = []
     var userAccount: UserAccount?
     let apiCaller = APICaller()
 
-    var appDelegate: AppDelegate!
+    let cellIdentifier = "cell"
+    let cellHeight = 110
+    let segueLogout = "logout"
+    
     
     
     override func viewDidLoad() {
@@ -41,60 +45,54 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-
-        // R$ Formatter:
-        let currencyFormatter = NumberFormatter()
-        currencyFormatter.usesGroupingSeparator = true
-        currencyFormatter.numberStyle = .currency
-        currencyFormatter.locale = Locale(identifier: "pt_BR")
-        
-        // Format Account Number
-        var maskedAccount: String?
-        if(userAccount?.bankAccount != nil){
-            let account = userAccount!.bankAccount!
-
-            let firstIndex = account.index(account.startIndex, offsetBy: 0)..<account.index(account.startIndex, offsetBy: 2)
-            let secondIndex = account.index(account.startIndex, offsetBy: 2)..<account.index(account.startIndex, offsetBy: 8)
-            let thirdIndex = account.index(account.startIndex, offsetBy: 8)..<account.endIndex
-            maskedAccount = "\(account[firstIndex]).\(account[secondIndex])-\(account[thirdIndex])"
-        }
-        
         // Populating Fields
         self.lblUser.text = userAccount?.name
-        self.lblBalance.text = currencyFormatter.string(from: userAccount?.balance ?? 0)
-        if(userAccount?.agency != nil && maskedAccount != nil){
-           self.lblAccount.text = "\(userAccount!.agency!) / \(maskedAccount!)"
-        }
+        self.lblBalance.text = String.FormatReal(userAccount?.balance?.floatValue ?? 0)
+        self.lblAccount.text = "\(userAccount?.agency ?? "") / \(String.FormatAccountNumber(userAccount!.bankAccount ?? ""))"
         
+        // Method that calls API
         getUserTransactions()
     }
     
-    func getUserTransactions() {
-        
-        activityIndicator.startAnimating()
-        apiCaller.getUserTransactions(user: userAccount?.userId ?? 0, delegate: self)
-    }
+    
+    // MARK: - Override
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
           return .lightContent
     }
     
-    @IBAction func clickLogout(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "logout", sender: self)
+    
+    // MARK: - Functions
+    
+    func getUserTransactions() {
+        activityIndicator.startAnimating()
+        apiCaller.getUserTransactions(user: userAccount?.userId ?? 0, delegate: self)
     }
     
+    
+    // MARK: - Actions
+    
+    @IBAction func clickLogout(_ sender: UIButton) {
+        self.performSegue(withIdentifier: segueLogout, sender: self)
+    }
+    
+    
     // MARK: - Delegates
+    
     func getUserTransactionsResponse(response: [NSDictionary]){
         activityIndicator.stopAnimating()
         if(response.count > 0){
-            var bkTransaction = BankTransaction()
+            
+            // Populate BankTransaction's Array
             for dic in response {
-                bkTransaction.title = dic["title"] as? String
-                bkTransaction.description = dic["desc"] as? String
-                bkTransaction.date = dic["date"] as? String
-                bkTransaction.value = dic["value"] as? NSNumber
-                bankTransactions.append(bkTransaction)
+                let title = dic["title"] as? String ?? ""
+                let description = dic["desc"] as? String ?? ""
+                let date = dic["date"] as? String ?? ""
+                let value = dic["value"] as? NSNumber ?? 0
+                bankTransactions.append(BankTransaction(date: date, description: description, title: title, value: value))
             }
+            
+            // Set TableView's DataSource & reload it
             self.tableview.delegate = self
             self.tableview.dataSource = self
             self.tableview.reloadData()
@@ -107,7 +105,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     func getUserTransactionsError(error: NSDictionary?){
         activityIndicator.stopAnimating()
-        var alertMessage = "Ocorreu um erro. Tente novamente mais tarde."
+        var alertMessage = "defaultBodyMessageError".localized
         if(error?["message"] != nil){
             alertMessage = error?["message"] as! String
         }
@@ -119,7 +117,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    // MARK: - Table View delegate methods
+    
+    // MARK: - TableView Delegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return bankTransactions.count
@@ -133,38 +132,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableview.dequeueReusableCell(withIdentifier: "cell") as! MainViewCell
+        let cell = tableview.dequeueReusableCell(withIdentifier: cellIdentifier) as! MainViewCell
         
-        // Formatting Cell:
-        cell.viewContent.layer.borderColor = #colorLiteral(red: 0.8588235294, green: 0.8745098039, blue: 0.8901960784, alpha: 0.3)
-        cell.viewContent.layer.borderWidth = 1
-        cell.viewContent.layer.cornerRadius = 6
-        cell.viewContent.layer.masksToBounds = true
-        cell.viewShadow.layer.masksToBounds = false
-        cell.viewShadow.layer.shadowOffset = CGSize(width: 0, height: 4)
-        cell.viewShadow.layer.shadowColor = #colorLiteral(red: 0.8588235294, green: 0.8705882353, blue: 0.8862745098, alpha: 1)
-        cell.viewShadow.layer.shadowOpacity = 0.3
-        cell.viewShadow.layer.shadowRadius = 12
-        
-        
-        // R$ Formatter:
-        let currencyFormatter = NumberFormatter()
-        currencyFormatter.usesGroupingSeparator = true
-        currencyFormatter.numberStyle = .currency
-        currencyFormatter.locale = Locale(identifier: "pt_BR")
-        
+        // Formatting Cell Layout:
+        UIView.LayoutRoundedWithShadow(view: cell.viewContent, shadowColor: App.Color.greyThemeLight, borderColor: App.Color.greyThemeBorder)
+
         // Populating Cell:
-        cell.lblTitle.text = bankTransactions[indexPath[0]].title!
-        cell.lblDescription.text = bankTransactions[indexPath[0]].description!
-        cell.lblValue.text = currencyFormatter.string(from: NSNumber(value: bankTransactions[indexPath[0]].value!.floatValue))!
-        cell.lblDate.text = bankTransactions[indexPath[0]].date!
+        cell.lblTitle.text = bankTransactions[indexPath[0]].title ?? ""
+        cell.lblDescription.text = bankTransactions[indexPath[0]].description ?? ""
+        cell.lblValue.text = String.FormatReal(bankTransactions[indexPath[0]].value?.floatValue ?? 0)
+        cell.lblDate.text = bankTransactions[indexPath[0]].date?.toDate(format: "yyy-MM-dd").toString(format: "dd/MM/yyyy") ?? ""
         
         return cell
     }
     
     // Height of cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return CGFloat(cellHeight)
     }
     
     // method to run when table view cell is tapped

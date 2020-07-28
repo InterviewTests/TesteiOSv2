@@ -14,11 +14,11 @@ struct BankTransaction {
     var title: String?
     var value: NSNumber?
     
-    init() {
-        self.date = nil
-        self.description = nil
-        self.title = nil
-        self.value = nil
+    init(date: String, description: String, title: String, value: NSNumber) {
+        self.date = date
+        self.description = description
+        self.title = title
+        self.value = value
     }
     
 }

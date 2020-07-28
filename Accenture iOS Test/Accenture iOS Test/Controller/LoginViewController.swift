@@ -34,9 +34,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         
         // Outlets formatting
-        txtUser = roundAndAddShadow(view: txtUser, color: #colorLiteral(red: 0.7154890895, green: 0.758533895, blue: 0.8112761974, alpha: 1), shadow: false) as? UITextField
-        txtPassword = roundAndAddShadow(view: txtPassword, color: #colorLiteral(red: 0.7154890895, green: 0.758533895, blue: 0.8112761974, alpha: 1), shadow: false) as? UITextField
-        btnLogin = roundAndAddShadow(view: btnLogin, color: #colorLiteral(red: 0.2974309027, green: 0.3922638893, blue: 0.9480091929, alpha: 1), shadow: true) as? UIButton
+        txtUser = roundAndAddShadow(view: txtUser, color: App.Color.greyThemeLight, shadow: false) as? UITextField
+        txtPassword = roundAndAddShadow(view: txtPassword, color: App.Color.greyThemeLight, shadow: false) as? UITextField
+        btnLogin = roundAndAddShadow(view: btnLogin, color: App.Color.blueTheme, shadow: true) as? UIButton
 
         
         // Outlets behavior
@@ -47,31 +47,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Delegates
     func getAccountInfoError(error: NSDictionary?){
         appDelegate.stopLoading()
-        var alertMessage = "Ocorreu um erro. Tente novamente mais tarde."
+        var alertMessage = "defaultBodyMessageError".localized
         if(error?["message"] != nil){
             alertMessage = error?["message"] as! String
         }
-        let alert = UIAlertController(title: "Atenção", message: alertMessage, preferredStyle: .alert)
+        let alert = UIAlertController(title: "defaultTitleMessage".localized, message: alertMessage, preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "defaultButtonMessage".localized, style: .default, handler: nil))
 
         self.present(alert, animated: true)
         
     }
     
-    func getAccountInfoResponse(response: NSDictionary){
-        if(response.count > 0){
-            
-            // Saves user login data
-            
-            
-            
+    func getAccountInfoResponse(response: NSDictionary?){
+        if(response != nil && response!.count > 0){
             // Saves return in struct
-            self.userAccount = UserAccount(id: response["userId"] as! NSNumber, name: response["name"] as! String, bankAccount: response["agency"] as! String, agency: response["bankAccount"] as! String, balance: response["balance"] as! NSNumber)
+            self.userAccount = UserAccount(id: response!["userId"] as? NSNumber ?? 0, name: response!["name"] as? String ?? "", bankAccount: response!["agency"] as? String ?? "", agency: response!["bankAccount"] as? String ?? "", balance: response!["balance"] as? NSNumber ?? 0)
             self.performSegue(withIdentifier: "main", sender: self)
         } else {
             getAccountInfoError(error: nil);
-            print("getAccountInfoResponse: response.count = " + String(response.count))
         }
     }
     
@@ -80,21 +74,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func clickLogin(_ sender: UIButton) {
         
         if !(fieldChecker.isCPFValidated || fieldChecker.isEmailValidated) {
-            txtUser.textColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            txtUser.textColor = App.Color.redError
             txtUser.attributedPlaceholder = NSAttributedString(string: txtUser.placeholder!,
-            attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 0.3492019747)])
+                                                               attributes: [NSAttributedString.Key.foregroundColor: App.Color.redPlaceholder])
         }
         
         if !(fieldChecker.isPasswordValidated){
-            txtPassword.textColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            txtPassword.textColor = App.Color.redError
             txtPassword.attributedPlaceholder = NSAttributedString(string: txtPassword.placeholder!,
-            attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 0.3492019747)])
+            attributes: [NSAttributedString.Key.foregroundColor: App.Color.redPlaceholder])
         }
         
         if(fieldChecker.isAllFieldsValidated()){
             appDelegate.startLoading()
             apiCaller.getAccountInfo(user: txtUser.text!, password: txtPassword.text!, delegate: self)
         }
+    }
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        self.userAccount = nil
+        self.txtUser.text = nil
+        self.txtPassword.text = nil
+        self.apiCaller = APICaller()
+        self.fieldChecker = FieldChecker()
     }
     
     
@@ -110,12 +112,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         KeychainWrapper.standard.set(self.txtPassword.text!, forKey: "SavedPassword")
     }
     
-    // MARK: - TextField
-    
+    // MARK: - TextField Delegate
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!,
-        attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.22)])
+                                                             attributes: [NSAttributedString.Key.foregroundColor: App.Color.grayPlaceholder])
         if(textField.text != nil){
             var isValidated:Bool = false
             
@@ -136,9 +137,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
             
             if(isValidated){
-                textField.textColor = #colorLiteral(red: 0.231372549, green: 0.2862745098, blue: 0.9333333333, alpha: 1)
+                textField.textColor = App.Color.blueTheme
             } else {
-                textField.textColor = #colorLiteral(red: 0.2823529412, green: 0.3294117647, blue: 0.3960784314, alpha: 1)
+                textField.textColor = App.Color.greyTheme
             }
         }
         
@@ -191,15 +192,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
             default: break
         }
-    }
-    
-    
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
-        self.userAccount = nil
-        self.txtUser.text = nil
-        self.txtPassword.text = nil
-        self.apiCaller = APICaller()
-        self.fieldChecker = FieldChecker()
     }
     
 }

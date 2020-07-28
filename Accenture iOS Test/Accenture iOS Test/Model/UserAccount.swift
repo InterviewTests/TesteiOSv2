@@ -14,9 +14,7 @@ struct UserAccount {
     var bankAccount: String?
     var agency: String?
     var balance: NSNumber?
-    
-    
-    
+
     init(id: NSNumber, name: String, bankAccount: String, agency: String, balance: NSNumber) {
         self.userId = id
         self.name = name

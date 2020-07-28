@@ -25,7 +25,8 @@ struct APICaller {
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
                 if let error = error {
-                  print("DataTask error: " + error.localizedDescription + "\n")
+                    delegate.getAccountInfoError(error: nil)
+                    print("APICaller - getAccountInfo:\n" + error.localizedDescription)
                     
                 } else if let response = response as? HTTPURLResponse, response.statusCode == 200 {
                     let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
@@ -45,7 +46,7 @@ struct APICaller {
                     
                 }
             } catch {
-                print("DataTask error")
+                delegate.getAccountInfoError(error: nil)
             }
         })
 
@@ -60,26 +61,23 @@ struct APICaller {
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
                 if let error = error {
-                  print("DataTask error: " + error.localizedDescription + "\n")
+                  delegate.getUserTransactionsError(error: nil)
+                  print("APICaller - getUserTransactions:\n" + error.localizedDescription)
                     
                 } else if let response = response as? HTTPURLResponse, response.statusCode == 200 {
                     let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                    
                     let statementList = json["statementList"] as? [NSDictionary]
                     let error = json["error"] as? NSDictionary
-                    
                     if(error != nil && error!.count > 0){
-                        print("DataTask error: " + error!.description + "\n")
                         delegate.getUserTransactionsError(error: error)
                     }else if(statementList != nil){
                         DispatchQueue.main.async {
                             delegate.getUserTransactionsResponse(response: statementList!)
                         }
                     }
-                    
                 }
             } catch {
-                print("DataTask error")
+                delegate.getUserTransactionsError(error: nil)
             }
         })
 
