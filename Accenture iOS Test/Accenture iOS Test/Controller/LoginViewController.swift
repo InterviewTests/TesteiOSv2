@@ -99,6 +99,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.fieldChecker = FieldChecker()
     }
     
+    @IBAction func txtUserDidChanged(_ sender: UITextField) {
+        if(ProcessInfo().operatingSystemVersion.majorVersion<13){
+          textFieldDidChangeSelection(sender)
+        }
+    }
+    
+    @IBAction func txtPasswordDidChanged(_ sender: UITextField) {
+        if(ProcessInfo().operatingSystemVersion.majorVersion<13){
+          textFieldDidChangeSelection(sender)
+        }
+    }
+    
     
     // MARK: - iOS Keychain
     
