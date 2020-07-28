@@ -34,6 +34,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         
         // Outlets formatting
+        
+        
         txtUser = roundAndAddShadow(view: txtUser, color: App.Color.greyThemeLight, shadow: false) as? UITextField
         txtPassword = roundAndAddShadow(view: txtPassword, color: App.Color.greyThemeLight, shadow: false) as? UITextField
         btnLogin = roundAndAddShadow(view: btnLogin, color: App.Color.blueTheme, shadow: true) as? UIButton
