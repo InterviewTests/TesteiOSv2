@@ -33,12 +33,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         
-        // Outlets formatting
-        
-        
-        txtUser = roundAndAddShadow(view: txtUser, color: App.Color.greyThemeLight, shadow: false) as? UITextField
-        txtPassword = roundAndAddShadow(view: txtPassword, color: App.Color.greyThemeLight, shadow: false) as? UITextField
-        btnLogin = roundAndAddShadow(view: btnLogin, color: App.Color.blueTheme, shadow: true) as? UIButton
+        // View Layout
+        txtUser = UIView.LayoutRoundedWithShadow2(view: txtUser, color: App.Color.greyThemeLight, shadow: false) as? UITextField
+        txtPassword = UIView.LayoutRoundedWithShadow2(view: txtPassword, color: App.Color.greyThemeLight, shadow: false) as? UITextField
+        btnLogin = UIView.LayoutRoundedWithShadow2(view: btnLogin, color: App.Color.blueTheme, shadow: true) as? UIButton
 
         
         // Outlets behavior
@@ -158,26 +156,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func roundAndAddShadow(view: UIView, color: UIColor, shadow: Bool) -> UIView{
-        
-        view.layer.cornerRadius = 4.0
-        
-        if shadow {
-            view.layer.shadowColor = color.cgColor
-            view.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-            view.layer.shadowOpacity = 0.3
-            view.layer.shadowRadius = 6.0
-            view.layer.masksToBounds = false
-        }
-        
-        if view .isKind(of: UITextField.self) {
-            let textField = view as! UITextField
-            textField.borderStyle = UITextField.BorderStyle.roundedRect
-        }
-        
-        return view
-        
-    }
     
     // MARK: - Segue Navigation
     
