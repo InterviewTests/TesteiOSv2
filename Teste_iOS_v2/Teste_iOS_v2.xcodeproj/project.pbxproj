@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A22D0AE124D3859F00CF6254 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D0AE024D3859F00CF6254 /* AppDelegate.swift */; };
-		A22D0AE324D3859F00CF6254 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D0AE224D3859F00CF6254 /* SceneDelegate.swift */; };
 		A22D0AE524D3859F00CF6254 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D0AE424D3859F00CF6254 /* ViewController.swift */; };
 		A22D0AE824D3859F00CF6254 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22D0AE624D3859F00CF6254 /* Main.storyboard */; };
 		A22D0AEA24D385A000CF6254 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A22D0AE924D385A000CF6254 /* Assets.xcassets */; };
@@ -23,6 +22,7 @@
 		A22D0B1524D3880700CF6254 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D0B1424D3880700CF6254 /* LoginPresenter.swift */; };
 		A22D0B1724D3880F00CF6254 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D0B1624D3880F00CF6254 /* LoginWorker.swift */; };
 		A2AE404224D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE404124D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift */; };
+		A2AE404524D3B8DB004839DB /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE404424D3B8DB004839DB /* NibLoadable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		A22D0ADD24D3859F00CF6254 /* Teste_iOS_v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teste_iOS_v2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22D0AE024D3859F00CF6254 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A22D0AE224D3859F00CF6254 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A22D0AE424D3859F00CF6254 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A22D0AE724D3859F00CF6254 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A22D0AE924D385A000CF6254 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		A22D0B1424D3880700CF6254 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		A22D0B1624D3880F00CF6254 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		A2AE404124D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginCoordinator+LoginViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		A2AE404424D3B8DB004839DB /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,6 @@
 				A22D0B0224D3866700CF6254 /* Infrastructure */,
 				A22D0B0824D387A100CF6254 /* Presentation */,
 				A22D0AE024D3859F00CF6254 /* AppDelegate.swift */,
-				A22D0AE224D3859F00CF6254 /* SceneDelegate.swift */,
 				A22D0AE424D3859F00CF6254 /* ViewController.swift */,
 				A22D0AE624D3859F00CF6254 /* Main.storyboard */,
 				A22D0AE924D385A000CF6254 /* Assets.xcassets */,
@@ -122,6 +121,7 @@
 		A22D0B0224D3866700CF6254 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				A2AE404324D3B8CF004839DB /* NibLoadable */,
 				A22D0B0324D3866C00CF6254 /* Coordinator */,
 			);
 			path = Infrastructure;
@@ -180,6 +180,14 @@
 				A2AE404124D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		A2AE404324D3B8CF004839DB /* NibLoadable */ = {
+			isa = PBXGroup;
+			children = (
+				A2AE404424D3B8DB004839DB /* NibLoadable.swift */,
+			);
+			path = NibLoadable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,12 +297,12 @@
 				A22D0AE524D3859F00CF6254 /* ViewController.swift in Sources */,
 				A22D0B1524D3880700CF6254 /* LoginPresenter.swift in Sources */,
 				A22D0AE124D3859F00CF6254 /* AppDelegate.swift in Sources */,
+				A2AE404524D3B8DB004839DB /* NibLoadable.swift in Sources */,
 				A22D0B1724D3880F00CF6254 /* LoginWorker.swift in Sources */,
 				A22D0B1324D387FF00CF6254 /* LoginInteractor.swift in Sources */,
 				A2AE404224D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift in Sources */,
 				A22D0B0724D386B800CF6254 /* AppCoordinator.swift in Sources */,
 				A22D0B0524D3867700CF6254 /* CoordinatorProtocol.swift in Sources */,
-				A22D0AE324D3859F00CF6254 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +394,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -440,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -456,6 +464,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Teste_iOS_v2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -473,6 +482,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Teste_iOS_v2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
