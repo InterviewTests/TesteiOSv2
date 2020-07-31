@@ -23,6 +23,8 @@
 		A22D0B1724D3880F00CF6254 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D0B1624D3880F00CF6254 /* LoginWorker.swift */; };
 		A2AE404224D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE404124D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift */; };
 		A2AE404524D3B8DB004839DB /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE404424D3B8DB004839DB /* NibLoadable.swift */; };
+		A2AE404824D3C145004839DB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE404724D3C145004839DB /* LoginView.swift */; };
+		A2AE404A24D3C14E004839DB /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2AE404924D3C14E004839DB /* LoginView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		A22D0B1624D3880F00CF6254 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		A2AE404124D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginCoordinator+LoginViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		A2AE404424D3B8DB004839DB /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		A2AE404724D3C145004839DB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A2AE404924D3C14E004839DB /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 		A22D0B0D24D387E200CF6254 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A2AE404624D3C12F004839DB /* View */,
 				A22D0B0E24D387F200CF6254 /* LoginViewController.swift */,
 				A22D0B0F24D387F200CF6254 /* LoginViewController.xib */,
 				A22D0B1224D387FF00CF6254 /* LoginInteractor.swift */,
@@ -188,6 +193,15 @@
 				A2AE404424D3B8DB004839DB /* NibLoadable.swift */,
 			);
 			path = NibLoadable;
+			sourceTree = "<group>";
+		};
+		A2AE404624D3C12F004839DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A2AE404724D3C145004839DB /* LoginView.swift */,
+				A2AE404924D3C14E004839DB /* LoginView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +288,7 @@
 				A22D0B1124D387F200CF6254 /* LoginViewController.xib in Resources */,
 				A22D0AED24D385A000CF6254 /* LaunchScreen.storyboard in Resources */,
 				A22D0AEA24D385A000CF6254 /* Assets.xcassets in Resources */,
+				A2AE404A24D3C14E004839DB /* LoginView.xib in Resources */,
 				A22D0AE824D3859F00CF6254 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +313,7 @@
 				A22D0B1524D3880700CF6254 /* LoginPresenter.swift in Sources */,
 				A22D0AE124D3859F00CF6254 /* AppDelegate.swift in Sources */,
 				A2AE404524D3B8DB004839DB /* NibLoadable.swift in Sources */,
+				A2AE404824D3C145004839DB /* LoginView.swift in Sources */,
 				A22D0B1724D3880F00CF6254 /* LoginWorker.swift in Sources */,
 				A22D0B1324D387FF00CF6254 /* LoginInteractor.swift in Sources */,
 				A2AE404224D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift in Sources */,
