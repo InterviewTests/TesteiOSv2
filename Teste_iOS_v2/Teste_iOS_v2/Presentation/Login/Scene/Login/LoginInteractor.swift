@@ -8,9 +8,15 @@
 
 import UIKit
 
-protocol LoginBusinessLogic: AnyObject { }
+protocol LoginBusinessLogic: AnyObject {
+    func validateLogin(username: String?, password: String?)
+}
 
-extension LoginInteractor: LoginBusinessLogic { }
+extension LoginInteractor: LoginBusinessLogic {
+    func validateLogin(username: String?, password: String?) {
+        validateLogin(username, password)
+    }
+}
 
 class LoginInteractor: NSObject {
     var presenter: LoginPresentationLogic?
@@ -19,5 +25,27 @@ class LoginInteractor: NSObject {
     init(presenter: LoginPresentationLogic, worker: LoginWorkerLogic) {
         self.presenter = presenter
         self.worker = worker
+    }
+    
+    private func validateLogin(_ username: String?, _ password: String?) {
+        guard let user = username, let pass = password, !user.isEmpty, !pass.isEmpty else {
+            presenter?.presentUncompletedFieldsError()
+            return
+        }
+        if isValidUsername(user) && isValidPassword(pass) {
+            presenter?.presentSuccessLogin()
+        } else {
+            presenter?.presentErrorLogin()
+        }
+    }
+    
+    private func isValidUsername(_ username: String) -> Bool {
+        return username.isValidEmail() || username.isValidCPF()
+    }
+    
+    private func isValidPassword(_ password: String) -> Bool {
+        return password.hasNumbers()
+            && password.hasCapitalLetters()
+            && password.hasSpecialCharacters()
     }
 }

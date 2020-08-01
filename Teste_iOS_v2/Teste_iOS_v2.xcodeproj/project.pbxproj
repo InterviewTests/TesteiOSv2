@@ -21,6 +21,13 @@
 		A22D0B1324D387FF00CF6254 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D0B1224D387FF00CF6254 /* LoginInteractor.swift */; };
 		A22D0B1524D3880700CF6254 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D0B1424D3880700CF6254 /* LoginPresenter.swift */; };
 		A22D0B1724D3880F00CF6254 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D0B1624D3880F00CF6254 /* LoginWorker.swift */; };
+		A26A659E24D5FAB700B1E4DF /* NSRegularExpressions+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26A659D24D5FAB700B1E4DF /* NSRegularExpressions+Extension.swift */; };
+		A26A65A124D5FB2000B1E4DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26A65A024D5FB2000B1E4DF /* Constants.swift */; };
+		A26A65A324D5FB3F00B1E4DF /* Constants+RegexPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26A65A224D5FB3F00B1E4DF /* Constants+RegexPatterns.swift */; };
+		A26A65A524D5FFB600B1E4DF /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26A65A424D5FFB600B1E4DF /* String+Extension.swift */; };
+		A26A65A824D6066400B1E4DF /* StringTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26A65A724D6066400B1E4DF /* StringTables.swift */; };
+		A26A65AB24D6069D00B1E4DF /* Login.strings in Resources */ = {isa = PBXBuildFile; fileRef = A26A65AA24D6069D00B1E4DF /* Login.strings */; };
+		A26A65AE24D606C900B1E4DF /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26A65AD24D606C900B1E4DF /* Login.swift */; };
 		A2AE404224D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE404124D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift */; };
 		A2AE404524D3B8DB004839DB /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE404424D3B8DB004839DB /* NibLoadable.swift */; };
 		A2AE404824D3C145004839DB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE404724D3C145004839DB /* LoginView.swift */; };
@@ -56,6 +63,13 @@
 		A22D0B1224D387FF00CF6254 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		A22D0B1424D3880700CF6254 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		A22D0B1624D3880F00CF6254 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		A26A659D24D5FAB700B1E4DF /* NSRegularExpressions+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpressions+Extension.swift"; sourceTree = "<group>"; };
+		A26A65A024D5FB2000B1E4DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A26A65A224D5FB3F00B1E4DF /* Constants+RegexPatterns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+RegexPatterns.swift"; sourceTree = "<group>"; };
+		A26A65A424D5FFB600B1E4DF /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		A26A65A724D6066400B1E4DF /* StringTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTables.swift; sourceTree = "<group>"; };
+		A26A65AA24D6069D00B1E4DF /* Login.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Login.strings; sourceTree = "<group>"; };
+		A26A65AD24D606C900B1E4DF /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		A2AE404124D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginCoordinator+LoginViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		A2AE404424D3B8DB004839DB /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		A2AE404724D3C145004839DB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -103,6 +117,7 @@
 			children = (
 				A22D0B0224D3866700CF6254 /* Infrastructure */,
 				A22D0B0824D387A100CF6254 /* Presentation */,
+				A26A65A624D6064700B1E4DF /* Resources */,
 				A22D0AE024D3859F00CF6254 /* AppDelegate.swift */,
 				A22D0AE424D3859F00CF6254 /* ViewController.swift */,
 				A22D0AE624D3859F00CF6254 /* Main.storyboard */,
@@ -125,6 +140,8 @@
 		A22D0B0224D3866700CF6254 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				A26A659F24D5FB1500B1E4DF /* Constants */,
+				A26A659A24D5F63400B1E4DF /* Extensions */,
 				A2AE404324D3B8CF004839DB /* NibLoadable */,
 				A22D0B0324D3866C00CF6254 /* Coordinator */,
 			);
@@ -174,6 +191,50 @@
 				A22D0B1224D387FF00CF6254 /* LoginInteractor.swift */,
 				A22D0B1424D3880700CF6254 /* LoginPresenter.swift */,
 				A22D0B1624D3880F00CF6254 /* LoginWorker.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A26A659A24D5F63400B1E4DF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A26A659D24D5FAB700B1E4DF /* NSRegularExpressions+Extension.swift */,
+				A26A65A424D5FFB600B1E4DF /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A26A659F24D5FB1500B1E4DF /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A26A65A024D5FB2000B1E4DF /* Constants.swift */,
+				A26A65A224D5FB3F00B1E4DF /* Constants+RegexPatterns.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		A26A65A624D6064700B1E4DF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A26A65A924D6068800B1E4DF /* Strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A26A65A924D6068800B1E4DF /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				A26A65A724D6066400B1E4DF /* StringTables.swift */,
+				A26A65AC24D606A400B1E4DF /* Login */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		A26A65AC24D606A400B1E4DF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A26A65AA24D6069D00B1E4DF /* Login.strings */,
+				A26A65AD24D606C900B1E4DF /* Login.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -289,6 +350,7 @@
 				A22D0AED24D385A000CF6254 /* LaunchScreen.storyboard in Resources */,
 				A22D0AEA24D385A000CF6254 /* Assets.xcassets in Resources */,
 				A2AE404A24D3C14E004839DB /* LoginView.xib in Resources */,
+				A26A65AB24D6069D00B1E4DF /* Login.strings in Resources */,
 				A22D0AE824D3859F00CF6254 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,15 +369,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A26A65A824D6066400B1E4DF /* StringTables.swift in Sources */,
+				A26A65A524D5FFB600B1E4DF /* String+Extension.swift in Sources */,
 				A22D0B1024D387F200CF6254 /* LoginViewController.swift in Sources */,
 				A22D0B0B24D387BC00CF6254 /* LoginCoordinator.swift in Sources */,
 				A22D0AE524D3859F00CF6254 /* ViewController.swift in Sources */,
 				A22D0B1524D3880700CF6254 /* LoginPresenter.swift in Sources */,
 				A22D0AE124D3859F00CF6254 /* AppDelegate.swift in Sources */,
+				A26A65A124D5FB2000B1E4DF /* Constants.swift in Sources */,
+				A26A659E24D5FAB700B1E4DF /* NSRegularExpressions+Extension.swift in Sources */,
 				A2AE404524D3B8DB004839DB /* NibLoadable.swift in Sources */,
+				A26A65AE24D606C900B1E4DF /* Login.swift in Sources */,
 				A2AE404824D3C145004839DB /* LoginView.swift in Sources */,
 				A22D0B1724D3880F00CF6254 /* LoginWorker.swift in Sources */,
 				A22D0B1324D387FF00CF6254 /* LoginInteractor.swift in Sources */,
+				A26A65A324D5FB3F00B1E4DF /* Constants+RegexPatterns.swift in Sources */,
 				A2AE404224D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift in Sources */,
 				A22D0B0724D386B800CF6254 /* AppCoordinator.swift in Sources */,
 				A22D0B0524D3867700CF6254 /* CoordinatorProtocol.swift in Sources */,

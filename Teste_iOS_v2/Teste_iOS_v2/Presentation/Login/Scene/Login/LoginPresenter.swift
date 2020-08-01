@@ -8,14 +8,43 @@
 
 import UIKit
 
-protocol LoginPresentationLogic: AnyObject { }
+protocol LoginPresentationLogic: AnyObject {
+    func presentSuccessLogin()
+    func presentUncompletedFieldsError()
+    func presentErrorLogin()
+}
 
-extension LoginPresenter: LoginPresentationLogic { }
+extension LoginPresenter: LoginPresentationLogic {
+    func presentSuccessLogin() {
+        
+    }
+    
+    func presentUncompletedFieldsError() {
+        let alert = createAlert(title: StringTables.LocalizedLogin.errorTitle.string,
+                                message: StringTables.LocalizedLogin.uncompletedFieldsMessage.string,
+                                buttonTitle: StringTables.LocalizedLogin.errorButtonTitle.string)
+        viewController?.displayErrorLogin(alert)
+    }
+    
+    func presentErrorLogin() {
+        let alert = createAlert(title: StringTables.LocalizedLogin.errorTitle.string,
+                                message: StringTables.LocalizedLogin.wrongFieldsMessage.string,
+                                buttonTitle: StringTables.LocalizedLogin.errorButtonTitle.string)
+        viewController?.displayErrorLogin(alert)
+    }
+}
 
 class LoginPresenter: NSObject {
     weak var viewController: LoginDisplayLogic?
     
     init(viewController: LoginDisplayLogic) {
         self.viewController = viewController
+    }
+    
+    private func createAlert(title: String, message: String, buttonTitle: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let button = UIAlertAction(title: buttonTitle, style: .default, handler: nil)
+        alert.addAction(button)
+        return alert
     }
 }

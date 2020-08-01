@@ -8,12 +8,18 @@
 
 import UIKit
 
-protocol LoginDisplayLogic: AnyObject { }
+protocol LoginDisplayLogic: AnyObject {
+    func displaySuccessLogin()
+    func displayErrorLogin(_ error: UIViewController)
+}
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet private(set) weak var loginView: LoginView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,4 +32,18 @@ class LoginViewController: UIViewController {
     
 }
 
-extension LoginViewController: LoginDisplayLogic { }
+extension LoginViewController: LoginDisplayLogic {
+    func displaySuccessLogin() {
+        
+    }
+    
+    func displayErrorLogin(_ error: UIViewController) {
+        coordinator?.showError(error)
+    }
+}
+
+extension LoginViewController: LoginViewProtocol {
+    func didTapLoginButton(username: String?, password: String?) {
+        interactor?.validateLogin(username: username, password: password)
+    }
+}

@@ -6,8 +6,14 @@
 //  Copyright © 2020 Lucas Fernandes Araujo. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-protocol LoginViewControllerDelegate: AnyObject { }
+protocol LoginViewControllerDelegate: AnyObject {
+    func showError(_ controller: UIViewController)
+}
 
-extension LoginCoordinator: LoginViewControllerDelegate { }
+extension LoginCoordinator: LoginViewControllerDelegate {
+    func showError(_ controller: UIViewController) {
+        showError(controller: controller)
+    }
+}

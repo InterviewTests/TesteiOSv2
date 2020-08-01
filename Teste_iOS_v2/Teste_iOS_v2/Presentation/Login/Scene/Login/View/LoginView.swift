@@ -8,14 +8,19 @@
 
 import UIKit
 
+protocol LoginViewProtocol: AnyObject {
+    func didTapLoginButton(username: String?, password: String?)
+}
+
 class LoginView: UIView, NibLoadable {
     
     @IBOutlet private(set) weak var userTextField: UITextField!
     @IBOutlet private(set) weak var passwordTextField: UITextField!
     @IBOutlet private(set) weak var loginButton: UIButton!
-    @IBOutlet private(set)weak var loginButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private(set) weak var loginButtonBottomConstraint: NSLayoutConstraint!
     
     private let loginButtonBottomConstant: CGFloat = 33
+    weak var delegate: LoginViewProtocol?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,9 +43,18 @@ class LoginView: UIView, NibLoadable {
     
     private func commomInit() {
         setupFromNib()
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        addObservables()
+        addTargets()
+    }
+    
+    private func addObservables() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func addTargets() {
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        loginButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
     }
     
     @objc private func hideKeyboard() {
@@ -57,6 +71,10 @@ class LoginView: UIView, NibLoadable {
     @objc private func keyboardWillHide(notification: NSNotification) {
         loginButtonBottomConstraint.constant = loginButtonBottomConstant
         animateView()
+    }
+    
+    @objc private func loginButtonAction() {
+        delegate?.didTapLoginButton(username: userTextField.text, password: passwordTextField.text)
     }
     
     private func animateView() {

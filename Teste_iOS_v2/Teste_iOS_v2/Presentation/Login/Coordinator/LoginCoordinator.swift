@@ -28,4 +28,8 @@ class LoginCoordinator: CoordinatorProtocol {
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
+    
+    internal func showError(controller: UIViewController) {
+        navigationController.present(controller, animated: true, completion: nil)
+    }
 }
