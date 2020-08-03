@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginDisplayLogic {
     func displaySuccessLogin() {
-        
+        coordinator?.didMadeLogin()
     }
     
     func displayErrorLogin(_ error: UIViewController) {

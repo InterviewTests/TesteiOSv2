@@ -32,4 +32,8 @@ class LoginCoordinator: CoordinatorProtocol {
     internal func showError(controller: UIViewController) {
         navigationController.present(controller, animated: true, completion: nil)
     }
+    
+    internal func didFinishLoginFlow() {
+        
+    }
 }

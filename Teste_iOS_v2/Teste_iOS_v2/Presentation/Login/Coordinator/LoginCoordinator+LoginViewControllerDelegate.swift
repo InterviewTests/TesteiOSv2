@@ -10,10 +10,15 @@ import UIKit
 
 protocol LoginViewControllerDelegate: AnyObject {
     func showError(_ controller: UIViewController)
+    func didMadeLogin()
 }
 
 extension LoginCoordinator: LoginViewControllerDelegate {
     func showError(_ controller: UIViewController) {
         showError(controller: controller)
+    }
+    
+    func didMadeLogin() {
+        didFinishLoginFlow()
     }
 }

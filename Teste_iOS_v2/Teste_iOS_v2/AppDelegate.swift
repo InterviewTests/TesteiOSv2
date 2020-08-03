@@ -24,6 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         return true
     }
-
+    
+    func changeRootViewController(_ viewController: UIViewController) {
+        guard let snapshot = window?.snapshotView(afterScreenUpdates: true) else { return }
+        viewController.view.addSubview(snapshot)
+        window?.rootViewController = viewController
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            snapshot.layer.opacity = 0
+        }, completion:  { _ in
+            snapshot.removeFromSuperview()
+        })
+    }
+    
 }
 

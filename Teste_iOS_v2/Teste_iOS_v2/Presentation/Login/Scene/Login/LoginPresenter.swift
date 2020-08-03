@@ -16,7 +16,7 @@ protocol LoginPresentationLogic: AnyObject {
 
 extension LoginPresenter: LoginPresentationLogic {
     func presentSuccessLogin() {
-        
+        viewController?.displaySuccessLogin()
     }
     
     func presentUncompletedFieldsError() {
