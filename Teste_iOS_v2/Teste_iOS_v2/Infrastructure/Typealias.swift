@@ -10,4 +10,4 @@ import Foundation
 
 public typealias EmptyClosure = (() -> Void)
 public typealias GenericResponse = ((_ data: Data) -> Void)
-
+public typealias UserDefaultsReturn = ((_ object: Any?) -> Void)

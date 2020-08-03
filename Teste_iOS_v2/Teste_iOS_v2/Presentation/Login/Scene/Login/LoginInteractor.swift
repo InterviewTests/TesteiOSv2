@@ -9,10 +9,15 @@
 import UIKit
 
 protocol LoginBusinessLogic: AnyObject {
+    func retrieveLastLoggedUser()
     func validateLogin(username: String?, password: String?)
 }
 
 extension LoginInteractor: LoginBusinessLogic {
+    func retrieveLastLoggedUser() {
+        worker?.retrieveLastLoggedUser(completion: handleLastLoggedUser)
+    }
+    
     func validateLogin(username: String?, password: String?) {
         validateLogin(username, password)
     }
@@ -21,6 +26,7 @@ extension LoginInteractor: LoginBusinessLogic {
 class LoginInteractor: NSObject {
     var presenter: LoginPresentationLogic?
     var worker: LoginWorkerLogic?
+    private var user: String = String()
     
     init(presenter: LoginPresentationLogic, worker: LoginWorkerLogic) {
         self.presenter = presenter
@@ -33,6 +39,7 @@ class LoginInteractor: NSObject {
             return
         }
         if isValidUsername(user) && isValidPassword(pass) {
+            self.user = user
             worker?.makeLogin(model: .init(login: .init(user: user, password: pass),
                                            success: success,
                                            failure: failure))
@@ -51,11 +58,18 @@ class LoginInteractor: NSObject {
             && password.hasSpecialCharacters()
     }
     
+    private lazy var handleLastLoggedUser: UserDefaultsReturn = { [weak self] object in
+        guard let self = self,
+            let user = object as? String else { return }
+        self.presenter?.presentLastLoggedUser(user)
+    }
+    
     private lazy var success: GenericResponse = { [weak self] data in
         guard let self = self else { return }
         do {
             let response = try JSONDecoder().decode(LoginResponse.self, from: data)
             self.presenter?.presentSuccessLogin(model: .init(response: response))
+            self.worker?.saveUserLocally(self.user)
         } catch {
             self.presenter?.presentAuthenticationError()
         }

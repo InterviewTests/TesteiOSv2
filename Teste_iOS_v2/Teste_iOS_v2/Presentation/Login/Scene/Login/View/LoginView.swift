@@ -83,4 +83,8 @@ class LoginView: UIView, NibLoadable {
         }
     }
     
+    func changeUserInTextField(_ user: String) {
+        userTextField.text = user
+    }
+    
 }

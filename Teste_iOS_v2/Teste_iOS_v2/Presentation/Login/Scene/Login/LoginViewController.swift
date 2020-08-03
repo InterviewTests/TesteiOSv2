@@ -11,6 +11,7 @@ import UIKit
 protocol LoginDisplayLogic: AnyObject {
     func displaySuccessLogin(model: LoginModels.Response)
     func displayErrorLogin(_ error: UIViewController)
+    func displayLastLoggedUser(_ user: String)
 }
 
 class LoginViewController: UIViewController {
@@ -20,6 +21,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginView.delegate = self
+        interactor?.retrieveLastLoggedUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +41,10 @@ extension LoginViewController: LoginDisplayLogic {
     
     func displayErrorLogin(_ error: UIViewController) {
         coordinator?.showError(error)
+    }
+    
+    func displayLastLoggedUser(_ user: String) {
+        loginView.changeUserInTextField(user)
     }
 }
 

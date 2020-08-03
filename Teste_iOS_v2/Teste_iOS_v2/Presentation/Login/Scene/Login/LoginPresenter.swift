@@ -13,6 +13,7 @@ protocol LoginPresentationLogic: AnyObject {
     func presentUncompletedFieldsError()
     func presentWrongFieldsError()
     func presentAuthenticationError()
+    func presentLastLoggedUser(_ user: String)
 }
 
 extension LoginPresenter: LoginPresentationLogic {
@@ -34,6 +35,10 @@ extension LoginPresenter: LoginPresentationLogic {
         let alert = createAlert(title: StringTables.LocalizedLogin.loginAuthenticationErrorTitle.string,
             message: StringTables.LocalizedLogin.loginAuthenticationErrorMessage.string)
         viewController?.displayErrorLogin(alert)
+    }
+    
+    func presentLastLoggedUser(_ user: String) {
+        viewController?.displayLastLoggedUser(user)
     }
 }
 

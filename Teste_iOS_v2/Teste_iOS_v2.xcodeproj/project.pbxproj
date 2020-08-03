@@ -27,6 +27,8 @@
 		A23F67CD24D8BEA2002517AB /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F67CC24D8BEA2002517AB /* LoginModel.swift */; };
 		A23F67CF24D8C14E002517AB /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F67CE24D8C14E002517AB /* LoginModels.swift */; };
 		A25EA8BA24D8CD0200A4E0A4 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8B924D8CD0200A4E0A4 /* Optional+Extension.swift */; };
+		A25EA8BE24D8CEEF00A4E0A4 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8BD24D8CEEF00A4E0A4 /* UserDefaultsManager.swift */; };
+		A25EA8C024D8CF2900A4E0A4 /* Constants+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8BF24D8CF2900A4E0A4 /* Constants+UserDefaults.swift */; };
 		A25ED4D924D8C6AD00C08AA9 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ED4D824D8C6AD00C08AA9 /* LoginResponse.swift */; };
 		A25ED4DD24D8C70800C08AA9 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ED4DC24D8C70800C08AA9 /* ErrorModel.swift */; };
 		A25ED4DF24D8C74200C08AA9 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ED4DE24D8C74200C08AA9 /* UserAccount.swift */; };
@@ -78,6 +80,8 @@
 		A23F67CC24D8BEA2002517AB /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		A23F67CE24D8C14E002517AB /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
 		A25EA8B924D8CD0200A4E0A4 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
+		A25EA8BD24D8CEEF00A4E0A4 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		A25EA8BF24D8CF2900A4E0A4 /* Constants+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+UserDefaults.swift"; sourceTree = "<group>"; };
 		A25ED4D824D8C6AD00C08AA9 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		A25ED4DC24D8C70800C08AA9 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A25ED4DE24D8C74200C08AA9 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
@@ -227,11 +231,28 @@
 		A23F67C124D8A7D1002517AB /* Provider */ = {
 			isa = PBXGroup;
 			children = (
+				A25EA8BC24D8CEE500A4E0A4 /* Local */,
+				A25EA8BB24D8CEDA00A4E0A4 /* Network */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		A25EA8BB24D8CEDA00A4E0A4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
 				A23F67C224D8A7E9002517AB /* ApiManager.swift */,
 				A23F67C424D8A854002517AB /* HTTPMethods.swift */,
 				A23F67C624D8A897002517AB /* RequestParameters.swift */,
 			);
-			path = Provider;
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A25EA8BC24D8CEE500A4E0A4 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				A25EA8BD24D8CEEF00A4E0A4 /* UserDefaultsManager.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 		A25ED4DA24D8C6EF00C08AA9 /* Login */ = {
@@ -267,6 +288,7 @@
 				A26A65A024D5FB2000B1E4DF /* Constants.swift */,
 				A26A65A224D5FB3F00B1E4DF /* Constants+RegexPatterns.swift */,
 				A23F67CA24D8AAC3002517AB /* Constants+EndPoints.swift */,
+				A25EA8BF24D8CF2900A4E0A4 /* Constants+UserDefaults.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -441,6 +463,7 @@
 				A26A65A124D5FB2000B1E4DF /* Constants.swift in Sources */,
 				A23F67C324D8A7E9002517AB /* ApiManager.swift in Sources */,
 				A26A659E24D5FAB700B1E4DF /* NSRegularExpressions+Extension.swift in Sources */,
+				A25EA8C024D8CF2900A4E0A4 /* Constants+UserDefaults.swift in Sources */,
 				A2AE404524D3B8DB004839DB /* NibLoadable.swift in Sources */,
 				A23F67CD24D8BEA2002517AB /* LoginModel.swift in Sources */,
 				A25ED4DF24D8C74200C08AA9 /* UserAccount.swift in Sources */,
@@ -450,6 +473,7 @@
 				A2AE404824D3C145004839DB /* LoginView.swift in Sources */,
 				A22D0B1724D3880F00CF6254 /* LoginWorker.swift in Sources */,
 				A22D0B1324D387FF00CF6254 /* LoginInteractor.swift in Sources */,
+				A25EA8BE24D8CEEF00A4E0A4 /* UserDefaultsManager.swift in Sources */,
 				A26A65A324D5FB3F00B1E4DF /* Constants+RegexPatterns.swift in Sources */,
 				A2AE404224D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift in Sources */,
 				A25EA8BA24D8CD0200A4E0A4 /* Optional+Extension.swift in Sources */,

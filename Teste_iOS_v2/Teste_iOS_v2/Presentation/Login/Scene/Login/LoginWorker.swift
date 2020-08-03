@@ -10,6 +10,8 @@ import UIKit
 
 protocol LoginWorkerLogic: AnyObject {
     func makeLogin(model: LoginModels.Request)
+    func saveUserLocally(_ user: String)
+    func retrieveLastLoggedUser(completion: UserDefaultsReturn)
 }
 
 class LoginWorker: LoginWorkerLogic {
@@ -20,5 +22,13 @@ class LoginWorker: LoginWorkerLogic {
                            .init(name: LoginModel.CodingKeys.password.rawValue, value: model.login.password)]
         parameters.method = .post
         ApiManager.makeRequest(endpoint: .login, parameters: parameters, success: model.success, failure: model.failure)
+    }
+    
+    func saveUserLocally(_ user: String) {
+        UserDefaultsManager.set(user, forKey: Constants.UserDefaults.kLastLoggedUser)
+    }
+    
+    func retrieveLastLoggedUser(completion: UserDefaultsReturn) {
+        completion(UserDefaultsManager.retrieve(withObjectKey: Constants.UserDefaults.kLastLoggedUser))
     }
 }

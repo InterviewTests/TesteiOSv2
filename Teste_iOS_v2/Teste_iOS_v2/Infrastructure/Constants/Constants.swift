@@ -17,4 +17,6 @@ struct Constants {
             self.url = url
         }
     }
+    
+    struct UserDefaults { }
 }
