@@ -10,4 +10,11 @@ import Foundation
 
 struct Constants {
     struct RegexPatterns { }
+    
+    struct EndPoints {
+        private(set) var url: String
+        init(url: String) {
+            self.url = url
+        }
+    }
 }

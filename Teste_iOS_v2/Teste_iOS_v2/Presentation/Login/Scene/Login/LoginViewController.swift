@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LoginDisplayLogic: AnyObject {
-    func displaySuccessLogin()
+    func displaySuccessLogin(model: LoginModels.Response)
     func displayErrorLogin(_ error: UIViewController)
 }
 
@@ -33,8 +33,8 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginDisplayLogic {
-    func displaySuccessLogin() {
-        coordinator?.didMadeLogin()
+    func displaySuccessLogin(model: LoginModels.Response) {
+        coordinator?.didMadeLogin(model: model)
     }
     
     func displayErrorLogin(_ error: UIViewController) {

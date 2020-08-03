@@ -33,7 +33,7 @@ class LoginCoordinator: CoordinatorProtocol {
         navigationController.present(controller, animated: true, completion: nil)
     }
     
-    internal func didFinishLoginFlow() {
+    internal func didFinishLoginFlow(model: LoginModels.Response) {
         
     }
 }

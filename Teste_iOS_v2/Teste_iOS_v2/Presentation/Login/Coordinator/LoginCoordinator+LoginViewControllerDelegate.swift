@@ -10,7 +10,7 @@ import UIKit
 
 protocol LoginViewControllerDelegate: AnyObject {
     func showError(_ controller: UIViewController)
-    func didMadeLogin()
+    func didMadeLogin(model: LoginModels.Response)
 }
 
 extension LoginCoordinator: LoginViewControllerDelegate {
@@ -18,7 +18,7 @@ extension LoginCoordinator: LoginViewControllerDelegate {
         showError(controller: controller)
     }
     
-    func didMadeLogin() {
-        didFinishLoginFlow()
+    func didMadeLogin(model: LoginModels.Response) {
+        didFinishLoginFlow(model: model)
     }
 }

@@ -8,6 +8,17 @@
 
 import UIKit
 
-protocol LoginWorkerLogic: AnyObject { }
+protocol LoginWorkerLogic: AnyObject {
+    func makeLogin(model: LoginModels.Request)
+}
 
-class LoginWorker: LoginWorkerLogic { }
+class LoginWorker: LoginWorkerLogic {
+    
+    func makeLogin(model: LoginModels.Request) {
+        var parameters = RequestParameters()
+        parameters.body = [.init(name: LoginModel.CodingKeys.user.rawValue, value: model.login.user),
+                           .init(name: LoginModel.CodingKeys.password.rawValue, value: model.login.password)]
+        parameters.method = .post
+        ApiManager.makeRequest(endpoint: .login, parameters: parameters, success: model.success, failure: model.failure)
+    }
+}

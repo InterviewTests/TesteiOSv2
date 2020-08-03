@@ -9,27 +9,30 @@
 import UIKit
 
 protocol LoginPresentationLogic: AnyObject {
-    func presentSuccessLogin()
+    func presentSuccessLogin(model: LoginModels.Response)
     func presentUncompletedFieldsError()
-    func presentErrorLogin()
+    func presentWrongFieldsError()
+    func presentAuthenticationError()
 }
 
 extension LoginPresenter: LoginPresentationLogic {
-    func presentSuccessLogin() {
-        viewController?.displaySuccessLogin()
+    func presentSuccessLogin(model: LoginModels.Response) {
+        viewController?.displaySuccessLogin(model: model)
     }
     
     func presentUncompletedFieldsError() {
-        let alert = createAlert(title: StringTables.LocalizedLogin.errorTitle.string,
-                                message: StringTables.LocalizedLogin.uncompletedFieldsMessage.string,
-                                buttonTitle: StringTables.LocalizedLogin.errorButtonTitle.string)
+        let alert = createAlert(message: StringTables.LocalizedLogin.uncompletedFieldsMessage.string)
         viewController?.displayErrorLogin(alert)
     }
     
-    func presentErrorLogin() {
-        let alert = createAlert(title: StringTables.LocalizedLogin.errorTitle.string,
-                                message: StringTables.LocalizedLogin.wrongFieldsMessage.string,
-                                buttonTitle: StringTables.LocalizedLogin.errorButtonTitle.string)
+    func presentWrongFieldsError() {
+        let alert = createAlert(message: StringTables.LocalizedLogin.wrongFieldsMessage.string)
+        viewController?.displayErrorLogin(alert)
+    }
+    
+    func presentAuthenticationError() {
+        let alert = createAlert(title: StringTables.LocalizedLogin.loginAuthenticationErrorTitle.string,
+            message: StringTables.LocalizedLogin.loginAuthenticationErrorMessage.string)
         viewController?.displayErrorLogin(alert)
     }
 }
@@ -41,7 +44,9 @@ class LoginPresenter: NSObject {
         self.viewController = viewController
     }
     
-    private func createAlert(title: String, message: String, buttonTitle: String) -> UIAlertController {
+    private func createAlert(title: String = StringTables.LocalizedLogin.errorTitle.string,
+                             message: String,
+                             buttonTitle: String = StringTables.LocalizedLogin.errorButtonTitle.string) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let button = UIAlertAction(title: buttonTitle, style: .default, handler: nil)
         alert.addAction(button)

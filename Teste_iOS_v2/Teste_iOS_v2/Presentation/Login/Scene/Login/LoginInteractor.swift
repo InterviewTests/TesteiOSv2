@@ -33,9 +33,11 @@ class LoginInteractor: NSObject {
             return
         }
         if isValidUsername(user) && isValidPassword(pass) {
-            presenter?.presentSuccessLogin()
+            worker?.makeLogin(model: .init(login: .init(user: user, password: pass),
+                                           success: success,
+                                           failure: failure))
         } else {
-            presenter?.presentErrorLogin()
+            presenter?.presentWrongFieldsError()
         }
     }
     
@@ -47,5 +49,20 @@ class LoginInteractor: NSObject {
         return password.hasNumbers()
             && password.hasCapitalLetters()
             && password.hasSpecialCharacters()
+    }
+    
+    private lazy var success: GenericResponse = { [weak self] data in
+        guard let self = self else { return }
+        do {
+            let response = try JSONDecoder().decode(LoginResponse.self, from: data)
+            self.presenter?.presentSuccessLogin(model: .init(response: response))
+        } catch {
+            self.presenter?.presentAuthenticationError()
+        }
+    }
+    
+    private lazy var failure: EmptyClosure = { [weak self]  in
+        guard let self = self else { return }
+        self.presenter?.presentAuthenticationError()
     }
 }

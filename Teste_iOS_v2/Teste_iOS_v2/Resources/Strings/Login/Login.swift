@@ -15,6 +15,8 @@ extension StringTables {
         case errorButtonTitle
         case uncompletedFieldsMessage
         case wrongFieldsMessage
+        case loginAuthenticationErrorTitle
+        case loginAuthenticationErrorMessage
         
         var string: String {
             return String(key: rawValue.convertToSnakeCase(), table: .login)
