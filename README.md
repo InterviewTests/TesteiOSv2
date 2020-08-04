@@ -6,3 +6,6 @@
 
 ### # Intruções para execução do projeto:
 Necessário apenas abrir o projeto no Xcode e executar normalmente.
+
+### # Empresa pela qual estou fazendo o processo seletivo:
+Accenture
