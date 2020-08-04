@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TimelineViewProtocol: AnyObject {
+    func didTapLogoutButton()
+}
+
 class TimelineView: UIView, NibLoadable {
     
     @IBOutlet private(set) weak var userInformationsView: UIView!
@@ -27,6 +31,7 @@ class TimelineView: UIView, NibLoadable {
     
     private let identifier = "TransactionCell"
     private var viewModel = TimelineViewModel()
+    weak var delegate: TimelineViewProtocol?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,6 +46,16 @@ class TimelineView: UIView, NibLoadable {
     private func commomInit() {
         setupFromNib()
         setupTableView()
+        addTargets()
+    }
+    
+    private func addTargets() {
+        logoutImageView.isUserInteractionEnabled = true
+        logoutImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLogoutButton)))
+    }
+    
+    @objc private func handleTapOnLogoutButton() {
+        delegate?.didTapLogoutButton()
     }
     
     private func setupTableView() {

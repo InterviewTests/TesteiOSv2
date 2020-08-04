@@ -9,9 +9,11 @@
 import Foundation
 
 protocol TimelineViewControllerDelegate: AnyObject {
-    
+    func didTappedLogout()
 }
 
 extension TimelineCoordinator: TimelineViewControllerDelegate {
-    
+    func didTappedLogout() {
+        didFinishCoordinatorFlow()
+    }
 }

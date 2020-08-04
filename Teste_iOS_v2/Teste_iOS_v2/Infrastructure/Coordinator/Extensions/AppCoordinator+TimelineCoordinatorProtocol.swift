@@ -9,5 +9,8 @@
 import Foundation
 
 extension AppCoordinator: TimelineCoordinatorProtocol {
-    
+    func didFinished(_ childCoordinator: CoordinatorProtocol) {
+        removeChildCoordinator(childCoordinator)
+        initiateLoginFlow(isOnLaunch: false)
+    }
 }

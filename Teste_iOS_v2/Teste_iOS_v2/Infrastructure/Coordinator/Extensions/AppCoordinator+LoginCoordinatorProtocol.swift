@@ -10,8 +10,7 @@ import Foundation
 
 extension AppCoordinator: LoginCoordinatorProtocol {
     func didFinished(_ childCoordinator: CoordinatorProtocol, userInformations: UserAccount?) {
-        navigationController.popViewController(animated: true)
         removeChildCoordinator(childCoordinator)
-        initiateTimelineFlow(with: userInformations)
+        initiateTimelineFlow(with: userInformations, needToSetAsRoot: true)
     }
 }

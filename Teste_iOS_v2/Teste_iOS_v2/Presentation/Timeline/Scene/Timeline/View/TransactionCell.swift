@@ -28,7 +28,7 @@ class TransactionCell: UITableViewCell {
     
     private func addShadow() {
         contentView.layer.shadowColor = UIColor.black.cgColor
-        contentView.layer.shadowOpacity = 0.1
+        contentView.layer.shadowOpacity = 0.12
         contentView.layer.shadowOffset = .zero
         contentView.layer.cornerRadius = 6
         contentView.layer.masksToBounds = false

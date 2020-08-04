@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TimelineCoordinatorProtocol: AnyObject {
-    
+    func didFinished(_ childCoordinator: CoordinatorProtocol)
 }
 
 class TimelineCoordinator: CoordinatorProtocol {
@@ -40,6 +40,10 @@ class TimelineCoordinator: CoordinatorProtocol {
         controller.interactor = interactor
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
+    }
+    
+    internal func didFinishCoordinatorFlow() {
+        appCoordinatorDelegate?.didFinished(self)
     }
     
     

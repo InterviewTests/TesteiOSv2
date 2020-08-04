@@ -15,26 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let nav = UINavigationController()
-        window = UIWindow(frame: UIScreen.main.bounds)
-        coordinator = AppCoordinator(navigationController: nav)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+        coordinator = AppCoordinator(window: window)
         coordinator?.start()
-        
-        window?.rootViewController = nav
-        window?.makeKeyAndVisible()
         return true
-    }
-    
-    func changeRootViewController(_ viewController: UIViewController) {
-        guard let snapshot = window?.snapshotView(afterScreenUpdates: true) else { return }
-        viewController.view.addSubview(snapshot)
-        window?.rootViewController = viewController
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            snapshot.layer.opacity = 0
-        }, completion:  { _ in
-            snapshot.removeFromSuperview()
-        })
     }
     
 }

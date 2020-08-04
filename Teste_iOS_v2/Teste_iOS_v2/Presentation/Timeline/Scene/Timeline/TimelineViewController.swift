@@ -24,6 +24,7 @@ class TimelineViewController: UIViewController {
         super.viewDidLoad()
         interactor?.setupInitialState()
         interactor?.getTransactions()
+        timelineView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,5 +45,11 @@ extension TimelineViewController: TimelineDisplayLogic {
     
     func displayInitialState(model: TimelineModels.InitialState) {
         timelineView.setupBalanceView(userInformation: model.userInformations)
+    }
+}
+
+extension TimelineViewController: TimelineViewProtocol {
+    func didTapLogoutButton() {
+        coordinator?.didTappedLogout()
     }
 }

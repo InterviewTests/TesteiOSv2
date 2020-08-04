@@ -10,30 +10,50 @@ import UIKit
 
 class AppCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController
+    var window: UIWindow
     var childCoordinators = [CoordinatorProtocol]()
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(window: UIWindow) {
+        self.navigationController = .init()
+        self.window = window
     }
     
     func start() {
-        initiateLoginFlow()
+        initiateLoginFlow(isOnLaunch: true)
     }
     
-    private func initiateLoginFlow() {
+    internal func initiateLoginFlow(isOnLaunch: Bool) {
         let coordinator = LoginCoordinator(navigationController: navigationController)
-        coordinator.appCoordinatorDelegate = self
         childCoordinators.append(coordinator)
+        coordinator.appCoordinatorDelegate = self
         coordinator.start()
+        changeRootViewController(navigationController, isOnLaunch: isOnLaunch)
     }
     
-    internal func initiateTimelineFlow(with userInformations: UserAccount?) {
-        let coordinator = TimelineCoordinator(navigationController: navigationController, userInformations: userInformations, needToSetAsRoot: true)
-        coordinator.appCoordinatorDelegate = self
+    internal func initiateTimelineFlow(with userInformations: UserAccount?, needToSetAsRoot: Bool) {
+        let coordinator = TimelineCoordinator(navigationController: navigationController, userInformations: userInformations, needToSetAsRoot: needToSetAsRoot)
         childCoordinators.append(coordinator)
+        coordinator.appCoordinatorDelegate = self
         coordinator.start()
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        appDelegate.changeRootViewController(coordinator.navigationController)
+        if needToSetAsRoot {
+            changeRootViewController(coordinator.navigationController, isOnLaunch: false)
+        }
+    }
+    
+    private func changeRootViewController(_ viewController: UIViewController, isOnLaunch: Bool) {
+        guard let snapshot = window.snapshotView(afterScreenUpdates: true) else { return }
+        window.rootViewController = viewController
+        if isOnLaunch {
+            window.makeKeyAndVisible()
+            return
+        }
+        viewController.view.addSubview(snapshot)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            snapshot.layer.opacity = 0
+        }, completion:  { _ in
+            snapshot.removeFromSuperview()
+        })
     }
     
     internal func removeChildCoordinator(_ childCoordinator: CoordinatorProtocol) {
