@@ -45,8 +45,5 @@ class TimelineInteractor {
         }
     }
     
-    private lazy var failure: EmptyClosure = { [weak self] in
-        guard let self = self else { return }
-        
-    }
+    private lazy var failure: EmptyClosure = { }
 }
