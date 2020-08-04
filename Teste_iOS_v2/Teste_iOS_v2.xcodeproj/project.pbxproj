@@ -29,6 +29,21 @@
 		A25EA8BA24D8CD0200A4E0A4 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8B924D8CD0200A4E0A4 /* Optional+Extension.swift */; };
 		A25EA8BE24D8CEEF00A4E0A4 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8BD24D8CEEF00A4E0A4 /* UserDefaultsManager.swift */; };
 		A25EA8C024D8CF2900A4E0A4 /* Constants+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8BF24D8CF2900A4E0A4 /* Constants+UserDefaults.swift */; };
+		A25EA8C324D8D8AA00A4E0A4 /* AppCoordinator+LoginCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8C224D8D8AA00A4E0A4 /* AppCoordinator+LoginCoordinatorProtocol.swift */; };
+		A25EA8C824D8F6FE00A4E0A4 /* TimelineCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8C724D8F6FE00A4E0A4 /* TimelineCoordinator.swift */; };
+		A25EA8CC24D8F8C300A4E0A4 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8CA24D8F8C300A4E0A4 /* TimelineViewController.swift */; };
+		A25EA8CD24D8F8C300A4E0A4 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A25EA8CB24D8F8C300A4E0A4 /* TimelineViewController.xib */; };
+		A25EA8CF24D8F91100A4E0A4 /* TimelineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8CE24D8F91100A4E0A4 /* TimelineInteractor.swift */; };
+		A25EA8D124D8F93D00A4E0A4 /* TimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8D024D8F93D00A4E0A4 /* TimelinePresenter.swift */; };
+		A25EA8D324D8F98300A4E0A4 /* TimelineWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8D224D8F98300A4E0A4 /* TimelineWorker.swift */; };
+		A25EA8D524D8FA8C00A4E0A4 /* TimelineViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8D424D8FA8C00A4E0A4 /* TimelineViewControllerDelegate.swift */; };
+		A25EA8D724D8FB5300A4E0A4 /* AppCoordinator+TimelineCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8D624D8FB5300A4E0A4 /* AppCoordinator+TimelineCoordinatorProtocol.swift */; };
+		A25EA8DA24D8FFA000A4E0A4 /* TimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A25EA8D924D8FFA000A4E0A4 /* TimelineView.xib */; };
+		A25EA8DC24D8FFB000A4E0A4 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8DB24D8FFB000A4E0A4 /* TimelineView.swift */; };
+		A25EA8DF24D9030000A4E0A4 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8DD24D9030000A4E0A4 /* TransactionCell.swift */; };
+		A25EA8E024D9030000A4E0A4 /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A25EA8DE24D9030000A4E0A4 /* TransactionCell.xib */; };
+		A25EA8E324D904C900A4E0A4 /* TimelineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8E224D904C900A4E0A4 /* TimelineModel.swift */; };
+		A25EA8E524D9065400A4E0A4 /* TimelineModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25EA8E424D9065400A4E0A4 /* TimelineModels.swift */; };
 		A25ED4D924D8C6AD00C08AA9 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ED4D824D8C6AD00C08AA9 /* LoginResponse.swift */; };
 		A25ED4DD24D8C70800C08AA9 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ED4DC24D8C70800C08AA9 /* ErrorModel.swift */; };
 		A25ED4DF24D8C74200C08AA9 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ED4DE24D8C74200C08AA9 /* UserAccount.swift */; };
@@ -43,6 +58,8 @@
 		A2AE404524D3B8DB004839DB /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE404424D3B8DB004839DB /* NibLoadable.swift */; };
 		A2AE404824D3C145004839DB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE404724D3C145004839DB /* LoginView.swift */; };
 		A2AE404A24D3C14E004839DB /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2AE404924D3C14E004839DB /* LoginView.xib */; };
+		A2D1CB5F24D9092400A855B4 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D1CB5E24D9092400A855B4 /* TimelineViewModel.swift */; };
+		A2D1CB6224D90CBB00A855B4 /* TimelineResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D1CB6124D90CBB00A855B4 /* TimelineResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +99,21 @@
 		A25EA8B924D8CD0200A4E0A4 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		A25EA8BD24D8CEEF00A4E0A4 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		A25EA8BF24D8CF2900A4E0A4 /* Constants+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+UserDefaults.swift"; sourceTree = "<group>"; };
+		A25EA8C224D8D8AA00A4E0A4 /* AppCoordinator+LoginCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppCoordinator+LoginCoordinatorProtocol.swift"; sourceTree = "<group>"; };
+		A25EA8C724D8F6FE00A4E0A4 /* TimelineCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCoordinator.swift; sourceTree = "<group>"; };
+		A25EA8CA24D8F8C300A4E0A4 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		A25EA8CB24D8F8C300A4E0A4 /* TimelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
+		A25EA8CE24D8F91100A4E0A4 /* TimelineInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineInteractor.swift; sourceTree = "<group>"; };
+		A25EA8D024D8F93D00A4E0A4 /* TimelinePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinePresenter.swift; sourceTree = "<group>"; };
+		A25EA8D224D8F98300A4E0A4 /* TimelineWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineWorker.swift; sourceTree = "<group>"; };
+		A25EA8D424D8FA8C00A4E0A4 /* TimelineViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewControllerDelegate.swift; sourceTree = "<group>"; };
+		A25EA8D624D8FB5300A4E0A4 /* AppCoordinator+TimelineCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppCoordinator+TimelineCoordinatorProtocol.swift"; sourceTree = "<group>"; };
+		A25EA8D924D8FFA000A4E0A4 /* TimelineView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineView.xib; sourceTree = "<group>"; };
+		A25EA8DB24D8FFB000A4E0A4 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		A25EA8DD24D9030000A4E0A4 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		A25EA8DE24D9030000A4E0A4 /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCell.xib; sourceTree = "<group>"; };
+		A25EA8E224D904C900A4E0A4 /* TimelineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineModel.swift; sourceTree = "<group>"; };
+		A25EA8E424D9065400A4E0A4 /* TimelineModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineModels.swift; sourceTree = "<group>"; };
 		A25ED4D824D8C6AD00C08AA9 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		A25ED4DC24D8C70800C08AA9 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A25ED4DE24D8C74200C08AA9 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
@@ -96,6 +128,8 @@
 		A2AE404424D3B8DB004839DB /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		A2AE404724D3C145004839DB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A2AE404924D3C14E004839DB /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		A2D1CB5E24D9092400A855B4 /* TimelineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
+		A2D1CB6124D90CBB00A855B4 /* TimelineResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,11 +195,11 @@
 		A22D0B0224D3866700CF6254 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				A23F67C824D8A8F1002517AB /* Typealias.swift */,
 				A26A659F24D5FB1500B1E4DF /* Constants */,
 				A26A659A24D5F63400B1E4DF /* Extensions */,
 				A2AE404324D3B8CF004839DB /* NibLoadable */,
 				A22D0B0324D3866C00CF6254 /* Coordinator */,
-				A23F67C824D8A8F1002517AB /* Typealias.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -173,8 +207,9 @@
 		A22D0B0324D3866C00CF6254 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				A22D0B0424D3867700CF6254 /* CoordinatorProtocol.swift */,
+				A25EA8C124D8D89700A4E0A4 /* Extensions */,
 				A22D0B0624D386B800CF6254 /* AppCoordinator.swift */,
+				A22D0B0424D3867700CF6254 /* CoordinatorProtocol.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -183,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				A22D0B0924D387B100CF6254 /* Login */,
+				A25EA8C424D8F6D700A4E0A4 /* Timeline */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -221,6 +257,7 @@
 		A23F67C024D8A7C3002517AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A25EA8E124D904B600A4E0A4 /* Timeline */,
 				A25ED4DB24D8C70000C08AA9 /* Error */,
 				A25ED4DA24D8C6EF00C08AA9 /* Login */,
 				A25ED4DE24D8C74200C08AA9 /* UserAccount.swift */,
@@ -253,6 +290,76 @@
 				A25EA8BD24D8CEEF00A4E0A4 /* UserDefaultsManager.swift */,
 			);
 			path = Local;
+			sourceTree = "<group>";
+		};
+		A25EA8C124D8D89700A4E0A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A25EA8C224D8D8AA00A4E0A4 /* AppCoordinator+LoginCoordinatorProtocol.swift */,
+				A25EA8D624D8FB5300A4E0A4 /* AppCoordinator+TimelineCoordinatorProtocol.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A25EA8C424D8F6D700A4E0A4 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				A25EA8C624D8F6EA00A4E0A4 /* Coordinator */,
+				A25EA8C524D8F6E500A4E0A4 /* Scene */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		A25EA8C524D8F6E500A4E0A4 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				A25EA8C924D8F8B100A4E0A4 /* Timeline */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		A25EA8C624D8F6EA00A4E0A4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A25EA8C724D8F6FE00A4E0A4 /* TimelineCoordinator.swift */,
+				A25EA8D424D8FA8C00A4E0A4 /* TimelineViewControllerDelegate.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		A25EA8C924D8F8B100A4E0A4 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				A2D1CB5D24D9091600A855B4 /* ViewModel */,
+				A25EA8D824D8FF9700A4E0A4 /* View */,
+				A25EA8CA24D8F8C300A4E0A4 /* TimelineViewController.swift */,
+				A25EA8CB24D8F8C300A4E0A4 /* TimelineViewController.xib */,
+				A25EA8CE24D8F91100A4E0A4 /* TimelineInteractor.swift */,
+				A25EA8D024D8F93D00A4E0A4 /* TimelinePresenter.swift */,
+				A25EA8D224D8F98300A4E0A4 /* TimelineWorker.swift */,
+				A25EA8E424D9065400A4E0A4 /* TimelineModels.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		A25EA8D824D8FF9700A4E0A4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A25EA8D924D8FFA000A4E0A4 /* TimelineView.xib */,
+				A25EA8DB24D8FFB000A4E0A4 /* TimelineView.swift */,
+				A25EA8DE24D9030000A4E0A4 /* TransactionCell.xib */,
+				A25EA8DD24D9030000A4E0A4 /* TransactionCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A25EA8E124D904B600A4E0A4 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				A25EA8E224D904C900A4E0A4 /* TimelineModel.swift */,
+				A2D1CB6124D90CBB00A855B4 /* TimelineResponse.swift */,
+			);
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 		A25ED4DA24D8C6EF00C08AA9 /* Login */ = {
@@ -346,6 +453,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A2D1CB5D24D9091600A855B4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A2D1CB5E24D9092400A855B4 /* TimelineViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -427,9 +542,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A25EA8DA24D8FFA000A4E0A4 /* TimelineView.xib in Resources */,
 				A22D0B1124D387F200CF6254 /* LoginViewController.xib in Resources */,
+				A25EA8E024D9030000A4E0A4 /* TransactionCell.xib in Resources */,
 				A22D0AED24D385A000CF6254 /* LaunchScreen.storyboard in Resources */,
 				A22D0AEA24D385A000CF6254 /* Assets.xcassets in Resources */,
+				A25EA8CD24D8F8C300A4E0A4 /* TimelineViewController.xib in Resources */,
 				A2AE404A24D3C14E004839DB /* LoginView.xib in Resources */,
 				A26A65AB24D6069D00B1E4DF /* Login.strings in Resources */,
 			);
@@ -449,12 +567,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A25EA8D724D8FB5300A4E0A4 /* AppCoordinator+TimelineCoordinatorProtocol.swift in Sources */,
 				A26A65A824D6066400B1E4DF /* StringTables.swift in Sources */,
 				A26A65A524D5FFB600B1E4DF /* String+Extension.swift in Sources */,
 				A23F67CB24D8AAC3002517AB /* Constants+EndPoints.swift in Sources */,
 				A22D0B1024D387F200CF6254 /* LoginViewController.swift in Sources */,
+				A25EA8D324D8F98300A4E0A4 /* TimelineWorker.swift in Sources */,
 				A23F67C724D8A897002517AB /* RequestParameters.swift in Sources */,
 				A22D0B0B24D387BC00CF6254 /* LoginCoordinator.swift in Sources */,
+				A25EA8D524D8FA8C00A4E0A4 /* TimelineViewControllerDelegate.swift in Sources */,
 				A22D0B1524D3880700CF6254 /* LoginPresenter.swift in Sources */,
 				A22D0AE124D3859F00CF6254 /* AppDelegate.swift in Sources */,
 				A25ED4D924D8C6AD00C08AA9 /* LoginResponse.swift in Sources */,
@@ -462,23 +583,34 @@
 				A23F67CF24D8C14E002517AB /* LoginModels.swift in Sources */,
 				A26A65A124D5FB2000B1E4DF /* Constants.swift in Sources */,
 				A23F67C324D8A7E9002517AB /* ApiManager.swift in Sources */,
+				A25EA8CF24D8F91100A4E0A4 /* TimelineInteractor.swift in Sources */,
 				A26A659E24D5FAB700B1E4DF /* NSRegularExpressions+Extension.swift in Sources */,
 				A25EA8C024D8CF2900A4E0A4 /* Constants+UserDefaults.swift in Sources */,
+				A25EA8C824D8F6FE00A4E0A4 /* TimelineCoordinator.swift in Sources */,
 				A2AE404524D3B8DB004839DB /* NibLoadable.swift in Sources */,
 				A23F67CD24D8BEA2002517AB /* LoginModel.swift in Sources */,
+				A2D1CB5F24D9092400A855B4 /* TimelineViewModel.swift in Sources */,
+				A25EA8E524D9065400A4E0A4 /* TimelineModels.swift in Sources */,
 				A25ED4DF24D8C74200C08AA9 /* UserAccount.swift in Sources */,
 				A26A65AE24D606C900B1E4DF /* Login.swift in Sources */,
 				A23F67C924D8A8F1002517AB /* Typealias.swift in Sources */,
+				A25EA8DC24D8FFB000A4E0A4 /* TimelineView.swift in Sources */,
 				A25ED4DD24D8C70800C08AA9 /* ErrorModel.swift in Sources */,
 				A2AE404824D3C145004839DB /* LoginView.swift in Sources */,
+				A25EA8CC24D8F8C300A4E0A4 /* TimelineViewController.swift in Sources */,
 				A22D0B1724D3880F00CF6254 /* LoginWorker.swift in Sources */,
 				A22D0B1324D387FF00CF6254 /* LoginInteractor.swift in Sources */,
+				A25EA8D124D8F93D00A4E0A4 /* TimelinePresenter.swift in Sources */,
 				A25EA8BE24D8CEEF00A4E0A4 /* UserDefaultsManager.swift in Sources */,
 				A26A65A324D5FB3F00B1E4DF /* Constants+RegexPatterns.swift in Sources */,
 				A2AE404224D38A41004839DB /* LoginCoordinator+LoginViewControllerDelegate.swift in Sources */,
+				A25EA8E324D904C900A4E0A4 /* TimelineModel.swift in Sources */,
 				A25EA8BA24D8CD0200A4E0A4 /* Optional+Extension.swift in Sources */,
 				A22D0B0724D386B800CF6254 /* AppCoordinator.swift in Sources */,
+				A25EA8C324D8D8AA00A4E0A4 /* AppCoordinator+LoginCoordinatorProtocol.swift in Sources */,
+				A25EA8DF24D9030000A4E0A4 /* TransactionCell.swift in Sources */,
 				A22D0B0524D3867700CF6254 /* CoordinatorProtocol.swift in Sources */,
+				A2D1CB6224D90CBB00A855B4 /* TimelineResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

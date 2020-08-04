@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol LoginCoordinatorProtocol: AnyObject {
+    func didFinished(_ childCoordinator: CoordinatorProtocol, userInformations: UserAccount?)
+}
+
 class LoginCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController
+    var appCoordinatorDelegate: LoginCoordinatorProtocol?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -34,6 +39,6 @@ class LoginCoordinator: CoordinatorProtocol {
     }
     
     internal func didFinishLoginFlow(model: LoginModels.Response) {
-        
+        appCoordinatorDelegate?.didFinished(self, userInformations: model.response.userAccount)
     }
 }

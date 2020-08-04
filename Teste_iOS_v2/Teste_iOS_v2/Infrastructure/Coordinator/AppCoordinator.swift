@@ -22,8 +22,24 @@ class AppCoordinator: CoordinatorProtocol {
     
     private func initiateLoginFlow() {
         let coordinator = LoginCoordinator(navigationController: navigationController)
+        coordinator.appCoordinatorDelegate = self
         childCoordinators.append(coordinator)
         coordinator.start()
+    }
+    
+    internal func initiateTimelineFlow(with userInformations: UserAccount?) {
+        let coordinator = TimelineCoordinator(navigationController: navigationController, userInformations: userInformations, needToSetAsRoot: true)
+        coordinator.appCoordinatorDelegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.changeRootViewController(coordinator.navigationController)
+    }
+    
+    internal func removeChildCoordinator(_ childCoordinator: CoordinatorProtocol) {
+        for (index, child) in childCoordinators.enumerated() where child === childCoordinator {
+            childCoordinators.remove(at: index)
+        }
     }
     
 }
