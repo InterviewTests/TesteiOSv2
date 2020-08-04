@@ -1,3 +1,5 @@
+![Image of Yaktocat](https://github.com/SantanderTecnologia/TesteiOSv2/blob/master/telas.png)
+
 ### # Tecnologias usadas:
 - Swift 4
 - XCTest para testes unitários.
