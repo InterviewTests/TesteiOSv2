@@ -10,6 +10,7 @@ import UIKit
 
 protocol TimelineDisplayLogic: AnyObject {
     func displayTransactionList(model: TimelineModels.Response)
+    func displayInitialState(model: TimelineModels.InitialState)
 }
 
 class TimelineViewController: UIViewController {
@@ -21,6 +22,7 @@ class TimelineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor?.setupInitialState()
         interactor?.getTransactions()
     }
     
@@ -28,11 +30,19 @@ class TimelineViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
 }
 
 extension TimelineViewController: TimelineDisplayLogic {
     func displayTransactionList(model: TimelineModels.Response) {
         timelineView.addTransactionList(list: model.timelineList)
+    }
+    
+    func displayInitialState(model: TimelineModels.InitialState) {
+        timelineView.setupBalanceView(userInformation: model.userInformations)
     }
 }

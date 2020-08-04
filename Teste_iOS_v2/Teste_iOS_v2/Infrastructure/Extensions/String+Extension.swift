@@ -59,4 +59,29 @@ extension String {
         return NSRegularExpression(Constants.RegexPatterns.specialCharacters).matches(self)
     }
     
+    func getFullDate() -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        if let date = formatter.date(from: self) {
+            return date
+        }
+        return nil
+    }
+    
+    func getFormmatedAgency() -> String {
+        let hasToAddFirstDot = self.count > 5 ? true : false
+        
+        var newString = String()
+        for (index, char) in self.enumerated() {
+            if index == 2 && hasToAddFirstDot {
+                newString.append(".\(String(char))")
+            } else if index == self.count - 1 {
+                newString.append("-\(String(char))")
+            } else {
+                newString.append(char)
+            }
+        }
+        return newString
+    }
+    
 }

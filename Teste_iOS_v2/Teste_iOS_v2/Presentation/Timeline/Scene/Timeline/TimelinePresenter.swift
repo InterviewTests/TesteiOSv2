@@ -10,11 +10,16 @@ import UIKit
 
 protocol TimelinePresentationLogic: AnyObject {
     func presentTransactionList(model: TimelineModels.Response)
+    func presentInitialState(model: TimelineModels.InitialState)
 }
 
 extension TimelinePresenter: TimelinePresentationLogic {
     func presentTransactionList(model: TimelineModels.Response) {
         viewController?.displayTransactionList(model: model)
+    }
+    
+    func presentInitialState(model: TimelineModels.InitialState) {
+        viewController?.displayInitialState(model: model)
     }
 }
 

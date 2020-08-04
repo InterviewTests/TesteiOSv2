@@ -17,4 +17,8 @@ struct TimelineModels {
     struct Response {
         let timelineList: [TimelineModel]
     }
+    
+    struct InitialState {
+        let userInformations: UserAccount?
+    }
 }

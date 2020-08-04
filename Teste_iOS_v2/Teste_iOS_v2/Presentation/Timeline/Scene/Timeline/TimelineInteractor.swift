@@ -10,11 +10,16 @@ import UIKit
 
 protocol TimelineBusinessLogic: AnyObject {
     func getTransactions()
+    func setupInitialState()
 }
 
 extension TimelineInteractor: TimelineBusinessLogic {
     func getTransactions() {
         worker?.retrieveTransaction(model: .init(success: success, failure: failure))
+    }
+    
+    func setupInitialState() {
+        presenter?.presentInitialState(model: .init(userInformations: userInformations))
     }
 }
 

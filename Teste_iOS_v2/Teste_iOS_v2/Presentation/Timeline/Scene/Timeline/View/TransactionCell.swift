@@ -37,8 +37,8 @@ class TransactionCell: UITableViewCell {
     func setup(model: TimelineModel) {
         transferType.text = model.title
         transferName.text = model.desc
-        transferDate.text = model.date
-        transferValue.text = String(model.value)
+        transferDate.text = model.date.getFullDate()?.getStringFullDate()
+        transferValue.text = model.value.getMoneyFormat()
     }
     
 }

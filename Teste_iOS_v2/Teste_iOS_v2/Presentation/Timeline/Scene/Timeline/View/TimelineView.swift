@@ -49,6 +49,14 @@ class TimelineView: UIView, NibLoadable {
         transactionTableView.dataSource = self
     }
     
+    func setupBalanceView(userInformation: UserAccount?) {
+        userName.text = userInformation?.name
+        if let agency = userInformation?.agency, let account = userInformation?.bankAccount {
+            accountNumber.text = "\(account) / \(agency.getFormmatedAgency())"
+        }
+        balanceNumber.text = userInformation?.balance?.getMoneyFormat()
+    }
+    
     func addTransactionList(list: [TimelineModel]) {
         viewModel.refreshList(list)
         transactionTableView.reloadData()
