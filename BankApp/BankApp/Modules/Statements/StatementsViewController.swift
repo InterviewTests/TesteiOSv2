@@ -15,6 +15,15 @@ class StatementsViewController: UIViewController {
     @IBOutlet weak var lb_userBalance: UILabel!
     @IBOutlet weak var tableView_statements: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    lazy var lb_noItemsFound: UILabel = {
+        let label = UILabel()
+        label.text = "Você ainda não possui transações registradas"
+        label.font = UIFont.systemFont(ofSize: 13, weight: .light)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
     
     // MARK: Properties
     var interactor: StatementsInteractorProtocol?
@@ -85,6 +94,13 @@ extension StatementsViewController: StatementsPresenterDelegate {
     func displayStatements(viewModel: StatementsModels.ViewModel) {
         statementsViewModel = viewModel
         tableView_statements.reloadData()
+        tableView_statements.backgroundView = nil
+    }
+    
+    func zeroStatementsFound(viewModel: StatementsModels.ViewModel) {
+        statementsViewModel = viewModel
+        tableView_statements.reloadData()
+        tableView_statements.backgroundView = lb_noItemsFound
     }
     
     func showFailToFetchStatements(_ errorMessage: String) {

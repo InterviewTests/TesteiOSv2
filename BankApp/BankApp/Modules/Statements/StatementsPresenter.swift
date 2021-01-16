@@ -53,7 +53,6 @@ extension StatementsPresenter: StatementsPresenterProtocol {
     
     func presentFetchedStatements(response: StatementsModels.Response) {
         // TODO: Ordenar por data
-        // TODO: Fluxo alternativo: quantidade == 0
         
         let viewModels = response.statementsList.map({ statement -> StatementsModels.ViewModel.StatementViewModel in
             
@@ -67,7 +66,10 @@ extension StatementsPresenter: StatementsPresenterProtocol {
         })
         let viewModel = StatementsModels.ViewModel(statements: viewModels)
         
-        view?.displayStatements(viewModel: viewModel)
+        if viewModel.numStatements == 0 {
+            view?.zeroStatementsFound(viewModel: viewModel)
+        }
+        else { view?.displayStatements(viewModel: viewModel) }
     }
     
     func didFailToFetchStatement(_ errorMessage: String) {

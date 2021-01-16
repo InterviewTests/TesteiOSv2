@@ -32,5 +32,6 @@ protocol StatementsPresenterDelegate: AnyObject {
     func finishRequesting()
     
     func displayStatements(viewModel: StatementsModels.ViewModel)
+    func zeroStatementsFound(viewModel: StatementsModels.ViewModel)
     func showFailToFetchStatements(_ errorMessage: String)
 }
