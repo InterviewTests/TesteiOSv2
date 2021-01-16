@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B91FFB2025B32C760090030B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB1F25B32C760090030B /* LoginViewController.swift */; };
+		B91FFB2525B32C870090030B /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB2425B32C870090030B /* LoginInteractor.swift */; };
+		B91FFB2A25B32C910090030B /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB2925B32C910090030B /* LoginPresenter.swift */; };
+		B91FFB2F25B32C9C0090030B /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB2E25B32C9C0090030B /* LoginRouter.swift */; };
+		B91FFB3425B32D810090030B /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB3325B32D810090030B /* LoginProtocols.swift */; };
+		B91FFB3C25B32EF10090030B /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB3B25B32EF10090030B /* KeyboardObserver.swift */; };
 		B92C062325B327B50015F356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062225B327B50015F356 /* AppDelegate.swift */; };
 		B92C062525B327B50015F356 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062425B327B50015F356 /* SceneDelegate.swift */; };
-		B92C062725B327B50015F356 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062625B327B50015F356 /* ViewController.swift */; };
 		B92C062A25B327B50015F356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B92C062825B327B50015F356 /* Main.storyboard */; };
 		B92C062D25B327B50015F356 /* BankApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B92C062B25B327B50015F356 /* BankApp.xcdatamodeld */; };
 		B92C062F25B327B80015F356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B92C062E25B327B80015F356 /* Assets.xcassets */; };
@@ -36,10 +41,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B91FFB1F25B32C760090030B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B91FFB2425B32C870090030B /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		B91FFB2925B32C910090030B /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		B91FFB2E25B32C9C0090030B /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		B91FFB3325B32D810090030B /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
+		B91FFB3B25B32EF10090030B /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		B92C061F25B327B50015F356 /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92C062225B327B50015F356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B92C062425B327B50015F356 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B92C062625B327B50015F356 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B92C062925B327B50015F356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B92C062C25B327B50015F356 /* BankApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BankApp.xcdatamodel; sourceTree = "<group>"; };
 		B92C062E25B327B80015F356 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,7 +115,6 @@
 				B92C062425B327B50015F356 /* SceneDelegate.swift */,
 				B92C065C25B3284D0015F356 /* Entities */,
 				B92C065D25B328530015F356 /* Service */,
-				B92C062625B327B50015F356 /* ViewController.swift */,
 				B92C065B25B328480015F356 /* Modules */,
 				B92C065E25B328580015F356 /* Utils */,
 				B92C062E25B327B80015F356 /* Assets.xcassets */,
@@ -161,6 +170,7 @@
 		B92C065E25B328580015F356 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B91FFB3B25B32EF10090030B /* KeyboardObserver.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -175,6 +185,11 @@
 		B92C066025B328750015F356 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B91FFB1F25B32C760090030B /* LoginViewController.swift */,
+				B91FFB2425B32C870090030B /* LoginInteractor.swift */,
+				B91FFB2925B32C910090030B /* LoginPresenter.swift */,
+				B91FFB2E25B32C9C0090030B /* LoginRouter.swift */,
+				B91FFB3325B32D810090030B /* LoginProtocols.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -309,9 +324,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B92C062725B327B50015F356 /* ViewController.swift in Sources */,
 				B92C062D25B327B50015F356 /* BankApp.xcdatamodeld in Sources */,
+				B91FFB3C25B32EF10090030B /* KeyboardObserver.swift in Sources */,
+				B91FFB2A25B32C910090030B /* LoginPresenter.swift in Sources */,
+				B91FFB3425B32D810090030B /* LoginProtocols.swift in Sources */,
+				B91FFB2525B32C870090030B /* LoginInteractor.swift in Sources */,
 				B92C062325B327B50015F356 /* AppDelegate.swift in Sources */,
+				B91FFB2025B32C760090030B /* LoginViewController.swift in Sources */,
+				B91FFB2F25B32C9C0090030B /* LoginRouter.swift in Sources */,
 				B92C062525B327B50015F356 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
