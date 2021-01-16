@@ -15,6 +15,8 @@
 		B91FFB3C25B32EF10090030B /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB3B25B32EF10090030B /* KeyboardObserver.swift */; };
 		B91FFB4425B332A20090030B /* LoginEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB4325B332A20090030B /* LoginEntities.swift */; };
 		B91FFB4A25B3352B0090030B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB4925B3352B0090030B /* ViewControllerExtensions.swift */; };
+		B91FFB5E25B33D820090030B /* UsernameValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB5D25B33D820090030B /* UsernameValidationTests.swift */; };
+		B91FFB6625B343B10090030B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB6525B343B10090030B /* StringExtensions.swift */; };
 		B92C062325B327B50015F356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062225B327B50015F356 /* AppDelegate.swift */; };
 		B92C062525B327B50015F356 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062425B327B50015F356 /* SceneDelegate.swift */; };
 		B92C062A25B327B50015F356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B92C062825B327B50015F356 /* Main.storyboard */; };
@@ -51,6 +53,8 @@
 		B91FFB3B25B32EF10090030B /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		B91FFB4325B332A20090030B /* LoginEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntities.swift; sourceTree = "<group>"; };
 		B91FFB4925B3352B0090030B /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
+		B91FFB5D25B33D820090030B /* UsernameValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameValidationTests.swift; sourceTree = "<group>"; };
+		B91FFB6525B343B10090030B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		B92C061F25B327B50015F356 /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92C062225B327B50015F356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B92C062425B327B50015F356 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,8 +100,25 @@
 			isa = PBXGroup;
 			children = (
 				B91FFB4925B3352B0090030B /* ViewControllerExtensions.swift */,
+				B91FFB6525B343B10090030B /* StringExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B91FFB5125B3363C0090030B /* LoginTests */ = {
+			isa = PBXGroup;
+			children = (
+				B91FFB5225B336420090030B /* LoginInteractorTests */,
+			);
+			path = LoginTests;
+			sourceTree = "<group>";
+		};
+		B91FFB5225B336420090030B /* LoginInteractorTests */ = {
+			isa = PBXGroup;
+			children = (
+				B91FFB5D25B33D820090030B /* UsernameValidationTests.swift */,
+			);
+			path = LoginInteractorTests;
 			sourceTree = "<group>";
 		};
 		B92C061625B327B50015F356 = {
@@ -140,6 +161,7 @@
 		B92C063B25B327B80015F356 /* BankAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				B91FFB5125B3363C0090030B /* LoginTests */,
 				B92C063C25B327B80015F356 /* BankAppTests.swift */,
 				B92C063E25B327B80015F356 /* Info.plist */,
 			);
@@ -338,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B91FFB6625B343B10090030B /* StringExtensions.swift in Sources */,
 				B91FFB4A25B3352B0090030B /* ViewControllerExtensions.swift in Sources */,
 				B91FFB4425B332A20090030B /* LoginEntities.swift in Sources */,
 				B92C062D25B327B50015F356 /* BankApp.xcdatamodeld in Sources */,
@@ -356,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B91FFB5E25B33D820090030B /* UsernameValidationTests.swift in Sources */,
 				B92C063D25B327B80015F356 /* BankAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
