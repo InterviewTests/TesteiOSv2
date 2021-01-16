@@ -307,12 +307,45 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdo-ri-uIL">
+                                        <rect key="frame" x="0.0" y="0.0" width="349" height="517.33333333333337"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Erro message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNX-tr-6fV">
+                                                <rect key="frame" x="130.66666666666666" y="211.66666666666663" width="87.666666666666657" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZu-Um-KFP">
+                                                <rect key="frame" x="113" y="258.66666666666669" width="123" height="30"/>
+                                                <state key="normal" title="Tentar novamente">
+                                                    <color key="titleColor" name="bankDarkGray"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapTryToFetchAgain:" destination="vVT-7u-7s5" eventType="touchUpInside" id="aJQ-EX-Nra"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="yZu-Um-KFP" firstAttribute="top" secondItem="bNX-tr-6fV" secondAttribute="bottom" constant="30" id="7EL-PP-vYT"/>
+                                            <constraint firstItem="bNX-tr-6fV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tdo-ri-uIL" secondAttribute="leading" constant="16" id="BSL-tt-wn5"/>
+                                            <constraint firstItem="bNX-tr-6fV" firstAttribute="centerX" secondItem="tdo-ri-uIL" secondAttribute="centerX" id="G88-Ck-9gL"/>
+                                            <constraint firstItem="yZu-Um-KFP" firstAttribute="centerX" secondItem="tdo-ri-uIL" secondAttribute="centerX" id="IIn-L4-Jy1"/>
+                                            <constraint firstItem="bNX-tr-6fV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tdo-ri-uIL" secondAttribute="top" constant="16" id="e1h-fS-iYY"/>
+                                            <constraint firstItem="yZu-Um-KFP" firstAttribute="top" secondItem="tdo-ri-uIL" secondAttribute="centerY" id="z4J-Q8-Al4"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="m7Q-9P-BHJ" secondAttribute="trailing" id="6Uh-Xp-x5V"/>
+                                    <constraint firstItem="tdo-ri-uIL" firstAttribute="leading" secondItem="w7C-lS-3eS" secondAttribute="leading" id="DtH-OI-4cE"/>
+                                    <constraint firstItem="tdo-ri-uIL" firstAttribute="top" secondItem="w7C-lS-3eS" secondAttribute="top" id="I86-db-B7y"/>
+                                    <constraint firstAttribute="bottom" secondItem="tdo-ri-uIL" secondAttribute="bottom" id="SOE-59-Gvy"/>
                                     <constraint firstAttribute="bottom" secondItem="m7Q-9P-BHJ" secondAttribute="bottom" id="bWa-MZ-E2D"/>
                                     <constraint firstItem="m7Q-9P-BHJ" firstAttribute="top" secondItem="w7C-lS-3eS" secondAttribute="top" id="n4g-hM-3eo"/>
+                                    <constraint firstAttribute="trailing" secondItem="tdo-ri-uIL" secondAttribute="trailing" id="rez-xK-kmM"/>
                                     <constraint firstItem="m7Q-9P-BHJ" firstAttribute="leading" secondItem="w7C-lS-3eS" secondAttribute="leading" id="xQv-at-Hdp"/>
                                 </constraints>
                             </view>
@@ -340,10 +373,12 @@
                     <navigationItem key="navigationItem" id="qX4-5u-79O"/>
                     <connections>
                         <outlet property="activityIndicator" destination="dRv-wh-wxK" id="NV3-uy-xJK"/>
+                        <outlet property="lb_failToFetchStatements" destination="bNX-tr-6fV" id="kzV-cK-mvj"/>
                         <outlet property="lb_userAccount" destination="Ru8-aK-aFk" id="S8w-KX-xCp"/>
                         <outlet property="lb_userBalance" destination="dZs-us-6tI" id="jjj-dp-hvb"/>
                         <outlet property="lb_userName" destination="5yH-WF-sdG" id="vjk-o8-qdd"/>
                         <outlet property="tableView_statements" destination="m7Q-9P-BHJ" id="2hX-Ic-HpV"/>
+                        <outlet property="view_failToFetchStatements" destination="tdo-ri-uIL" id="PlI-PE-dRM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBZ-vu-h7d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -66,6 +66,10 @@ extension StatementsInteractor: StatementsInteractorProtocol {
         fetchStatement()
     }
     
+    func tryFetchAgain() {
+        fetchStatement()
+    }
+    
     func logout() {
         // TODO: retornar para tela inicial
         

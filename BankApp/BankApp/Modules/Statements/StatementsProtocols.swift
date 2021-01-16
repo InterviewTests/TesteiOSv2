@@ -10,6 +10,7 @@ import Foundation
 /// View -> Interactor
 protocol StatementsInteractorProtocol: AnyObject {
     func viewDidLoad()
+    func tryFetchAgain()
     func logout()
 }
 

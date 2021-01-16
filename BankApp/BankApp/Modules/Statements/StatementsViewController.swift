@@ -14,6 +14,8 @@ class StatementsViewController: UIViewController {
     @IBOutlet weak var lb_userAccount: UILabel!
     @IBOutlet weak var lb_userBalance: UILabel!
     @IBOutlet weak var tableView_statements: UITableView!
+    @IBOutlet weak var view_failToFetchStatements: UIView!
+    @IBOutlet weak var lb_failToFetchStatements: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     lazy var lb_noItemsFound: UILabel = {
         let label = UILabel()
@@ -67,6 +69,11 @@ class StatementsViewController: UIViewController {
     
     // MARK: - Button Actions
     
+    @IBAction func tapTryToFetchAgain(_ sender: UIButton) {
+        view_failToFetchStatements.isHidden = true
+        interactor?.tryFetchAgain()
+    }
+    
     @IBAction func tapLogoutButton(_ sender: UIButton) {
         interactor?.logout()
     }
@@ -104,7 +111,8 @@ extension StatementsViewController: StatementsPresenterDelegate {
     }
     
     func showFailToFetchStatements(_ errorMessage: String) {
-        self.showDefaultAlert(title: "Erro", message: errorMessage)
+        lb_failToFetchStatements.text = errorMessage
+        view_failToFetchStatements.isHidden = false
     }
 }
 
