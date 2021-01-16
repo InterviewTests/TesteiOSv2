@@ -36,7 +36,6 @@ class StatementsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //StatementsRouter.createModule(view: self)
         delegates()
         setupView()
     }

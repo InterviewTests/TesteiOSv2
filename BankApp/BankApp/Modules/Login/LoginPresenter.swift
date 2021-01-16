@@ -41,4 +41,8 @@ extension LoginPresenter: LoginPresenterProtocol {
     func loginDidFail(_ errorMessage: String) {
         view?.showLoginError(errorMessage)
     }
+    
+    func hasUserInfoSaved(_ loginSaved: Bool) {
+        (loginSaved) ? view?.presentUserSavedLocally() : view?.hideUserSavedLocally()
+    }
 }

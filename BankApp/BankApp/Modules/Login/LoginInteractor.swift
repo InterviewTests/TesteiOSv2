@@ -157,12 +157,25 @@ class LoginInteractor {
         // TODO: Salvar info do usuario localmente
     }
     
+    func findUserInfoSavedLocally() -> Bool {
+        // TODO: Buscar se há usuario salvo localmente
+        
+//        guard let fetchedObjects = LoginInfoLocalEntity.fetchAll() else { return false }
+//
+//        return fetchedObjects.count > 0
+        return false
+    }
+    
 }
 
 
 // MARK: - Access from View
 
 extension LoginInteractor: LoginInteractorProtocol {
+    func viewWillAppear() {
+        presenter?.hasUserInfoSaved(findUserInfoSavedLocally())
+    }
+    
     func login(_ loginForm: LoginFormProtocol) {
         validateLogin(loginForm) { loginForm in
             self.requestLogin(loginForm)

@@ -71,15 +71,23 @@
                                                     <action selector="tapLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bqX-M7-Hy0"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Há um usuário salvo localmente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfn-yi-5dZ">
+                                                <rect key="frame" x="157" y="467.66666666666669" width="202" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="nfn-yi-5dZ" firstAttribute="trailing" secondItem="9Zw-cG-fhF" secondAttribute="trailing" id="463-cn-8On"/>
                                             <constraint firstItem="9Zw-cG-fhF" firstAttribute="leading" secondItem="2K8-Zw-hb3" secondAttribute="leading" constant="16" id="7U6-AR-bC4"/>
                                             <constraint firstItem="9Zw-cG-fhF" firstAttribute="centerY" secondItem="2K8-Zw-hb3" secondAttribute="centerY" id="MQ2-hk-mKb"/>
                                             <constraint firstItem="9Zw-cG-fhF" firstAttribute="centerX" secondItem="2K8-Zw-hb3" secondAttribute="centerX" id="Mqf-en-v2X"/>
                                             <constraint firstItem="ET4-SY-J6o" firstAttribute="top" secondItem="2K8-Zw-hb3" secondAttribute="top" constant="36" id="RbH-cB-7EI"/>
                                             <constraint firstAttribute="bottom" secondItem="e7D-RD-qD5" secondAttribute="bottom" constant="42" id="e7J-Dv-goE"/>
                                             <constraint firstItem="ET4-SY-J6o" firstAttribute="centerX" secondItem="2K8-Zw-hb3" secondAttribute="centerX" id="es8-ed-lO1"/>
+                                            <constraint firstItem="nfn-yi-5dZ" firstAttribute="top" secondItem="9Zw-cG-fhF" secondAttribute="bottom" constant="40" id="h2v-qf-ayt"/>
                                             <constraint firstItem="e7D-RD-qD5" firstAttribute="centerX" secondItem="2K8-Zw-hb3" secondAttribute="centerX" id="rKo-Rr-x1Q"/>
                                         </constraints>
                                     </view>
@@ -120,6 +128,7 @@
                         <outlet property="activityIndicator" destination="lQw-T1-5D8" id="xlX-K2-7Pg"/>
                         <outlet property="field_password" destination="ujA-TT-wqQ" id="7UC-cm-ltu"/>
                         <outlet property="field_username" destination="lnY-wK-zf3" id="1rA-fC-ZGi"/>
+                        <outlet property="lb_userSavedLocally" destination="nfn-yi-5dZ" id="0kN-8d-WDj"/>
                         <outlet property="scrollView" destination="YOb-bZ-GEL" id="oXd-ZK-O78"/>
                         <segue destination="vVT-7u-7s5" kind="show" identifier="didLoginSegue" id="aYs-GD-3uX"/>
                     </connections>
@@ -435,6 +444,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

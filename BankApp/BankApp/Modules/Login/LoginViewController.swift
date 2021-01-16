@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, LoginFormProtocol {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var field_username: UITextField!
     @IBOutlet weak var field_password: UITextField!
+    @IBOutlet weak var lb_userSavedLocally: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Properties
@@ -29,6 +30,12 @@ class LoginViewController: UIViewController, LoginFormProtocol {
 
         LoginRouter.createModule(view: self)
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        interactor?.viewWillAppear()
     }
     
     
@@ -87,5 +94,13 @@ extension LoginViewController: LoginPresenterDelegate {
     func clearFields() {
         field_username.text = ""
         field_password.text = ""
+    }
+    
+    func presentUserSavedLocally() {
+        lb_userSavedLocally.alpha = 1
+    }
+    
+    func hideUserSavedLocally() {
+        lb_userSavedLocally.alpha = 0
     }
 }

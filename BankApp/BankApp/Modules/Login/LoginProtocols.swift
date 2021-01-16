@@ -14,6 +14,7 @@ protocol LoginFormProtocol {
 
 /// View -> Interactor
 protocol LoginInteractorProtocol: AnyObject {
+    func viewWillAppear()
     func login(_ loginForm: LoginFormProtocol)
 }
 
@@ -26,6 +27,8 @@ protocol LoginPresenterProtocol: AnyObject {
     
     func didLoginWithSuccess(response: LoginModels.Response)
     func loginDidFail(_ errorMessage: String)
+    
+    func hasUserInfoSaved(_ loginSaved: Bool)
 }
 
 /// Presenter -> View
@@ -37,4 +40,7 @@ protocol LoginPresenterDelegate: AnyObject {
     func showLoginError(_ errorMessage: String)
     
     func clearFields()
+    
+    func presentUserSavedLocally()
+    func hideUserSavedLocally()
 }
