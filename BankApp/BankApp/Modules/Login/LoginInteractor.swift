@@ -51,8 +51,28 @@ class LoginInteractor {
     }
     
     func validatePassword(_ password: String?) throws -> String {
-        // TODO: validate password
-        throw LoginError.invalidPassword(message: "senha errada")
+        let password = password ?? ""
+        
+        if password.isEmpty { throw LoginError.blankPassword }
+        
+        let passwordRequirementsMessage = """
+        Senha deve conter:
+        Ao menos 8 caracteres,
+        um número, uma letra maiúscula e um caracter especial -@#$%^&*.
+        """
+
+        //mustIncludeUppercased: (?=.*[A-Z])
+        //mustIncludeLowercased: (?=.*[a-z])
+        //mustIncludeDigits: (?=.*[0-9])
+        //mustIncludeSpecialCharacters: (?=.*[@#$%^&*])
+        //minMaxNumCharacters: .{minNum,maxNum}
+        
+        let passwordRegex = "(?=.*[A-Z])(?=.*[0-9])(?=.*[-@#$%^&*]).{8,}"
+        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
+        
+        if !passwordPredicate.evaluate(with: password) { throw LoginError.invalidPassword(message: passwordRequirementsMessage) }
+        
+        return password
     }
     
     func validateCPF(_ username: String) -> String? {
