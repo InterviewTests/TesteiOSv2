@@ -33,14 +33,32 @@ class StatementsPresenter {
         return dateFormatter.string(from: date)
     }
     
+    func formatAgency(_ str: String) -> String {
+        let maskString = "00.000000-0"
+        let limitDigits = maskString.onlyNumbers.count
+        
+        var string: String = str
+        if str.count > limitDigits { string = String(str.prefix(limitDigits)) }
+        
+        for (index, character) in maskString.enumerated() {
+            if character != "0" && index < string.count {
+                string.insert(character, at: string.index(string.startIndex, offsetBy: index))
+            }
+        }
+        return string
+    }
+    
 }
 
 // MARK: - Access from Interactor
 
 extension StatementsPresenter: StatementsPresenterProtocol {
-    func presentUserInfo() {
-        // TODO: Converter informações no formato de apresentação
-        view?.showUserInfo()
+    func presentUserInfo(_ userInfo: StatementsModels.UserInfoResponse) {
+        
+        let account = userInfo.info.bankAccount + " / " + formatAgency(userInfo.info.agency)
+        let balance = formatAsCurrency(userInfo.info.balance)
+        
+        view?.showUserInfo(StatementsModels.UserInfoViewModel(name: userInfo.info.name, account: account, balance: balance))
     }
     
     func startRequest() {

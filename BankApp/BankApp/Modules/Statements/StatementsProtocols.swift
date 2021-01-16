@@ -16,7 +16,7 @@ protocol StatementsInteractorProtocol: AnyObject {
 
 /// Interactor -> Presenter
 protocol StatementsPresenterProtocol: AnyObject {
-    func presentUserInfo()
+    func presentUserInfo(_ userInfo: StatementsModels.UserInfoResponse)
     
     func startRequest()
     func finishRequest()
@@ -27,7 +27,7 @@ protocol StatementsPresenterProtocol: AnyObject {
 
 /// Presenter -> View
 protocol StatementsPresenterDelegate: AnyObject {
-    func showUserInfo()
+    func showUserInfo(_ userViewModel: StatementsModels.UserInfoViewModel)
     
     func startRequesting()
     func finishRequesting()

@@ -48,4 +48,14 @@ enum StatementsModels {
             return statements[index]
         }
     }
+    
+    struct UserInfoResponse {
+        var info: LoginModels.LoggedinUserEntity
+    }
+    
+    struct UserInfoViewModel {
+        let name: String
+        let account: String
+        let balance: String
+    }
 }

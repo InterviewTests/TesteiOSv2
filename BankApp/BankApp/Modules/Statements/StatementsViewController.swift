@@ -83,11 +83,10 @@ class StatementsViewController: UIViewController {
 // MARK: - Presenter Delegate Methods
 
 extension StatementsViewController: StatementsPresenterDelegate {
-    func showUserInfo() {
-        // TODO: exibir informações do usuario logado
-        lb_userName.text = "Nome Sobrenome"
-        lb_userAccount.text = "Numero Conta"
-        lb_userBalance.text = "Saldo Conta"
+    func showUserInfo(_ userViewModel: StatementsModels.UserInfoViewModel) {
+        lb_userName.text = userViewModel.name
+        lb_userAccount.text = userViewModel.account
+        lb_userBalance.text = userViewModel.balance
     }
     
     func startRequesting() {

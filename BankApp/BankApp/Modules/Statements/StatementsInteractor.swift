@@ -12,14 +12,18 @@ class StatementsInteractor {
     var presenter: StatementsPresenterProtocol?
     var statementsList: [StatementsModels.StatementEntity] = []
     
-    // TODO: dado mockado. Alterar para objeto de info do usuario
-    var userId: Int = 0
+    var userInfo: StatementsModels.UserInfoResponse
+    
+    init(userInfo: StatementsModels.UserInfoResponse) {
+        self.userInfo = userInfo
+    }
+    
     
     // MARK: - Methods
     
     func fetchStatement() {
         presenter?.startRequest()
-        StatementRequester.getAll(userId: userId) { response in
+        StatementRequester.getAll(userId: userInfo.info.userId) { response in
             self.presenter?.finishRequest()
             
             self.manageFetchResponse(response)
@@ -60,8 +64,7 @@ class StatementsInteractor {
 
 extension StatementsInteractor: StatementsInteractorProtocol {
     func viewDidLoad() {
-        // TODO: exibir informações do usuario
-        presenter?.presentUserInfo()
+        presenter?.presentUserInfo(userInfo)
         
         fetchStatement()
     }
