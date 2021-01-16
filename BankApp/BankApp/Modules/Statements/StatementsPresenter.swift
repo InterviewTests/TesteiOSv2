@@ -74,8 +74,6 @@ extension StatementsPresenter: StatementsPresenterProtocol {
     }
     
     func presentFetchedStatements(response: StatementsModels.Response) {
-        // TODO: Ordenar por data
-        
         let viewModels = response.statementsList.map({ statement -> StatementsModels.ViewModel.StatementViewModel in
             
             let date = convertDate(statement.date, fromFormat: "yyyy-MM-dd", toFormat: "dd/MM/yyyy") ?? statement.date

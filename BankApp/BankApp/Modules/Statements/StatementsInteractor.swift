@@ -52,9 +52,12 @@ class StatementsInteractor {
             return }
         
         
-        self.statementsList = statementsList
+        // Ordenação por data
+        self.statementsList = statementsList.sorted(by: {
+            $0.date > $1.date
+        })
         
-        let presenterResponse = StatementsModels.Response(statementsList: statementsList)
+        let presenterResponse = StatementsModels.Response(statementsList: self.statementsList)
         self.presenter?.presentFetchedStatements(response: presenterResponse)
     }
     
