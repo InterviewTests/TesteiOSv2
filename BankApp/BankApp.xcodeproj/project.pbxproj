@@ -22,6 +22,13 @@
 		B91FFB7825B3514F0090030B /* APIRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB7725B3514F0090030B /* APIRequester.swift */; };
 		B91FFB7D25B351E40090030B /* LoginRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB7C25B351E40090030B /* LoginRequester.swift */; };
 		B91FFB8225B359870090030B /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB8125B359870090030B /* LoginModels.swift */; };
+		B91FFB8725B35E420090030B /* StatementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB8625B35E420090030B /* StatementsViewController.swift */; };
+		B91FFB8C25B35E7A0090030B /* StatementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB8B25B35E7A0090030B /* StatementsInteractor.swift */; };
+		B91FFB9125B35E840090030B /* StatementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB9025B35E840090030B /* StatementsPresenter.swift */; };
+		B91FFB9625B35E910090030B /* StatementsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB9525B35E910090030B /* StatementsRouter.swift */; };
+		B91FFB9B25B35EA30090030B /* StatementsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB9A25B35EA30090030B /* StatementsProtocols.swift */; };
+		B91FFBA025B35FDA0090030B /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB9F25B35FDA0090030B /* StatementTableViewCell.swift */; };
+		B91FFBA525B360140090030B /* OtherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFBA425B360140090030B /* OtherExtensions.swift */; };
 		B92C062325B327B50015F356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062225B327B50015F356 /* AppDelegate.swift */; };
 		B92C062525B327B50015F356 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062425B327B50015F356 /* SceneDelegate.swift */; };
 		B92C062A25B327B50015F356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B92C062825B327B50015F356 /* Main.storyboard */; };
@@ -65,6 +72,13 @@
 		B91FFB7725B3514F0090030B /* APIRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequester.swift; sourceTree = "<group>"; };
 		B91FFB7C25B351E40090030B /* LoginRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequester.swift; sourceTree = "<group>"; };
 		B91FFB8125B359870090030B /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
+		B91FFB8625B35E420090030B /* StatementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsViewController.swift; sourceTree = "<group>"; };
+		B91FFB8B25B35E7A0090030B /* StatementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractor.swift; sourceTree = "<group>"; };
+		B91FFB9025B35E840090030B /* StatementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsPresenter.swift; sourceTree = "<group>"; };
+		B91FFB9525B35E910090030B /* StatementsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsRouter.swift; sourceTree = "<group>"; };
+		B91FFB9A25B35EA30090030B /* StatementsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsProtocols.swift; sourceTree = "<group>"; };
+		B91FFB9F25B35FDA0090030B /* StatementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
+		B91FFBA425B360140090030B /* OtherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherExtensions.swift; sourceTree = "<group>"; };
 		B92C061F25B327B50015F356 /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92C062225B327B50015F356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B92C062425B327B50015F356 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +125,7 @@
 			children = (
 				B91FFB4925B3352B0090030B /* ViewControllerExtensions.swift */,
 				B91FFB6525B343B10090030B /* StringExtensions.swift */,
+				B91FFBA425B360140090030B /* OtherExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -228,6 +243,12 @@
 		B92C065F25B3286F0015F356 /* Statements */ = {
 			isa = PBXGroup;
 			children = (
+				B91FFB9F25B35FDA0090030B /* StatementTableViewCell.swift */,
+				B91FFB8625B35E420090030B /* StatementsViewController.swift */,
+				B91FFB8B25B35E7A0090030B /* StatementsInteractor.swift */,
+				B91FFB9025B35E840090030B /* StatementsPresenter.swift */,
+				B91FFB9525B35E910090030B /* StatementsRouter.swift */,
+				B91FFB9A25B35EA30090030B /* StatementsProtocols.swift */,
 			);
 			path = Statements;
 			sourceTree = "<group>";
@@ -375,7 +396,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B91FFBA525B360140090030B /* OtherExtensions.swift in Sources */,
+				B91FFB8725B35E420090030B /* StatementsViewController.swift in Sources */,
+				B91FFBA025B35FDA0090030B /* StatementTableViewCell.swift in Sources */,
+				B91FFB9625B35E910090030B /* StatementsRouter.swift in Sources */,
 				B91FFB6625B343B10090030B /* StringExtensions.swift in Sources */,
+				B91FFB8C25B35E7A0090030B /* StatementsInteractor.swift in Sources */,
 				B91FFB4A25B3352B0090030B /* ViewControllerExtensions.swift in Sources */,
 				B91FFB4425B332A20090030B /* LoginEntities.swift in Sources */,
 				B92C062D25B327B50015F356 /* BankApp.xcdatamodeld in Sources */,
@@ -387,7 +413,9 @@
 				B91FFB7825B3514F0090030B /* APIRequester.swift in Sources */,
 				B92C062325B327B50015F356 /* AppDelegate.swift in Sources */,
 				B91FFB7D25B351E40090030B /* LoginRequester.swift in Sources */,
+				B91FFB9125B35E840090030B /* StatementsPresenter.swift in Sources */,
 				B91FFB2025B32C760090030B /* LoginViewController.swift in Sources */,
+				B91FFB9B25B35EA30090030B /* StatementsProtocols.swift in Sources */,
 				B91FFB2F25B32C9C0090030B /* LoginRouter.swift in Sources */,
 				B92C062525B327B50015F356 /* SceneDelegate.swift in Sources */,
 			);

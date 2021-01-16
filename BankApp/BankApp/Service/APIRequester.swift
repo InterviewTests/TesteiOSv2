@@ -92,12 +92,3 @@ class APIRequester {
     }
     
 }
-
-
-extension Data {
-    func printContent() {
-        if let JSONString = String(data: self, encoding: String.Encoding.utf8) {
-            print(JSONString)
-        }
-    }
-}
