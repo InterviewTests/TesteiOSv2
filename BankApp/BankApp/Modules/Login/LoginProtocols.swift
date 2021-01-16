@@ -24,7 +24,7 @@ protocol LoginPresenterProtocol: AnyObject {
     func startRequest()
     func finishRequest()
     
-    func didLoginWithSuccess()
+    func didLoginWithSuccess(response: LoginModels.Response)
     func loginDidFail(_ errorMessage: String)
 }
 

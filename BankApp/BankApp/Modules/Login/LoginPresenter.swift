@@ -31,8 +31,9 @@ extension LoginPresenter: LoginPresenterProtocol {
         view?.finishRequesting()
     }
     
-    func didLoginWithSuccess() {
-        // TODO: Router muda view
+    func didLoginWithSuccess(response: LoginModels.Response) {
+        let viewModel = LoginModels.ViewModel(userInfo: response.userInfo)
+        router?.didLogin(data: viewModel)
     }
     
     func loginDidFail(_ errorMessage: String) {

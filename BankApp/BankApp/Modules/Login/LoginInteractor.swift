@@ -148,12 +148,12 @@ class LoginInteractor {
                 return }
         
         self.userInfo = userInfo
-        self.saveUserInfoLocally()
-        self.presenter?.didLoginWithSuccess()
+        self.saveUserInfoLocally(userInfo)
+        self.presenter?.didLoginWithSuccess(response: LoginModels.Response(userInfo: userInfo))
     }
     
     
-    func saveUserInfoLocally() {
+    func saveUserInfoLocally(_ userInfo: LoginModels.LoggedinUserEntity) {
         // TODO: Salvar info do usuario localmente
     }
     

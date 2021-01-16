@@ -31,4 +31,12 @@ enum LoginModels {
             self.balance = balance
         }
     }
+    
+    struct Response {
+        var userInfo: LoggedinUserEntity
+    }
+    
+    struct ViewModel {
+        var userInfo: LoggedinUserEntity
+    }
 }

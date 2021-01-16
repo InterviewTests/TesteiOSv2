@@ -120,6 +120,7 @@
                         <outlet property="field_password" destination="ujA-TT-wqQ" id="7UC-cm-ltu"/>
                         <outlet property="field_username" destination="lnY-wK-zf3" id="1rA-fC-ZGi"/>
                         <outlet property="scrollView" destination="YOb-bZ-GEL" id="oXd-ZK-O78"/>
+                        <segue destination="vVT-7u-7s5" kind="show" identifier="didLoginSegue" id="aYs-GD-3uX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -130,6 +131,22 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="141" y="119"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MpO-Ua-o0v">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="vVT-7u-7s5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vch-0i-R3L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="S93-sr-Q4V"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qX4-5u-79O"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qBZ-vu-h7d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="964" y="119"/>
         </scene>
     </scenes>
     <resources>

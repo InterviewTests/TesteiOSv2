@@ -9,6 +9,8 @@ import Foundation
 
 class LoginRouter {
     
+    weak var view: LoginViewController?
+    
     static func createModule(view: LoginViewController) {
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
@@ -18,7 +20,14 @@ class LoginRouter {
         interactor.presenter = presenter
         presenter.view = view
         presenter.router = router
+        router.view = view
     }
     
+    
+    func didLogin(data: LoginModels.ViewModel) {
+        // TODO: Refatorar codigo
+        // TODO: passar informações de login para próxima tela
+        view?.performSegue(withIdentifier: "didLoginSegue", sender: nil)
+    }
     
 }
