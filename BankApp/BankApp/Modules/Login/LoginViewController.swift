@@ -23,6 +23,7 @@ class LoginViewController: UIViewController, LoginFormProtocol {
     var password: String? { return field_password.text }
     
 
+    // MARK: View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,7 +55,7 @@ class LoginViewController: UIViewController, LoginFormProtocol {
     // MARK: - Button Actions
     
     @IBAction func tapLoginButton(_ sender: UIButton) {
-        
+        interactor?.login(self)
     }
     
     @IBAction func closeKeyboard(_ sender: UITapGestureRecognizer) {
@@ -67,5 +68,19 @@ class LoginViewController: UIViewController, LoginFormProtocol {
 // MARK: - Presenter Delegate Methods
 
 extension LoginViewController: LoginPresenterDelegate {
+    func startRequesting() {
+        loading()
+    }
     
+    func finishRequesting() {
+        loaded()
+    }
+    
+    func showValidationError(_ errorMessage: String) {
+        showDefaultAlert(title: "Aviso", message: errorMessage)
+    }
+    
+    func showLoginError(_ errorMessage: String) {
+        showDefaultAlert(title: "Erro", message: errorMessage)
+    }
 }

@@ -14,15 +14,25 @@ protocol LoginFormProtocol {
 
 /// View -> Interactor
 protocol LoginInteractorProtocol: AnyObject {
-    
+    func login(_ loginForm: LoginFormProtocol)
 }
 
 /// Interactor -> Presenter
 protocol LoginPresenterProtocol: AnyObject {
+    func didFailToValidate(_ message: String)
     
+    func startRequest()
+    func finishRequest()
+    
+    func didLoginWithSuccess()
+    func loginDidFail(_ errorMessage: String)
 }
 
 /// Presenter -> View
 protocol LoginPresenterDelegate: AnyObject {
+    func startRequesting()
+    func finishRequesting()
     
+    func showValidationError(_ errorMessage: String)
+    func showLoginError(_ errorMessage: String)
 }
