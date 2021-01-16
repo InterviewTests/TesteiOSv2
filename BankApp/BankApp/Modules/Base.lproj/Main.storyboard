@@ -230,12 +230,58 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7C-lS-3eS">
                                 <rect key="frame" x="13" y="260.66666666666669" width="349" height="517.33333333333326"/>
                                 <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdo-ri-uIL">
+                                        <rect key="frame" x="0.0" y="0.0" width="349" height="517.33333333333337"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Erro message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNX-tr-6fV">
+                                                <rect key="frame" x="130.66666666666666" y="211.66666666666663" width="87.666666666666657" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZu-Um-KFP">
+                                                <rect key="frame" x="113" y="258.66666666666669" width="123" height="30"/>
+                                                <state key="normal" title="Tentar novamente">
+                                                    <color key="titleColor" name="bankDarkGray"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapTryToFetchAgain:" destination="vVT-7u-7s5" eventType="touchUpInside" id="aJQ-EX-Nra"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="yZu-Um-KFP" firstAttribute="top" secondItem="bNX-tr-6fV" secondAttribute="bottom" constant="30" id="7EL-PP-vYT"/>
+                                            <constraint firstItem="bNX-tr-6fV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tdo-ri-uIL" secondAttribute="leading" constant="16" id="BSL-tt-wn5"/>
+                                            <constraint firstItem="bNX-tr-6fV" firstAttribute="centerX" secondItem="tdo-ri-uIL" secondAttribute="centerX" id="G88-Ck-9gL"/>
+                                            <constraint firstItem="yZu-Um-KFP" firstAttribute="centerX" secondItem="tdo-ri-uIL" secondAttribute="centerX" id="IIn-L4-Jy1"/>
+                                            <constraint firstItem="bNX-tr-6fV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tdo-ri-uIL" secondAttribute="top" constant="16" id="e1h-fS-iYY"/>
+                                            <constraint firstItem="yZu-Um-KFP" firstAttribute="top" secondItem="tdo-ri-uIL" secondAttribute="centerY" id="z4J-Q8-Al4"/>
+                                        </constraints>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m7Q-9P-BHJ">
                                         <rect key="frame" x="0.0" y="0.0" width="349" height="517.33333333333337"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <view key="tableHeaderView" contentMode="scaleToFill" id="jSs-je-wjL">
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recentes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsT-Qu-AkR">
+                                                    <rect key="frame" x="5" y="15" width="71.666666666666671" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" name="bankDarkGray"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="KsT-Qu-AkR" firstAttribute="top" secondItem="jSs-je-wjL" secondAttribute="top" constant="15" id="DgK-uZ-zMP"/>
+                                                <constraint firstItem="KsT-Qu-AkR" firstAttribute="leading" secondItem="jSs-je-wjL" secondAttribute="leading" constant="5" id="IaC-19-pP1"/>
+                                            </constraints>
+                                        </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="statementCell" id="qoh-hg-kju" customClass="StatementTableViewCell" customModule="BankApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="349" height="96"/>
+                                                <rect key="frame" x="0.0" y="78" width="349" height="96"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qoh-hg-kju" id="7hG-kv-ka2">
                                                     <rect key="frame" x="0.0" y="0.0" width="349" height="96"/>
@@ -245,26 +291,26 @@
                                                             <rect key="frame" x="3" y="8" width="343" height="80"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKn-gd-SRc">
-                                                                    <rect key="frame" x="14" y="9.9999999999999982" width="82" height="19.333333333333329"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <rect key="frame" x="14" y="10.000000000000002" width="82.333333333333329" height="18.666666666666671"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <color key="textColor" name="bankLightGray"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Conta de luz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="cjS-q3-ZZT">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Conta de luz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="cjS-q3-ZZT">
                                                                     <rect key="frame" x="14" y="50.666666666666664" width="91.333333333333329" height="19.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <color key="textColor" name="bankDarkGray"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="dd/MM/yyyy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCA-Lu-fxh">
-                                                                    <rect key="frame" x="253.66666666666671" y="15" width="69.333333333333343" height="14.333333333333336"/>
+                                                                    <rect key="frame" x="253.66666666666671" y="14.333333333333332" width="69.333333333333343" height="14.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" name="bankLightGray"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="R$ 1000,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mll-gx-ad4">
-                                                                    <rect key="frame" x="244.66666666666666" y="50.666666666666664" width="83.333333333333343" height="19.333333333333336"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <rect key="frame" x="228" y="46" width="100" height="24"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                                     <color key="textColor" name="bankDarkGray"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -307,35 +353,6 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdo-ri-uIL">
-                                        <rect key="frame" x="0.0" y="0.0" width="349" height="517.33333333333337"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Erro message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNX-tr-6fV">
-                                                <rect key="frame" x="130.66666666666666" y="211.66666666666663" width="87.666666666666657" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZu-Um-KFP">
-                                                <rect key="frame" x="113" y="258.66666666666669" width="123" height="30"/>
-                                                <state key="normal" title="Tentar novamente">
-                                                    <color key="titleColor" name="bankDarkGray"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="tapTryToFetchAgain:" destination="vVT-7u-7s5" eventType="touchUpInside" id="aJQ-EX-Nra"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="yZu-Um-KFP" firstAttribute="top" secondItem="bNX-tr-6fV" secondAttribute="bottom" constant="30" id="7EL-PP-vYT"/>
-                                            <constraint firstItem="bNX-tr-6fV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tdo-ri-uIL" secondAttribute="leading" constant="16" id="BSL-tt-wn5"/>
-                                            <constraint firstItem="bNX-tr-6fV" firstAttribute="centerX" secondItem="tdo-ri-uIL" secondAttribute="centerX" id="G88-Ck-9gL"/>
-                                            <constraint firstItem="yZu-Um-KFP" firstAttribute="centerX" secondItem="tdo-ri-uIL" secondAttribute="centerX" id="IIn-L4-Jy1"/>
-                                            <constraint firstItem="bNX-tr-6fV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tdo-ri-uIL" secondAttribute="top" constant="16" id="e1h-fS-iYY"/>
-                                            <constraint firstItem="yZu-Um-KFP" firstAttribute="top" secondItem="tdo-ri-uIL" secondAttribute="centerY" id="z4J-Q8-Al4"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
