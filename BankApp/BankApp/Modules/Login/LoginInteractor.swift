@@ -10,6 +10,7 @@ import Foundation
 class LoginInteractor {
     
     var presenter: LoginPresenterProtocol?
+    var userInfo: LoginModels.LoggedinUserEntity?
     
     enum LoginError: Error, Equatable {
         case blankUsername
@@ -126,22 +127,34 @@ class LoginInteractor {
     // MARK: - Methods
     
     func requestLogin(_ loginForm: LoginForm ) {
-        // TODO: startRequest
         presenter?.startRequest()
+        LoginRequester.postLogin(loginForm) { response in
+            self.presenter?.finishRequest()
+            
+            self.manageLoginResponse(response)
+        } fail: { errorMessage in
+            self.presenter?.finishRequest()
+            
+            self.presenter?.loginDidFail(errorMessage)
+        }
+    }
+    
+    func manageLoginResponse(_ response: LoginResponseStruct) {
+        guard let userInfo = LoginModels.LoggedinUserEntity(userInfo: response.userAccount) else {
+                if let errorMessage = BadRequestStruct(badRequest: response.error) {
+                    self.presenter?.loginDidFail("\(errorMessage.message!) (\(errorMessage.code!))")
+                }
+                else { self.presenter?.loginDidFail("Falha ao fazer o login") }
+                return }
         
-        // TODO: make request
-        
-        
-        // TODO: finish request
-        presenter?.finishRequest()
-        
-        // TODO: show answer
-        // sucesso:
-        //presenter?.didLoginWithSuccess()
-        // Salvar localmente
-        
-        // fail
-        presenter?.loginDidFail("falhou login")
+        self.userInfo = userInfo
+        self.saveUserInfoLocally()
+        self.presenter?.didLoginWithSuccess()
+    }
+    
+    
+    func saveUserInfoLocally() {
+        // TODO: Salvar info do usuario localmente
     }
     
 }

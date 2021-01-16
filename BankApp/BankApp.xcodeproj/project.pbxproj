@@ -19,6 +19,9 @@
 		B91FFB6625B343B10090030B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB6525B343B10090030B /* StringExtensions.swift */; };
 		B91FFB6E25B348860090030B /* PasswordValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB6D25B348860090030B /* PasswordValidationTests.swift */; };
 		B91FFB7325B34CB10090030B /* LoginValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB7225B34CB10090030B /* LoginValidationTests.swift */; };
+		B91FFB7825B3514F0090030B /* APIRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB7725B3514F0090030B /* APIRequester.swift */; };
+		B91FFB7D25B351E40090030B /* LoginRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB7C25B351E40090030B /* LoginRequester.swift */; };
+		B91FFB8225B359870090030B /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFB8125B359870090030B /* LoginModels.swift */; };
 		B92C062325B327B50015F356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062225B327B50015F356 /* AppDelegate.swift */; };
 		B92C062525B327B50015F356 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062425B327B50015F356 /* SceneDelegate.swift */; };
 		B92C062A25B327B50015F356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B92C062825B327B50015F356 /* Main.storyboard */; };
@@ -59,6 +62,9 @@
 		B91FFB6525B343B10090030B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		B91FFB6D25B348860090030B /* PasswordValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidationTests.swift; sourceTree = "<group>"; };
 		B91FFB7225B34CB10090030B /* LoginValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidationTests.swift; sourceTree = "<group>"; };
+		B91FFB7725B3514F0090030B /* APIRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequester.swift; sourceTree = "<group>"; };
+		B91FFB7C25B351E40090030B /* LoginRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequester.swift; sourceTree = "<group>"; };
+		B91FFB8125B359870090030B /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
 		B92C061F25B327B50015F356 /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92C062225B327B50015F356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B92C062425B327B50015F356 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +210,8 @@
 		B92C065D25B328530015F356 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B91FFB7725B3514F0090030B /* APIRequester.swift */,
+				B91FFB7C25B351E40090030B /* LoginRequester.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -232,6 +240,7 @@
 				B91FFB2925B32C910090030B /* LoginPresenter.swift */,
 				B91FFB2E25B32C9C0090030B /* LoginRouter.swift */,
 				B91FFB3325B32D810090030B /* LoginProtocols.swift */,
+				B91FFB8125B359870090030B /* LoginModels.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -372,9 +381,12 @@
 				B92C062D25B327B50015F356 /* BankApp.xcdatamodeld in Sources */,
 				B91FFB3C25B32EF10090030B /* KeyboardObserver.swift in Sources */,
 				B91FFB2A25B32C910090030B /* LoginPresenter.swift in Sources */,
+				B91FFB8225B359870090030B /* LoginModels.swift in Sources */,
 				B91FFB3425B32D810090030B /* LoginProtocols.swift in Sources */,
 				B91FFB2525B32C870090030B /* LoginInteractor.swift in Sources */,
+				B91FFB7825B3514F0090030B /* APIRequester.swift in Sources */,
 				B92C062325B327B50015F356 /* AppDelegate.swift in Sources */,
+				B91FFB7D25B351E40090030B /* LoginRequester.swift in Sources */,
 				B91FFB2025B32C760090030B /* LoginViewController.swift in Sources */,
 				B91FFB2F25B32C9C0090030B /* LoginRouter.swift in Sources */,
 				B92C062525B327B50015F356 /* SceneDelegate.swift in Sources */,
