@@ -61,6 +61,10 @@ extension StatementsPresenter: StatementsPresenterProtocol {
         view?.showUserInfo(StatementsModels.UserInfoViewModel(name: userInfo.info.name, account: account, balance: balance))
     }
     
+    func logout() {
+        router?.logout()
+    }
+    
     func startRequest() {
         view?.startRequesting()
     }

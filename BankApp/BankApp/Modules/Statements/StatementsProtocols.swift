@@ -17,6 +17,7 @@ protocol StatementsInteractorProtocol: AnyObject {
 /// Interactor -> Presenter
 protocol StatementsPresenterProtocol: AnyObject {
     func presentUserInfo(_ userInfo: StatementsModels.UserInfoResponse)
+    func logout()
     
     func startRequest()
     func finishRequest()

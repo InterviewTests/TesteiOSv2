@@ -74,8 +74,9 @@ extension StatementsInteractor: StatementsInteractorProtocol {
     }
     
     func logout() {
-        // TODO: retornar para tela inicial
-        
         // TODO: remover informações salvas localmente
+        
+        
+        presenter?.logout()
     }
 }

@@ -33,6 +33,8 @@ extension LoginPresenter: LoginPresenterProtocol {
     
     func didLoginWithSuccess(response: LoginModels.Response) {
         let viewModel = LoginModels.ViewModel(userInfo: response.userInfo)
+        
+        view?.clearFields()
         router?.didLogin(data: viewModel)
     }
     

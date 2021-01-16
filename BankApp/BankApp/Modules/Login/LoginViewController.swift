@@ -83,4 +83,9 @@ extension LoginViewController: LoginPresenterDelegate {
     func showLoginError(_ errorMessage: String) {
         showDefaultAlert(title: "Erro", message: errorMessage)
     }
+    
+    func clearFields() {
+        field_username.text = ""
+        field_password.text = ""
+    }
 }

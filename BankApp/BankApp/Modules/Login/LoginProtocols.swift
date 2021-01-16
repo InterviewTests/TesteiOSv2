@@ -35,4 +35,6 @@ protocol LoginPresenterDelegate: AnyObject {
     
     func showValidationError(_ errorMessage: String)
     func showLoginError(_ errorMessage: String)
+    
+    func clearFields()
 }

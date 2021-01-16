@@ -9,6 +9,9 @@ import Foundation
 
 class StatementsRouter {
     
+    weak var view: StatementsViewController?
+    
+    
     class func createModule(view: StatementsViewController, data: LoginModels.ViewModel) {
         let userInfo = StatementsModels.UserInfoResponse(info: data.userInfo)
         
@@ -20,6 +23,12 @@ class StatementsRouter {
         interactor.presenter = presenter
         presenter.view = view
         presenter.router = router
+        router.view = view
+    }
+    
+    func logout() {
+        view?.navigationController?.popViewController(animated: true)
+        view?.dismiss(animated: true, completion: nil)
     }
     
 }
