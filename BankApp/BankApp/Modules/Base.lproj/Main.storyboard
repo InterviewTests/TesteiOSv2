@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Hy-c1-Uue">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -115,6 +115,7 @@
                             <outletCollection property="gestureRecognizers" destination="86N-aX-5fA" appends="YES" id="LAv-h8-gip"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="ajK-4j-w4c"/>
                     <connections>
                         <outlet property="activityIndicator" destination="lQw-T1-5D8" id="xlX-K2-7Pg"/>
                         <outlet property="field_password" destination="ujA-TT-wqQ" id="7UC-cm-ltu"/>
@@ -130,12 +131,12 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="141" y="119"/>
+            <point key="canvasLocation" x="1007" y="119"/>
         </scene>
         <!--Statements View Controller-->
         <scene sceneID="MpO-Ua-o0v">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="vVT-7u-7s5" customClass="StatementsViewController" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatementsVC" modalPresentationStyle="fullScreen" id="vVT-7u-7s5" customClass="StatementsViewController" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vch-0i-R3L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -400,7 +401,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBZ-vu-h7d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="118.96551724137932"/>
+            <point key="canvasLocation" x="1846" y="119"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hFI-Nj-91v">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="8Hy-c1-Uue" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jtV-Aw-Qeo">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iEE-kb-Iec"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hxI-As-YjW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="118.96551724137932"/>
         </scene>
     </scenes>
     <resources>

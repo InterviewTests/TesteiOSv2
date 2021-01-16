@@ -5,7 +5,7 @@
 //  Created by Bruno Maciel on 1/16/21.
 //
 
-import Foundation
+import UIKit
 
 class LoginRouter {
     
@@ -25,9 +25,12 @@ class LoginRouter {
     
     
     func didLogin(data: LoginModels.ViewModel) {
-        // TODO: Refatorar codigo
-        // TODO: passar informações de login para próxima tela
-        view?.performSegue(withIdentifier: "didLoginSegue", sender: nil)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let statementsVC = mainStoryboard.instantiateViewController(identifier: "StatementsVC") as! StatementsViewController
+        
+        StatementsRouter.createModule(view: statementsVC, data: data)
+        
+        view?.navigationController?.pushViewController(statementsVC, animated: true)
     }
     
 }

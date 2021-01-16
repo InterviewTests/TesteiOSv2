@@ -9,9 +9,8 @@ import Foundation
 
 class StatementsRouter {
     
-    class func createModule(view: StatementsViewController) {
-        // TODO: dado mockado
-        let userInfo = StatementsModels.UserInfoResponse(info: LoginModels.LoggedinUserEntity(userInfo: LoggedinUserStruct(userId: 1, name: "Bruno Ramos Maciel", bankAccount: "1234", agency: "012345678", balance: 2678.98))!)
+    class func createModule(view: StatementsViewController, data: LoginModels.ViewModel) {
+        let userInfo = StatementsModels.UserInfoResponse(info: data.userInfo)
         
         let interactor = StatementsInteractor(userInfo: userInfo)
         let presenter = StatementsPresenter()
