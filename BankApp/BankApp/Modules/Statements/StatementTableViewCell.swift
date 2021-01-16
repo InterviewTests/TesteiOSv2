@@ -15,6 +15,14 @@ class StatementTableViewCell: UITableViewCell {
     @IBOutlet weak var lb_date: UILabel!
     @IBOutlet weak var lb_value: UILabel!
     
+    var statement: StatementsModels.ViewModel.StatementViewModel? {
+        didSet {
+            lb_title.text = statement?.title
+            lb_description.text = statement?.description
+            lb_date.text = statement?.date
+            lb_value.text = statement?.value
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

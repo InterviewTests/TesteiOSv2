@@ -32,6 +32,8 @@
 		B91FFBAD25B36F6B0090030B /* StatementsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFBAC25B36F6B0090030B /* StatementsRequester.swift */; };
 		B91FFBB225B36F940090030B /* StatementsEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFBB125B36F940090030B /* StatementsEntities.swift */; };
 		B91FFBB725B3707B0090030B /* StatementsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFBB625B3707B0090030B /* StatementsModels.swift */; };
+		B91FFBBE25B37C980090030B /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFBBD25B37C980090030B /* CurrencyFormatterTests.swift */; };
+		B91FFBCA25B37FCA0090030B /* DateConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FFBC925B37FCA0090030B /* DateConversionTests.swift */; };
 		B92C062325B327B50015F356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062225B327B50015F356 /* AppDelegate.swift */; };
 		B92C062525B327B50015F356 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C062425B327B50015F356 /* SceneDelegate.swift */; };
 		B92C062A25B327B50015F356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B92C062825B327B50015F356 /* Main.storyboard */; };
@@ -85,6 +87,8 @@
 		B91FFBAC25B36F6B0090030B /* StatementsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsRequester.swift; sourceTree = "<group>"; };
 		B91FFBB125B36F940090030B /* StatementsEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsEntities.swift; sourceTree = "<group>"; };
 		B91FFBB625B3707B0090030B /* StatementsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsModels.swift; sourceTree = "<group>"; };
+		B91FFBBD25B37C980090030B /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
+		B91FFBC925B37FCA0090030B /* DateConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConversionTests.swift; sourceTree = "<group>"; };
 		B92C061F25B327B50015F356 /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92C062225B327B50015F356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B92C062425B327B50015F356 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +158,23 @@
 			path = LoginInteractorTests;
 			sourceTree = "<group>";
 		};
+		B91FFBBB25B37C5E0090030B /* StatementsTests */ = {
+			isa = PBXGroup;
+			children = (
+				B91FFBC525B37CDD0090030B /* StatementsPresenterTests */,
+			);
+			path = StatementsTests;
+			sourceTree = "<group>";
+		};
+		B91FFBC525B37CDD0090030B /* StatementsPresenterTests */ = {
+			isa = PBXGroup;
+			children = (
+				B91FFBBD25B37C980090030B /* CurrencyFormatterTests.swift */,
+				B91FFBC925B37FCA0090030B /* DateConversionTests.swift */,
+			);
+			path = StatementsPresenterTests;
+			sourceTree = "<group>";
+		};
 		B92C061625B327B50015F356 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				B91FFB5125B3363C0090030B /* LoginTests */,
+				B91FFBBB25B37C5E0090030B /* StatementsTests */,
 				B92C063C25B327B80015F356 /* BankAppTests.swift */,
 				B92C063E25B327B80015F356 /* Info.plist */,
 			);
@@ -438,7 +460,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B91FFB7325B34CB10090030B /* LoginValidationTests.swift in Sources */,
+				B91FFBCA25B37FCA0090030B /* DateConversionTests.swift in Sources */,
 				B91FFB6E25B348860090030B /* PasswordValidationTests.swift in Sources */,
+				B91FFBBE25B37C980090030B /* CurrencyFormatterTests.swift in Sources */,
 				B91FFB5E25B33D820090030B /* UsernameValidationTests.swift in Sources */,
 				B92C063D25B327B80015F356 /* BankAppTests.swift in Sources */,
 			);

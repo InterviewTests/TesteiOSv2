@@ -18,6 +18,7 @@ class StatementsViewController: UIViewController {
     
     // MARK: Properties
     var interactor: StatementsInteractorProtocol?
+    var statementsViewModel = StatementsModels.ViewModel(statements: [])
     
     
     // MARK: View Cycle
@@ -81,8 +82,8 @@ extension StatementsViewController: StatementsPresenterDelegate {
         loaded()
     }
     
-    func displayStatements() {
-        // TODO: pegar dados
+    func displayStatements(viewModel: StatementsModels.ViewModel) {
+        statementsViewModel = viewModel
         tableView_statements.reloadData()
     }
     
@@ -96,11 +97,12 @@ extension StatementsViewController: StatementsPresenterDelegate {
 
 extension StatementsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return statementsViewModel.numStatements
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "statementCell", for: indexPath) as! StatementTableViewCell
+        cell.statement = statementsViewModel.at(indexPath.row)
         
         return cell
     }

@@ -34,6 +34,18 @@ enum StatementsModels {
     }
     
     struct ViewModel {
+        struct StatementViewModel {
+          var title: String
+          var description: String
+          var date: String
+          var value: String
+        }
         
+        var statements: [StatementViewModel]
+        var numStatements: Int { return statements.count }
+        
+        func at(_ index: Int) -> StatementViewModel {
+            return statements[index]
+        }
     }
 }
