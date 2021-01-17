@@ -26,7 +26,13 @@ class LoginRouter {
     
     func didLogin(data: LoginModels.ViewModel) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let statementsVC = mainStoryboard.instantiateViewController(identifier: "StatementsVC") as! StatementsViewController
+        
+        let statementsVC: StatementsViewController
+        if #available(iOS 13.0, *) {
+            statementsVC = mainStoryboard.instantiateViewController(identifier: "StatementsVC") as! StatementsViewController
+        } else {
+            statementsVC = mainStoryboard.instantiateViewController(withIdentifier: "StatementsVC") as! StatementsViewController
+        }
         
         StatementsRouter.createModule(view: statementsVC, data: data)
         
