@@ -42,7 +42,7 @@ extension LoginPresenter: LoginPresenterProtocol {
         view?.showLoginError(errorMessage)
     }
     
-    func hasUserInfoSaved(_ loginSaved: Bool) {
-        (loginSaved) ? view?.presentUserSavedLocally() : view?.hideUserSavedLocally()
+    func hasUserInfoSaved(_ localDataSaved: Bool) {
+        (localDataSaved) ? view?.presentUserSavedLocally() : view?.hideUserSavedLocally()
     }
 }

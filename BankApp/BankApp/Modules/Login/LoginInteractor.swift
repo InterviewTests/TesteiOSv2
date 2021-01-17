@@ -154,16 +154,11 @@ class LoginInteractor {
     
     
     func saveUserInfoLocally(_ userInfo: LoginModels.LoggedinUserEntity) {
-        // TODO: Salvar info do usuario localmente
+        UserInfoLocalEntity.save(userInfo)
     }
     
     func findUserInfoSavedLocally() -> Bool {
-        // TODO: Buscar se há usuario salvo localmente
-        
-//        guard let fetchedObjects = LoginInfoLocalEntity.fetchAll() else { return false }
-//
-//        return fetchedObjects.count > 0
-        return false
+        return UserInfoLocalEntity.fetchLast() != nil
     }
     
 }

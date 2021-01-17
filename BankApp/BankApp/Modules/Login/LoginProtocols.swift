@@ -28,7 +28,7 @@ protocol LoginPresenterProtocol: AnyObject {
     func didLoginWithSuccess(response: LoginModels.Response)
     func loginDidFail(_ errorMessage: String)
     
-    func hasUserInfoSaved(_ loginSaved: Bool)
+    func hasUserInfoSaved(_ localDataSaved: Bool)
 }
 
 /// Presenter -> View

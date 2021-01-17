@@ -64,8 +64,7 @@ extension StatementsInteractor: StatementsInteractorProtocol {
     }
     
     func logout() {
-        // TODO: remover informações salvas localmente
-        
+        UserInfoLocalEntity.clear()
         
         presenter?.logout()
     }
