@@ -13,8 +13,8 @@ struct StatementsResponseStruct: Decodable {
 }
 
 struct StatementStruct: Decodable {
-    let title: String?
-    let desc: String?
-    let date: String?
-    let value: Float?
+    let title: String
+    let desc: String
+    let date: String
+    let value: Float
 }

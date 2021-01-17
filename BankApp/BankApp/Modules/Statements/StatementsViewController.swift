@@ -19,7 +19,7 @@ class StatementsViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     lazy var lb_noItemsFound: UILabel = {
         let label = UILabel()
-        label.text = "Você ainda não possui transações registradas"
+        label.text = "Você não possui transações recentes"
         label.font = UIFont.systemFont(ofSize: 13, weight: .light)
         label.numberOfLines = 0
         label.textAlignment = .center

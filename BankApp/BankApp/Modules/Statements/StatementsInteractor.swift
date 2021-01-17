@@ -10,7 +10,7 @@ import Foundation
 class StatementsInteractor {
     
     var presenter: StatementsPresenterProtocol?
-    var statementsList: [StatementsModels.StatementEntity] = []
+    var statementsList: [StatementStruct] = []
     
     var userInfo: StatementsModels.UserInfoResponse
     
@@ -34,26 +34,13 @@ class StatementsInteractor {
     }
     
     func manageFetchResponse(_ response: StatementsResponseStruct) {
-        // Valida se dados retornados estão no formato correto
-        var statementsList: [StatementsModels.StatementEntity] = []
-        for statement in response.statementList {
-            if let statementEntity = StatementsModels.StatementEntity(statement: statement) {
-                statementsList.append(statementEntity)
-            }
-            else { break }
-        }
-        
-        // Se estiver errado, exibe mensagem de erro
-        guard statementsList.count == response.statementList.count else {
-            if let errorMessage = BadRequestStruct(badRequest: response.error) {
-                self.presenter?.didFailToFetchStatement("\(errorMessage.message!) (\(errorMessage.code!))")
-            }
-            else { self.presenter?.didFailToFetchStatement("Falha ao buscar statements") }
+        // Se retornar objeto de erro, exibe mensagem de erro
+        if let errorMessage = BadRequestStruct(badRequest: response.error) {
+            self.presenter?.didFailToFetchStatement("\(errorMessage.message!) (\(errorMessage.code!))")
             return }
         
-        
         // Ordenação por data
-        self.statementsList = statementsList.sorted(by: {
+        self.statementsList = response.statementList.sorted(by: {
             $0.date > $1.date
         })
         

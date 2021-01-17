@@ -8,29 +8,9 @@
 import Foundation
 
 enum StatementsModels {
-    struct StatementEntity {
-        let title: String
-        let desc: String
-        let date: String //"2018-08-15"
-        let value: Float
-        
-        init?(statement: StatementStruct) {
-            guard
-                let title = statement.title,
-                let desc = statement.desc,
-                let date = statement.date,
-                let value = statement.value
-                else { return nil }
-            
-            self.title = title
-            self.desc = desc
-            self.date = date
-            self.value = value
-        }
-    }
     
     struct Response {
-        var statementsList: [StatementEntity]
+        var statementsList: [StatementStruct]
     }
     
     struct ViewModel {
