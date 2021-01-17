@@ -44,6 +44,11 @@
 		B92C064825B327B90015F356 /* BankAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C064725B327B90015F356 /* BankAppUITests.swift */; };
 		B978116A25B4912D00A48464 /* UserInfoLocalEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978116825B4912D00A48464 /* UserInfoLocalEntity+CoreDataClass.swift */; };
 		B978116B25B4912D00A48464 /* UserInfoLocalEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978116925B4912D00A48464 /* UserInfoLocalEntity+CoreDataProperties.swift */; };
+		B978117325B4A1ED00A48464 /* ManageLoginRequestResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978117225B4A1ED00A48464 /* ManageLoginRequestResponseTests.swift */; };
+		B978117825B4A2A000A48464 /* MockErrorLoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B978117725B4A2A000A48464 /* MockErrorLoginResponse.json */; };
+		B978117C25B4A58F00A48464 /* MockErrorLoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B978117725B4A2A000A48464 /* MockErrorLoginResponse.json */; };
+		B978118D25B4A79700A48464 /* MockUserLoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B978118C25B4A79700A48464 /* MockUserLoginResponse.json */; };
+		B978118E25B4A79700A48464 /* MockUserLoginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B978118C25B4A79700A48464 /* MockUserLoginResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +112,9 @@
 		B92C064925B327B90015F356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B978116825B4912D00A48464 /* UserInfoLocalEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfoLocalEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B978116925B4912D00A48464 /* UserInfoLocalEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfoLocalEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B978117225B4A1ED00A48464 /* ManageLoginRequestResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageLoginRequestResponseTests.swift; sourceTree = "<group>"; };
+		B978117725B4A2A000A48464 /* MockErrorLoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockErrorLoginResponse.json; sourceTree = "<group>"; };
+		B978118C25B4A79700A48464 /* MockUserLoginResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockUserLoginResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +166,9 @@
 				B91FFB5D25B33D820090030B /* UsernameValidationTests.swift */,
 				B91FFB6D25B348860090030B /* PasswordValidationTests.swift */,
 				B91FFB7225B34CB10090030B /* LoginValidationTests.swift */,
+				B978117225B4A1ED00A48464 /* ManageLoginRequestResponseTests.swift */,
+				B978117725B4A2A000A48464 /* MockErrorLoginResponse.json */,
+				B978118C25B4A79700A48464 /* MockUserLoginResponse.json */,
 			);
 			path = LoginInteractorTests;
 			sourceTree = "<group>";
@@ -415,8 +426,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B92C063225B327B80015F356 /* LaunchScreen.storyboard in Resources */,
+				B978118D25B4A79700A48464 /* MockUserLoginResponse.json in Resources */,
 				B92C062F25B327B80015F356 /* Assets.xcassets in Resources */,
 				B92C062A25B327B50015F356 /* Main.storyboard in Resources */,
+				B978117C25B4A58F00A48464 /* MockErrorLoginResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +437,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B978117825B4A2A000A48464 /* MockErrorLoginResponse.json in Resources */,
+				B978118E25B4A79700A48464 /* MockUserLoginResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +493,7 @@
 				B91FFB7325B34CB10090030B /* LoginValidationTests.swift in Sources */,
 				B91FFBCA25B37FCA0090030B /* DateConversionTests.swift in Sources */,
 				B91FFB6E25B348860090030B /* PasswordValidationTests.swift in Sources */,
+				B978117325B4A1ED00A48464 /* ManageLoginRequestResponseTests.swift in Sources */,
 				B91FFBBE25B37C980090030B /* CurrencyFormatterTests.swift in Sources */,
 				B91FFB5E25B33D820090030B /* UsernameValidationTests.swift in Sources */,
 				B92C063D25B327B80015F356 /* BankAppTests.swift in Sources */,
