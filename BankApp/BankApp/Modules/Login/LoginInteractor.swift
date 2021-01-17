@@ -58,8 +58,7 @@ class LoginInteractor {
         
         let passwordRequirementsMessage = """
         Senha deve conter:
-        Ao menos 8 caracteres,
-        um número, uma letra maiúscula e um caracter especial -@#$%^&*.
+        ao menos um número, uma letra maiúscula e um caracter especial -@#$%^&*.
         """
 
         //mustIncludeUppercased: (?=.*[A-Z])
@@ -68,7 +67,7 @@ class LoginInteractor {
         //mustIncludeSpecialCharacters: (?=.*[@#$%^&*])
         //minMaxNumCharacters: .{minNum,maxNum}
         
-        let passwordRegex = "(?=.*[A-Z])(?=.*[0-9])(?=.*[-@#$%^&*]).{8,}"
+        let passwordRegex = "(?=.*[A-Z])(?=.*[0-9])(?=.*[-@#$%^&*]).{3,}"
         let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
         
         if !passwordPredicate.evaluate(with: password) { throw LoginError.invalidPassword(message: passwordRequirementsMessage) }

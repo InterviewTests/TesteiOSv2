@@ -19,8 +19,7 @@ class LoginValidationTests: XCTestCase {
     let validPassword: String? = "123QWER-$"
     let invalidPasswordMessage = """
         Senha deve conter:
-        Ao menos 8 caracteres,
-        um número, uma letra maiúscula e um caracter especial -@#$%^&*.
+        ao menos um número, uma letra maiúscula e um caracter especial -@#$%^&*.
         """
 
     struct LoginFormMock: LoginFormProtocol {
