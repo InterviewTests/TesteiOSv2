@@ -76,42 +76,49 @@ class LoginInteractor {
     }
     
     func validateCPF(_ username: String) -> String? {
-        var cpf = username.replacingOccurrences(of: ".", with: "")
-        cpf = cpf.replacingOccurrences(of: "-", with: "")
+        var validCPF = username.replacingOccurrences(of: ".", with: "")
+        validCPF = validCPF.replacingOccurrences(of: "-", with: "")
         
-        guard cpf.count == 11, cpf.onlyNumbers.count == 11 else { return nil }
+        // Check if has 11 digits only
+        guard validCPF.count == 11, validCPF.onlyNumbers.count == 11 else { return nil }
         
-        for i in 1..<cpf.count {
-            if cpf.at(i) != cpf.at(0) { break }
-            else if i == cpf.count - 1 { return nil }
+        // Check if digits are not all equal
+        for i in 1..<validCPF.count {
+            if validCPF.at(i) != validCPF.at(0) { break }
+            else if i == validCPF.count - 1 { return nil }
         }
         
-        let i1 = cpf.index(cpf.startIndex, offsetBy: 9)
-        let i2 = cpf.index(cpf.startIndex, offsetBy: 10)
-        let i3 = cpf.index(cpf.startIndex, offsetBy: 11)
-        let d1 = Int(cpf[i1..<i2])
-        let d2 = Int(cpf[i2..<i3])
-        
-        var temp1 = 0, temp2 = 0
-        
-        for i in 0...8 {
-            let start = cpf.index(cpf.startIndex, offsetBy: i)
-            let end = cpf.index(cpf.startIndex, offsetBy: i+1)
-            let char = Int(cpf[start..<end])
-            
-            temp1 += char! * (10 - i)
-            temp2 += char! * (11 - i)
+        var digitsArray: [Int] = validCPF.map { Int(String($0))! }
+        let digit2 = digitsArray.removeLast()
+        let digit1 = digitsArray.removeLast()
+
+
+        // Validação 1º digito
+        var multiplier = 11
+        var sumDigits = digitsArray.reduce(0) {
+            multiplier -= 1
+            return $0 + $1 * multiplier
         }
-        
-        temp1 %= 11
-        temp1 = temp1 < 2 ? 0 : 11-temp1
-        
-        temp2 += temp1 * 2
-        temp2 %= 11
-        temp2 = temp2 < 2 ? 0 : 11-temp2
-        
-        if temp1 == d1 && temp2 == d2 { return cpf }
-        else { return nil }
+        var resultDigit = sumDigits * 10 % 11
+        if resultDigit >= 10 { resultDigit = 0 }
+
+        guard resultDigit == digit1 else { return nil }
+
+
+        // Validação 2º digito
+        digitsArray.append(digit1)
+
+        multiplier = 12
+        sumDigits = digitsArray.reduce(0) {
+            multiplier -= 1
+            return $0 + $1 * multiplier
+        }
+        resultDigit = sumDigits * 10 % 11
+        if resultDigit >= 10 { resultDigit = 0 }
+
+        guard resultDigit == digit2 else { return nil }
+
+        return validCPF
     }
     
     func validateEmail(_ email: String) -> Bool {
