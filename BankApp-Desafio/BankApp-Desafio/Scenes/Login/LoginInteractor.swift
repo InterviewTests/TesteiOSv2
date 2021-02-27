@@ -12,30 +12,57 @@
 
 import UIKit
 
-protocol LoginBusinessLogic
-{
-  func doSomething(request: Login.Something.Request)
+protocol LoginBusinessLogic {
+    func doSomething(request: Login.Something.Request)
+    func login(with username: String?, password: String?)
 }
 
-protocol LoginDataStore
-{
+protocol LoginDataStore {
   //var name: String { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
+class LoginInteractor: LoginBusinessLogic, LoginDataStore {
   var presenter: LoginPresentationLogic?
   var worker: LoginWorker?
   //var name: String = ""
   
   // MARK: Do something
   
-  func doSomething(request: Login.Something.Request)
-  {
+  func doSomething(request: Login.Something.Request) {
     worker = LoginWorker()
     worker?.doSomeWork()
     
     let response = Login.Something.Response()
     presenter?.presentSomething(response: response)
   }
+    
+    func login(with username: String?, password: String?) {
+        guard let username = username,
+            let password = password
+        else {
+            //chamar presenter com alerta de campos invalidos.
+            return
+        }
+        if isValidPassword(password: password) {
+            print("SENHA CORRETA!")
+        } else {
+            print("SENHA INCORRETA!!")
+        }
+    }
+    
+    func isValidPassword(password: String) -> Bool {
+        let capitalLetterRegEx  = ".*[A-Z]+.*"
+        let texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        guard texttest.evaluate(with: password) else { return false }
+
+        let numberRegEx  = ".*[0-9]+.*"
+        let texttest1 = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        guard texttest1.evaluate(with: password) else { return false }
+
+        let specialCharacterRegEx  = ".*[!&^%$#@()/_*+-]+.*"
+        let texttest2 = NSPredicate(format:"SELF MATCHES %@", specialCharacterRegEx)
+        guard texttest2.evaluate(with: password) else { return false }
+
+        return true
+    }
 }
