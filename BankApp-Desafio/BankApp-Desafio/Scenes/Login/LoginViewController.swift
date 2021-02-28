@@ -13,6 +13,7 @@
 import UIKit
 
 protocol LoginDisplayLogic: class {
+    func showLoginFailureAlert(title: String, message: String)
     //    func displaySomething(viewModel: Login.Something.ViewModel)
     //    func presentNextView(with response: Login.ViewModel)
 }
@@ -29,6 +30,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     lazy var userTextField: UITextField = {
         let textField = UITextField()
+        textField.keyboardType = .emailAddress
+        textField.autocorrectionType = .no
         textField.backgroundColor = .white
         textField.placeholder = "User"
         textField.borderStyle = UITextField.BorderStyle.roundedRect
@@ -41,6 +44,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.isSecureTextEntry = true
+        textField.autocorrectionType = .no
         textField.backgroundColor = .white
         textField.placeholder = "Password"
         textField.borderStyle = UITextField.BorderStyle.roundedRect
@@ -122,7 +126,16 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     
     @objc func tapLogin() {
-        interactor?.login(with: userTextField.text, password: passwordTextField.text)
+        doLogin()
+    }
+    
+    
+    func doLogin(){
+        interactor?.login(username: userTextField.text, password: passwordTextField.text)
+    }
+    
+    func displayStatements(){
+        router?.routeToStatements()
     }
     
     func setupViewHierarchy() {
@@ -155,7 +168,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         ])
     }
     
-    private func showDataFailureAlert(title: String, message: String) {
+    func showLoginFailureAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
@@ -174,5 +187,9 @@ extension LoginViewController: UITextFieldDelegate {
             passwordTextField.resignFirstResponder()
         }
         return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

@@ -124,5 +124,8 @@ class StatementsTableViewCell: UITableViewCell {
             secondaryStackView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -14)
         ])
         
+        func setup(){
+            
+        }
     }
 }

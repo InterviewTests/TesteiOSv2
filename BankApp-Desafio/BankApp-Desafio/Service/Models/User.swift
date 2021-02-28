@@ -13,16 +13,16 @@
 import Foundation
 
 // MARK: - User
-struct User: Codable {
+struct User: Decodable {
     let userAccount: UserAccount
     let error: UserError
 }
 
 // MARK: - Error
-struct UserError: Codable { }
+struct UserError: Decodable { }
 
 // MARK: - UserAccount
-struct UserAccount: Codable {
+struct UserAccount: Decodable {
     let userID: Int?
     let name: String
     let bankAccount: String
