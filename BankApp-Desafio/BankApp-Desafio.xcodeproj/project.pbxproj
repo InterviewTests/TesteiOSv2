@@ -10,6 +10,11 @@
 		19167EE825EA9F0100B35CB4 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19167EE725EA9F0100B35CB4 /* APIService.swift */; };
 		19167EF425EAA97D00B35CB4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19167EF325EAA97C00B35CB4 /* User.swift */; };
 		19167F0225EB5D2D00B35CB4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19167F0125EB5D2D00B35CB4 /* String+Extensions.swift */; };
+		19167F1C25EBE77E00B35CB4 /* LoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19167F1B25EBE77E00B35CB4 /* LoginInteractorTests.swift */; };
+		19167F2425EBE93E00B35CB4 /* LoginWorkerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19167F2325EBE93E00B35CB4 /* LoginWorkerMock.swift */; };
+		19167F2C25EBE94700B35CB4 /* LoginPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19167F2B25EBE94700B35CB4 /* LoginPresenterMock.swift */; };
+		193CB23825EBF88800A1E1F4 /* LoginResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CB23725EBF88800A1E1F4 /* LoginResponseMock.swift */; };
+		193CB24025EC118100A1E1F4 /* Statements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CB23F25EC118100A1E1F4 /* Statements.swift */; };
 		19EB141625E936DE00BBE3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB141525E936DE00BBE3CC /* AppDelegate.swift */; };
 		19EB141F25E936E200BBE3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19EB141E25E936E200BBE3CC /* Assets.xcassets */; };
 		19EB142225E936E200BBE3CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19EB142025E936E200BBE3CC /* LaunchScreen.storyboard */; };
@@ -54,6 +59,11 @@
 		19167EE725EA9F0100B35CB4 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		19167EF325EAA97C00B35CB4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		19167F0125EB5D2D00B35CB4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		19167F1B25EBE77E00B35CB4 /* LoginInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorTests.swift; sourceTree = "<group>"; };
+		19167F2325EBE93E00B35CB4 /* LoginWorkerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerMock.swift; sourceTree = "<group>"; };
+		19167F2B25EBE94700B35CB4 /* LoginPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterMock.swift; sourceTree = "<group>"; };
+		193CB23725EBF88800A1E1F4 /* LoginResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseMock.swift; sourceTree = "<group>"; };
+		193CB23F25EC118100A1E1F4 /* Statements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statements.swift; sourceTree = "<group>"; };
 		19EB141225E936DE00BBE3CC /* BankApp-Desafio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BankApp-Desafio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19EB141525E936DE00BBE3CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19EB141E25E936E200BBE3CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,8 +131,36 @@
 			isa = PBXGroup;
 			children = (
 				19167EF325EAA97C00B35CB4 /* User.swift */,
+				193CB23F25EC118100A1E1F4 /* Statements.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		19167F2025EBE91600B35CB4 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				19167F2125EBE92100B35CB4 /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		19167F2125EBE92100B35CB4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				19167F2225EBE93000B35CB4 /* Mocks */,
+				19167F1B25EBE77E00B35CB4 /* LoginInteractorTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		19167F2225EBE93000B35CB4 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				19167F2325EBE93E00B35CB4 /* LoginWorkerMock.swift */,
+				19167F2B25EBE94700B35CB4 /* LoginPresenterMock.swift */,
+				193CB23725EBF88800A1E1F4 /* LoginResponseMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		19EB140925E936DD00BBE3CC = {
@@ -162,6 +200,7 @@
 		19EB142B25E936E200BBE3CC /* BankApp-DesafioTests */ = {
 			isa = PBXGroup;
 			children = (
+				19167F2025EBE91600B35CB4 /* Scenes */,
 				19EB142E25E936E200BBE3CC /* Info.plist */,
 			);
 			path = "BankApp-DesafioTests";
@@ -294,6 +333,7 @@
 					};
 					19EB142725E936E200BBE3CC = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 						TestTargetID = 19EB141125E936DD00BBE3CC;
 					};
 					19EB143225E936E200BBE3CC = {
@@ -366,6 +406,7 @@
 				19FBDBEE25E95BD400394479 /* StatementsPresenter.swift in Sources */,
 				19FBDBEF25E95BD400394479 /* StatementsWorker.swift in Sources */,
 				19FBDBD425E945CB00394479 /* LoginInteractor.swift in Sources */,
+				193CB24025EC118100A1E1F4 /* Statements.swift in Sources */,
 				19FBDBD225E945CB00394479 /* LoginModels.swift in Sources */,
 				19FBDC0025E9875400394479 /* UIViewController+Extensions.swift in Sources */,
 				19FBDBD125E945CB00394479 /* LoginRouter.swift in Sources */,
@@ -381,6 +422,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19167F2C25EBE94700B35CB4 /* LoginPresenterMock.swift in Sources */,
+				193CB23825EBF88800A1E1F4 /* LoginResponseMock.swift in Sources */,
+				19167F1C25EBE77E00B35CB4 /* LoginInteractorTests.swift in Sources */,
+				19167F2425EBE93E00B35CB4 /* LoginWorkerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +623,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 276A4X5JBB;
 				INFOPLIST_FILE = "BankApp-DesafioTests/Info.plist";
@@ -589,6 +635,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.miziaalmeida.BankApp-DesafioTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BankApp-Desafio.app/BankApp-Desafio";
@@ -600,6 +647,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 276A4X5JBB;
 				INFOPLIST_FILE = "BankApp-DesafioTests/Info.plist";

@@ -14,8 +14,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class {
     func showLoginFailureAlert(title: String, message: String)
-    //    func displaySomething(viewModel: Login.Something.ViewModel)
-    //    func presentNextView(with response: Login.ViewModel)
+    func displayLoginSuccess()
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -130,7 +129,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         interactor?.login(username: userTextField.text, password: passwordTextField.text)
     }
 
-    func displayStatements(){
+    func displayLoginSuccess() {
         router?.routeToStatements()
     }
 

@@ -52,8 +52,8 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         worker?.login(username: request.user, password: request.password, completion: { [weak self] (result) in
             switch result {
             case let .success(response):
-                self?.presenter?.presentLoginUser(response: response)
-                print("### RESULTADO DO REQUEST ### =  \(response.user)" )
+                self?.user = response.user.userAccount
+                self?.presenter?.presentLoginUser()
             case let .failure(error):
                 self?.presenter?.presentErrorMessage(message: error.localizedDescription)
             }

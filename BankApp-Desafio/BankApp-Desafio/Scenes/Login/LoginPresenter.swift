@@ -13,18 +13,18 @@
 import UIKit
 
 protocol LoginPresentationLogic {
-    func presentLoginUser(response: Login.Response)
+    func presentLoginUser()
     func presentErrorMessage(message: String)
 }
 
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     
-    func presentLoginUser(response: Login.Response) {
-        
+    func presentLoginUser() {
+        viewController?.displayLoginSuccess()
     }
     
     func presentErrorMessage(message: String) {
-//        viewController?.showLoginFailureAlert(title: "Dados inválidos", message: "Verifique os campos digitados e tente novamente.")
+        viewController?.showLoginFailureAlert(title: "Opa, Houve um erro.", message: message)
     }
 }
