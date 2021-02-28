@@ -110,7 +110,6 @@ class StatementsTableViewCell: UITableViewCell {
     func setupConstraints(){
         NSLayoutConstraint.activate([
 
-//            cardView.heightAnchor.constraint(equalToConstant: 110),
             cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
@@ -119,12 +118,14 @@ class StatementsTableViewCell: UITableViewCell {
             primaryStackView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 14),
             primaryStackView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 10),
             primaryStackView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -14),
-//            primaryStackView.trailingAnchor.constraint(equalTo: secondaryStackView.leadingAnchor, constant: 10),
             
             secondaryStackView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 14),
             secondaryStackView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10),
             secondaryStackView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -14)
         ])
         
+        func setup(){
+            
+        }
     }
 }

@@ -9,7 +9,9 @@ import UIKit
 
 class StatementHeaderView: UIView {
     
-    lazy var username: UILabel = {
+    private var user: User?
+    
+    lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -20,7 +22,7 @@ class StatementHeaderView: UIView {
         return label
     }()
     
-    lazy var agency: UILabel = {
+    lazy var agencyLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -42,7 +44,7 @@ class StatementHeaderView: UIView {
         return label
     }()
     
-    lazy var balance: UILabel = {
+    lazy var balanceLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -69,12 +71,13 @@ class StatementHeaderView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
+    
     init() {
         super.init(frame: .zero)
         self.configureView()
         setupViewHierarchy()
         setupConstraints()
+        
     }
     
     @available(*, unavailable)
@@ -88,10 +91,10 @@ class StatementHeaderView: UIView {
     }
     
     func setupViewHierarchy() {
-        addSubview(username)
-        addSubview(agency)
+        addSubview(usernameLabel)
+        addSubview(agencyLabel)
         addSubview(agencyAccount)
-        addSubview(balance)
+        addSubview(balanceLabel)
         addSubview(balanceValue)
         addSubview(logoutImageView)
     }
@@ -103,21 +106,22 @@ class StatementHeaderView: UIView {
             logoutImageView.heightAnchor.constraint(equalToConstant: 27),
             logoutImageView.widthAnchor.constraint(equalToConstant: 27),
             
-            username.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            username.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
-            username.trailingAnchor.constraint(equalTo: logoutImageView.leadingAnchor, constant: -102),
+            usernameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            usernameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
+            usernameLabel.trailingAnchor.constraint(equalTo: logoutImageView.leadingAnchor, constant: -102),
             
-            agency.topAnchor.constraint(equalTo: username.bottomAnchor, constant: 28),
-            agency.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
+            agencyLabel.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 28),
+            agencyLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
             
-            agencyAccount.topAnchor.constraint(equalTo: agency.bottomAnchor, constant: 7),
+            agencyAccount.topAnchor.constraint(equalTo: agencyLabel.bottomAnchor, constant: 7),
             agencyAccount.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
             
-            balance.topAnchor.constraint(equalTo: agencyAccount.bottomAnchor, constant: 21),
-            balance.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
+            balanceLabel.topAnchor.constraint(equalTo: agencyAccount.bottomAnchor, constant: 21),
+            balanceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
             
-            balanceValue.topAnchor.constraint(equalTo: balance.bottomAnchor, constant: 7),
+            balanceValue.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: 7),
             balanceValue.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
         ])
+        
     }
 }

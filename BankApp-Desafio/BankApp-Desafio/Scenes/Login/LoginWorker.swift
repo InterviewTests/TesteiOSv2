@@ -12,9 +12,35 @@
 
 import UIKit
 
-class LoginWorker
-{
-  func doSomeWork()
-  {
-  }
+class LoginWorker {
+    private let service: APIService
+    
+    init(service: APIService = APIService()) {
+        self.service = service
+    }
+    
+    func login(username: String, password: String, completion: @escaping (Result<Login.Response, ServiceError>) -> Void) {
+        let url = URL(string: API.Path.login)
+        let parameters = ["user": username, "password": password]
+        service.post(params: parameters, url: url) { (result) in
+            switch result {
+            case let .success(data):
+                do {
+                    let user = try JSONDecoder().decode(User.self, from: data)
+                    let response = Login.Response(user: user)
+                    DispatchQueue.main.async {
+                        completion(.success(response))
+                    }
+                } catch let error {
+                    DispatchQueue.main.async {
+                        completion(.failure(.unknown(error)))
+                    }
+                }
+            case let .failure(error):
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }

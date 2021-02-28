@@ -21,6 +21,7 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
 {
     var interactor: StatementsBusinessLogic?
     var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
+    var headerView: StatementHeaderView?
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -82,6 +83,7 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     override func viewDidLoad() {
         super.viewDidLoad()
         doSomething()
+        showInfoFromUser()
     }
     
     // MARK: Do something
@@ -107,6 +109,15 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     
     func registerCell(){
         tableView.register(StatementsTableViewCell.self, forCellReuseIdentifier: "statementsCell")
+    }
+    
+    func showInfoFromUser(){
+        if let dataStore = self.router?.dataStore,
+           let userData = dataStore.user {
+            headerView?.usernameLabel.text = userData.name
+            headerView?.agencyAccount.text = userData.bankAccount
+            headerView?.balanceValue.text = "(R$ \(String(format:"%.2f", userData.balance))"
+        }
     }
 }
 

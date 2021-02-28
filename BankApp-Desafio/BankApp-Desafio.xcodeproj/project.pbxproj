@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		19167EE825EA9F0100B35CB4 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19167EE725EA9F0100B35CB4 /* APIService.swift */; };
+		19167EF425EAA97D00B35CB4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19167EF325EAA97C00B35CB4 /* User.swift */; };
+		19167F0225EB5D2D00B35CB4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19167F0125EB5D2D00B35CB4 /* String+Extensions.swift */; };
 		19EB141625E936DE00BBE3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB141525E936DE00BBE3CC /* AppDelegate.swift */; };
 		19EB141F25E936E200BBE3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19EB141E25E936E200BBE3CC /* Assets.xcassets */; };
 		19EB142225E936E200BBE3CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19EB142025E936E200BBE3CC /* LaunchScreen.storyboard */; };
-		19EB142D25E936E200BBE3CC /* BankApp_DesafioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB142C25E936E200BBE3CC /* BankApp_DesafioTests.swift */; };
 		19EB143825E936E200BBE3CC /* BankApp_DesafioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB143725E936E200BBE3CC /* BankApp_DesafioUITests.swift */; };
 		19FBDBCF25E945CB00394479 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FBDBC925E945CB00394479 /* LoginPresenter.swift */; };
 		19FBDBD025E945CB00394479 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FBDBCA25E945CB00394479 /* LoginWorker.swift */; };
@@ -51,13 +52,14 @@
 
 /* Begin PBXFileReference section */
 		19167EE725EA9F0100B35CB4 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		19167EF325EAA97C00B35CB4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		19167F0125EB5D2D00B35CB4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		19EB141225E936DE00BBE3CC /* BankApp-Desafio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BankApp-Desafio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19EB141525E936DE00BBE3CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19EB141E25E936E200BBE3CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19EB142125E936E200BBE3CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19EB142325E936E200BBE3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19EB142825E936E200BBE3CC /* BankApp-DesafioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BankApp-DesafioTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		19EB142C25E936E200BBE3CC /* BankApp_DesafioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankApp_DesafioTests.swift; sourceTree = "<group>"; };
 		19EB142E25E936E200BBE3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19EB143325E936E200BBE3CC /* BankApp-DesafioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BankApp-DesafioUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19EB143725E936E200BBE3CC /* BankApp_DesafioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankApp_DesafioUITests.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		19167EEF25EAA36A00B35CB4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				19167EF325EAA97C00B35CB4 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,7 +162,6 @@
 		19EB142B25E936E200BBE3CC /* BankApp-DesafioTests */ = {
 			isa = PBXGroup;
 			children = (
-				19EB142C25E936E200BBE3CC /* BankApp_DesafioTests.swift */,
 				19EB142E25E936E200BBE3CC /* Info.plist */,
 			);
 			path = "BankApp-DesafioTests";
@@ -202,6 +204,7 @@
 				19FBDBE225E9596B00394479 /* UIColor+Extensions.swift */,
 				19FBDC2425E9B80400394479 /* UIVIew+Extensions.swift */,
 				19FBDBFF25E9875400394479 /* UIViewController+Extensions.swift */,
+				19167F0125EB5D2D00B35CB4 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				19FBDBF025E95BD400394479 /* StatementsRouter.swift in Sources */,
 				19EB141625E936DE00BBE3CC /* AppDelegate.swift in Sources */,
 				19FBDC2525E9B80400394479 /* UIVIew+Extensions.swift in Sources */,
+				19167EF425EAA97D00B35CB4 /* User.swift in Sources */,
 				19FBDC0E25E993F000394479 /* StatementHeaderView.swift in Sources */,
 				19FBDBEE25E95BD400394479 /* StatementsPresenter.swift in Sources */,
 				19FBDBEF25E95BD400394479 /* StatementsWorker.swift in Sources */,
@@ -369,6 +373,7 @@
 				19FBDBF225E95BD400394479 /* StatementsViewController.swift in Sources */,
 				19FBDBD025E945CB00394479 /* LoginWorker.swift in Sources */,
 				19FBDBF325E95BD400394479 /* StatementsInteractor.swift in Sources */,
+				19167F0225EB5D2D00B35CB4 /* String+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +381,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19EB142D25E936E200BBE3CC /* BankApp_DesafioTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
