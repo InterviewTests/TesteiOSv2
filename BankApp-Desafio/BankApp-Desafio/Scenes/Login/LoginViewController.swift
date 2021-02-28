@@ -21,13 +21,14 @@ protocol LoginDisplayLogic: class {
 class LoginViewController: UIViewController, LoginDisplayLogic {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
-    
+
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "Logo"))
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     lazy var userTextField: UITextField = {
         let textField = UITextField()
         textField.keyboardType = .emailAddress
@@ -35,37 +36,38 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         textField.backgroundColor = .white
         textField.placeholder = "User"
         textField.borderStyle = UITextField.BorderStyle.roundedRect
-        textField.textColor = .lightGray
+        textField.textColor = .black
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         return textField
     }()
-    
+
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.isSecureTextEntry = true
         textField.autocorrectionType = .no
         textField.backgroundColor = .white
+        textField.isSecureTextEntry = true
         textField.placeholder = "Password"
         textField.borderStyle = UITextField.BorderStyle.roundedRect
-        textField.textColor = .lightGray
+        textField.textColor = .black
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         return textField
     }()
-    
+
     lazy var stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 20.0
         stack.alignment = .fill
-        stack.distribution = .fillEqually
+        stack.distribution = .equalCentering
         [self.userTextField,
          self.passwordTextField].forEach { stack.addArrangedSubview($0) }
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-    
+
     lazy var loginButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .mediumBlue()
@@ -75,23 +77,23 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         button.addTarget(self, action: #selector(tapLogin), for: .touchUpInside)
         return button
     }()
-    
-    
+
+
     // MARK: Object lifecycle
-    
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?){
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
-    
+
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     // MARK: Setup
-    
+
     private func setup(){
         let viewController = self
         let interactor = LoginInteractor()
@@ -104,9 +106,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         router.viewController = viewController
         router.dataStore = interactor
     }
-    
+
     // MARK: Routing
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
@@ -115,59 +117,77 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
             }
         }
     }
-    
+
     // MARK: View lifecycle
-    
+
     override func viewDidLoad(){
         super.viewDidLoad()
         setupViewHierarchy()
         setupConstraints()
     }
-    
-    
+
     @objc func tapLogin() {
-        doLogin()
-    }
-    
-    
-    func doLogin(){
         interactor?.login(username: userTextField.text, password: passwordTextField.text)
     }
-    
+
     func displayStatements(){
         router?.routeToStatements()
     }
-    
+
     func setupViewHierarchy() {
         view.backgroundColor = .white
         view.addSubview(logoImageView)
         view.addSubview(stackView)
+        view.addSubview(loginButton)
         stackView.addArrangedSubview(userTextField)
         stackView.addArrangedSubview(passwordTextField)
-        view.addSubview(loginButton)
+
     }
-    
+
     func setupConstraints() {
-        NSLayoutConstraint.activate([
-            logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            logoImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 56),
-            logoImageView.heightAnchor.constraint(equalToConstant: 70),
-            logoImageView.widthAnchor.constraint(equalToConstant: 125),
-            
-            userTextField.heightAnchor.constraint(equalToConstant: 50),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-            
-            stackView.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 105),
-            stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
-            
-            loginButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 86),
-            loginButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -86),
-            loginButton.heightAnchor.constraint(equalToConstant: 62),
-            loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -33)
-        ])
+        if #available(iOS 11.0, *) {
+            NSLayoutConstraint.activate([
+                logoImageView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+                logoImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 35),
+                logoImageView.heightAnchor.constraint(equalToConstant: 70),
+                logoImageView.widthAnchor.constraint(equalToConstant: 125),
+
+                userTextField.heightAnchor.constraint(equalToConstant: 50),
+                passwordTextField.heightAnchor.constraint(equalToConstant: 50),
+
+                stackView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
+
+                stackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+                stackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+
+                loginButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 86),
+                loginButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -86),
+                loginButton.heightAnchor.constraint(equalToConstant: 62),
+                loginButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -33)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                logoImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 35),
+                logoImageView.heightAnchor.constraint(equalToConstant: 70),
+                logoImageView.widthAnchor.constraint(equalToConstant: 125),
+
+                userTextField.heightAnchor.constraint(equalToConstant: 50),
+                passwordTextField.heightAnchor.constraint(equalToConstant: 50),
+
+                stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+
+                stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+                stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+
+                loginButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 86),
+                loginButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -86),
+                loginButton.heightAnchor.constraint(equalToConstant: 62),
+                loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -33)
+            ])
+        }
     }
-    
+
     func showLoginFailureAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -182,13 +202,13 @@ extension LoginViewController: UITextFieldDelegate {
             userTextField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
         }
-        
+
         else if textField == passwordTextField {
             passwordTextField.resignFirstResponder()
         }
         return true
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

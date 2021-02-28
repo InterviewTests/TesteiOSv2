@@ -23,13 +23,13 @@ protocol LoginDataStore {
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
-    
+
     var user: UserAccount?
-    
+
     init(worker: LoginWorker = LoginWorker()) {
         self.worker = worker
     }
-    
+
     func login(username: String?, password: String?) {
         guard let username = username,
               let password = password
@@ -38,17 +38,17 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             return
         }
         let request = Login.Request(user: username, password: password)
-        
+
         guard isValidUser(user: request.user) else {
             presenter?.presentErrorMessage(message: "Preencha seu usuário com E-mail ou CPF.")
             return
         }
-        
+
         guard isValidPassword(password: request.password) else {
             presenter?.presentErrorMessage(message: "Sua senha deve conter pelo menos 1 caractere alfanumérico, 1 caractere especial e 1 letra maiúscula.")
             return
         }
-        
+
         worker?.login(username: request.user, password: request.password, completion: { [weak self] (result) in
             switch result {
             case let .success(response):
@@ -59,12 +59,12 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             }
         })
     }
-        
+
     private func isValidUser(user: String) -> Bool {
         return user.isValidCPF || user.isValidEmail
     }
-    
-    
+
+
     private func isValidPassword(password: String) -> Bool {
         return password.isValidPassword
     }
