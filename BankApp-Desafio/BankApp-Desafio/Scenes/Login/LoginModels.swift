@@ -12,20 +12,16 @@
 
 import UIKit
 
-enum Login
-{
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
+enum Login {
+    // MARK: Use cases
+    
+    struct Request {
     }
-    struct Response
-    {
+    
+    struct Response {
+        var user: User
     }
-    struct ViewModel
-    {
+    
+    struct ViewModel {
     }
-  }
 }

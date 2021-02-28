@@ -12,30 +12,58 @@
 
 import UIKit
 
-protocol LoginBusinessLogic
-{
-  func doSomething(request: Login.Something.Request)
+protocol LoginBusinessLogic {
+    func login(with username: String?, password: String?)
 }
 
-protocol LoginDataStore
-{
-  //var name: String { get set }
+protocol LoginDataStore {
+    //var name: String { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
+class LoginInteractor: LoginBusinessLogic, LoginDataStore {
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    init(worker: LoginWorker = LoginWorker()) {
+        self.worker = worker
+    }
+    
+    func login(with username: String?, password: String?) {
+        guard let username = username, let password = password
+        else {
+            presenter?.presentErrorMessage(message: "Campos de usuário ou senha inválidos")
+            return
+        }
+        
+        if isValidPassword(password: password) {
+            worker?.login(username: username, password: password, completion: { [weak self] (result) in
+                switch result {
+                case let .success(response):
+                    self?.presenter?.presentLoginUser(response: response)
+                    print("### RESULTADO DO REQUEST ### =  \(response.user)" )
+                case let .failure(error):
+                    self?.presenter?.presentErrorMessage(message: error.localizedDescription)
+                    print("### RESULTADO DO REQUEST ### = \(error.localizedDescription)")
+                }
+            })
+        } else {
+            presenter?.presentErrorMessage(message: "Senha inválida, utilize pelo menos 1 caractere especial, 1 letra maiúscula e um caractere alfanumérico.")
+        }
+    }
+    
+    func isValidPassword(password: String) -> Bool {
+        let capitalLetterRegEx  = ".*[A-Z]+.*"
+        let texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        guard texttest.evaluate(with: password) else { return false }
+        
+        let numberRegEx  = ".*[0-9]+.*"
+        let texttest1 = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        guard texttest1.evaluate(with: password) else { return false }
+        
+        let specialCharacterRegEx  = ".*[!&^%$#@()/_*+-]+.*"
+        let texttest2 = NSPredicate(format:"SELF MATCHES %@", specialCharacterRegEx)
+        guard texttest2.evaluate(with: password) else { return false }
+        
+        return true
+    }
 }

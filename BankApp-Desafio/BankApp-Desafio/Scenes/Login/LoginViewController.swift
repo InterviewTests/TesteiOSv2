@@ -13,7 +13,8 @@
 import UIKit
 
 protocol LoginDisplayLogic: class {
-    func displaySomething(viewModel: Login.Something.ViewModel)
+    //    func displaySomething(viewModel: Login.Something.ViewModel)
+    //    func presentNextView(with response: Login.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -33,16 +34,19 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.textColor = .lightGray
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
     
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
+        textField.isSecureTextEntry = true
         textField.backgroundColor = .white
         textField.placeholder = "Password"
         textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.textColor = .lightGray
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
     
@@ -116,19 +120,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         setupConstraints()
     }
     
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething(){
-        let request = Login.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
-    func displaySomething(viewModel: Login.Something.ViewModel){
-        //nameTextField.text = viewModel.name
-    }
     
     @objc func tapLogin() {
-        
+        interactor?.login(with: userTextField.text, password: passwordTextField.text)
     }
     
     func setupViewHierarchy() {
@@ -159,5 +153,26 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
             loginButton.heightAnchor.constraint(equalToConstant: 62),
             loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -33)
         ])
+    }
+    
+    private func showDataFailureAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        showDetailViewController(alertController, sender: nil)
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userTextField {
+            userTextField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        }
+        
+        else if textField == passwordTextField {
+            passwordTextField.resignFirstResponder()
+        }
+        return true
     }
 }

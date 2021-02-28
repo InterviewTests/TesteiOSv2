@@ -10,8 +10,8 @@ import Foundation
 enum API {
     static let baseURL = "https://bank-app-test.herokuapp.com/api"
     enum Path {
-        static let login = "/login"
-        static let statements = "/statements/1"
+        static let login = API.baseURL + "/login"
+        static let statements = API.baseURL + "/statements/1"
     }
 }
 
@@ -35,13 +35,17 @@ class APIService {
         self.dataTask(with: request, completion: completion)
     }
     
-    func post(url: URL?, completion: @escaping (Result<Data, ServiceError>) -> Void) {
+    func post(params: [String: Any], url: URL?, completion: @escaping (Result<Data, ServiceError>) -> Void) {
         guard let url = url else {
             completion(.failure(.invalidURL))
             return
         }
+        let jsonData = try? JSONSerialization.data(withJSONObject: params)
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = jsonData
         
         self.dataTask(with: request, completion: completion)
     }
