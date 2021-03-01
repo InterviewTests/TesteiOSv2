@@ -18,14 +18,15 @@ protocol StatementsBusinessLogic {
 
 protocol StatementsDataStore {
     var user: UserAccount? { get set }
-    var statement: StatementResponseModel? { get set }
+    var statement: StatementAPIModel? { get set }
 }
 
+//MARK: Interactor
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore {
     var presenter: StatementsPresentationLogic?
     var worker: StatementsWorker?
     var user: UserAccount?
-    var statement: StatementResponseModel?
+    var statement: StatementAPIModel?
     
     init(worker: StatementsWorker = StatementsWorker()) {
         self.worker = worker

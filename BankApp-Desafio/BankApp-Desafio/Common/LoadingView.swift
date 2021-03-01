@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: LoadingView
 class LoadingView: UIView {
     lazy var activityIndicador: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()

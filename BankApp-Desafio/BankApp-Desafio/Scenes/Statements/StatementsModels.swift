@@ -19,7 +19,7 @@ enum Statements {
     }
     
     struct Response {
-        let statement: StatementResponseModel
+        let statement: StatementAPIModel
     }
     
     struct StatementViewModel {

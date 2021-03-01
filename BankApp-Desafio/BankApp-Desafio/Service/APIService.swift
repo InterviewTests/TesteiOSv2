@@ -21,9 +21,11 @@ enum ServiceError: Error {
     case unknown(Error?)
 }
 
+//MARK: APIService
 class APIService {
     let session = URLSession.shared
     
+    //MARK: GET
     func get(url: URL?, completion: @escaping (Result<Data, ServiceError>) -> Void) {
         guard let url = url else {
             completion(.failure(.invalidURL))
@@ -35,6 +37,7 @@ class APIService {
         self.dataTask(with: request, completion: completion)
     }
     
+    //MARK: POST
     func post(params: [String: Any], url: URL?, completion: @escaping (Result<Data, ServiceError>) -> Void) {
         guard let url = url else {
             completion(.failure(.invalidURL))

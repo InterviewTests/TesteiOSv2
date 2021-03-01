@@ -9,6 +9,7 @@ import UIKit
 
 class StatementsTableViewCell: UITableViewCell {
     
+    //MARK: Properties - Cell
     lazy var cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +82,7 @@ class StatementsTableViewCell: UITableViewCell {
         return label
     }()
     
+    //MARK: Cell.Style
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
@@ -91,6 +93,7 @@ class StatementsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Setup
     func setupView() {
         self.backgroundColor = .secondaryWhite()
         setupViewHierarchy()

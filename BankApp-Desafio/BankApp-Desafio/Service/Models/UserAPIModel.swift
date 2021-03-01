@@ -13,7 +13,7 @@
 import Foundation
 
 // MARK: - User
-struct User: Decodable {
+struct UserAPIModel: Decodable {
     let userAccount: UserAccount
     let error: UserError
 }

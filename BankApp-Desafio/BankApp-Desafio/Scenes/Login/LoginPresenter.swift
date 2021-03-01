@@ -19,6 +19,7 @@ protocol LoginPresentationLogic {
     func getLastUserLogged(user: String, password: String)
 }
 
+//MARK: Presenter
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     

@@ -16,7 +16,7 @@ class StatementsResponseMock {
                                       date: "12/12/2020",
                                       value: 345.78)
         let error = StatementError()
-        let statements = StatementResponseModel(statementList: [statement], error: error)
+        let statements = StatementAPIModel(statementList: [statement], error: error)
         return Statements.Response(statement: statements)
     }
 }
