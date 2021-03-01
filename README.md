@@ -8,7 +8,9 @@
 
 - **Clean Swift**
 - **Swift**
-- **Postman**
+- **Cocoapods**
+
+
 
 ## :dvd: Procedimentos para executar o projeto:
 
@@ -17,9 +19,12 @@
 $ git clone <https://github.com/miziaalmeida/TesteiOSv2.git>
 $ git clone <git@github.com:miziaalmeida/TesteiOSv2.git>
 
-# Em seu terminal acesse a pasta do projeto
+# Em seu terminal acesse a pasta do projeto:
 $ cd TesteiOSv2
 $ cd BankApp-Desafio
+
+# Instale as dependências do projeto:
+$ pod install
 
 # Abra o projeto no Xcode:
 $ open BankApp-Desafio.xcworkspace
