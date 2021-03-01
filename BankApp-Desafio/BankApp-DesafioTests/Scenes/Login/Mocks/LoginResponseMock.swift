@@ -16,7 +16,7 @@ class LoginResponseMock {
                                   agency: "567",
                                   balance: 1000.76)
         let error = UserError()
-        let user = User(userAccount: account, error: error)
+        let user = UserAPIModel(userAccount: account, error: error)
         
         return Login.Response(user: user)
     }

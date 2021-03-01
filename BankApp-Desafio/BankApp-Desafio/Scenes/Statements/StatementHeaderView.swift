@@ -13,7 +13,7 @@ protocol StatementHeaderViewDelegate: AnyObject {
 
 class StatementHeaderView: UIView {
     
-    private var user: User?
+    private var user: UserAPIModel?
     weak var delegate: StatementHeaderViewDelegate?
     
     lazy var usernameLabel: UILabel = {

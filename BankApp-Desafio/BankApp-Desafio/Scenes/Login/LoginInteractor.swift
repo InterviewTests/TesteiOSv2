@@ -11,7 +11,6 @@
 //
 
 import UIKit
-import SwiftKeychainWrapper
 
 protocol LoginBusinessLogic {
     func login(username: String?, password: String?)
@@ -55,7 +54,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             switch result {
             case let .success(response):
                 self?.user = response.user.userAccount
-                self?.saveLastUser(user: request.user, password: request.password)
                 self?.presenter?.presentLoginUser(response: response)
             case let .failure(error):
                 self?.presenter?.presentErrorMessage(message: error.localizedDescription)
@@ -73,14 +71,10 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     //MARK: Keychain
 
-    func getLastUser(){
-        guard let user = UserDefaults.standard.string(forKey: KeychainKeys.user) else { return }
-        guard let password = UserDefaults.standard.string(forKey: KeychainKeys.password) else { return }
-        self.presenter?.getLastUserLogged(user: user, password: password)
-    }
-    
-    func saveLastUser(user: String, password: String) {
-        UserDefaults.standard.set(user, forKey: KeychainKeys.user)
-        UserDefaults.standard.set(password, forKey: KeychainKeys.password)
+    func getLastUser() {
+        guard let loginCredentials = worker?.getLastUser() else {
+            return
+        }
+        presenter?.getLastUserLogged(user: loginCredentials.user, password: loginCredentials.password)
     }
 }

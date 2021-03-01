@@ -28,7 +28,7 @@ class StatementsWorker {
             switch result {
             case let .success(data):
                 do {
-                    let statement = try JSONDecoder().decode(StatementResponseModel.self, from: data)
+                    let statement = try JSONDecoder().decode(StatementAPIModel.self, from: data)
                     let response = Statements.Response(statement: statement)
                     DispatchQueue.main.async {
                         completion(.success(response))

@@ -11,10 +11,10 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class LoginWorker {
     private let service: APIService
-    
     init(service: APIService = APIService()) {
         self.service = service
     }
@@ -26,8 +26,9 @@ class LoginWorker {
             switch result {
             case let .success(data):
                 do {
-                    let user = try JSONDecoder().decode(User.self, from: data)
+                    let user = try JSONDecoder().decode(UserAPIModel.self, from: data)
                     let response = Login.Response(user: user)
+                    self.saveLoginCredentials(user: username, password: password)
                     DispatchQueue.main.async {
                         completion(.success(response))
                     }
@@ -42,5 +43,19 @@ class LoginWorker {
                 }
             }
         }
+    }
+    
+    func getLastUser() -> Login.Request {
+        guard let username = KeychainWrapper.standard.string(forKey: "username"),
+        let password = KeychainWrapper.standard.string(forKey: "password")
+        else {
+            return Login.Request(user: "", password: "")
+        }
+        return Login.Request(user: username, password: password)
+    }
+    
+    func saveLoginCredentials(user: String, password: String) {
+        KeychainWrapper.standard.set(user, forKey: "username")
+        KeychainWrapper.standard.set(password, forKey: "password")
     }
 }

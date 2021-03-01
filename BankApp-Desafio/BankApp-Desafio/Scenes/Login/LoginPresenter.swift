@@ -16,7 +16,6 @@ protocol LoginPresentationLogic {
     func presentLoginUser(response: Login.Response)
     func presentErrorMessage(message: String)
     func loadingUser()
-    func getLastUserLogged(user: String, password: String)
 }
 
 class LoginPresenter: LoginPresentationLogic {

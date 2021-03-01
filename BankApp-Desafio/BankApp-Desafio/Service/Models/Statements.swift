@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Statement
-struct StatementResponseModel: Decodable {
+struct StatementAPIModel: Decodable {
     let statementList: [StatementList]
     let error: StatementError
 }
