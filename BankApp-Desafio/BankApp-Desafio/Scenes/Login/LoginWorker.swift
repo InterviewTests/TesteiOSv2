@@ -43,7 +43,4 @@ class LoginWorker {
             }
         }
     }
-    
-    func saveUser(name: String, password: String) {
-    }
 }
