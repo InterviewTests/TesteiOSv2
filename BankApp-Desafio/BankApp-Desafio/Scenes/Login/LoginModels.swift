@@ -24,7 +24,5 @@ enum Login {
         let user: User
     }
     
-    struct ViewModel {
-        let user: User
-    }
+    struct ViewModel { }
 }

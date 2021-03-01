@@ -13,27 +13,33 @@
 import UIKit
 
 protocol StatementsBusinessLogic {
-    func doSomething(request: Statements.Something.Request)
+    func showStatements()
 }
 
 protocol StatementsDataStore {
     var user: UserAccount? { get set }
+    var statement: StatementResponseModel? { get set }
 }
 
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore {
     var presenter: StatementsPresentationLogic?
     var worker: StatementsWorker?
-   
     var user: UserAccount?
+    var statement: StatementResponseModel?
     
-    // MARK: Do something
+    init(worker: StatementsWorker = StatementsWorker()) {
+        self.worker = worker
+    }
     
-    func doSomething(request: Statements.Something.Request)
-    {
-        worker = StatementsWorker()
-        worker?.doSomeWork()
-        
-        let response = Statements.Something.Response()
-        presenter?.presentSomething(response: response)
+    func showStatements() {
+        worker?.fetchStatementsList(completion: { (result) in
+            switch result {
+            case .success(let response):
+                self.statement = response.statement
+                self.presenter?.presentStatement(response: response)
+            case .failure(let error):
+                self.presenter?.presentErrorMessage(message: error.localizedDescription)
+            }
+        })
     }
 }

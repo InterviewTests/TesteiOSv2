@@ -13,18 +13,25 @@
 import UIKit
 
 protocol LoginPresentationLogic {
-    func presentLoginUser()
+    func presentLoginUser(response: Login.Response)
     func presentErrorMessage(message: String)
+    func loadingUser()
 }
 
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     
-    func presentLoginUser() {
+    func presentLoginUser(response: Login.Response) {
         viewController?.displayLoginSuccess()
+        viewController?.hideLoading()
     }
     
     func presentErrorMessage(message: String) {
         viewController?.showLoginFailureAlert(title: "Opa, Houve um erro.", message: message)
+        viewController?.hideLoading()
+    }
+    
+    func loadingUser() {
+        viewController?.showLoading()
     }
 }
