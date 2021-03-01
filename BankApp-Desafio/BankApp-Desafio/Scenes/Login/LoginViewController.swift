@@ -17,12 +17,14 @@ protocol LoginDisplayLogic: class {
     func displayLoginSuccess()
     func showLoading()
     func hideLoading()
+    func fillLastUser(user: String, password: String)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
+    //MARK: Properties
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "Logo"))
         imageView.contentMode = .scaleAspectFill
@@ -80,7 +82,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     }()
     
     lazy var loadingView: LoadingView = {
-       let view = LoadingView()
+        let view = LoadingView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
         return view
@@ -88,7 +90,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     
     // MARK: Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?){
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -101,7 +102,6 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     }
     
     // MARK: Setup
-    
     private func setup(){
         let viewController = self
         let interactor = LoginInteractor()
@@ -115,121 +115,121 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         router.dataStore = interactor
     }
     
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     // MARK: View lifecycle
-    
     override func viewDidLoad(){
         super.viewDidLoad()
         setupViewHierarchy()
         setupConstraints()
+        interactor?.getLastUser()
     }
     
     @objc func tapLogin() {
-        interactor?.login(username: "mizia.alima@gmail.com", password: "Senha123@")
-//      interactor?.login(username: userTextField.text, password: passwordTextField.text)
+        interactor?.login(username: userTextField.text, password: passwordTextField.text)
     }
     
     func displayLoginSuccess() {
         router?.routeToStatements()
-        
-        
     }
     
-    func setupViewHierarchy() {
-        view.backgroundColor = .white
-        view.addSubview(logoImageView)
-        view.addSubview(stackView)
-        view.addSubview(loginButton)
-        view.addSubview(loadingView)
-        stackView.addArrangedSubview(userTextField)
-        stackView.addArrangedSubview(passwordTextField)
+    //MARK: For Keychain
+    func fillLastUser(user: String, password: String) {
+        userTextField.text = user
+        passwordTextField.text = password
+        
     }
-    
-    func setupConstraints() {
-        loadingView.contraintAllEdges(to: self.view)
-        if #available(iOS 11.0, *) {
-            NSLayoutConstraint.activate([
-                logoImageView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
-                logoImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 35),
-                logoImageView.heightAnchor.constraint(equalToConstant: 70),
-                logoImageView.widthAnchor.constraint(equalToConstant: 125),
-                
-                userTextField.heightAnchor.constraint(equalToConstant: 50),
-                passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-                
-                stackView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
-                
-                stackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-                stackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-                
-                loginButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 86),
-                loginButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -86),
-                loginButton.heightAnchor.constraint(equalToConstant: 62),
-                loginButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -33)
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                logoImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 35),
-                logoImageView.heightAnchor.constraint(equalToConstant: 70),
-                logoImageView.widthAnchor.constraint(equalToConstant: 125),
-                
-                userTextField.heightAnchor.constraint(equalToConstant: 50),
-                passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-                
-                stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-                
-                stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-                stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
-                
-                loginButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 86),
-                loginButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -86),
-                loginButton.heightAnchor.constraint(equalToConstant: 62),
-                loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -33)
-            ])
+        //MARK: View Hierarchy
+        func setupViewHierarchy() {
+            view.backgroundColor = .white
+            view.addSubview(logoImageView)
+            view.addSubview(stackView)
+            view.addSubview(loginButton)
+            view.addSubview(loadingView)
+            stackView.addArrangedSubview(userTextField)
+            stackView.addArrangedSubview(passwordTextField)
+        }
+        
+        //MARK: Constraints
+        func setupConstraints() {
+            loadingView.contraintAllEdges(to: self.view)
+            if #available(iOS 11.0, *) {
+                NSLayoutConstraint.activate([
+                    logoImageView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+                    logoImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 35),
+                    logoImageView.heightAnchor.constraint(equalToConstant: 70),
+                    logoImageView.widthAnchor.constraint(equalToConstant: 125),
+                    
+                    userTextField.heightAnchor.constraint(equalToConstant: 50),
+                    passwordTextField.heightAnchor.constraint(equalToConstant: 50),
+                    
+                    stackView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
+                    
+                    stackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+                    stackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+                    
+                    loginButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 86),
+                    loginButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -86),
+                    loginButton.heightAnchor.constraint(equalToConstant: 62),
+                    loginButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -33)
+                ])
+            } else {
+                NSLayoutConstraint.activate([
+                    logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                    logoImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 35),
+                    logoImageView.heightAnchor.constraint(equalToConstant: 70),
+                    logoImageView.widthAnchor.constraint(equalToConstant: 125),
+                    
+                    userTextField.heightAnchor.constraint(equalToConstant: 50),
+                    passwordTextField.heightAnchor.constraint(equalToConstant: 50),
+                    
+                    stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+                    
+                    stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+                    stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+                    
+                    loginButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 86),
+                    loginButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -86),
+                    loginButton.heightAnchor.constraint(equalToConstant: 62),
+                    loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -33)
+                ])
+            }
+        }
+        
+        //MARK: Alert / ActivityIndicator
+        func showLoginFailureAlert(title: String, message: String) {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(alertAction)
+            showDetailViewController(alertController, sender: nil)
+        }
+        
+        func showLoading() {
+            loadingView.show()
+        }
+        
+        func hideLoading() {
+            loadingView.hide()
         }
     }
     
-    func showLoginFailureAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(alertAction)
-        showDetailViewController(alertController, sender: nil)
-    }
-        
-    func showLoading() {
-        loadingView.show()
-    }
-    
-    func hideLoading() {
-        loadingView.hide()
-    }
-}
-
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == userTextField {
-            userTextField.resignFirstResponder()
-            passwordTextField.becomeFirstResponder()
+    //MARK: Extensions
+    extension LoginViewController: UITextFieldDelegate {
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            if textField == userTextField {
+                userTextField.resignFirstResponder()
+                passwordTextField.becomeFirstResponder()
+            }
+            
+            else if textField == passwordTextField {
+                passwordTextField.resignFirstResponder()
+            }
+            return true
         }
         
-        else if textField == passwordTextField {
-            passwordTextField.resignFirstResponder()
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
         }
-        return true
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-}
