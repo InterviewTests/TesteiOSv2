@@ -16,23 +16,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-1A-OUb">
-                                <rect key="frame" x="16" y="286" width="343" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-1A-OUb">
+                                <rect key="frame" x="16" y="302" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="tsD-MQ-kQI"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="63R-jT-Cai">
-                                <rect key="frame" x="16" y="231" width="343" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="63R-jT-Cai">
+                                <rect key="frame" x="16" y="231" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nbc-ym-DF9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="l1U-yQ-fw6">
-                                <rect key="frame" x="125" y="56" width="125" height="70"/>
+                                <rect key="frame" x="120" y="56" width="135" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="5FS-fC-XCJ"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1OT-kJ-vZW" customClass="RoundedButtonView" customModule="BankApp" customModuleProvider="target">
-                                <rect key="frame" x="85" y="572" width="205" height="62"/>
+                                <rect key="frame" x="90" y="579" width="195" height="52"/>
                                 <color key="backgroundColor" red="0.23328140380000001" green="0.28589665889999999" blue="0.933334887" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="hxW-VI-VS5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -47,19 +59,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1OT-kJ-vZW" secondAttribute="bottom" constant="33" id="6di-8x-9Nh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1OT-kJ-vZW" secondAttribute="trailing" constant="85" id="74n-ZA-C5o"/>
+                            <constraint firstItem="mZV-1A-OUb" firstAttribute="top" secondItem="63R-jT-Cai" secondAttribute="bottom" constant="21" id="5Cq-8m-UX0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1OT-kJ-vZW" secondAttribute="trailing" constant="90" id="74n-ZA-C5o"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="63R-jT-Cai" secondAttribute="trailing" constant="16" id="75v-4y-eu1"/>
-                            <constraint firstItem="1OT-kJ-vZW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="85" id="BwG-7e-RyR"/>
-                            <constraint firstItem="l1U-yQ-fw6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="125" id="CLw-SM-tQm"/>
-                            <constraint firstItem="mZV-1A-OUb" firstAttribute="top" secondItem="63R-jT-Cai" secondAttribute="bottom" constant="21" id="R1b-Ne-1Xx"/>
+                            <constraint firstItem="1OT-kJ-vZW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="BwG-7e-RyR"/>
+                            <constraint firstItem="l1U-yQ-fw6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="CLw-SM-tQm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mZV-1A-OUb" secondAttribute="trailing" constant="16" id="VuV-sa-MGi"/>
-                            <constraint firstItem="63R-jT-Cai" firstAttribute="top" secondItem="l1U-yQ-fw6" secondAttribute="bottom" constant="105" id="XY4-I4-DXz"/>
                             <constraint firstItem="mZV-1A-OUb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Xdm-aa-uUT"/>
                             <constraint firstItem="63R-jT-Cai" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YAd-1B-9gH"/>
                             <constraint firstItem="l1U-yQ-fw6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="YXp-oV-UVz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l1U-yQ-fw6" secondAttribute="trailing" constant="125" id="seD-Gd-Cgu"/>
-                            <constraint firstItem="1OT-kJ-vZW" firstAttribute="top" secondItem="mZV-1A-OUb" secondAttribute="bottom" constant="252" id="y4W-oa-rNk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l1U-yQ-fw6" secondAttribute="trailing" constant="120" id="seD-Gd-Cgu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1OT-kJ-vZW" secondAttribute="bottom" constant="36" id="v7T-Ki-Dyy"/>
+                            <constraint firstItem="63R-jT-Cai" firstAttribute="top" secondItem="l1U-yQ-fw6" secondAttribute="bottom" constant="105" id="w0a-b7-8Cq"/>
                         </constraints>
                     </view>
                 </viewController>
