@@ -19,6 +19,7 @@ class LoginWorker {
         self.service = service
     }
     
+    //MARK: Worker
     func login(username: String, password: String, completion: @escaping (Result<Login.Response, ServiceError>) -> Void) {
         let url = URL(string: API.Path.login)
         let parameters = ["user": username, "password": password]
@@ -45,6 +46,7 @@ class LoginWorker {
         }
     }
     
+    //MARK: Keychain
     func getLastUser() -> Login.Request {
         guard let username = KeychainWrapper.standard.string(forKey: "username"),
         let password = KeychainWrapper.standard.string(forKey: "password")

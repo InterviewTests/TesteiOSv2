@@ -20,7 +20,7 @@ class StatementsWorker {
         self.service = service
     }
     
-    
+    //MARK: Worker
     func fetchStatementsList(completion: @escaping (Result<Statements.Response, ServiceError>) -> Void) {
         let url = URL(string: API.Path.statements)
         

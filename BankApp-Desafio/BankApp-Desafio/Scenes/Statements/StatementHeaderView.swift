@@ -13,6 +13,7 @@ protocol StatementHeaderViewDelegate: AnyObject {
 
 class StatementHeaderView: UIView {
     
+    //MARK: Properties
     private var user: UserAPIModel?
     weak var delegate: StatementHeaderViewDelegate?
     
@@ -88,6 +89,7 @@ class StatementHeaderView: UIView {
         delegate?.didTapLogout()
     }
     
+    //MARK: Init Header
     init() {
         super.init(frame: .zero)
         self.configureView()
@@ -101,6 +103,7 @@ class StatementHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Setup
     func configureView(){
         self.backgroundColor = .mediumBlue()
         self.layer.shouldRasterize = true

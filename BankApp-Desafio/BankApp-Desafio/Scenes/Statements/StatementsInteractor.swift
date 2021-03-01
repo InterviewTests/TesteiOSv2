@@ -21,6 +21,7 @@ protocol StatementsDataStore {
     var statement: StatementAPIModel? { get set }
 }
 
+//MARK: Interactor
 class StatementsInteractor: StatementsBusinessLogic, StatementsDataStore {
     var presenter: StatementsPresentationLogic?
     var worker: StatementsWorker?

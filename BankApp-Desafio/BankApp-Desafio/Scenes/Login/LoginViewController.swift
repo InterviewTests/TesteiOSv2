@@ -135,7 +135,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         router?.routeToStatements()
     }
     
-    //MARK: For Keychain
+    //MARK: Keychain
     func fillLastUser(user: String, password: String) {
         userTextField.text = user
         passwordTextField.text = password
@@ -152,7 +152,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         stackView.addArrangedSubview(passwordTextField)
     }
     
-    //MARK: Constraints
+    //MARK: Setup
     func setupConstraints() {
         loadingView.contraintAllEdges(to: self.view)
         if #available(iOS 11.0, *) {

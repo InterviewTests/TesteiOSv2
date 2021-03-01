@@ -15,6 +15,7 @@ import UIKit
 protocol LoginBusinessLogic {
     func login(username: String?, password: String?)
     func getLastUser()
+    
 }
 
 protocol LoginDataStore {
@@ -30,6 +31,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         self.worker = worker
     }
     
+    //MARK: Interactor
     func login(username: String?, password: String?) {
         presenter?.loadingUser()
         guard let username = username,
@@ -61,6 +63,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         })
     }
     
+    //MARK: Validation
     private func isValidUser(user: String) -> Bool {
         return user.isValidCPF || user.isValidEmail
     }
@@ -70,7 +73,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     }
     
     //MARK: Keychain
-
     func getLastUser() {
         guard let loginCredentials = worker?.getLastUser() else {
             return

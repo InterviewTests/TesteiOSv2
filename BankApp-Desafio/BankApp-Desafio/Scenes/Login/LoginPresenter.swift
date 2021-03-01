@@ -16,8 +16,10 @@ protocol LoginPresentationLogic {
     func presentLoginUser(response: Login.Response)
     func presentErrorMessage(message: String)
     func loadingUser()
+    func getLastUserLogged(user: String, password: String)
 }
 
+//MARK: Presenter
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     

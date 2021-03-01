@@ -18,6 +18,8 @@ protocol StatementsDisplayLogic: class {
 }
 
 class StatementsViewController: UIViewController, StatementsDisplayLogic {
+    
+    //MARK: Properties
     var interactor: StatementsBusinessLogic?
     var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
     var headerView: StatementHeaderView?
@@ -82,7 +84,6 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
     }
         
     // MARK: View lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureHeader()
@@ -93,19 +94,20 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic {
         self.headerView?.configure(with: self.user)
     }
             
+    func displayStatements(viewModel: Statements.StatementViewModel) {
+        self.viewModel = viewModel
+        self.tableView.reloadData()
+    }
+    
     func showStatementFailureAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
         showDetailViewController(alertController, sender: nil)
     }
-    
-    func displayStatements(viewModel: Statements.StatementViewModel) {
-        self.viewModel = viewModel
-        self.tableView.reloadData()
-    }
 }
 
+//MARK: Extensions
 extension StatementsViewController: StatementHeaderViewDelegate {
     func didTapLogout() {
         router?.logoff()
