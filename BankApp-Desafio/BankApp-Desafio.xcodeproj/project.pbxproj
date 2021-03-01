@@ -15,6 +15,12 @@
 		19167F2C25EBE94700B35CB4 /* LoginPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19167F2B25EBE94700B35CB4 /* LoginPresenterMock.swift */; };
 		193CB23825EBF88800A1E1F4 /* LoginResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CB23725EBF88800A1E1F4 /* LoginResponseMock.swift */; };
 		193CB24025EC118100A1E1F4 /* Statements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CB23F25EC118100A1E1F4 /* Statements.swift */; };
+		193CB24525EC3D3700A1E1F4 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CB24425EC3D3700A1E1F4 /* Double+Extensions.swift */; };
+		193CB25625EC5ACE00A1E1F4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CB25525EC5ACE00A1E1F4 /* LoadingView.swift */; };
+		193CB25D25EC67C500A1E1F4 /* StatementsWorkerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CB25C25EC67C500A1E1F4 /* StatementsWorkerMock.swift */; };
+		193CB26525EC67D100A1E1F4 /* StatementsPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CB26425EC67D100A1E1F4 /* StatementsPresenterMock.swift */; };
+		193CB26A25EC67DC00A1E1F4 /* StatementsResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CB26925EC67DC00A1E1F4 /* StatementsResponseMock.swift */; };
+		193CB26F25EC67F900A1E1F4 /* StatementsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CB26E25EC67F900A1E1F4 /* StatementsInteractorTests.swift */; };
 		19EB141625E936DE00BBE3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB141525E936DE00BBE3CC /* AppDelegate.swift */; };
 		19EB141F25E936E200BBE3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19EB141E25E936E200BBE3CC /* Assets.xcassets */; };
 		19EB142225E936E200BBE3CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19EB142025E936E200BBE3CC /* LaunchScreen.storyboard */; };
@@ -64,6 +70,12 @@
 		19167F2B25EBE94700B35CB4 /* LoginPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterMock.swift; sourceTree = "<group>"; };
 		193CB23725EBF88800A1E1F4 /* LoginResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseMock.swift; sourceTree = "<group>"; };
 		193CB23F25EC118100A1E1F4 /* Statements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statements.swift; sourceTree = "<group>"; };
+		193CB24425EC3D3700A1E1F4 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		193CB25525EC5ACE00A1E1F4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		193CB25C25EC67C500A1E1F4 /* StatementsWorkerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsWorkerMock.swift; sourceTree = "<group>"; };
+		193CB26425EC67D100A1E1F4 /* StatementsPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsPresenterMock.swift; sourceTree = "<group>"; };
+		193CB26925EC67DC00A1E1F4 /* StatementsResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsResponseMock.swift; sourceTree = "<group>"; };
+		193CB26E25EC67F900A1E1F4 /* StatementsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsInteractorTests.swift; sourceTree = "<group>"; };
 		19EB141225E936DE00BBE3CC /* BankApp-Desafio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BankApp-Desafio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19EB141525E936DE00BBE3CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19EB141E25E936E200BBE3CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,6 +151,7 @@
 		19167F2025EBE91600B35CB4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				193CB25A25EC67A500A1E1F4 /* Statements */,
 				19167F2125EBE92100B35CB4 /* Login */,
 			);
 			path = Scenes;
@@ -159,6 +172,33 @@
 				19167F2325EBE93E00B35CB4 /* LoginWorkerMock.swift */,
 				19167F2B25EBE94700B35CB4 /* LoginPresenterMock.swift */,
 				193CB23725EBF88800A1E1F4 /* LoginResponseMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		193CB25425EC5ABD00A1E1F4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				193CB25525EC5ACE00A1E1F4 /* LoadingView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		193CB25A25EC67A500A1E1F4 /* Statements */ = {
+			isa = PBXGroup;
+			children = (
+				193CB25B25EC67AC00A1E1F4 /* Mocks */,
+				193CB26E25EC67F900A1E1F4 /* StatementsInteractorTests.swift */,
+			);
+			path = Statements;
+			sourceTree = "<group>";
+		};
+		193CB25B25EC67AC00A1E1F4 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				193CB25C25EC67C500A1E1F4 /* StatementsWorkerMock.swift */,
+				193CB26425EC67D100A1E1F4 /* StatementsPresenterMock.swift */,
+				193CB26925EC67DC00A1E1F4 /* StatementsResponseMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -186,6 +226,7 @@
 		19EB141425E936DE00BBE3CC /* BankApp-Desafio */ = {
 			isa = PBXGroup;
 			children = (
+				193CB25425EC5ABD00A1E1F4 /* Common */,
 				19167EE625EA9EEF00B35CB4 /* Service */,
 				19EB142325E936E200BBE3CC /* Info.plist */,
 				19EB141525E936DE00BBE3CC /* AppDelegate.swift */,
@@ -244,6 +285,7 @@
 				19FBDC2425E9B80400394479 /* UIVIew+Extensions.swift */,
 				19FBDBFF25E9875400394479 /* UIViewController+Extensions.swift */,
 				19167F0125EB5D2D00B35CB4 /* String+Extensions.swift */,
+				193CB24425EC3D3700A1E1F4 /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -398,6 +440,7 @@
 				19FBDBCF25E945CB00394479 /* LoginPresenter.swift in Sources */,
 				19FBDBF125E95BD400394479 /* StatementsModels.swift in Sources */,
 				19FBDBFB25E9856900394479 /* StatementsTableViewCell.swift in Sources */,
+				193CB25625EC5ACE00A1E1F4 /* LoadingView.swift in Sources */,
 				19FBDBF025E95BD400394479 /* StatementsRouter.swift in Sources */,
 				19EB141625E936DE00BBE3CC /* AppDelegate.swift in Sources */,
 				19FBDC2525E9B80400394479 /* UIVIew+Extensions.swift in Sources */,
@@ -413,6 +456,7 @@
 				19FBDBE325E9596B00394479 /* UIColor+Extensions.swift in Sources */,
 				19FBDBF225E95BD400394479 /* StatementsViewController.swift in Sources */,
 				19FBDBD025E945CB00394479 /* LoginWorker.swift in Sources */,
+				193CB24525EC3D3700A1E1F4 /* Double+Extensions.swift in Sources */,
 				19FBDBF325E95BD400394479 /* StatementsInteractor.swift in Sources */,
 				19167F0225EB5D2D00B35CB4 /* String+Extensions.swift in Sources */,
 			);
@@ -422,10 +466,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				193CB26F25EC67F900A1E1F4 /* StatementsInteractorTests.swift in Sources */,
 				19167F2C25EBE94700B35CB4 /* LoginPresenterMock.swift in Sources */,
 				193CB23825EBF88800A1E1F4 /* LoginResponseMock.swift in Sources */,
+				193CB26525EC67D100A1E1F4 /* StatementsPresenterMock.swift in Sources */,
 				19167F1C25EBE77E00B35CB4 /* LoginInteractorTests.swift in Sources */,
 				19167F2425EBE93E00B35CB4 /* LoginWorkerMock.swift in Sources */,
+				193CB26A25EC67DC00A1E1F4 /* StatementsResponseMock.swift in Sources */,
+				193CB25D25EC67C500A1E1F4 /* StatementsWorkerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

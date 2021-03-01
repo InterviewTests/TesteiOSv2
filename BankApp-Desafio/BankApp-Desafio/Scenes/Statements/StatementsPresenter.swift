@@ -13,7 +13,8 @@
 import UIKit
 
 protocol StatementsPresentationLogic {
-  func presentSomething(response: Statements.Something.Response)
+    func presentStatement(response: Statements.Response)
+    func presentErrorMessage(message: String)
 }
 
 class StatementsPresenter: StatementsPresentationLogic {
@@ -21,9 +22,32 @@ class StatementsPresenter: StatementsPresentationLogic {
   
   // MARK: Do something
   
-  func presentSomething(response: Statements.Something.Response)
-  {
-    let viewModel = Statements.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    func presentStatement(response: Statements.Response) {
+        var statementsViewModel: [Statements.StatementViewModel.Statement] = []
+        response.statement.statementList.forEach { statement in
+            let viewModel  = Statements.StatementViewModel.Statement(title: statement.title,
+                                                            description: statement.desc,
+                                                            date: formatDate(date: statement.date),
+                                                            value: statement.value.toCurrencyFormat())
+            statementsViewModel.append(viewModel)
+        }
+        let viewModel = Statements.StatementViewModel(statements: statementsViewModel)
+        viewController?.displayStatements(viewModel: viewModel)
+    }
+        
+    private func formatDate(date: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        guard
+            let formatedDate = formatter.date(from: date)
+        else {
+            return ""
+        }
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter.string(from: formatedDate)
+    }
+        
+    func presentErrorMessage(message: String) {
+        viewController?.showStatementFailureAlert(title: "Opa, Houve um erro.", message: message)
+    }
 }

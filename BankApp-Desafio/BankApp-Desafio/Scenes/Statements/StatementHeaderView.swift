@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol StatementHeaderViewDelegate: AnyObject {
+    func didTapLogout()
+}
+
 class StatementHeaderView: UIView {
     
     private var user: User?
+    weak var delegate: StatementHeaderViewDelegate?
     
     lazy var usernameLabel: UILabel = {
         let label = UILabel()
@@ -33,7 +38,7 @@ class StatementHeaderView: UIView {
         return label
     }()
     
-    lazy var agencyAccount: UILabel = {
+    lazy var agencyAccountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -44,7 +49,7 @@ class StatementHeaderView: UIView {
         return label
     }()
     
-    lazy var balanceLabel: UILabel = {
+    lazy var balanceTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -55,22 +60,33 @@ class StatementHeaderView: UIView {
         return label
     }()
     
-    lazy var balanceValue: UILabel = {
+    lazy var balanceValueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Saldo"
+        label.text = "R$00"
         label.font = UIFont(name: "Helvetica Neue", size: 25.0)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var logoutImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "logout 2"))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    
+    lazy var logoutButton: UIButton = {
+        let image = UIImage(named: "logout 2")
+        let button = UIButton(type: UIButton.ButtonType.custom)
+        button.setImage(image, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(tapLogout), for: .touchUpInside)
+        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
+    
+    @objc func tapLogout() {
+        delegate?.didTapLogout()
+    }
     
     init() {
         super.init(frame: .zero)
@@ -93,35 +109,42 @@ class StatementHeaderView: UIView {
     func setupViewHierarchy() {
         addSubview(usernameLabel)
         addSubview(agencyLabel)
-        addSubview(agencyAccount)
-        addSubview(balanceLabel)
-        addSubview(balanceValue)
-        addSubview(logoutImageView)
+        addSubview(agencyAccountLabel)
+        addSubview(balanceTitleLabel)
+        addSubview(balanceValueLabel)
+        addSubview(logoutButton)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            logoutImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -13),
-            logoutImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            logoutImageView.heightAnchor.constraint(equalToConstant: 27),
-            logoutImageView.widthAnchor.constraint(equalToConstant: 27),
+            logoutButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -18),
+            logoutButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            logoutButton.heightAnchor.constraint(equalToConstant: 40),
+            logoutButton.widthAnchor.constraint(equalToConstant: 40),
             
             usernameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             usernameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
-            usernameLabel.trailingAnchor.constraint(equalTo: logoutImageView.leadingAnchor, constant: -102),
+            usernameLabel.trailingAnchor.constraint(equalTo: logoutButton.leadingAnchor, constant: -102),
             
             agencyLabel.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 28),
             agencyLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
             
-            agencyAccount.topAnchor.constraint(equalTo: agencyLabel.bottomAnchor, constant: 7),
-            agencyAccount.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
+            agencyAccountLabel.topAnchor.constraint(equalTo: agencyLabel.bottomAnchor, constant: 7),
+            agencyAccountLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
             
-            balanceLabel.topAnchor.constraint(equalTo: agencyAccount.bottomAnchor, constant: 21),
-            balanceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
+            balanceTitleLabel.topAnchor.constraint(equalTo: agencyAccountLabel.bottomAnchor, constant: 21),
+            balanceTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
             
-            balanceValue.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: 7),
-            balanceValue.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
+            balanceValueLabel.topAnchor.constraint(equalTo: balanceTitleLabel.bottomAnchor, constant: 7),
+            balanceValueLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
         ])
-        
+    }
+    
+    func configure(with user: UserAccount?) {
+        guard let user = user else { return }
+        self.usernameLabel.text = user.name
+        let agencyAccount = "\(user.agency) / \(user.bankAccount)"
+        self.agencyAccountLabel.text = agencyAccount
+        self.balanceValueLabel.text = user.balance.toCurrencyFormat()
     }
 }

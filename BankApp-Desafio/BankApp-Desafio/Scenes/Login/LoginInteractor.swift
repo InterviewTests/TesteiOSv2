@@ -23,7 +23,6 @@ protocol LoginDataStore {
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
-
     var user: UserAccount?
 
     init(worker: LoginWorker = LoginWorker()) {
@@ -31,6 +30,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     }
 
     func login(username: String?, password: String?) {
+        presenter?.loadingUser()
         guard let username = username,
               let password = password
         else {
@@ -53,7 +53,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             switch result {
             case let .success(response):
                 self?.user = response.user.userAccount
-                self?.presenter?.presentLoginUser()
+                self?.presenter?.presentLoginUser(response: response)
             case let .failure(error):
                 self?.presenter?.presentErrorMessage(message: error.localizedDescription)
             }

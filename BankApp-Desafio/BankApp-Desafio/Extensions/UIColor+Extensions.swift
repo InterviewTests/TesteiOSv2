@@ -15,4 +15,8 @@ extension UIColor {
     static func secondaryWhite() -> UIColor {
         return UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1.0)
     }
+    
+    static func mediumGray() -> UIColor {
+        return UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)
+    }
 }

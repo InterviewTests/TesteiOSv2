@@ -42,7 +42,7 @@ class StatementsTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.text = "Pagamento"
-        label.font = UIFont(name: "Helvetica Neue", size: 16.0)
+        label.font = UIFont(name: "Helvetica Neue", size: 18.0)
         label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -53,7 +53,7 @@ class StatementsTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.text = "Descrição"
-        label.font = UIFont(name: "Helvetica Neue", size: 16.0)
+        label.font = UIFont(name: "Helvetica Neue", size: 18.0)
         label.textColor = .darkGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -64,18 +64,18 @@ class StatementsTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.text = "00/00/0000"
-        label.font = UIFont(name: "Helvetica Neue", size: 12.0)
+        label.font = UIFont(name: "Helvetica Neue", size: 14.0)
         label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var balanceLabel: UILabel = {
+    lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.text = "R$ 0.000,00"
-        label.font = UIFont(name: "Helvetica Neue", size: 20.0)
+        label.font = UIFont(name: "Helvetica Neue", size: 23.0)
         label.textColor = .darkGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -104,7 +104,7 @@ class StatementsTableViewCell: UITableViewCell {
         primaryStackView.addArrangedSubview(titleLabel)
         primaryStackView.addArrangedSubview(descriptionLabel)
         secondaryStackView.addArrangedSubview(dateLabel)
-        secondaryStackView.addArrangedSubview(balanceLabel)
+        secondaryStackView.addArrangedSubview(valueLabel)
     }
     
     func setupConstraints(){
@@ -123,9 +123,12 @@ class StatementsTableViewCell: UITableViewCell {
             secondaryStackView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -10),
             secondaryStackView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -14)
         ])
-        
-        func setup(){
-            
-        }
+    }
+    
+    func configure(with viewModel: Statements.StatementViewModel.Statement) {
+        self.titleLabel.text = viewModel.title
+        self.descriptionLabel.text = viewModel.description
+        self.dateLabel.text = viewModel.date
+        self.valueLabel.text = viewModel.value
     }
 }

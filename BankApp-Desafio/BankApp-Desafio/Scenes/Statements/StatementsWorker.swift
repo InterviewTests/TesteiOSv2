@@ -12,9 +12,37 @@
 
 import UIKit
 
-class StatementsWorker
-{
-  func doSomeWork()
-  {
-  }
+class StatementsWorker {
+    
+    private let service: APIService
+    
+    init(service: APIService = APIService()) {
+        self.service = service
+    }
+    
+    
+    func fetchStatementsList(completion: @escaping (Result<Statements.Response, ServiceError>) -> Void) {
+        let url = URL(string: API.Path.statements)
+        
+        service.get(url: url) { (result) in
+            switch result {
+            case let .success(data):
+                do {
+                    let statement = try JSONDecoder().decode(StatementResponseModel.self, from: data)
+                    let response = Statements.Response(statement: statement)
+                    DispatchQueue.main.async {
+                        completion(.success(response))
+                    }
+                } catch let error {
+                    DispatchQueue.main.async {
+                        completion(.failure(.unknown(error)))
+                    }
+                }
+            case let .failure(error):
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }

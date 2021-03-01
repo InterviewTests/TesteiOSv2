@@ -12,16 +12,17 @@
 
 import UIKit
 
-protocol StatementsDisplayLogic: class
-{
-    func displaySomething(viewModel: Statements.Something.ViewModel)
+protocol StatementsDisplayLogic: class {
+    func displayStatements(viewModel: Statements.StatementViewModel)
+    func showStatementFailureAlert(title: String, message: String)
 }
 
-class StatementsViewController: UIViewController, StatementsDisplayLogic
-{
+class StatementsViewController: UIViewController, StatementsDisplayLogic {
     var interactor: StatementsBusinessLogic?
     var router: (NSObjectProtocol & StatementsRoutingLogic & StatementsDataPassing)?
     var headerView: StatementHeaderView?
+    var viewModel: Statements.StatementViewModel = Statements.StatementViewModel(statements: [])
+    private let user: UserAccount
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -35,68 +36,37 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     }()
     
     private let sections = "Recentes"
-    
-    
+        
     // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    init(user: UserAccount) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: Setup
-    
     private func setup() {
         let viewController = self
-        let interactor = StatementsInteractor()
         let presenter = StatementsPresenter()
         let router = StatementsRouter()
+        let interactor = StatementsInteractor()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+        interactor.user = router.dataStore?.user
+        self.headerView = StatementHeaderView()
+        headerView?.delegate = self
         setupViewHierarchy()
         setupConstraints()
         registerCell()
-    }
-    
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
-    // MARK: View lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        doSomething()
-        showInfoFromUser()
-    }
-    
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething() {
-        let request = Statements.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
-    func displaySomething(viewModel: Statements.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
     }
     
     func setupViewHierarchy(){
@@ -110,24 +80,43 @@ class StatementsViewController: UIViewController, StatementsDisplayLogic
     func registerCell(){
         tableView.register(StatementsTableViewCell.self, forCellReuseIdentifier: "statementsCell")
     }
+        
+    // MARK: View lifecycle
     
-    func showInfoFromUser(){
-        if let dataStore = self.router?.dataStore,
-           let userData = dataStore.user {
-            headerView?.usernameLabel.text = userData.name
-            headerView?.agencyAccount.text = userData.bankAccount
-            headerView?.balanceValue.text = "(R$ \(String(format:"%.2f", userData.balance))"
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.configureHeader()
+        interactor?.showStatements()
+    }
+    
+    private func configureHeader() {
+        self.headerView?.configure(with: self.user)
+    }
+            
+    func showStatementFailureAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        showDetailViewController(alertController, sender: nil)
+    }
+    
+    func displayStatements(viewModel: Statements.StatementViewModel) {
+        self.viewModel = viewModel
+        self.tableView.reloadData()
     }
 }
 
-extension StatementsViewController: UITableViewDelegate {
-    
+extension StatementsViewController: StatementHeaderViewDelegate {
+    func didTapLogout() {
+        router?.logoff()
+    }
 }
+
+extension StatementsViewController: UITableViewDelegate { }
 
 extension StatementsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.statements.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -135,17 +124,21 @@ extension StatementsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "statementsCell", for: indexPath) as? StatementsTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "statementsCell", for: indexPath) as? StatementsTableViewCell else {
+            return UITableViewCell()
+        }
+        let viewModelData = viewModel.statements[indexPath.row]
+        cell.configure(with: viewModelData)
+
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections
-    }
+//
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return sections.lowercased()
+//    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = StatementHeaderView()
-        return headerView
+        return self.headerView
      }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

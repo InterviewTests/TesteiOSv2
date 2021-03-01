@@ -12,49 +12,20 @@
 
 import UIKit
 
-@objc protocol StatementsRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol StatementsRoutingLogic {
+    func logoff()
 }
 
-protocol StatementsDataPassing
-{
-  var dataStore: StatementsDataStore? { get }
+protocol StatementsDataPassing {
+    var dataStore: StatementsDataStore? { get }
 }
 
-class StatementsRouter: NSObject, StatementsRoutingLogic, StatementsDataPassing
-{
-  weak var viewController: StatementsViewController?
-  var dataStore: StatementsDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: StatementsViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: StatementsDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+class StatementsRouter: NSObject, StatementsRoutingLogic, StatementsDataPassing {
+    weak var viewController: StatementsViewController?
+    var dataStore: StatementsDataStore?
+    
+    func logoff() {
+        let destinationViewController = LoginViewController()
+        UIViewController.replaceRootViewController(viewController: destinationViewController)
+    }
 }
