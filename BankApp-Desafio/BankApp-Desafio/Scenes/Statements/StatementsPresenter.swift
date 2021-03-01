@@ -20,8 +20,7 @@ protocol StatementsPresentationLogic {
 class StatementsPresenter: StatementsPresentationLogic {
   weak var viewController: StatementsDisplayLogic?
   
-  // MARK: Do something
-  
+  // MARK: Present
     func presentStatement(response: Statements.Response) {
         var statementsViewModel: [Statements.StatementViewModel.Statement] = []
         response.statement.statementList.forEach { statement in
@@ -35,6 +34,10 @@ class StatementsPresenter: StatementsPresentationLogic {
         viewController?.displayStatements(viewModel: viewModel)
     }
         
+    func presentErrorMessage(message: String) {
+        viewController?.showStatementFailureAlert(title: "Opa, Houve um erro.", message: message)
+    }
+    
     private func formatDate(date: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -45,9 +48,5 @@ class StatementsPresenter: StatementsPresentationLogic {
         }
         formatter.dateFormat = "dd/MM/yyyy"
         return formatter.string(from: formatedDate)
-    }
-        
-    func presentErrorMessage(message: String) {
-        viewController?.showStatementFailureAlert(title: "Opa, Houve um erro.", message: message)
     }
 }

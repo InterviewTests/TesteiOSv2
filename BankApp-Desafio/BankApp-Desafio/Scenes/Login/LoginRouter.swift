@@ -24,7 +24,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     weak var viewController: LoginViewController?
     var dataStore: LoginDataStore?
     
-    // MARK: Routing
+    // MARK: Router
     func routeToStatements() {
         guard let user = dataStore?.user else { return }
         let destinationViewController = StatementsViewController(user: user)

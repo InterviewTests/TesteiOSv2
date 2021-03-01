@@ -21,7 +21,7 @@ enum Login {
     }
     
     struct Response {
-        let user: User
+        let user: UserAPIModel
     }
     
     struct ViewModel { }
