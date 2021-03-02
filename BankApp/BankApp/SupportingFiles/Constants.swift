@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Login {
-    static let user = "test_user"
-    static let password = "Test@1"
+struct LOGIN {
+    static let USER = "test_user"
+    static let PASSWORD = "Test@1"
+}
+
+struct URLS {
+    static let LOGIN_ENDPOINT = "https://bank-app-test.herokuapp.com/api/login"
 }
