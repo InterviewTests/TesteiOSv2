@@ -7,9 +7,14 @@
 
 import Foundation
 
-struct LOGIN {
+struct LOGIN_EXAMPLE {
     static let USER = "test_user"
     static let PASSWORD = "Test@1"
+    
+    let parameters: [String: String] = [
+        "user": USER,
+        "password": PASSWORD
+    ]
 }
 
 struct URLS {
