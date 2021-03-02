@@ -17,6 +17,7 @@
 		B994283A25ED427E0088A58F /* BankAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994283925ED427E0088A58F /* BankAppUITests.swift */; };
 		B994285025ED7ECE0088A58F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994284F25ED7ECE0088A58F /* Extensions.swift */; };
 		B994286025ED80DE0088A58F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B994285F25ED80DE0088A58F /* README.md */; };
+		B994286925EE7A9E0088A58F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994286825EE7A9E0088A58F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		B994283B25ED427E0088A58F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B994284F25ED7ECE0088A58F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B994285F25ED80DE0088A58F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B994286825EE7A9E0088A58F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,14 +105,11 @@
 		B994281625ED42790088A58F /* BankApp */ = {
 			isa = PBXGroup;
 			children = (
-				B994281725ED42790088A58F /* AppDelegate.swift */,
-				B994281925ED42790088A58F /* SceneDelegate.swift */,
-				B994281B25ED42790088A58F /* ViewController.swift */,
 				B994281D25ED42790088A58F /* Main.storyboard */,
+				B994286725EE794C0088A58F /* SupportingFiles */,
+				B994286D25EE7B020088A58F /* Views */,
 				B994282025ED427E0088A58F /* Assets.xcassets */,
-				B994282225ED427E0088A58F /* LaunchScreen.storyboard */,
 				B994282525ED427E0088A58F /* Info.plist */,
-				B994284F25ED7ECE0088A58F /* Extensions.swift */,
 				B994285F25ED80DE0088A58F /* README.md */,
 			);
 			path = BankApp;
@@ -132,6 +131,26 @@
 				B994283B25ED427E0088A58F /* Info.plist */,
 			);
 			path = BankAppUITests;
+			sourceTree = "<group>";
+		};
+		B994286725EE794C0088A58F /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				B994284F25ED7ECE0088A58F /* Extensions.swift */,
+				B994281725ED42790088A58F /* AppDelegate.swift */,
+				B994281925ED42790088A58F /* SceneDelegate.swift */,
+				B994282225ED427E0088A58F /* LaunchScreen.storyboard */,
+				B994286825EE7A9E0088A58F /* Constants.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		B994286D25EE7B020088A58F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B994281B25ED42790088A58F /* ViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B994286925EE7A9E0088A58F /* Constants.swift in Sources */,
 				B994285025ED7ECE0088A58F /* Extensions.swift in Sources */,
 				B994281C25ED42790088A58F /* ViewController.swift in Sources */,
 				B994281825ED42790088A58F /* AppDelegate.swift in Sources */,
