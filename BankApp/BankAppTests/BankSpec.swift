@@ -5,33 +5,38 @@
 //  Created by Adriano Rodrigues Vieira on 02/03/21.
 //
 
-import XCTest
-import Quick
-import Nimble
 import Alamofire
+import Nimble
+import Quick
+@testable import BankApp // Tenho que importar toda a pasta do projeto...
 
 class BankSpec: QuickSpec {
     override func spec() {
-        let parameters: [String: String] = [
-            "user": "test_user",
-            "password": "Test@1"
-        ]
-        let request = AF.request("https://bank-app-test.herokuapp.com/api/login",
-                                 method: .post,
-                                 parameters: parameters,
-                                 encoder: URLEncodedFormParameterEncoder(destination: .httpBody))
-        
-        
         describe("LOGIN TEST:") {
-            it("logs successfully") {
-                var statusCode = 0
+            it("should log in successfully") {
+                let headers: HTTPHeaders = [
+                    .contentType("application/json; charset=utf-8")
+                ]
+                let request = AF.request(URLS.LOGIN_ENDPOINT,
+                                         method: .post,
+                                         parameters: LOGIN_EXAMPLE.USER_PARAMETERS,
+                                         encoder: JSONParameterEncoder.default,
+                                         headers: headers)
                 
-                request.responseJSON { response in
-                    statusCode = request.response!.statusCode
-                    expect(statusCode).to(beGreaterThanOrEqualTo(200))
-                }                
+                request.responseDecodable(of: UserLoginData.self) { response in
+                    if let userLogin = response.value {
+                        if let errorCode = userLogin.error?.code {
+                            let error = ErrorMessage(from: userLogin.error!)
+                            
+                            print(error.message)
+                        } else if let userAccountName = userLogin.userAccount?.name {
+                            let userAccount = UserAccount(from: userLogin.userAccount!)
+                            
+                            expect(userAccount.name).to(equal(LOGIN_EXAMPLE.NAME))
+                        }
+                    }
+                }
             }
-        }
+        }        
     }
 }
-

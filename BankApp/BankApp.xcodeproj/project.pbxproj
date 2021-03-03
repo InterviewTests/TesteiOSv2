@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4F0767CA27BD73BE7828BF23 /* Pods_BankAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1C8BA2EFB1293DDD932B61 /* Pods_BankAppTests.framework */; };
 		B566CBCF6442B7F8B9C727E2 /* Pods_BankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801D88E621B59B62EDCED934 /* Pods_BankApp.framework */; };
+		B924094925EEF992003A386A /* BankSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEABC725EEDC1A00327488 /* BankSpec.swift */; };
+		B940AB9525EFC9850015616A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940AB9425EFC9850015616A /* Service.swift */; };
+		B9827A8225EEF4A500DCD35B /* UserLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9827A7E25EEF31B00DCD35B /* UserLoginData.swift */; };
 		B994281825ED42790088A58F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994281725ED42790088A58F /* AppDelegate.swift */; };
 		B994281A25ED42790088A58F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994281925ED42790088A58F /* SceneDelegate.swift */; };
 		B994281C25ED42790088A58F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994281B25ED42790088A58F /* ViewController.swift */; };
@@ -17,7 +20,8 @@
 		B994282425ED427E0088A58F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B994282225ED427E0088A58F /* LaunchScreen.storyboard */; };
 		B994285025ED7ECE0088A58F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994284F25ED7ECE0088A58F /* Extensions.swift */; };
 		B994286925EE7A9E0088A58F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994286825EE7A9E0088A58F /* Constants.swift */; };
-		B9BEABC825EEDC1A00327488 /* BankSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEABC725EEDC1A00327488 /* BankSpec.swift */; };
+		B9CF05E925F039A600D14CFD /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CF05E825F039A600D14CFD /* UserAccount.swift */; };
+		B9CF05ED25F039B300D14CFD /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CF05EC25F039B300D14CFD /* ErrorMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,8 @@
 		6E2041C8C5162FD942CAFCA1 /* Pods-BankApp-BankAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankApp-BankAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-BankApp-BankAppUITests/Pods-BankApp-BankAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		801D88E621B59B62EDCED934 /* Pods_BankApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF88475549FA0B1FE74EDEF /* Pods-BankAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BankAppTests/Pods-BankAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B940AB9425EFC9850015616A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		B9827A7E25EEF31B00DCD35B /* UserLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginData.swift; sourceTree = "<group>"; };
 		B994281425ED42790088A58F /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B994281725ED42790088A58F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B994281925ED42790088A58F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +60,8 @@
 		B994286825EE7A9E0088A58F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9BEABC725EEDC1A00327488 /* BankSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSpec.swift; sourceTree = "<group>"; };
 		B9BEABCF25EEDDB000327488 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9CF05E825F039A600D14CFD /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		B9CF05EC25F039B300D14CFD /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B940AB9825EFCA5F0015616A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B940AB9425EFC9850015616A /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		B9827A8525EEF4A800DCD35B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B9827A7E25EEF31B00DCD35B /* UserLoginData.swift */,
+				B9CF05E825F039A600D14CFD /* UserAccount.swift */,
+				B9CF05EC25F039B300D14CFD /* ErrorMessage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B994280B25ED42780088A58F = {
 			isa = PBXGroup;
 			children = (
@@ -123,11 +149,13 @@
 		B994281625ED42790088A58F /* BankApp */ = {
 			isa = PBXGroup;
 			children = (
+				B9827A8525EEF4A800DCD35B /* Model */,
 				B994281D25ED42790088A58F /* Main.storyboard */,
 				B994286725EE794C0088A58F /* SupportingFiles */,
 				B994286D25EE7B020088A58F /* ViewControllers */,
 				B994282025ED427E0088A58F /* Assets.xcassets */,
 				B994282525ED427E0088A58F /* Info.plist */,
+				B940AB9825EFCA5F0015616A /* Service */,
 			);
 			path = BankApp;
 			sourceTree = "<group>";
@@ -347,9 +375,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B994286925EE7A9E0088A58F /* Constants.swift in Sources */,
+				B940AB9525EFC9850015616A /* Service.swift in Sources */,
+				B9CF05E925F039A600D14CFD /* UserAccount.swift in Sources */,
+				B9CF05ED25F039B300D14CFD /* ErrorMessage.swift in Sources */,
 				B994285025ED7ECE0088A58F /* Extensions.swift in Sources */,
 				B994281C25ED42790088A58F /* ViewController.swift in Sources */,
 				B994281825ED42790088A58F /* AppDelegate.swift in Sources */,
+				B9827A8225EEF4A500DCD35B /* UserLoginData.swift in Sources */,
 				B994281A25ED42790088A58F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,7 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9BEABC825EEDC1A00327488 /* BankSpec.swift in Sources */,
+				B924094925EEF992003A386A /* BankSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
