@@ -52,3 +52,19 @@ struct REGEX_PATTERNS {
     static let EMAIL = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     static let PASSWORD = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
 }
+
+struct ALERT_LABELS {
+    static let TITLE = "Algo estranho ocorreu..."
+    static let ACTION_BUTTON_TITLE = "Vou verificar!"
+}
+
+struct PHRASES {
+    static let INITIAL = "Parece que:\n\n"
+    static let USER_INVALID = "O usuário informado está em um padrão inválido\n"
+    static let PASSWORD_INVALID = "A senha informada está em um padrão inválido\n"
+    
+    static let CARRIAGE_RETURN = "\n"
+    
+    static let USER_FIELD_BLANK = "O campo 'user' está em branco\n"
+    static let PASSWORD_FIELD_BLANK = "O campo 'password' está em branco\n"    
+}
