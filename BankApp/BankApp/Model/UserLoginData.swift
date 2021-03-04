@@ -25,7 +25,7 @@ struct UserLoginData: Codable {
     }
 }
 
-struct UserLoginCredentialsData: Encodable {
+struct UserLoginCredentialsParameters: Encodable {
     let user: String
     let password: String    
 }
