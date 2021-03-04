@@ -23,8 +23,12 @@ class LoginViewController: UIViewController {
                                                                  passwordText: passwordText?.text) {
             self.present(alert, animated: true, completion: nil)
         } else {
-            print("Pode entrar, user \(userText.text!) \(passwordText.text!)")
+            performSegue(withIdentifier: IDENTIFIERS.SEGUE_NAME, sender: nil)
         }
-    }    
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
 }
 

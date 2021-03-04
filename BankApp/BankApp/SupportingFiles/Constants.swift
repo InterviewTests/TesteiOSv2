@@ -68,3 +68,10 @@ struct PHRASES {
     static let USER_FIELD_BLANK = "O campo 'user' está em branco\n"
     static let PASSWORD_FIELD_BLANK = "O campo 'password' está em branco\n"    
 }
+
+struct IDENTIFIERS {
+    static let CURRENCY_VIEWCONTROLLER = "currency"
+    static let STORYBOARD_NAME = "Main"
+    static let SEGUE_NAME = "openCurrencyView"
+    
+}
