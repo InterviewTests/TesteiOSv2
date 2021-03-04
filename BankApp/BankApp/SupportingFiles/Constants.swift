@@ -29,6 +29,7 @@ struct TESTING_DATA {
     static let USER_PARAMETERS = UserLoginCredentialsParameters(user: USER_EXAMPLE.USER, password: USER_EXAMPLE.PASSWORD)
     
     static let VALID_CPF = "231.481.700-16"
+    static let VALID_CPF_WITH_NO_POINTS_AND_DASH = "23148170016"
     static let INVALID_CPF_NUMBERS_EQUAL = "111.111.111-11"
     static let INVALID_CPF_MISSING_NUMBER = "231.481.700-1"
     static let INVALID_CPF_JUNK_TEXT = "Mombojombo"

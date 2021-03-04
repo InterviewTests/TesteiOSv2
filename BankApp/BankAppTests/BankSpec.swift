@@ -48,6 +48,11 @@ class BankSpec: QuickSpec {
                     expect(LoginValidation.validateCpf(TESTING_DATA.VALID_CPF)).to(beTrue())
                 }
                 
+                it("should return TRUE when testing a correct CPF pattern without points and dash:") {
+                    expect(LoginValidation.validateCpf(TESTING_DATA.VALID_CPF_WITH_NO_POINTS_AND_DASH)).to(beTrue())
+                }
+                
+                
                 it("should return FALSE when testing a correct CPF pattern but all numbers equal:") {
                     expect(LoginValidation.validateCpf(TESTING_DATA.INVALID_CPF_NUMBERS_EQUAL)).to(beFalse())
                 }
