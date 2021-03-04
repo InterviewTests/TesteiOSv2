@@ -13,8 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        self.dismissKey()
-                                                                        
+        self.dismissKey()                                                                        
     }
 }
 
