@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserAccount {
+struct UserAccount: FetchedData {
     let userId: Int
     let name: String
     let bankAccount: String

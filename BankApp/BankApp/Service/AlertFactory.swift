@@ -11,12 +11,16 @@ import UIKit
 struct AlertFactory {
     private init() {}
     
+    static func createAlertOfUserInvalid(withMessage message: String, andCode code: Int) -> UIAlertController {
+        return Self.createAlert(withMessage: "\(code) - \(message)")
+    }
+    
     static func createAlertBasedOnContentsOf(userText: String?, passwordText: String?) -> UIAlertController? {
         var phrase = PHRASES.INITIAL
         
-        if let userNameString = userText, let userPasswordString = passwordText {
-            let isUserValid = LoginValidation.validateEmail(userNameString) || LoginValidation.validateCpf(userNameString)
-            let isPasswordValid = LoginValidation.validatePassword(userPasswordString)
+        if !userText!.isEmpty && !passwordText!.isEmpty {
+            let isUserValid = LoginValidation.validateEmail(userText!) || LoginValidation.validateCpf(userText!)
+            let isPasswordValid = LoginValidation.validatePassword(passwordText!)
             
             if (!isUserValid || !isPasswordValid) {
                 if !isUserValid {
@@ -34,10 +38,10 @@ struct AlertFactory {
                 return nil
             }
         } else {
-            if userText == nil {
+            if userText!.isEmpty {
                 phrase += PHRASES.USER_FIELD_BLANK
             }
-            if passwordText == nil {
+            if passwordText!.isEmpty {
                 phrase += PHRASES.PASSWORD_FIELD_BLANK
             }
             return createAlert(withMessage: phrase)

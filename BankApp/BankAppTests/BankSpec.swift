@@ -17,7 +17,7 @@ class BankSpec: QuickSpec {
                 let headers: HTTPHeaders = [
                     .contentType("application/json; charset=utf-8")
                 ]
-                let request = AF.request(URLS.LOGIN_ENDPOINT,
+                let request = AF.request(REQUESTS.LOGIN_ENDPOINT,
                                          method: .post,
                                          parameters: TESTING_DATA.USER_PARAMETERS,
                                          encoder: JSONParameterEncoder.default,

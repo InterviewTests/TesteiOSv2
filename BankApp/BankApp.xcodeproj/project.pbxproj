@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F0767CA27BD73BE7828BF23 /* Pods_BankAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1C8BA2EFB1293DDD932B61 /* Pods_BankAppTests.framework */; };
 		B566CBCF6442B7F8B9C727E2 /* Pods_BankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801D88E621B59B62EDCED934 /* Pods_BankApp.framework */; };
+		B91689B125F1B3FD00B3385F /* FetchedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91689B025F1B3FD00B3385F /* FetchedData.swift */; };
 		B924094925EEF992003A386A /* BankSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEABC725EEDC1A00327488 /* BankSpec.swift */; };
 		B96EB7B925F12CD30072D4A2 /* LoginValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96EB7B825F12CD30072D4A2 /* LoginValidation.swift */; };
 		B96EB7CD25F16A5C0072D4A2 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96EB7CC25F16A5C0072D4A2 /* AlertFactory.swift */; };
@@ -46,6 +47,7 @@
 		6E2041C8C5162FD942CAFCA1 /* Pods-BankApp-BankAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankApp-BankAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-BankApp-BankAppUITests/Pods-BankApp-BankAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		801D88E621B59B62EDCED934 /* Pods_BankApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF88475549FA0B1FE74EDEF /* Pods-BankAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BankAppTests/Pods-BankAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B91689B025F1B3FD00B3385F /* FetchedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedData.swift; sourceTree = "<group>"; };
 		B96EB7B825F12CD30072D4A2 /* LoginValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidation.swift; sourceTree = "<group>"; };
 		B96EB7CC25F16A5C0072D4A2 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		B96EB7D725F172F80072D4A2 /* UserCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCurrencyViewController.swift; sourceTree = "<group>"; };
@@ -121,12 +123,21 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		B97A15E525F1C18200B4B3CB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B994281D25ED42790088A58F /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		B9827A8525EEF4A800DCD35B /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B9827A7E25EEF31B00DCD35B /* UserLoginData.swift */,
 				B9CF05E825F039A600D14CFD /* UserAccount.swift */,
 				B9CF05EC25F039B300D14CFD /* ErrorMessage.swift */,
+				B91689B025F1B3FD00B3385F /* FetchedData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				B9827A8525EEF4A800DCD35B /* Model */,
-				B994281D25ED42790088A58F /* Main.storyboard */,
+				B97A15E525F1C18200B4B3CB /* Storyboards */,
 				B994286725EE794C0088A58F /* SupportingFiles */,
 				B994286D25EE7B020088A58F /* ViewControllers */,
 				B994282025ED427E0088A58F /* Assets.xcassets */,
@@ -387,6 +398,7 @@
 				B994285025ED7ECE0088A58F /* Extensions.swift in Sources */,
 				B994281C25ED42790088A58F /* LoginViewController.swift in Sources */,
 				B994281825ED42790088A58F /* AppDelegate.swift in Sources */,
+				B91689B125F1B3FD00B3385F /* FetchedData.swift in Sources */,
 				B9827A8225EEF4A500DCD35B /* UserLoginData.swift in Sources */,
 				B96EB7D825F172F80072D4A2 /* UserCurrencyViewController.swift in Sources */,
 				B96EB7B925F12CD30072D4A2 /* LoginValidation.swift in Sources */,

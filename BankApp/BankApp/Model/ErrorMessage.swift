@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ErrorMessage {
+struct ErrorMessage: FetchedData {
     let code: Int
     let message: String
     

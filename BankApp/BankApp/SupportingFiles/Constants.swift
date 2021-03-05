@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 struct USER_EXAMPLE {
     static let USER = "test_user"
@@ -21,13 +22,18 @@ struct USER_EXAMPLE {
                                                                                               balance: 0.0))            
 }
 
-struct URLS {
+struct REQUESTS {
     static let LOGIN_ENDPOINT = "https://bank-app-test.herokuapp.com/api/login/"
+    static let HEADERS: HTTPHeaders = [
+        .contentType("application/json; charset=utf-8")
+    ]
+    
+    static let POST_METHOD: HTTPMethod = .post
+    static let GET_METHOD: HTTPMethod = .get    
 }
 
 struct TESTING_DATA {
-    static let USER_PARAMETERS = UserLoginCredentialsParameters(user: USER_EXAMPLE.USER, password: USER_EXAMPLE.PASSWORD)
-    
+    static let USER_PARAMETERS = UserLoginCredentialsParameters(user: USER_EXAMPLE.USER, password: USER_EXAMPLE.PASSWORD)    
     static let VALID_CPF = "231.481.700-16"
     static let VALID_CPF_WITH_NO_POINTS_AND_DASH = "23148170016"
     static let INVALID_CPF_NUMBERS_EQUAL = "111.111.111-11"
@@ -60,8 +66,8 @@ struct ALERT_LABELS {
 
 struct PHRASES {
     static let INITIAL = "Parece que:\n\n"
-    static let USER_INVALID = "O usuário informado está em um padrão inválido\n"
-    static let PASSWORD_INVALID = "A senha informada está em um padrão inválido\n"
+    static let USER_INVALID = "O usuário informado não está no padrão CPF ou email\n"
+    static let PASSWORD_INVALID = "A senha informada não possui o padrao: no mínimo 6 dígitos, sendo ao menos 1 caracter especial, uma letra maiúscula e um número\n"
     
     static let CARRIAGE_RETURN = "\n"
     
