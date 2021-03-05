@@ -13,6 +13,7 @@ struct USER_EXAMPLE {
     static let PASSWORD = "Test@1"
     static let NAME = "Jose da Silva Teste"
         
+    static let USER_ID = 1
     static let MOCK_USERLOGIN_DATA = UserLoginData(error: UserLoginData.ErrorData(code: 100,
                                                                                   message: "Your code is wrong"),
                                                    userAccount: UserLoginData.UserAccountData(userId: 123,
@@ -24,6 +25,7 @@ struct USER_EXAMPLE {
 
 struct REQUESTS {
     static let LOGIN_ENDPOINT = "https://bank-app-test.herokuapp.com/api/login/"
+    static let STATEMENTS_ENDPOINT = "https://bank-app-test.herokuapp.com/api/statements/"
     static let HEADERS: HTTPHeaders = [
         .contentType("application/json; charset=utf-8")
     ]

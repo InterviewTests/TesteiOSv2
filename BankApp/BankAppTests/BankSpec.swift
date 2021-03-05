@@ -42,6 +42,30 @@ class BankSpec: QuickSpec {
             }
         }
         
+        
+        describe("FETCHING DATA TEST:") {
+            it("should print the number of user's transaction:") {
+                let request = AF.request()
+                
+                waitUntil(timeout: DispatchTimeInterval.seconds(10)) { done in
+                    request.responseDecodable(of: UserLoginData.self) { response in
+                        if let userLogin = response.value {
+                            if (userLogin.error?.code) != nil {
+                                let error = ErrorMessage(from: userLogin.error!)
+                                
+                                print(error.message)
+                            } else if (userLogin.userAccount?.name) != nil {
+                                let userAccount = UserAccount(from: userLogin.userAccount!)
+                                
+                                expect(userAccount.name).to(equal(USER_EXAMPLE.NAME))
+                                done()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         describe("USERNAME PATTERN TEST") {
             context("USERNAME CPF") {
                 it("should return TRUE when testing a correct CPF pattern:") {

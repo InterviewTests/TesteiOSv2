@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
         self.dismissKey()
     }
         
-    @IBAction func loginButtonPressed(_ sender: UIButton) {
+    @IBAction func loginButtonPressed(_ sender: UIButton) {        
         if let alert = AlertFactory.createAlertBasedOnContentsOf(userText: userText?.text,
                                                                  passwordText: passwordText?.text) {
             self.present(alert, animated: true, completion: nil)
@@ -29,15 +29,15 @@ class LoginViewController: UIViewController {
                 self.resultRequest = result
                 
             }
-                        
-            Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in                
-                if let userAccount = self.resultRequest as? UserAccount {
-                    self.performSegue(withIdentifier: IDENTIFIERS.SEGUE_NAME, sender: userAccount)
-                } else if let errorMessage = self.resultRequest as? ErrorMessage {
-                    let userInvalidAlert = AlertFactory.createAlertOfUserInvalid(withMessage: errorMessage.message, andCode: errorMessage.code)
-                    
-                    self.present(userInvalidAlert, animated: true, completion: nil)
-                }
+             
+            self.createSpinnerView()
+            
+            if let userAccount = self.resultRequest as? UserAccount {
+                self.performSegue(withIdentifier: IDENTIFIERS.SEGUE_NAME, sender: userAccount)
+            } else if let errorMessage = self.resultRequest as? ErrorMessage {
+                let userInvalidAlert = AlertFactory.createAlertOfUserInvalid(withMessage: errorMessage.message, andCode: errorMessage.code)
+                
+                self.present(userInvalidAlert, animated: true, completion: nil)
             }
         }
     }
@@ -64,6 +64,21 @@ class LoginViewController: UIViewController {
                     }
                 }
             }
+    }
+    
+    private func createSpinnerView() {
+        let child = SpinnerViewController()
+        
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
