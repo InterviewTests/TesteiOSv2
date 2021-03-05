@@ -8,7 +8,7 @@
 import UIKit
 
 class SpinnerViewController: UIViewController {
-    var spinner = UIActivityIndicatorView(style: .whiteLarge)
+    var spinner = UIActivityIndicatorView(style: .large)
 
     override func loadView() {
         view = UIView()
@@ -24,8 +24,5 @@ class SpinnerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-    
-    
 }

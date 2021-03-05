@@ -213,11 +213,31 @@
                                     <constraint firstAttribute="trailing" secondItem="CDh-Cq-tBQ" secondAttribute="trailing" constant="13" id="v6O-SV-f2R"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORI-Nx-Mkd">
+                                <rect key="frame" x="18" y="246" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Iwr-Tp-Gnu"/>
+                                    <constraint firstAttribute="width" constant="100" id="Uaq-3i-p1a"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Recentes">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xkd-y7-E4W"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ORI-Nx-Mkd" firstAttribute="top" secondItem="dLi-zD-Si5" secondAttribute="bottom" constant="14" id="B8m-tm-wra"/>
+                            <constraint firstItem="ORI-Nx-Mkd" firstAttribute="leading" secondItem="xkd-y7-E4W" secondAttribute="leading" constant="18" id="aRt-Ou-puw"/>
                             <constraint firstItem="dLi-zD-Si5" firstAttribute="top" secondItem="0at-Vs-ZUo" secondAttribute="top" id="cry-vq-dXF"/>
+                            <constraint firstItem="xkd-y7-E4W" firstAttribute="trailing" secondItem="ORI-Nx-Mkd" secondAttribute="trailing" constant="257" id="f3d-cy-8y9"/>
                             <constraint firstItem="dLi-zD-Si5" firstAttribute="leading" secondItem="0at-Vs-ZUo" secondAttribute="leading" id="zzh-1F-riC"/>
                         </constraints>
                     </view>

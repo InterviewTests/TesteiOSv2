@@ -33,9 +33,7 @@ class LoginViewController: UIViewController {
                                                                  passwordText: passwordText?.text) {
             self.present(alert, animated: true, completion: nil)
         } else {
-            self.fetchUserWith(username: self.userText.text!, password: self.passwordText.text!) { result in
-                //self.createSpinnerView()
-                
+            self.fetchUserWith(username: self.userText.text!, password: self.passwordText.text!) { result in                
                 self.resultRequest = result
             }
             
@@ -72,22 +70,7 @@ class LoginViewController: UIViewController {
                 }
             }
     }
-    
-//    private func createSpinnerView() {
-//        let child = SpinnerViewController()
-//
-//        addChild(child)
-//        child.view.frame = view.frame
-//        view.addSubview(child.view)
-//        child.didMove(toParent: self)
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-//            child.willMove(toParent: nil)
-//            child.view.removeFromSuperview()
-//            child.removeFromParent()
-//        }
-//    }
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let userAccount = sender as? UserAccount {
             if let userCurrencyViewController = segue.destination as? UserCurrencyViewController {
