@@ -22,7 +22,7 @@ struct UserStatementViewModel {
     
     
     private static func convertDateUStoBR(_ USdate: String) -> Date {
-        return DateConverter.convertUSDateStringToBRDate(USdate) ?? Date()
+        return DateConverter.convertUSDateStringToBRDate(USdate) ?? Date()                
     }
     
     private static func convertValueToBRCurrencyString(_ value: Double) -> String {
