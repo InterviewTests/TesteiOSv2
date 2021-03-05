@@ -21,7 +21,8 @@ struct UserAccountViewModel {
         let switchedAgency = userAccount.bankAccount
         
         self.accountWithAgency = Self.createFormattedAccountWithAgencyString(account: switchedBankAccount, agency: switchedAgency)
-        self.amount = "R$ \(userAccount.balance)"
+        let amount = CurrencyConverter.convertUSNumberValueToBRStringValue(userAccount.balance)
+        self.amount = amount.replacingOccurrences(of: " ", with: "")        
     }
     
     private static func createFormattedAccountWithAgencyString(account: String,

@@ -20,6 +20,13 @@ class LoginViewController: UIViewController {
         
         self.dismissKey()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        userText.text = ""
+        passwordText.text = ""
+    }
         
     @IBAction func loginButtonPressed(_ sender: UIButton) {        
         if let alert = AlertFactory.createAlertBasedOnContentsOf(userText: userText?.text,
@@ -27,7 +34,8 @@ class LoginViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         } else {
             self.fetchUserWith(username: self.userText.text!, password: self.passwordText.text!) { result in
-                self.createSpinnerView()
+                //self.createSpinnerView()
+                
                 self.resultRequest = result
             }
             
@@ -65,20 +73,20 @@ class LoginViewController: UIViewController {
             }
     }
     
-    private func createSpinnerView() {
-        let child = SpinnerViewController()
-        
-        addChild(child)
-        child.view.frame = view.frame
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-            child.willMove(toParent: nil)
-            child.view.removeFromSuperview()
-            child.removeFromParent()
-        }
-    }
+//    private func createSpinnerView() {
+//        let child = SpinnerViewController()
+//
+//        addChild(child)
+//        child.view.frame = view.frame
+//        view.addSubview(child.view)
+//        child.didMove(toParent: self)
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+//            child.willMove(toParent: nil)
+//            child.view.removeFromSuperview()
+//            child.removeFromParent()
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let userAccount = sender as? UserAccount {

@@ -29,6 +29,10 @@ class UserCurrencyViewController: UIViewController {
     }
     
     
+    @IBAction func exitButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
     
     private func fetchStatements() {
         if let userId = userAccount?.userId {
