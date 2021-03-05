@@ -11,10 +11,11 @@ import Alamofire
 class UserCurrencyViewController: UIViewController {
     @IBOutlet weak var testLabel: UILabel!
     var userAccount: UserAccount?
+    var statements: [UserStatementViewModel]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationItem.setHidesBackButton(true, animated: true)        
                 
         if let userId = userAccount?.userId {
             let url = "\(REQUESTS.STATEMENTS_ENDPOINT)\(userId)"
@@ -25,13 +26,14 @@ class UserCurrencyViewController: UIViewController {
                 if let statementList = response.value {
                     let statements = statementList.statementList
                     
-                    for statement in statements {
-                        print("\(statement.description) \(statement.title) \(statement.value) \(statement.date)")
-                    }
+                    DispatchQueue.main.async {
+                        for statement in statements {
+                            let userStatementViewModel = UserStatementViewModel(from: statement)
+                            self.statements?.append(userStatementViewModel)
+                        }
+                    }                    
                 }
             }
-            
-
         }
     }
 }

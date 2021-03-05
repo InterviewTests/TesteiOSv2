@@ -130,7 +130,7 @@ class BankSpec: QuickSpec {
             it("should return FALSE when testing a password with 6 digits but no capitalized letter") {
                 expect(LoginValidation.validatePassword(TESTING_DATA.INVALID_PASSWORD_NO_CAPITALIZED)).to(beFalse())
             }
-        }
+        }        
     }
 }
 

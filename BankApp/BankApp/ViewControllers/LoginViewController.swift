@@ -20,17 +20,16 @@ class LoginViewController: UIViewController {
         self.dismissKey()
     }
         
-    @IBAction func loginButtonPressed(_ sender: UIButton) {        
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        print("Audrey bitoni")
         if let alert = AlertFactory.createAlertBasedOnContentsOf(userText: userText?.text,
                                                                  passwordText: passwordText?.text) {
             self.present(alert, animated: true, completion: nil)
         } else {
             self.fetchUserWith(username: self.userText.text!, password: self.passwordText.text!) { result in
+                self.createSpinnerView()
                 self.resultRequest = result
-                
             }
-             
-            self.createSpinnerView()
             
             if let userAccount = self.resultRequest as? UserAccount {
                 self.performSegue(withIdentifier: IDENTIFIERS.SEGUE_NAME, sender: userAccount)

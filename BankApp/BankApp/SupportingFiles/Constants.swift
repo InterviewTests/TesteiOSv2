@@ -52,7 +52,7 @@ struct TESTING_DATA {
     static let INVALID_PASSWORD_NO_NUMBER = "Testi!"
     static let INVALID_PASSWORD_NO_CHARACTER = "Test51"
     static let INVALID_PASSWORD_NO_CAPITALIZED = "test5!"
-    static let INVALID_PASSWORD_BLANK = ""
+    static let INVALID_PASSWORD_BLANK = ""        
 }
 
 struct REGEX_PATTERNS {
