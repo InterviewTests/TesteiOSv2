@@ -44,23 +44,16 @@ class BankSpec: QuickSpec {
         
         
         describe("FETCHING DATA TEST:") {
-            it("should print the number of user's transaction:") {
-                let request = AF.request()
+            it("should assert the number of user's statement:") {
+                let statementsEndpoint = "\(REQUESTS.STATEMENTS_ENDPOINT)\(USER_EXAMPLE.USER_ID)"
+                let request = AF.request(statementsEndpoint)
                 
-                waitUntil(timeout: DispatchTimeInterval.seconds(10)) { done in
-                    request.responseDecodable(of: UserLoginData.self) { response in
-                        if let userLogin = response.value {
-                            if (userLogin.error?.code) != nil {
-                                let error = ErrorMessage(from: userLogin.error!)
-                                
-                                print(error.message)
-                            } else if (userLogin.userAccount?.name) != nil {
-                                let userAccount = UserAccount(from: userLogin.userAccount!)
-                                
-                                expect(userAccount.name).to(equal(USER_EXAMPLE.NAME))
-                                done()
-                            }
+                waitUntil(timeout: DispatchTimeInterval.seconds(15)) { done in
+                    request.responseDecodable(of: StatementsData.self) { response in
+                        if let statements = response.value {
+                            expect(statements.statementList.count).to(equal(9))
                         }
+                        done()
                     }
                 }
             }

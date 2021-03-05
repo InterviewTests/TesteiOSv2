@@ -21,8 +21,14 @@ class UserCurrencyViewController: UIViewController {
                     
             let request = AF.request(url)
                     
-            request.responseJSON { data in
-                print(data.debugDescription)
+            request.responseDecodable(of: StatementsData.self) { response in
+                if let statementList = response.value {
+                    let statements = statementList.statementList
+                    
+                    for statement in statements {
+                        print("\(statement.description) \(statement.title) \(statement.value) \(statement.date)")
+                    }
+                }
             }
             
 
