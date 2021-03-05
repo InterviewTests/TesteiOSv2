@@ -21,8 +21,7 @@ class LoginViewController: UIViewController {
         self.dismissKey()
     }
         
-    @IBAction func loginButtonPressed(_ sender: UIButton) {
-        print("Audrey bitoni")
+    @IBAction func loginButtonPressed(_ sender: UIButton) {        
         if let alert = AlertFactory.createAlertBasedOnContentsOf(userText: userText?.text,
                                                                  passwordText: passwordText?.text) {
             self.present(alert, animated: true, completion: nil)

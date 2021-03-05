@@ -166,8 +166,8 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCp-vP-9hd">
-                                        <rect key="frame" x="18" y="186" width="184" height="29"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCp-vP-9hd">
+                                        <rect key="frame" x="18" y="185" width="184" height="29"/>
                                         <attributedString key="attributedText">
                                             <fragment content="R$1.000,00">
                                                 <attributes>
@@ -219,6 +219,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="SVg-VN-bob"/>
+                    <connections>
+                        <outlet property="userAccountAndAgencyLabel" destination="Ci4-Hc-KTR" id="1n2-xn-E3i"/>
+                        <outlet property="userAmountLabel" destination="sCp-vP-9hd" id="EYQ-vi-crC"/>
+                        <outlet property="userNameLabel" destination="uqK-ws-oAr" id="Qpy-9R-OlY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5a4-p1-Epj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,7 +9,10 @@ import UIKit
 import Alamofire
 
 class UserCurrencyViewController: UIViewController {
-    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userAccountAndAgencyLabel: UILabel!
+    @IBOutlet weak var userAmountLabel: UILabel!
+    
     var userAccount: UserAccount?
     var statements: [UserStatementViewModel]?
             
@@ -17,8 +20,15 @@ class UserCurrencyViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
                     
+        let userViewModel = UserAccountViewModel(from: userAccount!)
+        self.userNameLabel.text = userViewModel.userName
+        self.userAccountAndAgencyLabel.text = userViewModel.accountWithAgency
+        self.userAmountLabel.text = userViewModel.amount        
+        
         fetchStatements()                
     }
+    
+    
     
     private func fetchStatements() {
         if let userId = userAccount?.userId {
