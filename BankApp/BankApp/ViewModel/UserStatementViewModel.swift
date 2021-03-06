@@ -10,7 +10,7 @@ import Foundation
 struct UserStatementViewModel {
     let title: String
     let description: String
-    let date: Date // inverter para padrao brasileiro
+    let date: String
     let value: String
         
     init(from data: StatementsData.StatementData) {
@@ -21,8 +21,8 @@ struct UserStatementViewModel {
     }
     
     
-    private static func convertDateUStoBR(_ USdate: String) -> Date {
-        return DateConverter.convertUSDateStringToBRDate(USdate) ?? Date()                
+    private static func convertDateUStoBR(_ USdate: String) -> String {
+        return DateConverter.convertUSDateStringToBRDateString(USdate)                
     }
     
     private static func convertValueToBRCurrencyString(_ value: Double) -> String {

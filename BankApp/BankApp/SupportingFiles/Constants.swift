@@ -81,5 +81,5 @@ struct IDENTIFIERS {
     static let CURRENCY_VIEWCONTROLLER = "currency"
     static let STORYBOARD_NAME = "Main"
     static let SEGUE_NAME = "openCurrencyView"
-    
+    static let TABLE_VIEW_CELL = "StatementTableViewCell"    
 }

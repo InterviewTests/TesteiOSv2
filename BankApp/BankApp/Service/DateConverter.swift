@@ -10,13 +10,13 @@ import Foundation
 struct DateConverter {
     private init() {}
     
-    static func convertUSDateStringToBRDate(_ dateString: String) -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+    static func convertUSDateStringToBRDateString(_ dateString: String) -> String {
+        let year = dateString.prefix(4)
+        let month = dateString.prefix(7).suffix(2)
+        let day = dateString.suffix(2)
         
-        let date = dateFormatter.date(from: dateString)!
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let dateConvertedString = "\(day)/\(month)/\(year)"
         
-        return dateFormatter.date(from: dateFormatter.string(from: date))
+        return dateConvertedString
     }
 }

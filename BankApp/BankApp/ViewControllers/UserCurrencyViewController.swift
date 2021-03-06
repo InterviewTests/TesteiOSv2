@@ -12,13 +12,20 @@ class UserCurrencyViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userAccountAndAgencyLabel: UILabel!
     @IBOutlet weak var userAmountLabel: UILabel!
+        
+    @IBOutlet weak var tableView: UITableView!
     
     var userAccount: UserAccount?
-    var statements: [UserStatementViewModel]?
+    var statements: [UserStatementViewModel] = []
             
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        self.tableView.register(UINib(nibName: IDENTIFIERS.TABLE_VIEW_CELL, bundle: nil), forCellReuseIdentifier: IDENTIFIERS.TABLE_VIEW_CELL)
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
                     
         let userViewModel = UserAccountViewModel(from: userAccount!)
         self.userNameLabel.text = userViewModel.userName
@@ -44,14 +51,40 @@ class UserCurrencyViewController: UIViewController {
                 if let statementList = response.value {
                     let statements = statementList.statementList
                     
+                    for statement in statements {
+                        let userStatementViewModel = UserStatementViewModel(from: statement)
+                        self.statements.append(userStatementViewModel)
+                        
+                        print(userStatementViewModel)
+                    }
+                    
                     DispatchQueue.main.async {
-                        for statement in statements {
-                            let userStatementViewModel = UserStatementViewModel(from: statement)
-                            self.statements?.append(userStatementViewModel)
-                        }
+                        self.tableView.reloadData()
                     }
                 }
             }
         }
+    }
+}
+
+extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.statements.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIERS.TABLE_VIEW_CELL, for: indexPath) as? StatementTableViewCell {
+
+            let currentStatement = self.statements[indexPath.row]
+            
+            cell.titleLabel.text = currentStatement.title
+            cell.descriptionLabel.text = currentStatement.description
+            cell.dateLabel.text = currentStatement.date
+            cell.valueLabel.text = currentStatement.value
+                
+            return cell
+        }
+                        
+        return UITableViewCell()
     }
 }
