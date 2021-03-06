@@ -11,3 +11,4 @@
 * No retorno da requisição de login, os dados do cliente relativos a conta (**bankAccount** e **agency**) estão invertidos: normalmente, a agência é o número menor e a conta é o número maior.
 
 
+* Mesmo não estando nas descrições de *layout* do projeto, tomei a liberdade de , no extrato do cliente, indicar em vermelho os débitos e em verde os créditos. 

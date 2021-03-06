@@ -54,8 +54,6 @@ class UserCurrencyViewController: UIViewController {
                     for statement in statements {
                         let userStatementViewModel = UserStatementViewModel(from: statement)
                         self.statements.append(userStatementViewModel)
-                        
-                        print(userStatementViewModel)
                     }
                     
                     DispatchQueue.main.async {
@@ -81,10 +79,19 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
             cell.descriptionLabel.text = currentStatement.description
             cell.dateLabel.text = currentStatement.date
             cell.valueLabel.text = currentStatement.value
+            cell.valueLabel.textColor = setLabelColorBasedOn(value: currentStatement.value)
                 
             return cell
         }
                         
         return UITableViewCell()
+    }
+    
+    private func setLabelColorBasedOn(value: String) -> UIColor {
+        if value.contains("-") {
+            return UIColor.red
+        }
+        
+        return UIColor.green
     }
 }
