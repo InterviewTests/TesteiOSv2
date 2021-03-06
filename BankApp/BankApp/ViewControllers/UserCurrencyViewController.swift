@@ -21,7 +21,7 @@ class UserCurrencyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
+                
         self.tableView.register(UINib(nibName: IDENTIFIERS.TABLE_VIEW_CELL, bundle: nil), forCellReuseIdentifier: IDENTIFIERS.TABLE_VIEW_CELL)
         
         self.tableView.dataSource = self

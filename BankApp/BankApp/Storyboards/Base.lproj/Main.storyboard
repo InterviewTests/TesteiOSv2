@@ -165,7 +165,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCp-vP-9hd">
                                         <rect key="frame" x="18" y="186" width="128" height="29"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="R$1.000,00">
+                                            <fragment content="R$1.000,01">
                                                 <attributes>
                                                     <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="25" name="HelveticaNeue-Light"/>
@@ -191,20 +191,20 @@
                                     <constraint firstItem="Ci4-Hc-KTR" firstAttribute="leading" secondItem="dLi-zD-Si5" secondAttribute="leading" constant="18" id="7Mf-wv-BLF"/>
                                     <constraint firstItem="sCp-vP-9hd" firstAttribute="top" secondItem="Lyu-QZ-KB7" secondAttribute="bottom" constant="7" id="Dyh-0U-u7v"/>
                                     <constraint firstAttribute="bottom" secondItem="CDh-Cq-tBQ" secondAttribute="bottom" constant="165" id="HFL-Xi-ZJd"/>
-                                    <constraint firstAttribute="width" constant="375" id="KNF-Pq-tIl"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="KNF-Pq-tIl"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uqK-ws-oAr" secondAttribute="trailing" symbolic="YES" id="Old-Vl-Q9P"/>
                                     <constraint firstItem="uqK-ws-oAr" firstAttribute="leading" secondItem="dLi-zD-Si5" secondAttribute="leading" constant="18" id="UXy-OJ-Phx"/>
                                     <constraint firstItem="jAw-Cr-oKa" firstAttribute="top" secondItem="uqK-ws-oAr" secondAttribute="bottom" constant="28" id="Uve-BZ-wph"/>
                                     <constraint firstItem="jAw-Cr-oKa" firstAttribute="leading" secondItem="dLi-zD-Si5" secondAttribute="leading" constant="18" id="WTO-h8-rzQ"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jAw-Cr-oKa" secondAttribute="trailing" symbolic="YES" id="YWc-7S-pOv"/>
                                     <constraint firstItem="sCp-vP-9hd" firstAttribute="leading" secondItem="dLi-zD-Si5" secondAttribute="leading" constant="18" id="a2Q-2b-qr1"/>
-                                    <constraint firstAttribute="height" constant="232" id="b6x-fs-Wrv"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="232" id="b6x-fs-Wrv"/>
                                     <constraint firstItem="Ci4-Hc-KTR" firstAttribute="top" secondItem="jAw-Cr-oKa" secondAttribute="bottom" constant="6" id="iI3-lr-GKM"/>
                                     <constraint firstItem="Lyu-QZ-KB7" firstAttribute="leading" secondItem="dLi-zD-Si5" secondAttribute="leading" constant="18" id="m7S-Oe-bqX"/>
                                     <constraint firstAttribute="bottom" secondItem="sCp-vP-9hd" secondAttribute="bottom" constant="17" id="nB9-pj-aSS"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lyu-QZ-KB7" secondAttribute="trailing" symbolic="YES" id="oCZ-ji-hJR"/>
                                     <constraint firstItem="CDh-Cq-tBQ" firstAttribute="top" secondItem="dLi-zD-Si5" secondAttribute="top" constant="40" id="q2q-qn-1Bn"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sCp-vP-9hd" secondAttribute="trailing" symbolic="YES" id="qlP-Ld-Hf7"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sCp-vP-9hd" secondAttribute="trailing" constant="20" symbolic="YES" id="qlP-Ld-Hf7"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ci4-Hc-KTR" secondAttribute="trailing" symbolic="YES" id="rXp-BE-B3n"/>
                                     <constraint firstAttribute="trailing" secondItem="CDh-Cq-tBQ" secondAttribute="trailing" constant="13" id="v6O-SV-f2R"/>
                                 </constraints>
@@ -225,13 +225,13 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ut-YS-10z">
+                            <tableView clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ut-YS-10z">
                                 <rect key="frame" x="0.0" y="274" width="375" height="373"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="373" id="lJH-fA-XTR"/>
-                                    <constraint firstAttribute="width" constant="375" id="qKd-n2-L8j"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="373" id="ovi-Hm-smg"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="r7P-Dp-7Rm"/>
                                 </constraints>
+                                <color key="sectionIndexBackgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <sections/>
                             </tableView>
                         </subviews>
@@ -249,9 +249,7 @@
                             <constraint firstItem="8ut-YS-10z" firstAttribute="top" secondItem="ORI-Nx-Mkd" secondAttribute="bottom" constant="8" id="bKd-nx-XNt"/>
                             <constraint firstItem="8ut-YS-10z" firstAttribute="trailing" secondItem="xkd-y7-E4W" secondAttribute="trailing" id="cCj-nG-z9X"/>
                             <constraint firstItem="dLi-zD-Si5" firstAttribute="top" secondItem="0at-Vs-ZUo" secondAttribute="top" id="cry-vq-dXF"/>
-                            <constraint firstItem="8ut-YS-10z" firstAttribute="bottom" secondItem="xkd-y7-E4W" secondAttribute="bottom" constant="-20" id="dRZ-z9-EXU"/>
                             <constraint firstItem="xkd-y7-E4W" firstAttribute="trailing" secondItem="ORI-Nx-Mkd" secondAttribute="trailing" constant="257" id="f3d-cy-8y9"/>
-                            <constraint firstItem="8ut-YS-10z" firstAttribute="leading" secondItem="xkd-y7-E4W" secondAttribute="leading" id="rR1-oh-Ol6"/>
                             <constraint firstItem="dLi-zD-Si5" firstAttribute="leading" secondItem="0at-Vs-ZUo" secondAttribute="leading" id="zzh-1F-riC"/>
                         </constraints>
                     </view>
@@ -289,6 +287,9 @@
     <resources>
         <image name="Logo" width="125" height="70"/>
         <image name="logout 2" width="27" height="27"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
