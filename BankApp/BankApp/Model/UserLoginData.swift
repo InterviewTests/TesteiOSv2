@@ -1,6 +1,7 @@
 //
-//  UserLoginModel.swift
-//  BankAppTests
+//  UserLoginData.swift
+//  BankApp
+//  Struct for store data when make POST request with user and password.
 //
 //  Created by Adriano Rodrigues Vieira on 02/03/21.
 //
@@ -25,6 +26,7 @@ struct UserLoginData: Codable {
     }
 }
 
+// MARK: - Struct UserLoginCredentialParameters. Struct used for sending user and password in body request as JSON parameter.
 struct UserLoginCredentialsParameters: Encodable {
     let user: String
     let password: String    

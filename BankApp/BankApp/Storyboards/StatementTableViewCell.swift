@@ -1,6 +1,7 @@
 //
 //  StatementTableViewCell.swift
 //  BankApp
+//  Represents a cell for a user statement.
 //
 //  Created by Adriano Rodrigues Vieira on 06/03/21.
 //

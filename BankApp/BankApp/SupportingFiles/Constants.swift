@@ -1,6 +1,7 @@
 //
 //  Constants.swift
 //  BankApp
+//  Struct containing some of constanst of the application aka. endpoint strings, username for developing and testing purposes.
 //
 //  Created by Adriano Rodrigues Vieira on 02/03/21.
 //
@@ -8,21 +9,10 @@
 import Foundation
 import Alamofire
 
-struct USER_EXAMPLE {
-    static let USER = "test_user"
-    static let PASSWORD = "Test@1"
-    static let NAME = "Jose da Silva Teste"
-        
-    static let USER_ID = 1
-    static let MOCK_USERLOGIN_DATA = UserLoginData(error: UserLoginData.ErrorData(code: 100,
-                                                                                  message: "Your code is wrong"),
-                                                   userAccount: UserLoginData.UserAccountData(userId: 123,
-                                                                                              name: "John Appleseed",
-                                                                                              bankAccount: "010101",
-                                                                                              agency: "213",
-                                                                                              balance: 0.0))            
-}
 
+
+// MARK: -
+/// Constants for use in HTTP requests. It contains urls, methods verb and headers.
 struct REQUESTS {
     static let LOGIN_ENDPOINT = "https://bank-app-test.herokuapp.com/api/login/"
     static let STATEMENTS_ENDPOINT = "https://bank-app-test.herokuapp.com/api/statements/"
@@ -34,8 +24,14 @@ struct REQUESTS {
     static let GET_METHOD: HTTPMethod = .get    
 }
 
+// MARK: -
+/// Constants for testing purposes.
 struct TESTING_DATA {
-    static let USER_PARAMETERS = UserLoginCredentialsParameters(user: USER_EXAMPLE.USER, password: USER_EXAMPLE.PASSWORD)    
+    static let USER = "test_user"
+    static let PASSWORD = "Test@1"
+    static let USER_ID = 1
+    
+    static let USER_PARAMETERS = UserLoginCredentialsParameters(user: USER, password: PASSWORD)
     static let VALID_CPF = "231.481.700-16"
     static let VALID_CPF_WITH_NO_POINTS_AND_DASH = "23148170016"
     static let INVALID_CPF_NUMBERS_EQUAL = "111.111.111-11"
@@ -55,18 +51,20 @@ struct TESTING_DATA {
     static let INVALID_PASSWORD_BLANK = ""        
 }
 
+// MARK: -
+/// Constants for use in regex matches.
 struct REGEX_PATTERNS {
     static let CPF = "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}"
     static let EMAIL = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     static let PASSWORD = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
 }
 
+// MARK: -
+/// Constants for Alerts. Represents the title, the label, and some custom phrases.
 struct ALERT_LABELS {
     static let TITLE = "Algo estranho ocorreu..."
     static let ACTION_BUTTON_TITLE = "Vou verificar!"
-}
-
-struct PHRASES {
+    
     static let INITIAL = "Parece que:\n\n"
     static let USER_INVALID = "O usuário informado não está no padrão CPF ou email\n"
     static let PASSWORD_INVALID = "A senha informada não possui o padrao: no mínimo 6 dígitos, sendo ao menos 1 caracter especial, uma letra maiúscula e um número\n"
@@ -74,9 +72,12 @@ struct PHRASES {
     static let CARRIAGE_RETURN = "\n"
     
     static let USER_FIELD_BLANK = "O campo 'user' está em branco\n"
-    static let PASSWORD_FIELD_BLANK = "O campo 'password' está em branco\n"    
+    static let PASSWORD_FIELD_BLANK = "O campo 'password' está em branco\n"
+    
 }
 
+// MARK: -
+///Constants for identifiers of some items of storyboard aka. table view cells, classes and segue.
 struct IDENTIFIERS {
     static let CURRENCY_VIEWCONTROLLER = "currency"
     static let STORYBOARD_NAME = "Main"

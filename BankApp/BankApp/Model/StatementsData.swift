@@ -1,6 +1,7 @@
 //
 //  StatementsData.swift
 //  BankApp
+//  Struct that represents all data fetched in a GET request passing the user id.
 //
 //  Created by Adriano Rodrigues Vieira on 05/03/21.
 //

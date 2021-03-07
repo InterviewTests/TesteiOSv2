@@ -1,6 +1,7 @@
 //
 //  AlertFactory.swift
 //  BankApp
+//  Factory of UIAlertControllers. Create an alert for each situation.
 //
 //  Created by Adriano Rodrigues Vieira on 04/03/21.
 //
@@ -11,12 +12,29 @@ import UIKit
 struct AlertFactory {
     private init() {}
     
-    static func createAlertOfUserInvalid(withMessage message: String, andCode code: Int) -> UIAlertController {
+    /// Creates an alert based on a `message` and an `code`
+    /// - parameter message: the message
+    /// - parameter code: the code returned by the endpoint
+    /// - returns: an `UIAlertController` object who represents the alert.
+    static func createAlert(withMessage message: String, andCode code: Int) -> UIAlertController {
         return Self.createAlert(withMessage: "\(code) - \(message)")
     }
     
+    
+    /// Analyzes the parameters `userText` and `passwordText`, and if it does not corresponds to valid username and password, returns
+    /// an  `UIAlertController` with a custom message explaining the problem. If the `userText` and `passwordText` matches the patterns,
+    /// returns `nil`.
+    /// - warning: **Never force the return of this method** when calling, like this:
+    ///
+    ///   ` let alert = AlertFactory.createAlertBasedOnContentsOf(userText: "a@aol.com", passwordText: "Test@1")!`
+    ///
+    ///   because if the parameters are correct, it will cause a crash in the application. Prefer to use `guard let`, `if let` or something similar.
+    ///
+    /// - parameter message: the message
+    /// - parameter code: the code returned by the endpoint
+    /// - returns: an `UIAlertController` object who represents the alert.
     static func createAlertBasedOnContentsOf(userText: String?, passwordText: String?) -> UIAlertController? {
-        var phrase = PHRASES.INITIAL
+        var phrase = ALERT_LABELS.INITIAL
         
         if !userText!.isEmpty && !passwordText!.isEmpty {
             let isUserValid = LoginValidation.validateEmail(userText!) || LoginValidation.validateCpf(userText!)
@@ -24,14 +42,14 @@ struct AlertFactory {
             
             if (!isUserValid || !isPasswordValid) {
                 if !isUserValid {
-                    phrase += PHRASES.USER_INVALID
+                    phrase += ALERT_LABELS.USER_INVALID
                     
                     if !isPasswordValid {
-                        phrase += PHRASES.CARRIAGE_RETURN
+                        phrase += ALERT_LABELS.CARRIAGE_RETURN
                     }
                 }
                 if !isPasswordValid {
-                    phrase += PHRASES.PASSWORD_INVALID
+                    phrase += ALERT_LABELS.PASSWORD_INVALID
                 }
                 return createAlert(withMessage: phrase)
             } else {
@@ -39,15 +57,19 @@ struct AlertFactory {
             }
         } else {
             if userText!.isEmpty {
-                phrase += PHRASES.USER_FIELD_BLANK
+                phrase += ALERT_LABELS.USER_FIELD_BLANK
             }
             if passwordText!.isEmpty {
-                phrase += PHRASES.PASSWORD_FIELD_BLANK
+                phrase += ALERT_LABELS.PASSWORD_FIELD_BLANK
             }
             return createAlert(withMessage: phrase)
         }
     }
     
+    
+    /// Creates an alert based on a `message`.
+    /// - parameter message: the message
+    /// - returns: an `UIAlertController` object who represents the alert.
     private static func createAlert(withMessage message: String) -> UIAlertController {
         let alert = UIAlertController(title: ALERT_LABELS.TITLE, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: ALERT_LABELS.ACTION_BUTTON_TITLE, style: .default, handler: nil)
