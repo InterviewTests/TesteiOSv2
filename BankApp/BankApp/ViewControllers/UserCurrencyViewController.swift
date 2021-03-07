@@ -22,8 +22,9 @@ class UserCurrencyViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
                 
-        self.tableView.register(UINib(nibName: IDENTIFIERS.TABLE_VIEW_CELL, bundle: nil), forCellReuseIdentifier: IDENTIFIERS.TABLE_VIEW_CELL)
-        
+        self.tableView.register(UINib(nibName: IDENTIFIERS.TABLE_VIEW_CELL, bundle: nil),
+                                forCellReuseIdentifier: IDENTIFIERS.TABLE_VIEW_CELL)
+                
         self.tableView.dataSource = self
         self.tableView.delegate = self
                     
@@ -34,7 +35,6 @@ class UserCurrencyViewController: UIViewController {
         
         fetchStatements()                
     }
-    
     
     @IBAction func exitButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -81,6 +81,12 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
             cell.valueLabel.text = currentStatement.value
             cell.valueLabel.textColor = setLabelColorBasedOn(value: currentStatement.value)
                 
+//            cell.backgroundColor = UIColor.white
+//            cell.layer.borderColor = UIColor.gray.cgColor
+//            cell.layer.borderWidth = 1
+//            cell.layer.cornerRadius = 8
+//            cell.clipsToBounds = false
+//            
             return cell
         }
                         
