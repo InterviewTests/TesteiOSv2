@@ -81,12 +81,12 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
             cell.valueLabel.text = currentStatement.value
             cell.valueLabel.textColor = setLabelColorBasedOn(value: currentStatement.value)
                 
-//            cell.backgroundColor = UIColor.white
-//            cell.layer.borderColor = UIColor.gray.cgColor
-//            cell.layer.borderWidth = 1
-//            cell.layer.cornerRadius = 8
-//            cell.clipsToBounds = false
-//            
+            cell.backgroundColor = UIColor.white
+            cell.layer.borderColor = UIColor.gray.cgColor
+            cell.layer.borderWidth = 1
+            cell.layer.cornerRadius = 8
+            cell.clipsToBounds = false
+            
             return cell
         }
                         
