@@ -15,10 +15,8 @@ class StatementTableViewCell: UITableViewCell {
     @IBOutlet weak var valueLabel: UILabel!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-     
+        super.awakeFromNib()                
     }
-    
 }
 
 

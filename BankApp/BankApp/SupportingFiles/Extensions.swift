@@ -49,6 +49,11 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
             cell.layer.borderWidth = CONSTANTS.CELL_LAYER_BORDER_WIDTH
             cell.layer.cornerRadius = CONSTANTS.CELL_LAYER_CORNER_RADIUS
             cell.clipsToBounds = false
+                                    
+            cell.layer.shadowRadius = 10
+            cell.layer.shadowOpacity = 0.5
+            //cell.layer.shadowColor = CGColor(red: 220.0/255.0, green: 233.0/255.0, blue: 234.0/255.0, alpha: 1.0)
+            cell.layer.shadowColor = UIColor.lightGray.cgColor
             
             return cell
         }
