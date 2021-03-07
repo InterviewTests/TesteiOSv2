@@ -13,7 +13,7 @@ struct ErrorMessage: FetchableData {
     let message: String
     
     /// Creates an ErrorMessage based on data fetched from POST request
-    /// - parameters errorData: an ErrorData object
+    /// - parameter errorData: an ErrorData object used to create the object
     init(from errorData: UserLoginData.ErrorData) {
         self.code = errorData.code!
         self.message = errorData.message!

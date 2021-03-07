@@ -41,7 +41,7 @@ class UserCurrencyViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /// Fills the `statemens` array with the data fetched from GET request and shows its contents in table view.
+    /// Fills the `statemens` array with the data fetched from GET` request and shows its contents in table view.
     private func fetchStatements() {
         if let userId = userAccount?.userId {
             let url = "\(REQUESTS.STATEMENTS_ENDPOINT)\(userId)"

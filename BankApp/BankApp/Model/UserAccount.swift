@@ -16,7 +16,7 @@ struct UserAccount: FetchableData {
     let balance: Double
         
     /// Creates an UserAccount based on data fetched from POST request
-    /// - parameters userAccountData: an UserAccountData object
+    /// - parameter userAccountData: an UserAccountData object
     init(from userAccountData: UserLoginData.UserAccountData) {
         self.userId = userAccountData.userId!
         self.name = userAccountData.name!

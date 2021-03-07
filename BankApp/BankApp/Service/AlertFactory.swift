@@ -24,15 +24,16 @@ struct AlertFactory {
     /// Analyzes the parameters `userText` and `passwordText`, and if it does not corresponds to valid username and password, returns
     /// an  `UIAlertController` with a custom message explaining the problem. If the `userText` and `passwordText` matches the patterns,
     /// returns `nil`.
-    /// - warning: **Never force the return of this method** when calling, like this:
+    /// - **Never force the return of this method** when calling, like this:
     ///
     ///   ` let alert = AlertFactory.createAlertBasedOnContentsOf(userText: "a@aol.com", passwordText: "Test@1")!`
     ///
-    ///   because if the parameters are correct, it will cause a crash in the application. Prefer to use `guard let`, `if let` or something similar.
+    ///   because if the parameters are correct, it will cause a crash in the application. Prefer to use `guard let`, `if let` or something similar, to ensure
+    ///   the safe object.
     ///
-    /// - parameter message: the message
-    /// - parameter code: the code returned by the endpoint
-    /// - returns: an `UIAlertController` object who represents the alert.
+    /// - parameter userText: the user, which can be or not be an user valid (aka. an email valid or a CPF valid)
+    /// - parameter passwordText: the password, which can be or not be an password valid
+    /// - returns: an `UIAlertController` object who represents the alert if the `userText` and `passwordText` parameters match, or `nil` if the `userText` and `passwordText` match (if both match, there is no need of alert)
     static func createAlertBasedOnContentsOf(userText: String?, passwordText: String?) -> UIAlertController? {
         var phrase = ALERT_LABELS.INITIAL
         

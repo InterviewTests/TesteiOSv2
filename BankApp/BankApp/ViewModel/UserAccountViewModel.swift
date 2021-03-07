@@ -28,10 +28,10 @@ struct UserAccountViewModel {
         self.amount = amount.replacingOccurrences(of: " ", with: "")        
     }
     
-    /// Creates a string in format "aaaa / bb.bbbbbb-b" where "a" represents agency and b represents account.
+    /// Creates a string in format **aaaa / bb.bbbbbb-b** where **a** is the agency and b ist the account.
     /// - Parameter account: the account of an user
     /// - Parameter agency: the agency of an user
-    /// - Returns: the string in format xxxx / xx.xxxxxx-x
+    /// - Returns: the string in format **xxxx / xx.xxxxxx-x**
     private static func createFormattedAccountWithAgencyString(account: String,
                                                                agency: String) -> String {        
         let accountPrefix = account.prefix(2)
