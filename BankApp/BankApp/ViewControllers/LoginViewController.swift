@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     
-    var resultRequest: FetchableData!
+    var resultRequest: FetchableData!    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,49 +33,53 @@ class LoginViewController: UIViewController {
         
         passwordText.text = CONSTANTS.BLANK
     }
-        
-    @IBAction func loginButtonPressed(_ sender: UIButton) {        
-        if let alert = AlertFactory.createAlertBasedOnContentsOf(userText: userText?.text,
-                                                                 passwordText: passwordText?.text) {
+            
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        if let alert = AlertFactory.createAlertBasedOnContentsOf(userText: userText?.text, passwordText: passwordText?.text) {
             self.present(alert, animated: true, completion: nil)
         } else {
-            let user = userText.text
-            UserDefaults.standard.set(user, forKey: IDENTIFIERS.STORAGE.LAST_USERNAME_LOGGED)
+            self.persistLastUserLogged()
+            self.fetchUserWith(username: self.userText.text!, password: self.passwordText.text!)
             
-            self.fetchUserWith(username: self.userText.text!, password: self.passwordText.text!) { result in DispatchQueue.main.async {
-                    self.resultRequest = result
+            let spinnerView = self.displaySpinner(onView: self.view)
+            
+            // FIXME: Figure out how create a spinner who remains active while the "result" is nil. 
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                self.removeSpinner(spinner: spinnerView)
+                if let userAccount = self.resultRequest as? UserAccount {
+                    self.performSegue(withIdentifier: IDENTIFIERS.STORYBOARD.SEGUE_NAME, sender: userAccount)
+                } else if let errorMessage = self.resultRequest as? ErrorMessage {
+                    let userInvalidAlert = AlertFactory.createAlert(withMessage: errorMessage.message, andCode: errorMessage.code)
+                    
+                    self.present(userInvalidAlert, animated: true, completion: nil)
                 }
             }
             
-            if let userAccount = self.resultRequest as? UserAccount {
-                self.performSegue(withIdentifier: IDENTIFIERS.STORYBOARD.SEGUE_NAME, sender: userAccount)
-            } else if let errorMessage = self.resultRequest as? ErrorMessage {
-                let userInvalidAlert = AlertFactory.createAlert(withMessage: errorMessage.message, andCode: errorMessage.code)
-                
-                self.present(userInvalidAlert, animated: true, completion: nil)
-            }
         }
     }
-        
-    // TODO: Arrumar esse codigo, tem que apertar 0942134821905912812 vezes o botao para chamar a pagina
-    private func fetchUserWith(username: String, password: String, completion: @escaping (FetchableData) -> Void) {
+    
+    private func persistLastUserLogged() {
+        let user = userText.text
+        UserDefaults.standard.set(user, forKey: IDENTIFIERS.STORAGE.LAST_USERNAME_LOGGED)
+    }
+            
+    private func fetchUserWith(username: String, password: String) {
         let request = AF.request(REQUESTS.LOGIN_ENDPOINT,
                                  method: .post,
                                  parameters: UserLoginCredentialsParameters(user: username, password: password),
                                  encoder: JSONParameterEncoder.default,
                                  headers: REQUESTS.HEADERS)
-                
-            request.responseDecodable(of: UserLoginData.self) { response in
-                if let userLogin = response.value {
-                    if (userLogin.error?.code) != nil {
-                        let error = ErrorMessage(from: userLogin.error!)
-                        completion(error)
-                    } else if (userLogin.userAccount?.name) != nil {
-                        let userAccount = UserAccount(from: userLogin.userAccount!)
-                        completion(userAccount)
-                    }
+                        
+        //
+        request.responseDecodable(of: UserLoginData.self) { response in            
+            if let userLogin = response.value {
+                if (userLogin.error?.code) != nil {
+                    self.resultRequest = ErrorMessage(from: userLogin.error!)
+                } else if (userLogin.userAccount?.name) != nil {
+                    self.resultRequest = UserAccount(from: userLogin.userAccount!)
                 }
             }
+        }
     }
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

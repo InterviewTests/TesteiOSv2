@@ -8,9 +8,9 @@
 import UIKit
 
 // MARK: - ViewController extension. Enable 'dismiss keyboard when user taps outside of UITextView' ("https://medium.com/@sruthicsankar/dismiss-hide-keyboard-by-touching-anywhere-outside-uitextfield-ios-swift-f0a719a91299")
-extension UIViewController {
+extension LoginViewController {
     func dismissKey() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action: #selector(UIViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
@@ -18,6 +18,29 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func displaySpinner(onView view: UIView) -> UIView {
+        let spinnerView = UIView.init(frame: view.bounds)
+                
+        spinnerView.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.5, alpha: 0.2)
+        
+        let activityIndicator = UIActivityIndicatorView.init(style: UIActivityIndicatorView.Style.large)
+        activityIndicator.startAnimating()
+        activityIndicator.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(activityIndicator)
+            view.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
+    
+    func removeSpinner(spinner :UIView) {
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
     }
 }
 
