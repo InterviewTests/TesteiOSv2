@@ -14,3 +14,4 @@
 
 * Mesmo não estando nas descrições de *layout* do projeto, tomei a liberdade de , no extrato do cliente, indicar em vermelho os débitos.
 
+* Optei por seguir as especificações numéricas do layout, mesmo que o mesmo tenha ficado ligeiramente diferente (visualmente) do que está no arquivo de exemplo. 
