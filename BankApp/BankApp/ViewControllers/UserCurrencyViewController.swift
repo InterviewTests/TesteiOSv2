@@ -26,7 +26,7 @@ class UserCurrencyViewController: UIViewController {
                                 forCellReuseIdentifier: IDENTIFIERS.TABLE_VIEW_CELL)
                 
         self.tableView.dataSource = self
-        self.tableView.delegate = self
+        self.tableView.delegate = self            
                     
         let userViewModel = UserAccountViewModel(from: userAccount!)
         self.userNameLabel.text = userViewModel.userName
@@ -67,25 +67,32 @@ class UserCurrencyViewController: UIViewController {
 
 extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return self.statements.count
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.statements.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIERS.TABLE_VIEW_CELL, for: indexPath) as? StatementTableViewCell {
 
-            let currentStatement = self.statements[indexPath.row]
+            //let currentStatement = self.statements[indexPath.row]
+            let currentStatement = self.statements[indexPath.section]
+            
             
             cell.titleLabel.text = currentStatement.title
             cell.descriptionLabel.text = currentStatement.description
             cell.dateLabel.text = currentStatement.date
             cell.valueLabel.text = currentStatement.value
-            cell.valueLabel.textColor = setLabelColorBasedOn(value: currentStatement.value)
+            cell.valueLabel.textColor = self.setLabelColorBasedOn(value: currentStatement.value)
                 
             cell.backgroundColor = UIColor.white
-            cell.layer.borderColor = UIColor.gray.cgColor
+            cell.layer.borderColor = UIColor.lightGray.cgColor
             cell.layer.borderWidth = 1
             cell.layer.cornerRadius = 8
-            cell.clipsToBounds = false
+            cell.clipsToBounds = false            
             
             return cell
         }
@@ -93,11 +100,21 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(16)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
     private func setLabelColorBasedOn(value: String) -> UIColor {
         if value.contains("-") {
             return UIColor.red
         }
         
-        return UIColor.green
+        return UIColor.black
     }
 }

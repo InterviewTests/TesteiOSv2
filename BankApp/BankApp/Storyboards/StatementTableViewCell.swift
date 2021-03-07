@@ -19,3 +19,5 @@ class StatementTableViewCell: UITableViewCell {
     }
     
 }
+
+
