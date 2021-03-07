@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 // MARK: - ViewController extension. Enable 'dismiss keyboard when user taps outside of UITextView' ("https://medium.com/@sruthicsankar/dismiss-hide-keyboard-by-touching-anywhere-outside-uitextfield-ios-swift-f0a719a91299")
 extension UIViewController {
     func dismissKey() {
@@ -44,16 +42,7 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
             cell.valueLabel.text = currentStatement.value
             cell.valueLabel.textColor = self.setLabelColorBasedOn(value: currentStatement.value)
                 
-            cell.backgroundColor = UIColor.white
-            cell.layer.borderColor = UIColor.lightGray.cgColor
-            cell.layer.borderWidth = CONSTANTS.CELL_LAYER_BORDER_WIDTH
-            cell.layer.cornerRadius = CONSTANTS.CELL_LAYER_CORNER_RADIUS
-            cell.clipsToBounds = false
-                                    
-            cell.layer.shadowRadius = 10
-            cell.layer.shadowOpacity = 0.5
-            //cell.layer.shadowColor = CGColor(red: 220.0/255.0, green: 233.0/255.0, blue: 234.0/255.0, alpha: 1.0)
-            cell.layer.shadowColor = UIColor.lightGray.cgColor
+            self.addEffectsTo(cell: cell)
             
             return cell
         }
@@ -71,6 +60,23 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
         return headerView
     }
     
+    
+    /// Add some effects in a cell, e.g. `backgroundColor`, `borderColor` etc.
+    /// - parameter cell: the cell in which the effects will be added
+    private func addEffectsTo(cell: StatementTableViewCell) {
+        cell.backgroundColor = UIColor.white
+        cell.layer.borderColor = CONSTANTS.CELL_BORDER_COLOR
+        cell.layer.borderWidth = CONSTANTS.CELL_LAYER_BORDER_WIDTH
+        cell.layer.cornerRadius = CONSTANTS.CELL_LAYER_CORNER_RADIUS
+        cell.clipsToBounds = false
+                                
+        cell.layer.shadowRadius = CONSTANTS.CELL_LAYER_SHADOW_RADIUS
+        cell.layer.shadowOpacity = CONSTANTS.CELL_LAYER_SHADOW_OPACITY
+        cell.layer.shadowColor = CONSTANTS.CELL_LAYER_SHADOW_COLOR
+        cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+    }
+    
+    /// Add `red` color if a **dash** sign ("-") is found in the string (in other words, if the value is a debit)
     private func setLabelColorBasedOn(value: String) -> UIColor {
         if value.contains(CONSTANTS.DASH) {
             return UIColor.red

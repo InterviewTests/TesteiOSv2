@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 // MARK: -
 /// Constants for use in HTTP requests. It contains urls, methods verb and headers.
@@ -90,6 +91,7 @@ struct IDENTIFIERS {
     }
 }
 
+// MARK: -
 /// Constants for general purposes.
 struct CONSTANTS {
     static let BLANK = ""
@@ -97,5 +99,9 @@ struct CONSTANTS {
     static let CELL_SECTION_SIZE = 16
     static let NUM_ROWS_IN_SECTION = 1
     static let CELL_LAYER_BORDER_WIDTH = CGFloat(1)
-    static let CELL_LAYER_CORNER_RADIUS = CGFloat(8)
+    static let CELL_LAYER_CORNER_RADIUS = CGFloat(10)
+    static let CELL_LAYER_SHADOW_RADIUS = CGFloat(10)
+    static let CELL_LAYER_SHADOW_OPACITY = Float(0.2)
+    static let CELL_BORDER_COLOR = CGColor(red: 240.0/255.0, green: 243.0/255.0, blue: 246.0/255.0, alpha: 1)
+    static let CELL_LAYER_SHADOW_COLOR = UIColor.lightGray.cgColor
 }
