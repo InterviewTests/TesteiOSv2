@@ -9,8 +9,6 @@
 import Foundation
 import Alamofire
 
-
-
 // MARK: -
 /// Constants for use in HTTP requests. It contains urls, methods verb and headers.
 struct REQUESTS {
@@ -77,10 +75,27 @@ struct ALERT_LABELS {
 }
 
 // MARK: -
-///Constants for identifiers of some items of storyboard aka. table view cells, classes and segue.
 struct IDENTIFIERS {
-    static let CURRENCY_VIEWCONTROLLER = "currency"
-    static let STORYBOARD_NAME = "Main"
-    static let SEGUE_NAME = "openCurrencyView"
-    static let TABLE_VIEW_CELL = "StatementTableViewCell"    
+    /// Constants for identifiers of some items of storyboard aka. table view cells, classes and segue.
+    struct STORYBOARD {
+        static let CURRENCY_VIEWCONTROLLER = "currency"
+        static let NAME = "Main"
+        static let SEGUE_NAME = "openCurrencyView"
+        static let TABLE_VIEW_CELL = "StatementTableViewCell"
+    }
+    
+    /// Constants for identifiers of storage data such as `UserDefaults`, `CoreData` etc
+    struct STORAGE {
+        static let LAST_USERNAME_LOGGED = "LastUsernameLogged"
+    }
+}
+
+/// Constants for general purposes.
+struct CONSTANTS {
+    static let BLANK = ""
+    static let DASH = "-"
+    static let CELL_SECTION_SIZE = 16
+    static let NUM_ROWS_IN_SECTION = 1
+    static let CELL_LAYER_BORDER_WIDTH = CGFloat(1)
+    static let CELL_LAYER_CORNER_RADIUS = CGFloat(8)
 }

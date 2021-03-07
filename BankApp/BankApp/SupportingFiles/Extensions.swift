@@ -26,7 +26,7 @@ extension UIViewController {
 // MARK: - UserCurrencyViewController extension. Implement table view methods
 extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return CONSTANTS.NUM_ROWS_IN_SECTION
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,7 +34,7 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIERS.TABLE_VIEW_CELL, for: indexPath) as? StatementTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIERS.STORYBOARD.TABLE_VIEW_CELL, for: indexPath) as? StatementTableViewCell {
             
             let currentStatement = self.statements[indexPath.section]
             
@@ -46,8 +46,8 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
                 
             cell.backgroundColor = UIColor.white
             cell.layer.borderColor = UIColor.lightGray.cgColor
-            cell.layer.borderWidth = 1
-            cell.layer.cornerRadius = 8
+            cell.layer.borderWidth = CONSTANTS.CELL_LAYER_BORDER_WIDTH
+            cell.layer.cornerRadius = CONSTANTS.CELL_LAYER_CORNER_RADIUS
             cell.clipsToBounds = false
             
             return cell
@@ -57,7 +57,7 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(16)
+        return CGFloat(CONSTANTS.CELL_SECTION_SIZE)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -67,7 +67,7 @@ extension UserCurrencyViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     private func setLabelColorBasedOn(value: String) -> UIColor {
-        if value.contains("-") {
+        if value.contains(CONSTANTS.DASH) {
             return UIColor.red
         }
         

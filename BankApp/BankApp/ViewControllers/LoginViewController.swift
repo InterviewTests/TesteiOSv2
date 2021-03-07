@@ -24,9 +24,14 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+                
+        if let lastUserLogged = UserDefaults.standard.string(forKey: IDENTIFIERS.STORAGE.LAST_USERNAME_LOGGED) {
+            userText.text = lastUserLogged
+        } else {
+            userText.text = CONSTANTS.BLANK
+        }
         
-        userText.text = ""
-        passwordText.text = ""
+        passwordText.text = CONSTANTS.BLANK
     }
         
     @IBAction func loginButtonPressed(_ sender: UIButton) {        
@@ -34,13 +39,16 @@ class LoginViewController: UIViewController {
                                                                  passwordText: passwordText?.text) {
             self.present(alert, animated: true, completion: nil)
         } else {
+            let user = userText.text
+            UserDefaults.standard.set(user, forKey: IDENTIFIERS.STORAGE.LAST_USERNAME_LOGGED)
+            
             self.fetchUserWith(username: self.userText.text!, password: self.passwordText.text!) { result in DispatchQueue.main.async {
                     self.resultRequest = result
                 }
             }
             
             if let userAccount = self.resultRequest as? UserAccount {
-                self.performSegue(withIdentifier: IDENTIFIERS.SEGUE_NAME, sender: userAccount)
+                self.performSegue(withIdentifier: IDENTIFIERS.STORYBOARD.SEGUE_NAME, sender: userAccount)
             } else if let errorMessage = self.resultRequest as? ErrorMessage {
                 let userInvalidAlert = AlertFactory.createAlert(withMessage: errorMessage.message, andCode: errorMessage.code)
                 
