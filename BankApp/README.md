@@ -1,10 +1,10 @@
+
 # **AppBank** 
 ## *Processo seletivo para desenvolvedor iOS - Accenture.*
 
 ## Setup:
 * Devido a presença de pods no projeto, é necessário abrir o arquivo **BankApp.xcworkspace** ao invés de **BankApp.xcodeproj**.
 * Foi utilizado o framework **Quick** em conjunto com o **Nimble** para testes, por ser mais intuitivo para implementar e analisar os resultados do teste, já que com as características do **Nimble** é possivel utilizar interface fluente.
-
 
 
 ## Observações: 
@@ -18,3 +18,8 @@
 * Optei por seguir as especificações numéricas do *layout*, mesmo que o mesmo tenha ficado ligeiramente diferente (visualmente) do que está no arquivo de exemplo. 
 
 * Devido a presença das validações solicitadas nos campos de texto, o login com o usuário "test_user" não vai funcionar. Uma sugestão é utilizar um CPF válido (com ou sem pontos) ou um endereço de email (por sua vez, a senha "Test@1" vai funcionar pois está dentro do padrão exigido).
+
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/17321857/110257143-38779c80-7f7b-11eb-9347-bbee0943a4e9.gif" />
+</p>
