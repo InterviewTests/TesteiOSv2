@@ -10,5 +10,7 @@
 ## Observações: 
 * No retorno da requisição de login, os dados do cliente relativos a conta (**bankAccount** e **agency**) estão invertidos: normalmente, a agência é o número menor e a conta é o número maior.
 
+* A especificação de layout não pode ser seguida de forma fiel, pois assim alguns textos provenientes da API ficam "cortados" (por exemplo, na *label* de descrição das operações do cliente do banco, o texto "conta de telefone" fica como "conta de telef....").
 
-* Mesmo não estando nas descrições de *layout* do projeto, tomei a liberdade de , no extrato do cliente, indicar em vermelho os débitos e em verde os créditos. 
+* Mesmo não estando nas descrições de *layout* do projeto, tomei a liberdade de , no extrato do cliente, indicar em vermelho os débitos.
+
