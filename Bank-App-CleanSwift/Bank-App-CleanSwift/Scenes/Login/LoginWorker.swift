@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+protocol LoginWorkLogic: class {
+    func doWork(with: User)
+}
+
+
+class LoginHTTPRequestWorker: LoginWorkLogic {
+    func doWork(with: User) {
+        
+    }    
+}
