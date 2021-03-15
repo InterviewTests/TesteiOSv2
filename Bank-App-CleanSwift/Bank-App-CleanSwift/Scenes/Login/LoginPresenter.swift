@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+protocol LoginPresentationLogic: class {
+    func presentLoginResponse(response: Login.Login.Response)
+}
+
+class LoginPresenter: LoginPresentationLogic {
+    weak var viewController: DisplayLoginLogic!
+    
+    func presentLoginResponse(response: Login.Login.Response) {
+        let viewModel = Login.Login.ViewModel(user: response.user)
+        
+        viewController.displayLoginSuccessful(viewModel: viewModel)
+    }
+    
+    
+}

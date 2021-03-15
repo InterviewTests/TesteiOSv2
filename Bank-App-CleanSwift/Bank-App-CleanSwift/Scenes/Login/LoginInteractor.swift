@@ -12,7 +12,13 @@ protocol LoginBusinessLogic: class {
 }
 
 class LoginInteractor: LoginBusinessLogic {
+    var presenter: LoginPresentationLogic!
+    
     func applyBusinessLogicIn(request: Login.Login.Request) {
-        print("Vou aplicar logica de negocio em \(request.fields.username) e \(request.fields.password)")
+        // Aqui tenho que usar os workers para fazer as requisicoes http etc.
+                
+        let user = User(name: request.fields.username, password: request.fields.password)
+        let response = Login.Login.Response(user: user)
+        presenter.presentLoginResponse(response: response)
     }
 }

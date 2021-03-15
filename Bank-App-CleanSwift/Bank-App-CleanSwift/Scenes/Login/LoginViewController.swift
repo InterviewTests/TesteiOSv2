@@ -29,24 +29,27 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        if let username = userText.text, let password = passwordText.text {
-            let request = Login.Login.Request(fields: Login.LoginFields(username: username,
-                                                                        password: password))
-            
-            interactor.applyBusinessLogicIn(request: request)
-        } else {
-            print("epa")
-        }
+        let username = userText.text!
+        let password = passwordText.text!
+                
+        let request = Login.Login.Request(fields: Login.LoginFields(username: username,
+                                                                    password: password))
+        interactor.applyBusinessLogicIn(request: request)
         
     }
     
     private func setupCleanSwiftObjects() {
         let viewController = self
-        viewController.interactor = LoginInteractor()        
+        let interactor = LoginInteractor()
+        let presenter = LoginPresenter()
+        
+        viewController.interactor = interactor
+        interactor.presenter = presenter
+        presenter.viewController = viewController
     }
     
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
-        
+        print("Fiz o ciclo VIP básico com o usuario \(viewModel.user?.name) \(viewModel.user?.password)")
     }
 }
 
