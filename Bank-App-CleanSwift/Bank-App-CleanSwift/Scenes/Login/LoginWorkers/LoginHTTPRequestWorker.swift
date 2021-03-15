@@ -7,13 +7,10 @@
 
 import Foundation
 
-protocol LoginWorkLogic: class {
-    func doWork(with: User)
-}
 
-
-class LoginHTTPRequestWorker: LoginWorkLogic {
-    func doWork(with: User) {
+/// Worker class for POST http request.
+class LoginHTTPRequestWorker: LoginWorkingLogic {
+    func doPost(with: User) {
         
     }    
 }
