@@ -39,6 +39,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KQj-ch-tZI"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l15-GH-Wcu">
                                 <rect key="frame" x="16" y="231" width="342" height="50"/>
@@ -74,6 +77,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5pd-Rk-p9h" secondAttribute="trailing" constant="17" id="zXX-K9-1fW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="520-jG-oMH" id="0dQ-VC-dh5"/>
+                        <outlet property="passwordText" destination="5pd-Rk-p9h" id="XGc-zM-mfs"/>
+                        <outlet property="userText" destination="l15-GH-Wcu" id="ykQ-EZ-htS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
