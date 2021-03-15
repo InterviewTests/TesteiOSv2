@@ -34,8 +34,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
                 
         let request = Login.Login.Request(fields: Login.LoginFields(username: username,
                                                                     password: password))
-        interactor.applyBusinessLogicIn(request: request)
-        
+        interactor.applyBusinessLogicIn(request: request)        
     }
     
     private func setupCleanSwiftObjects() {
@@ -49,7 +48,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     }
     
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
-        print("Fiz o ciclo VIP básico com o usuario \(viewModel.user?.name) \(viewModel.user?.password)")
+        print("Fiz o ciclo VIP básico com o usuario \(viewModel.user!.name) \(viewModel.user!.password)")
     }
 }
 
