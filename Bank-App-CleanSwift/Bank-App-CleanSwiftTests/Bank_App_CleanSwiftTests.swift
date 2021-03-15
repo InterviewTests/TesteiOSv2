@@ -12,7 +12,6 @@ class Bank_App_CleanSwiftTests: XCTestCase {
     override func setUpWithError() throws {}
 
     override func tearDownWithError() throws {}
-
     
-
+    
 }
