@@ -18,6 +18,11 @@
 		B934B78425FE6AC00031F85E /* Bank_App_CleanSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B934B78325FE6AC00031F85E /* Bank_App_CleanSwiftTests.swift */; };
 		B934B78F25FE6AC00031F85E /* Bank_App_CleanSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B934B78E25FE6AC00031F85E /* Bank_App_CleanSwiftUITests.swift */; };
 		B98F7D9225FE9B0900988AB0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98F7D9125FE9B0900988AB0 /* LoginViewController.swift */; };
+		B9B1832C25FF8D71009149DD /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1832B25FF8D71009149DD /* LoginInteractor.swift */; };
+		B9B1833125FF8D7C009149DD /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1833025FF8D7C009149DD /* LoginPresenter.swift */; };
+		B9B1833625FF8D8A009149DD /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1833525FF8D8A009149DD /* LoginRouter.swift */; };
+		B9B1833B25FF8D95009149DD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1833A25FF8D95009149DD /* LoginModel.swift */; };
+		B9B1834025FF8DAF009149DD /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1833F25FF8DAF009149DD /* LoginWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,11 @@
 		B934B79025FE6AC00031F85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B98F7D8D25FE79A300988AB0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B98F7D9125FE9B0900988AB0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B9B1832B25FF8D71009149DD /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		B9B1833025FF8D7C009149DD /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		B9B1833525FF8D8A009149DD /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		B9B1833A25FF8D95009149DD /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		B9B1833F25FF8DAF009149DD /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		C2E6B71A159069E8581B34F0 /* Pods-Bank-App-CleanSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank-App-CleanSwiftTests.debug.xcconfig"; path = "../Bank-App-CleanSwift/Pods/Target Support Files/Pods-Bank-App-CleanSwiftTests/Pods-Bank-App-CleanSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +194,11 @@
 			isa = PBXGroup;
 			children = (
 				B98F7D9125FE9B0900988AB0 /* LoginViewController.swift */,
+				B9B1832B25FF8D71009149DD /* LoginInteractor.swift */,
+				B9B1833025FF8D7C009149DD /* LoginPresenter.swift */,
+				B9B1833525FF8D8A009149DD /* LoginRouter.swift */,
+				B9B1833A25FF8D95009149DD /* LoginModel.swift */,
+				B9B1833F25FF8DAF009149DD /* LoginWorker.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -397,9 +412,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9B1832C25FF8D71009149DD /* LoginInteractor.swift in Sources */,
+				B9B1833B25FF8D95009149DD /* LoginModel.swift in Sources */,
 				B98F7D9225FE9B0900988AB0 /* LoginViewController.swift in Sources */,
+				B9B1833625FF8D8A009149DD /* LoginRouter.swift in Sources */,
 				B934B76D25FE6ABA0031F85E /* AppDelegate.swift in Sources */,
 				B934B76F25FE6ABA0031F85E /* SceneDelegate.swift in Sources */,
+				B9B1833125FF8D7C009149DD /* LoginPresenter.swift in Sources */,
+				B9B1834025FF8DAF009149DD /* LoginWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
