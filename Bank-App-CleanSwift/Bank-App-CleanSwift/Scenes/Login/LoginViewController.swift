@@ -7,19 +7,45 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol DisplayLoginLogic: class {
+    func displayLoginSuccessful(viewModel: Login.Login.ViewModel)
+}
+
+class LoginViewController: UIViewController, DisplayLoginLogic {
+    @IBOutlet weak var userText: UITextField!
+    @IBOutlet weak var passwordText: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+
+    var interactor: LoginBusinessLogic!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                             
         self.roundButtonCorners()
         self.dismissKey()
+        
+        self.setupCleanSwiftObjects()
     }
     
-    @IBOutlet weak var userText: UITextField!
-    @IBOutlet weak var passwordText: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    
+
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+        if let username = userText.text, let password = passwordText.text {
+            let request = Login.Login.Request(fields: Login.LoginFields(username: username,
+                                                                        password: password))
+            
+            interactor.applyBusinessLogicIn(request: request)
+        } else {
+            print("epa")
+        }
+        
+    }
+    
+    private func setupCleanSwiftObjects() {
+        let viewController = self
+        viewController.interactor = LoginInteractor()        
+    }
+    
+    func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
         
     }
 }

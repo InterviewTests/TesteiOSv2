@@ -10,6 +10,7 @@
 		060797494AEBD486D0E756A9 /* Pods_Bank_App_CleanSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DBEB47152E5B1FCE093BCA /* Pods_Bank_App_CleanSwiftTests.framework */; };
 		86CAFC3AF35B00AF353D3C6D /* Pods_Bank_App_CleanSwift_Bank_App_CleanSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8E15A0EDF1BB08732CC9A6 /* Pods_Bank_App_CleanSwift_Bank_App_CleanSwiftUITests.framework */; };
 		89A37B737E598CEFFF72ABE4 /* Pods_Bank_App_CleanSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C76D43FFC68C50C54B6C4E /* Pods_Bank_App_CleanSwift.framework */; };
+		B9309A3E25FF8EFC0042BCF4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9309A3D25FF8EFC0042BCF4 /* User.swift */; };
 		B934B76D25FE6ABA0031F85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B934B76C25FE6ABA0031F85E /* AppDelegate.swift */; };
 		B934B76F25FE6ABA0031F85E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B934B76E25FE6ABA0031F85E /* SceneDelegate.swift */; };
 		B934B77425FE6ABA0031F85E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B934B77225FE6ABA0031F85E /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		891D52CC3BA5C0F128DED66D /* Pods-Bank-App-CleanSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank-App-CleanSwiftTests.release.xcconfig"; path = "../Bank-App-CleanSwift/Pods/Target Support Files/Pods-Bank-App-CleanSwiftTests/Pods-Bank-App-CleanSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		967F5C0DFD05C4337A35AFC6 /* Pods-Bank-App-CleanSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank-App-CleanSwift.debug.xcconfig"; path = "../Bank-App-CleanSwift/Pods/Target Support Files/Pods-Bank-App-CleanSwift/Pods-Bank-App-CleanSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		B16C45430C6FEC3770084979 /* Pods-Bank-App-CleanSwift-Bank-App-CleanSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank-App-CleanSwift-Bank-App-CleanSwiftUITests.release.xcconfig"; path = "../Bank-App-CleanSwift/Pods/Target Support Files/Pods-Bank-App-CleanSwift-Bank-App-CleanSwiftUITests/Pods-Bank-App-CleanSwift-Bank-App-CleanSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B9309A3D25FF8EFC0042BCF4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B934B76925FE6AB90031F85E /* Bank-App-CleanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bank-App-CleanSwift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B934B76C25FE6ABA0031F85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B934B76E25FE6ABA0031F85E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B9309A4225FF8F020042BCF4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B9309A3D25FF8EFC0042BCF4 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B934B76025FE6AB90031F85E = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +162,7 @@
 		B934B76B25FE6AB90031F85E /* Bank-App-CleanSwift */ = {
 			isa = PBXGroup;
 			children = (
+				B9309A4225FF8F020042BCF4 /* Model */,
 				B9B1832525FF8C32009149DD /* Scenes */,
 				B934B76C25FE6ABA0031F85E /* AppDelegate.swift */,
 				B934B76E25FE6ABA0031F85E /* SceneDelegate.swift */,
@@ -417,6 +428,7 @@
 				B98F7D9225FE9B0900988AB0 /* LoginViewController.swift in Sources */,
 				B9B1833625FF8D8A009149DD /* LoginRouter.swift in Sources */,
 				B934B76D25FE6ABA0031F85E /* AppDelegate.swift in Sources */,
+				B9309A3E25FF8EFC0042BCF4 /* User.swift in Sources */,
 				B934B76F25FE6ABA0031F85E /* SceneDelegate.swift in Sources */,
 				B9B1833125FF8D7C009149DD /* LoginPresenter.swift in Sources */,
 				B9B1834025FF8DAF009149DD /* LoginWorker.swift in Sources */,
