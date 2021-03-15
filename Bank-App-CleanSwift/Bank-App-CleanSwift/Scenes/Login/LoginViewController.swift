@@ -48,7 +48,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     }
     
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
-        print("Fiz o ciclo VIP básico com o usuario \(viewModel.user!.name) \(viewModel.user!.password)")
+        print("Fiz o ciclo VIP básico com o usuario \(viewModel.user!.username) \(viewModel.user!.password)")
     }
 }
 

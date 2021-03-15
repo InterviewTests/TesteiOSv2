@@ -15,8 +15,8 @@ internal class NotificationCollector {
     }
 
     func startObserving() {
-        func addObserver(forName name: Notification.Name?) -> NSObjectProtocol {
-            return notificationCenter.addObserver(forName: name, object: nil, queue: nil) { [weak self] notification in
+        func addObserver(forName username: Notification.Name?) -> NSObjectProtocol {
+            return notificationCenter.addObserver(forName: username, object: nil, queue: nil) { [weak self] notification in
                 // linux-swift gets confused by .append(n)
                 self?.observedNotifications.append(notification)
             }
@@ -25,8 +25,8 @@ internal class NotificationCollector {
         if names.isEmpty {
             tokens.append(addObserver(forName: nil))
         } else {
-            names.forEach { name in
-                tokens.append(addObserver(forName: name))
+            names.forEach { username in
+                tokens.append(addObserver(forName: username))
             }
         }
     }

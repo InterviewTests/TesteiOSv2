@@ -32,8 +32,8 @@ internal class QuickSelectedTestSuiteBuilder: QuickTestSuiteBuilder {
      If no test bundle can be found, or the test case class can't be found,
      initialization fails and returns `nil`.
      */
-    init?(forTestCaseWithName name: String) {
-        guard let testCaseClass = testCaseClassForTestCaseWithName(name) else {
+    init?(forTestCaseWithName username: String) {
+        guard let testCaseClass = testCaseClassForTestCaseWithName(username) else {
             self.testCaseClass = nil
             return nil
         }
@@ -56,12 +56,12 @@ internal class QuickSelectedTestSuiteBuilder: QuickTestSuiteBuilder {
 
  Returns `nil` if a bundle or test case class cannot be found.
  */
-private func testCaseClassForTestCaseWithName(_ name: String) -> AnyClass? {
-    func extractClassName(_ name: String) -> String? {
-        return name.components(separatedBy: "/").first
+private func testCaseClassForTestCaseWithName(_ username: String) -> AnyClass? {
+    func extractClassName(_ username: String) -> String? {
+        return username.components(separatedBy: "/").first
     }
 
-    guard let className = extractClassName(name) else { return nil }
+    guard let className = extractClassName(username) else { return nil }
     guard let bundle = Bundle.currentTestBundle else { return nil }
 
     if let testCaseClass = bundle.classNamed(className) { return testCaseClass }

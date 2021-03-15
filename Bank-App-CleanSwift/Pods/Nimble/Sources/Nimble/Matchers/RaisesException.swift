@@ -147,14 +147,14 @@ public class NMBObjCRaiseExceptionPredicate: NMBPredicate {
     private let _userInfo: NSDictionary?
     private let _block: ((NSException) -> Void)?
 
-    fileprivate init(name: String?, reason: String?, userInfo: NSDictionary?, block: ((NSException) -> Void)?) {
-        _name = name
+    fileprivate init(username: String?, reason: String?, userInfo: NSDictionary?, block: ((NSException) -> Void)?) {
+        _name = username
         _reason = reason
         _userInfo = userInfo
         _block = block
 
         let predicate: Predicate<NSObject> = raiseException(
-            named: name,
+            named: username,
             reason: reason,
             userInfo: userInfo,
             closure: block
@@ -167,9 +167,9 @@ public class NMBObjCRaiseExceptionPredicate: NMBPredicate {
 
     @objc public var named: (_ name: String) -> NMBObjCRaiseExceptionPredicate {
         let (reason, userInfo, block) = (_reason, _userInfo, _block)
-        return { name in
+        return { username in
             return NMBObjCRaiseExceptionPredicate(
-                name: name,
+                username: username,
                 reason: reason,
                 userInfo: userInfo,
                 block: block
@@ -178,10 +178,10 @@ public class NMBObjCRaiseExceptionPredicate: NMBPredicate {
     }
 
     @objc public var reason: (_ reason: String?) -> NMBObjCRaiseExceptionPredicate {
-        let (name, userInfo, block) = (_name, _userInfo, _block)
+        let (username, userInfo, block) = (_name, _userInfo, _block)
         return { reason in
             return NMBObjCRaiseExceptionPredicate(
-                name: name,
+                username: username,
                 reason: reason,
                 userInfo: userInfo,
                 block: block
@@ -190,10 +190,10 @@ public class NMBObjCRaiseExceptionPredicate: NMBPredicate {
     }
 
     @objc public var userInfo: (_ userInfo: NSDictionary?) -> NMBObjCRaiseExceptionPredicate {
-        let (name, reason, block) = (_name, _reason, _block)
+        let (username, reason, block) = (_name, _reason, _block)
         return { userInfo in
             return NMBObjCRaiseExceptionPredicate(
-                name: name,
+                username: username,
                 reason: reason,
                 userInfo: userInfo,
                 block: block
@@ -202,10 +202,10 @@ public class NMBObjCRaiseExceptionPredicate: NMBPredicate {
     }
 
     @objc public var satisfyingBlock: (_ block: ((NSException) -> Void)?) -> NMBObjCRaiseExceptionPredicate {
-        let (name, reason, userInfo) = (_name, _reason, _userInfo)
+        let (username, reason, userInfo) = (_name, _reason, _userInfo)
         return { block in
             return NMBObjCRaiseExceptionPredicate(
-                name: name,
+                username: username,
                 reason: reason,
                 userInfo: userInfo,
                 block: block
@@ -216,7 +216,7 @@ public class NMBObjCRaiseExceptionPredicate: NMBPredicate {
 
 extension NMBPredicate {
     @objc public class func raiseExceptionMatcher() -> NMBObjCRaiseExceptionPredicate {
-        return NMBObjCRaiseExceptionPredicate(name: nil, reason: nil, userInfo: nil, block: nil)
+        return NMBObjCRaiseExceptionPredicate(username: nil, reason: nil, userInfo: nil, block: nil)
     }
 }
 #endif

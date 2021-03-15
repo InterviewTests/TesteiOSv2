@@ -190,8 +190,8 @@ extension World {
     }
 
     @objc(itBehavesLikeSharedExampleNamed:sharedExampleContext:flags:file:line:)
-    internal func objc_itBehavesLike(_ name: String, sharedExampleContext: @escaping SharedExampleContext, flags: FilterFlags, file: FileString, line: UInt) {
-        itBehavesLike(name, sharedExampleContext: sharedExampleContext, flags: flags, file: file, line: line)
+    internal func objc_itBehavesLike(_ username: String, sharedExampleContext: @escaping SharedExampleContext, flags: FilterFlags, file: FileString, line: UInt) {
+        itBehavesLike(username, sharedExampleContext: sharedExampleContext, flags: flags, file: file, line: line)
     }
 #endif
 

@@ -80,13 +80,13 @@ import class Foundation.NSException
 import struct Foundation.NSExceptionName
 
 private func _nimblePrecondition(
-    _ name: String,
+    _ username: String,
     _ message: String,
     _ file: StaticString,
     _ line: UInt
 ) {
     let exception = NSException(
-        name: NSExceptionName(name),
+        name: NSExceptionName(username),
         reason: message,
         userInfo: nil
     )

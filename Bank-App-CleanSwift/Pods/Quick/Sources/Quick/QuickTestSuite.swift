@@ -37,8 +37,8 @@ public class QuickTestSuite: XCTestSuite {
      all subsequent calls should return `nil`.
      */
     @objc
-    public static func selectedTestSuite(forTestCaseWithName name: String) -> QuickTestSuite? {
-        guard let builder = QuickSelectedTestSuiteBuilder(forTestCaseWithName: name) else { return nil }
+    public static func selectedTestSuite(forTestCaseWithName username: String) -> QuickTestSuite? {
+        guard let builder = QuickSelectedTestSuiteBuilder(forTestCaseWithName: username) else { return nil }
 
         let (inserted, _) = builtTestSuites.insert(builder.testSuiteClassName)
         if inserted {

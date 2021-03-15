@@ -16,7 +16,7 @@ class LoginInteractor: LoginBusinessLogic {
     
     func applyBusinessLogicIn(request: Login.Login.Request) {
         // Aqui tenho que usar os workers para fazer as requisicoes http etc.
-        let user = User(name: request.fields.username, password: request.fields.password)
+        let user = User(username: request.fields.username, password: request.fields.password)
         let response = Login.Login.Response(user: user)
         presenter.presentLoginResponse(response: response)
     }
