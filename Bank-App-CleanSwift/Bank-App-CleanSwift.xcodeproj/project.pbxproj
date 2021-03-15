@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,13 +12,13 @@
 		B9309A3E25FF8EFC0042BCF4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9309A3D25FF8EFC0042BCF4 /* User.swift */; };
 		B9309A7925FFA4F90042BCF4 /* LoginDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9309A7825FFA4F90042BCF4 /* LoginDouble.swift */; };
 		B9309A7F25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9309A7E25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift */; };
-		B9309A8425FFAA180042BCF4 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9309A8325FFAA180042BCF4 /* LoginWorker.swift */; };
+		B9309A9525FFDE150042BCF4 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9309A9425FFDE150042BCF4 /* Quick.framework */; };
+		B9309A9725FFDE780042BCF4 /* LoginFieldsValidationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9309A9625FFDE780042BCF4 /* LoginFieldsValidationSpec.swift */; };
 		B934B76D25FE6ABA0031F85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B934B76C25FE6ABA0031F85E /* AppDelegate.swift */; };
 		B934B76F25FE6ABA0031F85E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B934B76E25FE6ABA0031F85E /* SceneDelegate.swift */; };
 		B934B77425FE6ABA0031F85E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B934B77225FE6ABA0031F85E /* Main.storyboard */; };
 		B934B77625FE6ABF0031F85E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B934B77525FE6ABF0031F85E /* Assets.xcassets */; };
 		B934B77925FE6ABF0031F85E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B934B77725FE6ABF0031F85E /* LaunchScreen.storyboard */; };
-		B934B78425FE6AC00031F85E /* Bank_App_CleanSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B934B78325FE6AC00031F85E /* Bank_App_CleanSwiftTests.swift */; };
 		B98F7D9225FE9B0900988AB0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98F7D9125FE9B0900988AB0 /* LoginViewController.swift */; };
 		B9B1832C25FF8D71009149DD /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1832B25FF8D71009149DD /* LoginInteractor.swift */; };
 		B9B1833125FF8D7C009149DD /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1833025FF8D7C009149DD /* LoginPresenter.swift */; };
@@ -29,13 +29,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		B934B78025FE6AC00031F85E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B934B76125FE6AB90031F85E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B934B76825FE6AB90031F85E;
-			remoteInfo = "Bank-App-CleanSwift";
-		};
-		B934B78B25FE6AC00031F85E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B934B76125FE6AB90031F85E /* Project object */;
 			proxyType = 1;
@@ -53,7 +46,8 @@
 		B9309A3D25FF8EFC0042BCF4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B9309A7825FFA4F90042BCF4 /* LoginDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDouble.swift; sourceTree = "<group>"; };
 		B9309A7E25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFieldsValidationWorker.swift; sourceTree = "<group>"; };
-		B9309A8325FFAA180042BCF4 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		B9309A9425FFDE150042BCF4 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9309A9625FFDE780042BCF4 /* LoginFieldsValidationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFieldsValidationSpec.swift; sourceTree = "<group>"; };
 		B934B76925FE6AB90031F85E /* Bank-App-CleanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bank-App-CleanSwift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B934B76C25FE6ABA0031F85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B934B76E25FE6ABA0031F85E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,9 +56,7 @@
 		B934B77825FE6ABF0031F85E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B934B77A25FE6ABF0031F85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B934B77F25FE6AC00031F85E /* Bank-App-CleanSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bank-App-CleanSwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B934B78325FE6AC00031F85E /* Bank_App_CleanSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank_App_CleanSwiftTests.swift; sourceTree = "<group>"; };
 		B934B78525FE6AC00031F85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B934B78A25FE6AC00031F85E /* Bank-App-CleanSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bank-App-CleanSwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98F7D8D25FE79A300988AB0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B98F7D9125FE9B0900988AB0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B9B1832B25FF8D71009149DD /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
@@ -88,14 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9309A9525FFDE150042BCF4 /* Quick.framework in Frameworks */,
 				060797494AEBD486D0E756A9 /* Pods_Bank_App_CleanSwiftTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B934B78725FE6AC00031F85E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +103,7 @@
 		B70E2F41417DF59AB8EABEF2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B9309A9425FFDE150042BCF4 /* Quick.framework */,
 				29C76D43FFC68C50C54B6C4E /* Pods_Bank_App_CleanSwift.framework */,
 				01DBEB47152E5B1FCE093BCA /* Pods_Bank_App_CleanSwiftTests.framework */,
 			);
@@ -144,7 +131,6 @@
 			children = (
 				B9B1833F25FF8DAF009149DD /* LoginHTTPRequestWorker.swift */,
 				B9309A7E25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift */,
-				B9309A8325FFAA180042BCF4 /* LoginWorker.swift */,
 			);
 			path = LoginWorkers;
 			sourceTree = "<group>";
@@ -166,7 +152,6 @@
 			children = (
 				B934B76925FE6AB90031F85E /* Bank-App-CleanSwift.app */,
 				B934B77F25FE6AC00031F85E /* Bank-App-CleanSwiftTests.xctest */,
-				B934B78A25FE6AC00031F85E /* Bank-App-CleanSwiftUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,8 +175,8 @@
 		B934B78225FE6AC00031F85E /* Bank-App-CleanSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				B934B78325FE6AC00031F85E /* Bank_App_CleanSwiftTests.swift */,
 				B934B78525FE6AC00031F85E /* Info.plist */,
+				B9309A9625FFDE780042BCF4 /* LoginFieldsValidationSpec.swift */,
 			);
 			path = "Bank-App-CleanSwiftTests";
 			sourceTree = "<group>";
@@ -266,24 +251,6 @@
 			productReference = B934B77F25FE6AC00031F85E /* Bank-App-CleanSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B934B78925FE6AC00031F85E /* Bank-App-CleanSwiftUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B934B79925FE6AC00031F85E /* Build configuration list for PBXNativeTarget "Bank-App-CleanSwiftUITests" */;
-			buildPhases = (
-				B934B78625FE6AC00031F85E /* Sources */,
-				B934B78725FE6AC00031F85E /* Frameworks */,
-				B934B78825FE6AC00031F85E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B934B78C25FE6AC00031F85E /* PBXTargetDependency */,
-			);
-			name = "Bank-App-CleanSwiftUITests";
-			productName = "Bank-App-CleanSwiftUITests";
-			productReference = B934B78A25FE6AC00031F85E /* Bank-App-CleanSwiftUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -297,10 +264,6 @@
 						CreatedOnToolsVersion = 12.4;
 					};
 					B934B77E25FE6AC00031F85E = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = B934B76825FE6AB90031F85E;
-					};
-					B934B78925FE6AC00031F85E = {
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = B934B76825FE6AB90031F85E;
 					};
@@ -321,7 +284,6 @@
 			targets = (
 				B934B76825FE6AB90031F85E /* Bank-App-CleanSwift */,
 				B934B77E25FE6AC00031F85E /* Bank-App-CleanSwiftTests */,
-				B934B78925FE6AC00031F85E /* Bank-App-CleanSwiftUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -338,13 +300,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B934B77D25FE6AC00031F85E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B934B78825FE6AC00031F85E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -433,7 +388,6 @@
 				B9B1833125FF8D7C009149DD /* LoginPresenter.swift in Sources */,
 				B9309A7F25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift in Sources */,
 				B9B1834025FF8DAF009149DD /* LoginHTTPRequestWorker.swift in Sources */,
-				B9309A8425FFAA180042BCF4 /* LoginWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,14 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B934B78425FE6AC00031F85E /* Bank_App_CleanSwiftTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B934B78625FE6AC00031F85E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				B9309A9725FFDE780042BCF4 /* LoginFieldsValidationSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,11 +406,6 @@
 			isa = PBXTargetDependency;
 			target = B934B76825FE6AB90031F85E /* Bank-App-CleanSwift */;
 			targetProxy = B934B78025FE6AC00031F85E /* PBXContainerItemProxy */;
-		};
-		B934B78C25FE6AC00031F85E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B934B76825FE6AB90031F85E /* Bank-App-CleanSwift */;
-			targetProxy = B934B78B25FE6AC00031F85E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -689,46 +631,6 @@
 			};
 			name = Release;
 		};
-		B934B79A25FE6AC00031F85E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2D9YSKR59P;
-				INFOPLIST_FILE = "Bank-App-CleanSwiftUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Adriano-Rodrigues-Vieira.Bank-App-CleanSwiftUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Bank-App-CleanSwift";
-			};
-			name = Debug;
-		};
-		B934B79B25FE6AC00031F85E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2D9YSKR59P;
-				INFOPLIST_FILE = "Bank-App-CleanSwiftUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Adriano-Rodrigues-Vieira.Bank-App-CleanSwiftUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Bank-App-CleanSwift";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -755,15 +657,6 @@
 			buildConfigurations = (
 				B934B79725FE6AC00031F85E /* Debug */,
 				B934B79825FE6AC00031F85E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B934B79925FE6AC00031F85E /* Build configuration list for PBXNativeTarget "Bank-App-CleanSwiftUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B934B79A25FE6AC00031F85E /* Debug */,
-				B934B79B25FE6AC00031F85E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

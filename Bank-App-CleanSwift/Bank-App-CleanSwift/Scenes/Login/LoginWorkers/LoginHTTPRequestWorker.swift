@@ -9,7 +9,7 @@ import Foundation
 
 
 /// Worker class for POST http request.
-class LoginHTTPRequestWorker: LoginWorkingLogic {
+class LoginHTTPRequestWorker {
     func doPost(with: User) {
         
     }    
