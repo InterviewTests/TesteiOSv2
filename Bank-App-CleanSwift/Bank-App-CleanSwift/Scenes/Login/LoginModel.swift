@@ -19,7 +19,7 @@ enum Login {
         }
         
         struct Response {
-            var user: User?
+            var user: User? 
         }
         
         struct ViewModel {

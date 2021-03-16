@@ -13,8 +13,10 @@ class LoginHTTPRequestWorker {
     
     /// Make a `post` request with the parameters `user` and `password` presents inside `user` object.
     /// - Parameter user: an `User` objects, containing an `username` and a `password`
-    /// - Returns: <#description#>
-    func doLogin(with user: User) -> String {
+    /// - Returns: an `UserData` optional object
+    func doLogin(with user: User) -> UserData? {
+        var userData: UserData?
+        
         let endpoint = "https://bank-app-test.herokuapp.com/api/login/"
         let headers: HTTPHeaders = [.contentType("application/json; charset=utf-8")]
         
@@ -25,10 +27,9 @@ class LoginHTTPRequestWorker {
                                  headers: headers)
         
         request.responseDecodable(of: UserData.self) { response in
-            print(response)
+            userData = response.value
         }
-                                 
-        return "Deus"
-                                             
+        
+        return userData
     }    
 }

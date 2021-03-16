@@ -23,12 +23,14 @@ class LoginInteractor: LoginBusinessLogic {
         let isUserValidBasedOnFields = self.validateFields(of: user)
         
         if isUserValidBasedOnFields {
-            let name = self.doLoginInEndpoint(with: user)
-            print(name)
+            if let userData = self.doLoginInEndpoint(with: user) {
+                
+                
+                
+                let response = Login.Login.Response(user: user)
+                presenter.presentLoginResponse(response: response)
+            }
         }
-        
-        let response = Login.Login.Response(user: user)
-        presenter.presentLoginResponse(response: response)
     }
     
     private func validateFields(of user: User) -> Bool {
@@ -37,7 +39,7 @@ class LoginInteractor: LoginBusinessLogic {
         return fieldsValidationWorker.validate(user: user)
     }
     
-    private func doLoginInEndpoint(with user: User) -> String {
+    private func doLoginInEndpoint(with user: User) -> UserData? {
         httpRequestWorker = LoginHTTPRequestWorker()        
         
         return httpRequestWorker.doLogin(with: user)
