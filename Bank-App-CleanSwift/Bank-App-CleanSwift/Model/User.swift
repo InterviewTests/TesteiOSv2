@@ -11,3 +11,9 @@ struct User {
     let username: String
     let password: String
 }
+
+/// Struct for request body parameters
+struct UserParameters: Encodable {
+    let user: String
+    let password: String
+}

@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
 
     var interactor: LoginBusinessLogic!
     
+    // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
                             
@@ -27,7 +28,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
         self.setupCleanSwiftObjects()
     }
     
-
+    // MARK: -
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         let username = userText.text!
         let password = passwordText.text!
@@ -37,6 +38,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
         interactor.applyBusinessLogic(request: request)        
     }
     
+    // MARK: - Setup Clean Swift's architecture objects
     private func setupCleanSwiftObjects() {
         let viewController = self
         let interactor = LoginInteractor()
@@ -47,6 +49,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
         presenter.viewController = viewController
     }
     
+    // MARK: -
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
         print("Fiz o ciclo VIP básico com o usuario \(viewModel.user!.username) \(viewModel.user!.password)")
     }
@@ -61,6 +64,7 @@ extension LoginViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
+    
     
     @objc private func dismissKeyboard() {
         view.endEditing(true)

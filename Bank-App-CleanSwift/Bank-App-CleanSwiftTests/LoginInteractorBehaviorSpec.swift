@@ -13,7 +13,6 @@ import Nimble
 class LoginInteractorBehaviorSpec: QuickSpec {
     let loginInteractorDouble = LoginInteractorDouble()
         
-    
     override func spec() {
         beforeEach {
             self.loginInteractorDouble.applyBusinessLogic(request: Stubs.REQUEST_MODEL_STUB)

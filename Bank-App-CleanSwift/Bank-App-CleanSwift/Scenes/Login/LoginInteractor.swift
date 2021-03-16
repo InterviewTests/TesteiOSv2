@@ -17,9 +17,15 @@ class LoginInteractor: LoginBusinessLogic {
     var httpRequestWorker: LoginHTTPRequestWorker!
     
     func applyBusinessLogic(request: Login.Login.Request) {
-        let user = User(username: request.fields.username, password: request.fields.password)
+        let user = User(username: request.fields.username,
+                        password: request.fields.password)
         
-        //self.validateFields(of: user)
+        let isUserValidBasedOnFields = self.validateFields(of: user)
+        
+        if isUserValidBasedOnFields {
+            let name = self.doLoginInEndpoint(with: user)
+            print(name)
+        }
         
         let response = Login.Login.Response(user: user)
         presenter.presentLoginResponse(response: response)
@@ -29,5 +35,11 @@ class LoginInteractor: LoginBusinessLogic {
         fieldsValidationWorker = LoginFieldsValidationWorker()
         
         return fieldsValidationWorker.validate(user: user)
+    }
+    
+    private func doLoginInEndpoint(with user: User) -> String {
+        httpRequestWorker = LoginHTTPRequestWorker()        
+        
+        return httpRequestWorker.doLogin(with: user)
     }
 }

@@ -6,11 +6,11 @@
 //
 
 import Foundation
-
+import Alamofire
 
 /// Worker class for POST http request.
 class LoginHTTPRequestWorker {
-    func doPost(with: User) {
-        
+    func doLogin(with: User) -> String {
+        let request = AF.request(
     }    
 }
