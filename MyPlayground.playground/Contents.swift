@@ -1,11 +1,9 @@
-//
-//  LoginFieldsValidationWorker.swift
-//  Bank-App-CleanSwift
-//
-//  Created by Adriano Rodrigues Vieira on 15/03/21.
-//
+import UIKit
 
-import Foundation
+struct User {
+    let username: String
+    let password: String
+}
 
 /// Worker Class for validation of entry fields (a.k.a. username and password)
 class LoginFieldsValidationWorker {
@@ -23,8 +21,6 @@ class LoginFieldsValidationWorker {
         return false
     }
     
-    // MARK: - Validation for password, private method
-    
     /// Validates if a `password` is valid. Technically speaking, returns `true` if `password` contais at least six digits, one uppercased letter,
     /// one number and one special character; otherwise, it returns `false`
     ///
@@ -39,7 +35,6 @@ class LoginFieldsValidationWorker {
         return result != nil
     }
     
-    // MARK: - Validation for username, private methods
     
     /// Validates if a `username` is valid. Technically speaking, returns `true` if `username` is:
     /// - a valid CPF;
@@ -68,7 +63,7 @@ class LoginFieldsValidationWorker {
     private func isCPFValid(cpf: String) -> Bool {
         if hasCPFPatternValid(cpf: cpf) {
             let onlyNumbers = removeFormattingOf(cpf: cpf)
-            
+                                    
             if containsDifferentNumbers(cpf: onlyNumbers) {
                 if matchesTheCPFAlgorithm(cpf: onlyNumbers) {
                     return true
@@ -108,33 +103,45 @@ class LoginFieldsValidationWorker {
     /// - Parameter cpf: a `cpf` string
     /// - Returns: `true` if the `cpf` matches the algorithm; `false` if the `cpf` does not match.
     private func matchesTheCPFAlgorithm(cpf: String) -> Bool {
+        print(cpf)
+        
         let indexOne = cpf.index(cpf.startIndex, offsetBy: 9)
         let indexTwo = cpf.index(cpf.startIndex, offsetBy: 10)
         let indexThree = cpf.index(cpf.startIndex, offsetBy: 11)
         
-        let digitVerificatorOne = Int(cpf[indexOne..<indexTwo])
-        let digitVerificatorTwo = Int(cpf[indexTwo..<indexThree])
+        let digitOne = Int(cpf[indexOne..<indexTwo])
+        let digitTwo = Int(cpf[indexTwo..<indexThree])
         
-        var tempDigitVerificatorOne = 0
-        var tempDigitVerificatorTwo = 0
+        var temp1 = 0
+        var temp2 = 0
         
         for index in 0...8 {
             let start = cpf.index(cpf.startIndex, offsetBy: index)
             let end = cpf.index(cpf.startIndex, offsetBy: index + 1)
-            let digit = Int(cpf[start..<end])
-                                                
-            tempDigitVerificatorOne += digit! * (10 - index)
-            tempDigitVerificatorTwo += digit! * (11 - index)
+            let char = Int(cpf[start..<end])
+            
+            temp1 += char! * (10 - index)
+            temp2 += char! * (11 - index)
         }
         
-        tempDigitVerificatorOne %= 11
-        tempDigitVerificatorOne = tempDigitVerificatorOne < 2 ? 0 : 11 - tempDigitVerificatorOne
+        temp1 %= 11
+        temp1 = temp1 < 2 ? 0 : 11 - temp1
         
-        tempDigitVerificatorTwo += tempDigitVerificatorOne * 2
-        tempDigitVerificatorTwo %= 11
-        tempDigitVerificatorTwo = tempDigitVerificatorTwo < 2 ? 0 : 11-tempDigitVerificatorTwo
+        temp2 += temp1 * 2
+        temp2 %= 11
+        temp2 = temp2 < 2 ? 0 : 11-temp2
         
-        return tempDigitVerificatorOne == digitVerificatorOne && tempDigitVerificatorTwo == digitVerificatorTwo
+        return temp1 == digitOne && temp2 == digitTwo
     }
 }
     
+let paul = User(username: "355.356.418-04", password: "Test@1")
+let angela = User(username: "111.111.111-11", password: "Test@1")
+let ray = User(username: "123.456.789-00", password: "Test@3")
+
+let validator = LoginFieldsValidationWorker()
+
+print(validator.validate(user: paul))
+print(validator.validate(user: angela))
+print(validator.validate(user: ray))
+

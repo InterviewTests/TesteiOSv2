@@ -91,28 +91,59 @@ class LoginFieldsValidationSpec: QuickSpec {
             }
                         
             context("when username is correct but password does not match any predicate") {
-                expect(self.fieldsValidator
-                        .validate(user: LoginDoubles.USER_WITH_GOOD_EMAIL_AND_BAD_PASSWORD))
-                    .to(beFalse())
-                expect(self.fieldsValidator
-                        .validate(user: LoginDoubles.USER_WITH_GOOD_CPF_WITHOUT_DOTS_AND_BAD_PASSWORD))
-                    .to(beFalse())
-                expect(self.fieldsValidator
-                        .validate(user: LoginDoubles.USER_WITH_GOOD_CPF_WITHOUT_DOTS_AND_BLANK_PASSWORD))
-                    .to(beFalse())
+                it("returns false") {
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_GOOD_EMAIL_AND_BAD_PASSWORD))
+                        .to(beFalse())
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_GOOD_CPF_WITHOUT_DOTS_AND_BAD_PASSWORD))
+                        .to(beFalse())
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_GOOD_CPF_WITHOUT_DOTS_AND_BLANK_PASSWORD))
+                        .to(beFalse())
+                }
             }
             
             context("when username is correct but password is blank") {
-                expect(self.fieldsValidator
-                        .validate(user: LoginDoubles.USER_WITH_GOOD_EMAIL_AND_BLANK_PASSWORD))
-                    .to(beFalse())
-                expect(self.fieldsValidator
-                        .validate(user: LoginDoubles.USER_WITH_GOOD_CPF_WITHOUT_DOTS_AND_BLANK_PASSWORD))
-                    .to(beFalse())
-                expect(self.fieldsValidator
-                        .validate(user: LoginDoubles.USER_WITH_GOOD_CPF_WITH_DOTS_AND_BLANK_PASSWORD))
-                    .to(beFalse())
-            }                                                
+                it("returns false") {
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_GOOD_EMAIL_AND_BLANK_PASSWORD))
+                        .to(beFalse())
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_GOOD_CPF_WITHOUT_DOTS_AND_BLANK_PASSWORD))
+                        .to(beFalse())
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_GOOD_CPF_WITH_DOTS_AND_BLANK_PASSWORD))
+                        .to(beFalse())
+                }
+            }
+            
+            context("when username is incorrect but password is correct") {
+                it("returns false") {
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_BAD_EMAIL_AND_GOOD_PASSWORD))
+                        .to(beFalse())
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_BAD_CPF_WITH_DOTS_AND_GOOD_PASSWORD))
+                        .to(beFalse())
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_BAD_CPF_WITHOUT_DOTS_AND_GOOD_PASSWORD))
+                        .to(beFalse())
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_BLANK_USER_AND_GOOD_PASSWORD))
+                }
+            }
+            
+            context("when one field is blank and other is incorrect") {
+                it("returns false") {
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_BLANK_USERNAME_AND_BAD_PASSWORD))
+                        .to(beFalse())
+                    expect(self.fieldsValidator
+                            .validate(user: LoginDoubles.USER_WITH_BAD_USERNAME_AND_BLANK_PASSWORD))
+                        .to(beFalse())
+                }
+            }
         }
     }
 }
