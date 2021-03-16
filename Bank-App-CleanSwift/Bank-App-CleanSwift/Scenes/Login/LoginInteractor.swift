@@ -8,16 +8,26 @@
 import Foundation
 
 protocol LoginBusinessLogic: class {
-    func applyBusinessLogicIn(request: Login.Login.Request)
+    func applyBusinessLogic(request: Login.Login.Request)
 }
 
 class LoginInteractor: LoginBusinessLogic {
     var presenter: LoginPresentationLogic!
+    var fieldsValidationWorker: LoginFieldsValidationWorker!
+    var httpRequestWorker: LoginHTTPRequestWorker!
     
-    func applyBusinessLogicIn(request: Login.Login.Request) {
-        // Aqui tenho que usar os workers para fazer as requisicoes http etc.
+    func applyBusinessLogic(request: Login.Login.Request) {
         let user = User(username: request.fields.username, password: request.fields.password)
+        
+        //self.validateFields(of: user)
+        
         let response = Login.Login.Response(user: user)
         presenter.presentLoginResponse(response: response)
+    }
+    
+    private func validateFields(of user: User) -> Bool {
+        fieldsValidationWorker = LoginFieldsValidationWorker()
+        
+        return fieldsValidationWorker.validate(user: user)
     }
 }
