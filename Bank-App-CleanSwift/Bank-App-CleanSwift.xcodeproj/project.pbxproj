@@ -10,6 +10,8 @@
 		060797494AEBD486D0E756A9 /* Pods_Bank_App_CleanSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DBEB47152E5B1FCE093BCA /* Pods_Bank_App_CleanSwiftTests.framework */; };
 		89A37B737E598CEFFF72ABE4 /* Pods_Bank_App_CleanSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C76D43FFC68C50C54B6C4E /* Pods_Bank_App_CleanSwift.framework */; };
 		B92BFB7D2600DB3E00D2F17E /* LoginInteractorDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92BFB7C2600DB3E00D2F17E /* LoginInteractorDouble.swift */; };
+		B92BFB812600DCED00D2F17E /* LoginInteractorBehaviorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92BFB802600DCED00D2F17E /* LoginInteractorBehaviorSpec.swift */; };
+		B92BFB852600E08200D2F17E /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92BFB842600E08200D2F17E /* Stubs.swift */; };
 		B9309A3E25FF8EFC0042BCF4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9309A3D25FF8EFC0042BCF4 /* User.swift */; };
 		B9309A7925FFA4F90042BCF4 /* LoginDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9309A7825FFA4F90042BCF4 /* LoginDouble.swift */; };
 		B9309A7F25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9309A7E25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift */; };
@@ -45,6 +47,8 @@
 		891D52CC3BA5C0F128DED66D /* Pods-Bank-App-CleanSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank-App-CleanSwiftTests.release.xcconfig"; path = "../Bank-App-CleanSwift/Pods/Target Support Files/Pods-Bank-App-CleanSwiftTests/Pods-Bank-App-CleanSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		967F5C0DFD05C4337A35AFC6 /* Pods-Bank-App-CleanSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank-App-CleanSwift.debug.xcconfig"; path = "../Bank-App-CleanSwift/Pods/Target Support Files/Pods-Bank-App-CleanSwift/Pods-Bank-App-CleanSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		B92BFB7C2600DB3E00D2F17E /* LoginInteractorDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorDouble.swift; sourceTree = "<group>"; };
+		B92BFB802600DCED00D2F17E /* LoginInteractorBehaviorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorBehaviorSpec.swift; sourceTree = "<group>"; };
+		B92BFB842600E08200D2F17E /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
 		B9309A3D25FF8EFC0042BCF4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B9309A7825FFA4F90042BCF4 /* LoginDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDouble.swift; sourceTree = "<group>"; };
 		B9309A7E25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFieldsValidationWorker.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			children = (
 				B9309A7825FFA4F90042BCF4 /* LoginDouble.swift */,
 				B92BFB7C2600DB3E00D2F17E /* LoginInteractorDouble.swift */,
+				B92BFB842600E08200D2F17E /* Stubs.swift */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 			children = (
 				B934B78525FE6AC00031F85E /* Info.plist */,
 				B9309A9625FFDE780042BCF4 /* LoginFieldsValidationSpec.swift */,
+				B92BFB802600DCED00D2F17E /* LoginInteractorBehaviorSpec.swift */,
 			);
 			path = "Bank-App-CleanSwiftTests";
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 				B934B76F25FE6ABA0031F85E /* SceneDelegate.swift in Sources */,
 				B9B1833125FF8D7C009149DD /* LoginPresenter.swift in Sources */,
 				B9309A7F25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift in Sources */,
+				B92BFB852600E08200D2F17E /* Stubs.swift in Sources */,
 				B9B1834025FF8DAF009149DD /* LoginHTTPRequestWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9309A9725FFDE780042BCF4 /* LoginFieldsValidationSpec.swift in Sources */,
+				B92BFB812600DCED00D2F17E /* LoginInteractorBehaviorSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

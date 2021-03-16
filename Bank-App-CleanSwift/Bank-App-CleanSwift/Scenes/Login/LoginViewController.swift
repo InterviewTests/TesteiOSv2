@@ -34,7 +34,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
                 
         let request = Login.Login.Request(fields: Login.LoginFields(username: username,
                                                                     password: password))
-        interactor.applyBusinessLogicIn(request: request)        
+        interactor.applyBusinessLogic(request: request)        
     }
     
     private func setupCleanSwiftObjects() {

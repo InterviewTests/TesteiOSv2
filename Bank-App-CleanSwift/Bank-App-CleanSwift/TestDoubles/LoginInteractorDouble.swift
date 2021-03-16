@@ -13,7 +13,7 @@ class LoginInteractorDouble: LoginBusinessLogic {
     
     func applyBusinessLogic(request: Login.Login.Request) {
         applyBusinessLogicWasCalled = true
-        let _ = validateFields(of: LoginDoubles.USER_WITH_GOOD_EMAIL_AND_GOOD_PASSWORD)
+        let _ = validateFields(of: User(username: request.fields.username, password: request.fields.password))
         
     }
     
