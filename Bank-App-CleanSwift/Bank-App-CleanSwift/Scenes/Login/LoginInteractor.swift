@@ -28,7 +28,7 @@ class LoginInteractor: LoginBusinessLogic {
         
         if isUserValidBasedOnFields {
             httpRequestWorker = LoginHTTPRequestWorker()
-            httpRequestWorker.doLoginWith(user: user) { data in
+            httpRequestWorker.doLogin(with: user) { data in
                 DispatchQueue.main.async {
                     self.userData = data
                     

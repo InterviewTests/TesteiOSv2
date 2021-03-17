@@ -11,11 +11,11 @@ import Alamofire
 /// Worker class for POST http request.
 class LoginHTTPRequestWorker {
     
-    /// Make a `post` request with the parameters `user` and `password` presents inside `user` object.
+    /// Make a `post` request with the parameters `user` and `password` presents inside `user` object, and executes the `completion`.
     /// - Parameter user: an `User` objects, containing an `username` and a `password`
-    /// - Returns: an `UserData` optional object
+    /// - Parameter completion: a `closure` that will be executed inside the request.
     
-    func doLoginWith(user: User, completion: @escaping (UserData) -> ()) {
+    func doLogin(with user: User, completion: @escaping (UserData) -> ()) {
         let endpoint = "https://bank-app-test.herokuapp.com/api/login/"
         let headers: HTTPHeaders = [.contentType("application/json; charset=utf-8")]
         
@@ -25,7 +25,7 @@ class LoginHTTPRequestWorker {
                                  encoder: JSONParameterEncoder.default,
                                  headers: headers)
         request.responseDecodable(of: UserData.self) { response in
-            completion(response.value!)            
+            completion(response.value!)
         }
     }
 }
