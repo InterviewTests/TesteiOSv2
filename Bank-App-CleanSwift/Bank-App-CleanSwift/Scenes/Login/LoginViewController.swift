@@ -15,7 +15,6 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-
     var interactor: LoginBusinessLogic!
     
     // MARK: -
