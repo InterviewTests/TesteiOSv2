@@ -21,6 +21,13 @@ struct UserParameters: Encodable {
 
 
 // MARK: -
+/// struct for request body parameters. As the api allow any user to login, a way to force an error code 53 is change the parameter names
+struct UserWrongParameters: Encodable {
+    let uzer: String
+    let pazzvord: String
+}
+
+// MARK: -
 /// Struct for decoding data
 struct UserData: Decodable {
     let error: ErrorData

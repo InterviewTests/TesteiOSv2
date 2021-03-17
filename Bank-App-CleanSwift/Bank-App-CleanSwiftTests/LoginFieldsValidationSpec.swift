@@ -131,6 +131,7 @@ class LoginFieldsValidationSpec: QuickSpec {
                         .to(beFalse())
                     expect(self.fieldsValidator
                             .validate(user: LoginDoubles.USER_WITH_BLANK_USER_AND_GOOD_PASSWORD))
+                        .to(beFalse())
                 }
             }
             
