@@ -12,8 +12,6 @@ import Alamofire
 @testable import Bank_App_CleanSwift
 
 class LoginPostRequestSpec: QuickSpec {
-    let validUser = User(username: "john.appleseed@accenture.com", password: "Test@1")
-    
     override func spec() {
         var worker: LoginHTTPRequestWorker!
         
@@ -23,14 +21,14 @@ class LoginPostRequestSpec: QuickSpec {
         
         context("when user and password are correct") {
             it("should return error as nil object") {
-                worker.doLogin(with: self.validUser) { data in
+                worker.doLogin(with: Stubs.VALID_USER) { data in
                     expect(data.error.code).to(beNil())
                 }
             }
             
             it("should return Jose da Silva Teste as name") {
                 waitUntil(timeout: DispatchTimeInterval.seconds(15)) { done in
-                    worker.doLogin(with: self.validUser) { data in
+                    worker.doLogin(with: Stubs.VALID_USER) { data in
                         expect(data.userAccount.name).to(equal("Jose da Silva Teste"))
                         done()
                     }
@@ -39,7 +37,7 @@ class LoginPostRequestSpec: QuickSpec {
             
             it("should return false when comparing with a different name") {
                 waitUntil(timeout: DispatchTimeInterval.seconds(15)) { done in
-                    worker.doLogin(with: self.validUser) { data in
+                    worker.doLogin(with: Stubs.VALID_USER) { data in
                         expect(data.userAccount.name == "Kevin Bacon").to(beFalse())
                         done()
                     }
@@ -58,8 +56,7 @@ class LoginPostRequestSpec: QuickSpec {
                                             
                 let request = AF.request(endpoint,
                                          method: .post,
-                                         parameters: UserWrongParameters(uzer: "mustafa.bin.laden@kaboom.com",
-                                                                         pazzvord: "Bo000m!!!"),
+                                         parameters: Stubs.WRONG_PARAMETERS,
                                          encoder: JSONParameterEncoder.default,
                                          headers: headers)
                 
