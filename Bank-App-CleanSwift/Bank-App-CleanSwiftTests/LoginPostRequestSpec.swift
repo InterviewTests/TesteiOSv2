@@ -56,6 +56,8 @@ class LoginPostRequestSpec: QuickSpec {
                                             
                 let request = AF.request(endpoint,
                                          method: .post,
+                                         // here it is passed as parameters a 'mombojombo' parameter, to enforce
+                                         // error message from api.
                                          parameters: Stubs.WRONG_PARAMETERS,
                                          encoder: JSONParameterEncoder.default,
                                          headers: headers)

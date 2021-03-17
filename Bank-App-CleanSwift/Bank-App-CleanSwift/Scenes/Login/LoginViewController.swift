@@ -59,10 +59,9 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
             return 
         }
         
-        
+        print("\(viewModel.user!.name)")
     }
         
-    
     /// Presents an customized error alert
     /// - Parameter errorMessage: the message that tells the error occurred
     private func presentErrorAlert(containing errorMessage: String) {
@@ -77,17 +76,21 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
 extension LoginViewController {
     /// Dismisses the keyboard when the app's user taps outside the textview
     private func dismissKey() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                 action: #selector(LoginViewController.dismissKeyboard))
         
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
     
+    /// Objective-C-like method used in selector
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
     
+    
+    /// Rounds the border of the Login Button.
     private func roundButtonCorners() {
         loginButton.layer.cornerRadius = 5
         loginButton.clipsToBounds = true
