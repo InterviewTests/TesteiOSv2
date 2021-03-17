@@ -25,6 +25,8 @@
 		B98F7D9225FE9B0900988AB0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98F7D9125FE9B0900988AB0 /* LoginViewController.swift */; };
 		B991FF632602505F00716AF5 /* LoginPostRequestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991FF622602505F00716AF5 /* LoginPostRequestSpec.swift */; };
 		B991FF89260288F200716AF5 /* LoginStorageDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991FF88260288F200716AF5 /* LoginStorageDataWorker.swift */; };
+		B991FF9026028AC300716AF5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991FF8F26028AC300716AF5 /* Storage.swift */; };
+		B991FF9426028CAB00716AF5 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991FF9326028CAB00716AF5 /* UserDefaultsStorage.swift */; };
 		B9ACF5CB260239AD008801D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ACF5CA260239AD008801D6 /* Constants.swift */; };
 		B9B1832C25FF8D71009149DD /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1832B25FF8D71009149DD /* LoginInteractor.swift */; };
 		B9B1833125FF8D7C009149DD /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1833025FF8D7C009149DD /* LoginPresenter.swift */; };
@@ -70,6 +72,8 @@
 		B98F7D9125FE9B0900988AB0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B991FF622602505F00716AF5 /* LoginPostRequestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPostRequestSpec.swift; sourceTree = "<group>"; };
 		B991FF88260288F200716AF5 /* LoginStorageDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorageDataWorker.swift; sourceTree = "<group>"; };
+		B991FF8F26028AC300716AF5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		B991FF9326028CAB00716AF5 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		B9ACF5CA260239AD008801D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9B1832B25FF8D71009149DD /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		B9B1833025FF8D7C009149DD /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 		B934B76B25FE6AB90031F85E /* Bank-App-CleanSwift */ = {
 			isa = PBXGroup;
 			children = (
+				B991FF8E26028A9200716AF5 /* Storage */,
 				B9309A7725FFA4DD0042BCF4 /* TestDoubles */,
 				B9309A4225FF8F020042BCF4 /* Model */,
 				B9B1832525FF8C32009149DD /* Scenes */,
@@ -194,6 +199,15 @@
 				B991FF622602505F00716AF5 /* LoginPostRequestSpec.swift */,
 			);
 			path = "Bank-App-CleanSwiftTests";
+			sourceTree = "<group>";
+		};
+		B991FF8E26028A9200716AF5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B991FF8F26028AC300716AF5 /* Storage.swift */,
+				B991FF9326028CAB00716AF5 /* UserDefaultsStorage.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		B9B0F0DA2600D6B30028CEA3 /* Storyboards */ = {
@@ -442,6 +456,8 @@
 				B9309A7F25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift in Sources */,
 				B991FF89260288F200716AF5 /* LoginStorageDataWorker.swift in Sources */,
 				B9ACF5CB260239AD008801D6 /* Constants.swift in Sources */,
+				B991FF9026028AC300716AF5 /* Storage.swift in Sources */,
+				B991FF9426028CAB00716AF5 /* UserDefaultsStorage.swift in Sources */,
 				B92BFB852600E08200D2F17E /* Stubs.swift in Sources */,
 				B9B1834025FF8DAF009149DD /* LoginHTTPRequestWorker.swift in Sources */,
 			);
