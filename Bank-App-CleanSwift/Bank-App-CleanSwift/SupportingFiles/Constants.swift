@@ -17,14 +17,9 @@ struct Constants {
         let userAccount: UserAccount? = nil
         let message =
             """
-            Por favor, verifique se:
-            * sua senha possui ao menos 6 dígitos, sendo:
-               - um número;
-               - uma letra maiúscula;
-               - um caractere especial (!, $, %, &, @, ?, ., _, -).
-            * seu nome de usuário é:
-               - um email com formato válido; ou
-               - um CPF válido (com ou sem pontos e traço).
+            Pode ser que sua senha não esteja em um formato válido (6 digitos no mínimo, sendo ao menos uma letra maiuscula, um número e um caractere especial).
+            
+            Que tal verificar, também, se seu nome de usuário é um email ou CPF válido?
             """
         let errorMessage: ErrorMessage? = ErrorMessage(code: 23, message: message)
         

@@ -54,7 +54,14 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     /// Based on `viewModel` contents, show an alert informing an error, or passes by the object to the next view
     /// - Parameter viewModel: a `ViewModel` which can contain an `ErrorMessage` or an `UserAccount`
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
-        
+        guard viewModel.user != nil else {
+            let alertController = UIAlertController(title: "Algo não saiu como esperado...",
+                                                    message: viewModel.error?.message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Vou verificar!", style: .default, handler: nil))
+            
+            self.present(alertController, animated: true)
+            return 
+        }
         
     }
 }

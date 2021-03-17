@@ -37,7 +37,7 @@ class LoginInteractor: LoginBusinessLogic {
                     }
                     if let _ = data.error.code {
                         errorMessage = ErrorMessage(extractedFrom: data)
-                    }
+                    }                                        
                     
                     let response = Login.Login.Response(user: userAccount, error: errorMessage)
                     self.presenter.presentLoginResponse(response: response)
