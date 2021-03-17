@@ -18,7 +18,7 @@ class LoginStorageWorker {
         return storage.persistUsername(username)
     }
     
-    func fetchLastLoggedUsername() -> String {
+    func fetchLastLoggedUsername() -> String? {
         return storage.fetchUsername()
     }
     

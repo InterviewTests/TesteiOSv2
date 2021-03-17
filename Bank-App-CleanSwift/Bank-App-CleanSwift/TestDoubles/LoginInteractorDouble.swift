@@ -11,6 +11,12 @@ import Foundation
 class LoginInteractorDouble: LoginBusinessLogic {
     var applyBusinessLogicWasCalled: Bool = false
     var validateFieldsWasCalled: Bool = false
+    var fetchLastLoggedUsernameWasCalled: Bool = false
+    
+    func fetchLastLoggedUsername(request: Login.FetchLastLoggedUser.Request) {
+        fetchLastLoggedUsernameWasCalled = true        
+    }
+    
     
     func applyBusinessLogic(request: Login.Login.Request) {
         applyBusinessLogicWasCalled = true

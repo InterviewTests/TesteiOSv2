@@ -9,6 +9,7 @@ import Foundation
 
 protocol LoginPresentationLogic: class {
     func presentLoginResponse(response: Login.Login.Response)
+    func showLastLoggedUser(response: Login.FetchLastLoggedUser.Response)
 }
 
 class LoginPresenter: LoginPresentationLogic {
@@ -18,5 +19,11 @@ class LoginPresenter: LoginPresentationLogic {
         let viewModel = Login.Login.ViewModel(user: response.user, error: response.error)                
         
         viewController.displayLoginSuccessful(viewModel: viewModel)
-    }    
+    }
+    
+    func showLastLoggedUser(response: Login.FetchLastLoggedUser.Response) {        
+        let viewModel = Login.FetchLastLoggedUser.ViewModel(username: response.username)
+        
+        viewController.setUsernameText(with: viewModel)
+    }
 }

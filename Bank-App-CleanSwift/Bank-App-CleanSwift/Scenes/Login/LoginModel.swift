@@ -40,4 +40,20 @@ enum Login {
             }
         }
     }
+    
+    enum FetchLastLoggedUser {
+        struct Request {}
+        
+        struct Response {
+            let username: String?
+        }
+        
+        struct ViewModel {
+            let username: String
+            
+            init(username: String?) {
+                self.username = username ?? ""
+            }
+        }
+    }
 }

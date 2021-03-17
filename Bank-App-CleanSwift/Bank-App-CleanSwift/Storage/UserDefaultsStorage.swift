@@ -35,7 +35,7 @@ class UserDefaultsStorage: Storage {
         return true
     }
     
-    func fetchUsername() -> String {
-        return storage.string(forKey: Constants.USERNAME_KEY) ?? ""
+    func fetchUsername() -> String? {
+        return storage.string(forKey: Constants.USERNAME_KEY)
     }
 }
