@@ -57,7 +57,6 @@ struct UserData: Decodable {
 
 /// Marker protocol, used for polimorphism.
 protocol JSONDataExtractable {
-    func extractData(from userData: UserData)
 }
 
 
@@ -69,7 +68,7 @@ class UserAccount: JSONDataExtractable {
     var agency: String?
     var balance: Double?
     
-    func extractData(from userData: UserData) {
+    init(extractedFrom userData: UserData) {
         self.userId = userData.userAccount.userId
         self.name = userData.userAccount.name
         self.bankAccount = userData.userAccount.bankAccount
@@ -84,7 +83,7 @@ class ErrorMessage: JSONDataExtractable {
     var code: Int?
     var message: String?
     
-    func extractData(from userData: UserData) {
+    init(extractedFrom userData: UserData) {
         self.code = userData.error.code
         self.message = userData.error.message
     }

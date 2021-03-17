@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     
     // MARK: -
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
-        print("Fiz o ciclo VIP básico com o usuario \(viewModel.user!.username) \(viewModel.user!.password)")
+        
     }
 }
 

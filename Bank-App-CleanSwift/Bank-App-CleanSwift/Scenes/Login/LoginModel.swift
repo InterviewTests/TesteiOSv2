@@ -19,11 +19,13 @@ enum Login {
         }
         
         struct Response {
-            var user: User? 
+            var user: UserAccount?
+            var error: ErrorMessage?
         }
         
         struct ViewModel {
-            var user: User?
+            var user: UserAccount?
+            var error: ErrorMessage?
         }
     }
 }
