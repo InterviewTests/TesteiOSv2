@@ -10,9 +10,11 @@ import Foundation
 
 /// Protocol for implementation of storage classes (which encapsulates operations of CoreData, UserDefaults, Realm etc)
 protocol Storage {
-    func persistUsername(username: String) -> Bool
-    func fetchUsername() -> String?
+    func persistUsername(_ username: String) -> Bool
+    func fetchUsername() -> String
+    func deleteUsername() -> Bool
     
-    func persistUser(user: User) -> Bool
+    func persistUser(_ user: User) -> Bool
     func fetchUser() -> User?
+    func deleteUser() -> Bool
 }
