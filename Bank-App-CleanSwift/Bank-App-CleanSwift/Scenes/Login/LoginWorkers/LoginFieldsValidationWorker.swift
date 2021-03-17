@@ -31,9 +31,7 @@ class LoginFieldsValidationWorker {
     /// - Parameter password: the `password` string.
     /// - Returns: `true` if `password` is valid; `false` if it is invalid.
     private func isPasswordValid(password: String) -> Bool {
-        let passwordPattern =
-            #"(?=.{6,})(?=.*[A-Z])(?=.*\d)(?=.*[ !$%&@?._-])"#
-        
+        let passwordPattern = #"(?=.{6,})(?=.*[A-Z])(?=.*\d)(?=.*[ !$%&@?._-])"#
         let result = password.range(of: passwordPattern, options: .regularExpression)
         
         return result != nil
@@ -51,6 +49,7 @@ class LoginFieldsValidationWorker {
         return isEmailValid(email: username) || isCPFValid(cpf: username)
     }
             
+    // MARK: - Validates an email, private method
     /// Verifies if an `email` matches the email pattern (a.k.a. ccc@ccc.ccc, with 'c' representing alphanumeric characters including dash, underscore and dot).
     /// - Parameter email: the `email` string.
     /// - Returns: `true` if `email` has an email pattern valid; `false` if it does not have a valid pattern
@@ -60,7 +59,7 @@ class LoginFieldsValidationWorker {
         return result != nil
     }
     
-    
+    // MARK: - Validation for CPF, private method
     /// Verifies if a `cpf` has a valid pattern cpf (a.k.a. if `cpf` has eleven numbers with the format nnn.nnn.nnn-nn or nnnnnnnnnnn),
     /// and matches the **Receita Federal**'s algorithm.
     /// - Parameter cpf: the `cpf` string
@@ -79,6 +78,7 @@ class LoginFieldsValidationWorker {
         return false
     }
     
+    // MARK: - Format validation for CPF, private method
     /// Verifies if `cpf` matches the CPF format (a.k.a. nnn.nnn.nnn-nn or nnnnnnnnnnn, given **n** as a number between 0 and 9 included)
     /// - Parameter cpf: the `cpf` string
     /// - Returns: `true` if the `cpf` matches the pattern; `false` if the `cpf` does not match.
@@ -88,6 +88,7 @@ class LoginFieldsValidationWorker {
         return result != nil
     }
     
+    // MARK: - Only numbers of CPF, private method
     /// Removes the formatting of `cpf` string, returning a string with only numbers.
     /// - Parameter cpf: the `cpf` string with formatting (e.g. "123.456.789-90")
     /// - Returns: a string made only with numbers (e.g. "12345678990")
@@ -96,6 +97,7 @@ class LoginFieldsValidationWorker {
         return onlyNumbers
     }
     
+    // MARK: - Verification of equal numbers sequence in CPF
     /// Verifies if `cpf` contains sequence of equal numbers (e.g. "11111111111" or "99999999999").
     /// - Parameter cpf: A string containing eleven numbers.
     /// - Returns: `true` if the `cpf` string does contain distinct numbers; `false` if the `cpf` string contains a sequence of eleven equal numbers.
@@ -104,6 +106,7 @@ class LoginFieldsValidationWorker {
         return set.count != 1
     }
     
+    // MARK: - Verification of CPF algorithm
     /// Verifies if the `cpf` string matches the **Receita Federal**'s algorithm ( (https://pt.wikipedia.org/wiki/Cadastro_de_pessoas_f%C3%ADsicas#Algoritmo)
     /// - Parameter cpf: a `cpf` string
     /// - Returns: `true` if the `cpf` matches the algorithm; `false` if the `cpf` does not match.

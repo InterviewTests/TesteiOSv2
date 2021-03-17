@@ -57,6 +57,8 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
             self.presentErrorAlert(containing: viewModel.error!.message!)
             return 
         }
+        
+        print("\(viewModel.user?.name) possui \(viewModel.user?.balance) na conta")
     }
         
     // MARK: -
