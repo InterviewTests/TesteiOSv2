@@ -9,23 +9,23 @@ import UIKit
 
 protocol DisplayLoginLogic: class {
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel)
+    func setUsernameText(with viewModel: Login.FetchLastLoggedUser.ViewModel)
 }
 
 class LoginViewController: UIViewController, DisplayLoginLogic {
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-
     var interactor: LoginBusinessLogic!
     
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
-                            
         self.roundButtonCorners()
         self.dismissKey()
-        
         self.setupCleanSwiftObjects()
+        
+        interactor.fetchLastLoggedUsername(request: Login.FetchLastLoggedUser.Request())
     }
     
     // MARK: -
@@ -50,7 +50,6 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     }
     
     // MARK: -
-    
     /// Based on `viewModel` contents, show an alert informing an error, or passes by the object to the next view
     /// - Parameter viewModel: a `ViewModel` which can contain an `ErrorMessage` or an `UserAccount`
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
@@ -58,10 +57,9 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
             self.presentErrorAlert(containing: viewModel.error!.message!)
             return 
         }
-        
-        print("\(viewModel.user!.name)")
     }
         
+    // MARK: -
     /// Presents an customized error alert
     /// - Parameter errorMessage: the message that tells the error occurred
     private func presentErrorAlert(containing errorMessage: String) {
@@ -69,6 +67,11 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
                                                 message: errorMessage, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: Constants.DEFAUTL_ALERT_BUTTON_CAPTION, style: .default, handler: nil))
         self.present(alertController, animated: true)
+    }
+    
+    // MARK: - 
+    func setUsernameText(with viewModel: Login.FetchLastLoggedUser.ViewModel) {
+        self.userText.text = viewModel.username
     }
 }
 

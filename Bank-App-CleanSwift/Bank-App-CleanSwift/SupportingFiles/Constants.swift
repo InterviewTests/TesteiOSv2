@@ -20,8 +20,9 @@ struct Constants {
         return Login.Login.Response(user: userAccount, error: errorMessage)
     }()
     
+    // MARK: -
+    /// Constants for use in error alert
     static let WRONG_FIELDS_MESSAGE = "Parece que o usuário e a senha informados não coincidem com os dados cadastrados no sistema. Uma boa ideia seria entrar em contato com o banco e solicitar um lembrete de senha ou uma nova."
-    
     static let OUT_OF_PATTERN_FIELDS_MESSAGE =  """
                             Pode ser que sua senha não esteja em um formato válido (6 digitos no mínimo, sendo ao menos uma letra maiuscula, um número e um caractere especial).
                             
@@ -30,4 +31,9 @@ struct Constants {
     
     static let DEFAULT_ALERT_TITLE = "Algo não saiu como esperado..."
     static let DEFAUTL_ALERT_BUTTON_CAPTION = "Vou verificar!"
+    
+    
+    // MARK: - Constants for use as keys in UserDefaults storage
+    static let USERNAME_KEY = "username"
+    static let USER_KEY = "user"
 }
