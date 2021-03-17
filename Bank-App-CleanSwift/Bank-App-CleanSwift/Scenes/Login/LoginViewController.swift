@@ -21,6 +21,8 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hideNavigationBar(animated: false)
         self.roundButtonCorners()
         self.dismissKey()
         self.setupCleanSwiftObjects()
