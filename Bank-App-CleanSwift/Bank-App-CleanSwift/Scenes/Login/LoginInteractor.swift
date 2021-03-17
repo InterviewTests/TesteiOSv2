@@ -23,14 +23,11 @@ class LoginInteractor: LoginBusinessLogic {
                         password: request.fields.password)
                 
         let isUserValidBasedOnFields = self.validateFields(of: user)
-        var userData: UserData?
         
         if isUserValidBasedOnFields {
             httpRequestWorker = LoginHTTPRequestWorker()
             httpRequestWorker.doLogin(with: user) { data in
                 DispatchQueue.main.async {
-                    //self.userData = data
-                    userData = data
                                         
                     var userAccount: UserAccount?
                     var errorMessage: ErrorMessage?
