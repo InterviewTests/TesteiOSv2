@@ -50,7 +50,11 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     }
     
     // MARK: -
+    
+    /// Based on `viewModel` contents, show an alert informing an error, or passes by the object to the next view
+    /// - Parameter viewModel: a `ViewModel` which can contain an `ErrorMessage` or an `UserAccount`
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
+        
         
     }
 }

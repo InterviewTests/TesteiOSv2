@@ -67,7 +67,9 @@ class UserAccount: JSONDataExtractable {
     var bankAccount: String?
     var agency: String?
     var balance: Double?
-    
+        
+    /// Constructor for use when creating an object of this class inside a request.
+    /// - Parameter userData: the data returned from a `request`
     init(extractedFrom userData: UserData) {
         self.userId = userData.userAccount.userId
         self.name = userData.userAccount.name
@@ -75,17 +77,45 @@ class UserAccount: JSONDataExtractable {
         self.agency = userData.userAccount.agency
         self.balance = userData.userAccount.balance
     }
+    
+    /// Constructor for use when creating an object of this class in hard-coded way
+    /// - Parameters:
+    ///   - userId: an `Int` representing an id of an user
+    ///   - name: a `String` representing the name of the user
+    ///   - bankAccount: a `String` representing a bank account
+    ///   - agency: a `String` representing an agency of the user's bank account
+    ///   - balance: a `Double` representing the total amount of the user
+    init(userId: Int, name: String, bankAccount: String, agency: String, balance: Double) {
+        self.userId = userId
+        self.name = name
+        self.bankAccount = bankAccount
+        self.agency = agency
+        self.balance = balance
+    }
 }
 
 
-/// Class for use when a request was made wth incorrect parameters.
+/// Class for use when a request was made wth incorrect parameters
 class ErrorMessage: JSONDataExtractable {
     var code: Int?
     var message: String?
     
+    
+    /// Constructor for use when creating an object of this class inside a request
+    /// - Parameter userData: the data returned from a `request`
     init(extractedFrom userData: UserData) {
         self.code = userData.error.code
         self.message = userData.error.message
+    }
+    
+    
+    /// Constructor for use when creating an object of this class in hard-coded way
+    /// - Parameters:
+    ///   - code: An `Int`error code (returned by the API or based on some business logic)
+    ///   - message: A `String` representing an error message
+    init(code: Int, message: String) {
+        self.code = code
+        self.message = message
     }
 }
 
