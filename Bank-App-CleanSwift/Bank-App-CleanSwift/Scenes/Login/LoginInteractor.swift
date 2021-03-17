@@ -43,8 +43,7 @@ class LoginInteractor: LoginBusinessLogic {
                     self.presenter.presentLoginResponse(response: response)
                 }
             }
-        } else {
-            print("eita")
+        } else {            
             self.presenter.presentLoginResponse(response: Constants.USER_OR_PASSWORD_INVALID_RESPONSE)            
         }
     }

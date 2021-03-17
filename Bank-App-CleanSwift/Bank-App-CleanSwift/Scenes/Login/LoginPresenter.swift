@@ -15,7 +15,7 @@ class LoginPresenter: LoginPresentationLogic {
     weak var viewController: DisplayLoginLogic!
     
     func presentLoginResponse(response: Login.Login.Response) {        
-        let viewModel = Login.Login.ViewModel(user: response.user, error: response.error)
+        let viewModel = Login.Login.ViewModel(user: response.user, error: response.error)                
         
         viewController.displayLoginSuccessful(viewModel: viewModel)
     }    

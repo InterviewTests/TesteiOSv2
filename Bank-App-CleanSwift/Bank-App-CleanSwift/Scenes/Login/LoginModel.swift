@@ -26,6 +26,18 @@ enum Login {
         struct ViewModel {
             var user: UserAccount?
             var error: ErrorMessage?
+            
+            init(user: UserAccount?, error: ErrorMessage?) {
+                self.user = user
+                self.error = error
+                
+                if let code = self.error?.code {
+                    if code == 53 {
+                        // Put a friendly message instead of the default api message
+                        self.error?.message = Constants.WRONG_FIELDS_MESSAGE
+                    }
+                }
+            }
         }
     }
 }

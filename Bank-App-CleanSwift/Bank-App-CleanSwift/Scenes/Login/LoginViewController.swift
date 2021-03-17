@@ -55,14 +55,21 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     /// - Parameter viewModel: a `ViewModel` which can contain an `ErrorMessage` or an `UserAccount`
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
         guard viewModel.user != nil else {
-            let alertController = UIAlertController(title: "Algo não saiu como esperado...",
-                                                    message: viewModel.error?.message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Vou verificar!", style: .default, handler: nil))
-            
-            self.present(alertController, animated: true)
+            self.presentErrorAlert(containing: viewModel.error!.message!)
             return 
         }
         
+        
+    }
+        
+    
+    /// Presents an customized error alert
+    /// - Parameter errorMessage: the message that tells the error occurred
+    private func presentErrorAlert(containing errorMessage: String) {
+        let alertController = UIAlertController(title: Constants.DEFAULT_ALERT_TITLE,
+                                                message: errorMessage, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: Constants.DEFAUTL_ALERT_BUTTON_CAPTION, style: .default, handler: nil))
+        self.present(alertController, animated: true)
     }
 }
 
@@ -82,7 +89,7 @@ extension LoginViewController {
     }
     
     private func roundButtonCorners() {
-        loginButton.layer.cornerRadius = 10
+        loginButton.layer.cornerRadius = 5
         loginButton.clipsToBounds = true
     }
 }
