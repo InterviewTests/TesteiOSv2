@@ -15,8 +15,6 @@ class LoginInteractor: LoginBusinessLogic {
     var presenter: LoginPresentationLogic!
     var fieldsValidationWorker: LoginFieldsValidationWorker!
     var httpRequestWorker: LoginHTTPRequestWorker!
-        
-    private var userData: UserData?
             
     /// Apply some business login in the fields (a.k.a. `username` and `password`) inside the `request` object.
     /// - Parameter request: a `request` object populated by `viewController`
@@ -25,14 +23,15 @@ class LoginInteractor: LoginBusinessLogic {
                         password: request.fields.password)
                 
         let isUserValidBasedOnFields = self.validateFields(of: user)
+        var userData: UserData?
         
         if isUserValidBasedOnFields {
             httpRequestWorker = LoginHTTPRequestWorker()
             httpRequestWorker.doLogin(with: user) { data in
                 DispatchQueue.main.async {
-                    self.userData = data
-                    
-                    print(data)
+                    //self.userData = data
+                    userData = data
+                                        
                     var userAccount: UserAccount?
                     var errorMessage: ErrorMessage?
                     
