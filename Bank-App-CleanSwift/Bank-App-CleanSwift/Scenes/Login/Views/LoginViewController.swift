@@ -34,7 +34,8 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     
     // MARK: -
     @IBAction func loginButtonPressed(_ sender: LoadingButton) {
-        self.loginButton.loadIndicator(true)
+        //self.loginButton.loadIndicator(true)
+        self.loginButton.showActivityIndicator()
         
         let username = userText.text!
         let password = passwordText.text!                
@@ -64,7 +65,8 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
         guard viewModel.user != nil else {
             self.presentErrorAlert(containing: viewModel.error!.message!)
-            self.loginButton.loadIndicator(false)
+            //self.loginButton.loadIndicator(false)
+            self.loginButton.hideActivityIndicator()
             return 
         }
                 
