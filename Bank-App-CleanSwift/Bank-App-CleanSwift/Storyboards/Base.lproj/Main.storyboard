@@ -98,7 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7g-nQ-5pX">
-                                <rect key="frame" x="0.0" y="44" width="375" height="232"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPF-jW-Pct">
                                         <rect key="frame" x="18" y="40" width="339" height="29"/>
@@ -216,12 +216,13 @@
                         <viewLayoutGuide key="safeArea" id="QfY-EN-X1g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="s7g-nQ-5pX" firstAttribute="top" secondItem="QfY-EN-X1g" secondAttribute="top" id="4zS-y7-2fA"/>
+                            <constraint firstItem="s7g-nQ-5pX" firstAttribute="top" secondItem="esc-BV-f2Z" secondAttribute="top" id="Tgw-4M-Qd1"/>
                             <constraint firstItem="s7g-nQ-5pX" firstAttribute="leading" secondItem="QfY-EN-X1g" secondAttribute="leading" id="qvu-df-ikW"/>
                             <constraint firstItem="s7g-nQ-5pX" firstAttribute="trailing" secondItem="QfY-EN-X1g" secondAttribute="trailing" id="ucr-Oc-fDz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IIb-F1-mch"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQL-Ki-xcX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -235,6 +236,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T8d-ZZ-nKw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.19983994960000001" green="0.3691539466" blue="0.90039199589999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

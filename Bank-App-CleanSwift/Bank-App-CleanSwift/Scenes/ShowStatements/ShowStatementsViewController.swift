@@ -11,11 +11,20 @@ class ShowStatementsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.hideNavigationBar()
+        
+        let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width, height: UIApplication.shared.statusBarFrame.height))
+        statusBarView.backgroundColor = UIColor.magenta
+        self.navigationController?.view.addSubview(statusBarView)
+        
+        statusBarView.frame.height
     }
     
 
+    
+    
+    
     /*
     // MARK: - Navigation
 
