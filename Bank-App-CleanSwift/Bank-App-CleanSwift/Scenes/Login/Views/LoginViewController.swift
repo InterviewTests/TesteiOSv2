@@ -24,8 +24,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hideNavigationBar()
-        self.roundButtonCorners()
+        self.hideNavigationBar()        
         self.dismissKey()
         self.setupCleanSwiftObjects()
         
@@ -104,12 +103,5 @@ extension LoginViewController {
     /// Objective-C-like method used in selector
     @objc private func dismissKeyboard() {
         view.endEditing(true)
-    }
-    
-    
-    /// Rounds the border of the Login Button.
-    private func roundButtonCorners() {
-        loginButton.layer.cornerRadius = 5
-        loginButton.clipsToBounds = true
     }
 }
