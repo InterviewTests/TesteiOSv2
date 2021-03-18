@@ -15,7 +15,7 @@ protocol DisplayLoginLogic: class {
 class LoginViewController: UIViewController, DisplayLoginLogic {
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginButton: LoadingButton!
     
     var interactor: LoginBusinessLogic!
     var router: (NSObjectProtocol & ShowUserDataPassing & LoginRoutingLogic)?
@@ -33,10 +33,11 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     }
     
     // MARK: -
-    @IBAction func loginButtonPressed(_ sender: UIButton) {
+    @IBAction func loginButtonPressed(_ sender: LoadingButton) {
+        self.loginButton.loadIndicator(true)
+        
         let username = userText.text!
-        let password = passwordText.text!
-                
+        let password = passwordText.text!                
         let request = Login.Login.Request(fields: Login.LoginFields(username: username,
                                                                     password: password))
         interactor.applyBusinessLogic(request: request)        
@@ -63,11 +64,11 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
         guard viewModel.user != nil else {
             self.presentErrorAlert(containing: viewModel.error!.message!)
+            self.loginButton.loadIndicator(false)
             return 
         }
-        
-        self.router?.routeToStatementsView()
-        
+                
+        self.router?.routeToStatementsView()        
     }
         
     // MARK: -
