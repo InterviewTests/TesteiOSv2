@@ -60,7 +60,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
             return 
         }
         
-        print("\(viewModel.user?.name) possui \(viewModel.user?.balance) na conta")
+        performSegue(withIdentifier: Constants.SEGUE_ID_TO_STATEMENTS, sender: nil)
     }
         
     // MARK: -

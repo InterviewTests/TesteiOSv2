@@ -82,22 +82,23 @@
                         <outlet property="loginButton" destination="520-jG-oMH" id="0dQ-VC-dh5"/>
                         <outlet property="passwordText" destination="5pd-Rk-p9h" id="XGc-zM-mfs"/>
                         <outlet property="userText" destination="l15-GH-Wcu" id="ykQ-EZ-htS"/>
+                        <segue destination="d2v-yl-RYM" kind="show" identifier="showStatements" id="ZNV-Z8-h9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1077.5999999999999" y="80.50974512743629"/>
+            <point key="canvasLocation" x="1122" y="81"/>
         </scene>
-        <!--View Controller-->
+        <!--Show Statements View Controller-->
         <scene sceneID="Oes-qQ-F2N">
             <objects>
-                <viewController id="d2v-yl-RYM" sceneMemberID="viewController">
+                <viewController id="d2v-yl-RYM" customClass="ShowStatementsViewController" customModule="Bank_App_CleanSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="esc-BV-f2Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7g-nQ-5pX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="232"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPF-jW-Pct">
                                         <rect key="frame" x="18" y="40" width="339" height="29"/>
@@ -105,7 +106,7 @@
                                             <constraint firstAttribute="height" constant="29" id="a49-hv-0SQ"/>
                                         </constraints>
                                         <attributedString key="attributedText">
-                                            <fragment content="Jose da Silva Teste">
+                                            <fragment content="John Applessed">
                                                 <attributes>
                                                     <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="25" name="HelveticaNeue-Light"/>
@@ -121,7 +122,7 @@
                                             <constraint firstAttribute="height" constant="29" id="aax-ne-kqP"/>
                                         </constraints>
                                         <attributedString key="attributedText">
-                                            <fragment content="2050 / 01.111221-4">
+                                            <fragment content="0000 / 00.000000-0">
                                                 <attributes>
                                                     <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="25" name="HelveticaNeue-Light"/>
@@ -153,7 +154,7 @@
                                             <constraint firstAttribute="height" constant="29" id="2jt-NV-Uyx"/>
                                         </constraints>
                                         <attributedString key="attributedText">
-                                            <fragment content="R$1.000,00">
+                                            <fragment content="R$2.000,00">
                                                 <attributes>
                                                     <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="25" name="HelveticaNeue-Light"/>
@@ -220,10 +221,11 @@
                             <constraint firstItem="s7g-nQ-5pX" firstAttribute="trailing" secondItem="QfY-EN-X1g" secondAttribute="trailing" id="ucr-Oc-fDz"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="IIb-F1-mch"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQL-Ki-xcX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2116" y="92.203898050974516"/>
+            <point key="canvasLocation" x="2050" y="81"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NFM-vB-XXo">
