@@ -11,16 +11,20 @@ import UIKit
 // MARK: - Extension for all view controllers.
 extension UIViewController {
     /// Hides the title bar of `NavigationController`
-    /// - Parameter animated: `true` if the action is animated, `false` otherwise.
-    func hideNavigationBar(animated: Bool){
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-
+    func hideNavigationBar(){
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     /// Shows the tite bar of `NavigationController`
-    /// - Parameter animated: `true` if the action is animated, `false` otherwise.
-    func showNavigationBar(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    func showNavigationBar() {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
+}
+
+// MARK: - Extension for ShowStatementViewController
+extension ShowStatementsViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+         return .lightContent
+     }
 }

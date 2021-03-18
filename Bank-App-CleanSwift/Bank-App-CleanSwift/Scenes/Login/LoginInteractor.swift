@@ -12,11 +12,17 @@ protocol LoginBusinessLogic: class {
     func fetchLastLoggedUsername(request: Login.FetchLastLoggedUser.Request)
 }
 
-class LoginInteractor: LoginBusinessLogic {
+protocol UserAccountDataStore: class {
+    var userAccount: UserAccount! { get set }
+}
+
+class LoginInteractor: LoginBusinessLogic, UserAccountDataStore {
     var presenter: LoginPresentationLogic!
     var fieldsValidationWorker: LoginFieldsValidationWorker!
     var httpRequestWorker: LoginHTTPRequestWorker!
     var loginStorageWorker: LoginStorageWorker!
+    
+    var userAccount: UserAccount!
             
     /// Apply some business login in the fields (a.k.a. `username` and `password`) inside the `request` object.
     /// - Parameter request: a `request` object populated by `viewController`
@@ -36,14 +42,17 @@ class LoginInteractor: LoginBusinessLogic {
                     if let _ = data.userAccount.userId {
                         userAccount = UserAccount(extractedFrom: data)
                         
-                        // Save logged user
+                        // Save object to interactor
+                        self.userAccount = userAccount
+                        
+                        // Save logged user in storage
                         self.loginStorageWorker = LoginStorageWorker(storage: UserDefaultsStorage())
                         let _ = self.loginStorageWorker.persistUsername(user.username)
                     }
                     if let _ = data.error.code {
                         errorMessage = ErrorMessage(extractedFrom: data)
-                    }                                        
-                                        
+                    }
+                    
                     let response = Login.Login.Response(user: userAccount, error: errorMessage)
                     self.presenter.presentLoginResponse(response: response)
                 }

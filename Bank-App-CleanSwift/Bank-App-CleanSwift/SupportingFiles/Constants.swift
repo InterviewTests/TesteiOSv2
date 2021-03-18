@@ -36,4 +36,7 @@ struct Constants {
     // MARK: - Constants for use as keys in UserDefaults storage
     static let USERNAME_KEY = "username"
     static let USER_KEY = "user"
+    
+    // MARK: - Constants for screen navigation
+    static let SEGUE_ID_TO_STATEMENTS = "showStatements"
 }

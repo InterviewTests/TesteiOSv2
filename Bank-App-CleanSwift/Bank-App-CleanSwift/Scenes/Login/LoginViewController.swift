@@ -22,7 +22,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hideNavigationBar(animated: false)
+        self.hideNavigationBar()
         self.roundButtonCorners()
         self.dismissKey()
         self.setupCleanSwiftObjects()
@@ -60,7 +60,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
             return 
         }
         
-        print("\(viewModel.user?.name) possui \(viewModel.user?.balance) na conta")
+        performSegue(withIdentifier: Constants.SEGUE_ID_TO_STATEMENTS, sender: nil)
     }
         
     // MARK: -

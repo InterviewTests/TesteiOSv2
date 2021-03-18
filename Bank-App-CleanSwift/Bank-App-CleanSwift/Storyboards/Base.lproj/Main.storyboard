@@ -82,11 +82,159 @@
                         <outlet property="loginButton" destination="520-jG-oMH" id="0dQ-VC-dh5"/>
                         <outlet property="passwordText" destination="5pd-Rk-p9h" id="XGc-zM-mfs"/>
                         <outlet property="userText" destination="l15-GH-Wcu" id="ykQ-EZ-htS"/>
+                        <segue destination="d2v-yl-RYM" kind="show" identifier="showStatements" id="ZNV-Z8-h9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1077.5999999999999" y="80.50974512743629"/>
+            <point key="canvasLocation" x="1122" y="81"/>
+        </scene>
+        <!--Show Statements View Controller-->
+        <scene sceneID="Oes-qQ-F2N">
+            <objects>
+                <viewController id="d2v-yl-RYM" customClass="ShowStatementsViewController" customModule="Bank_App_CleanSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="esc-BV-f2Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7g-nQ-5pX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPF-jW-Pct">
+                                        <rect key="frame" x="18" y="40" width="339" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="a49-hv-0SQ"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="John Applessed">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="25" name="HelveticaNeue-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNF-aN-rp7">
+                                        <rect key="frame" x="18" y="116" width="339" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="aax-ne-kqP"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="0000 / 00.000000-0">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="25" name="HelveticaNeue-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bG-82-6iQ">
+                                        <rect key="frame" x="18" y="166" width="339" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="13" id="cBI-8p-htV"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Saldo">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GV-eK-cW5">
+                                        <rect key="frame" x="18" y="186" width="339" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="2jt-NV-Uyx"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="R$2.000,00">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="25" name="HelveticaNeue-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MoU-AZ-qYs">
+                                        <rect key="frame" x="335" y="40" width="27" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="RAn-U2-bc4"/>
+                                            <constraint firstAttribute="width" constant="27" id="nF9-ds-XQU"/>
+                                        </constraints>
+                                        <state key="normal" image="logout-button"/>
+                                        <connections>
+                                            <action selector="exitButtonPressed:" destination="d2v-yl-RYM" eventType="touchUpInside" id="4Uz-cp-orn"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3G-ac-E3Z">
+                                        <rect key="frame" x="18" y="97" width="339" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="13" id="gd0-kN-ojP"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Conta">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.23328140380000001" green="0.28589665889999999" blue="0.933334887" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="232" id="35H-6R-dz2"/>
+                                    <constraint firstAttribute="bottom" secondItem="1GV-eK-cW5" secondAttribute="bottom" constant="17" id="3jQ-kh-1cC"/>
+                                    <constraint firstItem="1GV-eK-cW5" firstAttribute="top" secondItem="7bG-82-6iQ" secondAttribute="bottom" constant="7" id="50q-jA-7VU"/>
+                                    <constraint firstItem="7bG-82-6iQ" firstAttribute="leading" secondItem="s7g-nQ-5pX" secondAttribute="leading" constant="18" id="8JB-Vm-gVv"/>
+                                    <constraint firstAttribute="trailing" secondItem="zNF-aN-rp7" secondAttribute="trailing" constant="18" id="IH3-5R-jlE"/>
+                                    <constraint firstItem="NPF-jW-Pct" firstAttribute="leading" secondItem="s7g-nQ-5pX" secondAttribute="leading" constant="18" id="Id2-O1-LiE"/>
+                                    <constraint firstItem="zNF-aN-rp7" firstAttribute="leading" secondItem="s7g-nQ-5pX" secondAttribute="leading" constant="18" id="Ln8-lj-Qxg"/>
+                                    <constraint firstAttribute="trailing" secondItem="1GV-eK-cW5" secondAttribute="trailing" constant="18" id="MKO-K2-oyc"/>
+                                    <constraint firstItem="7bG-82-6iQ" firstAttribute="top" secondItem="zNF-aN-rp7" secondAttribute="bottom" constant="21" id="OG3-sc-5EB"/>
+                                    <constraint firstAttribute="trailing" secondItem="NPF-jW-Pct" secondAttribute="trailing" constant="18" id="P8e-7X-b9h"/>
+                                    <constraint firstItem="MoU-AZ-qYs" firstAttribute="top" secondItem="s7g-nQ-5pX" secondAttribute="top" constant="40" id="UXc-Qc-fCn"/>
+                                    <constraint firstItem="u3G-ac-E3Z" firstAttribute="top" secondItem="NPF-jW-Pct" secondAttribute="bottom" constant="28" id="Uco-Fz-0DM"/>
+                                    <constraint firstAttribute="trailing" secondItem="MoU-AZ-qYs" secondAttribute="trailing" constant="13" id="bLT-P2-a0B"/>
+                                    <constraint firstAttribute="trailing" secondItem="7bG-82-6iQ" secondAttribute="trailing" constant="18" id="cd2-RP-hVL"/>
+                                    <constraint firstItem="1GV-eK-cW5" firstAttribute="leading" secondItem="s7g-nQ-5pX" secondAttribute="leading" constant="18" id="hRm-KA-7hM"/>
+                                    <constraint firstAttribute="trailing" secondItem="u3G-ac-E3Z" secondAttribute="trailing" constant="18" id="l56-ui-BRB"/>
+                                    <constraint firstItem="zNF-aN-rp7" firstAttribute="top" secondItem="u3G-ac-E3Z" secondAttribute="bottom" constant="6" id="oLO-06-miy"/>
+                                    <constraint firstItem="u3G-ac-E3Z" firstAttribute="leading" secondItem="s7g-nQ-5pX" secondAttribute="leading" constant="18" id="sXX-uA-Vmz"/>
+                                    <constraint firstItem="NPF-jW-Pct" firstAttribute="top" secondItem="s7g-nQ-5pX" secondAttribute="top" constant="40" id="smP-kF-NVX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QfY-EN-X1g"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="s7g-nQ-5pX" firstAttribute="top" secondItem="esc-BV-f2Z" secondAttribute="top" id="Tgw-4M-Qd1"/>
+                            <constraint firstItem="s7g-nQ-5pX" firstAttribute="leading" secondItem="QfY-EN-X1g" secondAttribute="leading" id="qvu-df-ikW"/>
+                            <constraint firstItem="s7g-nQ-5pX" firstAttribute="trailing" secondItem="QfY-EN-X1g" secondAttribute="trailing" id="ucr-Oc-fDz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="IIb-F1-mch"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="amountLabel" destination="1GV-eK-cW5" id="BSd-k8-brl"/>
+                        <outlet property="userAccountLabel" destination="zNF-aN-rp7" id="71L-HW-WVv"/>
+                        <outlet property="userNameLabel" destination="NPF-jW-Pct" id="3nM-Ie-FUw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SQL-Ki-xcX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2050" y="81"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NFM-vB-XXo">
@@ -96,6 +244,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T8d-ZZ-nKw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -109,6 +258,7 @@
     </scenes>
     <resources>
         <image name="bank-logo" width="125" height="70"/>
+        <image name="logout-button" width="27" height="27"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
