@@ -16,7 +16,9 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    
     var interactor: LoginBusinessLogic!
+    var router: (NSObjectProtocol & ShowUserDataPassing & LoginRoutingLogic)?
     
     // MARK: -
     override func viewDidLoad() {
@@ -45,10 +47,14 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
         let viewController = self
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
+        let router = LoginRouter()
         
         viewController.interactor = interactor
+        viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
+        router.dataStore = interactor
+        router.viewController = viewController        
     }
     
     // MARK: -
@@ -60,7 +66,8 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
             return 
         }
         
-        performSegue(withIdentifier: Constants.SEGUE_ID_TO_STATEMENTS, sender: nil)
+        self.router?.routeToStatementsView()
+        
     }
         
     // MARK: -

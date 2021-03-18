@@ -19,10 +19,18 @@ protocol LoginRoutingLogic {
 
 class LoginRouter: NSObject, ShowUserDataPassing, LoginRoutingLogic {
     var dataStore: UserAccountDataStore?
-    
-    
+    var viewController: LoginViewController?
     
     func routeToStatementsView() {
-        <#code#>
+        if let showStatementsViewController = viewController?.storyboard?.instantiateViewController(withIdentifier: Constants.SHOW_STATEMENTS_VC_ID) as? ShowStatementsViewController {
+            var destinationDS = showStatementsViewController.router!.dataStore!
+        
+            passDataFromLoginToShowStatementsScreen(source: dataStore!, destination: &destinationDS)
+            viewController?.navigationController?.pushViewController(showStatementsViewController, animated: true)
+        }
+    }
+    
+    private func passDataFromLoginToShowStatementsScreen(source: UserAccountDataStore!, destination: inout ShowStatementsDataStore) {
+        destination.userAccount = source.userAccount
     }
 }
