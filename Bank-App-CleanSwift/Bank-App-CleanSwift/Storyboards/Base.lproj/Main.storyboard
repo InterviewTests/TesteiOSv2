@@ -171,6 +171,9 @@
                                             <constraint firstAttribute="width" constant="27" id="nF9-ds-XQU"/>
                                         </constraints>
                                         <state key="normal" image="logout-button"/>
+                                        <connections>
+                                            <action selector="exitButtonPressed:" destination="d2v-yl-RYM" eventType="touchUpInside" id="4Uz-cp-orn"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3G-ac-E3Z">
                                         <rect key="frame" x="18" y="97" width="339" height="13"/>
@@ -223,6 +226,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="IIb-F1-mch"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="amountLabel" destination="1GV-eK-cW5" id="BSd-k8-brl"/>
+                        <outlet property="userAccountLabel" destination="zNF-aN-rp7" id="71L-HW-WVv"/>
+                        <outlet property="userNameLabel" destination="NPF-jW-Pct" id="3nM-Ie-FUw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQL-Ki-xcX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -236,7 +244,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T8d-ZZ-nKw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.19983994960000001" green="0.3691539466" blue="0.90039199589999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
