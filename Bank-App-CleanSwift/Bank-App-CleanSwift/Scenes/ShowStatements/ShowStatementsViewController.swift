@@ -14,11 +14,11 @@ class ShowStatementsViewController: UIViewController {
         
         self.hideNavigationBar()
         
-        let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width, height: UIApplication.shared.statusBarFrame.height))
-        statusBarView.backgroundColor = UIColor.magenta
-        self.navigationController?.view.addSubview(statusBarView)
-        
-        statusBarView.frame.height
+//        let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width, height: UIApplication.shared.statusBarFrame.height))
+//        statusBarView.backgroundColor = UIColor.magenta
+//        self.navigationController?.view.addSubview(statusBarView)
+//
+//        statusBarView.frame.height
     }
     
 
@@ -36,3 +36,5 @@ class ShowStatementsViewController: UIViewController {
     */
 
 }
+
+

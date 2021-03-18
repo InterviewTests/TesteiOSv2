@@ -21,3 +21,10 @@ extension UIViewController {
     }
 
 }
+
+// MARK: - Extension for ShowStatementViewController
+extension ShowStatementsViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+         return .lightContent
+     }
+}
