@@ -6,3 +6,23 @@
 //
 
 import Foundation
+
+protocol ShowUserDataPassing {
+    var dataStore: UserAccountDataStore? { get }
+}
+
+
+protocol LoginRoutingLogic {
+    func routeToStatementsView()
+}
+
+
+class LoginRouter: NSObject, ShowUserDataPassing, LoginRoutingLogic {
+    var dataStore: UserAccountDataStore?
+    
+    
+    
+    func routeToStatementsView() {
+        <#code#>
+    }
+}
