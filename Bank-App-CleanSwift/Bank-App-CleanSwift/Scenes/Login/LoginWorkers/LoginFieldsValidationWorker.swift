@@ -31,7 +31,7 @@ class LoginFieldsValidationWorker {
     /// - Parameter password: the `password` string.
     /// - Returns: `true` if `password` is valid; `false` if it is invalid.
     private func isPasswordValid(password: String) -> Bool {
-        let passwordPattern = #"(?=.{6,})(?=.*[A-Z])(?=.*\d)(?=.*[ !$%&@?._-])"#
+        let passwordPattern = #"(?=.{6,})(?=.*[A-Z])(?=.*\d)(?=.*[ !$%&@#*?._-])"#
         let result = password.range(of: passwordPattern, options: .regularExpression)
         
         return result != nil
