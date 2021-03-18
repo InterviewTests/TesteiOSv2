@@ -33,7 +33,6 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     
     // MARK: -
     @IBAction func loginButtonPressed(_ sender: LoadingButton) {
-        //self.loginButton.loadIndicator(true)
         self.loginButton.showActivityIndicator()
         
         let username = userText.text!
@@ -62,10 +61,11 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     /// Based on `viewModel` contents, show an alert informing an error, or passes by the object to the next view
     /// - Parameter viewModel: a `ViewModel` which can contain an `ErrorMessage` or an `UserAccount`
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
+        self.loginButton.hideActivityIndicator()
+        self.passwordText.text = ""
+        
         guard viewModel.user != nil else {
             self.presentErrorAlert(containing: viewModel.error!.message!)
-            //self.loginButton.loadIndicator(false)
-            self.loginButton.hideActivityIndicator()
             return 
         }
                 
@@ -94,11 +94,9 @@ extension LoginViewController {
     private func dismissKey() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                                  action: #selector(LoginViewController.dismissKeyboard))
-        
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
     
     /// Objective-C-like method used in selector
     @objc private func dismissKeyboard() {

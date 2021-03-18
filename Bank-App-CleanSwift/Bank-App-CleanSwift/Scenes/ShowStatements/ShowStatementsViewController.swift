@@ -21,7 +21,8 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     var router: (NSObjectProtocol & ShowStatementsRoutingLogic & ShowStatementsDataPassing)?
     
     @IBAction func exitButtonPressed(_ button: UIButton) {
-        print("Exiting...")
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
