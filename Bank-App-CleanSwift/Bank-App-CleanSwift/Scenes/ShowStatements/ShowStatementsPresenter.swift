@@ -8,23 +8,23 @@
 import Foundation
 
 protocol ShowStatementsPresentationLogic {
-    func showUserInfo(response: ShowStatements.ShowStatements.Response)
+    func showUserInfo(response: ShowStatements.UserAccountDescription.Response)
 }
 
 
 class ShowStatementsPresenter: ShowStatementsPresentationLogic {
     var viewController: ShowStatementsLogic?
     
-    func showUserInfo(response: ShowStatements.ShowStatements.Response) {
+    func showUserInfo(response: ShowStatements.UserAccountDescription.Response) {
         if let userAccount = response.userAccount {
             let name = userAccount.name!
             let accountWithAgency = self.createAccountWithAgencyString(account: userAccount.bankAccount!,
                                                                        agency: userAccount.agency!)
             let balance = self.createBalanceString(balance: userAccount.balance!)
-            let fields = ShowStatements.ShowStatementsFields(name: name,
+            let fields = ShowStatements.UserAccountDescriptionFields(name: name,
                                                              accountWithAgency: accountWithAgency,
                                                              balance: balance)
-            let viewModel = ShowStatements.ShowStatements.ViewModel(fields: fields)
+            let viewModel = ShowStatements.UserAccountDescription.ViewModel(fields: fields)
             
             viewController?.displayUserAccountInfo(viewModel: viewModel)
         }

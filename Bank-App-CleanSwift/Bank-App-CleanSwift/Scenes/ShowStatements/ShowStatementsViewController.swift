@@ -8,7 +8,8 @@
 import UIKit
 
 protocol ShowStatementsLogic: class {
-    func displayUserAccountInfo(viewModel: ShowStatements.ShowStatements.ViewModel)
+    func displayUserAccountInfo(viewModel: ShowStatements.UserAccountDescription.ViewModel)
+    func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel)
 }
 
 
@@ -29,8 +30,13 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
         super.viewDidLoad()
         self.hideNavigationBar()
         
-        let request = ShowStatements.ShowStatements.Request(userAccount: interactor?.userAccount)
-        interactor?.showUserAccountData(request: request)
+        let userDescriptionRequest = ShowStatements.UserAccountDescription.Request(userAccount: interactor?.userAccount)
+        interactor?.showUserAccountData(request: userDescriptionRequest)
+            
+        if let userId = interactor?.userAccount.userId {
+            let showStatementsRequest = ShowStatements.ShowStatements.Request(userId: userId)
+            interactor?.showStatements(request: showStatementsRequest)
+        }        
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -58,12 +64,15 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     }
         
     
-    func displayUserAccountInfo(viewModel: ShowStatements.ShowStatements.ViewModel) {        
+    func displayUserAccountInfo(viewModel: ShowStatements.UserAccountDescription.ViewModel) {        
         self.userNameLabel.text = viewModel.fields.name
         self.userAccountLabel.text = viewModel.fields.accountWithAgency
         self.balanceLabel.text = viewModel.fields.balance
     }
     
+    func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel) {
+        
+    }
 }
 
 
