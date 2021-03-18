@@ -57,8 +57,8 @@ class ShowStatementsPresenter: ShowStatementsPresentationLogic {
         number.locale = Locale(identifier: "pt_BR")
         
         let numberNS = NSNumber(value: balance)
+        let balanceString = number.string(from: numberNS)!.replacingOccurrences(of: " ", with: "")
         
-        return number.string(from: numberNS)!
-    }
-    
+        return balanceString
+    }    
 }

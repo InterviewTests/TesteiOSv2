@@ -15,7 +15,7 @@ protocol ShowStatementsLogic: class {
 class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userAccountLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
         
     var interactor: (ShowStatementsBusinessLogic & ShowStatementsDataStore)?
     var router: (NSObjectProtocol & ShowStatementsRoutingLogic & ShowStatementsDataPassing)?
@@ -26,7 +26,6 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.hideNavigationBar()
         
         let request = ShowStatements.ShowStatements.Request(userAccount: interactor?.userAccount)
@@ -59,7 +58,9 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
         
     
     func displayUserAccountInfo(viewModel: ShowStatements.ShowStatements.ViewModel) {        
-        print("\(viewModel.fields.accountWithAgency), \(viewModel.fields.balance), \(viewModel.fields.name)")
+        self.userNameLabel.text = viewModel.fields.name
+        self.userAccountLabel.text = viewModel.fields.accountWithAgency
+        self.balanceLabel.text = viewModel.fields.balance
     }
     
 }
