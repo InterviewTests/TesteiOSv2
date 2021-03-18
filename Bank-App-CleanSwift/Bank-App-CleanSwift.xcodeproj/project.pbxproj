@@ -22,6 +22,10 @@
 		B934B77425FE6ABA0031F85E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B934B77225FE6ABA0031F85E /* Main.storyboard */; };
 		B934B77625FE6ABF0031F85E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B934B77525FE6ABF0031F85E /* Assets.xcassets */; };
 		B934B77925FE6ABF0031F85E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B934B77725FE6ABF0031F85E /* LaunchScreen.storyboard */; };
+		B9709DF226037C49002B35C0 /* ShowStatementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9709DF126037C49002B35C0 /* ShowStatementsPresenter.swift */; };
+		B9709DF626037C6B002B35C0 /* ShowStatementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9709DF526037C6B002B35C0 /* ShowStatementsViewController.swift */; };
+		B9709DFA26037C8D002B35C0 /* ShowStatementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9709DF926037C8D002B35C0 /* ShowStatementsInteractor.swift */; };
+		B9709DFE26037C9A002B35C0 /* ShowStatementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9709DFD26037C9A002B35C0 /* ShowStatementsModel.swift */; };
 		B98F7D9225FE9B0900988AB0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98F7D9125FE9B0900988AB0 /* LoginViewController.swift */; };
 		B991FF632602505F00716AF5 /* LoginPostRequestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991FF622602505F00716AF5 /* LoginPostRequestSpec.swift */; };
 		B991FF89260288F200716AF5 /* LoginStorageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991FF88260288F200716AF5 /* LoginStorageWorker.swift */; };
@@ -70,6 +74,10 @@
 		B934B77A25FE6ABF0031F85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B934B77F25FE6AC00031F85E /* Bank-App-CleanSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bank-App-CleanSwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B934B78525FE6AC00031F85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9709DF126037C49002B35C0 /* ShowStatementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStatementsPresenter.swift; sourceTree = "<group>"; };
+		B9709DF526037C6B002B35C0 /* ShowStatementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStatementsViewController.swift; sourceTree = "<group>"; };
+		B9709DF926037C8D002B35C0 /* ShowStatementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStatementsInteractor.swift; sourceTree = "<group>"; };
+		B9709DFD26037C9A002B35C0 /* ShowStatementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStatementsModel.swift; sourceTree = "<group>"; };
 		B98F7D8D25FE79A300988AB0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B98F7D9125FE9B0900988AB0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B991FF622602505F00716AF5 /* LoginPostRequestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPostRequestSpec.swift; sourceTree = "<group>"; };
@@ -260,6 +268,10 @@
 		B9B1832725FF8C4E009149DD /* ShowStatements */ = {
 			isa = PBXGroup;
 			children = (
+				B9709DF526037C6B002B35C0 /* ShowStatementsViewController.swift */,
+				B9709DF126037C49002B35C0 /* ShowStatementsPresenter.swift */,
+				B9709DF926037C8D002B35C0 /* ShowStatementsInteractor.swift */,
+				B9709DFD26037C9A002B35C0 /* ShowStatementsModel.swift */,
 			);
 			path = ShowStatements;
 			sourceTree = "<group>";
@@ -454,10 +466,14 @@
 				B9B1833B25FF8D95009149DD /* LoginModel.swift in Sources */,
 				B9309A7925FFA4F90042BCF4 /* LoginDouble.swift in Sources */,
 				B98F7D9225FE9B0900988AB0 /* LoginViewController.swift in Sources */,
+				B9709DF626037C6B002B35C0 /* ShowStatementsViewController.swift in Sources */,
+				B9709DF226037C49002B35C0 /* ShowStatementsPresenter.swift in Sources */,
 				B9B1833625FF8D8A009149DD /* LoginRouter.swift in Sources */,
 				B92BFB7D2600DB3E00D2F17E /* LoginInteractorDouble.swift in Sources */,
 				B934B76D25FE6ABA0031F85E /* AppDelegate.swift in Sources */,
+				B9709DFE26037C9A002B35C0 /* ShowStatementsModel.swift in Sources */,
 				B9309A3E25FF8EFC0042BCF4 /* User.swift in Sources */,
+				B9709DFA26037C8D002B35C0 /* ShowStatementsInteractor.swift in Sources */,
 				B934B76F25FE6ABA0031F85E /* SceneDelegate.swift in Sources */,
 				B9B1833125FF8D7C009149DD /* LoginPresenter.swift in Sources */,
 				B9309A7F25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift in Sources */,
