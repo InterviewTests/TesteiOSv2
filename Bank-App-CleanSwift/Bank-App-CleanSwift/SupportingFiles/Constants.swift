@@ -29,8 +29,10 @@ struct Constants {
                             Que tal verificar, também, se seu nome de usuário é um email ou CPF válido?
                             """
     
+    static let STATEMENTS_NOT_FOUND = "Não foi possível mostrar seus lançamentos bancários. Por favor, tente mais tarde. \nCaso prefira, fale com a Central de Atendimento Bank, pelo telefone \n(11) 1234 0987."
     static let DEFAULT_ALERT_TITLE = "Algo não saiu como esperado..."
-    static let DEFAUTL_ALERT_BUTTON_CAPTION = "Vou verificar!"
+    static let I_WILL_CHECK_ALERT_BUTTON_CAPTION = "Vou verificar!"
+    static let OK_ALERT_BUTTON_CAPTION = "Tudo bem"
     
     
     // MARK: - Constants for use as keys in UserDefaults storage

@@ -33,10 +33,17 @@ class ShowStatementsInteractor: ShowStatementsBusinessLogic, ShowStatementsDataS
         if let userId = request.userId {            
             self.showStatementsHTTPRequestWorker = ShowStatementsHTTPRequestWorker()
             showStatementsHTTPRequestWorker.fetchStatements(ofUser: userId) { data in
-                let statementDataArray = data.statementList
-                let response = ShowStatements.ShowStatements.Response(statementDataArray: statementDataArray)
+                var response: ShowStatements.ShowStatements.Response?
                 
-                self.presenter!.showStatements(response: response)
+                if let _ = data.error.code {
+                    let errorData = data.error
+                    response = ShowStatements.ShowStatements.Response(error: errorData)
+                } else {
+                    let statementDataArray = data.statementList
+                    response = ShowStatements.ShowStatements.Response(statementDataArray: statementDataArray)
+                }
+                
+                self.presenter!.showStatements(response: response!)
             }
         }
     }

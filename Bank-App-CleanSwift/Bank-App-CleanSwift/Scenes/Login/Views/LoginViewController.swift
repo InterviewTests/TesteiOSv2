@@ -84,7 +84,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     private func presentErrorAlert(containing errorMessage: String) {
         let alertController = UIAlertController(title: Constants.DEFAULT_ALERT_TITLE,
                                                 message: errorMessage, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: Constants.DEFAUTL_ALERT_BUTTON_CAPTION, style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: Constants.I_WILL_CHECK_ALERT_BUTTON_CAPTION, style: .default, handler: nil))
         self.present(alertController, animated: true)
     }
     

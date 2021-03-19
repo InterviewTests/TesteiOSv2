@@ -17,11 +17,12 @@ class ShowStatementsHTTPRequestWorker {
     ///   - userId: the `id` of an `user`
     ///   - completion: the code to be executed when doing the request properly.
     func fetchStatements(ofUser userId: Int, completion: @escaping (StatementListData) -> ()) {
-        let endpoint = "https://bank-app-test.herokuapp.com/api/statements/\(userId)"
+//        let endpoint = "https://bank-app-test.herokuapp.com/api/statements/\(userId)"
+        let endpoint = "https://bank-app-test.herokuapp.com/api/statements/p"
         
         let request = AF.request(endpoint)
         
-        request.responseDecodable(of: StatementListData.self) { response in
+        request.responseDecodable(of: StatementListData.self) { response in                        
             completion(response.value!)
         }
     }

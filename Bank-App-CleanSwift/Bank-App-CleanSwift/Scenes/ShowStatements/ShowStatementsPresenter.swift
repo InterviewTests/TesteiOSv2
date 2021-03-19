@@ -62,16 +62,22 @@ class ShowStatementsPresenter: ShowStatementsPresentationLogic {
     /// Prepares the `response` contents to be showed in view controller
     /// - Parameter response: a `response` object
     func showStatements(response: ShowStatements.ShowStatements.Response) {
-        var statements: [Statement] = []
-        
-        for statementData in response.statementDataArray {
-            let statement = self.createStatement(from: statementData)
-            
-            statements.append(statement)
-        }
+        if let statementDataArray = response.statementDataArray {
+            var statements: [Statement] = []
+            for statementData in statementDataArray {
+                let statement = self.createStatement(from: statementData)
                 
-        let viewModel = ShowStatements.ShowStatements.ViewModel(statements: statements)
-        viewController?.populateTableView(viewModel: viewModel)
+                statements.append(statement)
+            }
+            let viewModel = ShowStatements.ShowStatements.ViewModel(statements: statements, error: nil)
+            viewController?.populateTableView(viewModel: viewModel)
+            
+        } else if let errorData = response.error {
+            let error = ErrorMessage(code: errorData.code!, message: errorData.message!)
+            
+            let viewModel = ShowStatements.ShowStatements.ViewModel(statements: nil, error: error)
+            viewController?.showErrorAlert(viewModel: viewModel)
+        }
     }
     
     
@@ -79,10 +85,10 @@ class ShowStatementsPresenter: ShowStatementsPresentationLogic {
     /// - Parameter statementData: the `statementData` object
     /// - Returns: a `Statement` object
     private func createStatement(from statementData: StatementListData.StatementData) -> Statement {
-        let title = statementData.title
-        let description = statementData.description
-        let date = self.formatDate(statementData.date)
-        let totalAmount = self.formatAmount(statementData.totalAmount)
+        let title = statementData.title!
+        let description = statementData.description!
+        let date = self.formatDate(statementData.date!)
+        let totalAmount = self.formatAmount(statementData.totalAmount!)
         
         return Statement(title: title, description: description, date: date, totalAmount: totalAmount)
     }

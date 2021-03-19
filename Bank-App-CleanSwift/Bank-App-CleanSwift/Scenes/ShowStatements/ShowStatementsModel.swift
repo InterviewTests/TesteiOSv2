@@ -40,15 +40,27 @@ enum ShowStatements {
         }
         
         struct Response {
-            var statementDataArray: [StatementListData.StatementData]
+            var statementDataArray: [StatementListData.StatementData]?
+            var error: StatementListData.ErrorData?
         }
         
         struct ViewModel {
             var statements: [Statement]?
+            var error: ErrorMessage?
+            
+            init(statements: [Statement]?, error: ErrorMessage?) {
+                self.statements = statements
+                self.error = error
+                
+                if let code = self.error?.code {
+                    if code == 53 {
+                        // Put a friendly message instead of the default api message
+                        self.error?.message = Constants.STATEMENTS_NOT_FOUND
+                    }
+                }
+            }
         }
     }
-    
-
     
 }
 

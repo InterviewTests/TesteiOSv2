@@ -10,6 +10,7 @@ import UIKit
 protocol ShowStatementsLogic: class {
     func displayUserAccountInfo(viewModel: ShowStatements.UserAccountDescription.ViewModel)
     func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel)
+    func showErrorAlert(viewModel: ShowStatements.ShowStatements.ViewModel)
 }
 
 
@@ -90,6 +91,15 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
                 print(statement)
             }
         }
+    }
+    
+    func showErrorAlert(viewModel: ShowStatements.ShowStatements.ViewModel) {
+        let errorMessage = viewModel.error!.message
+        
+        let alertController = UIAlertController(title: Constants.DEFAULT_ALERT_TITLE,
+                                                message: errorMessage, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: Constants.OK_ALERT_BUTTON_CAPTION, style: .default, handler: nil))
+        self.present(alertController, animated: true)
     }
 }
 
