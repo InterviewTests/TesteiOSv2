@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Login interactor spy.
+/// Login interactor spy, for testing purposes.
 class LoginInteractorDouble: LoginBusinessLogic {
     var applyBusinessLogicWasCalled: Bool = false
     var validateFieldsWasCalled: Bool = false
