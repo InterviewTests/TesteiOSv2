@@ -31,7 +31,6 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.configureTableView()
     }
     
@@ -48,7 +47,6 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
         super.viewWillAppear(animated)
         
         self.hideNavigationBar()
-        
         let userDescriptionRequest = ShowStatements.UserAccountDescription.Request(userAccount: interactor?.userAccount)
         interactor?.showUserAccountData(request: userDescriptionRequest)
             
@@ -64,15 +62,15 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
         self.setupCleanSwiftObjects()
     }
     
-    
     // MARK: - Init With coder
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupCleanSwiftObjects()
     }
     
-    
     // MARK: - Setup Objects of Clean Architecture
+    
+    /// Initializes the **Clean Architecture** components (a.k.a. viewController, interactor, presenter, router etc)
     func setupCleanSwiftObjects() {
         let viewController = self
         let interactor = ShowStatementsInteractor()
@@ -88,6 +86,9 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     }
         
     // MARK: - Display User Account Info
+    
+    /// Shows the info of a given user
+    /// - Parameter viewModel: an `ViewModel` object which encapsulates `UserAccount` info
     func displayUserAccountInfo(viewModel: ShowStatements.UserAccountDescription.ViewModel) {        
         self.userNameLabel.text = viewModel.fields.name
         self.userAccountLabel.text = viewModel.fields.accountWithAgency
@@ -95,6 +96,9 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     }
     
     // MARK: - Populate Table View
+    
+    /// Fills in the `TableView` with information contained in `ViewModel` object
+    /// - Parameter viewModel: a `ViewModel` object which contains information about `Statements`
     func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel) {
         if let statements = viewModel.statements {
             self.statements = statements
@@ -106,6 +110,8 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     }
     
     // MARK: - Show Error Alert
+        
+    /// - Parameter viewModel: <#viewModel description#>
     func showErrorAlert(viewModel: ShowStatements.ShowStatements.ViewModel) {
         let errorMessage = viewModel.error!.message
         
