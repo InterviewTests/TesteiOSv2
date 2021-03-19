@@ -8,11 +8,12 @@
 import UIKit
 
 protocol DisplayLoginLogic: class {
-    func displayLoginSuccessful(viewModel: Login.Login.ViewModel)
-    func setUsernameText(with viewModel: Login.FetchLastLoggedUser.ViewModel)
+    func displayLoginResult(viewModel: Login.Login.ViewModel)
+    func setUsernameTextWithLastUserLoggedIn(with viewModel: Login.FetchLastLoggedUser.ViewModel)
 }
 
 class LoginViewController: UIViewController, DisplayLoginLogic {
+    // MARK: - Outlets
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: LoadingButton!
@@ -20,13 +21,13 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     var interactor: LoginBusinessLogic!
     var router: (NSObjectProtocol & ShowUserDataPassing & LoginRoutingLogic)?
     
-    // MARK: -
+    // MARK: - View did load
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     
-    // MARK: -
+    // MARK: - View Will Appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -37,7 +38,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
         interactor.fetchLastLoggedUsername(request: Login.FetchLastLoggedUser.Request())
     }
     
-    // MARK: -
+    // MARK: - Login Button Pressed
     @IBAction func loginButtonPressed(_ sender: LoadingButton) {
         self.loginButton.showActivityIndicator()
         
@@ -45,7 +46,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
         let password = passwordText.text!                
         let request = Login.Login.Request(fields: Login.LoginFields(username: username,
                                                                     password: password))
-        interactor.applyBusinessLogic(request: request)        
+        interactor.doTryLogin(request: request)        
     }
     
     // MARK: - Setup Clean Swift's architecture objects
@@ -63,10 +64,10 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
         router.viewController = viewController        
     }
     
-    // MARK: -
+    // MARK: - Display login result
     /// Based on `viewModel` contents, show an alert informing an error, or passes by the object to the next view
     /// - Parameter viewModel: a `ViewModel` which can contain an `ErrorMessage` or an `UserAccount`
-    func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
+    func displayLoginResult(viewModel: Login.Login.ViewModel) {
         self.loginButton.hideActivityIndicator()
         
         guard viewModel.user != nil else {
@@ -78,7 +79,7 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
         self.router?.routeToStatementsView()        
     }
         
-    // MARK: -
+    // MARK: - Present error alert
     /// Presents an customized error alert
     /// - Parameter errorMessage: the message that tells the error occurred
     private func presentErrorAlert(containing errorMessage: String) {
@@ -88,8 +89,8 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
         self.present(alertController, animated: true)
     }
     
-    // MARK: - 
-    func setUsernameText(with viewModel: Login.FetchLastLoggedUser.ViewModel) {
+    // MARK: - Set username text with last user logged in
+    func setUsernameTextWithLastUserLoggedIn(with viewModel: Login.FetchLastLoggedUser.ViewModel) {
         self.userText.text = viewModel.username
     }
 }

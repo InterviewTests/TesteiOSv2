@@ -14,6 +14,7 @@ protocol ShowStatementsLogic: class {
 }
 
 class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
+    // MARK: - Outlets
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userAccountLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!

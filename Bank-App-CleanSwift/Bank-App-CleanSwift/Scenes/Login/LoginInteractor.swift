@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginBusinessLogic: class {
-    func applyBusinessLogic(request: Login.Login.Request)
+    func doTryLogin(request: Login.Login.Request)
     func fetchLastLoggedUsername(request: Login.FetchLastLoggedUser.Request)
 }
 
@@ -26,7 +26,7 @@ class LoginInteractor: LoginBusinessLogic, UserAccountDataStore {
             
     /// Apply some business login in the fields (a.k.a. `username` and `password`) inside the `request` object.
     /// - Parameter request: a `request` object populated by `viewController`
-    func applyBusinessLogic(request: Login.Login.Request) {
+    func doTryLogin(request: Login.Login.Request) {
         let user = User(username: request.fields.username,
                         password: request.fields.password)
                 
@@ -41,8 +41,7 @@ class LoginInteractor: LoginBusinessLogic, UserAccountDataStore {
                     
                     if let _ = data.userAccount.userId {
                         userAccount = UserAccount(extractedFrom: data)
-                        
-                        // Save object to interactor
+                        // Save object in interactor
                         self.userAccount = userAccount
                         
                         // Save logged user in storage
@@ -54,11 +53,11 @@ class LoginInteractor: LoginBusinessLogic, UserAccountDataStore {
                     }
                     
                     let response = Login.Login.Response(user: userAccount, error: errorMessage)
-                    self.presenter.presentLoginResponse(response: response)
+                    self.presenter.presentLoginResult(response: response)
                 }
             }
         } else {            
-            self.presenter.presentLoginResponse(response: Constants.USER_OR_PASSWORD_INVALID_RESPONSE)            
+            self.presenter.presentLoginResult(response: Constants.USER_OR_PASSWORD_INVALID_RESPONSE)            
         }
     }
         
@@ -78,6 +77,6 @@ class LoginInteractor: LoginBusinessLogic, UserAccountDataStore {
         let lastUsername = loginStorageWorker.fetchLastLoggedUsername()
         
         let response = Login.FetchLastLoggedUser.Response(username: lastUsername)
-        presenter.showLastLoggedUser(response: response)
+        presenter.presentLastLoggedUser(response: response)
     }
 }

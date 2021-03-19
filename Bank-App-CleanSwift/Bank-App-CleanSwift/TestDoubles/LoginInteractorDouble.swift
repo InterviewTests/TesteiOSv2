@@ -18,7 +18,7 @@ class LoginInteractorDouble: LoginBusinessLogic {
     }
     
     
-    func applyBusinessLogic(request: Login.Login.Request) {
+    func doTryLogin(request: Login.Login.Request) {
         applyBusinessLogicWasCalled = true
         let _ = validateFields(of: User(username: request.fields.username, password: request.fields.password))        
     }

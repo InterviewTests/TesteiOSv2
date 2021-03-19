@@ -15,7 +15,7 @@ class LoginInteractorBehaviorSpec: QuickSpec {
         
     override func spec() {
         beforeEach {
-            self.loginInteractorDouble.applyBusinessLogic(request: Stubs.REQUEST_MODEL_STUB)
+            self.loginInteractorDouble.doTryLogin(request: Stubs.REQUEST_MODEL_STUB)
         }
         
         describe("Behavior Test") {
