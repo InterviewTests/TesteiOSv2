@@ -87,7 +87,7 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel) {
         if let statements = viewModel.statements {
             for statement in statements {
-                print(statement.title)
+                print(statement)
             }
         }
     }

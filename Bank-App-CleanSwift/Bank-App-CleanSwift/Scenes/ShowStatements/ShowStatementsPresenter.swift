@@ -55,15 +55,7 @@ class ShowStatementsPresenter: ShowStatementsPresentationLogic {
     /// - Parameter balance: a `double` value (with dots separating decimail values) representing an amount
     /// - Returns: a `string` value containing the brazilian sign R$ plus the amount with comma separating decimal values
     private func createBalanceString(balance: Double) -> String {
-        let number = NumberFormatter()
-        number.numberStyle = .currency
-        number.usesGroupingSeparator = true
-        number.locale = Locale(identifier: "pt_BR")
-        
-        let numberNS = NSNumber(value: balance)
-        let balanceString = number.string(from: numberNS)!.replacingOccurrences(of: " ", with: "")
-        
-        return balanceString
+        return self.applyBrazilianCurrencyFormat(in: balance)
     }
     
     
@@ -75,7 +67,7 @@ class ShowStatementsPresenter: ShowStatementsPresentationLogic {
         for statementData in response.statementDataArray {
             let statement = self.createStatement(from: statementData)
             
-            statements.append(statement) 
+            statements.append(statement)
         }
                 
         let viewModel = ShowStatements.ShowStatements.ViewModel(statements: statements)
@@ -109,6 +101,22 @@ class ShowStatementsPresenter: ShowStatementsPresentationLogic {
     /// - Parameter oldAmount: a `double` value representing an currency amount
     /// - Returns: a BR-formatted `string` representation of this value
     private func formatAmount(_ oldAmount: Double) -> String {
-        return "\(oldAmount)"
+        return applyBrazilianCurrencyFormat(in: oldAmount)
+    }
+        
+    
+    /// Transforms a `double` value in a BR currency format string
+    /// - Parameter doubleValue: a `double` value representing an amount
+    /// - Returns: a `String` representing a brazilian currency value
+    private func applyBrazilianCurrencyFormat(in doubleValue: Double) -> String {
+        let number = NumberFormatter()
+        number.numberStyle = .currency
+        number.usesGroupingSeparator = true
+        number.locale = Locale(identifier: "pt_BR")
+        
+        let numberNS = NSNumber(value: doubleValue)
+        let balanceString = number.string(from: numberNS)!.replacingOccurrences(of: " ", with: "")
+        
+        return balanceString
     }
 }
