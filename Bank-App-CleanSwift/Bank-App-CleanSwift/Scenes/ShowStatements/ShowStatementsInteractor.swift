@@ -8,8 +8,8 @@
 import Foundation
 
 protocol ShowStatementsBusinessLogic {
-    func showUserAccountData(request: ShowStatements.UserAccountDescription.Request)
-    func showStatements(request: ShowStatements.ShowStatements.Request)
+    func getUserAccountInfo(request: ShowStatements.UserAccountDescription.Request)
+    func getStatements(request: ShowStatements.ShowStatements.Request)
 }
 
 protocol ShowStatementsDataStore {
@@ -20,16 +20,21 @@ protocol ShowStatementsDataStore {
 class ShowStatementsInteractor: ShowStatementsBusinessLogic, ShowStatementsDataStore {
     var userAccount: UserAccount!
     var presenter: ShowStatementsPresenter?
-    
     var showStatementsHTTPRequestWorker: ShowStatementsHTTPRequestWorker!
     
-    func showUserAccountData(request: ShowStatements.UserAccountDescription.Request) {
+        
+    /// Gets the info about the `User` logged in
+    /// - Parameter request: a `Request` object which encapsulates data about the `User` logged in
+    func getUserAccountInfo(request: ShowStatements.UserAccountDescription.Request) {
         self.userAccount = request.userAccount
         let response = ShowStatements.UserAccountDescription.Response(userAccount: self.userAccount)
-        presenter?.showUserInfo(response: response)
+        presenter?.presentUserInfo(response: response)
     }
     
-    func showStatements(request: ShowStatements.ShowStatements.Request) {
+    
+    /// Gets the statements of a given `User`
+    /// - Parameter request: a `Request` object which encapsulates data about the `User` owner of a bunch of `Statements`
+    func getStatements(request: ShowStatements.ShowStatements.Request) {
         if let userId = request.userId {            
             self.showStatementsHTTPRequestWorker = ShowStatementsHTTPRequestWorker()
             showStatementsHTTPRequestWorker.fetchStatements(ofUser: userId) { data in
@@ -43,7 +48,7 @@ class ShowStatementsInteractor: ShowStatementsBusinessLogic, ShowStatementsDataS
                     response = ShowStatements.ShowStatements.Response(statementDataArray: statementDataArray)
                 }
                 
-                self.presenter!.showStatements(response: response!)
+                self.presenter!.presentStatements(response: response!)
             }
         }
     }

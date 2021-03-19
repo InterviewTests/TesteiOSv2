@@ -48,11 +48,11 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
         
         self.hideNavigationBar()
         let userDescriptionRequest = ShowStatements.UserAccountDescription.Request(userAccount: interactor?.userAccount)
-        interactor?.showUserAccountData(request: userDescriptionRequest)
+        interactor?.getUserAccountInfo(request: userDescriptionRequest)
             
         if let userId = interactor?.userAccount.userId {
             let showStatementsRequest = ShowStatements.ShowStatements.Request(userId: userId)
-            interactor?.showStatements(request: showStatementsRequest)
+            interactor?.getStatements(request: showStatementsRequest)
         } 
     }
     
@@ -110,8 +110,7 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     }
     
     // MARK: - Show Error Alert
-        
-    /// - Parameter viewModel: <#viewModel description#>
+    
     func showErrorAlert(viewModel: ShowStatements.ShowStatements.ViewModel) {
         let errorMessage = viewModel.error!.message
         
