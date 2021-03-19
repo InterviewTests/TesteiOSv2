@@ -215,15 +215,15 @@
                                     <constraint firstItem="NPF-jW-Pct" firstAttribute="top" secondItem="s7g-nQ-5pX" secondAttribute="top" constant="40" id="smP-kF-NVX"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bNs-7d-F0Z">
-                                <rect key="frame" x="4" y="274" width="366" height="388"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bNs-7d-F0Z">
+                                <rect key="frame" x="16" y="274" width="343" height="388"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatementTableViewCell" id="cxE-fI-PJU" customClass="StatementTableViewCell" customModule="Bank_App_CleanSwift" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="366" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="343" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cxE-fI-PJU" id="Avy-cU-dj7">
-                                            <rect key="frame" x="0.0" y="0.0" width="366" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -248,14 +248,15 @@
                         <viewLayoutGuide key="safeArea" id="QfY-EN-X1g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="QfY-EN-X1g" firstAttribute="trailing" secondItem="bNs-7d-F0Z" secondAttribute="trailing" constant="5" id="DvM-M5-smV"/>
-                            <constraint firstItem="bNs-7d-F0Z" firstAttribute="leading" secondItem="QfY-EN-X1g" secondAttribute="leading" constant="4" id="F8c-eA-JE0"/>
+                            <constraint firstItem="QfY-EN-X1g" firstAttribute="trailing" secondItem="bNs-7d-F0Z" secondAttribute="trailing" constant="16" id="DvM-M5-smV"/>
+                            <constraint firstItem="bNs-7d-F0Z" firstAttribute="leading" secondItem="QfY-EN-X1g" secondAttribute="leading" constant="16" id="F8c-eA-JE0"/>
                             <constraint firstItem="s7g-nQ-5pX" firstAttribute="top" secondItem="esc-BV-f2Z" secondAttribute="top" id="Tgw-4M-Qd1"/>
                             <constraint firstItem="bNs-7d-F0Z" firstAttribute="top" secondItem="dWH-7d-4N8" secondAttribute="bottom" constant="8" id="fa7-qF-NGA"/>
-                            <constraint firstItem="dWH-7d-4N8" firstAttribute="leading" secondItem="QfY-EN-X1g" secondAttribute="leading" constant="18" id="iTg-Ng-zzb"/>
+                            <constraint firstItem="dWH-7d-4N8" firstAttribute="leading" secondItem="QfY-EN-X1g" secondAttribute="leading" constant="18" id="kBC-wn-9BR"/>
                             <constraint firstItem="s7g-nQ-5pX" firstAttribute="leading" secondItem="QfY-EN-X1g" secondAttribute="leading" id="qvu-df-ikW"/>
                             <constraint firstItem="s7g-nQ-5pX" firstAttribute="trailing" secondItem="QfY-EN-X1g" secondAttribute="trailing" id="ucr-Oc-fDz"/>
                             <constraint firstItem="QfY-EN-X1g" firstAttribute="bottom" secondItem="bNs-7d-F0Z" secondAttribute="bottom" constant="5" id="v6M-QW-BRw"/>
+                            <constraint firstItem="QfY-EN-X1g" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dWH-7d-4N8" secondAttribute="trailing" symbolic="YES" id="wrh-QL-nIz"/>
                             <constraint firstItem="dWH-7d-4N8" firstAttribute="top" secondItem="s7g-nQ-5pX" secondAttribute="bottom" constant="14" id="zeD-RW-mJD"/>
                         </constraints>
                     </view>
