@@ -92,9 +92,14 @@ class ShowStatementsPresenter: ShowStatementsPresentationLogic {
     /// - Parameter oldDate: the date `String` in US pattern
     /// - Returns: a date `String` in BR pattern
     private func formatDate(_ oldDate: String) -> String {
-        return oldDate
+        let year = oldDate.prefix(4)
+        let month = oldDate.prefix(7).suffix(2)
+        let day = oldDate.suffix(2)
+        
+        let dateConvertedString = "\(day)/\(month)/\(year)"
+        
+        return dateConvertedString
     }
-    
     
     /// Transforms a `double` value representing an amount in a BR currency formatting value. If `oldAmount` is `3.23`, then the method
     /// returns `"R$ 3,23"`
