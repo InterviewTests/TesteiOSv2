@@ -40,11 +40,11 @@ enum ShowStatements {
         }
         
         struct Response {
-            //var userAccount: UserAccount?
+            var statementDataArray: [StatementListData.StatementData]
         }
         
         struct ViewModel {
-            //var fields: UserAccountDescriptionFields
+            var statements: [Statement]?
         }
     }
     

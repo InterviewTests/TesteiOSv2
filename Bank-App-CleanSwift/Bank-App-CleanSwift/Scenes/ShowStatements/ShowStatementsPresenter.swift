@@ -9,12 +9,15 @@ import Foundation
 
 protocol ShowStatementsPresentationLogic {
     func showUserInfo(response: ShowStatements.UserAccountDescription.Response)
+    func showStatements(response: ShowStatements.ShowStatements.Response)
 }
 
 
 class ShowStatementsPresenter: ShowStatementsPresentationLogic {
     var viewController: ShowStatementsLogic?
-    
+        
+    /// Formats `response` contents properly
+    /// - Parameter response: a `response` object
     func showUserInfo(response: ShowStatements.UserAccountDescription.Response) {
         if let userAccount = response.userAccount {
             let name = userAccount.name!
@@ -29,8 +32,9 @@ class ShowStatementsPresenter: ShowStatementsPresentationLogic {
             viewController?.displayUserAccountInfo(viewModel: viewModel)
         }
     }
+        
     
-    /// Mix a given account and a given agency strings, and applies the format xxxx / xx.xxxxxx-xx
+    /// Mixes a given account and a given agency strings, and applies the format xxxx / xx.xxxxxx-xx
     /// - Parameters:
     ///   - account: a `string` representing an account number
     ///   - agency: a `string` representing an agency number
@@ -60,5 +64,51 @@ class ShowStatementsPresenter: ShowStatementsPresentationLogic {
         let balanceString = number.string(from: numberNS)!.replacingOccurrences(of: " ", with: "")
         
         return balanceString
-    }    
+    }
+    
+    
+    /// Prepares the `response` contents to be showed in view controller
+    /// - Parameter response: a `response` object
+    func showStatements(response: ShowStatements.ShowStatements.Response) {
+        var statements: [Statement] = []
+        
+        for statementData in response.statementDataArray {
+            let statement = self.createStatement(from: statementData)
+            
+            statements.append(statement) 
+        }
+                
+        let viewModel = ShowStatements.ShowStatements.ViewModel(statements: statements)
+        viewController?.populateTableView(viewModel: viewModel)
+    }
+    
+    
+    /// Creates a `Statement` object based on a `StatementData`
+    /// - Parameter statementData: the `statementData` object
+    /// - Returns: a `Statement` object
+    private func createStatement(from statementData: StatementListData.StatementData) -> Statement {
+        let title = statementData.title
+        let description = statementData.description
+        let date = self.formatDate(statementData.date)
+        let totalAmount = self.formatAmount(statementData.totalAmount)
+        
+        return Statement(title: title, description: description, date: date, totalAmount: totalAmount)
+    }
+    
+    
+    /// Formats a date from pattern `yyyy-MM-dd` to `dd/MM/yyyy`
+    /// - Parameter oldDate: the date `String` in US pattern
+    /// - Returns: a date `String` in BR pattern
+    private func formatDate(_ oldDate: String) -> String {
+        return oldDate
+    }
+    
+    
+    /// Transforms a `double` value representing an amount in a BR currency formatting value. If `oldAmount` is `3.23`, then the method
+    /// returns `"R$ 3,23"`
+    /// - Parameter oldAmount: a `double` value representing an currency amount
+    /// - Returns: a BR-formatted `string` representation of this value
+    private func formatAmount(_ oldAmount: Double) -> String {
+        return "\(oldAmount)"
+    }
 }

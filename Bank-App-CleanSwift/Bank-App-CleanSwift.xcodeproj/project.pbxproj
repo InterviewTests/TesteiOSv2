@@ -23,6 +23,8 @@
 		B934B77425FE6ABA0031F85E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B934B77225FE6ABA0031F85E /* Main.storyboard */; };
 		B934B77625FE6ABF0031F85E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B934B77525FE6ABF0031F85E /* Assets.xcassets */; };
 		B934B77925FE6ABF0031F85E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B934B77725FE6ABF0031F85E /* LaunchScreen.storyboard */; };
+		B93A849B2604141400024F80 /* ShowStatementsHTTPRequestWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A849A2604141400024F80 /* ShowStatementsHTTPRequestWorker.swift */; };
+		B93A849F2604155F00024F80 /* Statements.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A849E2604155F00024F80 /* Statements.swift */; };
 		B95BB3142603BA8600115A35 /* ShowStatementsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95BB3132603BA8600115A35 /* ShowStatementsRouter.swift */; };
 		B9709DF226037C49002B35C0 /* ShowStatementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9709DF126037C49002B35C0 /* ShowStatementsPresenter.swift */; };
 		B9709DF626037C6B002B35C0 /* ShowStatementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9709DF526037C6B002B35C0 /* ShowStatementsViewController.swift */; };
@@ -77,6 +79,8 @@
 		B934B77A25FE6ABF0031F85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B934B77F25FE6AC00031F85E /* Bank-App-CleanSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bank-App-CleanSwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B934B78525FE6AC00031F85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B93A849A2604141400024F80 /* ShowStatementsHTTPRequestWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStatementsHTTPRequestWorker.swift; sourceTree = "<group>"; };
+		B93A849E2604155F00024F80 /* Statements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statements.swift; sourceTree = "<group>"; };
 		B95BB3132603BA8600115A35 /* ShowStatementsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStatementsRouter.swift; sourceTree = "<group>"; };
 		B9709DF126037C49002B35C0 /* ShowStatementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStatementsPresenter.swift; sourceTree = "<group>"; };
 		B9709DF526037C6B002B35C0 /* ShowStatementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStatementsViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				B9309A3D25FF8EFC0042BCF4 /* User.swift */,
+				B93A849E2604155F00024F80 /* Statements.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				B9709DF126037C49002B35C0 /* ShowStatementsPresenter.swift */,
 				B9709DFD26037C9A002B35C0 /* ShowStatementsModel.swift */,
 				B95BB3132603BA8600115A35 /* ShowStatementsRouter.swift */,
+				B93A849A2604141400024F80 /* ShowStatementsHTTPRequestWorker.swift */,
 			);
 			path = ShowStatements;
 			sourceTree = "<group>";
@@ -493,10 +499,12 @@
 				B9B1833125FF8D7C009149DD /* LoginPresenter.swift in Sources */,
 				B9309A7F25FFA8F90042BCF4 /* LoginFieldsValidationWorker.swift in Sources */,
 				B991FF89260288F200716AF5 /* LoginStorageWorker.swift in Sources */,
+				B93A849B2604141400024F80 /* ShowStatementsHTTPRequestWorker.swift in Sources */,
 				B9ACF5CB260239AD008801D6 /* Constants.swift in Sources */,
 				B95BB3142603BA8600115A35 /* ShowStatementsRouter.swift in Sources */,
 				B991FF9026028AC300716AF5 /* Storage.swift in Sources */,
 				B991FF9426028CAB00716AF5 /* UserDefaultsStorage.swift in Sources */,
+				B93A849F2604155F00024F80 /* Statements.swift in Sources */,
 				B92BFB852600E08200D2F17E /* Stubs.swift in Sources */,
 				B9B1834025FF8DAF009149DD /* LoginHTTPRequestWorker.swift in Sources */,
 			);

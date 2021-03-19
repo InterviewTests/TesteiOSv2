@@ -23,8 +23,14 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    
+    // MARK: -
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.hideNavigationBar()        
+        self.hideNavigationBar()
         self.dismissKey()
         self.setupCleanSwiftObjects()
         
