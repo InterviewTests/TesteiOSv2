@@ -22,9 +22,63 @@ extension UIViewController {
 
 }
 
-// MARK: - Extension for ShowStatementViewController
+// MARK: - Extensions for ShowStatementViewController
+// Extension for bar style configuration
 extension ShowStatementsViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
          return .lightContent
      }
 }
+
+
+// Extension for delegate and datasource methods
+extension ShowStatementsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.statements.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CELL_ID, for: indexPath) as? StatementTableViewCell {
+            
+            let currentStatement = self.statements[indexPath.row]
+            cell.titleLabel.text = currentStatement.title
+            cell.descriptionLabel.text = currentStatement.description
+            cell.dateLabel.text = currentStatement.date
+            cell.valueLabel.text = currentStatement.totalAmount
+            
+            self.addEffectsTo(cell: cell)
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(16)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }    
+    
+    private func addEffectsTo(cell: StatementTableViewCell) {
+        cell.backgroundColor = UIColor.white
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.borderWidth = CGFloat(1)
+        cell.layer.cornerRadius = CGFloat(10)
+        cell.clipsToBounds = false
+                                
+        cell.layer.shadowRadius = CGFloat(10)
+        cell.layer.shadowOpacity = Float(0.2)
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 2, height: 2)
+    }
+    
+}
+    
+

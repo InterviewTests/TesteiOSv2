@@ -44,5 +44,5 @@ struct Constants {
     static let SHOW_STATEMENTS_VC_ID = "ShowStatementsViewController"
     
     // MARK: - Constants for cell
-    static let CELL_ID = "CellForStatement"
+    static let CELL_ID = "StatementTableViewCell"
 }

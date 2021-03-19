@@ -17,7 +17,8 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userAccountLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
-        
+    @IBOutlet weak var tableView: UITableView!
+    
     var interactor: (ShowStatementsBusinessLogic & ShowStatementsDataStore)?
     var router: (NSObjectProtocol & ShowStatementsRoutingLogic & ShowStatementsDataPassing)?
     var statements: [Statement] = []
@@ -30,6 +31,16 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.configureTableView()
+    }
+    
+    // MARK: - Configure Table View
+    private func configureTableView() {
+        self.tableView.register(UINib(nibName: Constants.CELL_ID, bundle: nil),
+                                forCellReuseIdentifier: Constants.CELL_ID)
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     // MARK: - View Will Appear
@@ -61,7 +72,7 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     }
     
     
-    // MARK: -
+    // MARK: - Setup Objects of Clean Architecture
     func setupCleanSwiftObjects() {
         let viewController = self
         let interactor = ShowStatementsInteractor()
@@ -76,24 +87,24 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
         router.viewController = viewController
     }
         
-    // MARK: -
+    // MARK: - Display User Account Info
     func displayUserAccountInfo(viewModel: ShowStatements.UserAccountDescription.ViewModel) {        
         self.userNameLabel.text = viewModel.fields.name
         self.userAccountLabel.text = viewModel.fields.accountWithAgency
         self.balanceLabel.text = viewModel.fields.balance
     }
     
-    // MARK: -
+    // MARK: - Populate Table View
     func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel) {
         if let statements = viewModel.statements {
-            self.statements = statements
-        }
-        
-        for st in statements {
-            print("\(st.title) \(st.totalAmount)")
+            DispatchQueue.main.async {
+                self.statements = statements
+                self.tableView.reloadData()
+            }
         }
     }
     
+    // MARK: - Show Error Alert
     func showErrorAlert(viewModel: ShowStatements.ShowStatements.ViewModel) {
         let errorMessage = viewModel.error!.message
         
