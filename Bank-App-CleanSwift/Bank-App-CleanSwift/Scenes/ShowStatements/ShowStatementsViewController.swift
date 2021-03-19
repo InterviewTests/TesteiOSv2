@@ -21,6 +21,7 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
         
     var interactor: (ShowStatementsBusinessLogic & ShowStatementsDataStore)?
     var router: (NSObjectProtocol & ShowStatementsRoutingLogic & ShowStatementsDataPassing)?
+    var statements: [Statement] = []
  
     // MARK: -
     @IBAction func exitButtonPressed(_ button: UIButton) {
@@ -63,7 +64,7 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     
     
     // MARK: -
-    private func setupCleanSwiftObjects() {
+    func setupCleanSwiftObjects() {
         let viewController = self
         let interactor = ShowStatementsInteractor()
         let presenter = ShowStatementsPresenter()
@@ -87,9 +88,7 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     // MARK: -
     func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel) {
         if let statements = viewModel.statements {
-            for statement in statements {
-                print(statement)
-            }
+            self.statements = statements
         }
     }
     

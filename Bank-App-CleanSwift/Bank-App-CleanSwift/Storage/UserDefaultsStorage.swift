@@ -12,6 +12,7 @@ class UserDefaultsStorage: Storage {
     
     func deleteUsername() -> Bool {
         storage.removeObject(forKey: Constants.USERNAME_KEY)
+                
         return true
     }
     

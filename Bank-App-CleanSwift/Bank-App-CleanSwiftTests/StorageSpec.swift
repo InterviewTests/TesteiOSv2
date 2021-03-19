@@ -27,6 +27,8 @@ class StorageSpec: QuickSpec {
             it("persists and gets an username") {
                 let storedUsername = self.worker.fetchLastLoggedUsername()
                 expect(storedUsername).to(equal("Julie Sweet"))
+                
+                
             }
             
             it("returns false when comparing the saved data with other") {
@@ -48,6 +50,8 @@ class StorageSpec: QuickSpec {
         }
         
         afterSuite {
+            print("Deletando")
+            
             _ = self.worker.deleteLastLoggedUsername()
             _ = self.worker.deleteLastLoggedUser()
         }
