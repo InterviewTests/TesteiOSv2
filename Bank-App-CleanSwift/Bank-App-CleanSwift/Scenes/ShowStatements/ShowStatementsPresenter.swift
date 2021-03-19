@@ -70,7 +70,7 @@ class ShowStatementsPresenter: ShowStatementsPresentationLogic {
                 statements.append(statement)
             }
             let viewModel = ShowStatements.ShowStatements.ViewModel(statements: statements, error: nil)
-            viewController?.populateTableView(viewModel: viewModel)
+            viewController?.showStatements(viewModel: viewModel)
             
         } else if let errorData = response.error {
             let error = ErrorMessage(code: errorData.code!, message: errorData.message!)

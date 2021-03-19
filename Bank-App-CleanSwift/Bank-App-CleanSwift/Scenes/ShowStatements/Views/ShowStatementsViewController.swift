@@ -9,7 +9,7 @@ import UIKit
 
 protocol ShowStatementsLogic: class {
     func displayUserAccountInfo(viewModel: ShowStatements.UserAccountDescription.ViewModel)
-    func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel)
+    func showStatements(viewModel: ShowStatements.ShowStatements.ViewModel)
     func showErrorAlert(viewModel: ShowStatements.ShowStatements.ViewModel)
 }
 
@@ -99,7 +99,7 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     
     /// Fills in the `TableView` with information contained in `ViewModel` object
     /// - Parameter viewModel: a `ViewModel` object which contains information about `Statements`
-    func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel) {
+    func showStatements(viewModel: ShowStatements.ShowStatements.ViewModel) {
         if let statements = viewModel.statements {
             self.statements = statements
             
