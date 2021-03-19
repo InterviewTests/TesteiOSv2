@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct User: Codable {
+
+/// User for use in store processinc
+struct User {
     let username: String
     let password: String
 }
@@ -18,8 +20,6 @@ struct UserParameters: Encodable {
     let user: String
     let password: String
 }
-
-
 // MARK: -
 /// struct for request body parameters. As the api allow any user to login, a way to force an error code 53 is change the parameter names
 struct UserWrongParameters: Encodable {
@@ -27,8 +27,8 @@ struct UserWrongParameters: Encodable {
     let pazzvord: String
 }
 
-// MARK: -
-/// Struct for decoding data
+// MARK: - structs for use in response
+/// Struct for decoding `user`. It can contain an `ErrorData` or an `UserAccount`
 struct UserData: Decodable {
     let error: ErrorData
     let userAccount: UserAccountData
@@ -60,12 +60,9 @@ struct UserData: Decodable {
     }
 }
 
-// MARK: - structs for use in response
-
+// MARK: - structs for use in response. "POSO" objects
 /// Marker protocol, used for polimorphism.
-protocol JSONDataExtractable {
-}
-
+protocol JSONDataExtractable {}
 
 /// Class for use when a request was made with correct parameters.
 class UserAccount: JSONDataExtractable {
@@ -101,13 +98,11 @@ class UserAccount: JSONDataExtractable {
     }
 }
 
-
 /// Class for use when a request was made wth incorrect parameters
 class ErrorMessage: JSONDataExtractable {
     var code: Int?
     var message: String?
-    
-    
+        
     /// Constructor for use when creating an object of this class inside a request
     /// - Parameter userData: the data returned from a `request`
     init(extractedFrom userData: UserData) {
