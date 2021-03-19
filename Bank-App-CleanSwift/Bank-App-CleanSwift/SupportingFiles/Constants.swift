@@ -42,4 +42,7 @@ struct Constants {
     // MARK: - Constants for screen navigation
     static let SEGUE_ID_TO_STATEMENTS = "showStatements"
     static let SHOW_STATEMENTS_VC_ID = "ShowStatementsViewController"
+    
+    // MARK: - Constants for cell
+    static let CELL_ID = "CellForStatement"
 }
