@@ -97,8 +97,9 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     // MARK: - Populate Table View
     func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel) {
         if let statements = viewModel.statements {
+            self.statements = statements
+            
             DispatchQueue.main.async {
-                self.statements = statements
                 self.tableView.reloadData()
             }
         }

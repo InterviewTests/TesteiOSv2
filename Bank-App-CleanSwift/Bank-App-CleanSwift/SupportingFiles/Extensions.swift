@@ -43,8 +43,8 @@ extension ShowStatementsViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CELL_ID, for: indexPath) as? StatementTableViewCell {
-            
-            let currentStatement = self.statements[indexPath.row]
+                        
+            let currentStatement = self.statements[indexPath.section]
             cell.titleLabel.text = currentStatement.title
             cell.descriptionLabel.text = currentStatement.description
             cell.dateLabel.text = currentStatement.date
