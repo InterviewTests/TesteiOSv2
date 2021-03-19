@@ -8,6 +8,8 @@
 import Foundation
 
 // MARK: - Data from GET request
+
+/// Struct for fetching statement list from JSO
 struct StatementListData: Decodable {
     let statementList: [StatementData]
     let error: ErrorData
@@ -43,6 +45,8 @@ struct StatementListData: Decodable {
 }
 
 // MARK: - POSO (plain old swift objects)
+
+/// A `Statement` object, which contains a kind of transaction in a given day
 struct Statement {
     let title: String
     let description: String
