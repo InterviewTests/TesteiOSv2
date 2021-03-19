@@ -35,7 +35,6 @@ class ShowStatementsInteractor: ShowStatementsBusinessLogic, ShowStatementsDataS
             showStatementsHTTPRequestWorker.fetchStatements(ofUser: userId) { data in
                 var response: ShowStatements.ShowStatements.Response?
                 
-                print(data)
                 if let _ = data.error.code {
                     let errorData = data.error
                     response = ShowStatements.ShowStatements.Response(error: errorData)
