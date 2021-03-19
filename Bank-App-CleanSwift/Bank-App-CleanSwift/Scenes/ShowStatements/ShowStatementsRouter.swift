@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol ShowStatementsRoutingLogic {
-    
+    func dismissScreen()
 }
 
 protocol ShowStatementsDataPassing {
@@ -18,6 +18,13 @@ protocol ShowStatementsDataPassing {
 
 class ShowStatementsRouter: NSObject, ShowStatementsRoutingLogic, ShowStatementsDataPassing {
     var dataStore: ShowStatementsDataStore?
-    var viewController: ShowStatementsLogic?
+    var viewController: ShowStatementsViewController?
+    
+    func dismissScreen() {
+        viewController?.navigationController?.popViewController(animated: true)
+        viewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    
         
 }

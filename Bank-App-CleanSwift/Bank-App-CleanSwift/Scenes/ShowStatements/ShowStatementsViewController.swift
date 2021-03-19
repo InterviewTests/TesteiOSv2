@@ -22,18 +22,17 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     var router: (NSObjectProtocol & ShowStatementsRoutingLogic & ShowStatementsDataPassing)?
     var statements: [Statement] = []
  
-    // MARK: -
+    // MARK: - Exit Button
     @IBAction func exitButtonPressed(_ button: UIButton) {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        router?.dismissScreen()
     }
     
-    // MARK: -
+    // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    // MARK: -
+    // MARK: - View Will Appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -48,14 +47,14 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
         } 
     }
     
-    // MARK: -
+    // MARK: - Init with nibName
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.setupCleanSwiftObjects()
     }
     
     
-    // MARK: -
+    // MARK: - Init With coder
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupCleanSwiftObjects()
