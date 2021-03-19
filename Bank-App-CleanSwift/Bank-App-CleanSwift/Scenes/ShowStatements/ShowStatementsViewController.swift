@@ -13,7 +13,6 @@ protocol ShowStatementsLogic: class {
     func showErrorAlert(viewModel: ShowStatements.ShowStatements.ViewModel)
 }
 
-
 class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userAccountLabel: UILabel!
@@ -89,6 +88,10 @@ class ShowStatementsViewController: UIViewController, ShowStatementsLogic {
     func populateTableView(viewModel: ShowStatements.ShowStatements.ViewModel) {
         if let statements = viewModel.statements {
             self.statements = statements
+        }
+        
+        for st in statements {
+            print("\(st.title) \(st.totalAmount)")
         }
     }
     

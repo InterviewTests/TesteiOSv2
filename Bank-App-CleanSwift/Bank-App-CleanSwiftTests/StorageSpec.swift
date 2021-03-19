@@ -16,19 +16,20 @@ class StorageSpec: QuickSpec {
     
     override func spec() {
         self.worker = LoginStorageWorker(storage: UserDefaultsStorage())
-        let username = "Julie Sweet"
-        _ = self.worker.persistUsername(username)
         
-        let user = Stubs.VALID_USER
-        _ = self.worker.persistUser(user)
+        beforeEach {
+            let username = "Julie Sweet"
+            _ = self.worker.persistUsername(username)
+            
+            let user = Stubs.VALID_USER
+            _ = self.worker.persistUser(user)
+        }
         
         
         context("#username") {
             it("persists and gets an username") {
                 let storedUsername = self.worker.fetchLastLoggedUsername()
                 expect(storedUsername).to(equal("Julie Sweet"))
-                
-                
             }
             
             it("returns false when comparing the saved data with other") {
@@ -49,9 +50,7 @@ class StorageSpec: QuickSpec {
             }
         }
         
-        afterSuite {
-            print("Deletando")
-            
+        afterEach {            
             _ = self.worker.deleteLastLoggedUsername()
             _ = self.worker.deleteLastLoggedUser()
         }

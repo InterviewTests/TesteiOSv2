@@ -68,13 +68,13 @@ class LoginViewController: UIViewController, DisplayLoginLogic {
     /// - Parameter viewModel: a `ViewModel` which can contain an `ErrorMessage` or an `UserAccount`
     func displayLoginSuccessful(viewModel: Login.Login.ViewModel) {
         self.loginButton.hideActivityIndicator()
-        self.passwordText.text = ""
         
         guard viewModel.user != nil else {
             self.presentErrorAlert(containing: viewModel.error!.message!)
             return 
         }
                 
+        self.passwordText.text = ""
         self.router?.routeToStatementsView()        
     }
         
