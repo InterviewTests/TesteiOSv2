@@ -50,7 +50,7 @@ extension ShowStatementsViewController: UITableViewDelegate, UITableViewDataSour
             cell.dateLabel.text = currentStatement.date
             cell.valueLabel.text = currentStatement.totalAmount
             
-            self.addEffectsTo(cell: cell)
+            cell.addEffects()
             return cell
         }
         return UITableViewCell()
@@ -64,21 +64,7 @@ extension ShowStatementsViewController: UITableViewDelegate, UITableViewDataSour
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
-    }    
-    
-    private func addEffectsTo(cell: StatementTableViewCell) {
-        cell.backgroundColor = UIColor.white
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.borderWidth = CGFloat(1)
-        cell.layer.cornerRadius = CGFloat(10)
-        cell.clipsToBounds = false
-                                
-        cell.layer.shadowRadius = CGFloat(10)
-        cell.layer.shadowOpacity = Float(0.2)
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 2, height: 2)
-    }
-    
+    }            
 }
     
 

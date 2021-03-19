@@ -16,4 +16,19 @@ class StatementTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    
+    /// Adds some layout effects in cell
+    func addEffects() {
+        backgroundColor = UIColor.white
+        layer.borderColor = UIColor.white.cgColor
+        layer.borderWidth = CGFloat(1)
+        layer.cornerRadius = CGFloat(10)
+        clipsToBounds = false
+                                
+        layer.shadowRadius = CGFloat(10)
+        layer.shadowOpacity = Float(0.2)
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowOffset = CGSize(width: 2, height: 2)
+    }
 }
