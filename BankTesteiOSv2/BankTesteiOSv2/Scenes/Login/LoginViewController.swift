@@ -94,6 +94,10 @@ class LoginViewController: UIViewController
                         {
                               checkCPF()
                         }
+                        else
+                        {
+                              self.alert(message: "Por favor, verifique os campos \"E-mail ou CPF\", e tente novamente!", title: "Atenção")
+                        }
                   }
                   else
                   {
