@@ -58,6 +58,19 @@ class BankStatementViewController: UIViewController
             self.bankStatementTableView.register(UINib(nibName: "StatementTableViewCell", bundle: nil), forCellReuseIdentifier: CellReuseIdentifier.StatementTableViewCell.rawValue)
       }
       
+      func logoutAction()
+      {
+            userEmailOrCPF = ""
+            userPassword = ""
+            
+            userWSLogin = nil
+            
+            userWSStatementList = nil
+            userWSStatementListCount = 0
+            
+            dismissVC()
+      }
+      
       func dismissVC()
       {
             navigationController?.popViewController(animated: true)
@@ -81,7 +94,7 @@ extension BankStatementViewController: UITableViewDataSource, UITableViewDelegat
                   return 1
                   
             case 1:
-                  return 9
+                  return userWSStatementListCount
  
             default:
                   return 0
@@ -100,8 +113,15 @@ extension BankStatementViewController: UITableViewDataSource, UITableViewDelegat
                   totalStatementTableViewCell.selectionStyle = .none
                   totalStatementTableViewCell.backgroundColor = uiColorApp
                   
-                  totalStatementTableViewCell.delegate = self
+                  totalStatementTableViewCell.nameLbL.text = (userWSLogin?.userAccount.name)!
+                  totalStatementTableViewCell.accountNumberLbL.text = (userWSLogin?.userAccount.bankAccount)! + " / " + (userWSLogin?.userAccount.agency)!
                   
+                  let balance = (userWSLogin?.userAccount.balance)!
+                  let balanceString = Value.parseCurrency(balance)
+                  totalStatementTableViewCell.balanceLbL.text = balanceString
+
+                  totalStatementTableViewCell.delegate = self
+                                    
                   self.totalStatementTableViewCell = totalStatementTableViewCell
                                                       
                   return totalStatementTableViewCell
@@ -109,9 +129,16 @@ extension BankStatementViewController: UITableViewDataSource, UITableViewDelegat
             default:
                   statementTableViewCell.selectionStyle = .none
                   statementTableViewCell.backgroundColor = uiColorWhite
-                                                      
-                  return statementTableViewCell
+                  
+                  statementTableViewCell.titleLbL.text = (userWSStatementList?.statementList[indexPath.row].title)!
+                  statementTableViewCell.dateLbL.text = (userWSStatementList?.statementList[indexPath.row].date)!
+                  statementTableViewCell.descriptionLbL.text = (userWSStatementList?.statementList[indexPath.row].desc)!
+                  
+                  let value = (userWSStatementList?.statementList[indexPath.row].value)!
+                  let valueString = Value.parseCurrency(value)
+                  statementTableViewCell.valueLbL.text = valueString
 
+                  return statementTableViewCell
             }
       }
       
@@ -152,16 +179,14 @@ extension BankStatementViewController: UITableViewDataSource, UITableViewDelegat
                   return 100.0
             }
       }
-      
- 
-            
+                  
 }
 
 extension BankStatementViewController: TotalStatementTableViewCellDelegate
 {
       func logoutTotalStatementTableViewCellAction()
       {
-            dismissVC()
+            logoutAction()
       }
 }
 

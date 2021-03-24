@@ -23,27 +23,22 @@ class StatementProxy
             AF.request(FullURLProxy.fullURLproxy(urlPath), method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers)
                   .responseJSON
             {response in
-                  print("responseJSON ---> \(response)")
                   switch(response.result)
                   {
                         case.success(let data):
-                              print("success", data)
                               let jsonData = response.data
-                              print("jsonData: \(String(describing: jsonData))")
                               do
                               {
                                     let userStatementList = try JSONDecoder().decode(UserRootStatement.self, from: jsonData!)
-                                    print("userStatementList ---> \(userStatementList)")
 
                                     completion(true, userStatementList)
                               }
                               catch
                               {
-                                    let erroMessage = "error userStatementList"
                                     completion(false, nil)
                               }
                               
-                        case.failure(let erroMessage):
+                        case.failure(let _):
                               completion(false, nil)
                    }
             }

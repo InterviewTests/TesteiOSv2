@@ -31,22 +31,19 @@ class LoginProxy
                   switch(response.result)
                   {
                         case.success(let data):
-                              print("success", data)
                               let jsonData = response.data
                               do
                               {
                                     let userLogin = try JSONDecoder().decode(UserRoot.self, from: jsonData!)
-                                    print("userLogin ---> \(userLogin)")
 
                                     completion(true, userLogin)
                               }
                               catch
                               {
-                                    let erroMessage = "error userLoginModel"
                                     completion(false, nil)
                               }
                               
-                        case.failure(let erroMessage):
+                  case.failure(_):
                               completion(false, nil)
                    }
             }

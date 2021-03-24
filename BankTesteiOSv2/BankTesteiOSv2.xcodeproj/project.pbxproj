@@ -19,6 +19,9 @@
 		409284B5260BCE34009E9C99 /* StatementProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409284B4260BCE34009E9C99 /* StatementProxy.swift */; };
 		409284BA260BCEB0009E9C99 /* UserRootStatementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409284B9260BCEB0009E9C99 /* UserRootStatementModel.swift */; };
 		409284BF260BCF05009E9C99 /* UserStatementListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409284BE260BCF05009E9C99 /* UserStatementListModel.swift */; };
+		409284CA260BD9F9009E9C99 /* extensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409284C9260BD9F9009E9C99 /* extensionUIViewController.swift */; };
+		409284D3260BDFEE009E9C99 /* classRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409284D2260BDFEE009E9C99 /* classRegex.swift */; };
+		409284DB260BEBE4009E9C99 /* classValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409284DA260BEBE4009E9C99 /* classValue.swift */; };
 		40C4D689260A747600ABF184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C4D688260A747600ABF184 /* AppDelegate.swift */; };
 		40C4D68B260A747600ABF184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C4D68A260A747600ABF184 /* SceneDelegate.swift */; };
 		40C4D68D260A747600ABF184 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C4D68C260A747600ABF184 /* LoginViewController.swift */; };
@@ -79,6 +82,9 @@
 		409284B4260BCE34009E9C99 /* StatementProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementProxy.swift; sourceTree = "<group>"; };
 		409284B9260BCEB0009E9C99 /* UserRootStatementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRootStatementModel.swift; sourceTree = "<group>"; };
 		409284BE260BCF05009E9C99 /* UserStatementListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatementListModel.swift; sourceTree = "<group>"; };
+		409284C9260BD9F9009E9C99 /* extensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIViewController.swift; sourceTree = "<group>"; };
+		409284D2260BDFEE009E9C99 /* classRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classRegex.swift; sourceTree = "<group>"; };
+		409284DA260BEBE4009E9C99 /* classValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classValue.swift; sourceTree = "<group>"; };
 		40C4D685260A747600ABF184 /* BankTesteiOSv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankTesteiOSv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C4D688260A747600ABF184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40C4D68A260A747600ABF184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +170,7 @@
 		409283DD260B7D5D009E9C99 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				409284C9260BD9F9009E9C99 /* extensionUIViewController.swift */,
 				409283DE260B7D6D009E9C99 /* extensionString.swift */,
 			);
 			path = extension;
@@ -178,6 +185,15 @@
 				409284B4260BCE34009E9C99 /* StatementProxy.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		409284D1260BDFDE009E9C99 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				409284D2260BDFEE009E9C99 /* classRegex.swift */,
+				409284DA260BEBE4009E9C99 /* classValue.swift */,
+			);
+			path = class;
 			sourceTree = "<group>";
 		};
 		40C4D67C260A747600ABF184 = {
@@ -317,6 +333,7 @@
 			children = (
 				409283DD260B7D5D009E9C99 /* extension */,
 				40C4D799260A90F700ABF184 /* var */,
+				409284D1260BDFDE009E9C99 /* class */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -592,6 +609,7 @@
 				40C4D689260A747600ABF184 /* AppDelegate.swift in Sources */,
 				409284BA260BCEB0009E9C99 /* UserRootStatementModel.swift in Sources */,
 				409284BF260BCF05009E9C99 /* UserStatementListModel.swift in Sources */,
+				409284CA260BD9F9009E9C99 /* extensionUIViewController.swift in Sources */,
 				40C4D68B260A747600ABF184 /* SceneDelegate.swift in Sources */,
 				409283DF260B7D6D009E9C99 /* extensionString.swift in Sources */,
 				409283CD260B7CDD009E9C99 /* varGlobal.swift in Sources */,
@@ -602,11 +620,13 @@
 				409284B5260BCE34009E9C99 /* StatementProxy.swift in Sources */,
 				40C4D743260A865800ABF184 /* BankStatementViewController.swift in Sources */,
 				40928444260B8E2F009E9C99 /* FullURLProxy.swift in Sources */,
+				409284D3260BDFEE009E9C99 /* classRegex.swift in Sources */,
 				40C4D710260A7CB900ABF184 /* LogoTableViewCell.swift in Sources */,
 				409284A3260BC4EA009E9C99 /* UserAccountErrorModel.swift in Sources */,
 				40C4D693260A747600ABF184 /* BankTesteiOSv2.xcdatamodeld in Sources */,
 				40928468260B90E9009E9C99 /* UserAccountModel.swift in Sources */,
 				409284A8260BC62E009E9C99 /* LoginProxy.swift in Sources */,
+				409284DB260BEBE4009E9C99 /* classValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

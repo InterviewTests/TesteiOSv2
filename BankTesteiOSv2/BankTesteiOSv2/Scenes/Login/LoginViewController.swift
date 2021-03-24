@@ -12,6 +12,10 @@ class LoginViewController: UIViewController
 {
       
       var loginTableViewCell : LoginTableViewCell?
+      var emailOrCPFTableViewCell : EmailOrCPFTableViewCell?
+      var passwordTableViewCell : PasswordTableViewCell?
+      
+      var activityIndicatorV: UIActivityIndicatorView?
       
       fileprivate var loginTableView: UITableView!
       {
@@ -33,9 +37,6 @@ class LoginViewController: UIViewController
             
             initViewDidLoad()
             registerCells()
-            
-            
-            loginAction()
       }
       
       override func viewWillLayoutSubviews()
@@ -45,11 +46,25 @@ class LoginViewController: UIViewController
             loginTableView.frame = view.bounds
       }
       
+      override func viewWillDisappear(_ animated: Bool)
+      {
+            super.viewWillDisappear(true)
+            
+            endViewWillDisappear()
+      }
+      
       func initViewDidLoad()
       {
             loginTableView = UITableView(frame: CGRect.zero, style: .grouped)
             loginTableView.separatorStyle = .none
+            loginTableView.allowsSelection = false
             loginTableView.backgroundColor = uiColorWhite
+      }
+      
+      func endViewWillDisappear()
+      {
+            passwordTableViewCell?.passwordTxT.text = ""
+            passwordTableViewCell?.passwordTxT.placeholder = "   Senha    "
       }
       
       func registerCells()
@@ -62,25 +77,115 @@ class LoginViewController: UIViewController
             self.loginTableView.register(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: CellReuseIdentifier.LoginTableViewCell.rawValue)
       }
       
-      func loginAction()
+      func verifyEmailOrCPFAndPasswordAction()
       {
-            let user = "test_user"
-            let password = "Test@1"
-            
-            LoginProxy.loginAction(user, password) { (success, userLoginModel) in
+            if !(emailOrCPFTableViewCell?.emailOrCPFTxTF.text?.isEmpty)!
+            {
+                  if !(passwordTableViewCell?.passwordTxT.text?.isEmpty)!
+                  {
+                        userEmailOrCPF = (emailOrCPFTableViewCell?.emailOrCPFTxTF.text!)!
+                        userPassword = (passwordTableViewCell?.passwordTxT.text)!
+                        
+                        if userEmailOrCPF.contains("@")
+                        {
+                              checkEmail()
+                        }
+                        else if(userEmailOrCPF.count == 11)
+                        {
+                              checkCPF()
+                        }
+                  }
+                  else
+                  {
+                        self.alert(message: "Por favor, verifique os campos \"Senha\", e tente novamente!", title: "Atenção")
+                  }
+            }
+            else
+            {
+                  self.alert(message: "Por favor, verifique os campos \"E-mail ou CPF e Senha\", e tente novamente!", title: "Atenção")
+            }
+      }
+      
+      func checkEmail()
+      {
+            if Regex.isRealEmail(userEmailOrCPF)
+            {
+                  if Regex.isAcceptablePassword(userPassword)
+                  {
+                        loginAction(userEmailOrCPF, userPassword)
+                  }
+                  else
+                  {
+                        self.alert(message: "Por favor, verifique os campos \"Senha\", e tente novamente!", title: "Atenção")
+                  }
+            }
+            else
+            {
+                  self.alert(message: "Por favor, verifique os campos \"E-mail\", e tente novamente!", title: "Atenção")
+            }
+      }
+      
+      func checkCPF()
+      {
+            if userEmailOrCPF.isRealCPF
+            {
+                  if Regex.isAcceptablePassword(userPassword)
+                  {
+                        loginAction(userEmailOrCPF, userPassword)
+                  }
+                  else
+                  {
+                        self.alert(message: "Por favor, verifique os campos \"Senha\", e tente novamente!", title: "Atenção")
+                  }
+            }
+            else
+            {
+                  self.alert(message: "Por favor, verifique os campos \"CPF\", e tente novamente!", title: "Atenção")
+            }
+      }
+      
+      func loginAction(_ user: String,_ password: String)
+      {
+            showActivityIndicatory()
+            LoginProxy.loginAction(user, password) { (success, userLogin) in
                   if success
                   {
-                        print("userLoginModel ---> \(userLoginModel?.userAccount.userId)")
-                        guard let userId = userLoginModel?.userAccount.userId else { return }
+                        userWSLogin = userLogin
+                        defaults.set(userEmailOrCPF, forKey: "userEmailOrCPF")
+                        
+                        guard let userId = userWSLogin?.userAccount.userId else { return }
                         
                         let userId2String = String(userId)
                         StatementProxy.getStatementAction(userId2String) { (success, userStatementList) in
-                              print("userStatementList ---> \(userStatementList)")
+                              userWSStatementList = userStatementList
+                              userWSStatementListCount = (userWSStatementList?.statementList.count)!
+                              
+                              self.stopActivityIndicator()
+                              
+                              self.bankStatementAction()
                         }
                   }
             }
       }
       
+      func showActivityIndicatory()
+      {
+            activityIndicatorV = UIActivityIndicatorView(style: .large)
+            activityIndicatorV?.color = uiColorApp
+            activityIndicatorV?.center = self.view.center
+            
+            self.view.addSubview(activityIndicatorV!)
+            
+            activityIndicatorV?.startAnimating()
+      }
+      
+      func stopActivityIndicator()
+      {
+            if (activityIndicatorV != nil)
+            {
+                  activityIndicatorV?.stopAnimating()
+            }
+      }
       
       func bankStatementAction()
       {
@@ -142,11 +247,31 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate
                   emailOrCPFTableViewCell.selectionStyle = .none
                   emailOrCPFTableViewCell.backgroundColor = UIColor.clear
                   
+                  if (defaults.value(forKey: "userEmailOrCPF") != nil)
+                  {
+                        userEmailOrCPF = defaults.string(forKey: "userEmailOrCPF")!
+                        emailOrCPFTableViewCell.emailOrCPFTxTF.text = userEmailOrCPF
+                  }
+                  else
+                  {
+                        emailOrCPFTableViewCell.emailOrCPFTxTF.placeholder =  "   E-mail ou CPF   "
+                  }
+                  
+                  emailOrCPFTableViewCell.emailOrCPFTxTF.delegate = self
+                  
+                  self.emailOrCPFTableViewCell = emailOrCPFTableViewCell
+                  
                   return emailOrCPFTableViewCell
                   
             case (1,2):
                   passwordTableViewCell.selectionStyle = .none
                   passwordTableViewCell.backgroundColor = UIColor.clear
+                  
+                  passwordTableViewCell.passwordTxT.placeholder = "   Senha    "
+                  
+                  passwordTableViewCell.passwordTxT.delegate = self
+                  
+                  self.passwordTableViewCell = passwordTableViewCell
                   
                   return passwordTableViewCell
                   
@@ -183,7 +308,24 @@ extension LoginViewController: LoginTableViewCellDelegate
 {
       func loginTableViewCellAction()
       {
-            bankStatementAction()
+            verifyEmailOrCPFAndPasswordAction()
       }
 }
 
+extension LoginViewController: UITextFieldDelegate
+{
+      
+      func textFieldShouldReturn(_ textField: UITextField) -> Bool
+      {
+            switch textField
+            {
+            case (emailOrCPFTableViewCell?.emailOrCPFTxTF)!:
+                  passwordTableViewCell?.passwordTxT.becomeFirstResponder()
+            default:
+                  view.endEditing(true)
+                  verifyEmailOrCPFAndPasswordAction()
+            }
+            return true
+      }
+      
+}
