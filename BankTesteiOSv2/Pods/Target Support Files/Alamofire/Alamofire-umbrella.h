@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_BankTesteiOSv2_BankTesteiOSv2UITestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_BankTesteiOSv2_BankTesteiOSv2UITestsVersionString[];
+FOUNDATION_EXPORT double AlamofireVersionNumber;
+FOUNDATION_EXPORT const unsigned char AlamofireVersionString[];
 

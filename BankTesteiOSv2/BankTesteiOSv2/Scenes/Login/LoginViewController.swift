@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController
 {
@@ -32,6 +33,9 @@ class LoginViewController: UIViewController
             
             initViewDidLoad()
             registerCells()
+            
+            
+            loginAction()
       }
       
       override func viewWillLayoutSubviews()
@@ -58,6 +62,26 @@ class LoginViewController: UIViewController
             self.loginTableView.register(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: CellReuseIdentifier.LoginTableViewCell.rawValue)
       }
       
+      func loginAction()
+      {
+            let user = "test_user"
+            let password = "Test@1"
+            
+            LoginProxy.loginAction(user, password) { (success, userLoginModel) in
+                  if success
+                  {
+                        print("userLoginModel ---> \(userLoginModel?.userAccount.userId)")
+                        guard let userId = userLoginModel?.userAccount.userId else { return }
+                        
+                        let userId2String = String(userId)
+                        StatementProxy.getStatementAction(userId2String) { (success, userStatementList) in
+                              print("userStatementList ---> \(userStatementList)")
+                        }
+                  }
+            }
+      }
+      
+      
       func bankStatementAction()
       {
             let storyboard = UIStoryboard(name: "BankStatement", bundle: nil)
@@ -66,7 +90,6 @@ class LoginViewController: UIViewController
             
             self.show(bankStatementVC, sender: self)
       }
-      
 }
 
 extension LoginViewController: UITableViewDataSource, UITableViewDelegate
@@ -151,7 +174,8 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate
                   
             default:
                   return 66.0
-            }   }
+            }
+      }
       
 }
 
