@@ -118,6 +118,14 @@ extension BankStatementViewController: UITableViewDataSource, UITableViewDelegat
                   
                   let balance = (userWSLogin?.userAccount.balance)!
                   let balanceString = Value.parseCurrency(balance)
+                  
+                  var balanceColor = uiColorBlack
+                  if balance < 0
+                  {
+                        balanceColor = uiColorRed
+                  }
+                  totalStatementTableViewCell.balanceLbL.textColor = balanceColor
+                  
                   totalStatementTableViewCell.balanceLbL.text = balanceString
 
                   totalStatementTableViewCell.delegate = self
@@ -136,6 +144,13 @@ extension BankStatementViewController: UITableViewDataSource, UITableViewDelegat
                   
                   let value = (userWSStatementList?.statementList[indexPath.row].value)!
                   let valueString = Value.parseCurrency(value)
+                  
+                  var valueColor = uiColorBlack
+                  if value < 0
+                  {
+                        valueColor = uiColorRed
+                  }
+                  statementTableViewCell.valueLbL.textColor = valueColor
                   statementTableViewCell.valueLbL.text = valueString
 
                   return statementTableViewCell

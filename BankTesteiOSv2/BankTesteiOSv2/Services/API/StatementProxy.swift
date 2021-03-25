@@ -38,7 +38,7 @@ class StatementProxy
                                     completion(false, nil)
                               }
                               
-                        case.failure(let _):
+                  case.failure(_):
                               completion(false, nil)
                    }
             }

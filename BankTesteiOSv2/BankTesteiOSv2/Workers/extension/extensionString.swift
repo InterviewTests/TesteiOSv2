@@ -26,13 +26,14 @@ extension String
             
             var temp1 = 0, temp2 = 0
             
-            for i in 0...8 {
-                  let start = numbers.index(numbers.startIndex, offsetBy: i)
-                  let end = numbers.index(numbers.startIndex, offsetBy: i+1)
+            for number in 0...8
+            {
+                  let start = numbers.index(numbers.startIndex, offsetBy: number)
+                  let end = numbers.index(numbers.startIndex, offsetBy: number + 1)
                   let char = Int(numbers[start..<end])
                   
-                  temp1 += char! * (10 - i)
-                  temp2 += char! * (11 - i)
+                  temp1 += char! * (10 - number)
+                  temp2 += char! * (11 - number)
             }
             
             temp1 %= 11

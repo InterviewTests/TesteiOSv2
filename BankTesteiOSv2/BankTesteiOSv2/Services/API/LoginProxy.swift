@@ -30,7 +30,7 @@ class LoginProxy
             {response in
                   switch(response.result)
                   {
-                        case.success(let data):
+                  case.success(_):
                               let jsonData = response.data
                               do
                               {

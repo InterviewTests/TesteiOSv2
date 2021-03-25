@@ -7,34 +7,28 @@
 
 import UIKit
 
-protocol LoginTableViewCellDelegate
-{
-      func loginTableViewCellAction()
-}
-
 class LoginTableViewCell: UITableViewCell
 {
       
       var delegate: LoginTableViewCellDelegate?
       
       @IBOutlet var loginBtN: UIButton!
+      {
+            didSet
+            {
+                  loginBtN.layer.cornerRadius = 9
+                  loginBtN.clipsToBounds = true
+            }
+      }
       
       override func awakeFromNib()
       {
             super.awakeFromNib()
-            
-            initAwakeFromNib()
       }
       
       override func setSelected(_ selected: Bool, animated: Bool)
       {
             super.setSelected(selected, animated: animated)
-      }
-      
-      func initAwakeFromNib()
-      {
-            loginBtN.layer.cornerRadius = 9
-            loginBtN.clipsToBounds = true
       }
       
       @IBAction func loginTableViewCellAction(_ sender: UIButton)

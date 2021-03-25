@@ -11,6 +11,12 @@ class PasswordTableViewCell: UITableViewCell
 {
       
       @IBOutlet var passwordTxT: UITextField!
+      {
+            didSet
+            {
+                  passwordTxT.placeholder = "   Senha    "
+            }
+      }
       
       override func awakeFromNib()
       {

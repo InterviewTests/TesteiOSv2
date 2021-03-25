@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40313520260CD3FE00D71A83 /* LoginTableViewCellDelegate .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031351F260CD3FE00D71A83 /* LoginTableViewCellDelegate .swift */; };
+		4031352D260CD44A00D71A83 /* LoginViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031352C260CD44A00D71A83 /* LoginViewModelDelegate.swift */; };
+		40313532260CDF9800D71A83 /* structUserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40313531260CDF9800D71A83 /* structUserCredentials.swift */; };
+		40313569260CF13100D71A83 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40313568260CF13100D71A83 /* LoginViewModel.swift */; };
+		40313571260CF1FB00D71A83 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40313570260CF1FB00D71A83 /* LoginViewControllerDelegate.swift */; };
+		4031357A260CFC2B00D71A83 /* enumLoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40313579260CFC2B00D71A83 /* enumLoginError.swift */; };
+		40313582260D127500D71A83 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40313581260D127500D71A83 /* LoginTableViewController.swift */; };
+		40313587260D12C600D71A83 /* LoginExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40313586260D12C600D71A83 /* LoginExtension.swift */; };
 		409283CD260B7CDD009E9C99 /* varGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C4D79A260A910C00ABF184 /* varGlobal.swift */; };
 		409283D4260B7CE1009E9C99 /* enumCellReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C4D79F260A919700ABF184 /* enumCellReuseIdentifier.swift */; };
 		409283DF260B7D6D009E9C99 /* extensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409283DE260B7D6D009E9C99 /* extensionString.swift */; };
@@ -72,6 +80,14 @@
 /* Begin PBXFileReference section */
 		168DD1D665A28926FE512C32 /* Pods-BankTesteiOSv2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankTesteiOSv2.debug.xcconfig"; path = "Target Support Files/Pods-BankTesteiOSv2/Pods-BankTesteiOSv2.debug.xcconfig"; sourceTree = "<group>"; };
 		3F46982230774EA519E27C2E /* Pods-BankTesteiOSv2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankTesteiOSv2Tests.release.xcconfig"; path = "Target Support Files/Pods-BankTesteiOSv2Tests/Pods-BankTesteiOSv2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		4031351F260CD3FE00D71A83 /* LoginTableViewCellDelegate .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginTableViewCellDelegate .swift"; sourceTree = "<group>"; };
+		4031352C260CD44A00D71A83 /* LoginViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelDelegate.swift; sourceTree = "<group>"; };
+		40313531260CDF9800D71A83 /* structUserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structUserCredentials.swift; sourceTree = "<group>"; };
+		40313568260CF13100D71A83 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		40313570260CF1FB00D71A83 /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
+		40313579260CFC2B00D71A83 /* enumLoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumLoginError.swift; sourceTree = "<group>"; };
+		40313581260D127500D71A83 /* LoginTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
+		40313586260D12C600D71A83 /* LoginExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginExtension.swift; sourceTree = "<group>"; };
 		409283DE260B7D6D009E9C99 /* extensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionString.swift; sourceTree = "<group>"; };
 		4092843A260B8DFB009E9C99 /* RootEndPointProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEndPointProxy.swift; sourceTree = "<group>"; };
 		40928443260B8E2F009E9C99 /* FullURLProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullURLProxy.swift; sourceTree = "<group>"; };
@@ -167,6 +183,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		40313578260CFC1500D71A83 /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				40C4D79F260A919700ABF184 /* enumCellReuseIdentifier.swift */,
+				40313579260CFC2B00D71A83 /* enumLoginError.swift */,
+			);
+			path = enum;
+			sourceTree = "<group>";
+		};
 		409283DD260B7D5D009E9C99 /* extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +219,21 @@
 				409284DA260BEBE4009E9C99 /* classValue.swift */,
 			);
 			path = class;
+			sourceTree = "<group>";
+		};
+		409284EF260CA99E009E9C99 /* struct */ = {
+			isa = PBXGroup;
+			children = (
+				40313531260CDF9800D71A83 /* structUserCredentials.swift */,
+			);
+			path = struct;
+			sourceTree = "<group>";
+		};
+		40928510260CAD30009E9C99 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = protocol;
 			sourceTree = "<group>";
 		};
 		40C4D67C260A747600ABF184 = {
@@ -256,6 +296,11 @@
 			isa = PBXGroup;
 			children = (
 				40C4D74D260A87D800ABF184 /* TableViewCell */,
+				4031352C260CD44A00D71A83 /* LoginViewModelDelegate.swift */,
+				40313568260CF13100D71A83 /* LoginViewModel.swift */,
+				40313570260CF1FB00D71A83 /* LoginViewControllerDelegate.swift */,
+				40313581260D127500D71A83 /* LoginTableViewController.swift */,
+				40313586260D12C600D71A83 /* LoginExtension.swift */,
 				40C4D68C260A747600ABF184 /* LoginViewController.swift */,
 			);
 			path = Login;
@@ -302,6 +347,7 @@
 				40C4D700260A7B4500ABF184 /* EmailOrCPFTableViewCell.xib */,
 				40C4D6DF260A782100ABF184 /* PasswordTableViewCell.swift */,
 				40C4D6E0260A782100ABF184 /* PasswordTableViewCell.xib */,
+				4031351F260CD3FE00D71A83 /* LoginTableViewCellDelegate .swift */,
 				40C4D732260A84A300ABF184 /* LoginTableViewCell.swift */,
 				40C4D733260A84A300ABF184 /* LoginTableViewCell.xib */,
 			);
@@ -333,6 +379,9 @@
 			children = (
 				409283DD260B7D5D009E9C99 /* extension */,
 				40C4D799260A90F700ABF184 /* var */,
+				40313578260CFC1500D71A83 /* enum */,
+				409284EF260CA99E009E9C99 /* struct */,
+				40928510260CAD30009E9C99 /* protocol */,
 				409284D1260BDFDE009E9C99 /* class */,
 			);
 			path = Workers;
@@ -352,7 +401,6 @@
 			isa = PBXGroup;
 			children = (
 				40C4D79A260A910C00ABF184 /* varGlobal.swift */,
-				40C4D79F260A919700ABF184 /* enumCellReuseIdentifier.swift */,
 			);
 			path = var;
 			sourceTree = "<group>";
@@ -605,15 +653,21 @@
 				40C4D6E1260A782100ABF184 /* PasswordTableViewCell.swift in Sources */,
 				40C4D764260A88E900ABF184 /* TotalStatementTableViewCell.swift in Sources */,
 				40928487260B9D4F009E9C99 /* UserRootModel.swift in Sources */,
+				40313520260CD3FE00D71A83 /* LoginTableViewCellDelegate .swift in Sources */,
+				4031352D260CD44A00D71A83 /* LoginViewModelDelegate.swift in Sources */,
 				40C4D68D260A747600ABF184 /* LoginViewController.swift in Sources */,
 				40C4D689260A747600ABF184 /* AppDelegate.swift in Sources */,
 				409284BA260BCEB0009E9C99 /* UserRootStatementModel.swift in Sources */,
 				409284BF260BCF05009E9C99 /* UserStatementListModel.swift in Sources */,
 				409284CA260BD9F9009E9C99 /* extensionUIViewController.swift in Sources */,
 				40C4D68B260A747600ABF184 /* SceneDelegate.swift in Sources */,
+				4031357A260CFC2B00D71A83 /* enumLoginError.swift in Sources */,
+				40313571260CF1FB00D71A83 /* LoginViewControllerDelegate.swift in Sources */,
 				409283DF260B7D6D009E9C99 /* extensionString.swift in Sources */,
 				409283CD260B7CDD009E9C99 /* varGlobal.swift in Sources */,
+				40313532260CDF9800D71A83 /* structUserCredentials.swift in Sources */,
 				40C4D734260A84A300ABF184 /* LoginTableViewCell.swift in Sources */,
+				40313569260CF13100D71A83 /* LoginViewModel.swift in Sources */,
 				409283D4260B7CE1009E9C99 /* enumCellReuseIdentifier.swift in Sources */,
 				4092843B260B8DFB009E9C99 /* RootEndPointProxy.swift in Sources */,
 				40C4D6F4260A795900ABF184 /* StatementTableViewCell.swift in Sources */,
@@ -624,7 +678,9 @@
 				40C4D710260A7CB900ABF184 /* LogoTableViewCell.swift in Sources */,
 				409284A3260BC4EA009E9C99 /* UserAccountErrorModel.swift in Sources */,
 				40C4D693260A747600ABF184 /* BankTesteiOSv2.xcdatamodeld in Sources */,
+				40313587260D12C600D71A83 /* LoginExtension.swift in Sources */,
 				40928468260B90E9009E9C99 /* UserAccountModel.swift in Sources */,
+				40313582260D127500D71A83 /* LoginTableViewController.swift in Sources */,
 				409284A8260BC62E009E9C99 /* LoginProxy.swift in Sources */,
 				409284DB260BEBE4009E9C99 /* classValue.swift in Sources */,
 			);
@@ -797,6 +853,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XEFYK5FTNU;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = BankTesteiOSv2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -818,6 +875,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XEFYK5FTNU;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = BankTesteiOSv2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

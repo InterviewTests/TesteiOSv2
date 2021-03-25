@@ -11,6 +11,20 @@ class EmailOrCPFTableViewCell: UITableViewCell
 {
       
       @IBOutlet var emailOrCPFTxTF: UITextField!
+      {
+            didSet
+            {
+                  if (defaults.value(forKey: "userEmailOrCPF") != nil)
+                  {
+                        userEmailOrCPF = defaults.string(forKey: "userEmailOrCPF")!
+                        emailOrCPFTxTF.text = userEmailOrCPF
+                  }
+                  else
+                  {
+                        emailOrCPFTxTF.placeholder =  "   E-mail ou CPF   "
+                  }
+            }
+      }
       
       override func awakeFromNib()
       {
