@@ -66,9 +66,11 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate
                   
                   emailOrCPFTableViewCell.emailOrCPFTxTF
                         .rx
-                        .controlEvent([.editingDidEndOnExit]).subscribe { [weak self] _ in
+                        .controlEvent([.editingDidEndOnExit])
+                        .subscribe { [weak self] _ in
                               self?.passwordTableViewCell!.passwordTxT.becomeFirstResponder()
-                          }.disposed(by: disposeBag)
+                          }
+                        .disposed(by: disposeBag)
 
                   self.emailOrCPFTableViewCell = emailOrCPFTableViewCell
 
@@ -88,7 +90,8 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate
                   
                   passwordTableViewCell.passwordTxT
                         .rx
-                        .controlEvent([.editingDidEndOnExit]).subscribe { [weak self] _ in
+                        .controlEvent([.editingDidEndOnExit])
+                        .subscribe { [weak self] _ in
                               emailOrCPFTableViewCell.emailOrCPFTxTF.resignFirstResponder()
                               passwordTableViewCell.passwordTxT.resignFirstResponder()
                               
@@ -111,7 +114,8 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate
                                     let loginError = LoginError.EmailOrCPFFail.rawValue
                                     self!.showErrorAlert( loginError )
                               }
-                          }.disposed(by: disposeBag)
+                          }
+                        .disposed(by: disposeBag)
                                                                         
                   self.passwordTableViewCell = passwordTableViewCell
                   
@@ -128,7 +132,8 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate
                               passwordTableViewCell.passwordTxT.resignFirstResponder()
                               
                               self.view.endEditing(true)
-                        }).subscribe(onNext: { [unowned self] in
+                        })
+                        .subscribe(onNext: { [unowned self] in
                               if self.loginViewModel.validateEmailOrCPFCredentials()
                               {
                                     if self.loginViewModel.validatePasswordCredentials()

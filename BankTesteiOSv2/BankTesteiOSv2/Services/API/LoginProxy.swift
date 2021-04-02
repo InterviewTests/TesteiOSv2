@@ -6,9 +6,7 @@
 //
 
 import Foundation
-import Alamofire
-import RxSwift
-import RxRelay
+import RxAlamofire
 
 class LoginProxy
 {
@@ -17,38 +15,28 @@ class LoginProxy
       {
             let urlPath = "Login"
             
-            let headers : HTTPHeaders =
-            [
-                "Content-Type": "application/x-www-form-urlencoded"
-            ]
-            
-            let parameters : Parameters = [
+            let parameters = [
                   "user": user,
                   "password": password
             ]
-                            
-            AF.request(FullURLProxy.fullURLproxy(urlPath), method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers)
-                  .responseJSON
-            {response in
-                  switch(response.result)
-                  {
-                  case.success( _ ):
-                              let jsonData = response.data
-                              do
-                              {
-                                    let userLogin = try JSONDecoder().decode(UserRoot.self, from: jsonData!)
+            
+            let fullPath = FullURLProxy.fullURLproxy(urlPath)
+            
+            _ = RxAlamofire.data(.post, fullPath, parameters: parameters)
+                  .subscribe(onNext: { ( responseData  ) in
+                        do
+                        {
+                              let userLogin = try JSONDecoder().decode(UserRoot.self, from: responseData)
 
-                                    completion(true, userLogin)
-                              }
-                              catch
-                              {
-                                    completion(false, nil)
-                              }
-                              
-                  case.failure(_):
+                              completion(true, userLogin)
+                        }
+                        catch
+                        {
                               completion(false, nil)
-                   }
-            }
+                        }
+                  }, onError: { ( errorData ) in
+                        completion(false, nil)
+                  })
       }
             
 }

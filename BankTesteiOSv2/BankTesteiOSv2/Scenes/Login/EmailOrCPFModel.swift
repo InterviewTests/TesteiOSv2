@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RxSwift
 import RxRelay
 
 class EmailOrCPFModel : ValidationModel

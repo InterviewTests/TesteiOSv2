@@ -6,9 +6,6 @@
 //
 
 import UIKit
-import Alamofire
-import RxSwift
-import RxCocoa
 
 extension BankStatementViewController: UITableViewDataSource, UITableViewDelegate
 {

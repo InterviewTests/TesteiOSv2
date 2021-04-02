@@ -6,13 +6,11 @@
 //
 
 import UIKit
-import Alamofire
 import RxSwift
 import RxCocoa
 
 class BankStatementViewController: UIViewController
 {
-      
       var totalStatementTableViewCell : TotalStatementTableViewCell?
       
       let bankStatementViewModel = BankStatementViewModel()
@@ -127,5 +125,4 @@ class BankStatementViewController: UIViewController
             
             dismiss(animated: true, completion: nil)
       }
-      
 }

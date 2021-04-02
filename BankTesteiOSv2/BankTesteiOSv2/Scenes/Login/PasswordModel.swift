@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RxSwift
 import RxRelay
 
 class PasswordModel : ValidationModel

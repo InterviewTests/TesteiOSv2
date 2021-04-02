@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Alamofire
+import RxAlamofire
 
 class StatementProxy
 {
@@ -15,33 +15,23 @@ class StatementProxy
       {
             let urlPath = "Statements/\(userId)"
             
-            let headers : HTTPHeaders =
-            [
-                "Content-Type": "application/x-www-form-urlencoded"
-            ]
-                            
-            AF.request(FullURLProxy.fullURLproxy(urlPath), method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers)
-                  .responseJSON
-            {response in
-                  switch(response.result)
-                  {
-                  case.success( _ ):
-                              let jsonData = response.data
-                              do
-                              {
-                                    let userStatementList = try JSONDecoder().decode(UserRootStatement.self, from: jsonData!)
+            let fullPath = FullURLProxy.fullURLproxy(urlPath)
+            
+            _ = RxAlamofire.data(.get, fullPath)
+                  .subscribe(onNext: { ( responseData  ) in
+                        do
+                        {
+                              let userStatementList = try JSONDecoder().decode(UserRootStatement.self, from: responseData)
 
-                                    completion(true, userStatementList)
-                              }
-                              catch
-                              {
-                                    completion(false, nil)
-                              }
-                              
-                  case.failure(_):
+                              completion(true, userStatementList)
+                        }
+                        catch
+                        {
                               completion(false, nil)
-                   }
-            }
+                        }
+                  }, onError: { ( errorData ) in
+                        completion(false, nil)
+                  })
       }
             
 }
