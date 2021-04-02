@@ -9,9 +9,7 @@ import UIKit
 
 class LoginTableViewCell: UITableViewCell
 {
-      
-      var delegate: LoginTableViewCellDelegate?
-      
+            
       @IBOutlet var loginBtN: UIButton!
       {
             didSet
@@ -30,13 +28,5 @@ class LoginTableViewCell: UITableViewCell
       {
             super.setSelected(selected, animated: animated)
       }
-      
-      @IBAction func loginTableViewCellAction(_ sender: UIButton)
-      {
-            if let delegate = self.delegate
-            {
-                  delegate.loginTableViewCellAction()
-            }
-      }
-      
+
 }

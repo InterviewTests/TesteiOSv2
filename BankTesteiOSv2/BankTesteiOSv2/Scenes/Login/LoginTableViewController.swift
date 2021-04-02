@@ -56,19 +56,63 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate
             case (1,1):
                   emailOrCPFTableViewCell.selectionStyle = .none
                   emailOrCPFTableViewCell.backgroundColor = UIColor.clear
+                                                      
+                  emailOrCPFTableViewCell.emailOrCPFTxTF
+                        .rx
+                        .text
+                        .orEmpty
+                        .bind(to: loginViewModel.emailOrCPFModel.data)
+                        .disposed(by: disposeBag)
                   
-                  emailOrCPFTableViewCell.emailOrCPFTxTF.delegate = self
-                  
+                  emailOrCPFTableViewCell.emailOrCPFTxTF
+                        .rx
+                        .controlEvent([.editingDidEndOnExit]).subscribe { [weak self] _ in
+                              self?.passwordTableViewCell!.passwordTxT.becomeFirstResponder()
+                          }.disposed(by: disposeBag)
+
                   self.emailOrCPFTableViewCell = emailOrCPFTableViewCell
-                  
+
                   return emailOrCPFTableViewCell
                   
             case (1,2):
                   passwordTableViewCell.selectionStyle = .none
                   passwordTableViewCell.backgroundColor = UIColor.clear
-                                    
-                  passwordTableViewCell.passwordTxT.delegate = self
                   
+                  passwordTableViewCell.passwordTxT.text = ""
+                  
+                  passwordTableViewCell.passwordTxT
+                        .rx.text
+                        .orEmpty
+                        .bind(to: loginViewModel.passwordModel.data)
+                        .disposed(by: disposeBag)
+                  
+                  passwordTableViewCell.passwordTxT
+                        .rx
+                        .controlEvent([.editingDidEndOnExit]).subscribe { [weak self] _ in
+                              emailOrCPFTableViewCell.emailOrCPFTxTF.resignFirstResponder()
+                              passwordTableViewCell.passwordTxT.resignFirstResponder()
+                              
+                              self!.view.endEditing(true)
+                              
+                              if self!.loginViewModel.validateEmailOrCPFCredentials()
+                              {
+                                    if self!.loginViewModel.validateEmailOrCPFCredentials()
+                                    {
+                                          self!.loginViewModel.loginUserCredentials()
+                                    }
+                                    else
+                                    {
+                                          let loginError = LoginError.PasswordFail.rawValue
+                                          self!.showErrorAlert( loginError )
+                                    }
+                              }
+                              else
+                              {
+                                    let loginError = LoginError.EmailOrCPFFail.rawValue
+                                    self!.showErrorAlert( loginError )
+                              }
+                          }.disposed(by: disposeBag)
+                                                                        
                   self.passwordTableViewCell = passwordTableViewCell
                   
                   return passwordTableViewCell
@@ -77,8 +121,33 @@ extension LoginViewController: UITableViewDataSource, UITableViewDelegate
                   loginTableViewCell.selectionStyle = .none
                   loginTableViewCell.backgroundColor = UIColor.clear
                   
-                  loginTableViewCell.delegate = self
-                  
+                  loginTableViewCell.loginBtN
+                        .rx
+                        .tap.do(onNext:  { [unowned self] in
+                              emailOrCPFTableViewCell.emailOrCPFTxTF.resignFirstResponder()
+                              passwordTableViewCell.passwordTxT.resignFirstResponder()
+                              
+                              self.view.endEditing(true)
+                        }).subscribe(onNext: { [unowned self] in
+                              if self.loginViewModel.validateEmailOrCPFCredentials()
+                              {
+                                    if self.loginViewModel.validatePasswordCredentials()
+                                    {
+                                          self.loginViewModel.loginUserCredentials()
+                                    }
+                                    else
+                                    {
+                                          let loginError = LoginError.PasswordFail.rawValue
+                                          self.showErrorAlert( loginError )
+                                    }
+                              }
+                              else
+                              {
+                                    let loginError = LoginError.EmailOrCPFFail.rawValue
+                                    self.showErrorAlert( loginError )
+                              }
+                        }).disposed(by: disposeBag)
+                                    
                   self.loginTableViewCell = loginTableViewCell
                   
                   return loginTableViewCell

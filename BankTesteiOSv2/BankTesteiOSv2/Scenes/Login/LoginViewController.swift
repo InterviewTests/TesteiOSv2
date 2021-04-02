@@ -7,16 +7,18 @@
 
 import UIKit
 import Alamofire
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController
 {
-      
-      var loginTableViewCell : LoginTableViewCell?
       var emailOrCPFTableViewCell : EmailOrCPFTableViewCell?
       var passwordTableViewCell : PasswordTableViewCell?
-                        
-      var loginViewModel = LoginViewModel()
-            
+      
+      var loginTableViewCell : LoginTableViewCell?
+                              
+      let loginViewModel = LoginViewModel()
+                  
       var loginTableView: UITableView!
       {
             didSet
@@ -31,12 +33,16 @@ class LoginViewController: UIViewController
             }
       }
       
+      var disposeBag = DisposeBag()
+      
       override func viewDidLoad()
       {
             super.viewDidLoad()
             
             initViewDidLoad()
             registerCells()
+            
+            initCallBacks()
       }
       
       override func viewWillLayoutSubviews()
@@ -44,6 +50,11 @@ class LoginViewController: UIViewController
             super.viewWillLayoutSubviews()
             
             loginTableView.frame = view.bounds
+      }
+      
+      override func viewDidAppear(_ animated: Bool)
+      {
+            super.viewDidAppear(true)
       }
       
       override func viewWillDisappear(_ animated: Bool)
@@ -59,6 +70,11 @@ class LoginViewController: UIViewController
             loginTableView.backgroundColor = uiColorWhite
       }
       
+      func resetViewWillDisappear()
+      {
+            self.loginTableView.reloadData()
+      }
+      
       func registerCells()
       {
             self.loginTableView.register(UINib(nibName: "LogoTableViewCell", bundle: nil), forCellReuseIdentifier: CellReuseIdentifier.LogoTableViewCell.rawValue)
@@ -68,6 +84,39 @@ class LoginViewController: UIViewController
             
             self.loginTableView.register(UINib(nibName: "LoginTableViewCell", bundle: nil), forCellReuseIdentifier: CellReuseIdentifier.LoginTableViewCell.rawValue)
       }
+      
+      func initCallBacks()
+      {
+            loginViewModel.isLoading.asObservable()
+                  .bind{ [self] isLoading in
+                        if isLoading
+                        {
+                              displayLoadingV = AppDelegate.appDelegate.startLoadingOnActiveView(self.view)
+                        }
+                        else
+                        {
+                              self.passwordTableViewCell?.passwordTxT.text = ""
+
+                              AppDelegate.appDelegate.stopLoadingOnActiveView(displayLoadingV)
+                        }
+                  }.disposed(by: disposeBag)
+            
+            loginViewModel.isSuccess.asObservable()
+                  .bind{ isSuccess in
+                        if isSuccess
+                        {
+                              self.bankStatementAction()
+                        }
+                  }.disposed(by: disposeBag)
+              
+            loginViewModel.errorMsg.asObservable()
+                  .bind { errorMessage in
+                        if !errorMessage.isEmpty
+                        {
+                              self.showErrorAlert(errorMessage)
+                        }
+                  }.disposed(by: disposeBag)
+          }
       
       func bankStatementAction()
       {

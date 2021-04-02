@@ -1,89 +1,61 @@
 //
-//  LoginViewModel.swift
+//  classLoginViewModel.swift
 //  BankTesteiOSv2
 //
-//  Created by LeandroLee on 25/03/21.
+//  Created by LeandroLee on 01/04/21.
 //
 
 import Foundation
+import RxRelay
 
-class LoginViewModel :  LoginViewModelDelegate
+class LoginViewModel
 {
-      var loginViewControllerDelegate: LoginViewControllerDelegate?
+      let userCredentials = UserCredentials()
+            
+      let emailOrCPFModel = EmailOrCPFModel()
+      var passwordModel = PasswordModel()
       
-      func verifyEmailOrCPFAndPasswordAction(_ userEmailOrCPF: String, _ userPassword: String)
+      let isLoading : BehaviorRelay<Bool> = BehaviorRelay(value: false)
+      let isSuccess : BehaviorRelay<Bool> = BehaviorRelay(value: false)
+      let errorMsg : BehaviorRelay<String> = BehaviorRelay(value: "")
+            
+      func validateEmailOrCPFCredentials() -> Bool
       {
-            if !userEmailOrCPF.isEmpty
-            {
-                  if !userPassword.isEmpty
+            return emailOrCPFModel.validateData()
+      }
+      
+      func validatePasswordCredentials() -> Bool
+      {
+            return passwordModel.validateData()
+      }
+      
+      func loginUserCredentials()
+      {
+            userCredentials.userEmailOrCPF = emailOrCPFModel.data.value
+            userCredentials.userPassword = passwordModel.data.value
+            
+            self.isLoading.accept( true )
+            
+            LoginProxy.loginUserAction( userCredentials.userEmailOrCPF, userCredentials.userPassword )
+            { [self] (success, userLogin) in
+                  if success
                   {
-                        if userEmailOrCPF.contains("@")
-                        {
-                              checkEmail(userEmailOrCPF, userPassword)
-                        }
-                        else if(userEmailOrCPF.count == 11)
-                        {
-                              checkCPF(userEmailOrCPF, userPassword)
-                        }
-                        else
-                        {
-                              let loginError = LoginError.EmailOrCPFFail
-                              self.loginViewControllerDelegate?.showErrorAlert(loginError)
-                        }
+                        userWSLogin = userLogin
+                        userEmailOrCPF = userCredentials.userEmailOrCPF
+                        defaults.set(userEmailOrCPF, forKey: "userEmailOrCPF")
+                        
+                        passwordModel.data.accept( "" )
+                                                                                                
+                        self.isLoading.accept( false )
+                        self.isSuccess.accept( true )
+                        self.errorMsg.accept( "" )
                   }
                   else
                   {
-                        let loginError = LoginError.PasswordFail
-                        self.loginViewControllerDelegate?.showErrorAlert(loginError)
+                        self.isLoading.accept( false )
+                        self.isSuccess.accept( false )
+                        self.errorMsg.accept( LoginError.AllDataFail.rawValue )
                   }
-            }
-            else
-            {
-                  let loginError = LoginError.AllDataFail
-                  self.loginViewControllerDelegate?.showErrorAlert(loginError)
             }
       }
-      
-      func checkEmail(_ userEmail: String, _ userPassword: String)
-      {
-            if Regex.isRealEmail(userEmail)
-            {
-                  if Regex.isAcceptablePassword(userPassword)
-                  {
-                        self.loginViewControllerDelegate?.loginAction(userEmail, userPassword)
-                  }
-                  else
-                  {
-                        let loginError = LoginError.PasswordFail
-                        self.loginViewControllerDelegate?.showErrorAlert(loginError)
-                  }
-            }
-            else
-            {
-                  let loginError = LoginError.EmailFail
-                  self.loginViewControllerDelegate?.showErrorAlert(loginError)
-            }
-      }
-      
-      func checkCPF(_ userCPF: String, _ userPassword: String)
-      {
-            if userCPF.isRealCPF
-            {
-                  if Regex.isAcceptablePassword(userPassword)
-                  {
-                        self.loginViewControllerDelegate?.loginAction(userCPF, userPassword)
-                  }
-                  else
-                  {
-                        let loginError = LoginError.PasswordFail
-                        self.loginViewControllerDelegate?.showErrorAlert(loginError)
-                  }
-            }
-            else
-            {
-                  let loginError = LoginError.CPFFail
-                  self.loginViewControllerDelegate?.showErrorAlert(loginError)
-            }
-      }
-
 }

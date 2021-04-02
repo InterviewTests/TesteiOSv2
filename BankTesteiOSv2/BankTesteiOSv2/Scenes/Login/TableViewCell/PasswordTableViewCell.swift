@@ -9,7 +9,6 @@ import UIKit
 
 class PasswordTableViewCell: UITableViewCell
 {
-      
       @IBOutlet var passwordTxT: UITextField!
       {
             didSet
@@ -23,6 +22,11 @@ class PasswordTableViewCell: UITableViewCell
             super.awakeFromNib()
             
             initAwakeFromNib()
+      }
+      
+      override func prepareForReuse()
+      {
+            super.prepareForReuse()
       }
       
       override func setSelected(_ selected: Bool, animated: Bool)

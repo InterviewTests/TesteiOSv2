@@ -7,11 +7,13 @@
 
 import Foundation
 import Alamofire
+import RxSwift
+import RxRelay
 
 class LoginProxy
 {
       
-      static func loginAction(_ user: String,_ password: String, completion: @escaping (_ success: Bool,_ userLogin: UserRoot?) -> ())
+      static func loginUserAction(_ user: String,_ password: String, completion: @escaping (_ success: Bool,_ userLogin: UserRoot?) -> ())
       {
             let urlPath = "Login"
             
@@ -24,13 +26,13 @@ class LoginProxy
                   "user": user,
                   "password": password
             ]
-                
+                            
             AF.request(FullURLProxy.fullURLproxy(urlPath), method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers)
                   .responseJSON
             {response in
                   switch(response.result)
                   {
-                  case.success(_):
+                  case.success( _ ):
                               let jsonData = response.data
                               do
                               {

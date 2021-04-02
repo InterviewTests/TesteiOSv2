@@ -7,16 +7,8 @@
 
 import UIKit
 
-protocol TotalStatementTableViewCellDelegate
-{
-      func logoutTotalStatementTableViewCellAction()
-}
-
-
 class TotalStatementTableViewCell: UITableViewCell
 {
-
-      var delegate: TotalStatementTableViewCellDelegate?
 
       @IBOutlet var nameLbL: UILabel!
       
@@ -37,13 +29,5 @@ class TotalStatementTableViewCell: UITableViewCell
     {
         super.setSelected(selected, animated: animated)
     }
-      
-      @IBAction func logoutTotalStatementTableViewCellAction(_ sender: UIButton)
-      {
-            if let delegate = self.delegate
-            {
-                  delegate.logoutTotalStatementTableViewCellAction()
-            }
-      }
     
 }

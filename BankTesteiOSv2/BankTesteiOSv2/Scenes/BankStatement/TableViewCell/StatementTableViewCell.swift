@@ -34,7 +34,7 @@ class StatementTableViewCell: UITableViewCell
             statementV.layer.shadowColor = uiColorLightGray.cgColor
             statementV.layer.shadowOpacity = 1
             statementV.layer.shadowOffset = .zero
-            statementV.layer.shadowRadius = 10
+            statementV.layer.shadowRadius = 9
       }
       
 }

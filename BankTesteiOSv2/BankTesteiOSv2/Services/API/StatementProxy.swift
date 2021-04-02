@@ -19,13 +19,13 @@ class StatementProxy
             [
                 "Content-Type": "application/x-www-form-urlencoded"
             ]
-                
+                            
             AF.request(FullURLProxy.fullURLproxy(urlPath), method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers)
                   .responseJSON
             {response in
                   switch(response.result)
                   {
-                        case.success(let data):
+                  case.success( _ ):
                               let jsonData = response.data
                               do
                               {
