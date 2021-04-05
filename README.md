@@ -3,13 +3,10 @@ Este app foi criado como um dos requisitos para a vaga de desenvolvedor iOS na A
 Foi utilizado Autolayout com Storyboards e Alamofire para requisições HTTP GET e POST.
 
 <p align="center">
-   <img>
+  <img src="https://github.com/AdrianoAntoniev/TesteiOSv2/blob/master/output.gif?raw=true" alt="App gif"/>
 </p>
 
-<p align="center">
-  <img src="https://github.com/AdrianoAntoniev/TicTacToe/blob/main/tictactoe.gif?raw=true" alt="App gif"/>
-</p>
-
+**O README original, descrevendo o que deve ser feito, encontra-se abaixo:**
 
 # Show me the code
 
