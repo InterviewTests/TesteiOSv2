@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import WorkersLibrary
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate
@@ -30,32 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
       
       func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>)
       {
-      }
-      
-      func startLoadingOnActiveView(_ onView : UIView) -> UIView
-      {
-            let loadingV = UIView.init(frame: onView.bounds)
-            loadingV.backgroundColor = uiColorGray.withAlphaComponent(0.69)
-                        
-            let activityIndicatorV = UIActivityIndicatorView(style: .large)
-            activityIndicatorV.color = uiColorApp
-            activityIndicatorV.center = onView.center
-            
-            DispatchQueue.main.async
-            {
-                  loadingV.addSubview(activityIndicatorV)
-                  
-                  activityIndicatorV.startAnimating()
-                  
-                  onView.addSubview(loadingV)
-            }
-            
-            return loadingV
-      }
-      
-      func stopLoadingOnActiveView(_ onView : UIView)
-      {
-            onView.removeFromSuperview()
       }
       
       lazy var persistentContainer: NSPersistentContainer =

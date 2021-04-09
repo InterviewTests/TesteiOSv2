@@ -2,10 +2,11 @@
 # platform :ios, '9.0'
 
 def podsiOS
-  pod 'RxSwift', '6.1.0'
-  # pod 'RxRelay, '6.1.0'
-  pod 'RxCocoa', '6.1.0'
-  pod 'RxAlamofire', '6.1.1'
+  pod 'LoginLibrary', :path => "~/Desktop/TesteiOSv2/Projects/Pods/LoginLibrary"
+  pod 'BankStatementLibrary', :path => "~/Desktop/TesteiOSv2/Projects/Pods/BankStatementLibrary"
+  pod 'ModelsLibrary' , :path => "~/Desktop/TesteiOSv2/Projects/Pods/ModelsLibrary"
+  pod 'WorkersLibrary' , :path => "~/Desktop/TesteiOSv2/Projects/Pods/WorkersLibrary"
+  pod 'ServicesLibrary' , :path => "~/Desktop/TesteiOSv2/Projects/Pods/ServicesLibrary"
 end
 
 target 'BankTesteiOSv2' do
