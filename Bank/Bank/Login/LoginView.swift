@@ -10,7 +10,7 @@ class LoginView: UIView {
     private let txtFieldPass = UITextField()
     private let btnLogin = UIButton()
     
-
+    var loginDelegate: LoginDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
