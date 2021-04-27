@@ -22,7 +22,10 @@ public struct User: Model {
         }
     }
     
-    
+    func balanceFormat() -> String {
+        
+        return Util.doubleToCurrency(value: balance)
+    }
     
     func accountFormat() -> String {
         
