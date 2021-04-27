@@ -2,9 +2,11 @@
 
 Esse é o projeto do desafio proposto:
 
-Foi utilizado a arquitetura Clean-Swift, codeview para criação das telas (não foram utilizados storyboards), o framework Alamofire para realizar as requisições HTTP e testes com XCTest.
+Foi utilizado a arquitetura Clean-Swift, Codeview para criação das telas (não foram utilizados storyboards), o framework Alamofire para realizar as requisições HTTP e testes com XCTest.
 
-Durante o desenvolvimento, as URLs não estavam funcionando, foram utilizados dados "Mockados" para o desenvolvimento com base no arquivo .json disponibilizado no projeto. O Teste de Integração pode falhar, caso a API ainda esteja indisponível.
+Durante o desenvolvimento, as URLs não estavam funcionando, foram utilizados dados "Mockados" para o desenvolvimento com base no arquivo .json disponibilizado no repositório do desafio. O Teste de Integração pode falhar, caso a API ainda esteja indisponível.
+
+O aplicativo se encontra em Inglês e Português
 
 As screenshots das telas se encontram na pasta "MINHAS_SCREENSHOTS" que foram tiradas após a conclusão do meu projeto. 
 
