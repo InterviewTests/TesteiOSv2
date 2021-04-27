@@ -51,6 +51,7 @@
 		C0E278022637C79E0027EAA8 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E278012637C79E0027EAA8 /* UIViewController+Extension.swift */; };
 		C0E278132637C8A00027EAA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C0E278152637C8A00027EAA8 /* Localizable.strings */; };
 		C0E2781E2637C9230027EAA8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0E2781D2637C9230027EAA8 /* Colors.xcassets */; };
+		C0E2782A2637CB5D0027EAA8 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E278292637CB5D0027EAA8 /* AuthenticationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		C0E278142637C8A00027EAA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C0E278192637C8B30027EAA8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C0E2781D2637C9230027EAA8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		C0E278292637CB5D0027EAA8 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 		C0E2771A2637BAEB0027EAA8 /* BankTests */ = {
 			isa = PBXGroup;
 			children = (
+				C0E278282637CB480027EAA8 /* UseCases */,
 				C0E2771B2637BAEB0027EAA8 /* BankTests.swift */,
 				C0E2771D2637BAEB0027EAA8 /* Info.plist */,
 			);
@@ -298,6 +301,14 @@
 				C0E278152637C8A00027EAA8 /* Localizable.strings */,
 			);
 			path = Localizable;
+			sourceTree = "<group>";
+		};
+		C0E278282637CB480027EAA8 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				C0E278292637CB5D0027EAA8 /* AuthenticationTests.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0E2771C2637BAEB0027EAA8 /* BankTests.swift in Sources */,
+				C0E2782A2637CB5D0027EAA8 /* AuthenticationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
