@@ -1,6 +1,6 @@
 # Desafio Accenture
 
-Esse repositório o projeto do desafio proposto:
+Esse é o projeto do desafio proposto:
 
 Foi utilizado a arquitetura Clean-Swift, codeview para criação das telas (não foram utilizados storyboards), o framework Alamofire para realizar as requisições HTTP e testes com XCTest.
 
