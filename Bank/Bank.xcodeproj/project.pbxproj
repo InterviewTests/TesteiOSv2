@@ -52,6 +52,12 @@
 		C0E278132637C8A00027EAA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C0E278152637C8A00027EAA8 /* Localizable.strings */; };
 		C0E2781E2637C9230027EAA8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0E2781D2637C9230027EAA8 /* Colors.xcassets */; };
 		C0E2782A2637CB5D0027EAA8 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E278292637CB5D0027EAA8 /* AuthenticationTests.swift */; };
+		C0E278332637CBD20027EAA8 /* HttpClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E278322637CBD20027EAA8 /* HttpClientSpy.swift */; };
+		C0E2783B2637CBEA0027EAA8 /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2783A2637CBEA0027EAA8 /* XCTestCase+Extensions.swift */; };
+		C0E278402637CC0B0027EAA8 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2783F2637CC0B0027EAA8 /* AuthenticationTests.swift */; };
+		C0E278452637CC2B0027EAA8 /* BankTestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E278442637CC2B0027EAA8 /* BankTestsFactory.swift */; };
+		C0E2784A2637CC440027EAA8 /* LoginModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E278492637CC440027EAA8 /* LoginModelFactory.swift */; };
+		C0E2784F2637CC580027EAA8 /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2784E2637CC580027EAA8 /* UrlProtocolStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +129,12 @@
 		C0E278192637C8B30027EAA8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C0E2781D2637C9230027EAA8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		C0E278292637CB5D0027EAA8 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
+		C0E278322637CBD20027EAA8 /* HttpClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientSpy.swift; sourceTree = "<group>"; };
+		C0E2783A2637CBEA0027EAA8 /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
+		C0E2783F2637CC0B0027EAA8 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
+		C0E278442637CC2B0027EAA8 /* BankTestsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTestsFactory.swift; sourceTree = "<group>"; };
+		C0E278492637CC440027EAA8 /* LoginModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModelFactory.swift; sourceTree = "<group>"; };
+		C0E2784E2637CC580027EAA8 /* UrlProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlProtocolStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +205,7 @@
 		C0E2771A2637BAEB0027EAA8 /* BankTests */ = {
 			isa = PBXGroup;
 			children = (
+				C0E278312637CBA20027EAA8 /* UtilTests */,
 				C0E278282637CB480027EAA8 /* UseCases */,
 				C0E2771B2637BAEB0027EAA8 /* BankTests.swift */,
 				C0E2771D2637BAEB0027EAA8 /* Info.plist */,
@@ -309,6 +322,19 @@
 				C0E278292637CB5D0027EAA8 /* AuthenticationTests.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		C0E278312637CBA20027EAA8 /* UtilTests */ = {
+			isa = PBXGroup;
+			children = (
+				C0E278322637CBD20027EAA8 /* HttpClientSpy.swift */,
+				C0E2783A2637CBEA0027EAA8 /* XCTestCase+Extensions.swift */,
+				C0E2783F2637CC0B0027EAA8 /* AuthenticationTests.swift */,
+				C0E278442637CC2B0027EAA8 /* BankTestsFactory.swift */,
+				C0E278492637CC440027EAA8 /* LoginModelFactory.swift */,
+				C0E2784E2637CC580027EAA8 /* UrlProtocolStub.swift */,
+			);
+			path = UtilTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,7 +519,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E2783B2637CBEA0027EAA8 /* XCTestCase+Extensions.swift in Sources */,
 				C0E2771C2637BAEB0027EAA8 /* BankTests.swift in Sources */,
+				C0E278332637CBD20027EAA8 /* HttpClientSpy.swift in Sources */,
+				C0E2784F2637CC580027EAA8 /* UrlProtocolStub.swift in Sources */,
+				C0E278402637CC0B0027EAA8 /* AuthenticationTests.swift in Sources */,
+				C0E278452637CC2B0027EAA8 /* BankTestsFactory.swift in Sources */,
+				C0E2784A2637CC440027EAA8 /* LoginModelFactory.swift in Sources */,
 				C0E2782A2637CB5D0027EAA8 /* AuthenticationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
