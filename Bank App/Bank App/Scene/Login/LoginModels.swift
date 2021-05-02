@@ -21,16 +21,15 @@ enum Login {
     }
     
     struct Response {
+        var userInfo: User?
         var user: String?
-        var userID: String?
         var password: String?
     }
     
     struct ViewModel {
+        var userID: Int?
         var user: String?
-        var userID: String?
         var password: String?
     }
   }
 }
-

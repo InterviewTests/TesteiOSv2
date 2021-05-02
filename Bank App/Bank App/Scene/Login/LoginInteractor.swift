@@ -14,25 +14,21 @@ import UIKit
 
 protocol LoginBusinessLogic {
     func doSomething(request: Login.Something.Request)
-    func login(user: String, password: String)
+    func login(user: String, password: String, completion: @escaping () -> ())
     func saveUser(user: String, password: String)
     func checkUsersField(user: String) -> Bool
     func checkPasswordField(password: String) -> Bool
 }
 
 protocol LoginDataStore {
-    var userID: String { get set }
+    var userInfo: User? { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
     
-    var userID: String
-    
-    init() {
-        userID = ""
-    }
+    var userInfo: User?
     
     func doSomething(request: Login.Something.Request) {
         worker = LoginWorker()
@@ -43,11 +39,8 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         var response = Login.Something.Response()
         response.user = name
         response.password = password
+        response.userInfo = userInfo
         presenter?.presentSomething(response: response)
-    }
-    
-    func login(user: String, password: String) {
-        saveUser(user: user, password: password)
     }
     
     func saveUser(user: String, password: String) {
@@ -67,10 +60,11 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     func login(user: String, password: String, completion: @escaping () -> ()) {
         worker = LoginWorker()
-        worker?.login(path: "login", user: user, password: password) { [weak self] (result) in
+        worker?.login(path: "login", user: user, password: password) { (result) in
             switch result {
             case .success(let data):
-                print(data)
+                self.saveUser(user: user, password: password)
+                self.userInfo = data
                 completion()
             case .failure(let error):
                 print(error)

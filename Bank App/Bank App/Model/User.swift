@@ -7,11 +7,17 @@
 
 import Foundation
 
-class User: Codable {
-    
+struct User: Codable {
+    var id: Int
     var name: String
-    var userID: String
-    var accountNumber: String
+    var accountID: String
     var balance: String
-    
+}
+
+struct CurrencyByUser: Codable {
+    var idCurrency: Int
+    var type: String
+    var date: String
+    var description: String
+    var value: String
 }

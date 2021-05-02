@@ -26,6 +26,8 @@ class CurrencyViewController: CustomViewController, CurrencyDisplayLogic {
     @IBOutlet weak var cashLabel: UILabel!
     @IBOutlet weak var tableview: UITableView!
     
+    var currencyData: [CurrencyByUser]?
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -60,22 +62,29 @@ class CurrencyViewController: CustomViewController, CurrencyDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+//        setupTableView()
         doSomething()
     }
     
     func doSomething() {
         let request = Currency.Something.Request()
-        interactor?.doSomething(request: request)
+        interactor?.getCurrencyByUser {
+            self.interactor?.doSomething(request: request)
+            self.setupTableView()
+        }
     }
     
     func displaySomething(viewModel: Currency.Something.ViewModel) {
-        
+        userNameLabel.text = viewModel.name
+        accountNumberLabel.text = viewModel.accountID
+        cashLabel.text = viewModel.balance
+        currencyData = viewModel.userCurrency
     }
     
     private func setupTableView() {
         tableview.delegate = self
         tableview.dataSource = self
+        tableview.register(CurrencyTableViewCell.nib(), forCellReuseIdentifier: CurrencyTableViewCell.identifier)
     }
     
     @IBAction func exitTapped(_ sender: Any) {
@@ -84,16 +93,20 @@ class CurrencyViewController: CustomViewController, CurrencyDisplayLogic {
 }
 
 extension CurrencyViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 104
+    }
 }
 extension CurrencyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        guard let dataCount = currencyData?.count else { return 0 }
+        return dataCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell else { return UITableViewCell() }
+        guard let currencyData = currencyData else { return CurrencyTableViewCell() }
+        cell.configureCell(user: currencyData[indexPath.row])
+        return cell
     }
-    
-    
 }

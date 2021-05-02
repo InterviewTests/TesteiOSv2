@@ -188,18 +188,30 @@
                                     <constraint firstItem="0Vj-SL-Gcn" firstAttribute="top" secondItem="RFg-wy-5qX" secondAttribute="top" constant="52" id="xoR-as-6OK"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recentes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcH-jA-x2K">
+                                <rect key="frame" x="18" y="244" width="107" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="BeS-QS-XwH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AI8-ry-7Zu">
-                                <rect key="frame" x="0.0" y="232" width="375" height="580"/>
+                                <rect key="frame" x="0.0" y="272" width="375" height="540"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bra-Dj-kxJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="UcH-jA-x2K" firstAttribute="leading" secondItem="bra-Dj-kxJ" secondAttribute="leading" constant="18" id="1u2-QA-mpc"/>
                             <constraint firstAttribute="bottom" secondItem="AI8-ry-7Zu" secondAttribute="bottom" id="2zI-Il-p3E"/>
-                            <constraint firstItem="AI8-ry-7Zu" firstAttribute="top" secondItem="RFg-wy-5qX" secondAttribute="bottom" id="4Rv-VL-Gw2"/>
+                            <constraint firstItem="AI8-ry-7Zu" firstAttribute="top" secondItem="RFg-wy-5qX" secondAttribute="bottom" constant="40" id="4Rv-VL-Gw2"/>
                             <constraint firstItem="RFg-wy-5qX" firstAttribute="leading" secondItem="bra-Dj-kxJ" secondAttribute="leading" id="9ou-Cj-tG8"/>
+                            <constraint firstItem="bra-Dj-kxJ" firstAttribute="trailing" secondItem="UcH-jA-x2K" secondAttribute="trailing" constant="250" id="AW0-Pw-uWh"/>
                             <constraint firstItem="AI8-ry-7Zu" firstAttribute="trailing" secondItem="bra-Dj-kxJ" secondAttribute="trailing" id="Ceq-tQ-aOh"/>
+                            <constraint firstItem="AI8-ry-7Zu" firstAttribute="top" secondItem="UcH-jA-x2K" secondAttribute="bottom" constant="8" id="Fss-JU-oT0"/>
                             <constraint firstItem="RFg-wy-5qX" firstAttribute="trailing" secondItem="bra-Dj-kxJ" secondAttribute="trailing" id="R8v-hy-Ldh"/>
                             <constraint firstItem="RFg-wy-5qX" firstAttribute="top" secondItem="yCf-i3-hU3" secondAttribute="top" id="l9F-h0-ArD"/>
                             <constraint firstItem="AI8-ry-7Zu" firstAttribute="leading" secondItem="bra-Dj-kxJ" secondAttribute="leading" id="oau-RE-SNd"/>

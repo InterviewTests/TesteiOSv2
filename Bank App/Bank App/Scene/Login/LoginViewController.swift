@@ -126,8 +126,9 @@ class LoginViewController: CustomViewController, LoginDisplayLogic {
     @IBAction func loginTapped(_ sender: Any) {
         guard let user = userTextField.text,
               let password = passwordTextField.text else { return }
-        interactor?.login(user: user, password: password)
-        router?.routeToCurrency(segue: nil)
+        interactor?.login(user: user, password: password) {
+            self.router?.routeToCurrency()
+        }
     }
 }
 
