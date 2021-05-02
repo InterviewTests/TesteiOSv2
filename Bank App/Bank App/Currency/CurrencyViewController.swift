@@ -22,10 +22,9 @@ class CurrencyViewController: CustomViewController, CurrencyDisplayLogic {
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var exitButton: UIButton!
-    @IBOutlet weak var accountIdLabel: UILabel!
     @IBOutlet weak var accountNumberLabel: UILabel!
-    @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var cashLabel: UILabel!
+    @IBOutlet weak var tableview: UITableView!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -36,8 +35,6 @@ class CurrencyViewController: CustomViewController, CurrencyDisplayLogic {
         super.init(coder: aDecoder)
         setup()
     }
-    
-    // MARK: Setup
     
     private func setup() {
         let viewController = self
@@ -52,8 +49,6 @@ class CurrencyViewController: CustomViewController, CurrencyDisplayLogic {
         router.dataStore = interactor
     }
     
-    // MARK: Routing
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
@@ -63,15 +58,11 @@ class CurrencyViewController: CustomViewController, CurrencyDisplayLogic {
         }
     }
     
-    // MARK: View lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         doSomething()
     }
-    
-    // MARK: Do something
-    
     
     func doSomething() {
         let request = Currency.Something.Request()
@@ -82,8 +73,27 @@ class CurrencyViewController: CustomViewController, CurrencyDisplayLogic {
         
     }
     
+    private func setupTableView() {
+        tableview.delegate = self
+        tableview.dataSource = self
+    }
+    
     @IBAction func exitTapped(_ sender: Any) {
         router?.routeToLogin(segue: nil)
     }
+}
+
+extension CurrencyViewController: UITableViewDelegate {
+    
+}
+extension CurrencyViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
     
 }

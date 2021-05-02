@@ -14,13 +14,4 @@ class User: Codable {
     var accountNumber: String
     var balance: String
     
-    init(name: String,
-         userID: String,
-         accountNumber: String,
-         balance: String) {
-        self.name = name
-        self.userID = userID
-        self.accountNumber = accountNumber
-        self.balance = balance
-    }
 }

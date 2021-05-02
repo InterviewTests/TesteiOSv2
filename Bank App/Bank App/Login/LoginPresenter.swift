@@ -22,7 +22,9 @@ class LoginPresenter: LoginPresentationLogic {
     // MARK: Do something
     
     func presentSomething(response: Login.Something.Response) {
-        let viewModel = Login.Something.ViewModel()
+        var viewModel = Login.Something.ViewModel()
+        viewModel.user = response.user
+        viewModel.password = response.password
         viewController?.displaySomething(viewModel: viewModel)
     }
 }

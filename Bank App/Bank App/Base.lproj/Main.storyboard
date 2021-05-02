@@ -136,7 +136,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HDB-cT-HPr">
                                         <rect key="frame" x="20" y="102" width="335" height="55"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AccountID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9H-em-h5R">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9H-em-h5R">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="27.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,7 +156,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Rcc-RY-MDL">
                                         <rect key="frame" x="20" y="167" width="335" height="55"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXO-Uc-zty">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXO-Uc-zty">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="27.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -188,21 +188,28 @@
                                     <constraint firstItem="0Vj-SL-Gcn" firstAttribute="top" secondItem="RFg-wy-5qX" secondAttribute="top" constant="52" id="xoR-as-6OK"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AI8-ry-7Zu">
+                                <rect key="frame" x="0.0" y="232" width="375" height="580"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bra-Dj-kxJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="AI8-ry-7Zu" secondAttribute="bottom" id="2zI-Il-p3E"/>
+                            <constraint firstItem="AI8-ry-7Zu" firstAttribute="top" secondItem="RFg-wy-5qX" secondAttribute="bottom" id="4Rv-VL-Gw2"/>
                             <constraint firstItem="RFg-wy-5qX" firstAttribute="leading" secondItem="bra-Dj-kxJ" secondAttribute="leading" id="9ou-Cj-tG8"/>
+                            <constraint firstItem="AI8-ry-7Zu" firstAttribute="trailing" secondItem="bra-Dj-kxJ" secondAttribute="trailing" id="Ceq-tQ-aOh"/>
                             <constraint firstItem="RFg-wy-5qX" firstAttribute="trailing" secondItem="bra-Dj-kxJ" secondAttribute="trailing" id="R8v-hy-Ldh"/>
                             <constraint firstItem="RFg-wy-5qX" firstAttribute="top" secondItem="yCf-i3-hU3" secondAttribute="top" id="l9F-h0-ArD"/>
+                            <constraint firstItem="AI8-ry-7Zu" firstAttribute="leading" secondItem="bra-Dj-kxJ" secondAttribute="leading" id="oau-RE-SNd"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="accountIdLabel" destination="h9H-em-h5R" id="PHw-tD-QaM"/>
                         <outlet property="accountNumberLabel" destination="IX4-1d-3jJ" id="bUn-TA-l5V"/>
-                        <outlet property="balanceLabel" destination="sXO-Uc-zty" id="3Pn-cU-2sU"/>
                         <outlet property="cashLabel" destination="NYq-zx-vq0" id="ii5-4K-cuG"/>
                         <outlet property="exitButton" destination="oxk-a6-v8K" id="8aX-xp-XYM"/>
+                        <outlet property="tableview" destination="AI8-ry-7Zu" id="HwM-MD-fXV"/>
                         <outlet property="userNameLabel" destination="yKg-Vx-gxm" id="mf9-Td-Bjx"/>
                     </connections>
                 </viewController>

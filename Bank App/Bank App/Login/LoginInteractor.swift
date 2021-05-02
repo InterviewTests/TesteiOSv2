@@ -14,24 +14,67 @@ import UIKit
 
 protocol LoginBusinessLogic {
     func doSomething(request: Login.Something.Request)
+    func login(user: String, password: String)
+    func saveUser(user: String, password: String)
+    func checkUsersField(user: String) -> Bool
+    func checkPasswordField(password: String) -> Bool
 }
 
 protocol LoginDataStore {
-    //var name: String { get set }
+    var userID: String { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
-    //var name: String = ""
     
-    // MARK: Do something
+    var userID: String
+    
+    init() {
+        userID = ""
+    }
     
     func doSomething(request: Login.Something.Request) {
         worker = LoginWorker()
-        worker?.fetch()
         
-        let response = Login.Something.Response()
+        guard let name = worker?.fetchCurrentUser(),
+              let password = worker?.fetchCurrentPassword() else { return }
+        
+        var response = Login.Something.Response()
+        response.user = name
+        response.password = password
         presenter?.presentSomething(response: response)
+    }
+    
+    func login(user: String, password: String) {
+        saveUser(user: user, password: password)
+    }
+    
+    func saveUser(user: String, password: String) {
+        KeychainWrapper.standard.set(user, forKey: "bank.app.user")
+        KeychainWrapper.standard.set(password, forKey: "bank.app.password")
+    }
+    
+    func checkUsersField(user: String) -> Bool {
+        let isValidUser = Validator.validateUser(user: user)
+        return isValidUser
+    }
+    
+    func checkPasswordField(password: String) -> Bool {
+        let isValidPassword = Validator.validatePassword(password: password)
+        return isValidPassword
+    }
+    
+    func login(user: String, password: String, completion: @escaping () -> ()) {
+        worker = LoginWorker()
+        worker?.login(path: "login", user: user, password: password) { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                print(data)
+                completion()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

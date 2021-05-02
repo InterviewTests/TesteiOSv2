@@ -65,7 +65,6 @@ class LoginViewController: CustomViewController, LoginDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        getSavedUser()
         doSomething()
     }
     
@@ -90,62 +89,44 @@ class LoginViewController: CustomViewController, LoginDisplayLogic {
         loginButton.isEnabled = false
         loginButton.layer.cornerRadius = 10
     }
-        
-    private func checkUsersField() -> Bool {
-        guard let user = userTextField.text else { return false}
-        let isValidUser = Validator.validateUser(user: user)
-        return isValidUser
-    }
     
-    private func checkPasswordField() -> Bool {
-        guard let password = passwordTextField.text else { return false}
-        let isValidPassword = Validator.validatePassword(password: password)
-        return isValidPassword
-    }
-    
-    private func readyToLogin() -> Bool {
-        let isValidUser = checkUsersField()
-        let isValidPassword = checkPasswordField()
+    func setErrorMessage(user: String, password: String) {
+        guard let isValidUser = interactor?.checkUsersField(user: user),
+              let isValidPassword = interactor?.checkPasswordField(password: password) else { return }
         
-        if isValidUser && !passwordTextField.hasText {
+        if isValidUser && password.isEmpty {
             errorMessageLabel.text = ""
         } else if !isValidUser {
             errorMessageLabel.text = "Please, enter a valid email adress or a valid CPF number."
-        } else if isValidUser && !isValidPassword && passwordTextField.text != "" {
+        } else if isValidUser && !isValidPassword && password != "" {
             errorMessageLabel.text = "Enter a password with numbers, uppercase and special characters"
-        } else if isValidUser && isValidPassword {
-            errorMessageLabel.text = ""
-        }
-        
+        } else if isValidUser && isValidPassword { errorMessageLabel.text = "" }
+    }
+    
+    private func readyToLogin(user: String, password: String) -> Bool {
+        guard let isValidUser = interactor?.checkUsersField(user: user),
+              let isValidPassword = interactor?.checkPasswordField(password: password) else { return false }
+        setErrorMessage(user: user, password: password)
         return isValidUser && isValidPassword
     }
     
     func doSomething() {
         let request = Login.Something.Request()
         interactor?.doSomething(request: request)
-        
     }
     
     func displaySomething(viewModel: Login.Something.ViewModel) {
-        
-    }
-    
-    private func saveUser() {
-        guard let user = userTextField.text,
-              let password = passwordTextField.text else { return }
-        KeychainWrapper.standard.set(user, forKey: "bank.app.user")
-        KeychainWrapper.standard.set(password, forKey: "bank.app.password")
-    }
-    
-    private func getSavedUser() {
-        let user = KeychainWrapper.standard.string(forKey: "bank.app.user")
-        let password = KeychainWrapper.standard.string(forKey: "bank.app.password")
+        guard let user = viewModel.user,
+              let password = viewModel.password else { return }
         userTextField.text = user
         passwordTextField.text = password
+        loginButton.isEnabled = readyToLogin(user: user, password: password)
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-        saveUser()
+        guard let user = userTextField.text,
+              let password = passwordTextField.text else { return }
+        interactor?.login(user: user, password: password)
         router?.routeToCurrency(segue: nil)
     }
 }
@@ -166,7 +147,9 @@ extension LoginViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField.hasText {
-            loginButton.isEnabled = readyToLogin()
+            guard let user = userTextField.text,
+                  let password = passwordTextField.text else { return }
+            loginButton.isEnabled = readyToLogin(user: user, password: password)
         } else { errorMessageLabel.text = "" }
     }
 }
