@@ -24,7 +24,7 @@ class CurrencyWorker: BankApiProtocol {
     
     func getCurrencyByUser(user: Int, completion: @escaping (Result<[CurrencyByUser], Error>) -> Void) {
         if AppConfig.enableAPI {
-            let requestURL = "\(baseURL)statements/\(path)"
+            let requestURL = "\(baseURL)statements/\(user)"
             guard let url = URL(string: requestURL) else {return}
             var request = URLRequest(url: url)
             request.httpMethod = HTTPMethod.get.rawValue
@@ -54,5 +54,9 @@ class CurrencyWorker: BankApiProtocol {
                 print("something happen")
             }
         }
+    }
+    
+    func login(path: String, user: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
+        
     }
 }

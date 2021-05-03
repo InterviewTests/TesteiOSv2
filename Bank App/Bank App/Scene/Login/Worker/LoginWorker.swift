@@ -55,4 +55,7 @@ class LoginWorker: BankApiProtocol {
             }
         }
     }
+    
+    func getCurrencyByUser(user: Int, completion: @escaping (Result<[CurrencyByUser], Error>) -> Void) {
+    }
 }

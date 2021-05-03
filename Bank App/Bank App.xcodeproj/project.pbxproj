@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73088ACD263FB784004E939B /* MockBankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73088ACC263FB784004E939B /* MockBankApp.swift */; };
 		732282C1263BBE4900630C43 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732282C0263BBE4900630C43 /* CustomViewController.swift */; };
 		7347E975263CF6BB001C2EF6 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7347E974263CF6BB001C2EF6 /* AppConfig.swift */; };
 		7347E97B263CF7E0001C2EF6 /* BankApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7347E97A263CF7E0001C2EF6 /* BankApiProtocol.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		73088ACC263FB784004E939B /* MockBankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBankApp.swift; sourceTree = "<group>"; };
 		732282C0263BBE4900630C43 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		7347E974263CF6BB001C2EF6 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		7347E97A263CF7E0001C2EF6 /* BankApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankApiProtocol.swift; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73088AC0263FB6BA004E939B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				73088ACC263FB784004E939B /* MockBankApp.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		732282BF263BBE1100630C43 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +202,7 @@
 		7374FDB8263A41B500903901 /* Bank AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				73088AC0263FB6BA004E939B /* Mocks */,
 				7374FDB9263A41B500903901 /* Bank_AppTests.swift */,
 				7374FDBB263A41B500903901 /* Info.plist */,
 			);
@@ -449,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7374FDBA263A41B500903901 /* Bank_AppTests.swift in Sources */,
+				73088ACD263FB784004E939B /* MockBankApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
