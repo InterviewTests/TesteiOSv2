@@ -14,10 +14,10 @@ import UIKit
 
 protocol LoginDisplayLogic: class {
     func displaySomething(viewModel: Login.Something.ViewModel)
+    func displayErrorMessage(viewModel: Login.Something.ViewModel)
 }
 
 class LoginViewController: CustomViewController, LoginDisplayLogic {
-    
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
@@ -86,6 +86,13 @@ class LoginViewController: CustomViewController, LoginDisplayLogic {
         userTextField.text = viewModel.user
         passwordTextField.text = viewModel.password
         loginButton.isEnabled = userTextField.hasText && passwordTextField.hasText
+    }
+    
+    func displayErrorMessage(viewModel: Login.Something.ViewModel) {
+        errorMessageLabel.text = viewModel.errorMessage
+        let alert = UIAlertController(title: "Something here", message: viewModel.errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in }))
+        self.present(alert, animated: true) { }
     }
     
     @IBAction func loginTapped(_ sender: Any) {

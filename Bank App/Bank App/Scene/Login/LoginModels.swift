@@ -24,12 +24,14 @@ enum Login {
         var userInfo: User?
         var user: String?
         var password: String?
+        var errorMessage: String?
     }
     
     struct ViewModel {
         var userID: Int?
         var user: String?
         var password: String?
+        var errorMessage: String?
     }
   }
 }

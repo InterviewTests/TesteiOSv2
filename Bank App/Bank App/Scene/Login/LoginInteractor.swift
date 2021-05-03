@@ -17,6 +17,7 @@ protocol LoginBusinessLogic {
     func readyToLogin(user: String, password: String) -> Bool
     func setErrorMessage(user: String, password: String) -> String
     func login(user: String, password: String, completion: @escaping () -> ())
+    func setLoginErrorMessage() -> String
 }
 
 protocol LoginDataStore {
@@ -29,6 +30,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var dataWorker: UserDataWorker?
     
     var userInfo: User?
+    var userMessage: String?
     
     func doSomething(request: Login.Something.Request) {
         dataWorker = UserDataWorker()
@@ -39,6 +41,12 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         response.password = password
         response.userInfo = userInfo
         presenter?.presentSomething(response: response)
+    }
+    
+    func sendErrorMessage() {
+        var response = Login.Something.Response()
+        response.errorMessage = userMessage
+        presenter?.presentErrorMessage(response: response)
     }
     
     func readyToLogin(user: String, password: String) -> Bool {
@@ -59,8 +67,17 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
                 completion()
             case .failure(let error):
                 print(error)
+                DispatchQueue.main.async {
+                    self.userMessage = self.setLoginErrorMessage()
+                    self.sendErrorMessage()
+                }
             }
         }
+    }
+    
+    func setLoginErrorMessage() -> String {
+        let message = "Sorry, we couldn't complete your login. But we're working on it. Honest."
+        return message
     }
     
     func setErrorMessage(user: String, password: String) -> String {
