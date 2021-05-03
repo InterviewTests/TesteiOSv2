@@ -25,6 +25,7 @@ class CurrencyViewController: CustomViewController, CurrencyDisplayLogic {
     @IBOutlet weak var accountNumberLabel: UILabel!
     @IBOutlet weak var cashLabel: UILabel!
     @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var recentsLabel: UILabel!
     
     var currencyData: [CurrencyByUser]?
     
@@ -51,23 +52,15 @@ class CurrencyViewController: CustomViewController, CurrencyDisplayLogic {
         router.dataStore = interactor
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupTableView()
         doSomething()
     }
     
     func doSomething() {
         let request = Currency.Something.Request()
+        recentsLabel.minimumScaleFactor = 0.5
+        recentsLabel.adjustsFontSizeToFitWidth = true
         interactor?.getCurrencyByUser {
             self.interactor?.doSomething(request: request)
             self.setupTableView()

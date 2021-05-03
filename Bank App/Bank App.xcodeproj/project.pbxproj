@@ -36,6 +36,7 @@
 		738710CC263E64E8004B6C4C /* userJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 738710CB263E64E8004B6C4C /* userJson.json */; };
 		738710DC263EFC60004B6C4C /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738710DA263EFC60004B6C4C /* CurrencyTableViewCell.swift */; };
 		738710DD263EFC60004B6C4C /* CurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 738710DB263EFC60004B6C4C /* CurrencyTableViewCell.xib */; };
+		73A8BF6D263F9E6700FA7983 /* UserDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A8BF6C263F9E6700FA7983 /* UserDataWorker.swift */; };
 		73DA4850263B96C1003368EA /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DA484F263B96C1003368EA /* Validator.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		738710CB263E64E8004B6C4C /* userJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = userJson.json; sourceTree = "<group>"; };
 		738710DA263EFC60004B6C4C /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		738710DB263EFC60004B6C4C /* CurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyTableViewCell.xib; sourceTree = "<group>"; };
+		73A8BF6C263F9E6700FA7983 /* UserDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataWorker.swift; sourceTree = "<group>"; };
 		73DA484F263B96C1003368EA /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,8 +210,8 @@
 		7374FDED263A484C00903901 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				73A8BF63263F9E0500FA7983 /* Worker */,
 				7374FDF1263A486300903901 /* LoginPresenter.swift */,
-				7374FDF2263A486300903901 /* LoginWorker.swift */,
 				7374FDF3263A486300903901 /* LoginRouter.swift */,
 				7374FDF4263A486300903901 /* LoginModels.swift */,
 				7374FDF5263A486300903901 /* LoginViewController.swift */,
@@ -272,6 +274,15 @@
 				7374FE07263B175A00903901 /* Currency */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		73A8BF63263F9E0500FA7983 /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				7374FDF2263A486300903901 /* LoginWorker.swift */,
+				73A8BF6C263F9E6700FA7983 /* UserDataWorker.swift */,
+			);
+			path = Worker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +431,7 @@
 				7347E97B263CF7E0001C2EF6 /* BankApiProtocol.swift in Sources */,
 				73DA4850263B96C1003368EA /* Validator.swift in Sources */,
 				7374FE13263B17DA00903901 /* CurrencyInteractor.swift in Sources */,
+				73A8BF6D263F9E6700FA7983 /* UserDataWorker.swift in Sources */,
 				7374FDA3263A41B200903901 /* AppDelegate.swift in Sources */,
 				7374FDA5263A41B200903901 /* SceneDelegate.swift in Sources */,
 				7374FE0F263B17DA00903901 /* CurrencyWorker.swift in Sources */,

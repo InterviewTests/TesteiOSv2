@@ -17,22 +17,10 @@ private let decoder = JSONDecoder()
 
 class LoginWorker: BankApiProtocol {
     var path: String = ""
-            
-    func fetchCurrentUser() -> String {
-        guard let user = KeychainWrapper.standard.string(forKey: "bank.app.user")
-        else { return "" }
-        return user
-    }
-    
-    func fetchCurrentPassword() -> String {
-        guard let password = KeychainWrapper.standard.string(forKey: "bank.app.password")
-        else { return "" }
-        return password
-    }
     
     func login(path:String, user: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
         if AppConfig.enableAPI {
-            let parameters = "user=\(user)&password=\(password)"
+            let parameters = "{\"user\" : \"\(user)\"&\"password\" : \"\(password)\"}"
             let postData = parameters.data(using: .utf8)
             let requestURL = "\(baseURL)\(path)"
             guard let url = URL(string: requestURL) else {return}
@@ -41,13 +29,13 @@ class LoginWorker: BankApiProtocol {
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.httpBody = postData
             dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                guard let data = data,
+                      let response = response else { return }
                 if let error = error {
                     completion(.failure(error))
                     print("DataTask error: \(error.localizedDescription)")
                     return
                 }
-                guard let data = data,
-                      let response = response else { return }
                 print(response)
                 do {
                     let data = try decoder.decode(User.self, from: data)
@@ -55,6 +43,7 @@ class LoginWorker: BankApiProtocol {
                 } catch let error { completion(.failure(error)) }
             }
             dataTask?.resume()
+            
         } else {
             guard let file = Bundle.main.url(forResource: "userJson", withExtension: "json") else { return }
             do {

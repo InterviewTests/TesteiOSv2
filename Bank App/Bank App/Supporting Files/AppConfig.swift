@@ -10,6 +10,7 @@ import Foundation
 enum AppConfig {
     static var baseAppURL: String { "https://bank-app-test.herokuapp.com/api/" }
     
+    //enable or disable API calls
     static var enableAPI = false
 }
 

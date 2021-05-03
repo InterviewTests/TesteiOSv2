@@ -23,7 +23,7 @@ class CurrencyTableViewCell: UITableViewCell {
     }
     
     static func nib() -> UINib {
-        return UINib(nibName: "CurrencyTableViewCell", bundle: nil)
+        return UINib(nibName: identifier, bundle: nil)
     }
     
     private func setupView() {
@@ -32,6 +32,8 @@ class CurrencyTableViewCell: UITableViewCell {
         dataView.layer.shadowOpacity = 0.3
         dataView.layer.shadowOffset = .zero
         dataView.layer.shadowRadius = 10
+        dataView.layer.shouldRasterize = true
+        dataView.layer.rasterizationScale = UIScreen.main.scale
     }
     
     func configureCell(user data: CurrencyByUser) {

@@ -30,14 +30,14 @@ class CurrencyWorker: BankApiProtocol {
             request.httpMethod = HTTPMethod.get.rawValue
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                guard let data = data,
+                      let response = response else { return }
                 if let error = error {
+                    print(response)
                     completion(.failure(error))
                     print("DataTask error: \(error.localizedDescription)")
                     return
                 }
-                guard let data = data,
-                      let response = response else { return }
-                print(response)
                 do {
                     let userCurrency = try decoder.decode([CurrencyByUser].self, from: data)
                     DispatchQueue.main.async { completion(.success(userCurrency)) }

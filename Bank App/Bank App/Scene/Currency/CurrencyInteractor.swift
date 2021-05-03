@@ -25,6 +25,7 @@ protocol CurrencyDataStore {
 class CurrencyInteractor: CurrencyBusinessLogic, CurrencyDataStore {
     var presenter: CurrencyPresentationLogic?
     var worker: CurrencyWorker?
+    
     var userInfo: User?
     var userCurrency: [CurrencyByUser] = []
     

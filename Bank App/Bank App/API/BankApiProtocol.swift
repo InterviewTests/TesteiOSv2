@@ -13,6 +13,5 @@ protocol BankApiProtocol {
 }
 
 extension BankApiProtocol {
-    var baseURL: URL { return URL(string: AppConfig.baseAppURL)!}
-    
+    var baseURL: URL { return URL(string: AppConfig.baseAppURL) ?? baseURL}
 }

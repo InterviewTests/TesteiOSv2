@@ -14,10 +14,9 @@ import UIKit
 
 protocol LoginBusinessLogic {
     func doSomething(request: Login.Something.Request)
+    func readyToLogin(user: String, password: String) -> Bool
+    func setErrorMessage(user: String, password: String) -> String
     func login(user: String, password: String, completion: @escaping () -> ())
-    func saveUser(user: String, password: String)
-    func checkUsersField(user: String) -> Bool
-    func checkPasswordField(password: String) -> Bool
 }
 
 protocol LoginDataStore {
@@ -27,48 +26,59 @@ protocol LoginDataStore {
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
+    var dataWorker: UserDataWorker?
     
     var userInfo: User?
     
     func doSomething(request: Login.Something.Request) {
-        worker = LoginWorker()
-        
-        guard let name = worker?.fetchCurrentUser(),
-              let password = worker?.fetchCurrentPassword() else { return }
-        
+        dataWorker = UserDataWorker()
         var response = Login.Something.Response()
+        guard let name = dataWorker?.fetchCurrentUser(),
+              let password = dataWorker?.fetchCurrentPassword() else { return }
         response.user = name
         response.password = password
         response.userInfo = userInfo
         presenter?.presentSomething(response: response)
     }
     
-    func saveUser(user: String, password: String) {
-        KeychainWrapper.standard.set(user, forKey: "bank.app.user")
-        KeychainWrapper.standard.set(password, forKey: "bank.app.password")
-    }
-    
-    func checkUsersField(user: String) -> Bool {
-        let isValidUser = Validator.validateUser(user: user)
-        return isValidUser
-    }
-    
-    func checkPasswordField(password: String) -> Bool {
-        let isValidPassword = Validator.validatePassword(password: password)
-        return isValidPassword
+    func readyToLogin(user: String, password: String) -> Bool {
+        dataWorker = UserDataWorker()
+        guard let isValidUser = dataWorker?.checkUsersField(user: user),
+              let isValidPassword = dataWorker?.checkPasswordField(password: password) else { return false }
+        return isValidUser && isValidPassword
     }
     
     func login(user: String, password: String, completion: @escaping () -> ()) {
         worker = LoginWorker()
+        dataWorker = UserDataWorker()
         worker?.login(path: "login", user: user, password: password) { (result) in
             switch result {
             case .success(let data):
-                self.saveUser(user: user, password: password)
+                self.dataWorker?.saveUser(user: user, password: password)
                 self.userInfo = data
                 completion()
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    func setErrorMessage(user: String, password: String) -> String {
+        dataWorker = UserDataWorker()
+        guard let isValidUser = dataWorker?.checkUsersField(user: user),
+              let isValidPassword = dataWorker?.checkPasswordField(password: password) else { return "" }
+        var message = ""
+        if user.isEmpty && password.isEmpty {
+            message = ""
+        } else if isValidUser && password.isEmpty {
+            message = ""
+        } else if user.isEmpty && isValidPassword {
+            message = ""
+        } else if !isValidUser {
+            message = "Please, enter a valid email adress or a valid CPF number."
+        } else if !isValidPassword {
+            message = "Enter a password with numbers, uppercase and special characters"
+        }
+        return message
     }
 }

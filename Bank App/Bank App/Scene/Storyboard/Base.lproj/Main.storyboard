@@ -24,22 +24,34 @@
                                     <constraint firstAttribute="height" constant="70" id="Jj6-Vs-2OD"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="pzf-0t-wV1">
-                                <rect key="frame" x="17" y="294" width="341" height="150"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="pzf-0t-wV1">
+                                <rect key="frame" x="17" y="294" width="341" height="130"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q7f-ba-sbM">
-                                        <rect key="frame" x="0.0" y="0.0" width="341" height="62.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="341" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="CdE-bD-c6R"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="editingUserTextField:" destination="BYZ-38-t0r" eventType="editingChanged" id="IJz-Rb-VwH"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m7v-oC-M6j">
-                                        <rect key="frame" x="0.0" y="87.666666666666686" width="341" height="62.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="80" width="341" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="dif-qO-SXc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="editingPasswordTextField:" destination="BYZ-38-t0r" eventType="editingChanged" id="eVp-iP-96d"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="eTO-6l-lNf"/>
+                                    <constraint firstAttribute="height" constant="130" id="eTO-6l-lNf"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jw4-XS-rvr">
@@ -57,7 +69,7 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIj-bf-S3Q">
-                                <rect key="frame" x="45" y="254" width="285" height="30"/>
+                                <rect key="frame" x="35" y="254" width="305" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="V3f-W3-AsC"/>
                                 </constraints>
@@ -74,11 +86,11 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="80"/>
                             </constraint>
                             <constraint firstItem="pzf-0t-wV1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="8uR-O2-lcm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UIj-bf-S3Q" secondAttribute="trailing" constant="45" id="DrX-3G-VBI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UIj-bf-S3Q" secondAttribute="trailing" constant="35" id="DrX-3G-VBI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pzf-0t-wV1" secondAttribute="trailing" constant="17" id="LYl-9Y-ZGe"/>
                             <constraint firstItem="pzf-0t-wV1" firstAttribute="top" secondItem="UIj-bf-S3Q" secondAttribute="bottom" constant="10" id="MlO-qT-tJ6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jw4-XS-rvr" secondAttribute="bottom" constant="72" id="ZL8-zv-eTd"/>
-                            <constraint firstItem="UIj-bf-S3Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="ZNm-8v-fZy"/>
+                            <constraint firstItem="UIj-bf-S3Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="ZNm-8v-fZy"/>
                             <constraint firstItem="jw4-XS-rvr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="76" id="gbd-BU-vDO"/>
                             <constraint firstItem="QFX-Zz-hPT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="gdj-20-ltI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jw4-XS-rvr" secondAttribute="bottom" priority="750" constant="20" id="nRl-fF-llu"/>
@@ -221,6 +233,7 @@
                         <outlet property="accountNumberLabel" destination="IX4-1d-3jJ" id="bUn-TA-l5V"/>
                         <outlet property="cashLabel" destination="NYq-zx-vq0" id="ii5-4K-cuG"/>
                         <outlet property="exitButton" destination="oxk-a6-v8K" id="8aX-xp-XYM"/>
+                        <outlet property="recentsLabel" destination="UcH-jA-x2K" id="cYc-ts-Pcy"/>
                         <outlet property="tableview" destination="AI8-ry-7Zu" id="HwM-MD-fXV"/>
                         <outlet property="userNameLabel" destination="yKg-Vx-gxm" id="mf9-Td-Bjx"/>
                     </connections>

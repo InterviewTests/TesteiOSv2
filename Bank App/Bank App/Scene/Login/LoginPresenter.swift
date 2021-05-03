@@ -19,8 +19,6 @@ protocol LoginPresentationLogic {
 class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     
-    // MARK: Do something
-    
     func presentSomething(response: Login.Something.Response) {
         var viewModel = Login.Something.ViewModel()
         viewModel.user = response.user

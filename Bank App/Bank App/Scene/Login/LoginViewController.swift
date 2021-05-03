@@ -49,17 +49,6 @@ class LoginViewController: CustomViewController, LoginDisplayLogic {
         router.dataStore = interactor
     }
     
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
     // MARK: View lifecycle
     
     override func viewDidLoad() {
@@ -67,9 +56,7 @@ class LoginViewController: CustomViewController, LoginDisplayLogic {
         setupView()
         doSomething()
     }
-    
-    // MARK: Do something
-    
+
     private func setupView() {
         setupTextField()
         setupLabel()
@@ -90,37 +77,15 @@ class LoginViewController: CustomViewController, LoginDisplayLogic {
         loginButton.layer.cornerRadius = 10
     }
     
-    func setErrorMessage(user: String, password: String) {
-        guard let isValidUser = interactor?.checkUsersField(user: user),
-              let isValidPassword = interactor?.checkPasswordField(password: password) else { return }
-        
-        if isValidUser && password.isEmpty {
-            errorMessageLabel.text = ""
-        } else if !isValidUser {
-            errorMessageLabel.text = "Please, enter a valid email adress or a valid CPF number."
-        } else if isValidUser && !isValidPassword && password != "" {
-            errorMessageLabel.text = "Enter a password with numbers, uppercase and special characters"
-        } else if isValidUser && isValidPassword { errorMessageLabel.text = "" }
-    }
-    
-    private func readyToLogin(user: String, password: String) -> Bool {
-        guard let isValidUser = interactor?.checkUsersField(user: user),
-              let isValidPassword = interactor?.checkPasswordField(password: password) else { return false }
-        setErrorMessage(user: user, password: password)
-        return isValidUser && isValidPassword
-    }
-    
     func doSomething() {
         let request = Login.Something.Request()
         interactor?.doSomething(request: request)
     }
     
     func displaySomething(viewModel: Login.Something.ViewModel) {
-        guard let user = viewModel.user,
-              let password = viewModel.password else { return }
-        userTextField.text = user
-        passwordTextField.text = password
-        loginButton.isEnabled = readyToLogin(user: user, password: password)
+        userTextField.text = viewModel.user
+        passwordTextField.text = viewModel.password
+        loginButton.isEnabled = userTextField.hasText && passwordTextField.hasText
     }
     
     @IBAction func loginTapped(_ sender: Any) {
@@ -129,6 +94,22 @@ class LoginViewController: CustomViewController, LoginDisplayLogic {
         interactor?.login(user: user, password: password) {
             self.router?.routeToCurrency()
         }
+    }
+    //MARK: Alternative for previous versions of iOS
+    @IBAction func editingUserTextField(_ sender: Any) {
+        guard let user = userTextField.text,
+              let password = passwordTextField.text,
+              let ready = interactor?.readyToLogin(user: user, password: password) else { return }
+        errorMessageLabel.text = interactor?.setErrorMessage(user: user, password: password)
+        loginButton.isEnabled = ready
+    }
+    
+    @IBAction func editingPasswordTextField(_ sender: Any) {
+        guard let user = userTextField.text,
+              let password = passwordTextField.text,
+              let ready = interactor?.readyToLogin(user: user, password: password) else { return }
+        errorMessageLabel.text = interactor?.setErrorMessage(user: user, password: password)
+        loginButton.isEnabled = ready
     }
 }
 
@@ -146,11 +127,14 @@ extension LoginViewController: UITextFieldDelegate {
         return false
     }
     
+    @available (iOS 13.0, *)
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField.hasText {
             guard let user = userTextField.text,
-                  let password = passwordTextField.text else { return }
-            loginButton.isEnabled = readyToLogin(user: user, password: password)
-        } else { errorMessageLabel.text = "" }
+                  let password = passwordTextField.text,
+                  let ready = interactor?.readyToLogin(user: user, password: password) else { return }
+            errorMessageLabel.text = interactor?.setErrorMessage(user: user, password: password)
+            loginButton.isEnabled = ready
+        }
     }
 }
