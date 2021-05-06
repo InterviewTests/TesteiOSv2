@@ -1,3 +1,8 @@
+Olá,
+
+Para executar o projeto, basta realizar o download, abrir em seu Xcode e executar.
+
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
