@@ -62,7 +62,9 @@ public class LoginViewController: CustomViewController {
     // MARK: - UI
     
     private lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView() //TODO: - Add a image
+        let bundle = Bundle(for: type(of: self))
+        let logoBankImage = UIImage(named: "logo", in: bundle, compatibleWith: nil)
+        let imageView = UIImageView(image: logoBankImage)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView

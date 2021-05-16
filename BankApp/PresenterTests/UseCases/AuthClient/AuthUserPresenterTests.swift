@@ -210,8 +210,6 @@ class AuthUserPresenterTests: XCTestCase {
             XCTAssertEqual(viewModel, alertViewModel)
         }
     }
-    
-    //TODO: - Teste RetrieveCredentials
 }
 
 extension AuthUserPresenterTests {
