@@ -24,9 +24,6 @@ final class AuthenticationRepository :AuthenticationRepositoryProtocol {
 extension AuthenticationRepository {
     func perform(login: AutenticationApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, UserFailure>) -> Void) {
 
-        print(CommonValidator.User.isCpf(data.username))
-        print(CommonValidator.User.isEmail(data.username))
-
         if (!CommonValidator.User.isCpf(data.username) && !CommonValidator.User.isEmail(data.username)) {
             completion(.failure(.user))
             return

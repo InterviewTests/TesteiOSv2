@@ -26,8 +26,8 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
 
     // MARK: - Properties
 
-    var presenter: LoginPresentationLogic?
-    var worker: LoginWorker?
+    private let presenter: LoginPresentationLogic?
+    private let worker: LoginWorker?
 
     // MARK: - DataSource
     var account: UserAccountModel?
