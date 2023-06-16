@@ -59,14 +59,15 @@
 		DF0BA86A2A3C9CB700A812F4 /* AutenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8462A3C7C0200A812F4 /* AutenticationRepository.swift */; };
 		DF0BA86C2A3CA9AB00A812F4 /* UserFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA86B2A3CA9AB00A812F4 /* UserFailure.swift */; };
 		DF0BA86D2A3CA9AB00A812F4 /* UserFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA86B2A3CA9AB00A812F4 /* UserFailure.swift */; };
-		DF0BA86F2A3CAC7D00A812F4 /* CommonValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA86E2A3CAC7D00A812F4 /* CommonValidate.swift */; };
-		DF0BA8702A3CAC7D00A812F4 /* CommonValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA86E2A3CAC7D00A812F4 /* CommonValidate.swift */; };
+		DF0BA86F2A3CAC7D00A812F4 /* CommonValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA86E2A3CAC7D00A812F4 /* CommonValidator.swift */; };
+		DF0BA8702A3CAC7D00A812F4 /* CommonValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA86E2A3CAC7D00A812F4 /* CommonValidator.swift */; };
 		DF0BA8762A3CB91B00A812F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF0BA8792A3CB91B00A812F4 /* Localizable.strings */; };
 		DF0BA8772A3CB91B00A812F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF0BA8792A3CB91B00A812F4 /* Localizable.strings */; };
 		DF0BA87E2A3CC4ED00A812F4 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA87C2A3CC4ED00A812F4 /* XCAssets+Generated.swift */; };
 		DF0BA87F2A3CC4ED00A812F4 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA87D2A3CC4ED00A812F4 /* Strings+Generated.swift */; };
 		DF0BA8802A3CC4F300A812F4 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA87D2A3CC4ED00A812F4 /* Strings+Generated.swift */; };
 		DF0BA8812A3CC4F500A812F4 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA87C2A3CC4ED00A812F4 /* XCAssets+Generated.swift */; };
+		DF7D3F8D2A3CE0A90009770F /* CommonValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7D3F8C2A3CE0A90009770F /* CommonValidatorTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,11 +128,12 @@
 		DF0BA8632A3C9A3E00A812F4 /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
 		DF0BA8672A3C9BA900A812F4 /* MockAutenticationServiceDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAutenticationServiceDatasource.swift; sourceTree = "<group>"; };
 		DF0BA86B2A3CA9AB00A812F4 /* UserFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFailure.swift; sourceTree = "<group>"; };
-		DF0BA86E2A3CAC7D00A812F4 /* CommonValidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonValidate.swift; sourceTree = "<group>"; };
+		DF0BA86E2A3CAC7D00A812F4 /* CommonValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonValidator.swift; sourceTree = "<group>"; };
 		DF0BA8782A3CB91B00A812F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DF0BA87A2A3CC2B500A812F4 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DF0BA87C2A3CC4ED00A812F4 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		DF0BA87D2A3CC4ED00A812F4 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		DF7D3F8C2A3CE0A90009770F /* CommonValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonValidatorTest.swift; sourceTree = "<group>"; };
 		DFEC18532A3BD28C001277A2 /* UserAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountModel.swift; sourceTree = "<group>"; };
 		DFEC18562A3BD314001277A2 /* AuthenticationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationWorker.swift; sourceTree = "<group>"; };
 		DFEC18592A3BD423001277A2 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		DF0BA7DE2A3BE5D000A812F4 /* KssiusBankTests */ = {
 			isa = PBXGroup;
 			children = (
+				DF7D3F8B2A3CE0880009770F /* Common */,
 				DF0BA84F2A3C830700A812F4 /* Core */,
 				DF0BA7FB2A3BE6C900A812F4 /* KssiusBankTests.swift */,
 				DFEC18692A3BDE0D001277A2 /* Services */,
@@ -325,6 +328,14 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
+		DF7D3F8B2A3CE0880009770F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DF7D3F8C2A3CE0A90009770F /* CommonValidatorTest.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		DFEC18012A3BCFF9001277A2 = {
 			isa = PBXGroup;
 			children = (
@@ -387,7 +398,7 @@
 			children = (
 				DFEC185D2A3BD43B001277A2 /* error */,
 				DF0BA8572A3C87AE00A812F4 /* Constants.swift */,
-				DF0BA86E2A3CAC7D00A812F4 /* CommonValidate.swift */,
+				DF0BA86E2A3CAC7D00A812F4 /* CommonValidator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -673,7 +684,7 @@
 				DF0BA8112A3BE9F200A812F4 /* UserAccountModel.swift in Sources */,
 				DF0BA7D02A3BE5CE00A812F4 /* KssiusBank.xcdatamodeld in Sources */,
 				DF0BA8492A3C7C8E00A812F4 /* AutenticationServiceDatasource.swift in Sources */,
-				DF0BA86F2A3CAC7D00A812F4 /* CommonValidate.swift in Sources */,
+				DF0BA86F2A3CAC7D00A812F4 /* CommonValidator.swift in Sources */,
 				DF0BA86C2A3CA9AB00A812F4 /* UserFailure.swift in Sources */,
 				DF0BA87E2A3CC4ED00A812F4 /* XCAssets+Generated.swift in Sources */,
 				DF0BA8312A3BF03900A812F4 /* LoginRouter.swift in Sources */,
@@ -701,9 +712,10 @@
 				DF0BA8122A3BE9F300A812F4 /* UserAccountModel.swift in Sources */,
 				DF0BA8552A3C836A00A812F4 /* AutenticationServiceDatasourceTest.swift in Sources */,
 				DF0BA7F72A3BE65800A812F4 /* NetworkServiceTest.swift in Sources */,
-				DF0BA8702A3CAC7D00A812F4 /* CommonValidate.swift in Sources */,
+				DF0BA8702A3CAC7D00A812F4 /* CommonValidator.swift in Sources */,
 				DF0BA84A2A3C7C8E00A812F4 /* AutenticationServiceDatasource.swift in Sources */,
 				DF0BA8372A3BF05800A812F4 /* AuthenticationWorker.swift in Sources */,
+				DF7D3F8D2A3CE0A90009770F /* CommonValidatorTest.swift in Sources */,
 				DF0BA8162A3BEC4800A812F4 /* AutenticationApi.swift in Sources */,
 				DF0BA8622A3C998100A812F4 /* AutenticationRepositoryTest.swift in Sources */,
 				DF0BA8182A3BEC4800A812F4 /* NetworkService.swift in Sources */,
