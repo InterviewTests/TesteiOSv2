@@ -17,6 +17,7 @@ struct NetworkConfiguration {
 }
 
 struct Endpoint {
+    typealias RawValue = Int
 
     enum Method: String {
         case get, post
@@ -31,10 +32,24 @@ struct Endpoint {
 
 }
 
-enum ServiceError: Error {
+enum ServiceError: Error, Equatable {
+    static func == (lhs: ServiceError, rhs: ServiceError) -> Bool {
+        switch (lhs, rhs) {
+        case (.invalidUrl, .invalidUrl): return true
+        case (.noData, .noData): return true
+        case (.decodeFail(let lnet), .decodeFail(let rnet)) :
+            return lnet == rnet
+        case (.network(let lnet), .network(let rnet)) :
+            return lnet == rnet
+        default:
+            return false
+        }
+    }
+
     case invalidUrl
-    case decodeFail(Error?)
-    case network(Error?)
+    case noData
+    case decodeFail(ErrorResponse?)
+    case network(ErrorResponse?)
 }
 
 class NetworkService<R : Codable> {
@@ -42,20 +57,20 @@ class NetworkService<R : Codable> {
     // MARK: - Properties
 
     typealias Response = R
-    private let endpoint: Endpoint
+    let urlSession: URLSession
 
     // MARK: - Initializers
-    init(endpoint: Endpoint) {
-        self.endpoint = endpoint
+    init(urlSession: URLSession = URLSession.shared) {
+        self.urlSession = urlSession
     }
 
-    func request(pathParameter: PathParameter?, completion: @escaping (Result<Response, ServiceError >) -> Void)  {
-        var path = ""
-        if let pathParameter = pathParameter {
-            path = endpoint.fullPath.replacingOccurrences(of: ":\(pathParameter.name)", with: pathParameter.value)
-        } else{
-            path = endpoint.fullPath
-        }
+    func request(endpoint: Endpoint, payload: Encodable? = nil, completion: @escaping (Result<Response, ServiceError>) -> Void)  {
+        var path = endpoint.fullPath
+//        if let pathParameter = pathParameter {
+//            path = endpoint.fullPath.replacingOccurrences(of: ":\(pathParameter.name)", with: pathParameter.value)
+//        } else{
+//            path = endpoint.fullPath
+//        }
 
         guard let url = URL(string: path) else {
             completion(.failure(.invalidUrl))
@@ -64,13 +79,17 @@ class NetworkService<R : Codable> {
         printIfDebug(path)
 
         var request = URLRequest(url: url)
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")  // the request is JSON
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")        // the expected response is also JSON
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         request.httpMethod = endpoint.method.rawValue
 
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        if let payload = payload, let encodablePayload = try? JSONEncoder().encode(payload) {
+            request.httpBody = encodablePayload
+        }
+
+        let task = urlSession.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                completion(.failure(.network(error)))
+                completion(.failure(.noData))
                 return
             }
             do{
@@ -78,7 +97,7 @@ class NetworkService<R : Codable> {
                 completion(.success(body))
             }catch {
                 printIfDebug("\(error)")
-                completion(.failure(.decodeFail(error)))
+                completion(.failure(.decodeFail(.init(message: error.localizedDescription))))
             }
 
         }
