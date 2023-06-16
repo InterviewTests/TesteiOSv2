@@ -7,9 +7,11 @@
 
 import Foundation
 
-final class AuthenticationRepository :AuthenticationRepositoryProtocol {
+final class AuthenticationRepository: AuthenticationRepositoryProtocol {
 
-    let authenticationService: AuthenticationServiceDatasourceProtocol
+    // MARK: - Properties
+
+    private let authenticationService: AuthenticationServiceDatasourceProtocol
 
     // MARK: - Inits
 

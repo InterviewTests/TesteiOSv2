@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 protocol LoginDisplayLogic: AnyObject
 {
@@ -41,9 +42,16 @@ class LoginViewController: UIViewController
 
     private func setup()
     {
-        let authenticationService = AuthenticationServiceDatasource(networkService: .init())
-        let autenticationRepository = AuthenticationRepository(authenticationService: authenticationService)
-        let worker = LoginWorker(authenticaionRepository: autenticationRepository)
+        //remote datasource
+        let authenticationServiceDataSource = AuthenticationServiceDatasource(networkService: .init())
+        let autenticationRepository = AuthenticationRepository(authenticationService: authenticationServiceDataSource)
+
+        //local datasource
+        let localDataSource = AuthenticationLocalDatasource(keychain: KeychainSwift())
+        let localRepository = AuthenticationLocalRepository(authenticationLocalDataSource: localDataSource)
+
+        let worker = LoginWorker(authenticaionRepository: autenticationRepository,
+                                 authenticaionLocalRepository: localRepository)
         let viewController = self
 
         let presenter = LoginPresenter()

@@ -66,12 +66,6 @@ class NetworkService<R : Codable> {
 
     func request(endpoint: Endpoint, payload: Encodable? = nil, completion: @escaping (Result<Response, ServiceError>) -> Void)  {
         var path = endpoint.fullPath
-//        if let pathParameter = pathParameter {
-//            path = endpoint.fullPath.replacingOccurrences(of: ":\(pathParameter.name)", with: pathParameter.value)
-//        } else{
-//            path = endpoint.fullPath
-//        }
-
         guard let url = URL(string: path) else {
             completion(.failure(.invalidUrl))
             return;

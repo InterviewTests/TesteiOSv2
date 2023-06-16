@@ -5,13 +5,10 @@
 //  Created by Cassio Sousa on 16/06/23.
 //
 
-import Foundation
-
-
 import XCTest
 @testable import KssiusBank
 
-final class AutenticationRepositoryTest: XCTestCase {
+final class AuthenticationRepositoryTest: XCTestCase {
     var sut: AuthenticationRepositoryProtocol?
     var expectation: XCTestExpectation!
     let successCpfModelRequest = LoginRequestModel(username: "468.655.400-42", password: "T@to123")
@@ -66,7 +63,7 @@ final class AutenticationRepositoryTest: XCTestCase {
 
 
 // MARK: - CPF Tests
-extension AutenticationRepositoryTest {
+extension AuthenticationRepositoryTest {
 
     // MARK: - Success CPF Authentication Response
 
@@ -108,7 +105,7 @@ extension AutenticationRepositoryTest {
 
 
 // MARK: - Email Tests
-extension AutenticationRepositoryTest {
+extension AuthenticationRepositoryTest {
 
     // MARK: - Success Email Authentication
 
@@ -188,8 +185,7 @@ extension AutenticationRepositoryTest {
 
 
 // MARK: - Password Tests
-extension AutenticationRepositoryTest {
-
+extension AuthenticationRepositoryTest {
 
     // MARK: - Failure Password Special char Authentication
 

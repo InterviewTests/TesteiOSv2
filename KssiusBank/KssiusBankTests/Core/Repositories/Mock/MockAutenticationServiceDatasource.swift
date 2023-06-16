@@ -43,15 +43,3 @@ final class MockFailureNetworkAutenticationServiceDatasource: AuthenticationServ
     }
 }
 
-//final class MockFailureCpfAutenticationServiceDatasource: AuthenticationServiceDatasourceProtocol {
-//    convenience init() {
-//        self.init(networkService: .init())
-//    }
-//
-//    init(networkService: NetworkService<UserAccountModel>) {}
-//
-//    func perform(login: AutenticationApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, BankFailure>) -> Void) {
-//        completion(.failure())
-//    }
-//}
-

@@ -28,15 +28,19 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
 
     private let presenter: LoginPresentationLogic?
     private let worker: LoginWorker?
+    private let userWork: UserWorkerLogic?
 
     // MARK: - DataSource
     var account: UserAccountModel?
 
     // MARK: - Inits
 
-    init(presenter: LoginPresentationLogic? = nil, worker: LoginWorker? = nil) {
+    init(presenter: LoginPresentationLogic? = nil,
+         worker: LoginWorker? = nil,
+         userWork: UserWorkerLogic? = nil) {
         self.presenter = presenter
         self.worker = worker
+        self.userWork = userWork
     }
 
 }
@@ -57,17 +61,22 @@ extension LoginInteractor {
         worker?.login(username: user, password: password) {[weak self] result in
             switch( result ) {
             case .success(let accountModel):
-                self?.account = accountModel
-                self?.presenter?.resolveLogin(response: .init(success: true))
+                self?.handle(success: accountModel)
             case .failure(let failure):
-                if let response = self?.process(errors: failure) {
+                if let response = self?.handle(errors: failure) {
                     self?.presenter?.resolveLogin(response: response)
                 }
             }
         }
     }
 
-    private func process(errors: UserFailure) -> Login.Login.Response {
+    private func handle(success accountModel: UserAccountModel ) {
+        account = accountModel
+        userWork?.save(user: accountModel)
+        presenter?.resolveLogin(response: .init(success: true))
+    }
+
+    private func handle(errors: UserFailure) -> Login.Login.Response {
         switch(errors) {
         case .user:
             return .init(errorMessage: L10n.User.Authentication.Error.invalidCpf)
@@ -78,4 +87,5 @@ extension LoginInteractor {
         }
 
     }
+
 }

@@ -14,7 +14,7 @@ struct Seeds {
           "createdAt": "2023-06-15T23:36:43.182Z",
           "name": "Diana Leuschke",
           "email": "Marquis_Gibson@hotmail.com",
-          "cpf": "(253) 643-9973 x2560",
+          "cpf": "468.655.400-42",
           "accountNumber": "74393734",
           "agency": "827810101",
           "balance": "472.29",
