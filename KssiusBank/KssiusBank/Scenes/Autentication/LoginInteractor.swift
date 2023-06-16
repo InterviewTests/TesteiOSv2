@@ -14,28 +14,68 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+    func login(request: Login.Login.Request)
 }
 
 protocol LoginDataStore
 {
-  //var name: String { get set }
+    var account: UserAccountModel? { get set }
 }
 
-class LoginInteractor: LoginBusinessLogic, LoginDataStore
-{
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
-    
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
+
+    // MARK: - Properties
+
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
+
+    // MARK: - DataSource
+    var account: UserAccountModel?
+
+    // MARK: - Inits
+
+    init(presenter: LoginPresentationLogic? = nil, worker: LoginWorker? = nil) {
+        self.presenter = presenter
+        self.worker = worker
+    }
+
+}
+
+// MARK: - Login
+
+extension LoginInteractor {
+
+    func login(request: Login.Login.Request)
+    {
+        guard let user = request.user, let password = request.password else {
+            let errorMessage = L10n.User.Authentication.Error.general
+            let response = Login.Login.Response(success: false, errorMessage: errorMessage)
+            self.presenter?.resolveLogin(response: response)
+            return
+        }
+
+        worker?.login(username: user, password: password) {[weak self] result in
+            switch( result ) {
+            case .success(let accountModel):
+                self?.account = accountModel
+                self?.presenter?.resolveLogin(response: .init(success: true))
+            case .failure(let failure):
+                if let response = self?.process(errors: failure) {
+                    self?.presenter?.resolveLogin(response: response)
+                }
+            }
+        }
+    }
+
+    private func process(errors: UserFailure) -> Login.Login.Response {
+        switch(errors) {
+        case .user:
+            return .init(errorMessage: L10n.User.Authentication.Error.invalidCpf)
+        case .password:
+            return .init(errorMessage: L10n.User.Authentication.Error.invalidPassword)
+        case .network( _):
+            return .init(errorMessage: L10n.Network.Error.general)
+        }
+
+    }
 }

@@ -12,12 +12,13 @@
 
 import UIKit
 
-protocol LoginDisplayLogic: class
+protocol LoginDisplayLogic: AnyObject
 {
-  func displaySomething(viewModel: Login.Something.ViewModel)
+  func presentLogin(viewModel: Login.Login.ViewModel)
+  func resolveLogin(viewModel: Login.Login.ViewModel)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic
+class LoginViewController: UIViewController
 {
   var interactor: LoginBusinessLogic?
   var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
@@ -78,12 +79,26 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   
   func doSomething()
   {
-    let request = Login.Something.Request()
-    interactor?.doSomething(request: request)
+    let request = Login.Login.Request()
+    interactor?.login(request: request)
   }
   
-  func displaySomething(viewModel: Login.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+
+}
+
+extension LoginViewController: LoginDisplayLogic {
+    func resolveLogin(viewModel: Login.Login.ViewModel)
+    {
+      //nameTextField.text = viewModel.name
+        if viewModel.success {
+
+        }else {
+
+        }
+        
+    }
+    func presentLogin(viewModel: Login.Login.ViewModel)
+    {
+      //nameTextField.text = viewModel.name
+    }
 }

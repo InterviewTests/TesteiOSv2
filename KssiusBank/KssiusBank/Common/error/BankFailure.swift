@@ -27,7 +27,6 @@ enum BankFailure: Error, Equatable {
 
     static func == (lhs: BankFailure, rhs: BankFailure) -> Bool {
         switch (lhs, rhs) {
-        case (.number, .number): return true
         case (.network(let lnet), .network(let rnet)):
             return lnet == rnet
         default:
@@ -35,6 +34,7 @@ enum BankFailure: Error, Equatable {
         }
     }
 
-    case number
+    // MARK: - Cases
+
     case network(ErrorResponse?)
 }

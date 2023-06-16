@@ -50,7 +50,7 @@ final class AutenticationRepositoryTest: XCTestCase {
 
         let modelRequest = LoginRequestModel(username: "error", password: "errorpass")
 
-        sut?.perform(login: .loginRequest,with: modelRequest){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: modelRequest){ [weak self] result in
 
             //THEN
             switch(result){

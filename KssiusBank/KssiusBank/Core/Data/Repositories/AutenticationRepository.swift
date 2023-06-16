@@ -22,7 +22,24 @@ final class AuthenticationRepository :AuthenticationRepositoryProtocol {
 // MARK: - POST Methods
 
 extension AuthenticationRepository {
-    func perform(login: AutenticationApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, BankFailure>) -> Void) {
-        authenticationService.perform(login: login, with: data, completion: completion)
+    func perform(login: AutenticationApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, UserFailure>) -> Void) {
+
+        if (!CommonValidator.User.isCpf(data.username) || !CommonValidator.User.isEmail(data.username)) {
+            completion(.failure(.user))
+            return
+        }
+
+        if (!CommonValidator.User.validatePassword(data.password)) {
+            completion(.failure(.password))
+            return
+        }
+
+        authenticationService.perform(login: login, with: data){ result in
+            switch(result) {
+            case .success(let model): completion(.success(model))
+            case .failure( _):
+                completion(.failure(.network(.init())))
+            }
+        }
     }
 }

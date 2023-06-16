@@ -16,16 +16,36 @@ enum Login
 {
   // MARK: Use cases
   
-  enum Something
+  enum Login
   {
     struct Request
     {
+        var user: String?
+        var password: String?
     }
     struct Response
     {
+        let success: Bool
+        let errorMessage: String?
+
+        init(success: Bool = false, errorMessage: String? = nil) {
+            self.success = success
+            self.errorMessage = errorMessage
+        }
+
+        func toViewModel() -> ViewModel {
+            return .init( success: success, errorMessage: errorMessage)
+        }
     }
     struct ViewModel
     {
+        var success: Bool
+        var errorMessage: String?
+
+        init(success: Bool = false, errorMessage: String? = nil) {
+            self.success = success
+            self.errorMessage = errorMessage
+        }
     }
   }
 }
