@@ -119,6 +119,8 @@
 		DFC4E8762A3E48CB004B6718 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */; };
 		DFC4E8792A3E4E61004B6718 /* AutenticationLocalDatasourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8772A3E4E61004B6718 /* AutenticationLocalDatasourceTest.swift */; };
 		DFC4E87B2A3E4ED8004B6718 /* AutenticationServiceDatasourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E87A2A3E4ED8004B6718 /* AutenticationServiceDatasourceTest.swift */; };
+		DFC4E87F2A3E545C004B6718 /* StatementsRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E87C2A3E530D004B6718 /* StatementsRepositoryTest.swift */; };
+		DFC4E8802A3E5461004B6718 /* MockStatementsServiceDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E87E2A3E5377004B6718 /* MockStatementsServiceDatasource.swift */; };
 		DFF0843A2A3D24F500672477 /* LoginInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF084392A3D24F500672477 /* LoginInteractorTest.swift */; };
 		DFF084412A3D2B2700672477 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82B2A3BF03900A812F4 /* LoginRouter.swift */; };
 		DFF084422A3D2B2700672477 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8292A3BF03900A812F4 /* LoginPresenter.swift */; };
@@ -225,6 +227,8 @@
 		DFC4E8662A3E3BD4004B6718 /* StatementsFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsFailure.swift; sourceTree = "<group>"; };
 		DFC4E8772A3E4E61004B6718 /* AutenticationLocalDatasourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticationLocalDatasourceTest.swift; sourceTree = "<group>"; };
 		DFC4E87A2A3E4ED8004B6718 /* AutenticationServiceDatasourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticationServiceDatasourceTest.swift; sourceTree = "<group>"; };
+		DFC4E87C2A3E530D004B6718 /* StatementsRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsRepositoryTest.swift; sourceTree = "<group>"; };
+		DFC4E87E2A3E5377004B6718 /* MockStatementsServiceDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStatementsServiceDatasource.swift; sourceTree = "<group>"; };
 		DFEC18532A3BD28C001277A2 /* UserAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountModel.swift; sourceTree = "<group>"; };
 		DFEC18562A3BD314001277A2 /* UserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorker.swift; sourceTree = "<group>"; };
 		DFEC18592A3BD423001277A2 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -633,8 +637,18 @@
 		DFC4E86B2A3E43E7004B6718 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				DFC4E87D2A3E5367004B6718 /* Mock */,
+				DFC4E87C2A3E530D004B6718 /* StatementsRepositoryTest.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		DFC4E87D2A3E5367004B6718 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				DFC4E87E2A3E5377004B6718 /* MockStatementsServiceDatasource.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		DFEC18012A3BCFF9001277A2 = {
@@ -1058,6 +1072,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFC4E87F2A3E545C004B6718 /* StatementsRepositoryTest.swift in Sources */,
 				DF0BA8252A3BEE3D00A812F4 /* BankFailure.swift in Sources */,
 				DFF084432A3D2B2700672477 /* LoginModels.swift in Sources */,
 				DF4624CA2A3CF0D700CBC35D /* AutenticationLocalDatasource.swift in Sources */,
@@ -1069,6 +1084,7 @@
 				DF0BA8802A3CC4F300A812F4 /* Strings+Generated.swift in Sources */,
 				DF4624D52A3D080600CBC35D /* AuthenticationLocalRepositoryTest.swift in Sources */,
 				DFC4E8402A3DDC03004B6718 /* DefaultButton.swift in Sources */,
+				DFC4E8802A3E5461004B6718 /* MockStatementsServiceDatasource.swift in Sources */,
 				DFC4E8762A3E48CB004B6718 /* DefaultTextField.swift in Sources */,
 				DF0BA7F82A3BE65B00A812F4 /* MockURLProtocol.swift in Sources */,
 				DF0BA80E2A3BE6D400A812F4 /* KssiusBankTests.swift in Sources */,
