@@ -24,6 +24,7 @@ final class LoginViewController: UIViewController
 
     // MARK: - Constants
     private let defaultButtonBottomSpace = 33.0
+    private let segueIdentifier = "PresentHome"
 
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
@@ -70,8 +71,7 @@ final class LoginViewController: UIViewController
 
     // MARK: Routing
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
             if let router = router, router.responds(to: selector) {
@@ -158,18 +158,11 @@ extension LoginViewController: LoginDisplayLogic {
     func resolveLogin(viewModel: Login.Login.ViewModel) {
 
         if viewModel.success {
-
+            presentHomeScene()
         }else {
-            errorLabel(viewModel: viewModel)
-            errorLabel?.isHidden = false
-
+            presentError(viewModel: viewModel)
         }
-        finishState()
-    }
 
-    private func errorLabel(viewModel :Login.Login.ViewModel) {
-        errorLabel?.text = viewModel.errorMessage
-        errorLabel?.sizeToFit()
     }
 }
 
@@ -200,6 +193,20 @@ extension LoginViewController {
         loginButton?.isEnabled = true
         indicatorView?.stopAnimating()
         indicatorView?.isHidden = true
+    }
+
+
+
+    private func presentHomeScene() {
+        performSegue(withIdentifier: segueIdentifier, sender: self)
+        finishState()
+    }
+
+    private func presentError(viewModel :Login.Login.ViewModel) {
+        errorLabel?.text = viewModel.errorMessage
+        errorLabel?.sizeToFit()
+        errorLabel?.isHidden = false
+        finishState()
     }
 }
 

@@ -14,47 +14,46 @@ import UIKit
 
 @objc protocol LoginRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToPresentHome(segue: UIStoryboardSegue?)
 }
 
 protocol LoginDataPassing
 {
-  var dataStore: LoginDataStore? { get }
+    var dataStore: LoginDataStore? { get }
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
-{
-  weak var viewController: LoginViewController?
-  var dataStore: LoginDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+final class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
+    weak var viewController: LoginViewController?
+    var dataStore: LoginDataStore?
 
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: LoginViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: LoginDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    // MARK: Routing
+
+    func routeToPresentHome(segue: UIStoryboardSegue?){
+//        if let segue = segue {
+//            let destinationVC = segue.destination as? HomeViewController
+//            var destinationDS = destinationVC?.router?.dataStore
+//            passDataToHome(source: dataStore!, destination: &destinationDS)
+//        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            var destinationDS = destinationVC.router?.dataStore
+            passDataToHome(source: dataStore, destination: &destinationDS)
+            navigateToHome(source: viewController, destination: destinationVC)
+//        }
+    }
+
+    // MARK: Navigation
+
+    func navigateToHome(source: LoginViewController?, destination: HomeViewController?){
+        guard let destination = destination else {
+            printIfDebug("Cannot navigate to home.")
+            return }
+        source?.show(destination, sender: nil)
+    }
+
+    // MARK: Passing data
+
+    func passDataToHome(source: LoginDataStore?, destination: inout HomeDataStore?){
+        destination?.userAccount = source?.userAccount
+    }
 }
