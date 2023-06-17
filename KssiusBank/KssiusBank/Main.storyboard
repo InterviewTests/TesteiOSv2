@@ -16,9 +16,79 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="MbF-Jp-oWw">
+                                <rect key="frame" x="134" y="99" width="125" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="1En-ce-Bp2"/>
+                                    <constraint firstAttribute="width" constant="125" id="Y2j-kW-4Yi"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-GZ-FD0">
+                                <rect key="frame" x="16" y="274" width="361" height="198.33333333333337"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YlE-cJ-jdU" customClass="DefaultTextField" customModule="KssiusBank" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ebX-EB-1UT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RfI-NU-4O0" customClass="DefaultTextField" customModule="KssiusBank" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="71" width="361" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="OIu-hd-2Fv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TKk-Dr-axF">
+                                        <rect key="frame" x="0.0" y="142" width="361" height="15.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="oWy-vQ-nNz">
+                                        <rect key="frame" x="0.0" y="178.33333333333331" width="361" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYI-64-3qj" customClass="DefaultButton" customModule="KssiusBank" customModuleProvider="target">
+                                <rect key="frame" x="95.666666666666686" y="723" width="202" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="QX7-tb-bvt"/>
+                                    <constraint firstAttribute="width" constant="202" id="Rej-CJ-Lzi"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                <connections>
+                                    <action selector="didTapLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="evJ-cE-rcA"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MbF-Jp-oWw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="6It-T5-ajd"/>
+                            <constraint firstItem="rYI-64-3qj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8E8-PV-8nL"/>
+                            <constraint firstItem="MbF-Jp-oWw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Lbs-dL-lNv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rYI-64-3qj" secondAttribute="bottom" constant="33" id="PV4-EK-DwU"/>
+                            <constraint firstItem="fOW-GZ-FD0" firstAttribute="top" secondItem="MbF-Jp-oWw" secondAttribute="bottom" constant="105" id="ja3-Lr-viw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fOW-GZ-FD0" secondAttribute="trailing" constant="16" id="uM5-vh-9gl"/>
+                            <constraint firstItem="fOW-GZ-FD0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="upF-1p-ak1"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonBottomConstraint" destination="PV4-EK-DwU" id="bdU-uB-SBF"/>
+                        <outlet property="contentStack" destination="fOW-GZ-FD0" id="Ctl-ac-32o"/>
+                        <outlet property="contentViewTopConstraint" destination="ja3-Lr-viw" id="nJN-gz-gr4"/>
+                        <outlet property="errorLabel" destination="TKk-Dr-axF" id="aew-mV-ZDt"/>
+                        <outlet property="indicatorView" destination="oWy-vQ-nNz" id="Uia-SX-TUq"/>
+                        <outlet property="loginButton" destination="rYI-64-3qj" id="nUR-OL-gAP"/>
+                        <outlet property="passwordTextField" destination="RfI-NU-4O0" id="Tbj-5V-SXs"/>
+                        <outlet property="userTextField" destination="YlE-cJ-jdU" id="Qzv-YS-CFy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -26,8 +96,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Logo" width="125" height="70"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

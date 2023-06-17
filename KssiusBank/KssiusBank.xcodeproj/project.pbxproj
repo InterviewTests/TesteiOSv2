@@ -84,6 +84,16 @@
 		DF7D3F8D2A3CE0A90009770F /* CommonValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7D3F8C2A3CE0A90009770F /* CommonValidatorTest.swift */; };
 		DFC4E8312A3D3C13004B6718 /* LoginViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8302A3D3C13004B6718 /* LoginViewControllerTest.swift */; };
 		DFC4E8342A3D41A0004B6718 /* TextFieldSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */; };
+		DFC4E8372A3DD709004B6718 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */; };
+		DFC4E8382A3DD709004B6718 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */; };
+		DFC4E83C2A3DDA2F004B6718 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E83B2A3DDA2F004B6718 /* UIColor+extension.swift */; };
+		DFC4E83D2A3DDA30004B6718 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E83B2A3DDA2F004B6718 /* UIColor+extension.swift */; };
+		DFC4E83F2A3DDC03004B6718 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E83E2A3DDC03004B6718 /* DefaultButton.swift */; };
+		DFC4E8402A3DDC03004B6718 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E83E2A3DDC03004B6718 /* DefaultButton.swift */; };
+		DFC4E8422A3DDD19004B6718 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8412A3DDD19004B6718 /* UIFont+extension.swift */; };
+		DFC4E8432A3DDD19004B6718 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8412A3DDD19004B6718 /* UIFont+extension.swift */; };
+		DFC4E8452A3DE51D004B6718 /* UIResponder+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8442A3DE51D004B6718 /* UIResponder+extension.swift */; };
+		DFC4E8462A3DE51D004B6718 /* UIResponder+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8442A3DE51D004B6718 /* UIResponder+extension.swift */; };
 		DFF0843A2A3D24F500672477 /* LoginInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF084392A3D24F500672477 /* LoginInteractorTest.swift */; };
 		DFF084412A3D2B2700672477 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82B2A3BF03900A812F4 /* LoginRouter.swift */; };
 		DFF084422A3D2B2700672477 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8292A3BF03900A812F4 /* LoginPresenter.swift */; };
@@ -172,6 +182,11 @@
 		DF7D3F8C2A3CE0A90009770F /* CommonValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonValidatorTest.swift; sourceTree = "<group>"; };
 		DFC4E8302A3D3C13004B6718 /* LoginViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTest.swift; sourceTree = "<group>"; };
 		DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSpy.swift; sourceTree = "<group>"; };
+		DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
+		DFC4E83B2A3DDA2F004B6718 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		DFC4E83E2A3DDC03004B6718 /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
+		DFC4E8412A3DDD19004B6718 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
+		DFC4E8442A3DE51D004B6718 /* UIResponder+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+extension.swift"; sourceTree = "<group>"; };
 		DFEC18532A3BD28C001277A2 /* UserAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountModel.swift; sourceTree = "<group>"; };
 		DFEC18562A3BD314001277A2 /* UserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorker.swift; sourceTree = "<group>"; };
 		DFEC18592A3BD423001277A2 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -226,10 +241,10 @@
 		DF0BA7C42A3BE5CE00A812F4 /* KssiusBank */ = {
 			isa = PBXGroup;
 			children = (
+				DFC4E8352A3DD57E004B6718 /* DesignSystem */,
 				DF0BA87B2A3CC4D300A812F4 /* Generated */,
 				DF0BA8722A3CB89F00A812F4 /* Resources */,
 				DF0BA8452A3C7B7A00A812F4 /* Core */,
-				DFEC185C2A3BD43B001277A2 /* Common */,
 				DFEC18422A3BD060001277A2 /* Services */,
 				DFEC18412A3BD051001277A2 /* Workers */,
 				DFEC18402A3BD044001277A2 /* Scenes */,
@@ -251,7 +266,6 @@
 				DFC4E8322A3D4186004B6718 /* UIKitSpy */,
 				DF4624DF2A3D1E0900CBC35D /* Scenes */,
 				DF4624D92A3D0A6A00CBC35D /* Workers */,
-				DF7D3F8B2A3CE0880009770F /* Common */,
 				DF0BA84F2A3C830700A812F4 /* Core */,
 				DF0BA7FB2A3BE6C900A812F4 /* KssiusBankTests.swift */,
 				DFEC18692A3BDE0D001277A2 /* Services */,
@@ -319,6 +333,7 @@
 		DF0BA8452A3C7B7A00A812F4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				DFEC185C2A3BD43B001277A2 /* Common */,
 				DF4624C42A3CF06200CBC35D /* User */,
 			);
 			path = Core;
@@ -327,6 +342,7 @@
 		DF0BA84F2A3C830700A812F4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				DF7D3F8B2A3CE0880009770F /* Common */,
 				DF0BA8522A3C833500A812F4 /* Repositories */,
 				DF0BA8502A3C831400A812F4 /* Data */,
 			);
@@ -453,6 +469,34 @@
 				DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */,
 			);
 			path = UIKitSpy;
+			sourceTree = "<group>";
+		};
+		DFC4E8352A3DD57E004B6718 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				DFC4E8392A3DDA0D004B6718 /* UI */,
+				DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */,
+				DFC4E83E2A3DDC03004B6718 /* DefaultButton.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		DFC4E8392A3DDA0D004B6718 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DFC4E83A2A3DDA15004B6718 /* Extensions */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		DFC4E83A2A3DDA15004B6718 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DFC4E83B2A3DDA2F004B6718 /* UIColor+extension.swift */,
+				DFC4E8412A3DDD19004B6718 /* UIFont+extension.swift */,
+				DFC4E8442A3DE51D004B6718 /* UIResponder+extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DFEC18012A3BCFF9001277A2 = {
@@ -825,9 +869,11 @@
 				DF0BA80C2A3BE6CA00A812F4 /* ViewController.swift in Sources */,
 				DF4624CF2A3CF6EE00CBC35D /* AuthenticationLocalRepositoryProtocol.swift in Sources */,
 				DF0BA8242A3BEE3D00A812F4 /* BankFailure.swift in Sources */,
+				DFC4E83F2A3DDC03004B6718 /* DefaultButton.swift in Sources */,
 				DF4624C92A3CF0D700CBC35D /* AutenticationLocalDatasource.swift in Sources */,
 				DFF084472A3D2C5600672477 /* LoginWorker.swift in Sources */,
 				DF4624C62A3CF0AC00CBC35D /* AutenticationLocalDatasourceProtocol.swift in Sources */,
+				DFC4E8372A3DD709004B6718 /* DefaultTextField.swift in Sources */,
 				DF0BA8332A3BF03900A812F4 /* LoginViewController.swift in Sources */,
 				DF0BA8342A3BF03900A812F4 /* LoginInteractor.swift in Sources */,
 				DF0BA82F2A3BF03900A812F4 /* LoginPresenter.swift in Sources */,
@@ -837,18 +883,21 @@
 				DF0BA8092A3BE6CA00A812F4 /* AppDelegate.swift in Sources */,
 				DF0BA87F2A3CC4ED00A812F4 /* Strings+Generated.swift in Sources */,
 				DF0BA85E2A3C985500A812F4 /* AuthenticationServiceDatasourceProtocol.swift in Sources */,
+				DFC4E8422A3DDD19004B6718 /* UIFont+extension.swift in Sources */,
 				DF0BA8072A3BE6CA00A812F4 /* SceneDelegate.swift in Sources */,
 				DF0BA8362A3BF05800A812F4 /* UserWorker.swift in Sources */,
 				DF0BA8582A3C87AE00A812F4 /* Constants.swift in Sources */,
 				DF0BA8322A3BF03900A812F4 /* LoginModels.swift in Sources */,
 				DF0BA8112A3BE9F200A812F4 /* UserAccountModel.swift in Sources */,
 				DF4624CC2A3CF6DB00CBC35D /* AutenticationLocalRepository.swift in Sources */,
+				DFC4E83C2A3DDA2F004B6718 /* UIColor+extension.swift in Sources */,
 				DF0BA7D02A3BE5CE00A812F4 /* KssiusBank.xcdatamodeld in Sources */,
 				DF0BA8492A3C7C8E00A812F4 /* AutenticationServiceDatasource.swift in Sources */,
 				DF0BA86F2A3CAC7D00A812F4 /* CommonValidator.swift in Sources */,
 				DF0BA86C2A3CA9AB00A812F4 /* UserFailure.swift in Sources */,
 				DF0BA87E2A3CC4ED00A812F4 /* XCAssets+Generated.swift in Sources */,
 				DF0BA8312A3BF03900A812F4 /* LoginRouter.swift in Sources */,
+				DFC4E8452A3DE51D004B6718 /* UIResponder+extension.swift in Sources */,
 				DF0BA8472A3C7C0200A812F4 /* AutenticationRepository.swift in Sources */,
 				DF0BA8432A3C7AAD00A812F4 /* AuthenticationRepositoryProtocol.swift in Sources */,
 			);
@@ -868,13 +917,16 @@
 				DF0BA8812A3CC4F500A812F4 /* XCAssets+Generated.swift in Sources */,
 				DF0BA8802A3CC4F300A812F4 /* Strings+Generated.swift in Sources */,
 				DF4624D52A3D080600CBC35D /* AuthenticationLocalRepositoryTest.swift in Sources */,
+				DFC4E8402A3DDC03004B6718 /* DefaultButton.swift in Sources */,
 				DF0BA7F82A3BE65B00A812F4 /* MockURLProtocol.swift in Sources */,
 				DF0BA80E2A3BE6D400A812F4 /* KssiusBankTests.swift in Sources */,
 				DFC4E8312A3D3C13004B6718 /* LoginViewControllerTest.swift in Sources */,
 				DFF084442A3D2B2700672477 /* LoginInteractor.swift in Sources */,
+				DFC4E8462A3DE51D004B6718 /* UIResponder+extension.swift in Sources */,
 				DF4624E22A3D1E3300CBC35D /* LoginWorkerTest.swift in Sources */,
 				DF0BA8592A3C87AE00A812F4 /* Constants.swift in Sources */,
 				DF0BA8392A3BFB6100A812F4 /* Seeds.swift in Sources */,
+				DFC4E8432A3DDD19004B6718 /* UIFont+extension.swift in Sources */,
 				DFF0844A2A3D38AF00672477 /* LoginPresenterTest.swift in Sources */,
 				DFF084412A3D2B2700672477 /* LoginRouter.swift in Sources */,
 				DF0BA86D2A3CA9AB00A812F4 /* UserFailure.swift in Sources */,
@@ -886,6 +938,7 @@
 				DFF084422A3D2B2700672477 /* LoginPresenter.swift in Sources */,
 				DF4624D32A3D030700CBC35D /* AutenticationLocalDatasourceTest.swift in Sources */,
 				DF4624E52A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift in Sources */,
+				DFC4E8382A3DD709004B6718 /* DefaultTextField.swift in Sources */,
 				DF4624D82A3D091400CBC35D /* MockAutenticationLocalDatasourceProtocol.swift in Sources */,
 				DF0BA8702A3CAC7D00A812F4 /* CommonValidator.swift in Sources */,
 				DF0BA84A2A3C7C8E00A812F4 /* AutenticationServiceDatasource.swift in Sources */,
@@ -896,6 +949,7 @@
 				DFF084482A3D2C5700672477 /* LoginWorker.swift in Sources */,
 				DFC4E8342A3D41A0004B6718 /* TextFieldSpy.swift in Sources */,
 				DFF084462A3D2B2700672477 /* LoginViewController.swift in Sources */,
+				DFC4E83D2A3DDA30004B6718 /* UIColor+extension.swift in Sources */,
 				DFF0843A2A3D24F500672477 /* LoginInteractorTest.swift in Sources */,
 				DF0BA8622A3C998100A812F4 /* AuthenticationRepositoryTest.swift in Sources */,
 				DF0BA8182A3BEC4800A812F4 /* NetworkService.swift in Sources */,
