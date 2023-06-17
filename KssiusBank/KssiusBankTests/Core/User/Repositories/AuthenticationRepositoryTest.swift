@@ -10,13 +10,11 @@ import XCTest
 
 final class AuthenticationRepositoryTest: XCTestCase {
     var sut: AuthenticationRepositoryProtocol?
-    var expectation: XCTestExpectation!
     let successCpfModelRequest = LoginRequestModel(username: "468.655.400-42", password: "T@to123")
     let successEmailModelRequest = LoginRequestModel(username: "Marquis_Gibson@hotmail.com", password: "T@to123")
 
     override func setUp() {
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
-        expectation = expectation(description: "AuthenticationServiceDatasource Expectation")
     }
 
     override func tearDown() {
@@ -26,17 +24,17 @@ final class AuthenticationRepositoryTest: XCTestCase {
     // MARK: - Success Authentication Response
 
     func testSuccessResponse() {
-
-        sut?.perform(login: .loginRequest, with: successCpfModelRequest ){ [weak self] result in
+        let expectation = expectation(description: "Waiting for execute login to complete.")
+        sut?.perform(login: .loginRequest, with: successCpfModelRequest ){ result in
             switch(result){
             case .success(let userModel):
                 XCTAssertEqual(userModel.email, "Marquis_Gibson@hotmail.com")
             case .failure( _):
                 XCTFail("Should not return a failure")
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 
     // MARK: - Server Error Response
@@ -47,17 +45,18 @@ final class AuthenticationRepositoryTest: XCTestCase {
         sut = AuthenticationRepository(authenticationService: failureNetwork)
 
         let modelRequest = LoginRequestModel(username: "468.655.400-42", password: "T@to123")
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: modelRequest){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: modelRequest){ result in
             switch(result){
             case .success( _):
                 XCTFail("Should not return a failure")
             case .failure( let error):
                 XCTAssertEqual(error , .network(.init()))
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 }
 
@@ -69,8 +68,9 @@ extension AuthenticationRepositoryTest {
 
     func testSuccessCpfResponse() {
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: successCpfModelRequest ){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: successCpfModelRequest ){ result in
             switch(result){
             case .success( let userModel):
                 XCTAssertEqual(userModel.email, "Marquis_Gibson@hotmail.com")
@@ -78,9 +78,9 @@ extension AuthenticationRepositoryTest {
                 XCTFail("Should not return a failure")
 
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 
 
@@ -89,17 +89,18 @@ extension AuthenticationRepositoryTest {
     func testFailureCpfResponse() {
         let modelRequest = LoginRequestModel(username: "331.876.789.90", password: "pass")
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: modelRequest ){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: modelRequest ){ result in
             switch(result){
             case .success( _):
                 XCTFail("Should not return a failure")
             case .failure( let error):
                 XCTAssertEqual(error , .user)
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 }
 
@@ -111,8 +112,9 @@ extension AuthenticationRepositoryTest {
 
     func testSuccessEmailResponse() {
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: successEmailModelRequest ){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: successEmailModelRequest ){ result in
             switch(result){
             case .success( let userModel):
                 XCTAssertEqual(userModel.email, "Marquis_Gibson@hotmail.com")
@@ -120,9 +122,9 @@ extension AuthenticationRepositoryTest {
                 XCTFail("Should not return a failure")
 
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 
     // MARK: - Success Email Authentication With Dot
@@ -130,8 +132,9 @@ extension AuthenticationRepositoryTest {
     func testSuccessEmailWithDotResponse() {
         let successEmailModelRequest = LoginRequestModel(username: "Marquis.Gibson@hotmail.com", password: "T@to123")
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: successEmailModelRequest ){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: successEmailModelRequest ){ result in
             switch(result){
             case .success( let userModel):
                 XCTAssertEqual(userModel.email, "Marquis_Gibson@hotmail.com")
@@ -139,9 +142,9 @@ extension AuthenticationRepositoryTest {
                 XCTFail("Should not return a failure")
 
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 
 
@@ -150,17 +153,18 @@ extension AuthenticationRepositoryTest {
     func testFailureEmailDomainResponse() {
         let modelRequest = LoginRequestModel(username: "test@teste", password: "pass")
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: modelRequest ){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: modelRequest ){ result in
             switch(result){
             case .success( _):
                 XCTFail("Should not return a failure")
             case .failure( let error):
                 XCTAssertEqual(error , .user)
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 
     // MARK: - Failure Email Authentication Response
@@ -168,17 +172,18 @@ extension AuthenticationRepositoryTest {
     func testFailureEmailTextResponse() {
         let modelRequest = LoginRequestModel(username: "test tt@teste", password: "pass")
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: modelRequest ){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: modelRequest ){ result in
             switch(result){
             case .success( _):
                 XCTFail("Should not return a failure")
             case .failure( let error):
                 XCTAssertEqual(error , .user)
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 }
 
@@ -192,17 +197,18 @@ extension AuthenticationRepositoryTest {
     func testFailurePasswordSpecialCharResponse() {
         let modelRequest = LoginRequestModel(username: "test@test.com", password: "Tato123")
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: modelRequest ){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: modelRequest ){ result in
             switch(result){
             case .success( _):
                 XCTFail("Should not return a failure")
             case .failure( let error):
                 XCTAssertEqual(error , .password)
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 
     // MARK: - Failure Password Upper char Authentication
@@ -210,17 +216,18 @@ extension AuthenticationRepositoryTest {
     func testFailurePasswordUpperCharResponse() {
         let modelRequest = LoginRequestModel(username: "test@test.com", password: "t@to123")
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: modelRequest ){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: modelRequest ){ result in
             switch(result){
             case .success( _):
                 XCTFail("Should not return a failure")
             case .failure( let error):
                 XCTAssertEqual(error , .password)
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 
     // MARK: - Failure Password Number Authentication
@@ -228,17 +235,18 @@ extension AuthenticationRepositoryTest {
     func testFailurePasswordNumberResponse() {
         let modelRequest = LoginRequestModel(username: "test@test.com", password: "T@toBAC")
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: modelRequest ){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: modelRequest ){ result in
             switch(result){
             case .success( _):
                 XCTFail("Should not return a failure")
             case .failure( let error):
                 XCTAssertEqual(error , .password)
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 
     // MARK: - Failure Password Alpha char Authentication
@@ -246,16 +254,17 @@ extension AuthenticationRepositoryTest {
     func testFailurePasswordAlphaResponse() {
         let modelRequest = LoginRequestModel(username: "test@test.com", password: "%@45123")
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
+        let expectation = expectation(description: "Waiting for execute login to complete.")
 
-        sut?.perform(login: .loginRequest, with: modelRequest ){ [weak self] result in
+        sut?.perform(login: .loginRequest, with: modelRequest ){ result in
             switch(result){
             case .success( _):
                 XCTFail("Should not return a failure")
             case .failure( let error):
                 XCTAssertEqual(error , .password)
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 }

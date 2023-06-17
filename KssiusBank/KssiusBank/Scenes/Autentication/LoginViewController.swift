@@ -156,11 +156,12 @@ extension LoginViewController: LoginDisplayLogic {
     }
 
     func resolveLogin(viewModel: Login.Login.ViewModel) {
-
-        if viewModel.success {
-            presentHomeScene()
-        }else {
-            presentError(viewModel: viewModel)
+        DispatchQueue.main.async { [weak self] in
+            if viewModel.success {
+                self?.presentHomeScene()
+            }else {
+                self?.presentError(viewModel: viewModel)
+            }
         }
 
     }
@@ -170,10 +171,10 @@ extension LoginViewController: LoginDisplayLogic {
 extension LoginViewController {
 
     @IBAction func didTapLogin(_ sender: Any) {
-        didLogin()
+        performLogin()
     }
 
-    private func didLogin() {
+    private func performLogin() {
         startState()
         let userText = userTextField?.text
         let passwordText = passwordTextField?.text
@@ -225,7 +226,7 @@ extension LoginViewController: UITextFieldDelegate {
         if textField == userTextField {
             passwordTextField?.becomeFirstResponder()
         }else {
-            didLogin()
+            performLogin()
         }
         return true
     }

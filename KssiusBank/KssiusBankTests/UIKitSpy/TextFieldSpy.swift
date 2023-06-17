@@ -8,4 +8,4 @@
 
 import UIKit
 
-final class TextFieldSpy: UITextField {}
+class TextFieldSpy: DefaultTextField {}

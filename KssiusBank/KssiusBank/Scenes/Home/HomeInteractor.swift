@@ -14,7 +14,7 @@ import UIKit
 
 protocol HomeBusinessLogic
 {
-  func doSomething(request: Home.Something.Request)
+  func doSomething(request: Home.GetStatements.Request)
 }
 
 protocol HomeDataStore
@@ -30,12 +30,12 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore
   
   // MARK: Do something
   
-  func doSomething(request: Home.Something.Request)
+  func doSomething(request: Home.GetStatements.Request)
   {
     worker = HomeWorker()
     worker?.doSomeWork()
     
-    let response = Home.Something.Response()
+    let response = Home.GetStatements.Response(statements: [])
     presenter?.presentSomething(response: response)
   }
 }

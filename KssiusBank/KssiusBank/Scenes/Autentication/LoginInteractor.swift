@@ -61,16 +61,12 @@ extension LoginInteractor {
         worker?.login(username: user, password: password) {[weak self] result in
 
             switch( result ) {
-
             case .success(let accountModel):
                 self?.handle(success: accountModel)
             case .failure(let failure):
-                DispatchQueue.main.async { [weak self] in
-                    if let response = self?.handle(errors: failure) {
-                        self?.presenter?.resolveLogin(response: response)
-                    }
+                if let response = self?.handle(errors: failure) {
+                    self?.presenter?.resolveLogin(response: response)
                 }
-
             }
         }
     }
@@ -78,13 +74,11 @@ extension LoginInteractor {
     private func handle(success accountModel: UserAccountModel ) {
         userAccount = accountModel
         userWork?.save(user: accountModel)
-        DispatchQueue.main.async { [weak self] in
-            self?.presenter?.resolveLogin(response: .init(success: true))
-        }
+        presenter?.resolveLogin(response: .init(success: true))
+
     }
 
     private func handle(errors: UserFailure) -> Login.Login.Response {
-
         switch(errors) {
         case .user:
             return .init(errorMessage: L10n.User.Authentication.Error.invalidCpf)

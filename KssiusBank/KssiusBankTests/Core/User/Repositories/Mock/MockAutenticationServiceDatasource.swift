@@ -16,7 +16,7 @@ final class MockSuccessAutenticationServiceDatasource: AuthenticationServiceData
 
     init(networkService: NetworkService<UserAccountModel>) {}
 
-    func perform(login: AutenticationApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, BankFailure>) -> Void) {
+    func perform(login: BankApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, BankFailure>) -> Void) {
         completion(.success(Seeds.user)
         )
     }
@@ -32,7 +32,7 @@ final class MockFailureNetworkAutenticationServiceDatasource: AuthenticationServ
 
     init(networkService: NetworkService<UserAccountModel>) {}
 
-    func perform(login: AutenticationApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, BankFailure>) -> Void) {
+    func perform(login: BankApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, BankFailure>) -> Void) {
         completion(.failure(.network(.init())))
     }
 }

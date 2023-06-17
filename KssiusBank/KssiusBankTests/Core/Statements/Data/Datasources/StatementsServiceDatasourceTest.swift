@@ -8,10 +8,9 @@
 import XCTest
 @testable import KssiusBank
 
-final class AutenticationServiceDatasourceTest: XCTestCase {
-    var sut: AuthenticationServiceDatasourceProtocol?
-    var expectation: XCTestExpectation!
-    let apiURL = URL(string: "https://example.com.br/login")!
+final class StatementsServiceDatasourceTest: XCTestCase {
+    var sut: StatementsServiceDatasourceProtocol?
+    let apiURL = URL(string: "https://example.com.br/statements")!
     let baseUrl = "https://example.com.br"
     
     override func setUp() {
@@ -20,8 +19,8 @@ final class AutenticationServiceDatasourceTest: XCTestCase {
         configuration.protocolClasses = [MockURLProtocol.self]
         let urlSession = URLSession.init(configuration: configuration)
 
-        sut = AuthenticationServiceDatasource(networkService: .init(urlSession: urlSession))
-        expectation = expectation(description: "AutenticationServiceDatasource Expectation")
+        sut = StatementsServiceDatasource(networkService: .init(urlSession: urlSession))
+
     }
 
     override func tearDown() {
@@ -31,37 +30,34 @@ final class AutenticationServiceDatasourceTest: XCTestCase {
     // MARK: - Success Response
 
     func testSuccessResponse() {
-        let data = Seeds.Json.account.rawValue.data(using: .utf8)
-        let modelRequest = LoginRequestModel(username: Seeds.cpf, password: Seeds.password)
+        let data = Seeds.Statements.json.data(using: .utf8)
 
         MockURLProtocol.requestHandler = { request in
             let response = HTTPURLResponse(url: self.apiURL, statusCode: 200, httpVersion: nil, headerFields: nil)!
             return (response, data)
         }
-
-        sut?.perform(login: .loginRequest, with: modelRequest ){ [weak self] result in
+        let expectation = expectation(description: "Waiting for fetch statements call to complete.")
+        sut?.fetch(statements: .statementsRequest ){ result in
             switch(result){
             case .success(let userModel):
-                XCTAssertEqual(userModel.email, "Marquis_Gibson@hotmail.com")
+                XCTAssertEqual(userModel.count, 3)
             case .failure( _):
                 XCTFail("Should not return a failure")
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 
     // MARK: - Server Error Response
 
     func testErrorResponse() {
 
-        let modelRequest = LoginRequestModel(username: Seeds.cpf, password: Seeds.password)
-
         MockURLProtocol.requestHandler = { request in
             throw ServiceError.invalidUrl
         }
-
-        sut?.perform(login: .loginRequest,with: modelRequest){ [weak self] result in
+        let expectation = expectation(description: "Waiting for fetch statements call to complete.")
+        sut?.fetch(statements: .statementsRequest){ result in
             switch(result){
             case .success( _):
                 XCTFail("Should not return a failure")
@@ -71,8 +67,8 @@ final class AutenticationServiceDatasourceTest: XCTestCase {
                     XCTAssertEqual(error, BankFailure.network(.init()))
                 }
             }
-            self?.expectation.fulfill()
+            expectation.fulfill()
         }
-        wait(for: [self.expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.0)
     }
 }

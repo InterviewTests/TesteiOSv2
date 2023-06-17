@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AuthenticationRepositoryProtocol: AnyObject {
-    func perform(login: AutenticationApi.Endpoints,
+    func perform(login: BankApi.Endpoints,
                  with data: LoginRequestModel,
                  completion: @escaping (Result<UserAccountModel, UserFailure>) -> Void)
 }

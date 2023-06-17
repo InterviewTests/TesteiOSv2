@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DefaultTextField: UITextField {
+class DefaultTextField: UITextField {
 
     // MARK: - Constants
     

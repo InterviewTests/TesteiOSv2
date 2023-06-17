@@ -14,7 +14,7 @@ import UIKit
 
 protocol HomeDisplayLogic: class
 {
-  func displaySomething(viewModel: Home.Something.ViewModel)
+  func displaySomething(viewModel: Home.GetStatements.ViewModel)
 }
 
 class HomeViewController: UITableViewController, HomeDisplayLogic
@@ -104,11 +104,11 @@ class HomeViewController: UITableViewController, HomeDisplayLogic
   
   func doSomething()
   {
-    let request = Home.Something.Request()
+    let request = Home.GetStatements.Request()
     interactor?.doSomething(request: request)
   }
   
-  func displaySomething(viewModel: Home.Something.ViewModel)
+  func displaySomething(viewModel: Home.GetStatements.ViewModel)
   {
     //nameTextField.text = viewModel.name
   }

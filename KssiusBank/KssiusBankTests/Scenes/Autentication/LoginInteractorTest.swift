@@ -102,7 +102,7 @@ extension LoginInteractorTest {
     // MARK: - Login Success with cpf
 
     func testSuccessLoginWithCPF() {
-        // GIVEN
+        
         let presenterSpy = LoginPresenterSpy()
         let workerSpy = LoginWorkerSuccessSpy()
         let userWorkerSpy = UserWorkerSuccessSpy()

@@ -16,16 +16,33 @@ enum Home
 {
   // MARK: Use cases
   
-  enum Something
+  enum GetStatements
   {
-    struct Request
-    {
+    struct Request{}
+
+    struct Response{
+        let statements: [StatementsModel]
+
+        // MARK: - Inits
+
+        init(statements: [StatementsModel]) {
+            self.statements = statements
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
+
+    struct ViewModel{
+
+        // MARK: - Properties
+
+        let statements: [StatementsModel]
+        let success: Bool
+
+        // MARK: - Inits
+
+        init(statements: [StatementsModel], success: Bool) {
+            self.statements = statements
+            self.success = success
+        }
     }
   }
 }

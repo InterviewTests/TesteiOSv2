@@ -24,7 +24,7 @@ final class AuthenticationRepository: AuthenticationRepositoryProtocol {
 // MARK: - POST Methods
 
 extension AuthenticationRepository {
-    func perform(login: AutenticationApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, UserFailure>) -> Void) {
+    func perform(login: BankApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, UserFailure>) -> Void) {
 
         if (!CommonValidator.User.isCpf(data.username) && !CommonValidator.User.isEmail(data.username)) {
             completion(.failure(.user))

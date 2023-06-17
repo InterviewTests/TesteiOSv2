@@ -65,7 +65,7 @@ class NetworkService<R : Codable> {
     }
 
     func request(endpoint: Endpoint, payload: Encodable? = nil, completion: @escaping (Result<Response, ServiceError>) -> Void)  {
-        var path = endpoint.fullPath
+        let path = endpoint.fullPath
         guard let url = URL(string: path) else {
             completion(.failure(.invalidUrl))
             return;
@@ -87,7 +87,11 @@ class NetworkService<R : Codable> {
                 return
             }
             do{
-                let body = try JSONDecoder().decode(Response.self, from: data)
+                let decoder = JSONDecoder()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                let body = try decoder.decode(Response.self, from: data)
                 completion(.success(body))
             }catch {
                 printIfDebug("\(error)")

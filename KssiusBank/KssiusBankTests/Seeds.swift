@@ -35,5 +35,48 @@ struct Seeds {
                                        agency: "827810101",
                                        balance: "472.29")
 
+    enum Statements {
+        static let json = """
+        [
+            {
+            "type": "Pagamento",
+            "description": "Conta de Luz",
+            "date": "2020-01-02",
+            "value": 1550.50
+            },
+            {
+            "type": "Pagamento",
+            "description": "Conta de Luz",
+            "date": "2020-02-05",
+            "value": 300
+            },
+            {
+            "type": "Pagamento",
+            "description": "Conta de Luz",
+            "date": "2020-04-03",
+            "value": 200.30
+            }
+        
+        ]
+        """
 
+        static let statements = [
+            StatementsModel(type: "Pagamento", description: "Conta de Luz", date: .init(year: 2020, month: 01, day: 2), value: 200.00),
+            StatementsModel(type: "Pagamento", description: "Conta de Luz", date: .init(year: 2020, month: 02, day: 5), value: 300.00),
+            StatementsModel(type: "Pagamento", description: "Conta de Luz", date: .init(year: 2020, month: 04, day: 3), value: 200.00)
+        ]
+    }
+}
+
+extension Date {
+
+    init( year: Int, month: Int, day: Int) {
+        var dateComponents = DateComponents()
+        dateComponents.month = month
+        dateComponents.day = day
+        dateComponents.year = year
+        dateComponents.timeZone = .current
+        dateComponents.calendar = .current
+        self = Calendar.current.date(from: dateComponents) ?? Date()
+    }
 }

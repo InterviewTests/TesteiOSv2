@@ -12,7 +12,7 @@ final class MockSuccessAuthenticationRepository: AuthenticationRepositoryProtoco
 
     var performLoginCalled = false
 
-    func perform(login: AutenticationApi.Endpoints, with data: LoginRequestModel,
+    func perform(login: BankApi.Endpoints, with data: LoginRequestModel,
                  completion: @escaping (Result<UserAccountModel, UserFailure>) -> Void) {
         performLoginCalled = true
         completion(.success(Seeds.user))
@@ -28,7 +28,7 @@ final class MockFailureAuthenticationRepository: AuthenticationRepositoryProtoco
         self.userFailure = userFailure
     }
 
-    func perform(login: AutenticationApi.Endpoints, with data: LoginRequestModel,
+    func perform(login: BankApi.Endpoints, with data: LoginRequestModel,
                  completion: @escaping (Result<UserAccountModel, UserFailure>) -> Void) {
         performLoginCalled = true
         completion(.failure(userFailure))
