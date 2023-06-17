@@ -11,15 +11,29 @@ struct Seeds {
     enum Json: String {
         case account = """
         {
-          "createdAt": "2023-06-15T23:36:43.182Z",
-          "name": "Diana Leuschke",
-          "email": "Marquis_Gibson@hotmail.com",
-          "cpf": "468.655.400-42",
-          "accountNumber": "74393734",
-          "agency": "827810101",
-          "balance": "472.29",
-          "id": "3"
-         }
+        "createdAt": "2023-06-15T23:36:43.182Z",
+        "name": "Diana Leuschke",
+        "email": "Marquis_Gibson@hotmail.com",
+        "cpf": "468.655.400-42",
+        "accountNumber": "74393734",
+        "agency": "827810101",
+        "balance": "472.29",
+        "id": "3"
+        }
         """
     }
+
+    static let email = "Marquis_Gibson@hotmail.com"
+    static let password = "T@to123"
+    static let cpf = "468.655.400-42"
+
+    static let user = UserAccountModel(userId: "3",
+                                       email: "Marquis_Gibson@hotmail.com",
+                                       cpf: "468.655.400-42",
+                                       name: "Diana Leuschke",
+                                       accountNumber: "74393734",
+                                       agency: "827810101",
+                                       balance: "472.29")
+
+
 }

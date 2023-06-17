@@ -15,11 +15,12 @@ import UIKit
 protocol LoginBusinessLogic
 {
     func login(request: Login.Login.Request)
+    func fetchUser(request: Login.FetchUser.Request)
 }
 
 protocol LoginDataStore
 {
-    var account: UserAccountModel? { get set }
+    var userAccount: UserAccountModel? { get set }
 }
 
 final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
@@ -27,16 +28,16 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     // MARK: - Properties
 
     private let presenter: LoginPresentationLogic?
-    private let worker: LoginWorker?
+    private let worker: LoginWorkerLogic?
     private let userWork: UserWorkerLogic?
 
     // MARK: - DataSource
-    var account: UserAccountModel?
+    var userAccount: UserAccountModel?
 
     // MARK: - Inits
 
     init(presenter: LoginPresentationLogic? = nil,
-         worker: LoginWorker? = nil,
+         worker: LoginWorkerLogic? = nil,
          userWork: UserWorkerLogic? = nil) {
         self.presenter = presenter
         self.worker = worker
@@ -71,7 +72,7 @@ extension LoginInteractor {
     }
 
     private func handle(success accountModel: UserAccountModel ) {
-        account = accountModel
+        userAccount = accountModel
         userWork?.save(user: accountModel)
         presenter?.resolveLogin(response: .init(success: true))
     }
@@ -88,4 +89,14 @@ extension LoginInteractor {
 
     }
 
+}
+
+// MARK: - Fetch User
+
+extension LoginInteractor {
+
+    func fetchUser(request: Login.FetchUser.Request) {
+        userAccount = userWork?.retrieveUser()
+        presenter?.displayUser(response: .init(user: userAccount?.email))
+    }
 }

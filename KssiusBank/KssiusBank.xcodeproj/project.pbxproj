@@ -33,7 +33,6 @@
 		DF0BA8252A3BEE3D00A812F4 /* BankFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEC185E2A3BD43B001277A2 /* BankFailure.swift */; };
 		DF0BA8272A3BEEED00A812F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF0BA8012A3BE6CA00A812F4 /* Assets.xcassets */; };
 		DF0BA82F2A3BF03900A812F4 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8292A3BF03900A812F4 /* LoginPresenter.swift */; };
-		DF0BA8302A3BF03900A812F4 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82A2A3BF03900A812F4 /* LoginWorker.swift */; };
 		DF0BA8312A3BF03900A812F4 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82B2A3BF03900A812F4 /* LoginRouter.swift */; };
 		DF0BA8322A3BF03900A812F4 /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82C2A3BF03900A812F4 /* LoginModels.swift */; };
 		DF0BA8332A3BF03900A812F4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82D2A3BF03900A812F4 /* LoginViewController.swift */; };
@@ -54,7 +53,6 @@
 		DF0BA85F2A3C985500A812F4 /* AuthenticationServiceDatasourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA85D2A3C985500A812F4 /* AuthenticationServiceDatasourceProtocol.swift */; };
 		DF0BA8622A3C998100A812F4 /* AuthenticationRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8602A3C998100A812F4 /* AuthenticationRepositoryTest.swift */; };
 		DF0BA8652A3C9A3E00A812F4 /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8632A3C9A3E00A812F4 /* MockSession.swift */; };
-		DF0BA8662A3C9B4600A812F4 /* AuthenticationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8422A3C7AAD00A812F4 /* AuthenticationRepositoryProtocol.swift */; };
 		DF0BA8692A3C9BA900A812F4 /* MockAutenticationServiceDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8672A3C9BA900A812F4 /* MockAutenticationServiceDatasource.swift */; };
 		DF0BA86A2A3C9CB700A812F4 /* AutenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8462A3C7C0200A812F4 /* AutenticationRepository.swift */; };
 		DF0BA86C2A3CA9AB00A812F4 /* UserFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA86B2A3CA9AB00A812F4 /* UserFailure.swift */; };
@@ -80,7 +78,21 @@
 		DF4624D82A3D091400CBC35D /* MockAutenticationLocalDatasourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4624D72A3D091400CBC35D /* MockAutenticationLocalDatasourceProtocol.swift */; };
 		DF4624DB2A3D0A8400CBC35D /* UserWorkersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4624DA2A3D0A8400CBC35D /* UserWorkersTest.swift */; };
 		DF4624DE2A3D0DF000CBC35D /* MockAuthenticationLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4624DD2A3D0DF000CBC35D /* MockAuthenticationLocalRepository.swift */; };
+		DF4624E22A3D1E3300CBC35D /* LoginWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4624E12A3D1E3300CBC35D /* LoginWorkerTest.swift */; };
+		DF4624E52A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4624E42A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift */; };
+		DF4624E62A3D226400CBC35D /* AuthenticationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8422A3C7AAD00A812F4 /* AuthenticationRepositoryProtocol.swift */; };
 		DF7D3F8D2A3CE0A90009770F /* CommonValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7D3F8C2A3CE0A90009770F /* CommonValidatorTest.swift */; };
+		DFC4E8312A3D3C13004B6718 /* LoginViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8302A3D3C13004B6718 /* LoginViewControllerTest.swift */; };
+		DFC4E8342A3D41A0004B6718 /* TextFieldSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */; };
+		DFF0843A2A3D24F500672477 /* LoginInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF084392A3D24F500672477 /* LoginInteractorTest.swift */; };
+		DFF084412A3D2B2700672477 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82B2A3BF03900A812F4 /* LoginRouter.swift */; };
+		DFF084422A3D2B2700672477 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8292A3BF03900A812F4 /* LoginPresenter.swift */; };
+		DFF084432A3D2B2700672477 /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82C2A3BF03900A812F4 /* LoginModels.swift */; };
+		DFF084442A3D2B2700672477 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82E2A3BF03900A812F4 /* LoginInteractor.swift */; };
+		DFF084462A3D2B2700672477 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82D2A3BF03900A812F4 /* LoginViewController.swift */; };
+		DFF084472A3D2C5600672477 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82A2A3BF03900A812F4 /* LoginWorker.swift */; };
+		DFF084482A3D2C5700672477 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82A2A3BF03900A812F4 /* LoginWorker.swift */; };
+		DFF0844A2A3D38AF00672477 /* LoginPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF084492A3D38AF00672477 /* LoginPresenterTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,7 +167,11 @@
 		DF4624D72A3D091400CBC35D /* MockAutenticationLocalDatasourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAutenticationLocalDatasourceProtocol.swift; sourceTree = "<group>"; };
 		DF4624DA2A3D0A8400CBC35D /* UserWorkersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorkersTest.swift; sourceTree = "<group>"; };
 		DF4624DD2A3D0DF000CBC35D /* MockAuthenticationLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationLocalRepository.swift; sourceTree = "<group>"; };
+		DF4624E12A3D1E3300CBC35D /* LoginWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTest.swift; sourceTree = "<group>"; };
+		DF4624E42A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationRepositoryProtocol.swift; sourceTree = "<group>"; };
 		DF7D3F8C2A3CE0A90009770F /* CommonValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonValidatorTest.swift; sourceTree = "<group>"; };
+		DFC4E8302A3D3C13004B6718 /* LoginViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTest.swift; sourceTree = "<group>"; };
+		DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSpy.swift; sourceTree = "<group>"; };
 		DFEC18532A3BD28C001277A2 /* UserAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountModel.swift; sourceTree = "<group>"; };
 		DFEC18562A3BD314001277A2 /* UserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorker.swift; sourceTree = "<group>"; };
 		DFEC18592A3BD423001277A2 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -164,6 +180,8 @@
 		DFEC18662A3BDDA0001277A2 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		DFEC186A2A3BDE29001277A2 /* NetworkServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTest.swift; sourceTree = "<group>"; };
 		DFEC186D2A3BDE99001277A2 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		DFF084392A3D24F500672477 /* LoginInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorTest.swift; sourceTree = "<group>"; };
+		DFF084492A3D38AF00672477 /* LoginPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTest.swift; sourceTree = "<group>"; };
 		FD57596A225C4608F6EBE669 /* Pods_KssiusBank_KssiusBankUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KssiusBank_KssiusBankUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -230,6 +248,8 @@
 		DF0BA7DE2A3BE5D000A812F4 /* KssiusBankTests */ = {
 			isa = PBXGroup;
 			children = (
+				DFC4E8322A3D4186004B6718 /* UIKitSpy */,
+				DF4624DF2A3D1E0900CBC35D /* Scenes */,
 				DF4624D92A3D0A6A00CBC35D /* Workers */,
 				DF7D3F8B2A3CE0880009770F /* Common */,
 				DF0BA84F2A3C830700A812F4 /* Core */,
@@ -391,12 +411,48 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		DF4624DF2A3D1E0900CBC35D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				DF4624E02A3D1E1300CBC35D /* Autentication */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		DF4624E02A3D1E1300CBC35D /* Autentication */ = {
+			isa = PBXGroup;
+			children = (
+				DF4624E32A3D1EEA00CBC35D /* Mock */,
+				DF4624E12A3D1E3300CBC35D /* LoginWorkerTest.swift */,
+				DFF084392A3D24F500672477 /* LoginInteractorTest.swift */,
+				DFF084492A3D38AF00672477 /* LoginPresenterTest.swift */,
+				DFC4E8302A3D3C13004B6718 /* LoginViewControllerTest.swift */,
+			);
+			path = Autentication;
+			sourceTree = "<group>";
+		};
+		DF4624E32A3D1EEA00CBC35D /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				DF4624E42A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		DF7D3F8B2A3CE0880009770F /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				DF7D3F8C2A3CE0A90009770F /* CommonValidatorTest.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		DFC4E8322A3D4186004B6718 /* UIKitSpy */ = {
+			isa = PBXGroup;
+			children = (
+				DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */,
+			);
+			path = UIKitSpy;
 			sourceTree = "<group>";
 		};
 		DFEC18012A3BCFF9001277A2 = {
@@ -770,6 +826,7 @@
 				DF4624CF2A3CF6EE00CBC35D /* AuthenticationLocalRepositoryProtocol.swift in Sources */,
 				DF0BA8242A3BEE3D00A812F4 /* BankFailure.swift in Sources */,
 				DF4624C92A3CF0D700CBC35D /* AutenticationLocalDatasource.swift in Sources */,
+				DFF084472A3D2C5600672477 /* LoginWorker.swift in Sources */,
 				DF4624C62A3CF0AC00CBC35D /* AutenticationLocalDatasourceProtocol.swift in Sources */,
 				DF0BA8332A3BF03900A812F4 /* LoginViewController.swift in Sources */,
 				DF0BA8342A3BF03900A812F4 /* LoginInteractor.swift in Sources */,
@@ -794,7 +851,6 @@
 				DF0BA8312A3BF03900A812F4 /* LoginRouter.swift in Sources */,
 				DF0BA8472A3C7C0200A812F4 /* AutenticationRepository.swift in Sources */,
 				DF0BA8432A3C7AAD00A812F4 /* AuthenticationRepositoryProtocol.swift in Sources */,
-				DF0BA8302A3BF03900A812F4 /* LoginWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +859,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF0BA8252A3BEE3D00A812F4 /* BankFailure.swift in Sources */,
+				DFF084432A3D2B2700672477 /* LoginModels.swift in Sources */,
 				DF4624CA2A3CF0D700CBC35D /* AutenticationLocalDatasource.swift in Sources */,
 				DF0BA8692A3C9BA900A812F4 /* MockAutenticationServiceDatasource.swift in Sources */,
 				DF4624D02A3CF6EE00CBC35D /* AuthenticationLocalRepositoryProtocol.swift in Sources */,
@@ -813,15 +870,22 @@
 				DF4624D52A3D080600CBC35D /* AuthenticationLocalRepositoryTest.swift in Sources */,
 				DF0BA7F82A3BE65B00A812F4 /* MockURLProtocol.swift in Sources */,
 				DF0BA80E2A3BE6D400A812F4 /* KssiusBankTests.swift in Sources */,
-				DF0BA8662A3C9B4600A812F4 /* AuthenticationRepositoryProtocol.swift in Sources */,
+				DFC4E8312A3D3C13004B6718 /* LoginViewControllerTest.swift in Sources */,
+				DFF084442A3D2B2700672477 /* LoginInteractor.swift in Sources */,
+				DF4624E22A3D1E3300CBC35D /* LoginWorkerTest.swift in Sources */,
 				DF0BA8592A3C87AE00A812F4 /* Constants.swift in Sources */,
 				DF0BA8392A3BFB6100A812F4 /* Seeds.swift in Sources */,
+				DFF0844A2A3D38AF00672477 /* LoginPresenterTest.swift in Sources */,
+				DFF084412A3D2B2700672477 /* LoginRouter.swift in Sources */,
 				DF0BA86D2A3CA9AB00A812F4 /* UserFailure.swift in Sources */,
 				DF4624DE2A3D0DF000CBC35D /* MockAuthenticationLocalRepository.swift in Sources */,
 				DF0BA8122A3BE9F300A812F4 /* UserAccountModel.swift in Sources */,
 				DF0BA8552A3C836A00A812F4 /* AutenticationServiceDatasourceTest.swift in Sources */,
 				DF0BA7F72A3BE65800A812F4 /* NetworkServiceTest.swift in Sources */,
+				DF4624E62A3D226400CBC35D /* AuthenticationRepositoryProtocol.swift in Sources */,
+				DFF084422A3D2B2700672477 /* LoginPresenter.swift in Sources */,
 				DF4624D32A3D030700CBC35D /* AutenticationLocalDatasourceTest.swift in Sources */,
+				DF4624E52A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift in Sources */,
 				DF4624D82A3D091400CBC35D /* MockAutenticationLocalDatasourceProtocol.swift in Sources */,
 				DF0BA8702A3CAC7D00A812F4 /* CommonValidator.swift in Sources */,
 				DF0BA84A2A3C7C8E00A812F4 /* AutenticationServiceDatasource.swift in Sources */,
@@ -829,6 +893,10 @@
 				DF7D3F8D2A3CE0A90009770F /* CommonValidatorTest.swift in Sources */,
 				DF4624CD2A3CF6DB00CBC35D /* AutenticationLocalRepository.swift in Sources */,
 				DF0BA8162A3BEC4800A812F4 /* AutenticationApi.swift in Sources */,
+				DFF084482A3D2C5700672477 /* LoginWorker.swift in Sources */,
+				DFC4E8342A3D41A0004B6718 /* TextFieldSpy.swift in Sources */,
+				DFF084462A3D2B2700672477 /* LoginViewController.swift in Sources */,
+				DFF0843A2A3D24F500672477 /* LoginInteractorTest.swift in Sources */,
 				DF0BA8622A3C998100A812F4 /* AuthenticationRepositoryTest.swift in Sources */,
 				DF0BA8182A3BEC4800A812F4 /* NetworkService.swift in Sources */,
 				DF0BA86A2A3C9CB700A812F4 /* AutenticationRepository.swift in Sources */,

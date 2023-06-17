@@ -32,7 +32,7 @@ final class AutenticationServiceDatasourceTest: XCTestCase {
 
     func testSuccessResponse() {
         let data = Seeds.Json.account.rawValue.data(using: .utf8)
-        let modelRequest = LoginRequestModel(username: "user", password: "pass")
+        let modelRequest = LoginRequestModel(username: Seeds.cpf, password: Seeds.password)
 
         MockURLProtocol.requestHandler = { request in
             let response = HTTPURLResponse(url: self.apiURL, statusCode: 200, httpVersion: nil, headerFields: nil)!
@@ -55,8 +55,7 @@ final class AutenticationServiceDatasourceTest: XCTestCase {
 
     func testErrorResponse() {
 
-        let data = Seeds.Json.account.rawValue.data(using: .utf8)
-        let modelRequest = LoginRequestModel(username: "user", password: "pass")
+        let modelRequest = LoginRequestModel(username: Seeds.cpf, password: Seeds.password)
 
         MockURLProtocol.requestHandler = { request in
             throw ServiceError.invalidUrl
@@ -70,10 +69,7 @@ final class AutenticationServiceDatasourceTest: XCTestCase {
                 switch( error ){
                 case .network( _):
                     XCTAssertEqual(error, BankFailure.network(.init()))
-                default:
-                    XCTFail("Should not return a failure")
                 }
-
             }
             self?.expectation.fulfill()
         }

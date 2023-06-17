@@ -18,7 +18,7 @@ extension CommonValidatorTest {
     // MARK: - Success CPF Authentication Response
 
     func testSuccessCpf() {
-        XCTAssertTrue(CommonValidator.User.isCpf("468.655.400-42"))
+        XCTAssertTrue(CommonValidator.User.isCpf(Seeds.cpf))
     }
 
 
@@ -35,7 +35,7 @@ extension CommonValidatorTest {
     // MARK: - Success Email Authentication Response
 
     func testSuccessEmail() {
-        XCTAssertTrue(CommonValidator.User.isEmail("teste@teste.com"))
+        XCTAssertTrue(CommonValidator.User.isEmail(Seeds.email))
     }
 
 
@@ -65,7 +65,7 @@ extension CommonValidatorTest {
     // MARK: - Success Password Authentication
 
     func testSuccessPassword() {
-        XCTAssertTrue(CommonValidator.User.validatePassword("T@to123"))
+        XCTAssertTrue(CommonValidator.User.validatePassword(Seeds.password))
     }
 
     // MARK: - Failure Password Special char Authentication

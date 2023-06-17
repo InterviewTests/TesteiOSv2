@@ -13,6 +13,7 @@
 import UIKit
 
 protocol LoginPresentationLogic {
+    func displayUser(response: Login.FetchUser.Response)
     func resolveLogin(response: Login.Login.Response)
 }
 
@@ -23,8 +24,13 @@ final class LoginPresenter {
 // MARK: - Logics
 
 extension LoginPresenter: LoginPresentationLogic {
+
     func resolveLogin(response: Login.Login.Response){
         viewController?.resolveLogin(viewModel:response.toViewModel())
+    }
+
+    func displayUser(response: Login.FetchUser.Response) {
+        viewController?.displayUser(viewModel: .init(user: response.user))
     }
 }
 

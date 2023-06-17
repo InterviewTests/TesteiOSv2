@@ -17,13 +17,7 @@ final class MockSuccessAutenticationServiceDatasource: AuthenticationServiceData
     init(networkService: NetworkService<UserAccountModel>) {}
 
     func perform(login: AutenticationApi.Endpoints, with data: LoginRequestModel, completion: @escaping (Result<UserAccountModel, BankFailure>) -> Void) {
-        completion(.success(UserAccountModel(userId: "",
-                                             email: "Marquis_Gibson@hotmail.com",
-                                             cpf: "",
-                                             name: "",
-                                             accountNumber: "",
-                                             agency: "",
-                                             balance: ""))
+        completion(.success(Seeds.user)
         )
     }
 }

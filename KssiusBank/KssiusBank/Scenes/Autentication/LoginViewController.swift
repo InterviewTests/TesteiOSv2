@@ -15,7 +15,7 @@ import KeychainSwift
 
 protocol LoginDisplayLogic: AnyObject
 {
-    func presentLogin(viewModel: Login.Login.ViewModel)
+    func displayUser(viewModel: Login.FetchUser.ViewModel)
     func resolveLogin(viewModel: Login.Login.ViewModel)
 }
 
@@ -50,12 +50,12 @@ class LoginViewController: UIViewController
         let localDataSource = AuthenticationLocalDatasource(keychain: KeychainSwift())
         let localRepository = AuthenticationLocalRepository(authenticationLocalDataSource: localDataSource)
 
-        let worker = LoginWorker(authenticaionRepository: autenticationRepository,
-                                 authenticaionLocalRepository: localRepository)
+        let worker = LoginWorker(authenticaionRepository: autenticationRepository)
+        let userWork = UserWorker(authenticationLocalRepository: localRepository)
         let viewController = self
 
         let presenter = LoginPresenter()
-        let interactor = LoginInteractor(presenter: presenter, worker: worker)
+        let interactor = LoginInteractor(presenter: presenter, worker: worker, userWork: userWork)
         let router = LoginRouter()
         viewController.interactor = interactor
         viewController.router = router
@@ -81,12 +81,13 @@ class LoginViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        doSomething()
+        fetchUser()
     }
 
-    // MARK: Do something
+    // MARK: Login
 
-    //@IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var userTextField: UITextField?
+
 
     func doSomething()
     {
@@ -98,8 +99,11 @@ class LoginViewController: UIViewController
 }
 
 extension LoginViewController: LoginDisplayLogic {
-    func resolveLogin(viewModel: Login.Login.ViewModel)
-    {
+    func displayUser(viewModel: Login.FetchUser.ViewModel) {
+        userTextField?.text = viewModel.user
+    }
+
+    func resolveLogin(viewModel: Login.Login.ViewModel) {
         //nameTextField.text = viewModel.name
         if viewModel.success {
 
@@ -108,8 +112,14 @@ extension LoginViewController: LoginDisplayLogic {
         }
         
     }
-    func presentLogin(viewModel: Login.Login.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
+
+}
+
+// MARK: - Fetch User
+extension LoginViewController {
+
+    private func fetchUser() {
+        interactor?.fetchUser(request: .init())
     }
+
 }

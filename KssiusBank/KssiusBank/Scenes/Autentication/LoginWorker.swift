@@ -12,27 +12,24 @@
 
 import UIKit
 
-protocol LoginWorkerProtocol {
+protocol LoginWorkerLogic {
     func login(username: String, password: String, completion: @escaping (Result<UserAccountModel, UserFailure>) -> Void)
 }
 
-final class LoginWorker{
+final class LoginWorker {
 
     // MARK: - Properties
 
     private let authenticaionRepository: AuthenticationRepositoryProtocol
-    private let authenticaionLocalRepository: AuthenticationLocalRepositoryProtocol
 
     // MARK: - Inits
 
-    init(authenticaionRepository: AuthenticationRepositoryProtocol,
-         authenticaionLocalRepository: AuthenticationLocalRepositoryProtocol) {
+    init(authenticaionRepository: AuthenticationRepositoryProtocol) {
         self.authenticaionRepository = authenticaionRepository
-        self.authenticaionLocalRepository = authenticaionLocalRepository
     }
 }
 
-extension LoginWorker: LoginWorkerProtocol {
+extension LoginWorker: LoginWorkerLogic {
     func login(username: String, password: String, completion: @escaping (Result<UserAccountModel, UserFailure>) -> Void) {
         let requestModel: LoginRequestModel = .init(username: username, password: password)
         authenticaionRepository.perform(login: .loginRequest,
