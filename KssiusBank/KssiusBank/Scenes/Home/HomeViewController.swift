@@ -25,7 +25,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     // MARK: - Constants
 
     private let cellStatementIdentifier = "statementCell"
-    private var statements = [StatementsModel]()
+    private var statements = [Home.GetStatements.StatementViewModel]()
 
     // MARK: Object lifecycle
 
@@ -80,8 +80,8 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        setupUI()
         initializeData()
-        tableView?.insetsContentViewsToSafeArea = true
     }
 
 
@@ -91,12 +91,31 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     @IBOutlet weak var accountLabel: UILabel?
     @IBOutlet weak var balanceLabel: UILabel?
     @IBOutlet weak var tableView: UITableView?
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView?
+
+    private func setupUI(){
+        startState()
+        accountLabel?.center = tableView?.center ?? .zero
+    }
+
+    @IBAction func didTapLogout(_ sender: Any) {
+        router?.dismiss()
+    }
+
 
     // MARK: Fetch data to display
 
     private func initializeData() {
         interactor?.retrieveAccount(request: .init())
         interactor?.fetchStatements(request: .init())
+    }
+
+    private func startState() {
+        activityIndicator?.startAnimating()
+    }
+
+    private func finishState() {
+        activityIndicator?.stopAnimating()
     }
 }
 
@@ -108,13 +127,15 @@ extension HomeViewController {
         DispatchQueue.main.async {[weak self] in
             self?.statements = viewModel.statements
             self?.tableView?.reloadData()
+            self?.finishState()
         }
     }
 
     func displayAccount(viewModel: Home.GetAccount.ViewModel){
         nameLabel?.text = viewModel.name
-        accountLabel?.text = "\(viewModel.agency) / \(viewModel.accountNumber)"
-        balanceLabel?.text = String(viewModel.balance)
+        let numberFormat = viewModel.accountNumber.toAccountFormat ?? ""
+        accountLabel?.text = "\(viewModel.agency) / \(numberFormat)"
+        balanceLabel?.text = viewModel.balance.toCurrency
     }
 
 }
@@ -128,7 +149,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let row = tableView.dequeueReusableCell(withIdentifier: cellStatementIdentifier, for: indexPath) as? StatementCell
               else {return UITableViewCell()}
-
+        row.setup(model: statements[indexPath.row])
         return row
     }
 

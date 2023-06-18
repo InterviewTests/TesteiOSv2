@@ -14,7 +14,7 @@ import UIKit
 
 @objc protocol HomeRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+  func dismiss()
 }
 
 protocol HomeDataPassing
@@ -57,4 +57,8 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing
   //{
   //  destination.name = source.name
   //}
+
+    func dismiss() {
+        viewController?.dismiss(animated: true)
+    }
 }

@@ -17,7 +17,7 @@ struct Seeds {
         "cpf": "468.655.400-42",
         "accountNumber": "74393734",
         "agency": "827810101",
-        "balance": 472.29,
+        "balance": "472.29",
         "id": "3"
         }
         """
@@ -33,7 +33,7 @@ struct Seeds {
                                        name: "Diana Leuschke",
                                        accountNumber: "74393734",
                                        agency: "827810101",
-                                       balance: 472.29)
+                                       balance: "472.29")
 
     enum Statements {
         static let json = """
@@ -61,9 +61,9 @@ struct Seeds {
         """
 
         static let statements = [
-            StatementsModel(type: .payment, description: "Conta de Luz", date: .init(year: 2020, month: 01, day: 2), value: 200.00),
-            StatementsModel(type: .invoice, description: "Conta de Luz", date: .init(year: 2020, month: 02, day: 5), value: 300.00),
-            StatementsModel(type: .deposit, description: "Conta de Luz", date: .init(year: 2020, month: 04, day: 3), value: 200.00)
+            StatementsModel(type: .payment, description: "Conta de Luz", date: .init(year: 2020, month: 01, day: 2), value: "200.00"),
+            StatementsModel(type: .invoice, description: "Conta de Luz", date: .init(year: 2020, month: 02, day: 5), value: "300.00"),
+            StatementsModel(type: .deposit, description: "Conta de Luz", date: .init(year: 2020, month: 04, day: 3), value: "200.00")
         ]
     }
 }

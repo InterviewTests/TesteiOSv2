@@ -23,15 +23,29 @@ class HomePresenter: HomePresentationLogic{
 
     // MARK: Present Account
 
-    func presentAccount(response: Home.GetAccount.Response)
-    {
-        viewController?.displayAccount(viewModel: response.toViewModel())
+    func presentAccount(response: Home.GetAccount.Response) {
+        let viewModel = Home.GetAccount.ViewModel(
+            name: response.userAccount.name,
+            agency: response.userAccount.agency,
+            accountNumber: response.userAccount.accountNumber,
+            balance: response.userAccount.balance
+        )
+        viewController?.displayAccount(viewModel: viewModel)
     }
 
     // MARK: Present Statements
 
-    func presentStatements(response: Home.GetStatements.Response)
-    {
-        viewController?.displayStatements(viewModel: response.toViewModel())
+    func presentStatements(response: Home.GetStatements.Response) {
+        let statements = mapToStatements(response.statements)
+        viewController?.displayStatements(viewModel: .init(statements: statements, success: response.success))
     }
+
+    private func mapToStatements(_ model: [StatementsModel]) -> [Home.GetStatements.StatementViewModel] {
+        return model.map{.init(type: $0.type.rawValue,
+                               description: $0.description,
+                               date: $0.date.formatToString,
+                               value: $0.value.toCurrency)
+        }
+    }
+
 }

@@ -30,9 +30,19 @@ enum Home
                 self.errorMessage = errorMessage
                 self.statements = statements
             }
+        }
 
-            func toViewModel() -> ViewModel {
-                return .init(statements: statements, success: success)
+        struct StatementViewModel {
+            let type: String
+            let description: String
+            let date: String
+            let value: String
+
+            init(type: String, description: String, date: String, value: String) {
+                self.type = type
+                self.description = description
+                self.date = date
+                self.value = value
             }
         }
 
@@ -40,12 +50,12 @@ enum Home
 
             // MARK: - Properties
 
-            let statements: [StatementsModel]
+            let statements: [Home.GetStatements.StatementViewModel]
             let success: Bool
 
             // MARK: - Inits
 
-            init(statements: [StatementsModel], success: Bool) {
+            init(statements: [Home.GetStatements.StatementViewModel], success: Bool) {
                 self.statements = statements
                 self.success = success
             }
@@ -62,13 +72,6 @@ enum Home
             init(userAccount: UserAccountModel) {
                 self.userAccount = userAccount
             }
-
-            func toViewModel() -> ViewModel {
-                return .init(name: userAccount.name,
-                             agency: userAccount.agency,
-                             accountNumber: userAccount.accountNumber,
-                             balance: userAccount.balance)
-            }
         }
 
         struct ViewModel{
@@ -78,14 +81,14 @@ enum Home
             let name: String
             let agency: String
             let accountNumber: String
-            let balance: Double
+            let balance: String
 
             // MARK: - Inits
 
             init(name: String,
                  agency: String,
                  accountNumber: String,
-                 balance: Double){
+                 balance: String){
                 self.name = name
                 self.agency = agency
                 self.accountNumber = accountNumber

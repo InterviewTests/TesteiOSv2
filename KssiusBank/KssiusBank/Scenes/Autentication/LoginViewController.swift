@@ -90,6 +90,11 @@ final class LoginViewController: UIViewController
         setupKeyboardHiding()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cleanPassword()
+    }
+
     // MARK: Login
 
     @IBOutlet weak var userTextField: DefaultTextField?
@@ -110,6 +115,10 @@ final class LoginViewController: UIViewController
         // delegates
         userTextField?.delegate = self
         passwordTextField?.delegate = self
+    }
+
+    private func cleanPassword() {
+        passwordTextField?.text = ""
     }
 
     // MARK: - keyboard
@@ -185,7 +194,6 @@ extension LoginViewController {
     private func startState() {
         errorLabel?.text = ""
         errorLabel?.isHidden = true
-        indicatorView?.isHidden = false
         indicatorView?.startAnimating()
         loginButton?.isEnabled = false
     }
@@ -193,7 +201,6 @@ extension LoginViewController {
     private func finishState() {
         loginButton?.isEnabled = true
         indicatorView?.stopAnimating()
-        indicatorView?.isHidden = true
     }
 
 
@@ -226,6 +233,9 @@ extension LoginViewController: UITextFieldDelegate {
         if textField == userTextField {
             passwordTextField?.becomeFirstResponder()
         }else {
+            if let _ = userTextField?.text, let _ = passwordTextField?.text {
+                view.endEditing(true)
+            }
             performLogin()
         }
         return true

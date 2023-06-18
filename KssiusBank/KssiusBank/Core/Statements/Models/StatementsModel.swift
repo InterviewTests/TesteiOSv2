@@ -28,5 +28,5 @@ struct StatementsModel: Codable, Equatable {
     let type: StatementsType
     let description: String
     let date: Date
-    let value: Double
+    let value: String
 }
