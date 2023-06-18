@@ -16,6 +16,18 @@ internal enum L10n {
       internal static let general = L10n.tr("Localizable", "network.error.general", fallback: "Ops! aconteceu algum erro de rede.")
     }
   }
+  internal enum Statement {
+    internal enum Option {
+      /// Depósito
+      internal static let deposit = L10n.tr("Localizable", "statement.option.deposit", fallback: "Depósito")
+      /// Fatura
+      internal static let invoice = L10n.tr("Localizable", "statement.option.invoice", fallback: "Fatura")
+      /// Pagamento
+      internal static let payment = L10n.tr("Localizable", "statement.option.payment", fallback: "Pagamento")
+      /// Retirada
+      internal static let withdrawal = L10n.tr("Localizable", "statement.option.withdrawal", fallback: "Retirada")
+    }
+  }
   internal enum User {
     internal enum Authentication {
       internal enum Error {

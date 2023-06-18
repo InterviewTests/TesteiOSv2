@@ -41,11 +41,23 @@ class HomePresenter: HomePresentationLogic{
     }
 
     private func mapToStatements(_ model: [StatementsModel]) -> [Home.GetStatements.StatementViewModel] {
-        return model.map{.init(type: $0.type.rawValue,
+        return model.map{.init(type: statements(type: $0.type),
                                description: $0.description,
                                date: $0.date.formatToString,
                                value: $0.value.toCurrency)
         }
     }
-
+    
+    private func statements(type: StatementsModel.StatementsType) -> String {
+        switch type {
+        case .payment:
+            return L10n.Statement.Option.payment
+        case .deposit:
+            return L10n.Statement.Option.deposit
+        case .invoice:
+            return L10n.Statement.Option.invoice
+        case .withdrawal:
+            return L10n.Statement.Option.withdrawal
+        }
+    }
 }
