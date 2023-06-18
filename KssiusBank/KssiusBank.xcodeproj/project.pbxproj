@@ -87,6 +87,8 @@
 		DF8735A42A3F53BA004818BC /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735A22A3F53BA004818BC /* String+extensions.swift */; };
 		DF8735A92A3F6C42004818BC /* String+extensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735A82A3F6C42004818BC /* String+extensionsTest.swift */; };
 		DF8735AC2A3F796D004818BC /* Date+extensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735AB2A3F796D004818BC /* Date+extensionsTest.swift */; };
+		DF8735AF2A3F7F20004818BC /* HomeWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735AE2A3F7F20004818BC /* HomeWorkerTest.swift */; };
+		DF8735B22A3F80D9004818BC /* MockStatementsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735B12A3F7F90004818BC /* MockStatementsRepositoryProtocol.swift */; };
 		DFC4E8312A3D3C13004B6718 /* LoginViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8302A3D3C13004B6718 /* LoginViewControllerTest.swift */; };
 		DFC4E8342A3D41A0004B6718 /* TextFieldSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */; };
 		DFC4E8372A3DD709004B6718 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */; };
@@ -218,6 +220,8 @@
 		DF8735A22A3F53BA004818BC /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		DF8735A82A3F6C42004818BC /* String+extensionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensionsTest.swift"; sourceTree = "<group>"; };
 		DF8735AB2A3F796D004818BC /* Date+extensionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensionsTest.swift"; sourceTree = "<group>"; };
+		DF8735AE2A3F7F20004818BC /* HomeWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorkerTest.swift; sourceTree = "<group>"; };
+		DF8735B12A3F7F90004818BC /* MockStatementsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStatementsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		DFC4E8302A3D3C13004B6718 /* LoginViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTest.swift; sourceTree = "<group>"; };
 		DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSpy.swift; sourceTree = "<group>"; };
 		DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
@@ -319,15 +323,15 @@
 		DF0BA7DE2A3BE5D000A812F4 /* KssiusBankTests */ = {
 			isa = PBXGroup;
 			children = (
-				DFC4E8322A3D4186004B6718 /* UIKitSpy */,
-				DF4624DF2A3D1E0900CBC35D /* Scenes */,
-				DF4624D92A3D0A6A00CBC35D /* Workers */,
 				DF0BA84F2A3C830700A812F4 /* Core */,
-				DF0BA7FB2A3BE6C900A812F4 /* KssiusBankTests.swift */,
-				DFEC18692A3BDE0D001277A2 /* Services */,
-				DF0BA8382A3BFB6100A812F4 /* Seeds.swift */,
-				DF0BA8632A3C9A3E00A812F4 /* MockSession.swift */,
 				DF8735AA2A3F793C004818BC /* Extensions */,
+				DF0BA7FB2A3BE6C900A812F4 /* KssiusBankTests.swift */,
+				DF0BA8632A3C9A3E00A812F4 /* MockSession.swift */,
+				DF4624DF2A3D1E0900CBC35D /* Scenes */,
+				DF0BA8382A3BFB6100A812F4 /* Seeds.swift */,
+				DFEC18692A3BDE0D001277A2 /* Services */,
+				DFC4E8322A3D4186004B6718 /* UIKitSpy */,
+				DF4624D92A3D0A6A00CBC35D /* Workers */,
 			);
 			path = KssiusBankTests;
 			sourceTree = "<group>";
@@ -488,6 +492,7 @@
 		DF4624DF2A3D1E0900CBC35D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DF8735AD2A3F7EFE004818BC /* Home */,
 				DF4624E02A3D1E1300CBC35D /* Autentication */,
 			);
 			path = Scenes;
@@ -537,6 +542,23 @@
 				DF8735AB2A3F796D004818BC /* Date+extensionsTest.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DF8735AD2A3F7EFE004818BC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DF8735B02A3F7F84004818BC /* Mock */,
+				DF8735AE2A3F7F20004818BC /* HomeWorkerTest.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DF8735B02A3F7F84004818BC /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				DF8735B12A3F7F90004818BC /* MockStatementsRepositoryProtocol.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		DFC4E8322A3D4186004B6718 /* UIKitSpy */ = {
@@ -1148,6 +1170,7 @@
 				DFC4E8432A3DDD19004B6718 /* UIFont+extensions.swift in Sources */,
 				DFC4E8842A3E7D9C004B6718 /* StatementCell.swift in Sources */,
 				DFF0844A2A3D38AF00672477 /* LoginPresenterTest.swift in Sources */,
+				DF8735B22A3F80D9004818BC /* MockStatementsRepositoryProtocol.swift in Sources */,
 				DFC4E8542A3E132B004B6718 /* HomeModels.swift in Sources */,
 				DFF084412A3D2B2700672477 /* LoginRouter.swift in Sources */,
 				DF0BA86D2A3CA9AB00A812F4 /* UserFailure.swift in Sources */,
@@ -1159,6 +1182,7 @@
 				DF4624E62A3D226400CBC35D /* AuthenticationRepositoryProtocol.swift in Sources */,
 				DFF084422A3D2B2700672477 /* LoginPresenter.swift in Sources */,
 				DFC4E8732A3E4463004B6718 /* StatementsServiceDatasourceProtocol.swift in Sources */,
+				DF8735AF2A3F7F20004818BC /* HomeWorkerTest.swift in Sources */,
 				DF4624E52A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift in Sources */,
 				DFC4E8502A3E132B004B6718 /* HomeWorker.swift in Sources */,
 				DF4624D82A3D091400CBC35D /* MockAutenticationLocalDatasourceProtocol.swift in Sources */,
