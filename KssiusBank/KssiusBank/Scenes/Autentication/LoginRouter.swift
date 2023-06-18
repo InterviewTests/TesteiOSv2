@@ -29,17 +29,17 @@ final class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     // MARK: Routing
 
     func routeToPresentHome(segue: UIStoryboardSegue?){
-//        if let segue = segue {
-//            let destinationVC = segue.destination as? HomeViewController
-//            var destinationDS = destinationVC?.router?.dataStore
-//            passDataToHome(source: dataStore!, destination: &destinationDS)
-//        } else {
+        if let segue = segue {
+            let destinationVC = segue.destination as? HomeViewController
+            var destinationDS = destinationVC?.router?.dataStore
+            passDataToHome(source: dataStore!, destination: &destinationDS)
+        } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let destinationVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
             var destinationDS = destinationVC.router?.dataStore
             passDataToHome(source: dataStore, destination: &destinationDS)
             navigateToHome(source: viewController, destination: destinationVC)
-//        }
+        }
     }
 
     // MARK: Navigation

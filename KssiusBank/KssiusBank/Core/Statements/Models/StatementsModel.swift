@@ -9,7 +9,23 @@
 import Foundation
 
 struct StatementsModel: Codable, Equatable {
-    let type: String
+    enum StatementsType: String, Codable, Equatable {
+        case invoice, payment, withdrawal, deposit
+
+        var rawValue: String {
+            switch self {
+            case .payment:
+                return "Pagamento"
+            case .deposit:
+                return "Depósito"
+            case .invoice:
+                return "Fatura"
+            case .withdrawal:
+                return "Retirada"
+            }
+        }
+    }
+    let type: StatementsType
     let description: String
     let date: Date
     let value: Double

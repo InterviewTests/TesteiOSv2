@@ -15,8 +15,8 @@ final class StatementsRepository: StatementsRepositoryProtocol {
 
     // MARK: - Inits
 
-    init(authenticationService: StatementsServiceDatasourceProtocol) {
-        self.statementsService = authenticationService
+    init(statementsService: StatementsServiceDatasourceProtocol) {
+        self.statementsService = statementsService
     }
 
 }

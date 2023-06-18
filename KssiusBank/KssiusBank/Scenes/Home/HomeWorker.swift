@@ -12,9 +12,22 @@
 
 import UIKit
 
-class HomeWorker
-{
-  func doSomeWork()
-  {
-  }
+
+protocol HomeWorkLogic {
+    func fetchStatements( completion: @escaping (Result<[StatementsModel], StatementsFailure>) -> Void )
+}
+
+final class HomeWorker {
+    private let statementsRepository: StatementsRepositoryProtocol
+
+    init(statementsRepository: StatementsRepositoryProtocol) {
+        self.statementsRepository = statementsRepository
+    }
+
+}
+
+extension HomeWorker: HomeWorkLogic {
+    func fetchStatements( completion: @escaping (Result<[StatementsModel], StatementsFailure>) -> Void ) {
+        statementsRepository.fetch(statements: .statementsRequest, completion: completion)
+    }
 }

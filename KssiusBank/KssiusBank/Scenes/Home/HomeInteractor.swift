@@ -14,28 +14,50 @@ import UIKit
 
 protocol HomeBusinessLogic
 {
-  func doSomething(request: Home.GetStatements.Request)
+    func fetchStatements(request: Home.GetStatements.Request)
+    func retrieveAccount(request: Home.GetAccount.Request)
 }
 
-protocol HomeDataStore
-{
-  var userAccount: UserAccountModel? { get set }
+protocol HomeDataStore{
+    var userAccount: UserAccountModel? { get set }
+    var statements: [StatementsModel] { get set }
 }
 
-class HomeInteractor: HomeBusinessLogic, HomeDataStore
-{
-  var presenter: HomePresentationLogic?
-  var worker: HomeWorker?
-  var userAccount: UserAccountModel?
-  
-  // MARK: Do something
-  
-  func doSomething(request: Home.GetStatements.Request)
-  {
-    worker = HomeWorker()
-    worker?.doSomeWork()
-    
-    let response = Home.GetStatements.Response(statements: [])
-    presenter?.presentSomething(response: response)
-  }
+final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
+
+
+    private let presenter: HomePresentationLogic?
+    private let worker: HomeWorker?
+
+    var userAccount: UserAccountModel?
+    var statements: [StatementsModel] = []
+
+    init(presenter: HomePresentationLogic? = nil, worker: HomeWorker? = nil, userAccount: UserAccountModel? = nil) {
+        self.presenter = presenter
+        self.worker = worker
+        self.userAccount = userAccount
+    }
+
+    // MARK: - Present account
+    func retrieveAccount(request: Home.GetAccount.Request = .init()) {
+        guard let userAccount = userAccount else { return  }
+        presenter?.presentAccount(response: .init(userAccount: userAccount))
+    }
+
+
+    // MARK: - Ppresent statements
+
+    func fetchStatements(request: Home.GetStatements.Request = .init()){
+
+        worker?.fetchStatements { [weak self] result in
+            switch( result ) {
+            case .success(let statements):
+                self?.statements = statements
+                self?.presenter?.presentStatements(response: .init(statements: statements))
+            case .failure( _):
+                self?.presenter?.presentStatements(response: .init(success: false, errorMessage: L10n.Network.Error.general))
+            }
+
+        }
+    }
 }

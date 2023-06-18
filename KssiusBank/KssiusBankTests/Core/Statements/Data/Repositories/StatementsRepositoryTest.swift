@@ -12,7 +12,7 @@ final class StatementsRepositoryTest: XCTestCase {
     var sut: StatementsRepositoryProtocol?
 
     override func setUp() {
-        sut = StatementsRepository(authenticationService: MockSuccessStatementsServiceDatasource())
+        sut = StatementsRepository(statementsService: MockSuccessStatementsServiceDatasource())
     }
 
     override func tearDown() {
@@ -40,7 +40,7 @@ final class StatementsRepositoryTest: XCTestCase {
     func testErrorResponse() {
 
         let failureNetwork = MockFailureNetworkStatementsServiceDatasource()
-        sut = StatementsRepository(authenticationService: failureNetwork)
+        sut = StatementsRepository(statementsService: failureNetwork)
 
         let expectation = expectation(description: "Waiting for fetch statements to complete.")
 

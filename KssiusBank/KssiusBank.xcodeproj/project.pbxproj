@@ -121,6 +121,8 @@
 		DFC4E87B2A3E4ED8004B6718 /* AutenticationServiceDatasourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E87A2A3E4ED8004B6718 /* AutenticationServiceDatasourceTest.swift */; };
 		DFC4E87F2A3E545C004B6718 /* StatementsRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E87C2A3E530D004B6718 /* StatementsRepositoryTest.swift */; };
 		DFC4E8802A3E5461004B6718 /* MockStatementsServiceDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E87E2A3E5377004B6718 /* MockStatementsServiceDatasource.swift */; };
+		DFC4E8832A3E7D9C004B6718 /* StatementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8822A3E7D9C004B6718 /* StatementCell.swift */; };
+		DFC4E8842A3E7D9C004B6718 /* StatementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8822A3E7D9C004B6718 /* StatementCell.swift */; };
 		DFF0843A2A3D24F500672477 /* LoginInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF084392A3D24F500672477 /* LoginInteractorTest.swift */; };
 		DFF084412A3D2B2700672477 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA82B2A3BF03900A812F4 /* LoginRouter.swift */; };
 		DFF084422A3D2B2700672477 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8292A3BF03900A812F4 /* LoginPresenter.swift */; };
@@ -229,6 +231,7 @@
 		DFC4E87A2A3E4ED8004B6718 /* AutenticationServiceDatasourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticationServiceDatasourceTest.swift; sourceTree = "<group>"; };
 		DFC4E87C2A3E530D004B6718 /* StatementsRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementsRepositoryTest.swift; sourceTree = "<group>"; };
 		DFC4E87E2A3E5377004B6718 /* MockStatementsServiceDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStatementsServiceDatasource.swift; sourceTree = "<group>"; };
+		DFC4E8822A3E7D9C004B6718 /* StatementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCell.swift; sourceTree = "<group>"; };
 		DFEC18532A3BD28C001277A2 /* UserAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountModel.swift; sourceTree = "<group>"; };
 		DFEC18562A3BD314001277A2 /* UserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorker.swift; sourceTree = "<group>"; };
 		DFEC18592A3BD423001277A2 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -545,6 +548,7 @@
 		DFC4E8592A3E1332004B6718 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				DFC4E8812A3E7D83004B6718 /* Cell */,
 				DFC4E8472A3E132B004B6718 /* HomePresenter.swift */,
 				DFC4E8482A3E132B004B6718 /* HomeWorker.swift */,
 				DFC4E8492A3E132B004B6718 /* HomeRouter.swift */,
@@ -649,6 +653,14 @@
 				DFC4E87E2A3E5377004B6718 /* MockStatementsServiceDatasource.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		DFC4E8812A3E7D83004B6718 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DFC4E8822A3E7D9C004B6718 /* StatementCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		DFEC18012A3BCFF9001277A2 = {
@@ -1037,6 +1049,7 @@
 				DF0BA8132A3BEC4700A812F4 /* BankApi.swift in Sources */,
 				DFC4E84D2A3E132B004B6718 /* HomePresenter.swift in Sources */,
 				DF0BA8092A3BE6CA00A812F4 /* AppDelegate.swift in Sources */,
+				DFC4E8832A3E7D9C004B6718 /* StatementCell.swift in Sources */,
 				DF0BA87F2A3CC4ED00A812F4 /* Strings+Generated.swift in Sources */,
 				DF0BA85E2A3C985500A812F4 /* AuthenticationServiceDatasourceProtocol.swift in Sources */,
 				DFC4E8422A3DDD19004B6718 /* UIFont+extension.swift in Sources */,
@@ -1099,6 +1112,7 @@
 				DFC4E8562A3E132B004B6718 /* HomeViewController.swift in Sources */,
 				DFC4E87B2A3E4ED8004B6718 /* AutenticationServiceDatasourceTest.swift in Sources */,
 				DFC4E8432A3DDD19004B6718 /* UIFont+extension.swift in Sources */,
+				DFC4E8842A3E7D9C004B6718 /* StatementCell.swift in Sources */,
 				DFF0844A2A3D38AF00672477 /* LoginPresenterTest.swift in Sources */,
 				DFC4E8542A3E132B004B6718 /* HomeModels.swift in Sources */,
 				DFF084412A3D2B2700672477 /* LoginRouter.swift in Sources */,

@@ -59,6 +59,6 @@ final class AuthenticationLocalRepositoryTest: XCTestCase {
         XCTAssertEqual(result?.email, "Marquis_Gibson@hotmail.com")
         XCTAssertEqual(result?.accountNumber, "74393734")
         XCTAssertEqual(result?.agency, "827810101")
-        XCTAssertEqual(result?.balance, "472.29")
+        XCTAssertEqual(result?.balance, 472.29)
     }
 }

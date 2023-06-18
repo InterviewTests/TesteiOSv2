@@ -89,7 +89,7 @@ class NetworkService<R : Codable> {
             do{
                 let decoder = JSONDecoder()
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd"
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
                 let body = try decoder.decode(Response.self, from: data)
                 completion(.success(body))

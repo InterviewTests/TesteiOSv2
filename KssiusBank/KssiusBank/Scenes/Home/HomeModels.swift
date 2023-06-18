@@ -14,35 +14,83 @@ import UIKit
 
 enum Home
 {
-  // MARK: Use cases
-  
-  enum GetStatements
-  {
-    struct Request{}
+    // MARK: Use cases
 
-    struct Response{
-        let statements: [StatementsModel]
+    enum GetStatements
+    {
+        struct Request{}
 
-        // MARK: - Inits
+        struct Response{
+            let success: Bool
+            let errorMessage: String?
+            let statements: [StatementsModel]
 
-        init(statements: [StatementsModel]) {
-            self.statements = statements
+            init(success: Bool = true, errorMessage: String? = nil, statements: [StatementsModel] = []) {
+                self.success = success
+                self.errorMessage = errorMessage
+                self.statements = statements
+            }
+
+            func toViewModel() -> ViewModel {
+                return .init(statements: statements, success: success)
+            }
+        }
+
+        struct ViewModel{
+
+            // MARK: - Properties
+
+            let statements: [StatementsModel]
+            let success: Bool
+
+            // MARK: - Inits
+
+            init(statements: [StatementsModel], success: Bool) {
+                self.statements = statements
+                self.success = success
+            }
         }
     }
 
-    struct ViewModel{
+    enum GetAccount
+    {
+        struct Request{}
 
-        // MARK: - Properties
+        struct Response{
+            let userAccount: UserAccountModel
 
-        let statements: [StatementsModel]
-        let success: Bool
+            init(userAccount: UserAccountModel) {
+                self.userAccount = userAccount
+            }
 
-        // MARK: - Inits
+            func toViewModel() -> ViewModel {
+                return .init(name: userAccount.name,
+                             agency: userAccount.agency,
+                             accountNumber: userAccount.accountNumber,
+                             balance: userAccount.balance)
+            }
+        }
 
-        init(statements: [StatementsModel], success: Bool) {
-            self.statements = statements
-            self.success = success
+        struct ViewModel{
+
+            // MARK: - Properties
+
+            let name: String
+            let agency: String
+            let accountNumber: String
+            let balance: Double
+
+            // MARK: - Inits
+
+            init(name: String,
+                 agency: String,
+                 accountNumber: String,
+                 balance: Double){
+                self.name = name
+                self.agency = agency
+                self.accountNumber = accountNumber
+                self.balance = balance
+            }
         }
     }
-  }
 }

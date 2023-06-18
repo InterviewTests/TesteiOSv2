@@ -12,20 +12,26 @@
 
 import UIKit
 
-protocol HomePresentationLogic
-{
-  func presentSomething(response: Home.GetStatements.Response)
+protocol HomePresentationLogic{
+    func presentStatements(response: Home.GetStatements.Response)
+    func presentAccount(response: Home.GetAccount.Response)
 }
 
-class HomePresenter: HomePresentationLogic
-{
-  weak var viewController: HomeDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Home.GetStatements.Response)
-  {
-    let viewModel = Home.GetStatements.ViewModel(statements: [], success: true)
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+class HomePresenter: HomePresentationLogic{
+
+    weak var viewController: HomeDisplayLogic?
+
+    // MARK: Present Account
+
+    func presentAccount(response: Home.GetAccount.Response)
+    {
+        viewController?.displayAccount(viewModel: response.toViewModel())
+    }
+
+    // MARK: Present Statements
+
+    func presentStatements(response: Home.GetStatements.Response)
+    {
+        viewController?.displayStatements(viewModel: response.toViewModel())
+    }
 }

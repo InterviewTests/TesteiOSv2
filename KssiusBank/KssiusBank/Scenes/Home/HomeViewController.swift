@@ -12,104 +12,124 @@
 
 import UIKit
 
-protocol HomeDisplayLogic: class
-{
-  func displaySomething(viewModel: Home.GetStatements.ViewModel)
+protocol HomeDisplayLogic: AnyObject {
+    func displayStatements(viewModel: Home.GetStatements.ViewModel)
+    func displayAccount(viewModel: Home.GetAccount.ViewModel)
 }
 
-class HomeViewController: UITableViewController, HomeDisplayLogic
+class HomeViewController: UIViewController, HomeDisplayLogic
 {
-  var interactor: HomeBusinessLogic?
-  var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
+    var interactor: HomeBusinessLogic?
+    var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
 
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = HomeInteractor()
-    let presenter = HomePresenter()
-    let router = HomeRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    // MARK: - Constants
+
+    private let cellStatementIdentifier = "statementCell"
+    private var statements = [StatementsModel]()
+
+    // MARK: Object lifecycle
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        guard let headerView = tableView.tableHeaderView else {
-                   return
-               }
-        let size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-
-                if headerView.frame.size.height != size.height {
-                    headerView.frame.size.height = size.height
-
-                    // Need to set the header view property of the table view
-                    // to trigger the new layout. Be careful to only do this
-                    // once when the height changes or we get stuck in a layout loop.
-
-                    tableView.tableHeaderView = headerView
-
-                    // Now that the table view header is sized correctly have
-                    // the table view redo its layout so that the cells are
-                    // correcly positioned for the new header size.
-
-                    // This only seems to be necessary on iOS 9.
-
-                    tableView.layoutIfNeeded()
-                }
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
     }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Home.GetStatements.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Home.GetStatements.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+
+    // MARK: Setup
+
+    private func setup()
+    {
+        let viewController = self
+
+        let statementsServiceDatasource = StatementsServiceDatasource(networkService: .init())
+        let statementsRepository = StatementsRepository(statementsService: statementsServiceDatasource)
+
+        let worker = HomeWorker(statementsRepository: statementsRepository)
+
+        let presenter = HomePresenter()
+        let interactor = HomeInteractor(presenter: presenter, worker: worker)
+
+        let router = HomeRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+
+    // MARK: Routing
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+
+    // MARK: View lifecycle
+
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        initializeData()
+        tableView?.insetsContentViewsToSafeArea = true
+    }
+
+
+    // MARK: - Outlets
+
+    @IBOutlet weak var nameLabel: UILabel?
+    @IBOutlet weak var accountLabel: UILabel?
+    @IBOutlet weak var balanceLabel: UILabel?
+    @IBOutlet weak var tableView: UITableView?
+
+    // MARK: Fetch data to display
+
+    private func initializeData() {
+        interactor?.retrieveAccount(request: .init())
+        interactor?.fetchStatements(request: .init())
+    }
+}
+
+// MARK: - Display informations
+
+extension HomeViewController {
+
+    func displayStatements(viewModel: Home.GetStatements.ViewModel){
+        DispatchQueue.main.async {[weak self] in
+            self?.statements = viewModel.statements
+            self?.tableView?.reloadData()
+        }
+    }
+
+    func displayAccount(viewModel: Home.GetAccount.ViewModel){
+        nameLabel?.text = viewModel.name
+        accountLabel?.text = "\(viewModel.agency) / \(viewModel.accountNumber)"
+        balanceLabel?.text = String(viewModel.balance)
+    }
+
+}
+
+// MARK: - TableView Delegates
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statements.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let row = tableView.dequeueReusableCell(withIdentifier: cellStatementIdentifier, for: indexPath) as? StatementCell
+              else {return UITableViewCell()}
+
+        return row
+    }
+
 }

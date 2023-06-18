@@ -14,7 +14,7 @@ struct UserAccountModel : Codable, Equatable {
     let name: String
     let accountNumber: String
     let agency: String
-    let balance: String
+    let balance: Double
 
     enum CodingKeys: String, CodingKey {
         case userId = "id"
