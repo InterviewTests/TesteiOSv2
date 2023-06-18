@@ -25,14 +25,17 @@ protocol HomeDataStore{
 
 final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
 
+    // MARK: - Properties
 
     private let presenter: HomePresentationLogic?
-    private let worker: HomeWorker?
+    private let worker: HomeWorkerLogic?
 
     var userAccount: UserAccountModel?
     var statements: [StatementsModel] = []
 
-    init(presenter: HomePresentationLogic? = nil, worker: HomeWorker? = nil, userAccount: UserAccountModel? = nil) {
+    // MARK: - Inits
+
+    init(presenter: HomePresentationLogic? = nil, worker: HomeWorkerLogic? = nil, userAccount: UserAccountModel? = nil) {
         self.presenter = presenter
         self.worker = worker
         self.userAccount = userAccount

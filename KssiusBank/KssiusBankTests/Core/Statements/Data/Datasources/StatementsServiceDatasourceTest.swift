@@ -14,7 +14,7 @@ final class StatementsServiceDatasourceTest: XCTestCase {
     let baseUrl = "https://example.com.br"
     
     override func setUp() {
-
+        super.setUp()
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [MockURLProtocol.self]
         let urlSession = URLSession.init(configuration: configuration)
@@ -25,6 +25,7 @@ final class StatementsServiceDatasourceTest: XCTestCase {
 
     override func tearDown() {
         sut = nil
+        super.tearDown()
     }
 
     // MARK: - Success Response

@@ -89,6 +89,11 @@
 		DF8735AC2A3F796D004818BC /* Date+extensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735AB2A3F796D004818BC /* Date+extensionsTest.swift */; };
 		DF8735AF2A3F7F20004818BC /* HomeWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735AE2A3F7F20004818BC /* HomeWorkerTest.swift */; };
 		DF8735B22A3F80D9004818BC /* MockStatementsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735B12A3F7F90004818BC /* MockStatementsRepositoryProtocol.swift */; };
+		DF8735B42A3F8265004818BC /* HomeInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735B32A3F8265004818BC /* HomeInteractorTest.swift */; };
+		DF8735B62A3F8CC9004818BC /* HomePresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735B52A3F8CC9004818BC /* HomePresenterTest.swift */; };
+		DF8735B82A3F921C004818BC /* HomeViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735B72A3F921C004818BC /* HomeViewControllerTest.swift */; };
+		DF8735BA2A3F9623004818BC /* LabelSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735B92A3F9623004818BC /* LabelSpy.swift */; };
+		DF8735BC2A3F965F004818BC /* TableViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8735BB2A3F965F004818BC /* TableViewSpy.swift */; };
 		DFC4E8312A3D3C13004B6718 /* LoginViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8302A3D3C13004B6718 /* LoginViewControllerTest.swift */; };
 		DFC4E8342A3D41A0004B6718 /* TextFieldSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */; };
 		DFC4E8372A3DD709004B6718 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */; };
@@ -222,6 +227,11 @@
 		DF8735AB2A3F796D004818BC /* Date+extensionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensionsTest.swift"; sourceTree = "<group>"; };
 		DF8735AE2A3F7F20004818BC /* HomeWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorkerTest.swift; sourceTree = "<group>"; };
 		DF8735B12A3F7F90004818BC /* MockStatementsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStatementsRepositoryProtocol.swift; sourceTree = "<group>"; };
+		DF8735B32A3F8265004818BC /* HomeInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTest.swift; sourceTree = "<group>"; };
+		DF8735B52A3F8CC9004818BC /* HomePresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTest.swift; sourceTree = "<group>"; };
+		DF8735B72A3F921C004818BC /* HomeViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTest.swift; sourceTree = "<group>"; };
+		DF8735B92A3F9623004818BC /* LabelSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSpy.swift; sourceTree = "<group>"; };
+		DF8735BB2A3F965F004818BC /* TableViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSpy.swift; sourceTree = "<group>"; };
 		DFC4E8302A3D3C13004B6718 /* LoginViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTest.swift; sourceTree = "<group>"; };
 		DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSpy.swift; sourceTree = "<group>"; };
 		DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
@@ -549,6 +559,9 @@
 			children = (
 				DF8735B02A3F7F84004818BC /* Mock */,
 				DF8735AE2A3F7F20004818BC /* HomeWorkerTest.swift */,
+				DF8735B32A3F8265004818BC /* HomeInteractorTest.swift */,
+				DF8735B52A3F8CC9004818BC /* HomePresenterTest.swift */,
+				DF8735B72A3F921C004818BC /* HomeViewControllerTest.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -565,6 +578,8 @@
 			isa = PBXGroup;
 			children = (
 				DFC4E8332A3D41A0004B6718 /* TextFieldSpy.swift */,
+				DF8735B92A3F9623004818BC /* LabelSpy.swift */,
+				DF8735BB2A3F965F004818BC /* TableViewSpy.swift */,
 			);
 			path = UIKitSpy;
 			sourceTree = "<group>";
@@ -1142,6 +1157,7 @@
 				DFC4E87F2A3E545C004B6718 /* StatementsRepositoryTest.swift in Sources */,
 				DF0BA8252A3BEE3D00A812F4 /* BankFailure.swift in Sources */,
 				DFF084432A3D2B2700672477 /* LoginModels.swift in Sources */,
+				DF8735B82A3F921C004818BC /* HomeViewControllerTest.swift in Sources */,
 				DF4624CA2A3CF0D700CBC35D /* AutenticationLocalDatasource.swift in Sources */,
 				DF8735A42A3F53BA004818BC /* String+extensions.swift in Sources */,
 				DF0BA8692A3C9BA900A812F4 /* MockAutenticationServiceDatasource.swift in Sources */,
@@ -1157,6 +1173,7 @@
 				DFC4E8762A3E48CB004B6718 /* DefaultTextField.swift in Sources */,
 				DF0BA7F82A3BE65B00A812F4 /* MockURLProtocol.swift in Sources */,
 				DF0BA80E2A3BE6D400A812F4 /* KssiusBankTests.swift in Sources */,
+				DF8735B62A3F8CC9004818BC /* HomePresenterTest.swift in Sources */,
 				DFC4E8312A3D3C13004B6718 /* LoginViewControllerTest.swift in Sources */,
 				DFC4E86E2A3E445F004B6718 /* StatementsRepository.swift in Sources */,
 				DFF084442A3D2B2700672477 /* LoginInteractor.swift in Sources */,
@@ -1185,6 +1202,7 @@
 				DF8735AF2A3F7F20004818BC /* HomeWorkerTest.swift in Sources */,
 				DF4624E52A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift in Sources */,
 				DFC4E8502A3E132B004B6718 /* HomeWorker.swift in Sources */,
+				DF8735BA2A3F9623004818BC /* LabelSpy.swift in Sources */,
 				DF4624D82A3D091400CBC35D /* MockAutenticationLocalDatasourceProtocol.swift in Sources */,
 				DF0BA8702A3CAC7D00A812F4 /* CommonValidator.swift in Sources */,
 				DF0BA84A2A3C7C8E00A812F4 /* AutenticationServiceDatasource.swift in Sources */,
@@ -1202,6 +1220,7 @@
 				DFF084462A3D2B2700672477 /* LoginViewController.swift in Sources */,
 				DFC4E83D2A3DDA30004B6718 /* UIColor+extensions.swift in Sources */,
 				DFF0843A2A3D24F500672477 /* LoginInteractorTest.swift in Sources */,
+				DF8735B42A3F8265004818BC /* HomeInteractorTest.swift in Sources */,
 				DF0BA8622A3C998100A812F4 /* AuthenticationRepositoryTest.swift in Sources */,
 				DF0BA8182A3BEC4800A812F4 /* NetworkService.swift in Sources */,
 				DFC4E8722A3E4463004B6718 /* StatementsServiceDatasource.swift in Sources */,
@@ -1209,6 +1228,7 @@
 				DFC4E85E2A3E3843004B6718 /* StatementsModel.swift in Sources */,
 				DF4624DB2A3D0A8400CBC35D /* UserWorkersTest.swift in Sources */,
 				DFC4E8792A3E4E61004B6718 /* AutenticationLocalDatasourceTest.swift in Sources */,
+				DF8735BC2A3F965F004818BC /* TableViewSpy.swift in Sources */,
 				DF0BA85C2A3C976900A812F4 /* LoginRequestModel.swift in Sources */,
 				DF0BA85F2A3C985500A812F4 /* AuthenticationServiceDatasourceProtocol.swift in Sources */,
 				DF0BA8652A3C9A3E00A812F4 /* MockSession.swift in Sources */,

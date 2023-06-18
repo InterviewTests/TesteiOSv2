@@ -16,12 +16,14 @@ final class AuthenticationLocalRepositoryTest: XCTestCase {
     var sut: AuthenticationLocalRepositoryProtocol?
 
     override func setUp() {
+        super.setUp()
         let mock = MockSuccessAuthenticationLocalDatasource()
         sut = AuthenticationLocalRepository(authenticationLocalDataSource: mock)
     }
 
     override func tearDown() {
         sut = nil
+        super.tearDown()
     }
 
     // MARK: - Success save user

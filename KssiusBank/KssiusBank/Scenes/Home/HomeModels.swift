@@ -32,7 +32,7 @@ enum Home
             }
         }
 
-        struct StatementViewModel {
+        struct StatementViewModel: Equatable {
             let type: String
             let description: String
             let date: String
@@ -74,7 +74,7 @@ enum Home
             }
         }
 
-        struct ViewModel{
+        struct ViewModel: Equatable {
 
             // MARK: - Properties
 
@@ -84,6 +84,10 @@ enum Home
             let balance: String
 
             // MARK: - Inits
+
+            init() {
+                self.init(name: "", agency: "", accountNumber: "", balance: "")
+            }
 
             init(name: String,
                  agency: String,

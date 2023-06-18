@@ -12,7 +12,7 @@ import XCTest
 
 import UIKit
 
-// MARK: - Test Doubles
+// MARK: - Test LoginInteractorSpy
 
 final class LoginInteractorSpy: LoginBusinessLogic, LoginDataStore {
     var fetchUserCalled = false
@@ -52,6 +52,8 @@ final class LoginViewControllerTests: XCTestCase {
         XCTAssertTrue(interactorSpy.fetchUserCalled)
     }
 
+    // MARK: - Verify display user on ViewDidLoad
+
     func testDisplayUser() {
 
         let viewController = LoginViewController()
@@ -66,7 +68,6 @@ final class LoginViewControllerTests: XCTestCase {
 
 
         viewController.displayUser(viewModel: viewModel)
-
 
         XCTAssertEqual(viewController.userTextField?.text, "test@hotmail.com")
     }

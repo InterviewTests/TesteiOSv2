@@ -165,14 +165,11 @@ extension LoginViewController: LoginDisplayLogic {
     }
 
     func resolveLogin(viewModel: Login.Login.ViewModel) {
-        DispatchQueue.main.async { [weak self] in
-            if viewModel.success {
-                self?.presentHomeScene()
-            }else {
-                self?.presentError(viewModel: viewModel)
-            }
+        if viewModel.success {
+            presentHomeScene()
+        }else {
+            presentError(viewModel: viewModel)
         }
-
     }
 }
 

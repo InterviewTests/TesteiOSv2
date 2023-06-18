@@ -25,9 +25,13 @@ extension StatementsServiceDatasource {
         networkService.request(endpoint: statements.endpoint) { result in
             switch(result) {
             case .success(let model):
-                completion(.success(model))
+                DispatchQueue.main.async {
+                    completion(.success(model))
+                }
             case .failure( _):
-                completion(.failure(.network(.init())))
+                DispatchQueue.main.async {
+                    completion(.failure(.network(.init())))
+                }
             }
         }
     }

@@ -21,7 +21,7 @@ final class MockSuccessStatementsRepository: StatementsRepositoryProtocol {
 
 final class MockFailureStatementsRepository: StatementsRepositoryProtocol {
 
-    var performLoginCalled = false
+    var fetchStatementsCalled = false
     private let statementsFailure: StatementsFailure
 
     init(statementsFailure: StatementsFailure) {
@@ -30,7 +30,7 @@ final class MockFailureStatementsRepository: StatementsRepositoryProtocol {
 
     func fetch(statements: BankApi.Endpoints,
                completion: @escaping (Result<[StatementsModel], StatementsFailure>) -> Void) {
-        performLoginCalled = true
+        fetchStatementsCalled = true
         completion(.failure(statementsFailure))
     }
 }

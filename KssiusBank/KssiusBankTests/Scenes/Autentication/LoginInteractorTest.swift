@@ -9,8 +9,6 @@
 import XCTest
 @testable import KssiusBank
 
-
-
 final class LoginInteractorTest: XCTestCase {
 
     // MARK: - Tests Error worker network

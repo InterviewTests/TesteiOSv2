@@ -14,11 +14,13 @@ final class AuthenticationRepositoryTest: XCTestCase {
     let successEmailModelRequest = LoginRequestModel(username: "Marquis_Gibson@hotmail.com", password: "T@to123")
 
     override func setUp() {
+        super.setUp()
         sut = AuthenticationRepository(authenticationService: MockSuccessAutenticationServiceDatasource())
     }
 
     override func tearDown() {
         sut = nil
+        super.tearDown()
     }
 
     // MARK: - Success Authentication Response

@@ -41,20 +41,20 @@ struct Seeds {
             {
             "type": "payment",
             "description": "Conta de Luz",
-            "date": "2020-01-02",
-            "value": 1550.50
+            "date": "2023-06-18T06:10:28.187Z",
+            "value": "1550.50"
             },
             {
             "type": "invoice",
             "description": "Conta de Luz",
-            "date": "2020-02-05",
-            "value": 300
+            "date": "2023-06-18T12:59:11.242Z",
+            "value": "300"
             },
             {
             "type": "deposit",
             "description": "Conta de Luz",
-            "date": "2020-04-03",
-            "value": 200.30
+            "date": "2023-06-17T22:18:13.694Z",
+            "value": "200.30"
             }
         
         ]

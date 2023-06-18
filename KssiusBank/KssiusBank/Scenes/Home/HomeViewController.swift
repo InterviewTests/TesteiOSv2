@@ -17,8 +17,7 @@ protocol HomeDisplayLogic: AnyObject {
     func displayAccount(viewModel: Home.GetAccount.ViewModel)
 }
 
-class HomeViewController: UIViewController, HomeDisplayLogic
-{
+final class HomeViewController: UIViewController, HomeDisplayLogic {
     var interactor: HomeBusinessLogic?
     var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
 
@@ -29,22 +28,19 @@ class HomeViewController: UIViewController, HomeDisplayLogic
 
     // MARK: Object lifecycle
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
 
     // MARK: Setup
 
-    private func setup()
-    {
+    private func setup() {
         let viewController = self
 
         let statementsServiceDatasource = StatementsServiceDatasource(networkService: .init())
@@ -65,8 +61,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic
 
     // MARK: Routing
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
             if let router = router, router.responds(to: selector) {
@@ -77,8 +72,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic
 
     // MARK: View lifecycle
 
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         initializeData()
@@ -124,11 +118,9 @@ class HomeViewController: UIViewController, HomeDisplayLogic
 extension HomeViewController {
 
     func displayStatements(viewModel: Home.GetStatements.ViewModel){
-        DispatchQueue.main.async {[weak self] in
-            self?.statements = viewModel.statements
-            self?.tableView?.reloadData()
-            self?.finishState()
-        }
+        statements = viewModel.statements
+        tableView?.reloadData()
+        finishState()
     }
 
     func displayAccount(viewModel: Home.GetAccount.ViewModel){
@@ -148,9 +140,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let row = tableView.dequeueReusableCell(withIdentifier: cellStatementIdentifier, for: indexPath) as? StatementCell
-              else {return UITableViewCell()}
+        else { return .init() }
         row.setup(model: statements[indexPath.row])
         return row
     }
-
 }

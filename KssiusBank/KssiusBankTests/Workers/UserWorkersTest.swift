@@ -16,11 +16,13 @@ final class UserWorkersTest: XCTestCase {
     var sut: UserWorkerLogic?
 
     override func setUp() {
+        super.tearDown()
         sut = UserWorker(authenticationLocalRepository: MockSuccessAuthenticationLocalRepository() )
     }
 
     override func tearDown() {
         sut = nil
+        super.tearDown()
     }
 
     // MARK: - Success save user

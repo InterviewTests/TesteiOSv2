@@ -12,11 +12,13 @@ final class StatementsRepositoryTest: XCTestCase {
     var sut: StatementsRepositoryProtocol?
 
     override func setUp() {
+        super.setUp()
         sut = StatementsRepository(statementsService: MockSuccessStatementsServiceDatasource())
     }
 
     override func tearDown() {
         sut = nil
+        super.tearDown()
     }
 
     // MARK: - Success Authentication Response

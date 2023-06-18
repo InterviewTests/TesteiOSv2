@@ -11,16 +11,17 @@ import XCTest
 
 final class HomeWorkTest: XCTestCase {
 
-    var sut: HomeWorkLogic?
+    var sut: HomeWorkerLogic?
 
     override func setUp() {
-
+        super.setUp()
         let statementsRepository = MockSuccessStatementsRepository()
         sut = HomeWorker(statementsRepository:  statementsRepository)
     }
 
     override func tearDown() {
         sut = nil
+        super.tearDown()
     }
 
     // MARK: - Success fetch statements
@@ -43,9 +44,9 @@ final class HomeWorkTest: XCTestCase {
 
     }
 
-    // MARK: - Failure login password
+    // MARK: - Failure statements fetch network
 
-    func testFailurePasswordLogin() {
+    func testFailureNetwork() {
 
         let statementsRepository = MockFailureStatementsRepository(statementsFailure: .network(.init()))
         let expectation = self.expectation(description: "Wait for execute fetch statements")
@@ -58,7 +59,7 @@ final class HomeWorkTest: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 1)
-        XCTAssertTrue(statementsRepository.performLoginCalled)
+        XCTAssertTrue(statementsRepository.fetchStatementsCalled)
 
     }
 }

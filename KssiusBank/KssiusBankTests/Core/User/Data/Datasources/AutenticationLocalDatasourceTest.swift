@@ -15,11 +15,13 @@ final class AutenticationLocalDatasourceTest: XCTestCase {
     var sut: AuthenticationLocalDatasourceProtocol?
 
     override func setUp() {
+        super.setUp()
         sut = AuthenticationLocalDatasource(keychain: KeychainSwift())
     }
 
     override func tearDown() {
         sut = nil
+        super.tearDown()
     }
 
     // MARK: - Success save user
@@ -28,7 +30,7 @@ final class AutenticationLocalDatasourceTest: XCTestCase {
         let data = Seeds.Json.account.rawValue.data(using: .utf8)
         guard let data = data,
               let user = try? JSONDecoder().decode(UserAccountModel.self, from: data) else {
-                XCTFail("Should not return a failure")
+            XCTFail("Should not return a failure")
             return
         }
         let result = sut?.save(user: user)
@@ -41,7 +43,7 @@ final class AutenticationLocalDatasourceTest: XCTestCase {
         let data = Seeds.Json.account.rawValue.data(using: .utf8)
         guard let data = data,
               let user = try? JSONDecoder().decode(UserAccountModel.self, from: data) else {
-                XCTFail("Should not return a failure")
+            XCTFail("Should not return a failure")
             return
         }
         sut?.save(user: user)

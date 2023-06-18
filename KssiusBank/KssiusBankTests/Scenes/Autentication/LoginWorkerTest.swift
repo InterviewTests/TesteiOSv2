@@ -14,6 +14,7 @@ final class LoginWorkTest: XCTestCase {
     var sut: LoginWorkerLogic?
 
     override func setUp() {
+        super.setUp()
         // remove datasource
         let authenticationRepository = MockSuccessAuthenticationRepository()
 
@@ -23,6 +24,7 @@ final class LoginWorkTest: XCTestCase {
 
     override func tearDown() {
         sut = nil
+        super.tearDown()
     }
 
     // MARK: - Success login
