@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -574,6 +574,15 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		DF8735BD2A3FB7FA004818BC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */,
+				DFC4E83E2A3DDC03004B6718 /* DefaultButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		DFC4E8322A3D4186004B6718 /* UIKitSpy */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,9 +596,8 @@
 		DFC4E8352A3DD57E004B6718 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				DF8735BD2A3FB7FA004818BC /* Components */,
 				DFC4E8392A3DDA0D004B6718 /* UI */,
-				DFC4E8362A3DD709004B6718 /* DefaultTextField.swift */,
-				DFC4E83E2A3DDC03004B6718 /* DefaultButton.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -923,7 +931,7 @@
 				};
 			};
 			buildConfigurationList = DFEC18052A3BCFF9001277A2 /* Build configuration list for PBXProject "KssiusBank" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1283,11 +1291,15 @@
 				DEVELOPMENT_TEAM = S54ZB46KKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KssiusBank/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KssiusBank;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1316,11 +1328,15 @@
 				DEVELOPMENT_TEAM = S54ZB46KKW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KssiusBank/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KssiusBank;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
