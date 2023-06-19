@@ -80,6 +80,7 @@
 		DF4624E22A3D1E3300CBC35D /* LoginWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4624E12A3D1E3300CBC35D /* LoginWorkerTest.swift */; };
 		DF4624E52A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4624E42A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift */; };
 		DF4624E62A3D226400CBC35D /* AuthenticationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0BA8422A3C7AAD00A812F4 /* AuthenticationRepositoryProtocol.swift */; };
+		DF46E1D92A4076BA00FD344A /* StatementCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF46E1D82A4076BA00FD344A /* StatementCellTest.swift */; };
 		DF7D3F8D2A3CE0A90009770F /* CommonValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7D3F8C2A3CE0A90009770F /* CommonValidatorTest.swift */; };
 		DF8735A02A3F2E17004818BC /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87359F2A3F2E17004818BC /* Date+extensions.swift */; };
 		DF8735A12A3F2F74004818BC /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF87359F2A3F2E17004818BC /* Date+extensions.swift */; };
@@ -220,6 +221,7 @@
 		DF4624DD2A3D0DF000CBC35D /* MockAuthenticationLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationLocalRepository.swift; sourceTree = "<group>"; };
 		DF4624E12A3D1E3300CBC35D /* LoginWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTest.swift; sourceTree = "<group>"; };
 		DF4624E42A3D1F2E00CBC35D /* MockAuthenticationRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationRepositoryProtocol.swift; sourceTree = "<group>"; };
+		DF46E1D82A4076BA00FD344A /* StatementCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementCellTest.swift; sourceTree = "<group>"; };
 		DF7D3F8C2A3CE0A90009770F /* CommonValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonValidatorTest.swift; sourceTree = "<group>"; };
 		DF87359F2A3F2E17004818BC /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
 		DF8735A22A3F53BA004818BC /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
@@ -528,6 +530,14 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		DF46E1D72A4076A300FD344A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DF46E1D82A4076BA00FD344A /* StatementCellTest.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		DF7D3F8B2A3CE0880009770F /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +567,7 @@
 		DF8735AD2A3F7EFE004818BC /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				DF46E1D72A4076A300FD344A /* Cell */,
 				DF8735B02A3F7F84004818BC /* Mock */,
 				DF8735AE2A3F7F20004818BC /* HomeWorkerTest.swift */,
 				DF8735B32A3F8265004818BC /* HomeInteractorTest.swift */,
@@ -1180,6 +1191,7 @@
 				DF8735A12A3F2F74004818BC /* Date+extensions.swift in Sources */,
 				DFC4E8762A3E48CB004B6718 /* DefaultTextField.swift in Sources */,
 				DF0BA7F82A3BE65B00A812F4 /* MockURLProtocol.swift in Sources */,
+				DF46E1D92A4076BA00FD344A /* StatementCellTest.swift in Sources */,
 				DF0BA80E2A3BE6D400A812F4 /* KssiusBankTests.swift in Sources */,
 				DF8735B62A3F8CC9004818BC /* HomePresenterTest.swift in Sources */,
 				DFC4E8312A3D3C13004B6718 /* LoginViewControllerTest.swift in Sources */,
@@ -1364,7 +1376,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S54ZB46KKW;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.kssius.KssiusBankTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1385,7 +1397,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S54ZB46KKW;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.kssius.KssiusBankTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

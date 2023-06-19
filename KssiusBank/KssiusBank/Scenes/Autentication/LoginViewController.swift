@@ -181,6 +181,9 @@ extension LoginViewController {
     }
 
     private func performLogin() {
+        if let _ = userTextField?.text, let _ = passwordTextField?.text {
+            view.endEditing(true)
+        }
         startState()
         let userText = userTextField?.text
         let passwordText = passwordTextField?.text
@@ -230,9 +233,6 @@ extension LoginViewController: UITextFieldDelegate {
         if textField == userTextField {
             passwordTextField?.becomeFirstResponder()
         }else {
-            if let _ = userTextField?.text, let _ = passwordTextField?.text {
-                view.endEditing(true)
-            }
             performLogin()
         }
         return true
