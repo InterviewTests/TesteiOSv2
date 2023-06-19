@@ -1,41 +1,33 @@
-# Show me the code
+# Cássio Alexandre de Sousa - Desafio Banco Safra (Kaspper)
 
-Esse repositório contem todo o material necessário para realizar o teste: 
-- A especificação do layout está na pasta 'bank_app_layout' abrindo o index.html, os icones estão na pasta 'assets'
+O repositório contém o código do desafio proposto para a vaga de iOS no Banco Safra (Kaspper).
 
-- Os dados da Api estão mockados, os exemplos e a especificação dos serviços (login e statements) se encontram no arquivo BankApp.postman_collection.json ( é necessário instalar o postman e importar a colection https://www.getpostman.com/apps)
+## Setup
 
-![Image of Yaktocat](https://github.com/SantanderTecnologia/TesteiOSv2/blob/master/telas.png)
+Solução  CocoaPods adotada como gerenciador de dependências. 
 
-### # DESAFIO:
+É necessário instalar em sua máquina. Manual de instalação em [link](https://cocoapods.org).
 
-Na primeira tela teremos um formulario de login, o campo user deve aceitar email ou cpf,
-o campo password deve validar se a senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.
-Apos a validação, realizar o login no endpoint https://6092aef785ff5100172136c2.mockapi.io/api/login e exibir os dados de retorno na próxima tela.
-O ultimo usuário logado deve ser salvo de forma segura localmente, e exibido na tela de login se houver algum salvo. 
+Entrar na pasta do projeto `KssiusBank` executar o seguinte comando: `pod install`
 
-Na segunda tela será exibido os dados formatados do retorno do login e será necessário fazer um segundo request para obter os lançamentos do usuário, no endpoint https://6092aef785ff5100172136c2.mockapi.io/api/statements/{idUser} que retornará uma lista de lançamentos
+Após a instalação das dependências, sempre use o arquivo `.xcworkspace` para abrir o projeto.
 
-### # Avaliação
+Dentro da pasta do projeto no terminal `open KssiusBank.xcworkspace`
 
-Você será avaliado pela usabilidade, por respeitar o design e pela arquitetura do app. É esperado que você consiga explicar as decisões que tomou durante o desenvolvimento através de commits.
+## Execução
 
-Obrigatórios:
+Abrir no XCode o projeto a partir do arquivo `KssiusBank.xcworkspace` existente na pasta `KssiusBank`.
+Utilizar o atalho do teclado `Command + shift + k ` para limpar a pasta de builds e  `Command + R` para buildar e executar o aplicativo no simulador.
 
-* Swift 3.0 ou superior
-* Autolayout
-* O app deve funcionar no iOS 11
-* Testes unitários, pode usar a ferramenta que você tem mais experiência, só nos explique o que ele tem de bom.
-* Arquitetura a ser utilizada: Swift Clean ([https://clean-swift.com/handbook/](https://clean-swift.com/handbook/) && [https://github.com/Clean-Swift/CleanStore](https://github.com/Clean-Swift/CleanStore)
-* Uso do git.
+## Testes
 
-### # Observações gerais
+Abrir no XCode o projeto a partir do arquivo `KssiusBank.xcworkspace` existente na pasta `KssiusBank`.
+Utilizar o atalho do teclado `Command + U` para buildar e executar os testes do projeto.
 
-Adicione um arquivo [README.md](http://README.md) com os procedimentos para executar o projeto.
-Pedimos que trabalhe sozinho e não divulgue o resultado na internet.
+## Cobertura dos testes
 
-Faça um fork desse desse repositório em seu Github e ao finalizar nos envie um Pull Request com o resultado, por favor informe por qual empresa você esta se candidatando.
+A cobertura dos testes está habilitada. 
 
-# Importante: não há prazo de entrega, faça com qualidade!
+Após executar os testes unitários com o passo anterior, é possível visualizar a cobertura na última aba do Project Navigator `(Show the Report Navigator)` e clicando em `Coverage`.
 
-# BOA SORTE!
+A cobertura dos testes unitários do projeto está em 71.9%.
