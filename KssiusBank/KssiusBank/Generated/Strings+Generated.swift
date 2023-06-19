@@ -38,8 +38,8 @@ internal enum L10n {
         internal static let general = L10n.tr("Localizable", "user.authentication.error.general", fallback: "Não foi possível efetuar o seu login. Por favor verifique se seu usuário e senha estão corretos e tente novamente.")
         /// Por favor informe um email ou CPF válido no campo de usuário.
         internal static let invalidCpf = L10n.tr("Localizable", "user.authentication.error.invalidCpf", fallback: "Por favor informe um email ou CPF válido no campo de usuário.")
-        /// Por favor a senha precisa conter uma letra maiúscula, caracter especial e caracter alfanumérico.
-        internal static let invalidPassword = L10n.tr("Localizable", "user.authentication.error.invalidPassword", fallback: "Por favor a senha precisa conter uma letra maiúscula, caracter especial e caracter alfanumérico.")
+        /// Por favor a senha precisa conter quatro digitos, uma letra maiúscula, caracter especial e caracter alfanumérico.
+        internal static let invalidPassword = L10n.tr("Localizable", "user.authentication.error.invalidPassword", fallback: "Por favor a senha precisa conter quatro digitos, uma letra maiúscula, caracter especial e caracter alfanumérico.")
       }
     }
   }
