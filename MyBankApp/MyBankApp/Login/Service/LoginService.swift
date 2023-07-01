@@ -32,18 +32,3 @@ final class LoginService: LoginServiceProtocol {
         }
     }
 }
-
-/*
- let loginService = LoginService()
-
- loginService.login(user: "your-username", password: "your-password") { result in
-     switch result {
-     case .success(let response):
-         // Handle successful login
-         print("Logged in with ID:", response.id)
-     case .failure(let error):
-         // Handle login error
-         print("Login error:", error.localizedDescription)
-     }
- }
- */

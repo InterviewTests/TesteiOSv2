@@ -23,7 +23,7 @@ final class NetworkServiceImpl: NetworkService {
         
         let task = urlSession.dataTask(with: request) { data, response, error in
             // Check for network errors
-            if let error = error {
+            if let _ = error {
                 completion(.failure(NetworkError.requestFailed))
                 return
             }

@@ -21,6 +21,12 @@
 		5EEFAB6C2A50B16E00A000EE /* NetworkServiceSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFAB6B2A50B16E00A000EE /* NetworkServiceSpy.swift */; };
 		5EEFAB6F2A50B21700A000EE /* LoginServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFAB6E2A50B21700A000EE /* LoginServiceTests.swift */; };
 		5EEFAB722A50B80200A000EE /* HomeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFAB712A50B80200A000EE /* HomeServiceTests.swift */; };
+		5EEFAB802A50CB8500A000EE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFAB7F2A50CB8500A000EE /* LoginViewController.swift */; };
+		5EEFAB8F2A50CD8B00A000EE /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFAB8E2A50CD8B00A000EE /* LoginProtocols.swift */; };
+		5EEFAB922A50D04B00A000EE /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFAB912A50D04B00A000EE /* LoginInteractor.swift */; };
+		5EEFAB942A50D06700A000EE /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFAB932A50D06700A000EE /* LoginPresenter.swift */; };
+		5EEFAB962A50D0C500A000EE /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFAB952A50D0C500A000EE /* LoginRouter.swift */; };
+		5EEFAB982A50D15200A000EE /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFAB972A50D15200A000EE /* LoginConfigurator.swift */; };
 		5EF1ACAE2A4E47C6002EA972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1ACAD2A4E47C6002EA972 /* AppDelegate.swift */; };
 		5EF1ACB02A4E47C6002EA972 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1ACAF2A4E47C6002EA972 /* SceneDelegate.swift */; };
 		5EF1ACB22A4E47C6002EA972 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1ACB12A4E47C6002EA972 /* ViewController.swift */; };
@@ -66,6 +72,12 @@
 		5EEFAB6B2A50B16E00A000EE /* NetworkServiceSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceSpy.swift; sourceTree = "<group>"; };
 		5EEFAB6E2A50B21700A000EE /* LoginServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceTests.swift; sourceTree = "<group>"; };
 		5EEFAB712A50B80200A000EE /* HomeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServiceTests.swift; sourceTree = "<group>"; };
+		5EEFAB7F2A50CB8500A000EE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5EEFAB8E2A50CD8B00A000EE /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
+		5EEFAB912A50D04B00A000EE /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		5EEFAB932A50D06700A000EE /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		5EEFAB952A50D0C500A000EE /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		5EEFAB972A50D15200A000EE /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
 		5EF1ACAA2A4E47C6002EA972 /* MyBankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF1ACAD2A4E47C6002EA972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EF1ACAF2A4E47C6002EA972 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,8 +160,9 @@
 		5EEFAB5E2A50A8BE00A000EE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				5EEFAB902A50CECB00A000EE /* Service */,
+				5EEFAB8D2A50CD7600A000EE /* Scene */,
 				5EEFAB652A50A99300A000EE /* Models */,
-				5EEFAB562A50A81900A000EE /* LoginService.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -201,6 +214,27 @@
 				5EEFAB712A50B80200A000EE /* HomeServiceTests.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		5EEFAB8D2A50CD7600A000EE /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				5EEFAB8E2A50CD8B00A000EE /* LoginProtocols.swift */,
+				5EEFAB7F2A50CB8500A000EE /* LoginViewController.swift */,
+				5EEFAB932A50D06700A000EE /* LoginPresenter.swift */,
+				5EEFAB912A50D04B00A000EE /* LoginInteractor.swift */,
+				5EEFAB952A50D0C500A000EE /* LoginRouter.swift */,
+				5EEFAB972A50D15200A000EE /* LoginConfigurator.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		5EEFAB902A50CECB00A000EE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5EEFAB562A50A81900A000EE /* LoginService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		5EF1ACA12A4E47C6002EA972 = {
@@ -520,14 +554,20 @@
 			files = (
 				5EEFAB622A50A8E500A000EE /* HomeResponse.swift in Sources */,
 				5EEFAB5D2A50A88600A000EE /* NetworkServiceImpl.swift in Sources */,
+				5EEFAB922A50D04B00A000EE /* LoginInteractor.swift in Sources */,
 				5EEFAB4E2A50982B00A000EE /* NetworkProtocols.swift in Sources */,
+				5EEFAB802A50CB8500A000EE /* LoginViewController.swift in Sources */,
 				5EF1ACB22A4E47C6002EA972 /* ViewController.swift in Sources */,
+				5EEFAB962A50D0C500A000EE /* LoginRouter.swift in Sources */,
+				5EEFAB8F2A50CD8B00A000EE /* LoginProtocols.swift in Sources */,
 				5EEFAB642A50A8F900A000EE /* HomeService.swift in Sources */,
 				5EEFAB5B2A50A85B00A000EE /* HTTPMethod.swift in Sources */,
+				5EEFAB942A50D06700A000EE /* LoginPresenter.swift in Sources */,
 				5EEFAB572A50A81900A000EE /* LoginService.swift in Sources */,
 				5EEFAB592A50A84300A000EE /* NetworkError.swift in Sources */,
 				5EF1ACAE2A4E47C6002EA972 /* AppDelegate.swift in Sources */,
 				5EEFAB672A50A99C00A000EE /* LoginResponse.swift in Sources */,
+				5EEFAB982A50D15200A000EE /* LoginConfigurator.swift in Sources */,
 				5EF1ACB02A4E47C6002EA972 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
