@@ -16,7 +16,7 @@ final class LoginService: LoginServiceProtocol {
         password: String,
         completion: @escaping (Result<LoginResponse, NetworkError>) -> Void
     ) {
-        guard let url = URL(string: "https://your-login-api-url.com/login") else {
+        guard let url = URL(string: "https://6092aef785ff5100172136c2.mockapi.io/api/login") else {
             completion(.failure(.invalidResponse))
             return
         }

@@ -4,7 +4,7 @@ struct HomeResponse: Decodable {
     let statement: [Statement]
 }
 
-struct Statement: Decodable {
+struct Statement: Decodable, Equatable {
     let id: Int
     let type: String
     let date: String
