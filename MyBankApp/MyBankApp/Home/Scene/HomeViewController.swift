@@ -13,8 +13,20 @@ final class HomeViewController: UIViewController {
     
     var interactor: HomeBusinessLogic?
     var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
+    var dispatchQueue: DispatchQueueProtocol
     
     private var statements: [Statement] = []
+    
+    init(interactor: HomeBusinessLogic? = nil, router: HomeRouter? = nil, dispatchQueue: DispatchQueueProtocol = MainDispatchQueueWrapper()) {
+        self.interactor = interactor
+        self.router = router
+        self.dispatchQueue = dispatchQueue
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -189,7 +201,7 @@ final class HomeViewController: UIViewController {
 // MARK: - HomeDisplayLogic Methods
 extension HomeViewController: HomeDisplayLogic {
     func displayStatements(_ statements: [Statement]) {
-        DispatchQueue.main.async {
+        dispatchQueue.async {
             self.statements = statements
             self.tableView.reloadData()
         }

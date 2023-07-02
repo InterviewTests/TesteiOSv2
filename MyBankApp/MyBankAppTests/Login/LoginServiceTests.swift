@@ -20,8 +20,22 @@ final class LoginServiceTests: XCTestCase {
     func testLoginSuccess() {
         // Given
         let expectedID = "user123"
+        let expectedEmail = "fulano@teste.com"
+        let expectedCpf = "123.456.789-10"
+        let expectedName = "Fulano de Tail"
+        let expectedAccountNumber = "123456"
+        let expectedAgency = "123"
+        let expectedBalance = "R$ 1.000,00"
         let responseJSON = """
-            {"id": "\(expectedID)"}
+            {
+                "userId": "\(expectedID)",
+                "email": "\(expectedEmail)",
+                "cpf": "\(expectedCpf)",
+                "name": "\(expectedName)",
+                "accountNumber": "\(expectedAccountNumber)",
+                "agency": "\(expectedAgency)",
+                "balance": "\(expectedBalance)"
+            }
         """
         let responseData = responseJSON.data(using: .utf8)!
         networkServiceSpy.mockedResult = .success(responseData)
@@ -37,7 +51,13 @@ final class LoginServiceTests: XCTestCase {
         XCTAssertEqual(networkServiceSpy.capturedMethod, .post)
         switch capturedResult {
         case let .success(response):
-            XCTAssertEqual(response.id, expectedID)
+            XCTAssertEqual(response.userId, expectedID)
+            XCTAssertEqual(response.email, expectedEmail)
+            XCTAssertEqual(response.cpf, expectedCpf)
+            XCTAssertEqual(response.name, expectedName)
+            XCTAssertEqual(response.accountNumber, expectedAccountNumber)
+            XCTAssertEqual(response.agency, expectedAgency)
+            XCTAssertEqual(response.balance, expectedBalance)
         case .failure(_):
             XCTFail()
         case .none:

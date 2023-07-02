@@ -7,7 +7,4 @@ final class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
     func logout() {
         viewController?.navigationController?.popViewController(animated: true)
     }
-//    func routeToStatementDetail() {
-//
-//    }
 }

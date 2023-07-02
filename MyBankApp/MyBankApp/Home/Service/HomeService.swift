@@ -15,6 +15,7 @@ final class HomeService: HomeServiceProtocol {
         for id: String,
         completion: @escaping (Result<HomeResponse, NetworkError>) -> Void
     ) {
+        //id should be used at the end of the URL, but as the API is not working properly, i will not add the id at the end
         guard let url = URL(string: "https://6092aef785ff5100172136c2.mockapi.io/api/statements") else {
             completion(.failure(.invalidResponse))
             return
@@ -29,25 +30,3 @@ final class HomeService: HomeServiceProtocol {
         }
     }
 }
-
-/*
- let homeService = HomeService()
-
- homeService.fetchStatements(for: "your-id") { result in
-     switch result {
-     case .success(let statements):
-         // Handle successful fetch
-         for statement in statements {
-             print("Statement ID:", statement.id)
-             print("Type:", statement.type)
-             print("Date:", statement.date)
-             print("Detail:", statement.detail)
-             print("Value:", statement.value)
-             print("--------")
-         }
-     case .failure(let error):
-         // Handle fetch error
-         print("Fetch error:", error.localizedDescription)
-     }
- }
- */

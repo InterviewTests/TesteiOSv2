@@ -43,7 +43,7 @@ final class HomeServiceTests: XCTestCase {
         }
         
         // Then
-        XCTAssertEqual(networkServiceSpy.capturedURL?.absoluteString, "https://6092aef785ff5100172136c2.mockapi.io/api/statements/user123")
+        XCTAssertEqual(networkServiceSpy.capturedURL?.absoluteString, "https://6092aef785ff5100172136c2.mockapi.io/api/statements")
         XCTAssertEqual(networkServiceSpy.capturedMethod, .get)
         switch capturedResult {
             case .success(let statements):
@@ -67,7 +67,7 @@ final class HomeServiceTests: XCTestCase {
         }
         
         // Then
-        XCTAssertEqual(networkServiceSpy.capturedURL?.absoluteString, "https://6092aef785ff5100172136c2.mockapi.io/api/statements/user123")
+        XCTAssertEqual(networkServiceSpy.capturedURL?.absoluteString, "https://6092aef785ff5100172136c2.mockapi.io/api/statements")
         XCTAssertEqual(networkServiceSpy.capturedMethod, .get)
         switch capturedResult {
             case .success(let statements):
