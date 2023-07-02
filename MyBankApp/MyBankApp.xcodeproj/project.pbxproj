@@ -368,7 +368,6 @@
 				5EF1ACA62A4E47C6002EA972 /* Sources */,
 				5EF1ACA72A4E47C6002EA972 /* Frameworks */,
 				5EF1ACA82A4E47C6002EA972 /* Resources */,
-				D0BC799AEC15A7F58CA95A14 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -407,7 +406,6 @@
 				5EF1ACC62A4E47C9002EA972 /* Sources */,
 				5EF1ACC72A4E47C9002EA972 /* Frameworks */,
 				5EF1ACC82A4E47C9002EA972 /* Resources */,
-				5283A1C67CEE7CC88BFA9EAF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -512,23 +510,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5283A1C67CEE7CC88BFA9EAF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyBankApp-MyBankAppUITests/Pods-MyBankApp-MyBankAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyBankApp-MyBankAppUITests/Pods-MyBankApp-MyBankAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyBankApp-MyBankAppUITests/Pods-MyBankApp-MyBankAppUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B586E5958C28FD1C7110E56C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -588,23 +569,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyBankAppTests/Pods-MyBankAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D0BC799AEC15A7F58CA95A14 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyBankApp/Pods-MyBankApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyBankApp/Pods-MyBankApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyBankApp/Pods-MyBankApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
