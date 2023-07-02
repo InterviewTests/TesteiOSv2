@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - LoginDisplayLogic
 protocol LoginDisplayLogic: AnyObject {
-    func displayLoginSuccess(userId: String)
+    func displayLoginSuccess()
     func displayLoginError(message: String)
 }
 
@@ -13,16 +13,21 @@ protocol LoginBusinessLogic {
 
 // MARK: - LoginPresenter
 protocol LoginPresentationLogic {
-    func presentLoginSuccess(userId: String)
+    func presentLoginSuccess()
     func presentLoginError(message: String)
 }
 
 // MARK: - LoginRouter
 protocol LoginRoutingLogic {
-    func routeToNextScene()
+    func routeToHome()
 }
 
 // MARK: - LoginDataStore
 protocol LoginDataStore {
-    var dataToPass: String? { get set }
+    var user: LoginResponse? { get set }
+}
+
+// MARK: - LoginDataPassing
+protocol LoginDataPassing {
+    var dataStore: LoginDataStore? { get }
 }

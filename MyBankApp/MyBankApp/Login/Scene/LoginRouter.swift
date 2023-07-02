@@ -1,13 +1,14 @@
 import UIKit
 
-final class LoginRouter: LoginRoutingLogic, LoginDataStore {
+final class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     weak var viewController: LoginViewController?
-    var dataToPass: String?
+    var dataStore: LoginDataStore?
     
-    func routeToNextScene() {
+    func routeToHome() {
         let homeViewController = UIViewController()
-        //homeViewController.id = dataToPass
-        viewController?.navigationController?.pushViewController(homeViewController, animated: true)
-//        viewController?.present(homeViewController, animated: true)
+//        let homeDataStore = homeViewController.router?.dataStore
+//        home.user = viewController?.user
+        viewController?.show(homeViewController, sender: nil)
+//        viewController?.navigationController?.pushViewController(homeViewController, animated: true)
     }
 }

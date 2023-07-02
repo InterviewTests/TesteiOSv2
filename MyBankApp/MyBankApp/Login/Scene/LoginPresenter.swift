@@ -3,8 +3,8 @@ import Foundation
 final class LoginPresenter: LoginPresentationLogic {
     weak var viewController: LoginDisplayLogic?
     
-    func presentLoginSuccess(userId: String) {
-        viewController?.displayLoginSuccess(userId: userId)
+    func presentLoginSuccess() {
+        viewController?.displayLoginSuccess()
     }
     
     func presentLoginError(message: String) {

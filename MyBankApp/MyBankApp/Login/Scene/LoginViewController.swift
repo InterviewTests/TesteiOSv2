@@ -2,7 +2,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     var interactor: LoginBusinessLogic?
-    var router: (LoginRoutingLogic & LoginDataStore)?
+    var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
     // MARK: UI Elements
     private let imageView: UIImageView = {
@@ -101,9 +101,8 @@ final class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginDisplayLogic {
-    func displayLoginSuccess(userId: String) {
-        router?.dataToPass = userId
-        router?.routeToNextScene()
+    func displayLoginSuccess() {
+        router?.routeToHome()
     }
     
     func displayLoginError(message: String) {
