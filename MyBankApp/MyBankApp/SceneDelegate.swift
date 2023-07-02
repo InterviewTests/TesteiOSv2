@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  MyBankApp
-//
-//  Created by Matheus Fusco on 29/06/23.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -15,7 +8,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let rootViewController = LoginConfigurator().setup()
+        let rootViewController = UINavigationController(rootViewController: LoginConfigurator().setup())
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
     }

@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  MyBankApp
-//
-//  Created by Matheus Fusco on 29/06/23.
-//
-
 import UIKit
 
 @main
@@ -14,14 +7,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let rootViewController = LoginConfigurator().setup() // Set LoginViewController as the initial view controller
+        let rootViewController = UINavigationController(rootViewController: LoginConfigurator().setup())
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
         return true
     }
 
     // MARK: UISceneSession Lifecycle
-
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.

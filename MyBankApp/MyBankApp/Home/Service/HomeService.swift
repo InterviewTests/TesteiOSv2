@@ -15,7 +15,7 @@ final class HomeService: HomeServiceProtocol {
         for id: String,
         completion: @escaping (Result<HomeResponse, NetworkError>) -> Void
     ) {
-        guard let url = URL(string: "https://6092aef785ff5100172136c2.mockapi.io/api/statements/\(id)") else {
+        guard let url = URL(string: "https://6092aef785ff5100172136c2.mockapi.io/api/statements") else {
             completion(.failure(.invalidResponse))
             return
         }
