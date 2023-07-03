@@ -16,19 +16,19 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     
     func login(username: String, password: String) {
         /// Uncomment this line, and comment the loginService implementation above if Login API is not working, so the app on the simulator can work properly
-        presenter?.presentLoginSuccess()
+//        presenter?.presentLoginSuccess()
         
-//        loginService.login(user: username, password: password) { [weak self, presenter] result in
-//            switch result {
-//            case .success(let response):
-//                guard let self = self else { return }
-//                print("Logged in with ID:", response.userId)
-//                user = response
-//                presenter?.presentLoginSuccess()
-//            case .failure(let error):
-//                print("Login error:", error.localizedDescription)
-//                presenter?.presentLoginError(message: "Invalid credentials")
-//            }
-//        }
+        loginService.login(user: username, password: password) { [weak self, presenter] result in
+            switch result {
+            case .success(let response):
+                guard let self = self else { return }
+                print("Logged in with ID:", response.userId)
+                self.user = response
+                presenter?.presentLoginSuccess()
+            case .failure(let error):
+                print("Login error:", error.localizedDescription)
+                presenter?.presentLoginError(message: "Invalid credentials")
+            }
+        }
     }
 }

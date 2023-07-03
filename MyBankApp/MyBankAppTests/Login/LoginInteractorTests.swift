@@ -23,7 +23,7 @@ final class LoginInteractorTests: XCTestCase {
     func test_login_givenLoginSuccess_shouldCallPresentLoginSuccess() {
         loginServiceSpy.completionToBeReturned = .success(.fixture())
         
-        sut.login(username: "", password: "")
+        sut.login(username: "teste@teste.com", password: "A@3")
         
         XCTAssertNotNil(sut.user)
         XCTAssertEqual(presenterSpy.calledMethods, [.presentLoginSuccess])
@@ -32,7 +32,7 @@ final class LoginInteractorTests: XCTestCase {
     func test_login_givenLoginFailure_shouldCallPresentLoginError() {
         loginServiceSpy.completionToBeReturned = .failure(.requestFailed)
         
-        sut.login(username: "", password: "")
+        sut.login(username: "teste@teste.com", password: "A@3")
         
         XCTAssertNil(sut.user)
         XCTAssertEqual(presenterSpy.calledMethods, [.presentLoginError(message: "Invalid credentials")])

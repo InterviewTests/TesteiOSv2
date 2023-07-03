@@ -38,6 +38,30 @@ final class LoginViewControllerTests: XCTestCase {
         XCTAssertEqual(routerSpy.calledMethods, [.routeToHome])
     }
     
+    func test_givenUserNameWithValidCPFlAndPasswordAreFilled_shouldCallInteractorLogin() {
+        //Given
+        sut.usernameTextField.text = "699.876.200-35"
+        sut.passwordTextField.text = "T3st!ng"
+        
+        //When
+        sut.loginButtonTapped()
+        
+        //Then
+        XCTAssertEqual(interactorSpy.calledMethods, [.login(username: "699.876.200-35", password: "T3st!ng")])
+    }
+    
+    func test_givenUserNameWithInvalidEmailAndPasswordAreFilled_shouldCallInteractorLogin() {
+        //Given
+        sut.usernameTextField.text = "test@testcom"
+        sut.passwordTextField.text = "T3st!ng"
+        
+        //When
+        sut.loginButtonTapped()
+        
+        //Then
+        XCTAssertEqual(interactorSpy.calledMethods, [])
+    }
+    
     func test_givenUserNameAndPasswordAreFilled_shouldCallInteractorLogin() {
         //Given
         sut.usernameTextField.text = "test@test.com"
