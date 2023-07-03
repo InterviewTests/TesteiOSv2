@@ -40,6 +40,9 @@
 		5EEFABD92A52195600A000EE /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFABD82A52195600A000EE /* UIFont+Extension.swift */; };
 		5EEFABDB2A5226CC00A000EE /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFABDA2A5226CC00A000EE /* DispatchQueue+Extension.swift */; };
 		5EEFABDE2A522A2B00A000EE /* DispatchQueueSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFABDD2A522A2B00A000EE /* DispatchQueueSpy.swift */; };
+		5EEFABE02A522B5000A000EE /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFABDF2A522B5000A000EE /* LoginViewControllerTests.swift */; };
+		5EEFABE32A522C5400A000EE /* LoginBusinessLogicSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFABE22A522C5400A000EE /* LoginBusinessLogicSpy.swift */; };
+		5EEFABE52A525A2100A000EE /* LoginRouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFABE42A525A2100A000EE /* LoginRouterSpy.swift */; };
 		5EF1ACAE2A4E47C6002EA972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1ACAD2A4E47C6002EA972 /* AppDelegate.swift */; };
 		5EF1ACB02A4E47C6002EA972 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1ACAF2A4E47C6002EA972 /* SceneDelegate.swift */; };
 		5EF1ACB52A4E47C6002EA972 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF1ACB32A4E47C6002EA972 /* Main.storyboard */; };
@@ -103,6 +106,9 @@
 		5EEFABD82A52195600A000EE /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		5EEFABDA2A5226CC00A000EE /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
 		5EEFABDD2A522A2B00A000EE /* DispatchQueueSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueSpy.swift; sourceTree = "<group>"; };
+		5EEFABDF2A522B5000A000EE /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		5EEFABE22A522C5400A000EE /* LoginBusinessLogicSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBusinessLogicSpy.swift; sourceTree = "<group>"; };
+		5EEFABE42A525A2100A000EE /* LoginRouterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterSpy.swift; sourceTree = "<group>"; };
 		5EF1ACAA2A4E47C6002EA972 /* MyBankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF1ACAD2A4E47C6002EA972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EF1ACAF2A4E47C6002EA972 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,7 +235,9 @@
 		5EEFAB6D2A50B20A00A000EE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				5EEFABE12A522C4900A000EE /* Spies */,
 				5EEFAB6E2A50B21700A000EE /* LoginServiceTests.swift */,
+				5EEFABDF2A522B5000A000EE /* LoginViewControllerTests.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -310,6 +318,15 @@
 				5EEFABDD2A522A2B00A000EE /* DispatchQueueSpy.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		5EEFABE12A522C4900A000EE /* Spies */ = {
+			isa = PBXGroup;
+			children = (
+				5EEFABE22A522C5400A000EE /* LoginBusinessLogicSpy.swift */,
+				5EEFABE42A525A2100A000EE /* LoginRouterSpy.swift */,
+			);
+			path = Spies;
 			sourceTree = "<group>";
 		};
 		5EF1ACA12A4E47C6002EA972 = {
@@ -627,9 +644,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EEFABE52A525A2100A000EE /* LoginRouterSpy.swift in Sources */,
 				5EEFAB6F2A50B21700A000EE /* LoginServiceTests.swift in Sources */,
 				5EEFAB722A50B80200A000EE /* HomeServiceTests.swift in Sources */,
 				5EEFABDE2A522A2B00A000EE /* DispatchQueueSpy.swift in Sources */,
+				5EEFABE32A522C5400A000EE /* LoginBusinessLogicSpy.swift in Sources */,
+				5EEFABE02A522B5000A000EE /* LoginViewControllerTests.swift in Sources */,
 				5EEFAB6C2A50B16E00A000EE /* NetworkServiceSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

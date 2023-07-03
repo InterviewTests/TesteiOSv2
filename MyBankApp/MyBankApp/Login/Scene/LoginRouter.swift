@@ -1,6 +1,6 @@
 import UIKit
 
-final class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
+class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     weak var viewController: LoginViewController?
     var dataStore: LoginDataStore?
     

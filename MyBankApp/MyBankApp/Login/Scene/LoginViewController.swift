@@ -13,7 +13,7 @@ final class LoginViewController: UIViewController {
         return imageView
     }()
     
-    private let usernameTextField: UITextField = {
+    let usernameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Username"
         textField.borderStyle = .roundedRect
@@ -21,7 +21,7 @@ final class LoginViewController: UIViewController {
         return textField
     }()
     
-    private let passwordTextField: UITextField = {
+    let passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Password"
         textField.borderStyle = .roundedRect
@@ -38,6 +38,19 @@ final class LoginViewController: UIViewController {
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    init(
+        interactor: LoginBusinessLogic? = nil,
+        router: LoginRouter? = nil
+    ) {
+        self.interactor = interactor
+        self.router = router
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: View Lifecycle
     override func viewDidLoad() {
@@ -90,11 +103,12 @@ final class LoginViewController: UIViewController {
     }
     
     // MARK: Actions
-    @objc private func loginButtonTapped() {
+    @objc func loginButtonTapped() {
         guard let username = usernameTextField.text,
-              let password = passwordTextField.text else {
-            return
-        }
+              let password = passwordTextField.text, !username.isEmpty, !password.isEmpty else {
+                  displayLoginError(message: "Please fill user and password fields correctly!")
+                  return
+              }
         
         interactor?.login(username: username, password: password)
     }
@@ -106,6 +120,8 @@ extension LoginViewController: LoginDisplayLogic {
     }
     
     func displayLoginError(message: String) {
-        
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
 }
