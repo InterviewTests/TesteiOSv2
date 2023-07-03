@@ -1,4 +1,5 @@
 import XCTest
+import SnapshotTesting
 @testable import MyBankApp
 
 final class LoginViewControllerTests: XCTestCase {
@@ -15,6 +16,7 @@ final class LoginViewControllerTests: XCTestCase {
             interactor: interactorSpy,
             router: routerSpy
         )
+        isRecording = false
     }
 
     override func tearDown() {
@@ -22,6 +24,12 @@ final class LoginViewControllerTests: XCTestCase {
         routerSpy = nil
         sut = nil
         super.tearDown()
+    }
+    
+    func test_viewDidLoad_shouldMatchSnapshot() {
+        sut.viewDidLoad()
+        
+        assertSnapshot(matching: sut, as: .image)
     }
 
     func test_givenDisplayLoginSuccess_shouldRouteToHome() {
