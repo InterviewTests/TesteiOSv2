@@ -1,10 +1,3 @@
-//
-//  MyBankAppUITests.swift
-//  MyBankAppUITests
-//
-//  Created by Matheus Fusco on 29/06/23.
-//
-
 import XCTest
 
 final class MyBankAppUITests: XCTestCase {
