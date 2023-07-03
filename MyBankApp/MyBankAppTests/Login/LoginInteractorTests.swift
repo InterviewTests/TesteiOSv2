@@ -4,37 +4,37 @@ import XCTest
 final class LoginInteractorTests: XCTestCase {
     private var sut: LoginInteractor!
     private var presenterSpy: LoginPresentationLogicSpy!
-    private var loginServiceSpy: LoginServiceSpy!
+    private var workerSpy: LoginWorkerProtocolSpy!
     
     override func setUp() {
         super.setUp()
         presenterSpy = LoginPresentationLogicSpy()
-        loginServiceSpy = LoginServiceSpy()
-        sut = LoginInteractor(presenter: presenterSpy, loginService: loginServiceSpy)
+        workerSpy = LoginWorkerProtocolSpy()
+        sut = LoginInteractor(presenter: presenterSpy, worker: workerSpy)
     }
     
     override func tearDown() {
         presenterSpy = nil
-        loginServiceSpy = nil
+        workerSpy = nil
         sut = nil
         super.tearDown()
     }
     
     func test_login_givenLoginSuccess_shouldCallPresentLoginSuccess() {
-        loginServiceSpy.completionToBeReturned = .success(.fixture())
+        workerSpy.completionToBeReturned = .success(.fixture())
         
-        sut.login(username: "teste@teste.com", password: "A@3")
+        sut.login(request: LoginRequest(username: "", password: ""))
         
         XCTAssertNotNil(sut.user)
         XCTAssertEqual(presenterSpy.calledMethods, [.presentLoginSuccess])
     }
     
     func test_login_givenLoginFailure_shouldCallPresentLoginError() {
-        loginServiceSpy.completionToBeReturned = .failure(.requestFailed)
+        workerSpy.completionToBeReturned = .failure(.requestFailed)
         
-        sut.login(username: "teste@teste.com", password: "A@3")
+        sut.login(request: LoginRequest(username: "", password: ""))
         
         XCTAssertNil(sut.user)
-        XCTAssertEqual(presenterSpy.calledMethods, [.presentLoginError(message: "Invalid credentials")])
+        XCTAssertEqual(presenterSpy.calledMethods, [.presentLoginError(message: "Request failed")])
     }
 }

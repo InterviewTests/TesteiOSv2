@@ -8,7 +8,7 @@ protocol LoginDisplayLogic: AnyObject {
 
 // MARK: - LoginInteractor
 protocol LoginBusinessLogic {
-    func login(username: String, password: String)
+    func login(request: LoginRequest)
 }
 
 // MARK: - LoginPresenter

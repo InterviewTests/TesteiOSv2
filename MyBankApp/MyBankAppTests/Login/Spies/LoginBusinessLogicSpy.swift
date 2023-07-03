@@ -3,12 +3,12 @@ import XCTest
 
 final class LoginBusinessLogicSpy: LoginBusinessLogic {
     enum Methods: Equatable {
-        case login(username: String, password: String)
+        case login(LoginRequest)
     }
     
     private(set) var calledMethods: [Methods] = []
     
-    func login(username: String, password: String) {
-        calledMethods.append(.login(username: username, password: password))
+    func login(request: LoginRequest) {
+        calledMethods.append(.login(request))
     }
 }

@@ -10,6 +10,10 @@
 		1999FDEFC6310BFE84329E86 /* Pods_MyBankAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C337E965EE80D701CC09ED0D /* Pods_MyBankAppTests.framework */; };
 		1D3DCA54D867A351A2E52696 /* Pods_MyBankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CEB3D9AED855921215D3A98 /* Pods_MyBankApp.framework */; };
 		4F5A4BD5DE23F65DE5F0A06E /* Pods_MyBankApp_MyBankAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39BB90D19EE7C0FCD034B3EF /* Pods_MyBankApp_MyBankAppUITests.framework */; };
+		5E8FB8DA2A53185300B5A792 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FB8D92A53185300B5A792 /* LoginRequest.swift */; };
+		5E8FB8DC2A5318A400B5A792 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FB8DB2A5318A400B5A792 /* LoginWorker.swift */; };
+		5E8FB8DE2A531A4300B5A792 /* LoginWorkerProtocolSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FB8DD2A531A4300B5A792 /* LoginWorkerProtocolSpy.swift */; };
+		5E8FB8E02A531CF800B5A792 /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FB8DF2A531CF800B5A792 /* LoginWorkerTests.swift */; };
 		5EA5DF402A52959300147F4A /* URLSessionProtocolSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5DF3F2A52959300147F4A /* URLSessionProtocolSpy.swift */; };
 		5EA5DF422A52965F00147F4A /* NetworkServiceImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5DF412A52965F00147F4A /* NetworkServiceImplTests.swift */; };
 		5EA5DF452A52A37200147F4A /* DispatchQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5DF442A52A37100147F4A /* DispatchQueueProtocol.swift */; };
@@ -89,6 +93,10 @@
 		39BB90D19EE7C0FCD034B3EF /* Pods_MyBankApp_MyBankAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyBankApp_MyBankAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEB3D9AED855921215D3A98 /* Pods_MyBankApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyBankApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF8791C0A8C3F3ECC7E00B1 /* Pods-MyBankApp-MyBankAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBankApp-MyBankAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MyBankApp-MyBankAppUITests/Pods-MyBankApp-MyBankAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5E8FB8D92A53185300B5A792 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		5E8FB8DB2A5318A400B5A792 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		5E8FB8DD2A531A4300B5A792 /* LoginWorkerProtocolSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerProtocolSpy.swift; sourceTree = "<group>"; };
+		5E8FB8DF2A531CF800B5A792 /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
 		5EA5DF3F2A52959300147F4A /* URLSessionProtocolSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocolSpy.swift; sourceTree = "<group>"; };
 		5EA5DF412A52965F00147F4A /* NetworkServiceImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceImplTests.swift; sourceTree = "<group>"; };
 		5EA5DF442A52A37100147F4A /* DispatchQueueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueProtocol.swift; sourceTree = "<group>"; };
@@ -254,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				5EEFAB662A50A99C00A000EE /* LoginResponse.swift */,
+				5E8FB8D92A53185300B5A792 /* LoginRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -279,6 +288,7 @@
 				5EEFABEA2A5265C700A000EE /* LoginInteractorTests.swift */,
 				5EEFABF72A526D2900A000EE /* LoginRouterTests.swift */,
 				5EEFABFD2A52836900A000EE /* LoginConfiguratorTests.swift */,
+				5E8FB8DF2A531CF800B5A792 /* LoginWorkerTests.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -300,6 +310,7 @@
 				5EEFAB912A50D04B00A000EE /* LoginInteractor.swift */,
 				5EEFAB952A50D0C500A000EE /* LoginRouter.swift */,
 				5EEFAB972A50D15200A000EE /* LoginConfigurator.swift */,
+				5E8FB8DB2A5318A400B5A792 /* LoginWorker.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -371,6 +382,7 @@
 				5EEFABEC2A52667500A000EE /* LoginServiceSpy.swift */,
 				5EEFABF12A5267E500A000EE /* LoginPresentationLogicSpy.swift */,
 				5EEFABFB2A52770E00A000EE /* LoginViewControllerSpy.swift */,
+				5E8FB8DD2A531A4300B5A792 /* LoginWorkerProtocolSpy.swift */,
 			);
 			path = Spies;
 			sourceTree = "<group>";
@@ -667,6 +679,8 @@
 				5EEFABBC2A51E6C800A000EE /* HomePresenter.swift in Sources */,
 				5EEFABBE2A51E71200A000EE /* HomeInteractor.swift in Sources */,
 				5EEFAB622A50A8E500A000EE /* HomeResponse.swift in Sources */,
+				5E8FB8DC2A5318A400B5A792 /* LoginWorker.swift in Sources */,
+				5E8FB8DA2A53185300B5A792 /* LoginRequest.swift in Sources */,
 				5EEFAB5D2A50A88600A000EE /* NetworkServiceImpl.swift in Sources */,
 				5EEFABD52A52179A00A000EE /* Double+Extension.swift in Sources */,
 				5EEFABB82A51E5CF00A000EE /* HomeViewController.swift in Sources */,
@@ -712,11 +726,13 @@
 				5EEFABE92A52630E00A000EE /* LoginDisplayLogicSpy.swift in Sources */,
 				5EEFABE32A522C5400A000EE /* LoginBusinessLogicSpy.swift in Sources */,
 				5EEFABE02A522B5000A000EE /* LoginViewControllerTests.swift in Sources */,
+				5E8FB8DE2A531A4300B5A792 /* LoginWorkerProtocolSpy.swift in Sources */,
 				5EEFABFC2A52770E00A000EE /* LoginViewControllerSpy.swift in Sources */,
 				5EA5DF402A52959300147F4A /* URLSessionProtocolSpy.swift in Sources */,
 				5EA5DF422A52965F00147F4A /* NetworkServiceImplTests.swift in Sources */,
 				5EEFABF02A52671E00A000EE /* LoginResponse+Fixture.swift in Sources */,
 				5EEFABEB2A5265C700A000EE /* LoginInteractorTests.swift in Sources */,
+				5E8FB8E02A531CF800B5A792 /* LoginWorkerTests.swift in Sources */,
 				5EEFAB6C2A50B16E00A000EE /* NetworkServiceSpy.swift in Sources */,
 				5EEFABED2A52667500A000EE /* LoginServiceSpy.swift in Sources */,
 			);

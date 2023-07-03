@@ -47,7 +47,7 @@ final class LoginViewControllerTests: XCTestCase {
         sut.loginButtonTapped()
         
         //Then
-        XCTAssertEqual(interactorSpy.calledMethods, [.login(username: "699.876.200-35", password: "T3st!ng")])
+        XCTAssertEqual(interactorSpy.calledMethods, [.login(LoginRequest(username: "699.876.200-35", password: "T3st!ng"))])
     }
     
     func test_givenUserNameWithInvalidEmailAndPasswordAreFilled_shouldCallInteractorLogin() {
@@ -71,7 +71,7 @@ final class LoginViewControllerTests: XCTestCase {
         sut.loginButtonTapped()
         
         //Then
-        XCTAssertEqual(interactorSpy.calledMethods, [.login(username: "test@test.com", password: "T3st!ng")])
+        XCTAssertEqual(interactorSpy.calledMethods, [.login(LoginRequest(username: "699.876.200-35", password: "T3st!ng"))])
     }
     
     func test_givenUserNameOrPasswordAreNotFilled_shouldNotCallInteractorLogin() {

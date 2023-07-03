@@ -116,8 +116,8 @@ class LoginViewController: UIViewController {
             displayLoginError(message: "Please fill user and password fields correctly!")
             return
         }
-        
-        interactor?.login(username: username, password: password)
+        let request = LoginRequest(username: username, password: password)
+        interactor?.login(request: request)
     }
     
     private func validateUserTextField() -> Bool {
