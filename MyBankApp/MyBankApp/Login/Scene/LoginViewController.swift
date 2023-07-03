@@ -3,6 +3,7 @@ import UIKit
 class LoginViewController: UIViewController {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    private var dispatchQueue: DispatchQueueProtocol
     
     // MARK: UI Elements
     private let imageView: UIImageView = {
@@ -41,10 +42,12 @@ class LoginViewController: UIViewController {
     
     init(
         interactor: LoginBusinessLogic? = nil,
-        router: LoginRouter? = nil
+        router: LoginRouter? = nil,
+        dispatchQueue: DispatchQueueProtocol = MainDispatchQueueWrapper()
     ) {
         self.interactor = interactor
         self.router = router
+        self.dispatchQueue = dispatchQueue
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -105,12 +108,42 @@ class LoginViewController: UIViewController {
     // MARK: Actions
     @objc func loginButtonTapped() {
         guard let username = usernameTextField.text,
-              let password = passwordTextField.text, !username.isEmpty, !password.isEmpty else {
-                  displayLoginError(message: "Please fill user and password fields correctly!")
-                  return
-              }
+              let password = passwordTextField.text,
+              !username.isEmpty,
+              !password.isEmpty,
+              validateForm()
+        else {
+            displayLoginError(message: "Please fill user and password fields correctly!")
+            return
+        }
         
         interactor?.login(username: username, password: password)
+    }
+    
+    private func validateUserTextField() -> Bool {
+        let emailRegex = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let numberRegex = "^\\d{11}$"
+        let userText = usernameTextField.text ?? ""
+        
+        if userText.isValidEmail() {
+            return true
+        } else if userText.isValidCPF() {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func validatePasswordTextField() -> Bool {
+        let password = passwordTextField.text ?? ""
+        return password.count >= 3 && password.containsUppercaseLetter && password.containsSpecialCharacter
+    }
+    
+    private func validateForm() -> Bool {
+        let isUserValid = validateUserTextField()
+        let isPasswordValid = validatePasswordTextField()
+        
+        return isUserValid && isPasswordValid
     }
 }
 
@@ -122,6 +155,8 @@ extension LoginViewController: LoginDisplayLogic {
     func displayLoginError(message: String) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true, completion: nil)
+        dispatchQueue.async { [weak self] in
+            self?.present(alertController, animated: true, completion: nil)
+        }
     }
 }
