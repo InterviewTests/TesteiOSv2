@@ -17,7 +17,7 @@ final class LoginServiceTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLoginSuccess() {
+    func test_givenLoginSuccess_shouldReturnValidLoginResponse() {
         // Given
         let expectedID = "user123"
         let expectedEmail = "fulano@teste.com"
@@ -65,7 +65,7 @@ final class LoginServiceTests: XCTestCase {
         }
     }
     
-    func testLoginFailure() {
+    func test_givenLoginFailure_shouldFailWithExpectedError() {
         // Given
         let expectedError = NetworkError.requestFailed
         networkServiceSpy.mockedResult = .failure(expectedError)

@@ -1,6 +1,6 @@
 import Foundation
 
-struct LoginResponse: Decodable, Equatable {
+struct LoginResponse: Codable, Equatable {
     let userId: String
     let email: String
     let cpf: String

@@ -17,7 +17,7 @@ final class HomeServiceTests: XCTestCase {
         super.tearDown()
     }
     
-    func testFetchStatementsSuccess() {
+    func test_fetchStatements_givenSuccessResponse_whenValidUrlAndValidMethod_shouldSucceedWithValidStatements() {
         // Given
         let expectedStatements = [
             Statement(id: 1, type: "Expense", date: "2023-06-30", detail: "Groceries", value: 50.0),
@@ -55,7 +55,7 @@ final class HomeServiceTests: XCTestCase {
         }
     }
     
-    func testFetchStatementsFailure() {
+    func test_fetchStatements_givenFailureResponse_shouldFailWithExpectedError() {
         // Given
         let expectedError = NetworkError.requestFailed
         networkServiceSpy.mockedResult = .failure(expectedError)
