@@ -5,24 +5,23 @@ final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
     var user: LoginResponse?
     
     var presenter: HomePresentationLogic?
-    let homeService: HomeServiceProtocol
+    let worker: HomeWorkerProtocol
     
-    init(presenter: HomePresentationLogic? = nil, homeService: HomeServiceProtocol = HomeService()) {
+    init(presenter: HomePresentationLogic? = nil, worker: HomeWorkerProtocol = HomeWorker()) {
         self.presenter = presenter
-        self.homeService = homeService
+        self.worker = worker
     }
     
     func fetchUserStatements() {
-        homeService.fetchStatements(for: user?.userId ?? "") { [weak self] result in
+        worker.fetchStatements(for: user?.userId ?? "") { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let response):
-                guard let self = self else { return }
                 print("Statements:", response.statement)
-//                statements = response.statement
                 self.presenter?.presentStatementsSuccess(response.statement)
             case .failure(let error):
                 print("Statements error:", error.localizedDescription)
-                self?.presenter?.presentStatementsError(message: "")
+                self.presenter?.presentStatementsError(message: "")
             }
         }
     }
