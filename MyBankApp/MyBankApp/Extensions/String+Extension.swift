@@ -25,7 +25,7 @@ extension String {
         inputFormatter.dateFormat = "ddMMyyyy"
         
         guard let date = inputFormatter.date(from: self) else {
-            return nil // Unable to parse the input date string
+            return nil
         }
         
         let outputFormatter = DateFormatter()

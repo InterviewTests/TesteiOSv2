@@ -1,41 +1,41 @@
-# Show me the code
+# Matheus Fusco - Desafio Banco Safra - Kaspper
 
-Esse repositório contem todo o material necessário para realizar o teste: 
-- A especificação do layout está na pasta 'bank_app_layout' abrindo o index.html, os icones estão na pasta 'assets'
+Repositório com o código referente ao desafio proposto para a vaga de iOS no Banco Safra - Kaspper.
 
-- Os dados da Api estão mockados, os exemplos e a especificação dos serviços (login e statements) se encontram no arquivo BankApp.postman_collection.json ( é necessário instalar o postman e importar a colection https://www.getpostman.com/apps)
+# Setup
 
-![Image of Yaktocat](https://github.com/SantanderTecnologia/TesteiOSv2/blob/master/telas.png)
+Solução adotada para gerenciador de dependência: `Cocoapods`
+- Manual de instalação em [link](https://cocoapods.org).
+- Entrar na pasta via terminal .../TesteiOSV2/MyBankApp/ e rodar o comando `pod install`
+- Após a instalação, rodar o comando `open MyBankApp.xcworkspace`
+- PS: Acabei não utilizando nenhuma dependência (pelo menos por enquanto), deixei o mais nativo possível, incluindo na parte de chamadas
 
-### # DESAFIO:
+# Como rodar
 
-Na primeira tela teremos um formulario de login, o campo user deve aceitar email ou cpf,
-o campo password deve validar se a senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.
-Apos a validação, realizar o login no endpoint https://6092aef785ff5100172136c2.mockapi.io/api/login e exibir os dados de retorno na próxima tela.
-O ultimo usuário logado deve ser salvo de forma segura localmente, e exibido na tela de login se houver algum salvo. 
+- Após a abertuda o `MyBankApp.xcworkspace`, rodar o app com o comando `Command + R`
+- PS: Para que a navegação funcione corretamente, no arquivo `LoginInteractor` é necessário descomentar a linha 19, e comentar as linhas 21 até 32. Motivo: Não consegui fazer a API de Login funcionar, então deixei a linha 19 pra fins de navegação do aplicativo
 
-Na segunda tela será exibido os dados formatados do retorno do login e será necessário fazer um segundo request para obter os lançamentos do usuário, no endpoint https://6092aef785ff5100172136c2.mockapi.io/api/statements/{idUser} que retornará uma lista de lançamentos
+# Testes
 
-### # Avaliação
+Solução adotada para os testes unitários: `XCTests`
+Solução adotada para testes de UI: `SnapshotTesting`
+- Após a abertura do projeto, rodar `Command + U`
 
-Você será avaliado pela usabilidade, por respeitar o design e pela arquitetura do app. É esperado que você consiga explicar as decisões que tomou durante o desenvolvimento através de commits.
+## Observações
 
-Obrigatórios:
+- Testes referentes a `Home` ainda não foram finalizados, constando somente o teste da `HomeService`
+- Testes referentes a tela de `Login` foram todos finalizados, incluindo todas camadas da arquitetura
+- Testes das camadas de `Network` foram todos finalizados
+- Para que os testes funcionem corretamente, no arquivo `LoginInteractor` é necessário comentar a linha 19, e descomentar as linhas 21 até 32. Motivo: Não consegui fazer a API de Login funcionar, então deixei a linha 19 pra fins de navegação do aplicativo
 
-* Swift 3.0 ou superior
-* Autolayout
-* O app deve funcionar no iOS 11
-* Testes unitários, pode usar a ferramenta que você tem mais experiência, só nos explique o que ele tem de bom.
-* Arquitetura a ser utilizada: Swift Clean ([https://clean-swift.com/handbook/](https://clean-swift.com/handbook/) && [https://github.com/Clean-Swift/CleanStore](https://github.com/Clean-Swift/CleanStore)
-* Uso do git.
+# Observações Gerais
 
-### # Observações gerais
+- Nunca havia utilizado a arquitetura CleanSwift, espero que tenha feito um bom código
+- A API de Login não estava funcionando, defini um retorno `LoginResponse` e seus respectivos campos e utilizei um mock para apresentar a tela `Home`
+- A API de `/statements` não funcionava com o `/{id}` no final, então modifiquei a URL para igual a collection enviada para que funcionasse o retorno (sem o `/{id}` no final)
 
-Adicione um arquivo [README.md](http://README.md) com os procedimentos para executar o projeto.
-Pedimos que trabalhe sozinho e não divulgue o resultado na internet.
+# Próximos passos
 
-Faça um fork desse desse repositório em seu Github e ao finalizar nos envie um Pull Request com o resultado, por favor informe por qual empresa você esta se candidatando.
-
-# Importante: não há prazo de entrega, faça com qualidade!
-
-# BOA SORTE!
+- Finalizar os testes referente a `Home`, incluindo testes unitários
+- Ajustar validação dos campos de texto e retornos exibidos ao usuário
+- Adicionar `Loading` tanto na tela de `Login` quanto na `Home` e tratar possíveis cenários de erro na tela
