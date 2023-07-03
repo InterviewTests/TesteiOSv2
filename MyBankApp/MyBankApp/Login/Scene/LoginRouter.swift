@@ -16,7 +16,7 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
             agency: "0",
             balance: "R$ 1.000,00"
         )
-        homeDataStore?.user = mockUserResponse//dataStore?.user
+        homeDataStore?.user = mockUserResponse//dataStore?.user /// Uncomment this line if login API comes back to work
         homeViewController.navigationItem.setHidesBackButton(true, animated: false)
         viewController?.navigationController?.pushViewController(homeViewController, animated: true)
     }

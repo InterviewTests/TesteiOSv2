@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 final class LoginConfigurator {
     func setup() -> LoginViewController {
@@ -6,12 +6,16 @@ final class LoginConfigurator {
         let interactor = LoginInteractor()
         let presenter = LoginPresenter()
         let router = LoginRouter()
+        
         viewController.interactor = interactor
         viewController.router = router
+        
         interactor.presenter = presenter
         presenter.viewController = viewController
+        
         router.viewController = viewController
         router.dataStore = interactor
+        
         return viewController
     }
 }

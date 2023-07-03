@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 final class HomeConfigurator {
     func setup() -> HomeViewController {

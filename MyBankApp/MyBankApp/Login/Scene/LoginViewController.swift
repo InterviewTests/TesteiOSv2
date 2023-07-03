@@ -1,6 +1,6 @@
 import UIKit
 
-final class LoginViewController: UIViewController {
+class LoginViewController: UIViewController {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
